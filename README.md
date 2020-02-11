@@ -207,29 +207,29 @@ class App extends React.Component {
 ```
 #### Q. What is the difference between Element and Component?
 
-    An *Element* is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. *Elements* can contain other *Elements* in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+An *Element* is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. *Elements* can contain other *Elements* in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
 
-    The object representation of React Element would be as follows:
+The object representation of React Element would be as follows:
 
-    ```javascript
-    const element = React.createElement(
-      'div',
-      {id: 'login-btn'},
-      'Login'
-    )
-    ```
+```javascript
+const element = React.createElement(
+  'div',
+  {id: 'login-btn'},
+  'Login'
+)
+```
 
-    The above `React.createElement()` function returns an object:
+The above `React.createElement()` function returns an object:
 
-    ```
-    {
-      type: 'div',
-      props: {
-        children: 'Login',
-        id: 'login-btn'
-      }
-    }
-    ```
+```javascript
+{
+  type: 'div',
+  props: {
+    children: 'Login',
+    id: 'login-btn'
+  }
+}
+```
 
     And finally it renders to the DOM using `ReactDOM.render()`:
 
@@ -253,10 +253,7 @@ class App extends React.Component {
       'Login'
     )
     ```
-
-
-   
-    
+  
 #### Q. How to create components in React?
 
     There are two possible ways to create a component.
