@@ -1,4 +1,4 @@
-## Hello World using React.JS
+## Hello World Using React.JS
 
 
 1. create directory  
@@ -101,5 +101,4 @@
 
 12. open browser: [http://localhost:7777](http://localhost:7777)
 
----
-if you clone this repository to local, just `npm install` and `npm start`.
+
