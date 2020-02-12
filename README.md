@@ -467,31 +467,26 @@ const todoItems = todos.map((todo) =>
 ```
 When you don't have stable IDs for rendered items, you may use the item *index* as a *key* as a last resort:
 
-    ```jsx harmony
-    const todoItems = todos.map((todo, index) =>
-      <li key={index}>
-        {todo.text}
-      </li>
-    )
-    ```
+```jsx harmony
+const todoItems = todos.map((todo, index) =>
+  <li key={index}>
+    {todo.text}
+  </li>
+)
+```
 
-    **Note:**
+**Note:**
 
-    1. Using *indexes* for *keys* is **not recommended** if the order of items may change. This can negatively impact performance and may cause issues with component state.
-    2. If you extract list item as separate component then apply *keys* on list component instead of `li` tag.
-    3. There will be a warning message in the console if the `key` prop is not present on list items.
+1. Using *indexes* for *keys* is **not recommended** if the order of items may change. This can negatively impacperformance and may cause issues with component state.
+2. If you extract list item as separate component then apply *keys* on list component instead of `li` tag.
+3. There will be a warning message in the console if the `key` prop is not present on list items.
 
 #### Q. What is the use of refs?
-
-    The *ref* is used to return a reference to the element. They *should be avoided* in most cases, however, they can be useful when you need a direct access to the DOM element or an instance of a component.
-
-
-   
+The *ref* is used to return a reference to the element. They *should be avoided* in most cases, however, they can be useful when you need a direct access to the DOM element or an instance of a component.
     
 #### Q. How to create refs?
-
-    There are two approaches
-    1. This is a recently added approach. *Refs* are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use *refs* throughout the component, just assign the *ref* to the instance property within constructor.
+There are two approaches
+1. This is a recently added approach. *Refs* are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use *refs* throughout the component, just assign the *ref* to the instance property within constructor.
 
     ```jsx harmony
     class MyComponent extends React.Component {
@@ -504,7 +499,7 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
       }
     }
     ```
-    2. You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows,
+2. You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows,
     ```jsx harmony
     class SearchBar extends Component {
        constructor(props) {
@@ -528,15 +523,11 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
        }
     }
     ```
+You can also use *refs* in function components using **closures**.
+**Note**: You can also use inline ref callbacks even though it is not a recommended approach
 
-    You can also use *refs* in function components using **closures**.
-    **Note**: You can also use inline ref callbacks even though it is not a recommended approach
-
-   
-    
 #### Q. What are forward refs?
-
-    *Ref forwarding* is a feature that lets some components take a *ref* they receive, and pass it further down to a child.
+*Ref forwarding* is a feature that lets some components take a *ref* they receive, and pass it further down to a child.
 
     ```jsx harmony
     const ButtonElement = React.forwardRef((props, ref) => (
@@ -550,14 +541,10 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
     <ButtonElement ref={ref}>{'Forward Ref'}</ButtonElement>
     ```
 
-
-   
-    
 #### Q. Which is preferred option with in callback refs and findDOMNode()?
+It is preferred to use *callback refs* over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
 
-    It is preferred to use *callback refs* over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
-
-    The **legacy** approach of using `findDOMNode`:
+The **legacy** approach of using `findDOMNode`:
 
     ```javascript
     class MyComponent extends Component {
@@ -570,8 +557,7 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
       }
     }
     ```
-
-    The recommended approach is:
+The recommended approach is:
 
     ```javascript
     class MyComponent extends Component {
@@ -593,13 +579,12 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
    
     
 #### Q. Why are String Refs legacy?
+If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `ref={'textInput'}`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because *string refs have below issues*, and are considered legacy. String refs were **removed in React v16**.
 
-    If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `ref={'textInput'}`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because *string refs have below issues*, and are considered legacy. String refs were **removed in React v16**.
-
-    1. They *force React to keep track of currently executing component*. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
-    2. They are *not composable* — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
-    3. They *don't work with static analysis* like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
-    4. It doesn't work as most people would expect with the "render callback" pattern (e.g. <DataGrid renderRow={this.renderRow} />)
+1. They *force React to keep track of currently executing component*. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
+2. They are *not composable* — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
+3. They *don't work with static analysis* like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
+4. It doesn't work as most people would expect with the "render callback" pattern (e.g. `<DataGrid renderRow={this.renderRow} />`)
        ```jsx harmony
        class MyComponent extends Component {
          renderRow = (index) => {
@@ -616,57 +601,28 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
        }
        ```
 
-   
-    
 #### Q. What is Virtual DOM?
-
-    The *Virtual DOM* (VDOM) is an in-memory representation of *Real DOM*. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called *reconciliation*.
-
-
-   
+The *Virtual DOM* (VDOM) is an in-memory representation of *Real DOM*. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called *reconciliation*.
     
 #### Q. How Virtual DOM works?
+The *Virtual DOM* works in three simple steps.
+1. Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
+2. Then the difference between the previous DOM representation and the new one is calculated.
+3. Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
 
-    The *Virtual DOM* works in three simple steps.
-
-    1. Whenever any underlying data changes, the entire UI is re-rendered in Virtual DOM representation.
-        ![vdom](images/vdom1.png)
-
-    2. Then the difference between the previous DOM representation and the new one is calculated.
-        ![vdom2](images/vdom2.png)
-
-    3. Once the calculations are done, the real DOM will be updated with only the things that have actually changed.
-        ![vdom3](images/vdom3.png)
-
-
-   
-    
 #### Q. What is the difference between Shadow DOM and Virtual DOM?
-
-    The *Shadow DOM* is a browser technology designed primarily for scoping variables and CSS in *web components*. The *Virtual DOM* is a concept implemented by libraries in JavaScript on top of browser APIs.
-
-
-   
+The *Shadow DOM* is a browser technology designed primarily for scoping variables and CSS in *web components*. The *Virtual DOM* is a concept implemented by libraries in JavaScript on top of browser APIs.
     
 #### Q. What is React Fiber?
-
-    Fiber is the new *reconciliation* engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
-
-
-   
+Fiber is the new *reconciliation* engine or reimplementation of core algorithm in React v16. The goal of React Fiber is to increase its suitability for areas like animation, layout, gestures, ability to pause, abort, or reuse work and assign priority to different types of updates; and new concurrency primitives.
     
 #### Q. What is the main goal of React Fiber?
-
-    The goal of *React Fiber* is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is **incremental rendering**: the ability to split rendering work into chunks and spread it out over multiple frames.
-
-
-   
+The goal of *React Fiber* is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is **incremental rendering**: the ability to split rendering work into chunks and spread it out over multiple frames.
     
 #### Q. What are controlled components?
+A component that controls the input elements within the forms on subsequent user input is called **Controlled Component**, i.e, every state mutation will have an associated handler function.
 
-    A component that controls the input elements within the forms on subsequent user input is called **Controlled Component**, i.e, every state mutation will have an associated handler function.
-
-    For example, to write all the names in uppercase letters, we use handleChange as below,
+For example, to write all the names in uppercase letters, we use handleChange as below,
 
     ```javascript
     handleChange(event) {
@@ -674,14 +630,10 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
     }
     ```
 
-
-   
-    
 #### Q. What are uncontrolled components?
+The **Uncontrolled Components** are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
 
-    The **Uncontrolled Components** are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
-
-    In the below UserProfile component, the `name` input is accessed using ref.
+In the below UserProfile component, the `name` input is accessed using ref.
 
     ```jsx harmony
     class UserProfile extends React.Component {
@@ -709,29 +661,16 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
       }
     }
     ```
-
-    In most cases, it's recommend to use controlled components to implement forms.
-
-
-   
+In most cases, it's recommend to use controlled components to implement forms.
     
 #### Q. What is the difference between createElement and cloneElement?
-
-    JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas `cloneElement` is used to clone an element and pass it new props.
-
-
-   
+JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas `cloneElement` is used to clone an element and pass it new props.
     
 #### Q. What is Lifting State Up in React?
-
-    When several components need to share the same changing data then it is recommended to *lift the shared state up* to their closest common ancestor. That means if two child components share the same data from its parent, then move the state to parent instead of maintaining local state in both of the child components.
-
-
-   
+When several components need to share the same changing data then it is recommended to *lift the shared state up* to their closest common ancestor. That means if two child components share the same data from its parent, then move the state to parent instead of maintaining local state in both of the child components.
     
 #### Q. What are the different phases of component lifecycle?
-
-    The component lifecycle has three distinct lifecycle phases:
+The component lifecycle has three distinct lifecycle phases:
 
     1. **Mounting:** The component is ready to mount in the browser DOM. This phase covers initialization from `constructor()`, `getDerivedStateFromProps()`, `render()`, and `componentDidMount()` lifecycle methods.
 
@@ -760,8 +699,7 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
    
     
 #### Q. What are the lifecycle methods of React?
-
-    React 16.3+
+React 16.3+
 
     - **getDerivedStateFromProps:** Invoked right before calling `render()` and is invoked on *every* render. This exists for rare use cases where you need derived state. Worth reading [if you need derived state](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html).
     - **componentDidMount:** Executed after first rendering and here all AJAX requests, DOM or state updates, and set up event listeners should occur.
@@ -770,42 +708,23 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
     - **componentDidUpdate:** Mostly it is used to update the DOM in response to prop or state changes. This will not fire if `shouldComponentUpdate()` returns `false`.
     - **componentWillUnmount** It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
 
-    Before 16.3
-
-    - **componentWillMount:** Executed before rendering and is used for App level configuration in your root component.
-    - **componentDidMount:** Executed after first rendering and here all AJAX requests, DOM or state updates, and set up event listeners should occur.
-    - **componentWillReceiveProps:** Executed when particular prop updates to trigger state transitions.
-    - **shouldComponentUpdate:** Determines if the component will be updated or not. By default it returns `true`. If you are sure that the component doesn't need to render after state or props are updated, you can return false value. It is a great place to improve performance as it allows you to prevent a re-render if component receives new prop.
-    - **componentWillUpdate:** Executed before re-rendering the component when there are props & state changes confirmed by `shouldComponentUpdate()` which returns true.
-    - **componentDidUpdate:** Mostly it is used to update the DOM in response to prop or state changes.
-    - **componentWillUnmount:** It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
-
-
-   
-    
 #### Q. What are Higher-Order Components?
+A *higher-order component* (*HOC*) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
 
-    A *higher-order component* (*HOC*) is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
-
-    We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
 
     ```javascript
     const EnhancedComponent = higherOrderComponent(WrappedComponent)
     ```
+HOC can be used for many use cases:
 
-    HOC can be used for many use cases:
+1. Code reuse, logic and bootstrap abstraction.
+2. Render hijacking.
+3. State abstraction and manipulation.
+4. Props manipulation.
 
-    1. Code reuse, logic and bootstrap abstraction.
-    2. Render hijacking.
-    3. State abstraction and manipulation.
-    4. Props manipulation.
-
-
-   
-    
 #### Q. How to create props proxy for HOC component?
-
-    You can add/edit props passed to the component using *props proxy* pattern like this:
+You can add/edit props passed to the component using *props proxy* pattern like this:
 
     ```jsx harmony
     function HOC(WrappedComponent) {
@@ -824,20 +743,13 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
     }
     ```
 
-
-   
-    
 #### Q. What is context?
-
-    *Context* provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
+*Context* provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
 
     ```javascript
     const {Provider, Consumer} = React.createContext(defaultValue)
     ```
 
-
-   
-    
 #### Q. What is children prop?
 
     *Children* is a prop (`this.prop.children`) that allow you to pass components as data to other components, just like any other prop you use. Component tree put between component's opening and closing tag will be passed to that component as `children` prop.
@@ -887,14 +799,10 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
     </div>
     ```
 
-
-   
-    
 #### Q. What is the purpose of using super constructor with props argument?
+A child class constructor cannot make use of `this` reference until `super()` method has been called. The same applies for ES6 sub-classes as well. The main reason of passing props parameter to `super()` call is to access `this.props` in your child constructors.
 
-    A child class constructor cannot make use of `this` reference until `super()` method has been called. The same applies for ES6 sub-classes as well. The main reason of passing props parameter to `super()` call is to access `this.props` in your child constructors.
-
-    **Passing props:**
+**Passing props:**
 
     ```javascript
     class MyComponent extends React.Component {
@@ -905,8 +813,7 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
       }
     }
     ```
-
-    **Not passing props:**
+**Not passing props:**
 
     ```javascript
     class MyComponent extends React.Component {
@@ -925,18 +832,10 @@ When you don't have stable IDs for rendered items, you may use the item *index* 
       }
     }
     ```
-
-    The above code snippets reveals that `this.props` is different only within the constructor. It would be the same outside the constructor.
-
-
-   
+The above code snippets reveals that `this.props` is different only within the constructor. It would be the same outside the constructor.
     
 #### Q. What is reconciliation?
-
-    When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called *reconciliation*.
-
-
-   
+When a component's props or state change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM. This process is called *reconciliation*.
     
 #### Q. How to set state with a dynamic key name?
 
