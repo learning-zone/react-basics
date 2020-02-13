@@ -1,6 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Quick Start
+
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
 
 In the project directory, you can run:
 
