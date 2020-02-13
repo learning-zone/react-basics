@@ -5845,6 +5845,7 @@ Both refers the same thing. Previously concurrent Mode being referred to as "Asy
     
 #### Q. Can I use javascript urls in react16.9?
 Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: adangerous by including unsanitized output in a tag like <a href> and create a security hole.
+
 ```jsx
 const companyProfile = {
   website: "javascript: alert('Your website is hacked')",
