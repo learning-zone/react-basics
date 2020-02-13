@@ -5801,7 +5801,7 @@ Below are the main differences between Redux and MobX,
  
 #### Q. Should I learn ES6 before learning ReactJS?
 No, you don’t have to learn es2015/es6 to learn react. But you may find many resources or React ecosystem uses ES6 extensively. Let's see some of the frequently used ES6 features,
-     1. Destructuring: To get props and use them in a component
+1. Destructuring: To get props and use them in a component
      ```jsx
      // in es 5
       var someData = this.props.someData
@@ -5810,7 +5810,7 @@ No, you don’t have to learn es2015/es6 to learn react. But you may find many r
      // in es6
      const { someData, dispatch } = this.props
      ```
-     2. Spread operator: Helps in passing props down into a component
+2. Spread operator: Helps in passing props down into a component
      ```jsx
      // in es 5
      <SomeComponent someData={this.props.someData} dispatch={this.props.dispatch} />
