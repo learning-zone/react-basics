@@ -193,7 +193,7 @@ The major features of React are:
 
 In the example below text inside `<h1>` tag return as JavaScript function to the render function.
 
-```jsx harmony
+```jsx
 class App extends React.Component {
   render() {
     return(
@@ -209,7 +209,7 @@ An *Element* is a plain object describing what you want to appear on the screen 
 
 The object representation of React Element would be as follows:
 
-```javascript
+```jsx
 const element = React.createElement(
   'div',
   {id: 'login-btn'},
@@ -219,7 +219,7 @@ const element = React.createElement(
 
 The above `React.createElement()` function returns an object:
 
-```javascript
+```jsx
 {
   type: 'div',
   props: {
@@ -235,13 +235,13 @@ And finally it renders to the DOM using `ReactDOM.render()`:
 ```
 Whereas a **component** can be declared in several different ways. It can be a class with a `render()` method. Alternatively, in simple cases, it can be defined as a function. In either case, it takes props as an input, and returns a JSX tree as the output:
 
-```javascript
+```jsx
 const Button = ({ onLogin }) =>
   <div id={'login-btn'} onClick={onLogin}>Login</div>
 ```
 Then JSX gets transpiled to a `React.createElement()` function tree:
 
-```javascript
+```jsx
 const Button = ({ onLogin }) => React.createElement(
   'div',
   { id: 'login-btn', onClick: onLogin },
@@ -254,7 +254,7 @@ There are two possible ways to create a component.
 
 1. **Function Components:** This is the simplest way to create a component. Those are pure JavaScript functions that accept props object as first parameter and return React elements:
 
-```jsx harmony
+```jsx
  function Greeting({ message }) {
    return <h1>{`Hello, ${message}`}</h1>
  }
@@ -262,7 +262,7 @@ There are two possible ways to create a component.
 
 2. **Class Components:** You can also use ES6 class to define a component. The above function component can be written as:
 
-```jsx harmony
+```jsx
 class Greeting extends React.Component {
   render() {
     return <h1>{`Hello, ${this.props.message}`}</h1>
@@ -279,7 +279,7 @@ If the component needs *state or lifecycle methods* then use class component oth
 #### Q. What is state in React?
 *State* of a component is an object that holds some information that may change over the lifetime of the component. We should always try to make our state as simple as possible and minimize the number of stateful components. Let's create an user component with message state,
 
-```jsx harmony
+```jsx
 class User extends React.Component {
   constructor(props) {
     super(props)
@@ -311,7 +311,7 @@ The primary purpose of props in React is to provide following component function
 
 For example, let us create an element with `reactProp` property:
 
-```jsx harmony
+```jsx
 <Element reactProp={'1'} />
 ```
 This `reactProp` (or whatever you came up with) name then becomes a property attached to React's native props object which originally already exists on all components created using React library.
@@ -325,13 +325,13 @@ Both *props* and *state* are plain JavaScript objects. While both of them hold i
 #### Q. Why should we not update the state directly?
 If you try to update state directly then it won't re-render the component.
 
-```javascript
+```jsx
 //Wrong
 this.state.message = 'Hello world'
 ```
 Instead use `setState()` method. It schedules an update to a component's state object. When state changes, the component responds by re-rendering.
 
-```javascript
+```jsx
 //Correct
 this.setState({ message: 'Hello World' })
 ```
@@ -342,7 +342,7 @@ The callback function is invoked when setState finished and the component gets r
 
 *Note: It is recommended to use lifecycle method rather than this callback function.*
 
-```javascript
+```jsx
 setState({ name: 'John' }, () => console.log('The name has updated and component re-rendered'))
 ```
 
@@ -355,7 +355,7 @@ setState({ name: 'John' }, () => console.log('The name has updated and component
 ```
 Whereas in React it follows *camelCase* convention:
 
-```jsx harmony
+```jsx
 <button onClick={activateLasers}>
 ```
 2. In HTML, you can return `false` to prevent default behavior:
@@ -365,7 +365,7 @@ Whereas in React it follows *camelCase* convention:
 ```
 Whereas in React you must call `preventDefault()` explicitly:
 
-```javascript
+```jsx
 function handleClick(event) {
   event.preventDefault()
   console.log('The link was clicked.')
@@ -379,7 +379,7 @@ There are 3 possible ways to achieve this:
 
 1.	**Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
 
-```javascript
+```jsx
 class Component extends React.Componenet {
   constructor(props) {
     super(props)
@@ -394,20 +394,20 @@ class Component extends React.Componenet {
 
 2. **Public class fields syntax:** If you don't like to use bind approach then *public class fields syntax* can be used to correctly bind callbacks.
 
-```jsx harmony
+```jsx
 handleClick = () => {
   console.log('this is:', this)
 }
 ```
 
-```jsx harmony
+```jsx
 <button onClick={this.handleClick}>
   {'Click me'}
 </button>
 ```
 3. **Arrow functions in callbacks:** You can use *arrow functions* directly in the callbacks.
 
-```jsx harmony
+```jsx
 <button onClick={(event) => this.handleClick(event)}>
   {'Click me'}
 </button>
@@ -417,16 +417,16 @@ handleClick = () => {
 #### Q. How to pass a parameter to an event handler or callback?
 You can use an *arrow function* to wrap around an *event handler* and pass parameters:
 
-```jsx harmony
+```jsx
  <button onClick={() => this.handleClick(id)} />
 ```
 This is an equivalent to calling `.bind`:
 
-```jsx harmony
+```jsx
   <button onClick={this.handleClick.bind(this, id)} />
 ```
 Apart from these two approaches, you can also pass arguments to a function which is defined as array function
-```jsx harmony
+```jsx
     <button onClick={this.handleClick(id)} />
     handleClick = (id) => () => {
         console.log("Hello, your ticket number is", id)
@@ -439,7 +439,7 @@ Apart from these two approaches, you can also pass arguments to a function which
 #### Q. What is inline conditional expressions?
 You can use either *if statements* or *ternary expressions* which are available from JS to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by JS logical operator `&&`.
 
-```jsx harmony
+```jsx
 <h1>Hello!</h1>
 {
     messages.length > 0 && !isLogin?
@@ -458,7 +458,7 @@ A `key` is a special string attribute you **should** include when creating array
 
 Most often we use IDs from our data as *keys*:
 
-```jsx harmony
+```jsx
 const todoItems = todos.map((todo) =>
   <li key={todo.id}>
     {todo.text}
@@ -467,7 +467,7 @@ const todoItems = todos.map((todo) =>
 ```
 When you don't have stable IDs for rendered items, you may use the item *index* as a *key* as a last resort:
 
-```jsx harmony
+```jsx
 const todoItems = todos.map((todo, index) =>
   <li key={index}>
     {todo.text}
@@ -488,7 +488,7 @@ The *ref* is used to return a reference to the element. They *should be avoided*
 There are two approaches
 1. This is a recently added approach. *Refs* are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use *refs* throughout the component, just assign the *ref* to the instance property within constructor.
 
-    ```jsx harmony
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -500,7 +500,7 @@ There are two approaches
     }
     ```
 2. You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows,
-    ```jsx harmony
+    ```jsx
     class SearchBar extends Component {
        constructor(props) {
           super(props);
@@ -529,7 +529,7 @@ You can also use *refs* in function components using **closures**.
 #### Q. What are forward refs?
 *Ref forwarding* is a feature that lets some components take a *ref* they receive, and pass it further down to a child.
 
-    ```jsx harmony
+    ```jsx
     const ButtonElement = React.forwardRef((props, ref) => (
       <button ref={ref} className="CustomButton">
         {props.children}
@@ -546,7 +546,7 @@ It is preferred to use *callback refs* over `findDOMNode()` API. Because `findDO
 
 The **legacy** approach of using `findDOMNode`:
 
-    ```javascript
+    ```jsx
     class MyComponent extends Component {
       componentDidMount() {
         findDOMNode(this).scrollIntoView()
@@ -559,7 +559,7 @@ The **legacy** approach of using `findDOMNode`:
     ```
 The recommended approach is:
 
-    ```javascript
+    ```jsx
     class MyComponent extends Component {
       constructor(props){
         super(props);
@@ -585,7 +585,7 @@ If you worked with React before, you might be familiar with an older API where t
 2. They are *not composable* — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
 3. They *don't work with static analysis* like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
 4. It doesn't work as most people would expect with the "render callback" pattern (e.g. `<DataGrid renderRow={this.renderRow} />`)
-       ```jsx harmony
+       ```jsx
        class MyComponent extends Component {
          renderRow = (index) => {
            // This won't work. Ref will get attached to DataTable rather than MyComponent:
@@ -624,7 +624,7 @@ A component that controls the input elements within the forms on subsequent user
 
 For example, to write all the names in uppercase letters, we use handleChange as below,
 
-    ```javascript
+    ```jsx
     handleChange(event) {
       this.setState({value: event.target.value.toUpperCase()})
     }
@@ -635,7 +635,7 @@ The **Uncontrolled Components** are the ones that store their own state internal
 
 In the below UserProfile component, the `name` input is accessed using ref.
 
-    ```jsx harmony
+    ```jsx
     class UserProfile extends React.Component {
       constructor(props) {
         super(props)
@@ -713,7 +713,7 @@ A *higher-order component* (*HOC*) is a function that takes a component and retu
 
 We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
 
-    ```javascript
+    ```jsx
     const EnhancedComponent = higherOrderComponent(WrappedComponent)
     ```
 HOC can be used for many use cases:
@@ -726,7 +726,7 @@ HOC can be used for many use cases:
 #### Q. How to create props proxy for HOC component?
 You can add/edit props passed to the component using *props proxy* pattern like this:
 
-    ```jsx harmony
+    ```jsx
     function HOC(WrappedComponent) {
       return class Test extends Component {
         render() {
@@ -746,7 +746,7 @@ You can add/edit props passed to the component using *props proxy* pattern like 
 #### Q. What is context?
 *Context* provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
 
-    ```javascript
+    ```jsx
     const {Provider, Consumer} = React.createContext(defaultValue)
     ```
 
@@ -757,7 +757,7 @@ You can add/edit props passed to the component using *props proxy* pattern like 
     There are a number of methods available in the React API to work with this prop. These include `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only`, `React.Children.toArray`.
     A simple usage of children prop looks as below,
 
-    ```jsx harmony
+    ```jsx
     const MyDiv = React.createClass({
       render: function() {
         return <div>{this.props.children}</div>
@@ -782,7 +782,7 @@ You can add/edit props passed to the component using *props proxy* pattern like 
 
     **Single-line comments:**
 
-    ```jsx harmony
+    ```jsx
     <div>
       {/* Single-line comments(In vanilla JavaScript, the single-line comments are represented by double slash(//)) */}
       {`Welcome ${user}, let's play React`}
@@ -791,7 +791,7 @@ You can add/edit props passed to the component using *props proxy* pattern like 
 
     **Multi-line comments:**
 
-    ```jsx harmony
+    ```jsx
     <div>
       {/* Multi-line comments for more than
        one line */}
@@ -804,7 +804,7 @@ A child class constructor cannot make use of `this` reference until `super()` me
 
 **Passing props:**
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -815,7 +815,7 @@ A child class constructor cannot make use of `this` reference until `super()` me
     ```
 **Not passing props:**
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super()
@@ -841,7 +841,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with *computed property names*.
 
-    ```javascript
+    ```jsx
     handleInputChange(event) {
       this.setState({ [event.target.id]: event.target.value })
     }
@@ -854,7 +854,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You need to make sure that function is not being called while passing the function as a parameter.
 
-    ```jsx harmony
+    ```jsx
     render() {
       // Wrong: handleClick is called instead of passed as a reference!
       return <button onClick={this.handleClick()}>{'Click Me'}</button>
@@ -863,7 +863,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Instead, pass the function itself without parenthesis:
 
-    ```jsx harmony
+    ```jsx
     render() {
       // Correct: handleClick is passed as a reference!
       return <button onClick={this.handleClick}>{'Click Me'}</button>
@@ -876,18 +876,18 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. Is lazy function supports named exports?
     No, currently `React.lazy` function supports default exports only. If you would like to import modules which are named exports, you can create an intermediate module that reexports it as the default. It also ensures that tree shaking keeps working and don’t pull unused components.
     Let's take a component file which exports multiple named components,
-    ```javascript
+    ```jsx
     // MoreComponents.js
     export const SomeComponent = /* ... */;
     export const UnusedComponent = /* ... */;
     ```
     and reexport `MoreComponents.js` components in an intermediate file `IntermediateComponent.js`
-    ```javascript
+    ```jsx
     // IntermediateComponent.js
     export { SomeComponent as default } from "./MoreComponents.js";
     ```
     Now you can import the module using lazy function as below,
-    ```javascript
+    ```jsx
     import React, { lazy } from 'react';
     const SomeComponent = lazy(() => import("./IntermediateComponent.js"));
     ```
@@ -898,7 +898,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     `class` is a keyword in JavaScript, and JSX is an extension of JavaScript. That's the principal reason why React uses `className` instead of `class`. Pass a string as the `className` prop.
 
-    ```jsx harmony
+    ```jsx
     render() {
       return <span className={'menu navigation-menu'}>{'Menu'}</span>
     }
@@ -911,7 +911,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     It's common pattern in React which is used for a component to return multiple elements. *Fragments* let you group a list of children without adding extra nodes to the DOM.
 
-    ```jsx harmony
+    ```jsx
     render() {
       return (
         <React.Fragment>
@@ -925,7 +925,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     There is also a *shorter syntax*, but it's not supported in many tools:
 
-    ```jsx harmony
+    ```jsx
     render() {
       return (
         <>
@@ -953,7 +953,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     *Portal* is a recommended way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
-    ```javascript
+    ```jsx
     ReactDOM.createPortal(child, container)
     ```
 
@@ -973,7 +973,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If the behaviour of a component is dependent on the *state* of the component then it can be termed as stateful component. These *stateful components* are always *class components* and have a state that gets initialized in the `constructor`.
 
-    ```javascript
+    ```jsx
     class App extends Component {
       constructor(props) {
         super(props)
@@ -990,7 +990,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     *The Equivalent Functional Component*
 
-    ```javascript
+    ```jsx
     import React, {useState} from 'react';
 
     const App = (props) => {
@@ -1025,7 +1025,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     We can define `propTypes` for `User` component as below:
 
-    ```jsx harmony
+    ```jsx
     import React from 'react'
     import PropTypes from 'prop-types'
 
@@ -1079,7 +1079,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     A class component becomes an error boundary if it defines a new lifecycle method called `componentDidCatch(error, info)` or `static getDerivedStateFromError() `:
 
-    ```jsx harmony
+    ```jsx
     class ErrorBoundary extends React.Component {
       constructor(props) {
         super(props)
@@ -1108,7 +1108,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     After that use it as a regular component:
 
-    ```jsx harmony
+    ```jsx
     <ErrorBoundary>
       <MyWidget />
     </ErrorBoundary>
@@ -1166,7 +1166,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     For example, you generally run a Node-based web server like Express, Hapi, or Koa, and you call `renderToString` to render your root component to a string, which you then send as response.
 
-    ```javascript
+    ```jsx
     // using Express
     import { renderToString } from 'react-dom/server'
     import MyPage from './MyPage'
@@ -1189,7 +1189,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     In this example MyComponent uses `dangerouslySetInnerHTML` attribute for setting HTML markup:
 
-    ```jsx harmony
+    ```jsx
     function createMarkup() {
       return { __html: 'First &middot; Second' }
     }
@@ -1206,7 +1206,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The `style` attribute accepts a JavaScript object with camelCased properties rather than a CSS string. This is consistent with the DOM style JavaScript property, is more efficient, and prevents XSS security holes.
 
-    ```jsx harmony
+    ```jsx
     const divStyle = {
       color: 'blue',
       backgroundImage: 'url(' + imgUrl + ')'
@@ -1245,7 +1245,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     In the below code snippet each element's key will be based on ordering, rather than tied to the data that is being represented. This limits the optimizations that React can do.
 
-    ```jsx harmony
+    ```jsx
     {todos.map((todo, index) =>
       <Todo
         {...todo}
@@ -1256,7 +1256,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If you use element data for unique key, assuming todo.id is unique to this list and stable, React would be able to reorder elements without needing to reevaluate them as much.
 
-    ```jsx harmony
+    ```jsx
     {todos.map((todo) =>
       <Todo {...todo}
         key={todo.id} />
@@ -1270,7 +1270,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     It is recommended to avoid async initialization in `componentWillMount()` lifecycle method. `componentWillMount()` is invoked immediately before mounting occurs. It is called before `render()`, therefore setting state in this method will not trigger a re-render. Avoid introducing any side-effects or subscriptions in this method. We need to make sure async calls for component initialization happened in `componentDidMount()` instead of `componentWillMount()`.
 
-    ```jsx harmony
+    ```jsx
     componentDidMount() {
       axios.get(`api/todos`)
         .then((result) => {
@@ -1290,7 +1290,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The below component won't display the updated input value:
 
-    ```jsx harmony
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -1309,7 +1309,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using props inside render method will update the value:
 
-    ```jsx harmony
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -1332,7 +1332,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     In some cases you want to render different components depending on some state. JSX does not render `false` or `undefined`, so you can use conditional *short-circuiting* to render a given part of your component only if a certain condition is true.
 
-    ```jsx harmony
+    ```jsx
     const MyComponent = ({ name, address }) => (
       <div>
         <h2>{name}</h2>
@@ -1345,7 +1345,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If you need an `if-else` condition then use *ternary operator*.
 
-    ```jsx harmony
+    ```jsx
     const MyComponent = ({ name, address }) => (
       <div>
         <h2>{name}</h2>
@@ -1364,7 +1364,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     When we *spread props* we run into the risk of adding unknown HTML attributes, which is a bad practice. Instead we can use prop destructuring with `...rest` operator, so it will add only required props. For example,
 
-    ```jsx harmony
+    ```jsx
     const ComponentA = () =>
       <ComponentB isDisplay={true} className={'componentStyle'} />
 
@@ -1379,7 +1379,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You can *decorate* your *class* components, which is the same as passing the component into a function. **Decorators** are flexible and readable way of modifying component functionality.
 
-    ```jsx harmony
+    ```jsx
     @setTitle('Profile')
     class Profile extends React.Component {
         //....
@@ -1412,7 +1412,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     There are memoize libraries available which can be used on function components. For example `moize` library can memoize the component in another component.
 
-    ```jsx harmony
+    ```jsx
     import moize from 'moize'
     import Component from './components/Component' // this module exports a non-memoized component
 
@@ -1442,7 +1442,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     React is already equipped to handle rendering on Node servers. A special version of the DOM renderer is available, which follows the same pattern as on the client side.
 
-    ```jsx harmony
+    ```jsx
     import ReactDOMServer from 'react-dom/server'
     import App from './App'
 
@@ -1521,7 +1521,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The new static `getDerivedStateFromProps()` lifecycle method is invoked after a component is instantiated as well as before it is re-rendered. It can return an object to update state, or `null` to indicate that the new props do not require any state updates.
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       static getDerivedStateFromProps(props, state) {
         // ...
@@ -1538,7 +1538,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The new `getSnapshotBeforeUpdate()` lifecycle method is called right before DOM updates. The return value from this method will be passed as the third parameter to `componentDidUpdate()`.
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       getSnapshotBeforeUpdate(prevProps, prevState) {
         // ...
@@ -1564,7 +1564,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using `displayName` for naming component:
 
-    ```javascript
+    ```jsx
     export default React.createClass({
       displayName: 'TodoApp',
       // ...
@@ -1573,7 +1573,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The **recommended** approach:
 
-    ```javascript
+    ```jsx
     export default class TodoApp extends React.Component {
       // ...
     }
@@ -1610,7 +1610,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     For example, a switching component to display different pages based on `page` prop:
 
-    ```jsx harmony
+    ```jsx
     import HomePage from './HomePage'
     import AboutPage from './AboutPage'
     import ServicesPage from './ServicesPage'
@@ -1644,7 +1644,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Let's say the initial count value is zero. After three consecutive increment operations, the value is going to be incremented only by one.
 
-    ```javascript
+    ```jsx
     // assuming this.state.count === 0
     this.setState({ count: this.state.count + 1 })
     this.setState({ count: this.state.count + 1 })
@@ -1654,7 +1654,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If we pass a function to `setState()`, the count gets incremented correctly.
 
-    ```javascript
+    ```jsx
     this.setState((prevState, props) => ({
       count: prevState.count + props.increment
     }))
@@ -1668,7 +1668,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     `React.StrictMode` is a useful component for highlighting potential problems in an application. Just like `<Fragment>`, `<StrictMode>` does not render any extra DOM elements. It activates additional checks and warnings for its descendants. These checks apply for *development mode* only.
 
-    ```jsx harmony
+    ```jsx
     import React from 'react'
 
     function ExampleApplication() {
@@ -1698,7 +1698,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     One of the most commonly used mixins is `PureRenderMixin`. You might be using it in some components to prevent unnecessary re-renders when the props and state are shallowly equal to the previous props and state:
 
-    ```javascript
+    ```jsx
     const PureRenderMixin = require('react-addons-pure-render-mixin')
 
     const Button = React.createClass({
@@ -1715,7 +1715,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     The primary use case for `isMounted()` is to avoid calling `setState()` after a component has been unmounted, because it will emit a warning.
 
-    ```javascript
+    ```jsx
     if (this.isMounted()) {
       this.setState({...})
     }
@@ -1751,14 +1751,14 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. Why should component names start with capital letter?
 
     If you are rendering your component using JSX, the name of that component has to begin with a capital letter otherwise React will throw an error as unrecognized tag. This convention is because only HTML elements and SVG tags can begin with a lowercase letter.
-    ```jsx harmony
+    ```jsx
     class SomeComponent extends Component {
      // Code goes here
     }
     ```
     You can define component class which name starts with lowercase letter, but when it's imported it should have capital letter. Here lowercase is fine:
 
-    ```jsx harmony
+    ```jsx
     class myComponent extends Component {
       render() {
         return <div />
@@ -1770,7 +1770,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     While when imported in another file it should start with capital letter:
 
-    ```jsx harmony
+    ```jsx
     import MyComponent from './MyComponent'
     ```
 
@@ -1781,7 +1781,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Yes. In the past, React used to ignore unknown DOM attributes. If you wrote JSX with an attribute that React doesn't recognize, React would just skip it. For example, this:
 
-    ```jsx harmony
+    ```jsx
     <div mycustomattribute={'something'} />
     ```
 
@@ -1808,7 +1808,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using ES6 classes:
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -1819,7 +1819,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using `React.createClass()`:
 
-    ```javascript
+    ```jsx
     const MyComponent = React.createClass({
       getInitialState() {
         return { /* initial state */ }
@@ -1833,7 +1833,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     By default, when your component's state or props change, your component will re-render. If your `render()` method depends on some other data, you can tell React that the component needs re-rendering by calling `forceUpdate()`.
 
-    ```javascript
+    ```jsx
     component.forceUpdate(callback)
     ```
 
@@ -1848,7 +1848,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using `super(props)`:
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super(props)
@@ -1859,7 +1859,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     Using `super()`:
 
-    ```javascript
+    ```jsx
     class MyComponent extends React.Component {
       constructor(props) {
         super()
@@ -1877,7 +1877,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You can simply use `Array.prototype.map` with ES6 *arrow function* syntax. For example, the `items` array of objects is mapped into an array of components:
 
-    ```jsx harmony
+    ```jsx
     <tbody>
       {items.map(item => <SomeComponent key={item.id} name={item.name} />)}
     </tbody>
@@ -1885,7 +1885,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You can't iterate using `for` loop:
 
-    ```jsx harmony
+    ```jsx
     <tbody>
       for (let i = 0; i < items.length; i++) {
         <SomeComponent key={items[i].id} name={items[i].name} />
@@ -1902,19 +1902,19 @@ When a component's props or state change, React decides whether an actual DOM up
 
     React (or JSX) doesn't support variable interpolation inside an attribute value. The below representation won't work:
 
-    ```jsx harmony
+    ```jsx
     <img className='image' src='images/{this.props.image}' />
     ```
 
     But you can put any JS expression inside curly braces as the entire attribute value. So the below expression works:
 
-    ```jsx harmony
+    ```jsx
     <img className='image' src={'images/' + this.props.image} />
     ```
 
     Using *template strings* will also work:
 
-    ```jsx harmony
+    ```jsx
     <img className='image' src={`images/${this.props.image}`} />
     ```
 
@@ -1925,7 +1925,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If you want to pass an array of objects to a component with a particular shape then use `React.PropTypes.shape()` as an argument to `React.PropTypes.arrayOf()`.
 
-    ```javascript
+    ```jsx
     ReactComponent.propTypes = {
       arrayWithShape: React.PropTypes.arrayOf(React.PropTypes.shape({
         color: React.PropTypes.string.isRequired,
@@ -1941,19 +1941,19 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You shouldn't use curly braces inside quotes because it is going to be evaluated as a string.
 
-    ```jsx harmony
+    ```jsx
     <div className="btn-panel {this.props.visible ? 'show' : 'hidden'}">
     ```
 
     Instead you need to move curly braces outside (don't forget to include spaces between class names):
 
-    ```jsx harmony
+    ```jsx
     <div className={'btn-panel ' + (this.props.visible ? 'show' : 'hidden')}>
     ```
 
     *Template strings* will also work:
 
-    ```jsx harmony
+    ```jsx
     <div className={`btn-panel ${this.props.visible ? 'show' : 'hidden'}`}>
     ```
 
@@ -1978,14 +1978,14 @@ When a component's props or state change, React decides whether an actual DOM up
 
     If you try to render a `<label>` element bound to a text input using the standard `for` attribute, then it produces HTML missing that attribute and prints a warning to the console.
 
-    ```jsx harmony
+    ```jsx
     <label for={'user'}>{'User'}</label>
     <input type={'text'} id={'user'} />
     ```
 
     Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
-    ```jsx harmony
+    ```jsx
     <label htmlFor={'user'}>{'User'}</label>
     <input type={'text'} id={'user'} />
     ```
@@ -1997,13 +1997,13 @@ When a component's props or state change, React decides whether an actual DOM up
 
     You can use *spread operator* in regular React:
 
-    ```jsx harmony
+    ```jsx
      <button style={{...styles.panel.button, ...styles.panel.submitButton}}>{'Submit'}</button>
     ```
 
     If you're using React Native then you can use the array notation:
 
-    ```jsx harmony
+    ```jsx
     <button style={[styles.panel.button, styles.panel.submitButton]}>{'Submit'}</button>
     ```
 
@@ -2014,7 +2014,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can listen to the `resize` event in `componentDidMount()` and then update the dimensions (`width` and `height`). You should remove the listener in `componentWillUnmount()` method.
 
-     ```javascript
+     ```jsx
      class WindowDimensions extends React.Component {
        constructor(props){
          super(props);
@@ -2071,7 +2071,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, let's create a `removeItem()` method for updating the state.
 
-     ```javascript
+     ```jsx
      removeItem(index) {
        this.setState({
          data: this.state.data.filter((item, i) => i !== index)
@@ -2086,31 +2086,31 @@ When a component's props or state change, React decides whether an actual DOM up
 
      It is possible with latest version (>=16.2). Below are the possible options:
 
-     ```jsx harmony
+     ```jsx
      render() {
        return false
      }
      ```
 
-     ```jsx harmony
+     ```jsx
      render() {
        return null
      }
      ```
 
-     ```jsx harmony
+     ```jsx
      render() {
        return []
      }
      ```
 
-     ```jsx harmony
+     ```jsx
      render() {
        return <React.Fragment></React.Fragment>
      }
      ```
 
-     ```jsx harmony
+     ```jsx
      render() {
        return <></>
      }
@@ -2125,7 +2125,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      We can use `<pre>` tag so that the formatting of the `JSON.stringify()` is retained:
 
-     ```jsx harmony
+     ```jsx
      const data = { name: 'John', age: 42 }
 
      class User extends React.Component {
@@ -2155,7 +2155,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can do it by creating *ref* for `input` element and using it in `componentDidMount()`:
 
-     ```jsx harmony
+     ```jsx
      class App extends React.Component{
        componentDidMount() {
          this.nameInput.focus()
@@ -2188,21 +2188,21 @@ When a component's props or state change, React decides whether an actual DOM up
 
          * Using `Object.assign()` to create a copy of the object:
 
-             ```javascript
+             ```jsx
              const user = Object.assign({}, this.state.user, { age: 42 })
              this.setState({ user })
              ```
 
          * Using *spread operator*:
 
-             ```javascript
+             ```jsx
              const user = { ...this.state.user, age: 42 }
              this.setState({ user })
              ```
 
      2. **Calling `setState()` with a function:**
 
-         ```javascript
+         ```jsx
          this.setState(prevState => ({
            user: {
              ...prevState.user,
@@ -2220,7 +2220,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      This counter example will fail to update as expected:
 
-     ```javascript
+     ```jsx
      // Wrong
      this.setState({
        counter: this.state.counter + this.props.increment,
@@ -2229,7 +2229,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The preferred approach is to call `setState()` with function rather than object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument.
 
-     ```javascript
+     ```jsx
      // Correct
      this.setState((prevState, props) => ({
        counter: prevState.counter + props.increment
@@ -2243,7 +2243,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can use `React.version` to get the version.
 
-     ```jsx harmony
+     ```jsx
      const REACT_VERSION = React.version
 
      ReactDOM.render(
@@ -2261,7 +2261,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          Create a file called (something like) `polyfills.js` and import it into root `index.js` file. Run `npm install core-js` or `yarn add core-js` and import your specific required features.
 
-         ```javascript
+         ```jsx
          import 'core-js/fn/array/find'
          import 'core-js/fn/array/includes'
          import 'core-js/fn/number/is-nan'
@@ -2312,7 +2312,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Add a listener on the `history` object to record each page view:
 
-     ```javascript
+     ```jsx
      history.listen(function (location) {
        window.ga('set', 'page', location.pathname + location.search)
        window.ga('send', 'pageview', location.pathname + location.search)
@@ -2326,7 +2326,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You need to use `setInterval()` to trigger the change, but you also need to clear the timer when the component unmounts to prevent errors and memory leaks.
 
-     ```javascript
+     ```jsx
      componentDidMount() {
        this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000)
      }
@@ -2343,7 +2343,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      React *does not* apply *vendor prefixes* automatically. You need to add vendor prefixes manually.
 
-     ```jsx harmony
+     ```jsx
      <div style={{
        transform: 'rotate(90deg)',
        WebkitTransform: 'rotate(90deg)', // note the capital 'W' here
@@ -2358,7 +2358,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You should use default for exporting the components
 
-     ```jsx harmony
+     ```jsx
      import React from 'react'
      import User from 'user'
 
@@ -2382,7 +2382,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The component names should start with a uppercase letter but there are few exceptions on this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
      For example the below tag can be compiled to a valid component,
-     ```javascript
+     ```jsx
      render(){
         return (
             <obj.component /> // `React.createElement(obj.component)`
@@ -2403,7 +2403,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can use ES7 `static` field to define constant.
 
-     ```javascript
+     ```jsx
      class MyComponent extends React.Component {
        static DEFAULT_PAGINATION = 10
      }
@@ -2420,13 +2420,13 @@ When a component's props or state change, React decides whether an actual DOM up
 
      1. Create ref in render method:
 
-         ```jsx harmony
+         ```jsx
          <input ref={input => this.inputElement = input} />
          ```
 
      2. Apply click event in your event handler:
 
-         ```javascript
+         ```jsx
          this.inputElement.click()
          ```
 
@@ -2507,7 +2507,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, these styles could be extracted into a separate component:
 
-     ```javascript
+     ```jsx
      export const colors = {
        white,
        black,
@@ -2525,7 +2525,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      And then imported individually in other components:
 
-     ```javascript
+     ```jsx
      import { space, colors } from './styles'
      ```
 
@@ -2545,7 +2545,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, the employees list fetched from API and set local state:
 
-     ```jsx harmony
+     ```jsx
      class MyComponent extends React.Component {
        constructor(props) {
          super(props)
@@ -2596,7 +2596,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      **Render Props** is a simple technique for sharing code between components using a prop whose value is a function. The below component uses render prop which returns a React element.
 
-     ```jsx harmony
+     ```jsx
      <DataProvider render={data => (
        <h1>{`Hello ${data.target}`}</h1>
      )}/>
@@ -2656,7 +2656,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          The `withRouter()` higher-order function will inject the history object as a prop of the component. This object provides `push()` and `replace()` methods to avoid the usage of context.
 
-         ```jsx harmony
+         ```jsx
          import { withRouter } from 'react-router-dom' // this also works with 'react-router-native'
 
          const Button = withRouter(({ history }) => (
@@ -2673,7 +2673,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          The `<Route>` component passes the same props as `withRouter()`, so you will be able to access the history methods through the history prop.
 
-         ```jsx harmony
+         ```jsx
          import { Route } from 'react-router-dom'
 
          const Button = () => (
@@ -2692,7 +2692,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          This option is not recommended and treated as unstable API.
 
-         ```jsx harmony
+         ```jsx
          const Button = (props, context) => (
            <button
              type='button'
@@ -2718,14 +2718,14 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The ability to parse query strings was taken out of React Router v4 because there have been user requests over the years to support different implementation. So the decision has been given to users to choose the implementation they like. The recommended approach is to use query strings library.
 
-     ```javascript
+     ```jsx
      const queryString = require('query-string');
      const parsed = queryString.parse(props.location.search);
      ```
 
      You can also use `URLSearchParams` if you want something native:
 
-     ```javascript
+     ```jsx
      const params = new URLSearchParams(props.location.search)
      const foo = params.get('name')
      ```
@@ -2741,13 +2741,13 @@ When a component's props or state change, React decides whether an actual DOM up
 
      At first you need to add `Switch` to your imports:
 
-     ```javascript
+     ```jsx
      import { Switch, Router, Route } from 'react-router'
      ```
 
      Then define the routes within `<Switch>` block:
 
-     ```jsx harmony
+     ```jsx
      <Router>
        <Switch>
          <Route {/* ... */} />
@@ -2763,7 +2763,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      While navigating you can pass props to the `history` object:
 
-     ```javascript
+     ```jsx
      this.props.history.push({
        pathname: '/template',
        search: '?name=sudheer',
@@ -2780,7 +2780,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      A `<Switch>` renders the first child `<Route>` that matches. A `<Route>` with no path always matches. So you just need to simply drop path attribute as below
 
-     ```jsx harmony
+     ```jsx
      <Switch>
        <Route exact path="/" component={Home}/>
        <Route path="/user" component={User}/>
@@ -2797,7 +2797,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          For example, create `history.js` file:
 
-         ```javascript
+         ```jsx
          import { createBrowserHistory } from 'history'
 
          export default createBrowserHistory({
@@ -2807,7 +2807,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      2. You should use the `<Router>` component instead of built-in routers. Imported the above `history.js` inside `index.js` file:
 
-         ```jsx harmony
+         ```jsx
          import { Router } from 'react-router-dom'
          import history from './history'
          import App from './App'
@@ -2821,7 +2821,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      3. You can also use push method of `history` object similar to built-in history object:
 
-         ```javascript
+         ```jsx
          // some-other-file.js
          import history from './history'
 
@@ -2835,7 +2835,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The `react-router` package provides `<Redirect>` component in React Router. Rendering a `<Redirect>` will navigate to a new location. Like server-side redirects, the new location will override the current location in the history stack.
 
-     ```javascript
+     ```jsx
      import React, { Component } from 'react'
      import { Redirect } from 'react-router'
 
@@ -2879,14 +2879,14 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The library provides two ways to format strings, numbers, and dates: react components or an API.
 
-     ```jsx harmony
+     ```jsx
      <FormattedMessage
        id={'account'}
        defaultMessage={'The amount is less than minimum balance.'}
      />
      ```
 
-     ```javascript
+     ```jsx
      const messages = defineMessages({
        accountMessage: {
          id: 'account',
@@ -2904,7 +2904,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The `<Formatted... />` components from `react-intl` return elements, not plain text, so they can't be used for placeholders, alt text, etc. In that case, you should use lower level API `formatMessage()`. You can inject the `intl` object into your component using `injectIntl()` higher-order component and then format the message using `formatMessage()` available on that object.
 
-     ```jsx harmony
+     ```jsx
      import React from 'react'
      import { injectIntl, intlShape } from 'react-intl'
 
@@ -2927,7 +2927,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can get the current locale in any component of your application using `injectIntl()`:
 
-     ```jsx harmony
+     ```jsx
      import { injectIntl, intlShape } from 'react-intl'
 
      const MyComponent = ({ intl }) => (
@@ -2948,7 +2948,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The `injectIntl()` higher-order component will give you access to the `formatDate()` method via the props in your component. The method is used internally by instances of `FormattedDate` and it returns the string representation of the formatted date.
 
-     ```jsx harmony
+     ```jsx
      import { injectIntl, intlShape } from 'react-intl'
 
      const stringDate = this.props.intl.formatDate(date, {
@@ -2979,7 +2979,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, if you have the following component:
 
-     ```javascript
+     ```jsx
      function MyComponent() {
        return (
          <div>
@@ -2992,7 +2992,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Then you can assert as follows:
 
-     ```jsx harmony
+     ```jsx
      import ShallowRenderer from 'react-test-renderer/shallow'
 
      // in your test
@@ -3015,7 +3015,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      This package provides a renderer that can be used to render components to pure JavaScript objects, without depending on the DOM or a native mobile environment. This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or `jsdom`.
 
-     ```jsx harmony
+     ```jsx
      import TestRenderer from 'react-test-renderer'
 
      const Link = ({page, children}) => <a href={page}>{children}</a>
@@ -3066,7 +3066,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Let's write a test for a function that adds two numbers in `sum.js` file:
 
-     ```javascript
+     ```jsx
      const sum = (a, b) => a + b
 
      export default sum
@@ -3074,7 +3074,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Create a file named `sum.test.js` which contains actual test:
 
-     ```javascript
+     ```jsx
      import sum from './sum'
 
      test('adds 1 + 2 to equal 3', () => {
@@ -3149,7 +3149,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      `mapStateToProps()` is a utility which helps your component get updated state (which is updated by some other components):
 
-     ```javascript
+     ```jsx
      const mapStateToProps = (state) => {
        return {
          todos: getVisibleTodos(state.todos, state.visibilityFilter)
@@ -3159,7 +3159,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      `mapDispatchToProps()` is a utility which will help your component to fire an action event (dispatching action which may cause change of application state):
 
-     ```javascript
+     ```jsx
      const mapDispatchToProps = (dispatch) => {
        return {
          onTodoClick: (id) => {
@@ -3173,7 +3173,7 @@ When a component's props or state change, React decides whether an actual DOM up
         
      Redux wrap it in another function that looks like (…args) => dispatch(onTodoClick(…args)), and pass that wrapper function as a prop to your component.
       
-      ```javascript
+      ```jsx
        const mapDispatchToProps = ({
          onTodoClick
        })
@@ -3193,7 +3193,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You just need to export the store from the module where it created with `createStore()`. Also, it shouldn't pollute the global window object.
 
-     ```javascript
+     ```jsx
      store = createStore(myReducer)
 
      export default store
@@ -3225,7 +3225,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can dispatch an action in `componentDidMount()` method and in `render()` method you can verify the data.
 
-     ```javascript
+     ```jsx
      class App extends Component {
        componentDidMount() {
          this.props.fetchData()
@@ -3257,7 +3257,7 @@ When a component's props or state change, React decides whether an actual DOM up
      1. **Use `mapStateToProps()`:** It maps the state variables from your store to the props that you specify.
      2. **Connect the above props to your container:** The object returned by the `mapStateToProps` function is connected to the container. You can import `connect()` from `react-redux`.
 
-         ```jsx harmony
+         ```jsx
          import React from 'react'
          import { connect } from 'react-redux'
 
@@ -3283,7 +3283,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, let us take `rootReducer()` to return the initial state after `USER_LOGOUT` action. As we know, reducers are supposed to return the initial state when they are called with `undefined` as the first argument, no matter the action.
 
-     ```javascript
+     ```jsx
      const appReducer = combineReducers({
        /* your app's top-level reducers */
      })
@@ -3299,7 +3299,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      In case of using `redux-persist`, you may also need to clean your storage. `redux-persist` keeps a copy of your state in a storage engine. First, you need to import the appropriate storage engine and then, to parse the state before setting it to undefined and clean each storage state key.
 
-     ```javascript
+     ```jsx
      const appReducer = combineReducers({
        /* your app's top-level reducers */
      })
@@ -3328,7 +3328,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      * **Without decorator:**
 
-         ```javascript
+         ```jsx
          import React from 'react'
          import * as actionCreators from './actionCreators'
          import { bindActionCreators } from 'redux'
@@ -3351,7 +3351,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      * **With decorator:**
 
-         ```javascript
+         ```jsx
          import React from 'react'
          import * as actionCreators from './actionCreators'
          import { bindActionCreators } from 'redux'
@@ -3396,7 +3396,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Let's take an example of fetching specific account as an AJAX call using *fetch API*:
 
-     ```javascript
+     ```jsx
      export function fetchAccount(id) {
        return dispatch => {
          dispatch(setLoadingAccountState()) // Show a loading spinner
@@ -3432,7 +3432,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Let's take an example of `<FilterLink>` component using connect:
 
-     ```javascript
+     ```jsx
      import { connect } from 'react-redux'
      import { setVisibilityFilter } from '../actions'
      import Link from '../components/Link'
@@ -3455,7 +3455,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Due to it having quite a few performance optimizations and generally being less likely to cause bugs, the Redux developers almost always recommend using `connect()` over accessing the store directly (using context API).
 
-     ```javascript
+     ```jsx
      class MyComponent {
        someMethod() {
          doSomethingWith(this.context.store)
@@ -3481,7 +3481,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Normally we will save them in a single file (`constants.js` or `actionTypes.js`).
 
-     ```javascript
+     ```jsx
      export const ADD_TODO = 'ADD_TODO'
      export const DELETE_TODO = 'DELETE_TODO'
      export const EDIT_TODO = 'EDIT_TODO'
@@ -3496,7 +3496,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          Let's take `actions.js`:
 
-         ```javascript
+         ```jsx
          import { ADD_TODO } from './actionTypes';
 
          export function addTodo(text) {
@@ -3508,7 +3508,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          Let's create `reducer.js`:
 
-         ```javascript
+         ```jsx
          import { ADD_TODO } from './actionTypes'
 
          export default (state = [], action) => {
@@ -3534,19 +3534,19 @@ When a component's props or state change, React decides whether an actual DOM up
 
      There are a few ways of binding *action creators* to `dispatch()` in `mapDispatchToProps()`. Below are the possible options:
 
-     ```javascript
+     ```jsx
      const mapDispatchToProps = (dispatch) => ({
       action: () => dispatch(action())
      })
      ```
 
-     ```javascript
+     ```jsx
      const mapDispatchToProps = (dispatch) => ({
       action: bindActionCreators(action, dispatch)
      })
      ```
 
-     ```javascript
+     ```jsx
      const mapDispatchToProps = { action }
      ```
 
@@ -3559,7 +3559,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      If the `ownProps` parameter is specified, React Redux will pass the props that were passed to the component into your *connect* functions. So, if you use a connected component:
 
-     ```jsx harmony
+     ```jsx
      import ConnectedComponent from './containers/ConnectedComponent';
 
      <ConnectedComponent user={'john'} />
@@ -3567,7 +3567,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      The `ownProps` inside your `mapStateToProps()` and `mapDispatchToProps()` functions will be an object:
 
-     ```javascript
+     ```jsx
      { user: 'john' }
      ```
 
@@ -3617,7 +3617,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Let's take example of how these effects work for fetching particular user data.
 
-     ```javascript
+     ```jsx
      function* fetchUserSaga(action) {
        // `call` function accepts rest arguments, which will be passed to `api.fetchUser` function.
        // Instructing middleware to call promise, it resolved value will be assigned to `userData` variable
@@ -3672,7 +3672,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, to get user details from the state:
 
-     ```javascript
+     ```jsx
      const getUserData = state => state.user.data
      ```
 
@@ -3701,7 +3701,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, you can add `redux-thunk` and `logger` passing them as arguments to `applyMiddleware()`:
 
-     ```javascript
+     ```jsx
      import { createStore, applyMiddleware } from 'redux'
      const createStoreWithMiddleware = applyMiddleware(ReduxThunk, logger)(createStore)
      ```
@@ -3713,7 +3713,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You need to pass initial state as second argument to createStore:
 
-     ```javascript
+     ```jsx
      const rootReducer = combineReducers({
        todos: todos,
        visibilityFilter: visibilityFilter
@@ -3819,13 +3819,13 @@ When a component's props or state change, React decides whether an actual DOM up
 
      2. Import `font-awesome` in your `index.js` file:
 
-     ```javascript
+     ```jsx
      import 'font-awesome/css/font-awesome.min.css'
      ```
 
      3. Add Font Awesome classes in `className`:
 
-     ```javascript
+     ```jsx
      render() {
        return <div><i className={'fa fa-spinner'} /></div>
      }
@@ -3857,7 +3857,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      1. Create a Polymer element:
 
-         ```jsx harmony
+         ```jsx
          <link rel='import' href='../../bower_components/polymer/polymer.html' />
          Polymer({
            is: 'calender-element',
@@ -3875,7 +3875,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
          3. Use that element in the JSX file:
 
-         ```javascript
+         ```jsx
          import React from 'react'
 
          class MyComponent extends React.Component {
@@ -3935,7 +3935,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Lets create `<Title>` and `<Wrapper>` components with specific styles for each.
 
-     ```javascript
+     ```jsx
      import React from 'react'
      import styled from 'styled-components'
 
@@ -3955,7 +3955,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      These two variables, `Title` and `Wrapper`, are now components that you can render just like any other react component.
 
-     ```jsx harmony
+     ```jsx
      <Wrapper>
        <Title>{'Lets start first styled component!'}</Title>
      </Wrapper>
@@ -4014,7 +4014,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      Let's take calculations and different amounts of a shipment order with the simplified usage of Reselect:
 
-     ```javascript
+     ```jsx
      import { createSelector } from 'reselect'
 
      const shopItemsSelector = state => state.shop.items
@@ -4075,7 +4075,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      No, `statics` only works with `React.createClass()`:
 
-     ```javascript
+     ```jsx
      someComponent= React.createClass({
        statics: {
          someMethod: function() {
@@ -4087,7 +4087,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      But you can write statics inside ES6+ classes or writing them outside class as below,
 
-     ```javascript
+     ```jsx
      class Component extends React.Component {
        static propTypes = {
          // ...
@@ -4098,7 +4098,7 @@ When a component's props or state change, React decides whether an actual DOM up
        }
      }
      ```
-     ```javascript
+     ```jsx
      class Component extends React.Component {
         ....
      }
@@ -4128,7 +4128,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You need to add `enableReinitialize : true` setting.
 
-     ```javascript
+     ```jsx
      const InitializeFromStateForm = reduxForm({
        form: 'initializeFromState',
        enableReinitialize : true
@@ -4146,7 +4146,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      For example, the height property can be defined with either `string` or `number` type as below:
 
-     ```javascript
+     ```jsx
      Component.PropTypes = {
        size: PropTypes.oneOfType([
          PropTypes.string,
@@ -4162,7 +4162,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
      You can import SVG directly as component instead of loading it as a file. This feature is available with `react-scripts@2.0.0` and higher.
 
-     ```jsx harmony
+     ```jsx
      import { ReactComponent as Logo } from './logo.svg'
 
      const App = () => (
@@ -4458,11 +4458,11 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How to ensure hooks followed the rules in your project?
      React team released an ESLint plugin called **eslint-plugin-react-hooks** that enforces these two rules. You can add this plugin to your project using the below command,
-     ```javascript
+     ```jsx
      npm install eslint-plugin-react-hooks@next
      ```
      And apply the below config in your ESLint config file,
-     ```javascript
+     ```jsx
      // Your ESLint configuration
      {
        "plugins": [
@@ -4508,7 +4508,7 @@ When a component's props or state change, React decides whether an actual DOM up
      2. info: - An object with a componentStack key contains the information about which component threw the error.
 
      The method structure would be as follows
-     ```javascript
+     ```jsx
      componentDidCatch(error, info)
      ```
 
@@ -4526,7 +4526,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. Why do not you need error boundaries for event handlers?
      Error boundaries do not catch errors inside event handlers. Event handlers don't happened or invoked during rendering time unlike render method or lifecycle methods. So React knows how to recover these kind of errors in event handlers.
      If still you need to catch an error inside event handler, use the regular JavaScript try / catch statement as below
-     ```javascript
+     ```jsx
      class MyComponent extends React.Component {
        constructor(props) {
          super(props);
@@ -4556,7 +4556,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. What is the difference between try catch block and error boundaries?
      Try catch block works with imperative code whereas error boundaries are meant for declarative code to render on the screen.
      For example, the try catch block used for below imperative code
-     ```javascript
+     ```jsx
      try {
        showButton();
      } catch (error) {
@@ -4564,7 +4564,7 @@ When a component's props or state change, React decides whether an actual DOM up
      }
      ```
      Whereas error boundaries wrap declarative code as below,
-     ```javascript
+     ```jsx
      <ErrorBoundary>
        <MyComponent />
      </ErrorBoundary>
@@ -4615,7 +4615,7 @@ When a component's props or state change, React decides whether an actual DOM up
      1. To initialize local state by assigning object to this.state
      2. For binding event handler methods to the instance
      For example, the below code covers both the above cases,
-     ```javascript
+     ```jsx
      constructor(props) {
        super(props);
        // Don't call this.setState() here!
@@ -4633,7 +4633,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What are default props?
      The defaultProps are defined as a property on the component class to set the default props for the class. This is used for undefined props, but not for null props. For example, let us create color default prop for the button component,
-     ```javascript
+     ```jsx
      class MyButton extends React.Component {
        // ...
      }
@@ -4645,7 +4645,7 @@ When a component's props or state change, React decides whether an actual DOM up
      ```
 
      If props.color is not provided then it will set the default value to 'red'. i.e, Whenever you try to access the color prop it uses default value
-     ```javascript
+     ```jsx
      render() {
         return <MyButton /> ; // props.color will be set to red
       }
@@ -4661,11 +4661,11 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What is the purpose of getDerivedStateFromError?
      This lifecycle method is invoked after an error has been thrown by a descendant component. It receives the error that was thrown as a parameter and should return a value to update state. The signature of the lifecycle method is as follows,
-     ```javascript
+     ```jsx
      static getDerivedStateFromError(error)
      ```
      Let us take error boundary use case with the above lifecycle method for demonistration purpose,
-     ```javascript
+     ```jsx
      class ErrorBoundary extends React.Component {
        constructor(props) {
          super(props);
@@ -4711,7 +4711,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. What is the purpose of displayName class property?
      The displayName string is used in debugging messages. Usually, you don’t need to set it explicitly because it’s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component.
      For example, To ease debugging, choose a display name that communicates that it’s the result of a withSubscription HOC.
-     ```javascript
+     ```jsx
      function withSubscription(WrappedComponent) {
        class WithSubscription extends React.Component {/* ... */}
        WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
@@ -4732,7 +4732,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. What is the purpose of unmountComponentAtNode method?
      This method is available from react-dom package and it removes a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns true if a component was unmounted and false if there was no component to unmount.
      The method signature would be as follows,
-     ```javascript
+     ```jsx
      ReactDOM.unmountComponentAtNode(container)
      ```
 
@@ -4742,13 +4742,13 @@ When a component's props or state change, React decides whether an actual DOM up
      Code-Splitting is a feature supported by bundlers like Webpack and Browserify which can create multiple bundles that can be dynamically loaded at runtime. The react project supports code splitting via dynamic import() feature.
      For example, in the below code snippets, it will make moduleA.js and all its unique dependencies as a separate chunk that only loads after the user clicks the 'Load' button.
      **moduleA.js**
-     ```javascript
+     ```jsx
      const moduleA = 'Hello';
 
      export { moduleA };
      ```
      **App.js**
-     ```javascript
+     ```jsx
      import React, { Component } from 'react';
 
      class App extends Component {
@@ -4790,7 +4790,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What are Keyed Fragments?
      The Fragments declared with the explicit <React.Fragment> syntax may have keys. The general usecase is mapping a collection to an array of fragments as below,
-     ```javascript
+     ```jsx
      function Glossary(props) {
        return (
          <dl>
@@ -4811,7 +4811,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Does React support all HTML attributes?
      As of React 16, both standard or custom DOM attributes are fully supported. Since React components often take both custom and DOM-related props, React uses the camelCase convention just like the DOM APIs. Let us take few props with respect to standard HTML attributes,
-     ```javascript
+     ```jsx
      <div tabIndex="-1" />      // Just like node.tabIndex DOM API
      <div className="Button" /> // Just like node.className DOM API
      <input readOnly={true} />  // Just like node.readOnly DOM API
@@ -4825,7 +4825,7 @@ When a component's props or state change, React decides whether an actual DOM up
      Higher-order components come with a few caveats apart from its benefits. Below are the few listed in an order
      1. **Don’t Use HOCs Inside the render Method:**
         It is not recommended to apply a HOC to a component within the render method of a component.
-        ```javascript
+        ```jsx
         render() {
           // A new version of EnhancedComponent is created on every render
           // EnhancedComponent1 !== EnhancedComponent2
@@ -4837,7 +4837,7 @@ When a component's props or state change, React decides whether an actual DOM up
         The above code impact performance by remounting a component that causes the state of that component and all of its children to be lost. Instead, apply HOCs outside the component definition so that the resulting component is created only once
      2. **Static Methods Must Be Copied Over:**
         When you apply a HOC to a component the new component does not have any of the static methods of the original component
-        ```javascript
+        ```jsx
         // Define a static method
         WrappedComponent.staticMethod = function() {/*...*/}
         // Now apply a HOC
@@ -4847,7 +4847,7 @@ When a component's props or state change, React decides whether an actual DOM up
         typeof EnhancedComponent.staticMethod === 'undefined' // true
         ```
         You can overcome this by copying the methods onto the container before returning it
-        ```javascript
+        ```jsx
         function enhance(WrappedComponent) {
           class Enhance extends React.Component {/*...*/}
           // Must know exactly which method(s) to copy :(
@@ -4863,13 +4863,13 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. How to debug forwardRefs in DevTools?
 
      **React.forwardRef** accepts a render function as parameter and DevTools uses this function to determine what to display for the ref forwarding component. For example, If you don't name the render function or not using displayName property then it will appear as ”ForwardRef” in the DevTools,
-     ```javascript
+     ```jsx
      const WrappedComponent = React.forwardRef((props, ref) => {
        return <LogProps {...props} forwardedRef={ref} />;
      });
      ```
      But If you name the render function then it will appear as **”ForwardRef(myFunction)”**
-     ```javascript
+     ```jsx
      const WrappedComponent = React.forwardRef(
        function myFunction(props, ref) {
          return <LogProps {...props} forwardedRef={ref} />;
@@ -4877,7 +4877,7 @@ When a component's props or state change, React decides whether an actual DOM up
      );
      ```
      As an alternative, You can also set displayName property for forwardRef function,
-     ```javascript
+     ```jsx
      function logProps(Component) {
        class LogProps extends React.Component {
          // ...
@@ -4900,7 +4900,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. When component props defaults to true?
      If you pass no value for a prop, it defaults to true. This behavior is available so that it matches the behavior of HTML. For example, below expressions are equivalent,
-     ```javascript
+     ```jsx
      <MyInput autocomplete />
 
      <MyInput autocomplete={true} />
@@ -4930,7 +4930,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Is it good to use arrow functions in render methods?
      Yes, You can use. It is often the easiest way to pass parameters to callback functions. But you need to optimize the performance while using it.
-     ```javascript
+     ```jsx
      class Foo extends Component {
        handleClick() {
          console.log('Click happened');
@@ -4954,7 +4954,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How JSX prevents Injection Attacks?
      React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. For example, you can embed user input as below,
-     ```javascript
+     ```jsx
      const name = response.potentiallyMaliciousInput;
      const element = <h1>{name}</h1>;
      ```
@@ -4964,7 +4964,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you update rendered elements?
      You can update UI(represented by rendered element) by passing the newly created element to ReactDOM's render method. For example, lets take a ticking clock example, where it updates the time by calling render method multiple times,
-     ```javascript
+     ```jsx
      function tick() {
        const element = (
          <div>
@@ -4982,7 +4982,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you say that props are read only?
      When you declare a component as a function or a class, it must never modify its own props. Let us take a below capital function,
-     ```javascript
+     ```jsx
      function capital(amount, interest) {
         return amount + interest;
      }
@@ -4993,7 +4993,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you say that state updates are merged?
      When you call setState() in the component, React merges the object you provide into the current state. For example, let us take a facebook user with posts and comments details as state variables,
-     ```javascript
+     ```jsx
        constructor(props) {
          super(props);
          this.state = {
@@ -5003,7 +5003,7 @@ When a component's props or state change, React decides whether an actual DOM up
        }
      ```
      Now you can update them independently with separate setState() calls as below,
-     ```javascript
+     ```jsx
       componentDidMount() {
          fetchPosts().then(response => {
            this.setState({
@@ -5024,7 +5024,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you pass arguments to an event handler?
      During iterations or loops, it is common to pass an extra parameter to an event handler. This can be achieved through arrow functions or bind method. Let us take an example of user details updated in a grid,
-     ```javascript
+     ```jsx
      <button onClick={(e) => this.updateUser(userId, e)}>Update User details</button>
      <button onClick={this.updateUser.bind(this, userId)}>Update User details</button>
      ```
@@ -5034,7 +5034,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How to prevent component from rendering?
      You can prevent component from rendering by returning null based on specific condition. This way it can conditionally render component.
-     ```javascript
+     ```jsx
      function Greeting(props) {
        if (!props.loggedIn) {
          return null;
@@ -5047,7 +5047,7 @@ When a component's props or state change, React decides whether an actual DOM up
        );
      }
      ```
-     ```javascript
+     ```jsx
      class User extends React.Component {
        constructor(props) {
          super(props);
@@ -5079,7 +5079,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Is it keys should be globally unique?
      Keys used within arrays should be unique among their siblings but they don’t need to be globally unique. i.e, You can use the same keys withtwo different arrays. For example, the below book component uses two arrays with different arrays,
-     ```javascript
+     ```jsx
      function Book(props) {
        const index = (
          <ul>
@@ -5137,7 +5137,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Can I use web components in react application?
      Yes, you can use web components in a react application. Even though many developers won't use this combination, it may require especially if you are using third-party UI components that are written using Web Components. For example, let us  use Vaadin date picker web component as below,
-     ```javascript
+     ```jsx
      import React, { Component } from 'react';
      import './App.css';
      import '@vaadin/vaadin-date-picker';
@@ -5158,12 +5158,12 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. What is dynamic import?
      The dynamic import() syntax is a ECMAScript proposal not currently part of the language standard. It is expected to be accepted in the near future. You can achieve code-splitting into your app using dynamic import(). Let's take an example of addition,
      1. **Normal Import**
-     ```javascript
+     ```jsx
      import { add } from './math';
      console.log(add(10, 20));
      ```
      2. **Dynamic Import**
-     ```javascript
+     ```jsx
      import("./math").then(math => {
        console.log(math.add(10, 20));
      });
@@ -5173,7 +5173,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What are loadable components?
      If you want to do code-splitting in a server rendered app, it is recommend to use Loadable Components because React.lazy and Suspense is not yet available for server-side rendering. Loadable lets you render a dynamic import as a regular component. Lets take an example,
-     ```javascript
+     ```jsx
      import loadable from '@loadable/component'
 
      const OtherComponent = loadable(() => import('./OtherComponent'))
@@ -5192,7 +5192,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What is suspense component?
      If the module containing the dynamic import is not yet loaded by the time parent component renders, you must show some fallback content while you’re waiting for it to load using a loading indicator. This can be done using **Suspense** component. For example, the below code uses suspense component,
-     ```javascript
+     ```jsx
      const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
      function MyComponent() {
@@ -5211,7 +5211,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What is route based code splitting?
      One of the best place to do code splitting is with routes. The entire page is going to re-render at once so users are unlikely to interact with other elements in the page at the same time. Due to this, the user experience won't be disturbed. Let us take an example of route based website using libraries like React Router with React.lazy,
-     ```javascript
+     ```jsx
      import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
      import React, { Suspense, lazy } from 'react';
 
@@ -5235,7 +5235,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Give an example on How to use context?
      **Context** is designed to share data that can be considered **global** for a tree of React components.  For example, in the code below lets manually thread through a “theme” prop in order to style the Button component.
-     ```javascript
+     ```jsx
      //Lets create a context with a default theme value "luna"
      const ThemeContext = React.createContext('luna');
      // Create App component where it uses provider to pass theme value in the tree
@@ -5269,7 +5269,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What is the purpose of default value in context?
      The defaultValue argument is only used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Below code snippet provides default theme value as Luna.
-     ```javascript
+     ```jsx
      const MyContext = React.createContext(defaultValue);
      ```
 
@@ -5280,7 +5280,7 @@ When a component's props or state change, React decides whether an actual DOM up
      1. **contextType as property of class:**
      The contextType property on a class can be assigned a Context object created by React.createContext(). After that, you can consume the nearest current value of that Context type using this.context in any of the lifecycle methods and render function.
      Lets assign contextType property on MyClass as below,
-     ```javascript
+     ```jsx
      class MyClass extends React.Component {
        componentDidMount() {
          let value = this.context;
@@ -5303,7 +5303,7 @@ When a component's props or state change, React decides whether an actual DOM up
      ```
      2. **Static field**
      You can use a static class field to initialize your contextType using public class field syntax.
-     ```javascript
+     ```jsx
      class MyClass extends React.Component {
        static contextType = MyContext;
        render() {
@@ -5317,7 +5317,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 ### What is a consumer?
      A Consumer is a React component that subscribes to context changes. It requires a function as a child which receives current context value as argument and returns a react node. The value argument passed to the function will be equal to the value prop of the closest Provider for this context above in the tree. Lets take a simple example,
-     ```javascript
+     ```jsx
      <MyContext.Consumer>
        {value => /* render something based on the context value */}
      </MyContext.Consumer>
@@ -5327,7 +5327,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you solve performance corner cases while using context?
      The context uses reference identity to determine when to re-render, there are some gotchas that could trigger unintentional renders in consumers when a provider’s parent re-renders. For example, the code below will re-render all consumers every time the Provider re-renders because a new object is always created for value.
-     ```javascript
+     ```jsx
      class App extends React.Component {
        render() {
          return (
@@ -5339,7 +5339,7 @@ When a component's props or state change, React decides whether an actual DOM up
      }
      ```
      This can be solved by lifting up the value to parent state,
-     ```javascript
+     ```jsx
      class App extends React.Component {
        constructor(props) {
          super(props);
@@ -5363,7 +5363,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. What is the purpose of forward ref in HOCs?
      Refs will not get passed through because ref is not a prop. It handled differently by React just like **key**. If you add a ref to a HOC, the ref will refer to the outermost container component, not the wrapped component. In this case, you can use Forward Ref API. For example, we can explicitly forward refs to the inner FancyButton component using the React.forwardRef API.
      The below HOC logs all props,
-     ```javascript
+     ```jsx
      function logProps(Component) {
        class LogProps extends React.Component {
          componentDidUpdate(prevProps) {
@@ -5385,7 +5385,7 @@ When a component's props or state change, React decides whether an actual DOM up
      }
      ```
      Let's use this HOC to log all props that get passed to our “fancy button” component,
-     ```javascript
+     ```jsx
      class FancyButton extends React.Component {
        focus() {
          // ...
@@ -5396,7 +5396,7 @@ When a component's props or state change, React decides whether an actual DOM up
      export default logProps(FancyButton);
      ```
      Now lets create a ref and pass it to FancyButton component. In this case, you can set focus to button element.
-     ```javascript
+     ```jsx
      import FancyButton from './FancyButton';
 
      const ref = React.createRef();
@@ -5422,7 +5422,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How to create react class components without ES6?
      If you don’t use ES6 then you may need to use the create-react-class module instead. For default props, you need to define getDefaultProps() as a function on the passed object. Whereas for initial state, you have to provide a separate getInitialState method that returns the initial state.
-     ```javascript
+     ```jsx
      var Greeting = createReactClass({
        getDefaultProps: function() {
            return {
@@ -5446,7 +5446,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Is it possible to use react without JSX?
      Yes, JSX is not mandatory for using React. Actually it is convenient when you don’t want to set up compilation in your build environment. Each JSX element is just syntactic sugar for calling React.createElement(component, props, ...children). For example, let us take a greeting example with JSX,
-     ```javascript
+     ```jsx
      class Greeting extends React.Component {
        render() {
          return <div>Hello {this.props.message}</div>;
@@ -5459,7 +5459,7 @@ When a component's props or state change, React decides whether an actual DOM up
      );
      ```
      You can write the same code without JSX as below,
-     ```javascript
+     ```jsx
      class Greeting extends React.Component {
        render() {
          return React.createElement('div', null, `Hello ${this.props.message}`);
@@ -5488,7 +5488,7 @@ When a component's props or state change, React decides whether an actual DOM up
         Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. For example,  elements <a> to <img>, or from <Article> to <Comment> of different types lead a full rebuild.
      2. **DOM Elements Of The Same Type:**
         When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. Lets take an example with same DOM elements except className attribute,
-        ```javascript
+        ```jsx
         <div className="show" title="ReactJS" />
 
         <div className="hide" title="ReactJS" />
@@ -5497,7 +5497,7 @@ When a component's props or state change, React decides whether an actual DOM up
         When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls componentWillReceiveProps() and componentWillUpdate() on the underlying instance. After that, the render() method is called and the diff algorithm recurses on the previous result and the new result.
      4. **Recursing On Children:**
         when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there’s a difference. For example, when adding an element at the end of the children, converting between these two trees works well.
-```javascript
+```jsx
 <ul>
   <li>first</li>
   <li>second</li>
@@ -5511,7 +5511,7 @@ When a component's props or state change, React decides whether an actual DOM up
 
 5. **Handling keys:**
      React supports a key attribute. When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key can make the tree conversion efficient,
-     ```javascript
+     ```jsx
      <ul>
        <li key="2015">Duke</li>
        <li key="2016">Villanova</li>
@@ -5533,13 +5533,13 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Is it prop must be named as render for render props?
      Even though the pattern named render props, you don’t have to use a prop named render to use this pattern. i.e,  Any prop that is a function that a component uses to know what to render is technically a “render prop”. Lets take an example with the children prop for render props,
-     ```javascript
+     ```jsx
      <Mouse children={mouse => (
        <p>The mouse position is {mouse.x}, {mouse.y}</p>
      )}/>
      ```
      Actually children prop doesn’t need to be named in the list of “attributes” in JSX element. Instead, you can keep it directly inside element,
-     ```javascript
+     ```jsx
      <Mouse>
        {mouse => (
          <p>The mouse position is {mouse.x}, {mouse.y}</p>
@@ -5547,7 +5547,7 @@ When a component's props or state change, React decides whether an actual DOM up
      </Mouse>
      ```
      While using this above technique(without any name), explicitly state that children should be a function in your propTypes.
-     ```javascript
+     ```jsx
      Mouse.propTypes = {
        children: PropTypes.func.isRequired
      };
@@ -5562,7 +5562,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you create HOC using render props?
      You can implement most higher-order components (HOC) using a regular component with a render prop. For example, if you would prefer to have a withMouse HOC instead of a <Mouse> component, you could easily create one using a regular <Mouse> with a render prop.
-     ```javascript
+     ```jsx
      function withMouse(Component) {
        return class extends React.Component {
          render() {
@@ -5586,7 +5586,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you print falsy values in JSX?
      The falsy values such as false, null, undefined, and true are valid children but they don't render anything. If you still want to display them then you need to convert it to string. Let's take an example on how to convert to a string,
-     ```javascript
+     ```jsx
      <div>
        My JavaScript variable is {String(myVariable)}.
      </div>
@@ -5601,7 +5601,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. How do you set default value for uncontrolled component?
      In React, the value attribute on form elements will override the value in the DOM. With an uncontrolled component, you might want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a **defaultValue** attribute instead of **value**.
-     ```javascript
+     ```jsx
      render() {
        return (
          <form onSubmit={this.handleSubmit}>
@@ -5647,7 +5647,7 @@ When a component's props or state change, React decides whether an actual DOM up
         This is the easiest way to add bootstrap. Add both bootstrap CSS and JS resources in a head tag.
      2. Bootstrap as Dependency:
         If you are using a build tool or a module bundler such as Webpack, then this is the preferred option for adding Bootstrap to your React application
-        ```javascript
+        ```jsx
         npm install bootstrap
         ``
      3. React Bootstrap Package:
@@ -5686,7 +5686,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. How to fetch data with React Hooks?
      The effect hook called `useEffect` is used to fetch the data with axios from the API and to set the data in the local state of the component with the state hook’s update function.
      Let's take an example in which it fetches list of react articles from the API
-     ```javascript
+     ```jsx
      import React, { useState, useEffect } from 'react';
      import axios from 'axios';
 
@@ -5735,13 +5735,13 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. Why do we use array destructuring (square brackets notation) in `useState`?
      When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that updates the value. Using [0] and [1] to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
      For example, the array index access would look as follows:
-     ```javascript
+     ```jsx
       var userStateVariable = useState('userProfile'); // Returns an array pair
       var user = userStateVariable[0]; // Access first item
       var setUser = userStateVariable[1]; // Access second item
      ```
      Whereas with array destructuring the variables can be accessed as follows:
-     ```javascript
+     ```jsx
      const [user, setUser] = useState('userProfile');
      ```
 
@@ -5837,7 +5837,7 @@ When a component's props or state change, React decides whether an actual DOM up
 #### Q. Should I learn ES6 before learning ReactJS?
      No, you don’t have to learn es2015/es6 to learn react. But you may find many resources or React ecosystem uses ES6 extensively. Let's see some of the frequently used ES6 features,
      1. Destructuring: To get props and use them in a component
-     ```javascript
+     ```jsx
      // in es 5
       var someData = this.props.someData
       var dispatch = this.props.dispatch
@@ -5846,7 +5846,7 @@ When a component's props or state change, React decides whether an actual DOM up
      const { someData, dispatch } = this.props
      ```
      2. Spread operator: Helps in passing props down into a component
-     ```javascript
+     ```jsx
      // in es 5
      <SomeComponent someData={this.props.someData} dispatch={this.props.dispatch} />
 
@@ -5854,7 +5854,7 @@ When a component's props or state change, React decides whether an actual DOM up
      <SomeComponent {...this.props} />
      ```
      3. Arrow functions: Makes compact syntax
-     ```javascript
+     ```jsx
      // es 5
      var users = usersList.map(function (user) {
       return <li>{user.name}</li>
@@ -5867,7 +5867,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. What is Concurrent Rendering?
      The Concurrent rendering makes React apps to be more responsive by rendering component trees without blocking the main UI thread. It allows React to interrupt a long-running render to handle a high-priority event. i.e, When you enabled concurrent Mode, React will keep an eye on other tasks that need to be done, and if there's something with a higher priority it will pause what it is currently rendering and let the other task finish first. You can enable this in two ways,
-     ```javascript
+     ```jsx
      // 1. Part of an app by wrapping with ConcurrentMode
      <React.unstable_ConcurrentMode>
        <Something />
@@ -5886,7 +5886,7 @@ When a component's props or state change, React decides whether an actual DOM up
     
 #### Q. Can I use javascript urls in react16.9?
      Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: are dangerous by including unsanitized output in a tag like <a href> and create a security hole.
-     ```javascript
+     ```jsx
      const companyProfile = {
        website: "javascript: alert('Your website is hacked')",
      };
@@ -5909,7 +5909,7 @@ Imagine a simple UI component, such as a "Like" button. When you tap it, it turn
 
 The imperative way of doing this would be:
 
-```javascript
+```jsx
             if( user.likes() ) {
                 if( hasBlue() ) {
                     removeBlue();
@@ -5924,7 +5924,7 @@ Basically, you have to check what is currently on the screen and handle all the 
 
 In contrast, the declarative approach would be:
 
-            ```javascript
+            ```jsx
             if( this.state.liked ) {
                 return <blueLike />;
             } else {
