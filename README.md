@@ -5844,7 +5844,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 Both refers the same thing. Previously concurrent Mode being referred to as "Async Mode" by React team. The name has been changed to highlight React’s ability to perform work on different priority levels. So it avoids the confusion from other approaches to Async Rendering.
     
 #### Q. Can I use javascript urls in react16.9?
-Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: adangerous by including unsanitized output in a tag like <a href> and create a security hole.
+Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: adangerous by including unsanitized output in a tag like `<a href>` and create a security hole.
 
 ```jsx
 const companyProfile = {
@@ -5853,6 +5853,7 @@ const companyProfile = {
 // It will log a warning
 <a href={companyProfile.website}>More details</a>
 ```
+
 Remember that the future versions will throw an error for javascript URLs.
 
 #### Q. What is the purpose of eslint plugin for hooks?
