@@ -75,15 +75,6 @@ Refs are used to get reference to a DOM node or an instance of a component in Re
 
 A higher-order component is a function that takes a component and returns a new component. HOC's allow you to reuse code, logic and bootstrap abstraction. The most common is probably Redux’s `connect` function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
 
-#### Q. Write an HOC that reverses it’s input?
-*TODO*
-#### Q. Write an HOC that supplies data from an API to it’s Passed Component?
-*TODO*
-#### Q. Write an HOC that implements shouldComponentUpdate to avoid reconciliation?
-*TODO*
-#### Q. Write an HOC that uses React.Children.toArray to sort the children passed to it's Passed Component?
-*TODO*
-
 #### Q. What advantages are there in using arrow functions?
 * Scope safety: Until arrow functions, every new function defined its own this value (a new object in the case of a constructor, undefined in strict mode function calls, the base object if the function is called as an "object method", etc.). An arrow function does not create its own this, the this value of the enclosing execution context is used. 
 * Compactness: Arrow functions are easier to read and write.
@@ -5724,17 +5715,15 @@ When a component's props or state change, React decides whether an actual DOM up
    
     
 #### Q. What is the stable release for hooks support?
-     React includes a stable implementation of React Hooks in 16.8 release for below packages
-     1. React DOM
-     2. React DOM Server
-     3. React Test Renderer
-     4. React Shallow Renderer
-
-   
-    
+React includes a stable implementation of React Hooks in 16.8 release for below packages
+1. React DOM
+2. React DOM Server
+3. React Test Renderer
+4. React Shallow Renderer
+  
 #### Q. Why do we use array destructuring (square brackets notation) in `useState`?
-     When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that updates the value. Using [0] and [1] to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
-     For example, the array index access would look as follows:
+When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that updates the value. Using [0] and [1] to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
+For example, the array index access would look as follows:
      ```jsx
       var userStateVariable = useState('userProfile'); // Returns an array pair
       var user = userStateVariable[0]; // Access first item
@@ -5745,97 +5734,73 @@ When a component's props or state change, React decides whether an actual DOM up
      const [user, setUser] = useState('userProfile');
      ```
 
-     
-    
 #### Q. What are the sources used for introducing hooks?
-     Hooks got the ideas from several different sources. Below are some of them,
-     1. Previous experiments with functional APIs in the react-future repository
-     2. Community experiments with render prop APIs such as Reactions Component
-     3. State variables and state cells in DisplayScript.
-     4. Subscriptions in Rx.
-     5. Reducer components in ReasonReact.
+ Hooks got the ideas from several different sources. Below are some of them,
+ 1. Previous experiments with functional APIs in the react-future repository
+ 2. Community experiments with render prop APIs such as Reactions Component
+ 3. State variables and state cells in DisplayScript.
+ 4. Subscriptions in Rx.
+ 5. Reducer components in ReasonReact.
 
-   
-    
+
 #### Q. How do you access imperative API of web components?
-     Web Components often expose an imperative API to implement its functions. You will need to use a **ref** to interact with the DOM node directly if you want to access imperative API of a web component. But if you are using third-party Web Components, the best solution is to write a React component that behaves as a **wrapper** for your Web Component.
-
-   
+Web Components often expose an imperative API to implement its functions. You will need to use a **ref** to interact with the DOM node directly if you want to access imperative API of a web component. But if you are using third-party Web Components, the best solution is to write a React component that behaves as a **wrapper** for your Web Component.
     
 #### Q. What is formik?
-     Formik is a small react form library that helps you with the three major problems,
-     1. Getting values in and out of form state
-     2. Validation and error messages
-     3. Handling form submission
+Formik is a small react form library that helps you with the three major problems,
+1. Getting values in and out of form state
+2. Validation and error messages
+3. Handling form submission
 
-
-   
-    
 #### Q. What are typical middleware choices for handling asynchronous calls in Redux?
-     Some of the popular middleware choices for handling asynchronous calls in Redux eco system are `Redux Thunk, Redux Promise, Redux Saga`.
-
-   
+Some of the popular middleware choices for handling asynchronous calls in Redux eco system are `Redux Thunk, Redux Promise, Redux Saga`.
     
 #### Q. Is browsers understand JSX code?
-     No, browsers can't understand JSX code. You need a transpiler to convert your JSX to regular Javascript that browsers can understand. The most widely used transpiler right now is Babel.
-
-   
-    
+No, browsers can't understand JSX code. You need a transpiler to convert your JSX to regular Javascript that browsers can understand. The most widely used transpiler right now is Babel.
+ 
 #### Q. Describe about data flow in react?
-     React implements one-way reactive data flow using props which reduce boilerplate and is easier to understand than traditional two-way data binding.
+React implements one-way reactive data flow using props which reduce boilerplate and is easier to understand than traditional two-way data binding.
 
-   
     
 #### Q. What is react scripts?
-     The `react-scripts` package is a set of scripts from the create-react-app starter pack which helps you kick off projects without configuring. The `react-scripts start` command sets up the development environment and starts a server, as well as hot module reloading.
-
-   
+The `react-scripts` package is a set of scripts from the create-react-app starter pack which helps you kick off projects without configuring. The `react-scripts start` command sets up the development environment and starts a server, as well as hot module reloading.
     
 #### Q. What are the features of create react app?
-     Below are the list of some of the features provided by create react app.
-     1. React, JSX, ES6, Typescript and Flow syntax support.
-     2. Autoprefixed CSS
-     3. CSS Reset/Normalize  
-     4. A live development server
-     5. A fast interactive unit test runner with built-in support for coverage reporting
-     6. A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
-     7. An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
+Below are the list of some of the features provided by create react app.
+1. React, JSX, ES6, Typescript and Flow syntax support.
+2. Autoprefixed CSS
+3. CSS Reset/Normalize  
+4. A live development server
+5. A fast interactive unit test runner with built-in support for coverage reporting
+6. A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
+7. An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
 
-
-   
-    
 #### Q. What is the purpose of renderToNodeStream method?
-     The `ReactDOMServer#renderToNodeStream` method is used to generate HTML on the server and send the markup down on the initial request for faster page loads. It also helps search engines to crawl your pages easily for SEO purposes.
-     **Note:** Remember this method is not available in the browser but only server.
+The `ReactDOMServer#renderToNodeStream` method is used to generate HTML on the server and send the markup down on the initial request for faster page loads. It also helps search engines to crawl your pages easily for SEO purposes.
 
-   
-    
+*Note: Remember this method is not available in the browser but only server.*
+
 #### Q. What is MobX?
-     MobX is a simple, scalable and battle tested state management solution for applying functional reactive programming (TFRP). For reactJs application, you need to install below packages,
-     ```bash
-     npm install mobx --save
-     npm install mobx-react --save
-     ```
+MobX is a simple, scalable and battle tested state management solution for applying functional reactive programming (TFRP). For reactJs application, you need to install below packages,
+```bash
+npm install mobx --save
+npm install mobx-react --save
+```
 
-   
-    
 #### Q. What are the differences between Redux and MobX?
-     Below are the main differences between Redux and MobX,
+Below are the main differences between Redux and MobX,
 
-     | Topic | Redux | MobX |
-     | ----- | ------- | ------- 
-     | Definition| It is a javascript library for managing the application state | It is a library for reactively managing the state of your applications |
-     | Programming | It is mainly written in ES6 | It is written in JavaScript(ES5) |
-     | Data Store | There is only one large store exist for data storage | There is more than one store for storage |
-     | Usage | Mainly used for large and complex applications | Used for simple applications |
-     | Performance | Need to be improved | Provides better performance |
-     | How it stores | Uses JS Object to store | Uses observable to store the data |
-
-
-   
-    
+| Topic | Redux | MobX |
+| ----- | ------- | ------- 
+| Definition| It is a javascript library for managing the application state | It is a library for reactively managithe state of your applications |
+| Programming | It is mainly written in ES6 | It is written in JavaScript(ES5) |
+| Data Store | There is only one large store exist for data storage | There is more than one store for storage |
+| Usage | Mainly used for large and complex applications | Used for simple applications |
+| Performance | Need to be improved | Provides better performance |
+| How it stores | Uses JS Object to store | Uses observable to store the data |
+ 
 #### Q. Should I learn ES6 before learning ReactJS?
-     No, you don’t have to learn es2015/es6 to learn react. But you may find many resources or React ecosystem uses ES6 extensively. Let's see some of the frequently used ES6 features,
+No, you don’t have to learn es2015/es6 to learn react. But you may find many resources or React ecosystem uses ES6 extensively. Let's see some of the frequently used ES6 features,
      1. Destructuring: To get props and use them in a component
      ```jsx
      // in es 5
@@ -5862,47 +5827,38 @@ When a component's props or state change, React decides whether an actual DOM up
      // es 6
      const users = usersList.map(user => <li>{user.name}</li>);
      ```
-
-   
-    
+ 
 #### Q. What is Concurrent Rendering?
-     The Concurrent rendering makes React apps to be more responsive by rendering component trees without blocking the main UI thread. It allows React to interrupt a long-running render to handle a high-priority event. i.e, When you enabled concurrent Mode, React will keep an eye on other tasks that need to be done, and if there's something with a higher priority it will pause what it is currently rendering and let the other task finish first. You can enable this in two ways,
-     ```jsx
-     // 1. Part of an app by wrapping with ConcurrentMode
-     <React.unstable_ConcurrentMode>
-       <Something />
-     </React.unstable_ConcurrentMode>
+The Concurrent rendering makes React apps to be more responsive by rendering component trees without blocking the main UI thread. It allows React to interrupt a long-running render to handle a high-priority event. i.e, When you enabled concurrent Mode, React will keep an eye on other tasks that need to be done, and if there's something with a higher priority it will pause what it is currently rendering and let the other task finish first. You can enable this in two ways,
+```jsx
+// 1. Part of an app by wrapping with ConcurrentMode
+<React.unstable_ConcurrentMode>
+  <Something />
+</React.unstable_ConcurrentMode>
 
-     // 2. Whole app using createRoot
-     ReactDOM.unstable_createRoot(domNode).render(<App />);
-     ```
+// 2. Whole app using createRoot
+ReactDOM.unstable_createRoot(domNode).render(<App />);
+```
 
-   
-    
 #### Q. What is the difference between async mode and concurrent mode?
-     Both refers the same thing. Previously concurrent Mode being referred to as "Async Mode" by React team. The name has been changed to highlight React’s ability to perform work on different priority levels. So it avoids the confusion from other approaches to Async Rendering.
-
-   
+Both refers the same thing. Previously concurrent Mode being referred to as "Async Mode" by React team. The name has been changed to highlight React’s ability to perform work on different priority levels. So it avoids the confusion from other approaches to Async Rendering.
     
 #### Q. Can I use javascript urls in react16.9?
-     Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: are dangerous by including unsanitized output in a tag like <a href> and create a security hole.
-     ```jsx
-     const companyProfile = {
-       website: "javascript: alert('Your website is hacked')",
-     };
-     // It will log a warning
-     <a href={companyProfile.website}>More details</a>
-     ```
-     Remember that the future versions will throw an error for javascript URLs.
-  
-   
-   
-#### Q. What is the purpose of eslint plugin for hooks?
-     The ESLint plugin enforces rules of Hooks to avoid bugs. It assumes that any function starting with ”use” and a capital letter right after it is a Hook. In particular, the rule enforces that,
-     1. Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
-     2. Hooks are called in the same order on every render.
+Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: adangerous by including unsanitized output in a tag like <a href> and create a security hole.
+```jsx
+const companyProfile = {
+  website: "javascript: alert('Your website is hacked')",
+};
+// It will log a warning
+<a href={companyProfile.website}>More details</a>
+```
+Remember that the future versions will throw an error for javascript URLs.
 
-   
+#### Q. What is the purpose of eslint plugin for hooks?
+The ESLint plugin enforces rules of Hooks to avoid bugs. It assumes that any function starting with ”use” and a capital letter right after it is a Hook. In particular, the rule enforces that,
+
+1. Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
+2. Hooks are called in the same order on every render.
 
 #### Q. What is the difference between Imperative and Declarative in React?
 Imagine a simple UI component, such as a "Like" button. When you tap it, it turns blue if it was previously grey, and grey if it was previously blue.
@@ -5933,12 +5889,19 @@ In contrast, the declarative approach would be:
 ```
 Because the declarative approach separates concerns, this part of it only needs to handle how the UI should look in a sepecific state, and is therefore much simpler to understand.
 
-   
-
 #### Q. What are the benefits of using typescript with reactjs?
-     Below are some of the benefits of using typescript with Reactjs,
-     1. It is possible to use latest JavaScript features
-     2. Use of interfaces for complex type definitions
-     3. IDEs such as VS Code was made for TypeScript
-     4. Avoid bugs with the ease of readability and Validation
+Below are some of the benefits of using typescript with Reactjs,
 
+1. It is possible to use latest JavaScript features
+2. Use of interfaces for complex type definitions
+3. IDEs such as VS Code was made for TypeScript
+4. Avoid bugs with the ease of readability and Validation
+
+#### Q. Write an HOC that reverses it’s input?
+*TODO*
+#### Q. Write an HOC that supplies data from an API to it’s Passed Component?
+*TODO*
+#### Q. Write an HOC that implements shouldComponentUpdate to avoid reconciliation?
+*TODO*
+#### Q. Write an HOC that uses React.Children.toArray to sort the children passed to it's Passed Component?
+*TODO*
