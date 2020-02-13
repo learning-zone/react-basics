@@ -1,5 +1,5 @@
 
-### Quick Start
+## Quick Start
 
 ```bash
 npx create-react-app my-app
