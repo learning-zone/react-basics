@@ -287,7 +287,6 @@ class User extends React.Component {
   }
 }
 ```
-![state](images/state.jpg)
 
 State is similar to props, but it is private and fully controlled by the component. i.e, It is not accessible to any component other than the one that owns and sets it.
     
