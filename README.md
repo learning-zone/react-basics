@@ -608,11 +608,11 @@ A component that controls the input elements within the forms on subsequent user
 
 For example, to write all the names in uppercase letters, we use handleChange as below,
 
-    ```jsx
-    handleChange(event) {
-      this.setState({value: event.target.value.toUpperCase()})
-    }
-    ```
+```jsx
+handleChange(event) {
+  this.setState({value: event.target.value.toUpperCase()})
+}
+```
 
 #### Q. What are uncontrolled components?
 The **Uncontrolled Components** are the ones that store their own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
