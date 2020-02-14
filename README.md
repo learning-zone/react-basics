@@ -116,7 +116,7 @@ JSX is a syntax extension to JavaScript and comes with the full power of JavaScr
 
 Question:
 
-```
+```jsx
 const element = (
   <h1 className="greeting">
     Hello, world!
@@ -126,7 +126,7 @@ const element = (
 
 Answer:
 
-```
+```jsx
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
