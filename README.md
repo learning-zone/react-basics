@@ -519,55 +519,49 @@ You can also use *refs* in function components using **closures**.
 #### Q. What are forward refs?
 *Ref forwarding* is a feature that lets some components take a *ref* they receive, and pass it further down to a child.
 
-    ```jsx
-    const ButtonElement = React.forwardRef((props, ref) => (
-      <button ref={ref} className="CustomButton">
-        {props.children}
-      </button>
-    ));
-
-    // Create ref to the DOM button:
-    const ref = React.createRef();
-    <ButtonElement ref={ref}>{'Forward Ref'}</ButtonElement>
-    ```
+```jsx
+const ButtonElement = React.forwardRef((props, ref) => (
+  <button ref={ref} className="CustomButton">
+    {props.children}
+  </button>
+));
+// Create ref to the DOM button:
+const ref = React.createRef();
+<ButtonElement ref={ref}>{'Forward Ref'}</ButtonElement>
+```
 
 #### Q. Which is preferred option with in callback refs and findDOMNode()?
 It is preferred to use *callback refs* over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
 
 The **legacy** approach of using `findDOMNode`:
 
-    ```jsx
-    class MyComponent extends Component {
-      componentDidMount() {
-        findDOMNode(this).scrollIntoView()
-      }
-
-      render() {
-        return <div />
-      }
-    }
-    ```
+```jsx
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView()
+  }
+  render() {
+    return <div />
+  }
+}
+```
 The recommended approach is:
 
-    ```jsx
-    class MyComponent extends Component {
-      constructor(props){
-        super(props);
-        this.node = createRef();
-      }
-      componentDidMount() {
-        this.node.current.scrollIntoView();
-      }
+```jsx
+class MyComponent extends Component {
+  constructor(props){
+    super(props);
+    this.node = createRef();
+  }
+  componentDidMount() {
+    this.node.current.scrollIntoView();
+  }
 
-      render() {
-        return <div ref={this.node} />
-      }
+    render() {
+      return <div ref={this.node} />
     }
-    ```
-
-
-   
-    
+  }
+  ```  
 #### Q. Why are String Refs legacy?
 If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `ref={'textInput'}`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because *string refs have below issues*, and are considered legacy. String refs were **removed in React v16**.
 
