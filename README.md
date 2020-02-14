@@ -569,21 +569,21 @@ If you worked with React before, you might be familiar with an older API where t
 2. They are *not composable* — if a library puts a ref on the passed child, the user can't put another ref on it. Callback refs are perfectly composable.
 3. They *don't work with static analysis* like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type (which could be different). Callback refs are friendlier to static analysis.
 4. It doesn't work as most people would expect with the "render callback" pattern (e.g. `<DataGrid renderRow={this.renderRow} />`)
-       ```jsx
-       class MyComponent extends Component {
-         renderRow = (index) => {
-           // This won't work. Ref will get attached to DataTable rather than MyComponent:
-           return <input ref={'input-' + index} />;
+ ```jsx
+ class MyComponent extends Component {
+    renderRow = (index) => {
+     // This won't work. Ref will get attached to DataTable rather than MyComponent:
+     return <input ref={'input-' + index} />;
 
-           // This would work though! Callback refs are awesome.
-           return <input ref={input => this['input-' + index] = input} />;
-         }
+    // This would work though! Callback refs are awesome.
+      return <input ref={input => this['input-' + index] = input} />;
+    }
 
-         render() {
-           return <DataTable data={this.props.data} renderRow={this.renderRow} />
-         }
-       }
-       ```
+   render() {
+     return <DataTable data={this.props.data} renderRow={this.renderRow} />
+   }
+ }
+```
 
 #### Q. What is Virtual DOM?
 The *Virtual DOM* (VDOM) is an in-memory representation of *Real DOM*. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called *reconciliation*.
