@@ -210,7 +210,7 @@ const element = React.createElement(
 
 The above `React.createElement()` function returns an object:
 
-```json
+```jsx
 {
   type: 'div',
   props: {
