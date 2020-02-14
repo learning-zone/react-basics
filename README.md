@@ -686,9 +686,9 @@ A *higher-order component* (*HOC*) is a function that takes a component and retu
 
 We call them **pure components** because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
 
-    ```jsx
-    const EnhancedComponent = higherOrderComponent(WrappedComponent)
-    ```
+```jsx
+const EnhancedComponent = higherOrderComponent(WrappedComponent)
+```
 HOC can be used for many use cases:
 
 1. Code reuse, logic and bootstrap abstraction.
