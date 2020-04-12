@@ -724,30 +724,26 @@ const {Provider, Consumer} = React.createContext(defaultValue)
 
 #### Q. What is children prop?
 
-    *Children* is a prop (`this.prop.children`) that allow you to pass components as data to other components, just like any other prop you use. Component tree put between component's opening and closing tag will be passed to that component as `children` prop.
+*Children* is a prop (`this.prop.children`) that allow you to pass components as data to other components, just like any other prop you use. Component tree put between component's opening and closing tag will be passed to that component as `children` prop.
 
-    There are a number of methods available in the React API to work with this prop. These include `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only`, `React.Children.toArray`.
-    A simple usage of children prop looks as below,
+There are a number of methods available in the React API to work with this prop. These include `React.Children.map`, `React.Children.forEach`, `React.Children.count`, `React.Children.only`, `React.Children.toArray`.
+A simple usage of children prop looks as below,
 
-    ```jsx
-    const MyDiv = React.createClass({
-      render: function() {
-        return <div>{this.props.children}</div>
-      }
-    })
+ ```jsx
+ const MyDiv = React.createClass({
+   render: function() {
+     return <div>{this.props.children}</div>
+   }
+ })
 
-    ReactDOM.render(
-      <MyDiv>
-        <span>{'Hello'}</span>
-        <span>{'World'}</span>
-      </MyDiv>,
-      node
-    )
-    ```
-
-
-   
-    
+ReactDOM.render(
+  <MyDiv>
+    <span>{'Hello'}</span>
+    <span>{'World'}</span>
+  </MyDiv>,
+  node
+)
+```
 #### Q. How to write comments in React?
 
     The comments in React/JSX are similar to JavaScript Multiline comments but are wrapped in curly braces.
