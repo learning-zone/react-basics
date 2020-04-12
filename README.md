@@ -746,26 +746,26 @@ ReactDOM.render(
 ```
 #### Q. How to write comments in React?
 
-    The comments in React/JSX are similar to JavaScript Multiline comments but are wrapped in curly braces.
+The comments in React/JSX are similar to JavaScript Multiline comments but are wrapped in curly braces.
 
-    **Single-line comments:**
+**Single-line comments:**
 
-    ```jsx
-    <div>
-      {/* Single-line comments(In vanilla JavaScript, the single-line comments are represented by double slash(//)) */}
-      {`Welcome ${user}, let's play React`}
-    </div>
-    ```
+```jsx
+<div>
+  {/* Single-line comments(In vanilla JavaScript, the single-line comments are represented by double slash(//)) */}
+  {`Welcome ${user}, let's play React`}
+</div>
+```
 
-    **Multi-line comments:**
+**Multi-line comments:**
 
-    ```jsx
-    <div>
-      {/* Multi-line comments for more than
-       one line */}
-      {`Welcome ${user}, let's play React`}
-    </div>
-    ```
+```jsx
+<div>
+  {/* Multi-line comments for more than
+   one line */}
+  {`Welcome ${user}, let's play React`}
+</div>
+```
 
 #### Q. What is the purpose of using super constructor with props argument?
 A child class constructor cannot make use of `this` reference until `super()` method has been called. The same applies for ES6 sub-classes as well. The main reason of passing props parameter to `super()` call is to access `this.props` in your child constructors.
