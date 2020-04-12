@@ -718,9 +718,9 @@ function HOC(WrappedComponent) {
 #### Q. What is context?
 *Context* provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
 
-    ```jsx
-    const {Provider, Consumer} = React.createContext(defaultValue)
-    ```
+```jsx
+const {Provider, Consumer} = React.createContext(defaultValue)
+```
 
 #### Q. What is children prop?
 
