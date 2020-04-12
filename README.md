@@ -699,22 +699,21 @@ HOC can be used for many use cases:
 #### Q. How to create props proxy for HOC component?
 You can add/edit props passed to the component using *props proxy* pattern like this:
 
-    ```jsx
-    function HOC(WrappedComponent) {
-      return class Test extends Component {
-        render() {
-          const newProps = {
-            title: 'New Header',
-            footer: false,
-            showFeatureX: false,
-            showFeatureY: true
-          }
-
-          return <WrappedComponent {...this.props} {...newProps} />
-        }
-      }
+```jsx
+function HOC(WrappedComponent) {
+  return class Test extends Component {
+    render() {
+      const newProps = {
+        title: 'New Header',
+        footer: false,
+        showFeatureX: false,
+        showFeatureY: true
+      
+      return <WrappedComponent {...this.props} {...newProps} />
     }
-    ```
+  }
+}
+```
 
 #### Q. What is context?
 *Context* provides a way to pass data through the component tree without having to pass props down manually at every level. For example, authenticated user, locale preference, UI theme need to be accessed in the application by many components.
