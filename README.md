@@ -9,6 +9,8 @@
 ### React Basics
 
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[How does React work?](#q-how-does-react-work)|
 | 02. |[What are the advantages of using React?](#q-what-are-the-advantages-of-using-react)|
 | 03. |[What is the difference between a Presentational component and a Container component?](#q-what-is-the-difference-between-a-presentational-component-and-a-container-component)|
@@ -168,6 +170,8 @@
 
 ### React Router
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is React Router?](#q-what-is-react-router)|
 | 02. |[How React Router is different from history library?](#how-react-router-is-different-from-history-library)|
 | 03. |[What are the `<Router>` components of React Router v4?](#q-what-are-the-router-components-of-react-router-v4)|
@@ -183,6 +187,8 @@
 
 ### React Internationalization
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is React Intl?](#q-what-is-react-intl)|
 | 02. |[What are the main features of React Intl?](#q-what-are-the-main-features-of-react-intl)|
 | 03. |[What are the two ways of formatting in React Intl?](#q-what-are-the-two-ways-of-formatting-in-react-intl)|
@@ -193,6 +199,8 @@
 
 ### React Testing
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is Shallow Renderer in React testing?](#q-what-is-shallow-renderer-in-react-testing)|
 | 02. |[What is `TestRenderer` package in React?](#q-what-is-testrenderer-package-in-react)|
 | 03. |[What is the purpose of ReactTestUtils package?](#q-what-is-the-purpose-of-reacttestutils-package)|
@@ -203,6 +211,8 @@
 
 ### React Redux
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is flux?](#q-what-is-flux)|
 | 02. |[What is Redux?](#q-what-is-redux)|
 | 03. |[What are the core principles of Redux?](#q-what-are-the-core-principles-of-redux)|
@@ -243,6 +253,8 @@
 
 ### React Native
 
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is the difference between React Native and React?](#q-what-is-the-difference-between-react-native-and-react)|
 | 02. |[How to test React Native apps?](#q-how-to-test-react-native-apps)|
 | 03. |[How to do logging in React Native?](#how-to-do-logging-in-react-native)|
@@ -251,7 +263,8 @@
 
 ### React supported libraries 
 
-
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
 | 01. |[What is reselect and how it works?](#q-what-is-reselect-and-how-it-works)|
 | 02. |[What is Flow?](#q-what-is-flow)|
 | 03. |[What is the difference between Flow and PropTypes?](#q-what-is-the-difference-between-flow-and-proptypes)|
@@ -389,9 +402,3 @@
 | 135. |[Write an HOC that supplies data from an API to it’s Passed Component?](#q-write-an-hoc-that-supplies-data-from-an-api-to-it-s-passed-component)|
 | 136. |[Write an HOC that implements shouldComponentUpdate to avoid reconciliation?](#q-write-an-hoc-that-implements-shouldcomponentupdate-to-avoid-reconciliation)|
 | 137. |[Write an HOC that uses React.Children.toArray to sort the children passed to it's Passed Component?](#q-write-an-hoc-that-uses-reactchildrentoarray-to-sort-the-children-passed-to-it-s-passed-component)|
-
-
-
-
-
-
