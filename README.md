@@ -169,8 +169,19 @@
 
 
 ### React Architecture 
-
  -
+
+
+### React Components
+ - 
+
+
+### React Forms
+ - 
+
+
+### React Animations
+ - 
 
 
 ### React Router
@@ -211,7 +222,7 @@
 | 03. |[What is the purpose of ReactTestUtils package?](#q-what-is-the-purpose-of-reacttestutils-package)|
 | 04. |[What is Jest?](#q-what-is-jest)|
 | 05. |[What are the advantages of Jest over Jasmine?](#q-what-are-the-advantages-of-jest-over-jasmine)|
-| 06. |[Give a simple example of Jest test case](#q-give-a-simple-example-of-jest-test-case)
+| 06. |[Give a simple example of Jest test case](#q-give-a-simple-example-of-jest-test-case)|
 
 
 ### React Redux
@@ -264,6 +275,7 @@
 | 02. |[How to test React Native apps?](#q-how-to-test-react-native-apps)|
 | 03. |[How to do logging in React Native?](#how-to-do-logging-in-react-native)|
 | 04. |[How to debug your React Native?](#q-how-to-debug-your-react-native)|
+
 
 
 ### React supported libraries 
