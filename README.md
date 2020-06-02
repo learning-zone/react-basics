@@ -1,5 +1,4 @@
-## React Interview Questions and Answers
-
+## React Interview Questions 
 
 
 
