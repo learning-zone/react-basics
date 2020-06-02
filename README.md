@@ -168,6 +168,11 @@
 | 155. |[What are render props?](#q-what-are-render-props)|
 
 
+### React Architecture 
+
+ -
+
+
 ### React Router
 
 |Sl.No|  Questions                                   |
