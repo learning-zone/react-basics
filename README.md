@@ -13,19 +13,13 @@
 |-----|----------------------------------------------|
 | 01. |[How does React work?](#q-how-does-react-work)|
 | 02. |[What are the advantages of using React?](#q-what-are-the-advantages-of-using-react)|
-| 03. |[What is the difference between a Presentational component and a Container component?](#q-what-is-the-difference-between-a-presentational-component-and-a-container-component)|
-| 04. |[What are the differences between a class component and functional component?](#q-what-are-the-differences-between-a-class-component-and-functional-component)|
 | 05. |[What is the difference between state and props?](#q-what-is-the-difference-between-state-and-props)|
 | 06. |[Name the different lifecycle methods.](#q-name-the-different-lifecycle-methods)|
 | 07. |[React Hooks](#q-react-hooks)
-| 08. |[Where in a React component should you make an AJAX request?](#q-where-in-a-react-component-should-you-make-an-ajax-request)|
-| 09. |[What are controlled components?](#q-what-are-controlled-components)|
 | 10. |[What are refs used for in React?](#q-what-are-refs-used-for-in-react)|
-| 11. |[What is a higher order component?](#q-what-is-a-higher-order-component)|
 | 12. |[What advantages are there in using arrow functions?](#q-what-advantages-are-there-in-using-arrow-functions)|
 | 13. |[Why is it advised to pass a callback function to setState as opposed to an object?](#q-why-is-it-advised-to-pass-a-callback-function-to-setstate-as-opposed-to-an-object)|
 | 14. |[What is the alternative of binding `this` in the constructor?](#q-what-is-the-alternative-of-binding-this-in-the-constructor)|
-| 15. |[How would you prevent a component from rendering?](#q-how-would-you-prevent-a-component-from-rendering)|
 | 16. |[When rendering a list what is a key and what is it's purpose?](#q-when-rendering-a-list-what-is-a-key-and-what-is-it-s-purpose)|
 | 17. |[What is the purpose of super(props)?](#q-what-is-the-purpose-of-super-props)||
 | 18. |[What is JSX?](#q-what-is-jsx)|
@@ -41,10 +35,6 @@
 | 28. |[ What is React?](#q-what-is-react)|
 | 29. |[What are the major features of React?](#q-what-are-the-major-features-of-react)|
 | 30. |[What is JSX?](#q-what-is-jsx-1)
-| 31. |[What is the difference between Element and Component?](#q-what-is-the-difference-between-element-and-component)|
-| 32. |[How to create components in React?](#q-how-to-create-components-in-react)|
-| 33. |[When to use a Class Component over a Function Component?](#q-when-to-use-a-class-component-over-a-function-component)|
-| 34. |[What are Pure Components?](#q-what-are-pure-components)|
 | 35. |[What is state in React?](#q-what-is-state-in-react)|
 | 36. |[What are props in React?](#q-what-are-props-in-react)|
 | 37. |[What is the difference between state and props?](#q-what-is-the-difference-between-state-and-props-1)
@@ -66,28 +56,19 @@
 | 53. |[What is the difference between Shadow DOM and Virtual DOM?](#q-what-is-the-difference-between-shadow-dom-and-virtual-dom)|
 | 54. |[What is React Fiber?](#q-what-is-react-fiber)|
 | 55. |[What is the main goal of React Fiber?](#q-what-is-the-main-goal-of-react-fiber)|
-| 56. |[What are controlled components?](#q-what-are-controlled-components-1)
-| 57. |[What are uncontrolled components?](#q-what-are-uncontrolled-components)|
 | 58. |[What is the difference between createElement and cloneElement?](#q-what-is-the-difference-between-createelement-and-cloneelement)|
 | 59. |[What is Lifting State Up in React?](#q-what-is-lifting-state-up-in-react)|
-| 60. |[What are the different phases of component lifecycle?](#q-what-are-the-different-phases-of-component-lifecycle)|
-| 61. |[What are the lifecycle methods of React?](#q-what-are-the-lifecycle-methods-of-react)|
-| 62. |[What are Higher-Order Components?](#q-what-are-higher-order-components)|
-| 63. |[How to create props proxy for HOC component?](#q-how-to-create-props-proxy-for-hoc-component)|
 | 64. |[What is context?](#q-what-is-context)|
 | 65. |[What is children prop?](#q-what-is-children-prop)|
 | 66. |[How to write comments in React?](#q-how-to-write-comments-in-react)|
 | 67. |[What is the purpose of using super constructor with props argument?](#q-what-is-the-purpose-of-using-super-constructor-with-props-argument)|
 | 68. |[What is reconciliation?](#q-what-is-reconciliation)|
 | 69. |[How to set state with a dynamic key name?](#q-how-to-set-state-with-a-dynamic-key-name)|
-| 70. |[What would be the common mistake of function being called every time the component renders?](#q-what-would-be-the-common-mistake-of-function-being-called-every-time-the-component-renders)|
 | 71. |[Is lazy function supports named exports?](#q-is-lazy-function-supports-named-exports)|
 | 72. |[Why React uses `className` over `class` attribute?](#q-why-react-uses-classname-over-class-attribute)|
 | 73. |[What are fragments?](#q-what-are-fragments)|
 | 74. |[Why fragments are better than container divs?](#q-why-fragments-are-better-than-container-divs)|
 | 75. |[What are portals in React?](#q-what-are-portals-in-react)|
-| 76. |[What are stateless components?](#q-what-are-stateless-components)|
-| 77. |[What are stateful components?](#q-what-are-stateful-components)|
 | 78. |[How to apply validation on props in React?](#q-how-to-apply-validation-on-props-in-react)|
 | 79. |[What are the advantages of React?](#q-what-are-the-advantages-of-react)|
 | 80. |[What are the limitations of React?](#q-what-are-the-limitations-of-react)|
@@ -102,12 +83,9 @@
 | 89. |[How events are different in React?](#q-how-events-are-different-in-react)|
 | 90. |[What will happen if you use `setState()` in constructor?](#q-what-will-happen-if-you-use-setstate-in-constructor)|
 | 91. |[What is the impact of indexes as keys?](#q-what-is-the-impact-of-indexes-as-keys)|
-| 92. |[Is it good to use `setState()` in `componentWillMount()` method?](#q-is-it-good-to-use-setstate-in-componentwillmount-method)|
 | 93. |[What will happen if you use props in initial state?](#q-what-will-happen-if-you-use-props-in-initial-state)|
-| 94. |[How do you conditionally render components?](#q-how-do-you-conditionally-render-components)|
 | 95. |[Why we need to be careful when spreading props on DOM elements?](#q-why-we-need-to-be-careful-when-spreading-props-on-dom-elements)|
 | 96. |[How you use decorators in React?](#q-how-you-use-decorators-in-react)|
-| 97. |[How do you memoize a component?](#q-how-do-you-memoize-a-component)|
 | 98. |[How you implement Server Side Rendering or SSR?](#q-how-you-implement-server-side-rendering-or-ssr)|
 | 99. |[How to enable production mode in React?](#q-how-to-enable-production-mode-in-react)|
 | 100. |[What is CRA and its benefits?](#q-what-is-cra-and-its-benefits)|
@@ -115,19 +93,13 @@
 | 102. |[What are the lifecycle methods going to be deprecated in React v16?](#q-what-are-the-lifecycle-methods-going-to-be-deprecated-in-react-v16)|
 | 103. |[What is the purpose of `getDerivedStateFromProps()` lifecycle method?](#q-what-is-the-purpose-of-getderivedstatefromprops-lifecycle-method)|
 | 104. |[What is the purpose of `getSnapshotBeforeUpdate()` lifecycle method?](#q-what-is-the-purpose-of-getsnapshotbeforeupdate-lifecycle-method)|
-| 105. |[Do Hooks replace render props and higher order components?](#q-do-hooks-replace-render-props-and-higher-order-components)|
-| 106. |[What is the recommended way for naming components?](#q-what-is-the-recommended-way-for-naming-components)|
-| 107. |[What is the recommended ordering of methods in component class?](#q-what-is-the-recommended-ordering-of-methods-in-component-class)|
-| 108. |[What is a switching component?](#q-what-is-a-switching-component)|
 | 109. |[Why we need to pass a function to setState()?](#q-why-we-need-to-pass-a-function-to-setstate)|
 | 110. |[What is strict mode in React?](#q-what-is-strict-mode-in-react)|
 | 111. |[What are React Mixins?](#q-what-are-react-mixins)|
 | 112. |[Why is `isMounted()` an anti-pattern and what is the proper solution?](#q-why-is-ismounted-an-anti-pattern-and-what-is-the-proper-solution)|
 | 113. |[What are the Pointer Events supported in React?](#q-what-are-the-pointer-events-supported-in-react)|
-| 114. |[Why should component names start with capital letter?](#q-why-should-component-names-start-with-capital-letter)|
 | 115. |[Are custom DOM attributes supported in React v16?](#q-are-custom-dom-attributes-supported-in-react-v16)|
 | 116. |[What is the difference between constructor and getInitialState?](#q-what-is-the-difference-between-constructor-and-getinitialstate)|
-| 117. |[Can you force a component to re-render without calling setState?](#q-can-you-force-a-component-to-re-render-without-calling-setstate)|
 | 118. |[What is the difference between `super()` and `super(props)` in React using ES6 classes?](#q-what-is-the-difference-between-super-and-super-props-in-react-using-es6-classes)|
 | 119. |[How to loop inside JSX?](#q-how-to-loop-inside-jsx)|
 | 120. |[How do you access props in attribute quotes?](#q-how-do-you-access-props-in-attribute-quotes)|
@@ -152,11 +124,7 @@
 | 139. |[How to use https instead of http in create-react-app?](#q-how-to-use-https-instead-of-http-in-create-react-app)|
 | 140. |[How to avoid using relative path imports in create-react-app?](#q-how-to-avoid-using-relative-path-imports-in-create-react-app)|
 | 141. |[How to add Google Analytics for React Router?](#q-how-to-add-google-analytics-for-react-router)|
-| 142. |[How to update a component every second?](#q-how-to-update-a-component-every-second)|
 | 143. |[How do you apply vendor prefixes to inline styles in React?](#q-how-do-you-apply-vendor-prefixes-to-inline-styles-in-react)|
-| 144. |[How to import and export components using React and ES6?](#q-how-to-import-and-export-components-using-react-and-es6)|
-| 145. |[What are the exceptions on React component naming?](#q-what-are-the-exceptions-on-react-component-naming)|
-| 146. |[Why is a component constructor called only once?](#q-why-is-a-component-constructor-called-only-once)|
 | 147. |[How to define constants in React?](#how-to-define-constants-in-react)|
 | 148. |[How to programmatically trigger click event in React?](#q-how-to-programmatically-trigger-click-event-in-react)|
 | 149. |[Is it possible to use async/await in plain React?](#q-is-it-possible-to-use-async-await-in-plain-react)|
@@ -164,7 +132,6 @@
 | 151. |[What are the popular packages for animation?](#q-what-are-the-popular-packages-for-animation)|
 | 152. |[What is the benefit of styles modules?](#q-what-is-the-benefit-of-styles-modules)|
 | 153. |[What are the popular React-specific linters?](#q-what-are-the-popular-react-specific-linters)|
-| 154. |[How to make AJAX call and in which component lifecycle methods should I make an AJAX call?](#q-how-to-make-ajax-call-and-in-which-component-lifecycle-methods-should-i-make-an-ajax-call)|
 | 155. |[What are render props?](#q-what-are-render-props)|
 
 
@@ -173,11 +140,54 @@
 
 
 ### React Components
- - 
+
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
+| 01. |[What is the difference between a Presentational component and a Container component?](#q-what-is-the-difference-between-a-presentational-component-and-a-container-component)|
+| 02. |[What are the differences between a class component and functional component?](#q-what-are-the-differences-between-a-class-component-and-functional-component)|
+| 03. |[Where in a React component should you make an AJAX request?](#q-where-in-a-react-component-should-you-make-an-ajax-request)|
+| 04. |[What are controlled components?](#q-what-are-controlled-components)|
+| 05. |[What is a higher order component?](#q-what-is-a-higher-order-component)|
+| 06. |[How would you prevent a component from rendering?](#q-how-would-you-prevent-a-component-from-rendering)|
+| 07. |[What is the difference between Element and Component?](#q-what-is-the-difference-between-element-and-component)|
+| 08. |[How to create components in React?](#q-how-to-create-components-in-react)|
+| 09. |[When to use a Class Component over a Function Component?](#q-when-to-use-a-class-component-over-a-function-component)|
+| 10. |[What are Pure Components?](#q-what-are-pure-components)|
+| 11. |[What are controlled components?](#q-what-are-controlled-components-1)
+| 12. |[What are uncontrolled components?](#q-what-are-uncontrolled-components)|
+| 13. |[What are the different phases of component lifecycle?](#q-what-are-the-different-phases-of-component-lifecycle)|
+| 14. |[What are the lifecycle methods of React?](#q-what-are-the-lifecycle-methods-of-react)|
+| 15. |[What are Higher-Order Components?](#q-what-are-higher-order-components)|
+| 16. |[How to create props proxy for HOC component?](#q-how-to-create-props-proxy-for-hoc-component)|
+| 17. |[What would be the common mistake of function being called every time the component renders?](#q-what-would-be-the-common-mistake-of-function-being-called-every-time-the-component-renders)|
+| 18. |[What are stateless components?](#q-what-are-stateless-components)|
+| 19. |[What are stateful components?](#q-what-are-stateful-components)|
+| 20. |[How do you conditionally render components?](#q-how-do-you-conditionally-render-components)|
+| 21. |[Is it good to use `setState()` in `componentWillMount()` method?](#q-is-it-good-to-use-setstate-in-componentwillmount-method)|
+| 22. |[How do you memoize a component?](#q-how-do-you-memoize-a-component)|
+| 23. |[Do Hooks replace render props and higher order components?](#q-do-hooks-replace-render-props-and-higher-order-components)|
+| 24. |[What is the recommended way for naming components?](#q-what-is-the-recommended-way-for-naming-components)|
+| 25. |[What is the recommended ordering of methods in component class?](#q-what-is-the-recommended-ordering-of-methods-in-component-class)|
+| 26. |[What is a switching component?](#q-what-is-a-switching-component)|
+| 27. |[Why should component names start with capital letter?](#q-why-should-component-names-start-with-capital-letter)|
+| 28. |[Can you force a component to re-render without calling setState?](#q-can-you-force-a-component-to-re-render-without-calling-setstate)|
+| 29. |[How to update a component every second?](#q-how-to-update-a-component-every-second)|
+| 30. |[How to import and export components using React and ES6?](#q-how-to-import-and-export-components-using-react-and-es6)|
+| 31. |[What are the exceptions on React component naming?](#q-what-are-the-exceptions-on-react-component-naming)|
+| 32. |[Why is a component constructor called only once?](#q-why-is-a-component-constructor-called-only-once)|
+| 33. |[How to make AJAX call and in which component lifecycle methods should I make an AJAX call?](#q-how-to-make-ajax-call-and-in-which-component-lifecycle-methods-should-i-make-an-ajax-call)|
 
 
 ### React Forms
- - 
+
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
+| 01. |[What is the popular choice for form handling?](#q-what-is-the-popular-choice-for-form-handling)|
+| 02. |[What are the advantages of formik over redux form library?](#what-are-the-advantages-of-formik-over-redux-form-library)|
+| 03. |[What is Redux Form?](#q-what-is-redux-form)|
+| 04. |[What are the main features of Redux Form?](#q-what-are-the-main-features-of-redux-form)|
+| 05. |[How Redux Form `initialValues` get updated from state?](#q-how-redux-form-initialvalues-get-updated-from-state)|
+| 06. |[What is formik?](#q-what-is-formik)|
 
 
 ### React Animations
@@ -260,8 +270,6 @@
 | 29. |[What is Redux DevTools?](#what-is-redux-devtools)|
 | 30. |[What are the features of Redux DevTools?](#q-what-are-the-features-of-redux-devtools)|
 | 31. |[What are Redux selectors and why to use them?](#q-what-are-redux-selectors-and-why-to-use-them)|
-| 32. |[What is Redux Form?](#q-what-is-redux-form)|
-| 33. |[What are the main features of Redux Form?](#q-what-are-the-main-features-of-redux-form)|
 | 34. |[How to add multiple middlewares to Redux?](#q-how-to-add-multiple-middlewares-to-redux)|
 | 35. |[How to set initial state in Redux?](#q-how-to-set-initial-state-in-redux)|
 | 36. |[How Relay is different from Redux?](#q-how-relay-is-different-from-redux)|
@@ -302,7 +310,6 @@
 | 18. |[Does the statics object work with ES6 classes in React?](#q-does-the-statics-object-work-with-es6-classes-in-react)|
 | 19. |[Can Redux only be used with React?](#q-can-redux-only-be-used-with-react)|
 | 20. |[Do you need to have a particular build tool to use Redux?](#q-do-you-need-to-have-a-particular-build-tool-to-use-redux)|
-| 21. |[How Redux Form `initialValues` get updated from state?](#q-how-redux-form-initialvalues-get-updated-from-state)|
 | 22. |[How React PropTypes allow different types for one prop?](#q-how-react-proptypes-allow-different-types-for-one-prop)|
 | 23. |[Can I import an SVG file as react component?](#q-can-i-import-an-svg-file-as-react-component)|
 | 24. |[Why are inline ref callbacks or functions not recommended?](#q-why-are-inline-ref-callbacks-or-functions-not-recommended)|
@@ -359,8 +366,6 @@
 | 75. |[How to prevent component from rendering?](#q-how-to-prevent-component-from-rendering)|
 | 76. |[What are the conditions to safely use the index as a key?](#q-what-are-the-conditions-to-safely-use-the-index-as-a-key)|
 | 77. |[Is it keys should be globally unique?](#q-is-it-keys-should-be-globally-unique)|
-| 78. |[What is the popular choice for form handling?](#q-what-is-the-popular-choice-for-form-handling)|
-| 79. |[What are the advantages of formik over redux form library?](#what-are-the-advantages-of-formik-over-redux-form-library)|
 | 80. |[Why do you not required to use inheritance?](#q-why-do-you-not-required-to-use-inheritance)|
 | 81. |[Can I use web components in react application?](#q-can-i-use-web-components-in-react-application)|
 | 82. |[What is dynamic import?](#q-what-is-dynamic-import)|
@@ -399,7 +404,6 @@
 | 115. |[Why do we use array destructuring (square brackets notation) in `useState`?](#q-why-do-we-use-array-destructuring-square-brackets-notation-in-usestate)|
 | 116. |[What are the sources used for introducing hooks?](#q-what-are-the-sources-used-for-introducing-hooks)|
 | 117. |[How do you access imperative API of web components?](#q-how-do-you-access-imperative-api-of-web-components)|
-| 118. |[What is formik?](#q-what-is-formik)|
 | 119. |[What are typical middleware choices for handling asynchronous calls in Redux?](#q-what-are-typical-middleware-choices-for-handling-asynchronous-calls-in-redux)|
 | 120. |[Is browsers understand JSX code?](#q-is-browsers-understand-jsx-code)|
 | 121. |[Describe about data flow in react?](#q-describe-about-data-flow-in-react)|
