@@ -129,7 +129,6 @@
 | 148. |[How to programmatically trigger click event in React?](#q-how-to-programmatically-trigger-click-event-in-react)|
 | 149. |[Is it possible to use async/await in plain React?](#q-is-it-possible-to-use-async-await-in-plain-react)|
 | 150. |[What are the common folder structures for React?](#q-what-are-the-common-folder-structures-for-react)|
-| 151. |[What are the popular packages for animation?](#q-what-are-the-popular-packages-for-animation)|
 | 152. |[What is the benefit of styles modules?](#q-what-is-the-benefit-of-styles-modules)|
 | 153. |[What are the popular React-specific linters?](#q-what-are-the-popular-react-specific-linters)|
 | 155. |[What are render props?](#q-what-are-render-props)|
@@ -190,8 +189,11 @@
 | 06. |[What is formik?](#q-what-is-formik)|
 
 
-### React Animations
- - 
+### React Animation
+
+|Sl.No|  Questions                                   |
+|-----|----------------------------------------------|
+| 01. |[What are the popular packages for animation?](#q-what-are-the-popular-packages-for-animation)|
 
 
 ### React Router
@@ -283,6 +285,14 @@
 | 02. |[How to test React Native apps?](#q-how-to-test-react-native-apps)|
 | 03. |[How to do logging in React Native?](#how-to-do-logging-in-react-native)|
 | 04. |[How to debug your React Native?](#q-how-to-debug-your-react-native)|
+| 05. |[What is the InteractionManager and how is it used? Why is it important?](#q-what-is-the-interactionmanager-and-how-is-it-used-why-is-it-important)|
+| 06. |[Explain some of the fundamental tradeoffs between building with React Native and building a “true” native app?](#q-explain-some-of-the-fundamental-tradeoffs-between-building-with-react-native-and-building-a-true-native-app)|
+| 07. |[Are compile-to-JS libraries like TypeScript or ClojureScript compatible with React Native? Why or why not?](#q-are-compile-to-js-libraries-like-typescript-or-clojurescript-compatible-with-react-native-why-or-why-not)|
+| 08. |[Which node_modules will run in React Native? How can we test for this?](#q-which-node-modules-will-run-in-react-native-how-can-we-test-for-this)|
+| 09. |[How does React Native achieve native performance for some of its animations?](#q-how-does-react-native-achieve-native-performance-for-some-of-its-animations)|
+| 10. |[Why do we use StyleSheet.create? What are the tradeoffs with this approach?](#q-why-do-we-use-stylesheetcreate-what-are-the-tradeoffs-with-this-approach)|
+| 11. |[Imagine you have an app which is a series of lists of images (e.g. like Instagram). The app seems to crash at random. What steps can we take to investigate and mitigate this in React Native?](#q-imagine-you-have-an-app-which-is-a-series-of-lists-of-images-eg-like-instagram-the-app-seems-to-crash-at-random-what-steps-can-we-take-to-investigate-and-mitigate-this-in-react-native)|
+| 12. |[Native apps that feel smooth often incorporate lots of little animations for state changes and transitions. How would you implement these behaviors?](#q-native-apps-that-feel-smooth-often-incorporate-lots-of-little-animations-for-state-changes-and-transitions-how-would-you-implement-these-behaviors)|
 
 
 
