@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "postcss-normalize": "^9.0.0",
     "react-styleguidist": "^11.0.8"
   }
 }
