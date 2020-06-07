@@ -6,6 +6,7 @@
     "bootstrap": "^4.5.0",
     "graphql": "^15.0.0",
     "graphql.macro": "^1.4.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
