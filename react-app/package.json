@@ -10,6 +10,7 @@
         "flow-bin": "^0.126.1",
         "graphql": "^15.0.0",
         "graphql.macro": "^1.4.2",
+        "http-proxy-middleware": "^1.0.4",
         "jest-enzyme": "^7.1.2",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
