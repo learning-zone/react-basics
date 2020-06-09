@@ -138,7 +138,7 @@
  -
 
 
-### React Components
+### React Components and Props
 
 |Sl.No|  Questions                                   |
 |-----|----------------------------------------------|
