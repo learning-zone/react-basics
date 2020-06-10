@@ -73,7 +73,12 @@
 | 79. |[What are the advantages of React?](#q-what-are-the-advantages-of-react)|
 | 80. |[What are the limitations of React?](#q-what-are-the-limitations-of-react)|
 | 81. |[What are error boundaries in React v16?](#q-what-are-error-boundaries-in-react-v16)|
-| 82. |[How error boundaries handled in React v15?](#q-how-error-boundaries-handled-in-react-v15)|
+| 82. |[In which scenarios error boundaries do not catch errors?](#q-in-which-scenarios-error-boundaries-do-not-catch-errors)|
+| 82. |[Why do not you need error boundaries for event handlers?](#q-why-do-not-you-need-error-boundaries-for-event-handlers)|
+| 83. |[What is the difference between try catch block and error boundaries?](#q-what-is-the-difference-between-try-catch-block-and-error-boundaries)|
+| 84. |[What is the behavior of uncaught errors in react 16?](#q-what-is-the-behavior-of-uncaught-errors-in-react-16)|
+| 85. |[What is the proper placement for error boundaries?](#q-what-is-the-proper-placement-for-error-boundaries)|
+| 86. |[What is the benefit of component stack trace from error boundary?](#q-what-is-the-benefit-of-component-stack-trace-from-error-boundary)|
 | 83. |[What are the recommended ways for static type checking?](#q-what-are-the-recommended-ways-for-static-type-checking)|
 | 84. |[What is the use of `react-dom` package?](#q-what-is-the-use-of-react-dom-package)|
 | 85. |[What is the purpose of render method of `react-dom`?](#q-what-is-the-purpose-of-render-method-of-react-dom)||
@@ -336,12 +341,6 @@
 | 38. |[What are the differences between Flux and Redux?](#q-what-are-the-differences-between-flux-and-redux)|
 | 39. |[What are the benefits of React Router V4?](#what-are-the-benefits-of-react-router-v4)|
 | 40. |[Can you describe about componentDidCatch lifecycle method signature?](#q-can-you-describe-about-componentdidcatch-lifecycle-method-signature)|
-| 41. |[In which scenarios error boundaries do not catch errors?](#q-in-which-scenarios-error-boundaries-do-not-catch-errors)|
-| 42. |[Why do not you need error boundaries for event handlers?](#q-why-do-not-you-need-error-boundaries-for-event-handlers)|
-| 43. |[What is the difference between try catch block and error boundaries?](#q-what-is-the-difference-between-try-catch-block-and-error-boundaries)|
-| 44. |[What is the behavior of uncaught errors in react 16?](#q-what-is-the-behavior-of-uncaught-errors-in-react-16)|
-| 45. |[What is the proper placement for error boundaries?](#q-what-is-the-proper-placement-for-error-boundaries)|
-| 46. |[What is the benefit of component stack trace from error boundary?](#q-what-is-the-benefit-of-component-stack-trace-from-error-boundary)|
 | 47. |[What is the required method to be defined for a class component?](#q-what-is-the-required-method-to-be-defined-for-a-class-component)|
 | 48. |[What are the possible return types of render method?](#q-what-are-the-possible-return-types-of-render-method)|
 | 49. |[What is the main purpose of constructor?](#what-is-the-main-purpose-of-constructor)|
