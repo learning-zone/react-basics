@@ -132,10 +132,7 @@
 | 152. |[What is the benefit of styles modules?](#q-what-is-the-benefit-of-styles-modules)|
 | 153. |[What are the popular React-specific linters?](#q-what-are-the-popular-react-specific-linters)|
 | 155. |[What are render props?](#q-what-are-render-props)|
-
-
-### React Architecture 
- -
+| 156. |[How React support composition and inheritance?](#q-how-react-support-composition-and-inheritance)|
 
 
 ### React Components and Props
