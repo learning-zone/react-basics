@@ -159,7 +159,7 @@
 | 13. |[What are the different phases of component lifecycle?](#q-what-are-the-different-phases-of-component-lifecycle)|
 | 14. |[What are the lifecycle methods of React?](#q-what-are-the-lifecycle-methods-of-react)|
 | 15. |[What are Higher-Order Components?](#q-what-are-higher-order-components)|
-| 16. |[How to create props proxy for HOC component?](#q-how-to-create-props-proxy-for-hoc-component)|
+| 16. |[How to create props proxy for higher-order components component?](#q-how-to-create-props-proxy-for-higher-order-components-component)|
 | 17. |[What would be the common mistake of function being called every time the component renders?](#q-what-would-be-the-common-mistake-of-function-being-called-every-time-the-component-renders)|
 | 18. |[What are stateless components?](#q-what-are-stateless-components)|
 | 19. |[What are stateful components?](#q-what-are-stateful-components)|
@@ -326,7 +326,7 @@
 | 23. |[Can I import an SVG file as react component?](#q-can-i-import-an-svg-file-as-react-component)|
 | 24. |[Why are inline ref callbacks or functions not recommended?](#q-why-are-inline-ref-callbacks-or-functions-not-recommended)|
 | 25. |[What is render hijacking in react?](#q-what-is-render-hijacking-in-react)|
-| 26. |[What are HOC factory implementations?](#q-what-are-hoc-factory-implementations)|
+| 26. |[What are higher-order components factory implementations?](#q-what-are-higher-order-components-factory-implementations)|
 | 27. |[How to pass numbers to React component?](#q-how-to-pass-numbers-to-react-component)|
 | 28. |[Do I need to keep all my state into Redux? Should I ever use react internal state?](#q-do-i-need-to-keep-all-my-state-into-redux-should-i-ever-use-react-internal-state)|
 | 29. |[What is the purpose of registerServiceWorker in React?](#what-is-the-purpose-of-registerserviceworker-in-react)|
@@ -425,7 +425,7 @@
 | 131. |[What is the purpose of eslint plugin for hooks?](#q-what-is-the-purpose-of-eslint-plugin-for-hooks)|
 | 132. |[What is the difference between Imperative and Declarative in React?](#q-what-is-the-difference-between-imperative-and-declarative-in-react)|
 | 133. |[What are the benefits of using typescript with reactjs?](#q-what-are-the-benefits-of-using-typescript-with-reactjs)|
-| 134. |[Write an HOC that reverses it’s input?](#q-write-an-hoc-that-reverses-it-s-input)|
-| 135. |[Write an HOC that supplies data from an API to it’s Passed Component?](#q-write-an-hoc-that-supplies-data-from-an-api-to-it-s-passed-component)|
-| 136. |[Write an HOC that implements shouldComponentUpdate to avoid reconciliation?](#q-write-an-hoc-that-implements-shouldcomponentupdate-to-avoid-reconciliation)|
-| 137. |[Write an HOC that uses React.Children.toArray to sort the children passed to it's Passed Component?](#q-write-an-hoc-that-uses-reactchildrentoarray-to-sort-the-children-passed-to-it-s-passed-component)|
+| 134. |[Write an higher-order components that reverses it’s input?](#q-write-an-higher-order-components-that-reverses-it-s-input)|
+| 135. |[Write an higher-order components that supplies data from an API to it’s Passed Component?](#q-write-an-higher-order-components-that-supplies-data-from-an-api-to-it-s-passed-component)|
+| 136. |[Write an higher-order components that implements shouldComponentUpdate to avoid reconciliation?](#q-write-an-higher-order-components-that-implements-shouldcomponentupdate-to-avoid-reconciliation)|
+| 137. |[Write an higher-order components that uses React.Children.toArray to sort the children passed to it's Passed Component?](#q-write-an-higher-order-components-that-uses-reactchildrentoarray-to-sort-the-children-passed-to-it-s-passed-component)|
