@@ -327,7 +327,6 @@
 #### Q. ***Why do you use Redux and Flux?***
 #### Q. ***How React Router and its techniques differ from more traditional JavaScript routers like Backbone’s Router?***
 #### Q. ***What is the difference between setState() and forceUpdate()?***
-#### Q. ***When would you use setState() and forceUpdate()?***
 #### Q. ***Which feature can we use to cause a component to render only when its ID changes?***
 #### Q. ***What kind of tools might you use in the build steps to optimize the compiled output of the React code?***
 #### Q. ***What is high-level component lifecycle in React.js?***
