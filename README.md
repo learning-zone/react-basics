@@ -19,19 +19,19 @@
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
 #### Q. ***What are controlled and uncontrolled components in React?***
-#### Q. ***Explain the components of Redux.
+#### Q. ***Explain the components of Redux?***
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***What is the difference between React Native and React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
-#### Q. ***List some of the major advantages of React.
+#### Q. ***List some of the major advantages of React?***
 #### Q. ***What are the limitations of React?***
 #### Q. ***What do you understand by Virtual DOM? Explain its working?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
-#### Q. ***What do you understand from “In React, everything is a component.”
+#### Q. ***What do you understand from “In React, everything is a component.”?***
 #### Q. ***What is a state in React and how is it used?***
-#### Q. ***Differentiate between states and props.
+#### Q. ***Differentiate between states and props?***
 #### Q. ***How can you update the state of a component?***
 #### Q. ***What is arrow function in React? How is it used?***
 #### Q. ***Differentiate between stateful and stateless components?***
@@ -54,9 +54,9 @@
 #### Q. ***How might React handle or restrict Props to certain types, or require certain Props to exist?***
 #### Q. ***What is prop drilling and how can you avoid it?***
 #### Q. ***What is the key architectural difference between a JavaScript library such as React and a JavaScript framework such as Angular? How would that impact the decision for a project to use one versus the other?***
-#### Q. ***Explain the positives and negatives of shallow rendering components in tests.
+#### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
 #### Q. ***If you wanted a component to perform an action only once when the component initially rendered—e.g., make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?***
-#### Q. ***What are the most common approaches for styling a React application?
+#### Q. ***What are the most common approaches for styling a React application??***
 #### Q. ***How can automated tooling be used to improve the accessibility of a React application?***
 #### Q. ***If you were working on a React application that was rendering a page very slowly, how would you go about investigating and fixing the issue?***
 #### Q. ***What is the purpose of using super constructor with props argument?***
@@ -75,8 +75,8 @@
 #### Q. ***When would you use StrictMode component in React?***
 #### Q. ***How does React renderer work exactly when we call setState?***
 #### Q. ***How to avoid the need for binding in React?***
-#### Q. ***Draw a diagram showing how data flows through Redux.
-#### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples.
+#### Q. ***Draw a diagram showing how data flows through Redux?***
+#### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples?***
 #### Q. ***Explain JSX with a code example. Why can’t browsers read it?***
 #### Q. ***Give a code example to demonstrate embedding two or more components into one?***
 #### Q. ***How does the state differ from props in React?***
@@ -120,8 +120,8 @@
 #### Q. ***What happens when you call setState?***
 #### Q. ***What are keys in React and why are they important?***
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
-#### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )
-#### Q. ***Describe how events are handled in React.
+#### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
+#### Q. ***Describe how events are handled in React?***
 #### Q. ***What are Components in ReactJS ?***
 #### Q. ***How to use Events in ReactJS ?***
 #### Q. ***How is flux different from redux?***
@@ -231,7 +231,7 @@
 #### Q. ***How can you share an element in the parsing?***
 #### Q. ***Ho can you re-render a component without using setState() function?***
 #### Q. ***Can you update props in react?***
-#### Q. ***Explain the term ‘Restructuring.’
+#### Q. ***Explain the term ‘Restructuring.’?***
 #### Q. ***Can you update the values of props?***
 #### Q. ***Explain the meaning of Mounting and Demounting?***
 #### Q. ***What is the use of ‘prop-types’ library?***
@@ -250,7 +250,7 @@
 #### Q. ***Explain type-checking with PropTypes in React?***
 #### Q. ***What is the difference between this.state.name=”Thomas” and this.setState({name: “Thomas”}) ?***
 #### Q. ***What are Pure Functions and how they are used in reducers?***
-#### Q. ***Explain the purpose of providing reflection ().
+#### Q. ***Explain the purpose of providing reflection()?***
 #### Q. ***What is a situation in response, and how is it used?***
 #### Q. ***What is the response rat?***
 #### Q. ***How many external elements are there in JSX output?***
@@ -282,7 +282,7 @@
 #### Q. ***How to display styles based on props value?***
 #### Q. ***Explain strict mode in React with example?***
 #### Q. ***How to convert text to uppercase on user input entered?***
-#### Q. ***Give an example on how to create props proxy for HOC component.
+#### Q. ***Give an example on how to create props proxy for HOC component?***
 #### Q. ***How to set a dynamic key for state?***
 #### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
 #### Q. ***Can you name the pointer events in react?***
