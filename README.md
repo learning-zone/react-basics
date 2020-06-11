@@ -311,7 +311,7 @@
 #### Q. ***How to splitting the reducers?***
 #### Q. ***Explain usage of react with redux application?***
 #### Q. ***What is the benchmark in react comparing another javascript framework?***
-#### Q. ***what is the diff algorithem?***
+#### Q. ***How Diff Algorithm is implemented in Reactjs?***
 #### Q. ***How to render the react DOM in browser?***
 #### Q. ***What is the DOM?***
 #### Q. ***What is the main goal of React Fiber?***
