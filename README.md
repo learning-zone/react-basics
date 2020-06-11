@@ -6,11 +6,22 @@
 <br/>
 
 
+#### Q. ***Why React is used?***
+#### Q. ***Does ReactJS use HTML?***
 #### Q. ***How React works? How Virtual-DOM works in React?***
+#### Q. ***What are Components in ReactJS ?***
+#### Q. ***How ReactJS framework is different as compared to others?***
+#### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
+#### Q. ***List some of the major advantages of React?***
+#### Q. ***What are the limitations of React?***
+#### Q. ***What do you understand by Virtual DOM? Explain its working?***
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 #### Q. ***What is React.createClass?***
 #### Q. ***What is ReactDOM and what is the difference between ReactDOM and React?***
 #### Q. ***What are the differences between a class component and functional component?***
+#### Q. ***What are the distinct features of React?***
+#### Q. ***What are the differences between React and Angular?***
+#### Q. ***What is the relation between React and its components?***
 #### Q. ***What is the difference between state and props?***
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 #### Q. ***What is Redux?***
@@ -24,10 +35,6 @@
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***What is the difference between React Native and React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
-#### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
-#### Q. ***List some of the major advantages of React?***
-#### Q. ***What are the limitations of React?***
-#### Q. ***What do you understand by Virtual DOM? Explain its working?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
 #### Q. ***What is a state in React and how is it used?***
@@ -86,9 +93,6 @@
 #### Q. ***What do you understand by Props in React?***
 #### Q. ***Where would you put AJAX calls in your React code?***
 #### Q. ***Write a sample code to update the state of a component in React?***
-#### Q. ***What are the distinct features of React?***
-#### Q. ***What are the differences between React and Angular?***
-#### Q. ***What is the relation between React and its components?***
 #### Q. ***What are states in React?***
 #### Q. ***Can parent component change value in States and Props?***
 #### Q. ***Can changes be made inside the component?***
@@ -96,10 +100,6 @@
 #### Q. ***Define Reducers in React?***
 #### Q. ***What is a store in Redux?***
 #### Q. ***Why do we need a Router to React?***
-#### Q. ***Why React is used?***
-#### Q. ***How ReactJS framework is different as compared to others?***
-#### Q. ***Does ReactJS use HTML?***
-#### Q. ***When ReactJS released?***
 #### Q. ***How the parent and child components exchange information?***
 #### Q. ***What is the higher-order component?***
 #### Q. ***How to embed two components in One component?***
@@ -122,7 +122,6 @@
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
-#### Q. ***What are Components in ReactJS ?***
 #### Q. ***How to use Events in ReactJS ?***
 #### Q. ***How is flux different from redux?***
 #### Q. ***What is the purpose of render() function in ReactJS?***
