@@ -335,3 +335,5 @@
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
 #### Q. ***What is Flux concept in ReactJS? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
 #### Q. What is Suspense in React?
+#### Q. What is difference between component and container in react redux?
+
