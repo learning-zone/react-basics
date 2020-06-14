@@ -338,5 +338,7 @@
 #### Q. What is difference between component and container in react redux?
 #### Q. What is the difference between NavLink and Link?
 #### Q. What is withRouter for in react-router-dom?
+#### Q. How to display API data using Axios with React?
+
 
 
