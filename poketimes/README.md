@@ -1,6 +1,6 @@
 ## Poke'Times Project
 
-![ToDo Project](https://github.com/learning-zone/react-interview-questions/blob/master/assets/poketimes-project.png)
+![Poke'Times Project](https://github.com/learning-zone/react-interview-questions/blob/master/assets/poketimes-project.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
