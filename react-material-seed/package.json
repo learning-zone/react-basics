@@ -1,9 +1,9 @@
 {
-  "name": "react-material-dashboard",
-  "author": "DeviasIO",
-  "email": "contact@devias.io",
+  "name": "react-material-seed",
+  "author": "",
+  "email": "",
   "licence": "MIT",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "start": "react-scripts start",
