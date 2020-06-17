@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import UserStore    from './stores/UserStore';
 import LoginForm    from './LoginForm';
-import InputField   from './InputField';
 import SubmitButton from './SubmitButton';
 import './App.css';
 
@@ -15,7 +14,7 @@ class App extends Component {
         method: 'post',
         headers: {
           'Accept': 'application/json',
-          'Cotent-type': 'application/json'
+          'Cotent-Type': 'application/json'
         }
       });
 
@@ -44,7 +43,7 @@ class App extends Component {
         method: 'post',
         headers: {
           'Accept': 'application/json',
-          'Cotent-type': 'application/json'
+          'Cotent-Type': 'application/json'
         }
       });
 
