@@ -3,16 +3,15 @@ const app = express();
 const path = require('path');
 const mysql = require('mysql');
 const session = require('express-session');
-const MySqlStore = require('express-mysql-session')(session);
+const MySQLStore = require('express-mysql-session')(session);
 const Router = require('./Router');
-const MySQLStore = require('express-mysql-session');
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
 
 // Database
 const db = mysql.createConnection({
-    host: '127.0.0.1',
+    host: 'localhost',
     user: 'root',
     password: 'root',
     database: 'learning_zone'

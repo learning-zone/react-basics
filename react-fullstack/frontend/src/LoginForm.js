@@ -3,7 +3,7 @@ import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 import UserStore from './stores/UserStore';
 
-class LoginForm extends Component {
+class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,7 +41,8 @@ class LoginForm extends Component {
       buttonDisabled: true
     })
 
-    try{
+    try {
+
       let res = await fetch('/login', {
         method: 'post',
         headers: {

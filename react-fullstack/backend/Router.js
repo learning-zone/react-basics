@@ -1,6 +1,5 @@
 const md5 = require('md5');
 
-
 class Router {
 
     constructor(app, db) {
@@ -11,11 +10,15 @@ class Router {
     
     login(app, db) {
 
+        
         app.post('/login', (req, res) => {
             let username = req.body.username;
             let password = req.body.password;
 
-            //username = username.toLowerCase();
+            console.log("req: "+ (req.body)+ ", res: "+(res));
+
+            console.log("UserName: "+ username); return false;
+            username = username.toLowerCase();
 
             if(username.length > 12 || password.length > 12) {
                 res.json({
