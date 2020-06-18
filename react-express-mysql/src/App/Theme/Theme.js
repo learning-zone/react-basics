@@ -1,8 +1,8 @@
 const Theme = {
-  primaryColor: '#d81159',
+  primaryColor: '#0066b3',
   primaryTextColor: '#444C56',
   secondaryTextColor: '#555F6B',
-  primaryButtonColor: '#d81159'
+  primaryButtonColor: '#0066b3'
 }
 
 export default Theme

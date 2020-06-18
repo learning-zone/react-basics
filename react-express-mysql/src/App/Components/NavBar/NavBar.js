@@ -40,7 +40,7 @@ const NavLink = styled.li`
   transition: all 0.2s linear;
 
   &:hover {
-    background-color: #f36b9d;
+    background-color: #00477d;
   }
 `
 
@@ -48,7 +48,7 @@ const index = () => {
   return (
     <NavBar>
       <NavBarContainer>
-        <Brand>Logo</Brand>
+        <Brand>React Seed</Brand>
         <NavLinks>
           <NavLink>Home</NavLink>
           <NavLink>About Us</NavLink>
