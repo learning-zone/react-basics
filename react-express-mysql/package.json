@@ -2,6 +2,12 @@
   "name": "react-express-mysql",
   "version": "0.1.0",
   "private": true,
+  "author": "pradeep.vwa@gmail.com",
+  "description": "React, Material-UI, Express, MySQL App",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+  },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
