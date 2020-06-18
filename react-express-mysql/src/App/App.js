@@ -8,7 +8,7 @@ import Layout from './Components/Layout/Layout'
 import Routes from './Routes/Routes';
 import Loader from './Components/Loader/Loader'
 import { GlobalStyles } from './Styles'
-import ContentWrapper from './Components/ContentWrapper'
+import ContentWrapper from './Components/ContentWrapper/ContentWrapper'
 
 const history = createBrowserHistory()
 

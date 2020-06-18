@@ -8,8 +8,8 @@ const PrimaryTitle = styled.h1`
   font-weight: 400;
 `
 
-const index = () => {
-  return <PrimaryTitle>React Seed Project with Styled Components.</PrimaryTitle>
+const About = () => {
+  return <PrimaryTitle>About Page !</PrimaryTitle>
 }
 
-export default index
+export default About
