@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Index = () => {
+const Loader = () => {
   const classes = useStyles()
   return (
     <Backdrop className={classes.backdrop} open>
@@ -19,4 +19,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Loader

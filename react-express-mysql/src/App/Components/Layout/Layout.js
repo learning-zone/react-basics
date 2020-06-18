@@ -2,7 +2,7 @@ import React from 'react'
 
 import NavBar from '../NavBar'
 
-const index = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <NavBar />
@@ -11,4 +11,4 @@ const index = ({ children }) => {
   )
 }
 
-export default index
+export default Layout

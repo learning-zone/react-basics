@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 const Home = React.lazy(() => import('../Pages/Home'))
 const About = React.lazy(() => import('../Pages/About'))
 
-const index = () => {
+const Routes = () => {
   return (
     <Switch>
       <Route exact={true} path='/' component={Home} />
@@ -13,4 +13,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Routes
