@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import LeftPanel from '../../Theme/LeftPanel';
+import Icon from '@material-ui/core/Icon';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Grid from '@material-ui/core/Grid';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 
@@ -54,9 +58,11 @@ const index = () => {
       <NavBarContainer>
         <Brand>React Seed</Brand>
         <NavLinks>
-          <NavLink>Home</NavLink>
-          <NavLink>About Us</NavLink>
-          <NavLink>Login</NavLink>
+          <NavLink>
+            <Grid item xs={20}>
+              <ExitToAppIcon />
+            </Grid>
+          </NavLink>
         </NavLinks>
       </NavBarContainer>
     </NavBar>
