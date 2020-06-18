@@ -1,5 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import LeftPanel from '../../Theme/LeftPanel';
+
+
 
 const NavBar = styled.header`
   width: 100%;
@@ -46,6 +49,7 @@ const NavLink = styled.li`
 
 const index = () => {
   return (
+    <div>
     <NavBar>
       <NavBarContainer>
         <Brand>React Seed</Brand>
@@ -56,6 +60,8 @@ const index = () => {
         </NavLinks>
       </NavBarContainer>
     </NavBar>
+    <LeftPanel />
+    </div>
   )
 }
 
