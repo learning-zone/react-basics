@@ -1,4 +1,20 @@
-This is a Seed Project for starting out an application.
+## React Digital Experience
+
+**Live Demo** : [Angular-Material-Practice](https://angular-material8.firebaseapp.com)
+
+### Project Description
+
+- *ToDo*
+
+
+### This Projects Covers
+
+- Form Control
+- Data Tables
+- Layout
+- Buttons
+- Popups
+- RestAPI Call
 
 ## Technologies Used:
 
@@ -6,6 +22,12 @@ This is a Seed Project for starting out an application.
 - Material UI for Component Library
 - React Router DOM for Routing
 - Testing Framework Jest
+- ExpressJS
+- NodeJS
+- MySQL
+- Session
+- JWT Authentication 
+
 
 ## Folder Structure
 
@@ -46,3 +68,31 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+### Deploying an Angular App to Firebase Hosting
+
+**1. Build**
+```bash
+ng build --prod
+```
+**2. Install the Firebase command line tools**
+```bash
+npm install -g firebase-tools
+```
+**3. Login using the Firebase CLI & initialize your project**
+```bash
+firebase login
+```
+**4. Initialize the project using this command**
+```bash
+firebase init
+```
+**5. Deploy to Firebase Hosting**
+```bash
+firebase deploy
+```
+
+### Project Output
+
+- *ToDo*
