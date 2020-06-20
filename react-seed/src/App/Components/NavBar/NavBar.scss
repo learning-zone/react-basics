@@ -1,0 +1,30 @@
+.menu {
+  float: left;
+}
+
+.MuiButton-root {
+  color: #fff !important;
+  font-size: 1.5rem !important;
+  line-height: 0.02 !important;
+  text-transform: initial !important;
+}
+
+.MuiMenu-paper{
+  margin-top: 40px !important;
+}
+
+.MuiMenuItem-root {
+  font-size: 1.5rem !important;
+  width: 200px !important;
+}
+
+.menu-icon {
+  color: rgba(0, 0, 0, .5);
+  padding-right: 2px;
+  margin: 4px;
+}
+
+.caret-icon {
+  color: #fff;
+  margin-left: 2px;
+}
