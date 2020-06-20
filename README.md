@@ -341,6 +341,7 @@
 #### Q. How to display API data using Axios in React?
 #### Q. What is difference between react hooks and lifecycle methods?
 #### Q. How to translate your React app with react-i18next?
+#### Q. How rxjs is used in react js for state management
 
 
 
