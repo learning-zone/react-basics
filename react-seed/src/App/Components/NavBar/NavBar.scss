@@ -4,9 +4,9 @@
 
 .MuiButton-root {
   color: #fff !important;
-  font-size: 1.5rem !important;
-  line-height: 0.02 !important;
-  text-transform: initial !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+  font-size: 0.99rem;
 }
 
 .MuiMenu-paper{
@@ -14,7 +14,7 @@
 }
 
 .MuiMenuItem-root {
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   width: 200px !important;
 }
 
@@ -27,4 +27,12 @@
 .caret-icon {
   color: #fff;
   margin-left: 2px;
+}
+
+.menu-link {
+  color: rgba(0, 0, 0, .8);
+}
+
+.MuiSvgIcon-root {
+  font-size: 1.2rem !important;
 }

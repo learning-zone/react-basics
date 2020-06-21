@@ -9,12 +9,13 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { Link } from "react-router-dom";
 import './NavBar.scss';
 
 
 const NavBar = styled.header`
   width: 100%;
-  height: 7rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +32,7 @@ const NavBarContainer = styled.div`
 `
 
 const Brand = styled.div`
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #fff;
 `
 
@@ -39,16 +40,17 @@ const NavLinks = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 7rem;
+  height: 4rem;
 `
 
 const NavLink = styled.li`
-  font-size: 1.5rem;
+  font-size: .9rem;
+  font-weight: 500;
   color: #fff;
-  padding: 2rem;
+  padding: 1rem;
   cursor: pointer;
   transition: all 0.2s linear;
-  line-height: 3rem;
+  line-height: 2rem;
 
   &:hover {
     background-color: #00477d;
@@ -75,7 +77,7 @@ const Index = () => {
         <NavLinks>
           <NavLink>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Menu-1 <ArrowDropDownIcon fontSize="large" className="caret-icon" />
+                Menu-1 <ArrowDropDownIcon fontSize="default" className="caret-icon" />
               </Button>
               <Menu
                 id="simple-menu"
@@ -84,15 +86,15 @@ const Index = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}><DashboardIcon fontSize="large" className="menu-icon" /> Dashboard</MenuItem>
-                <MenuItem onClick={handleClose}><PeopleIcon fontSize="large" className="menu-icon" /> Customers</MenuItem>
-                <MenuItem onClick={handleClose}><BarChartIcon fontSize="large" className="menu-icon" /> Reports</MenuItem>
+                <Link className="menu-link" to="/"><MenuItem onClick={handleClose}><DashboardIcon fontSize="large" className="menu-icon" />Dashboard</MenuItem></Link>
+                <Link className="menu-link" to="/customer"><MenuItem onClick={handleClose}><PeopleIcon fontSize="large" className="menu-icon" />Customers</MenuItem></Link>
+                <Link className="menu-link" to="/reports"><MenuItem onClick={handleClose}><BarChartIcon fontSize="large" className="menu-icon" />Reports</MenuItem></Link>
               </Menu>
           </NavLink>
           <NavLink>Menu-2</NavLink>
           <NavLink>
             <Grid item xs={8} >
-              <PowerSettingsNewIcon fontSize="large" />
+              <PowerSettingsNewIcon fontSize="default" />
             </Grid>
           </NavLink>
         </NavLinks>
