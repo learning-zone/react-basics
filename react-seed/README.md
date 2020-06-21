@@ -2,12 +2,18 @@
 
 [Live Project](https://react-digital-experience.web.app/)
 
+
+### Project Output
+
+![Project Image](https://github.com/learning-zone/react-interview-questions/blob/master/assets/react-store.png)
+
+
 ### Project Description
 
 - *ToDo*
 
 
-### This Projects Covers
+### This Project Covers
 
 - React Form
 - Data Tables
@@ -69,7 +75,7 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-## Deploying an Angular App to Firebase Hosting
+## Steps to deploy React App to Firebase 
 
 **1. Build**
 ```bash
@@ -91,7 +97,3 @@ firebase init
 ```bash
 firebase deploy
 ```
-
-### Project Output
-
-- *ToDo*
