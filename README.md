@@ -342,3 +342,4 @@
 #### Q. What is difference between react hooks and lifecycle methods?
 #### Q. How to translate your React app with react-i18next?
 #### Q. How RxJS is used in React for state management?
+#### Q. What is difference between useEffect vs. componentDidMount?
