@@ -1,28 +1,33 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import Table from "./Table";
 
 
-class SiteMap extends Component {
-
+export default class SiteMap extends React.Component {
   state = {
-    persons: []
+    result: [],
+    column_name: [
+      { title: "Name", field: "Sitename" },
+      { title: "Undecorated Name", field: "UndecoratedSitename" },
+      { title: "URL", field: "SiteURL" },
+      { title: "Date", field: "ModificationTime" }
+    ]
   }
 
   componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
+    axios.get(`/api/sitename`)
       .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
+        const result = res.data.recordset;
+        this.setState({ result });
       })
   }
 
   render() {
     return (
-      <ul>
-        { this.state.persons.map(person => <li key={person.id}>{person.name}</li>)}
-      </ul>
+     <div className="SiteMap">
+      <Table col={this.state.column_name} data={this.state.result} />
+     </div>
     )
   }
 }
 
-export default SiteMap

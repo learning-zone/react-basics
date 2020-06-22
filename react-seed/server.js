@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 /**
  * Register Routes
  */
-app.get('/sitename', routes);
+app.get('/api/sitename', routes);
    
 
 //Setting up server

@@ -11,6 +11,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ComputerIcon from '@material-ui/icons/Computer';
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import './NavBar.scss';
 
 
@@ -58,7 +59,7 @@ const NavLink = styled.li`
   }
 `
 
-const Index = () => {
+const Index = (props) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -70,11 +71,16 @@ const Index = () => {
     setAnchorEl(null);
   };
 
+  const routeChange = () => {
+    let path = `/`;
+    props.history.push(path);
+  };
+
   return (
     <div>
     <NavBar>
       <NavBarContainer>
-        <Brand>React Digital Experience</Brand>
+        <Brand onClick={routeChange}>React Digital Experience</Brand>
         <NavLinks>
           <NavLink>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>

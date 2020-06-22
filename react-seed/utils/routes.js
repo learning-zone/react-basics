@@ -7,7 +7,7 @@ const config = require("./config");
 /**
  * SQL-Server Connection Configuration
  */
-router.get('/sitename', function (req, res, next) {
+router.get('/api/sitename', function (req, res, next) {
    
     // connect to your database
     sql.connect(config, function (err) {
@@ -18,12 +18,11 @@ router.get('/sitename', function (req, res, next) {
         var request = new sql.Request();
            
         // query to the database and get the records
-        const stmt = `SELECT TOP 10 [SiteID] 
-                        ,[SiteURL]
-                        ,[Sitename]
+        const stmt = `SELECT TOP 20 [Sitename] 
                         ,[UndecoratedSitename]
+                        ,[SiteURL]
                         ,[ModificationTime]
-                    FROM [BFEnterprise].[dbo].[SITENAMEMAP] ORDER BY [SiteID]`;
+                    FROM [BFEnterprise].[dbo].[SITENAMEMAP] ORDER BY [Sitename]`;
 
         request.query(stmt, function (err, recordset) {
             
