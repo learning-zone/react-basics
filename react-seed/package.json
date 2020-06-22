@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "express": "^4.17.1",
+    "material-table": "^1.62.0",
     "mssql": "^6.2.0",
     "multer": "^1.4.2",
     "node-sass": "^4.14.1",
@@ -28,7 +29,7 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run-script build && node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
