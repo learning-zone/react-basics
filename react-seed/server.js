@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const routes = require('./utils/routes');
 
 /**
  * Express Server Configuration for React App
@@ -15,33 +15,10 @@ app.get('/', function (req, res) {
 
 
 /**
- * SQL-Server Connection Configuration
+ * Register Routes
  */
-app.get('/user', function (req, res) {
+app.get('/sitename', routes);
    
-    const sql = require("mssql");
-    const config = require("./utils/config");
-
-    
-    // connect to your database
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-           
-        // query to the database and get the records
-        request.query('SELECT TOP 10 [name] FROM [BFEnterprise].[dbo].[ACTION_DEFS]', function (err, recordset) {
-            
-            if (err) console.log(err)
-
-            // send records as a response
-            res.send(recordset);
-            
-        });
-    });
-});
 
 //Setting up server
 const server = app.listen(process.env.PORT || 3000, () => {
