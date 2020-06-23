@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 const Dashboard = React.lazy(() => import('../Pages/Dashboard/Dashboard'));
 const Customer = React.lazy(() => import('../Pages/Customer/Customer'));
-const Form = React.lazy(() => import('../Pages/Form/Form'));
+const Form = React.lazy(() => import('../Pages/Form/ReactForm'));
 const SiteMap = React.lazy(() => import('../Pages/SiteMap/SiteMap'));
 
 const Routes = () => {
