@@ -70,16 +70,11 @@ const Index = (props) => {
     setAnchorEl(null);
   };
 
-  const routeChange = () => {
-    let path = `/`;
-    props.history.push(path);
-  };
-
   return (
     <div>
     <NavBar>
       <NavBarContainer>
-        <Brand onClick={routeChange}>React Digital Experience</Brand>
+        <Brand><Link style={{color: '#fff'}} to="/">React Digital Experience</Link></Brand>
         <NavLinks>
           <NavLink>
               <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
