@@ -8,8 +8,8 @@ const PrimaryTitle = styled.h1`
   font-weight: 400;
 `
 
-const Reports = () => {
-  return <PrimaryTitle>Reports Page !</PrimaryTitle>
+const Form = () => {
+  return <PrimaryTitle>Form Page !</PrimaryTitle>
 }
 
-export default Reports
+export default Form

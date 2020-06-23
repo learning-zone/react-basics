@@ -11,6 +11,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ComputerIcon from '@material-ui/icons/Computer';
 import { Link } from "react-router-dom";
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import { useHistory } from 'react-router-dom';
 import './NavBar.scss';
 
@@ -95,7 +96,7 @@ const Index = (props) => {
               >
                 <Link className="menu-link" to="/"><MenuItem onClick={handleClose}><DashboardIcon fontSize="large" className="menu-icon" />Dashboard</MenuItem></Link>
                 <Link className="menu-link" to="/customer"><MenuItem onClick={handleClose}><PeopleIcon fontSize="large" className="menu-icon" />Customers</MenuItem></Link>
-                <Link className="menu-link" to="/reports"><MenuItem onClick={handleClose}><BarChartIcon fontSize="large" className="menu-icon" />Reports</MenuItem></Link>
+                <Link className="menu-link" to="/form"><MenuItem onClick={handleClose}><FormatListBulletedIcon fontSize="large" className="menu-icon" />Form</MenuItem></Link>
                 <Link className="menu-link" to="/sitemap"><MenuItem onClick={handleClose}><ComputerIcon fontSize="large" className="menu-icon" />SiteMap</MenuItem></Link>
               </Menu>
           </NavLink>
