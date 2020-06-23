@@ -7,12 +7,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ComputerIcon from '@material-ui/icons/Computer';
 import { Link } from "react-router-dom";
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import { useHistory } from 'react-router-dom';
 import './NavBar.scss';
 
 
