@@ -50,7 +50,7 @@ const Table = props => {
       console.log(props.data)
     }
       <MaterialTable
-        title="Site Map"
+        title="Users Details"
         columns={gridData.columns}
         data={props.data}
         editable={{

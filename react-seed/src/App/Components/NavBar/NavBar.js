@@ -8,9 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ComputerIcon from '@material-ui/icons/Computer';
 import { Link } from "react-router-dom";
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import './NavBar.scss';
 
 
@@ -95,7 +95,7 @@ const Index = (props) => {
                 <Link className="menu-link" to="/"><MenuItem onClick={handleClose}><DashboardIcon fontSize="large" className="menu-icon" />Dashboard</MenuItem></Link>
                 <Link className="menu-link" to="/customer"><MenuItem onClick={handleClose}><PeopleIcon fontSize="large" className="menu-icon" />Customers</MenuItem></Link>
                 <Link className="menu-link" to="/form"><MenuItem onClick={handleClose}><FormatListBulletedIcon fontSize="large" className="menu-icon" />Form</MenuItem></Link>
-                <Link className="menu-link" to="/sitemap"><MenuItem onClick={handleClose}><ComputerIcon fontSize="large" className="menu-icon" />SiteMap</MenuItem></Link>
+                <Link className="menu-link" to="/users"><MenuItem onClick={handleClose}><PeopleOutlineIcon fontSize="large" className="menu-icon" />Users</MenuItem></Link>
               </Menu>
           </NavLink>
           <NavLink>Menu-2</NavLink>

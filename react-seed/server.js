@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * Register Routes
  */
-app.get('/api/sitename', routes);
+app.get('/api/get/user', routes);
 app.post('/api/post/user', routes);
    
 

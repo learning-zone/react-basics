@@ -7,7 +7,7 @@ const config = require("./config");
 /**
  * API to GET User Details
  */
-router.get('/api/sitename', function (req, res, next) {
+router.get('/api/get/user', function (req, res, next) {
    
     // connect to your database
     sql.connect(config, function (err) {
@@ -18,11 +18,9 @@ router.get('/api/sitename', function (req, res, next) {
         var request = new sql.Request();
            
         // query to the database and get the records
-        const stmt = `SELECT TOP 20 [Sitename] 
-                        ,[UndecoratedSitename]
-                        ,[SiteURL]
-                        ,[ModificationTime]
-                    FROM [BFEnterprise].[dbo].[SITENAMEMAP] ORDER BY [Sitename]`;
+        const stmt = `SELECT TOP 20 [name] 
+                        ,[email]
+                    FROM [BFEnterprise].[webui].[TEST_USERS] ORDER BY [id]`;
 
         request.query(stmt, function (err, recordset) {
             
