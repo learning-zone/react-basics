@@ -2,11 +2,13 @@ import React from 'react';
 import axios from "axios"; 
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import Alert from '@material-ui/lab/Alert';
 import './ReactForm.scss';
 
 
 export default class ReactForm extends React.Component {
     state = {
+        hide: 'hide',
         formData: {
             name: '',
             email: '',
@@ -53,23 +55,38 @@ export default class ReactForm extends React.Component {
         name: this.state.formData.name,
         email: this.state.formData.email
       }
-      console.dir("React POST Details: "+ userDetails);
       axios.post('api/post/user', { userDetails })
       .then(res => {
-        console.log('React Response: ' + res.data);
-        console.log('React Response: ' + res.status);
-        console.log('React Response: ' + res.statusText);
-        console.log('React Response: ' + res.headers);
-        console.log('React Response: ' + res.config);
+        console.log('Response Status: ' + res.status);
+        console.log('Response StatusText: ' + res.statusText);
+
+        const hide = '';
+        this.setState({ hide });
+
       }, (error) => {
         console.log('React Error: ' + error);
       });
+      
+      this.setState({
+        formData: {
+            name: '',
+            email: '',
+        },
+        submitted: false,
+      });
     }
+
+    handleClose = () => {
+      const hide = 'hide';
+      this.setState({ hide });
+    };
 
     render() {
         const { formData, submitted } = this.state;
         return (
+          
           <div className="react-form">
+            <Alert onClose={this.handleClose} className={this.state.hide}>Record Saved !</Alert>
             <ValidatorForm
                 ref={r => (this.form = r)}
                 onSubmit={this.handleSubmit}
