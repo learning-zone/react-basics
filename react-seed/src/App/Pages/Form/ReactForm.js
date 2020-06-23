@@ -71,8 +71,7 @@ export default class ReactForm extends React.Component {
         formData: {
             name: '',
             email: '',
-        },
-        submitted: false,
+        }
       });
     }
 
