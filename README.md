@@ -346,3 +346,4 @@
 #### Q. ***What are the differences between call and put in redux-saga?***
 #### Q. ***What is the mental model of redux-saga?*** 
 #### Q. ***How Relay is different from Redux?*** 
+#### Q. ***What are the important Redux Terminology?***
