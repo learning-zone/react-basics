@@ -12,9 +12,8 @@
 #### Q. ***List some of the major advantages and limitations of React?***
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 #### Q. ***What is React.createClass?***
-#### Q. ***What is ReactDOM and what is the difference between ReactDOM and React?***
+#### Q. ***What is ReactDOM and What is the difference between ReactDOM and React?***
 #### Q. ***What are the differences between a class component and functional component?***
-#### Q. ***What are the differences between React and Angular?***
 #### Q. ***What is the difference between state and props?***
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
@@ -39,7 +38,6 @@
 #### Q. ***What is the significance of keys in React?***
 #### Q. ***What were the major problems with MVC framework?***
 #### Q. ***What do you understand by “Single source of truth”?***
-#### Q. ***Explain the role of Reducer?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 #### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items’ significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
@@ -56,7 +54,6 @@
 #### Q. ***Why should not we update the state directly?***
 #### Q. ***What do these three dots (...) in React do?***
 #### Q. ***What are React Hooks? What are advantages of using React Hooks?***
-#### Q. ***Describe Flux vs MVC?***
 #### Q. ***What is the difference between a controlled component and an uncontrolled component?***
 #### Q. ***What is React Fiber?***
 #### Q. ***How to apply validation on Props in ReactJS?***
@@ -80,7 +77,6 @@
 #### Q. ***Can parent component change value in States and Props?***
 #### Q. ***Can changes be made inside the component?***
 #### Q. ***Can we make changes inside child components?***
-#### Q. ***Define Reducers in React?***
 #### Q. ***Why do we need a Router to React?***
 #### Q. ***How the parent and child components exchange information?***
 #### Q. ***What is the higher-order component?***
@@ -174,7 +170,6 @@
 #### Q. ***Explain CSS Module styling in React?***
 #### Q. ***What are Styled Components?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
-#### Q. ***How Distinct From Mvc And Flux?***
 #### Q. ***What Are Functional Programming Concepts?***
 #### Q. ***What is Real DOM in ReactJS?***
 #### Q. ***What are the Props?***
@@ -213,7 +208,6 @@
 #### Q. ***Explain the use of Webpack and Babel in ReactJS?***
 #### Q. ***Explain type-checking with PropTypes in React?***
 #### Q. ***What is the difference between this.state.name=”Thomas” and this.setState({name: “Thomas”}) ?***
-#### Q. ***What are Pure Functions and how they are used in reducers?***
 #### Q. ***Explain the purpose of providing reflection()?***
 #### Q. ***What is a situation in response, and how is it used?***
 #### Q. ***What is the response rat?***
@@ -269,7 +263,6 @@
 #### Q. ***What is called Stateless function?***
 #### Q. ***Write the syntax to create the state and change the value of state?***
 #### Q. ***What is the function using in react to list the values?***
-#### Q. ***How to splitting the reducers?***
 #### Q. ***What is the benchmark in react comparing another javascript framework?***
 #### Q. ***How Diff Algorithm is implemented in Reactjs?***
 #### Q. ***How to render the react DOM in browser?***
@@ -290,7 +283,6 @@
 #### Q. ***How to use Forms in ReactJS? Give an example of using Forms in ReactJS by developing a User Registration Form?***
 #### Q. ***What is the difference between React Components in ES5 and ES6?***
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
-#### Q. ***What is Flux concept in ReactJS? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
 #### Q. What is Suspense in React?
 #### Q. What is the difference between NavLink and Link?
 #### Q. What is withRouter for in react-router-dom?
@@ -314,6 +306,10 @@
 #### Q. What is difference between component and container in react redux?
 #### Q. ***What is Redux in React.js?***
 #### Q. ***What is Flux in React.js?***
+#### Q. ***Explain the role of Reducer?***
+#### Q. ***Define Reducers in React?***
+#### Q. ***What are Pure Functions and how they are used in reducers?***
+#### Q. ***How to splitting the reducers?***
 #### Q. ***Why do you use Redux and Flux?***
 #### Q. ***How to create action creators react with redux?***
 #### Q. ***How to set the dataflow using react with redux?***
@@ -343,3 +339,7 @@
 #### Q. ***How is Redux different from Flux?***
 #### Q. ***What are the advantages of Redux?***
 #### Q. ***How are Actions defined in Redux?***
+#### Q. ***Describe Flux vs MVC?***
+#### Q. ***What is Flux concept in ReactJS? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
+
+
