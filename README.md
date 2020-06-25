@@ -6,31 +6,21 @@
 <br/>
 
 
-#### Q. ***Why React is used?***
-#### Q. ***Does ReactJS use HTML?***
 #### Q. ***How React works? How Virtual-DOM works in React?***
 #### Q. ***What are Components in ReactJS ?***
-#### Q. ***How ReactJS framework is different as compared to others?***
 #### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
-#### Q. ***List some of the major advantages of React?***
-#### Q. ***What are the limitations of React?***
-#### Q. ***What do you understand by Virtual DOM? Explain its working?***
+#### Q. ***List some of the major advantages and limitations of React?***
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 #### Q. ***What is React.createClass?***
 #### Q. ***What is ReactDOM and what is the difference between ReactDOM and React?***
 #### Q. ***What are the differences between a class component and functional component?***
-#### Q. ***What are the distinct features of React?***
 #### Q. ***What are the differences between React and Angular?***
-#### Q. ***What is the relation between React and its components?***
 #### Q. ***What is the difference between state and props?***
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
-#### Q. ***What is Redux?***
-#### Q. ***What is Redux Thunk used for?***
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
 #### Q. ***What are controlled and uncontrolled components in React?***
-#### Q. ***Explain the components of Redux?***
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***What is the difference between React Native and React?***
@@ -48,12 +38,8 @@
 #### Q. ***How do you modularize code in React?***
 #### Q. ***What is the significance of keys in React?***
 #### Q. ***What were the major problems with MVC framework?***
-#### Q. ***What are the three principles that Redux follows?***
 #### Q. ***What do you understand by “Single source of truth”?***
-#### Q. ***How are Actions defined in Redux?***
 #### Q. ***Explain the role of Reducer?***
-#### Q. ***How is Redux different from Flux?***
-#### Q. ***What are the advantages of Redux?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 #### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items’ significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
@@ -82,14 +68,11 @@
 #### Q. ***When would you use StrictMode component in React?***
 #### Q. ***How does React renderer work exactly when we call setState?***
 #### Q. ***How to avoid the need for binding in React?***
-#### Q. ***Draw a diagram showing how data flows through Redux?***
 #### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples?***
 #### Q. ***Explain JSX with a code example. Why can’t browsers read it?***
 #### Q. ***Give a code example to demonstrate embedding two or more components into one?***
 #### Q. ***How does the state differ from props in React?***
-#### Q. ***How will you distinguish Redux from Flux?***
 #### Q. ***How would you create a form in React?***
-#### Q. ***What are the advantages of using Redux?***
 #### Q. ***What do you understand by Props in React?***
 #### Q. ***Where would you put AJAX calls in your React code?***
 #### Q. ***Write a sample code to update the state of a component in React?***
@@ -98,7 +81,6 @@
 #### Q. ***Can changes be made inside the component?***
 #### Q. ***Can we make changes inside child components?***
 #### Q. ***Define Reducers in React?***
-#### Q. ***What is a store in Redux?***
 #### Q. ***Why do we need a Router to React?***
 #### Q. ***How the parent and child components exchange information?***
 #### Q. ***What is the higher-order component?***
@@ -123,7 +105,6 @@
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
 #### Q. ***How to use Events in ReactJS ?***
-#### Q. ***How is flux different from redux?***
 #### Q. ***What is the purpose of render() function in ReactJS?***
 #### Q. ***What are react components? Why are components so important to react?***
 #### Q. ***What’s the main difference between props and state?***
@@ -159,7 +140,6 @@
 #### Q. ***How to pass params to history. push method in React Router v4?***
 #### Q. ***What is the purpose of the ReactTestUtils package?***
 #### Q. ***What is Jest?***
-#### Q. ***What is the difference between React context and React Redux?***
 #### Q. ***What is the difference between Element and Component?***
 #### Q. ***For what reason would it be advisable for us to utilize React, tell its points of interest as well?***
 #### Q. ***Enroll React constraints on the off chance that you know any?***
@@ -173,15 +153,8 @@
 #### Q. ***What is Presentational segment?***
 #### Q. ***What are the Component uses and features?***
 #### Q. ***What are the kinds of information that control a segment in React?***
-#### Q. ***What are the center standards of Redux?***
-#### Q. ***What are the drawbacks of Redux contrasted with Flux?***
 #### Q. ***Would i be able to dispatch an activity in reducer?***
-#### Q. ***How to get to Redux store outside a part?***
 #### Q. ***What are the drawbacks of MVW pattern?***
-#### Q. ***How to utilize interface() from React Redux?***
-#### Q. ***What's the reason for at image in the Redux associate decorator?***
-#### Q. ***What is the contrast between React setting and React Redux?***
-#### Q. ***How to make AJAX ask for in Redux?***
 #### Q. ***What is state in respond js ?***
 #### Q. ***What is props in respond js ?***
 #### Q. ***What is the difference between creating Element and clone Element?***
@@ -202,14 +175,8 @@
 #### Q. ***What are Styled Components?***
 #### Q. ***Give An Example Of Using Events?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
-#### Q. ***What Are The Benefits Of Redux?***
 #### Q. ***How Distinct From Mvc And Flux?***
 #### Q. ***What Are Functional Programming Concepts?***
-#### Q. ***What Is Redux Change Of State?***
-#### Q. ***Where Can Redux Be Used?***
-#### Q. ***What Is The Typical Flow Of Data In A React + Redux App?***
-#### Q. ***What Are Redux Workflow Features?***
-#### Q. ***Explain Action’s In Redux?***
 #### Q. ***What is Real DOM in ReactJS?***
 #### Q. ***What are the Props?***
 #### Q. ***List down the advantages of React Router?***
@@ -239,7 +206,6 @@
 #### Q. ***State the difference between getIntialState() and constructor()?***
 #### Q. ***What is ComponentWillMount()?***
 #### Q. ***How to dispatch the data in-store?***
-#### Q. ***How will be you able to handle more action using redux?***
 #### Q. ***What is the purpose of using bindActionsCreators?***
 #### Q. ***Can JSX element be attached to other JSX components?***
 #### Q. ***How to start a project in React?***
@@ -304,26 +270,18 @@
 #### Q. ***What is called Stateless function?***
 #### Q. ***Write the syntax to create the state and change the value of state?***
 #### Q. ***What is the function using in react to list the values?***
-#### Q. ***How to create action creators react with redux?***
-#### Q. ***How to set the dataflow using react with redux?***
-#### Q. ***Exaplin React with redux  archicture flow?***
 #### Q. ***How to splitting the reducers?***
-#### Q. ***Explain usage of react with redux application?***
 #### Q. ***What is the benchmark in react comparing another javascript framework?***
 #### Q. ***How Diff Algorithm is implemented in Reactjs?***
 #### Q. ***How to render the react DOM in browser?***
 #### Q. ***What is the DOM?***
 #### Q. ***What is the main goal of React Fiber?***
-#### Q. ***What are the Features of Workflow in Redux?***
 #### Q. ***Why it is a must to capitalize component names?***
 #### Q. ***How to set the state in ReactJS using the dynamic key name?***
 #### Q. ***Real Disadvantages of utilizing React?***
 #### Q. ***Can you explain about the standard JavaScript toolchain, transpilation, JSX?***
 #### Q. ***Please explain step by step approach on how to setup environment for ReactJS?***
 #### Q. ***Have you used HTML while working with React.js?***
-#### Q. ***What is Flux in React.js?***
-#### Q. ***What is Redux in React.js?***
-#### Q. ***Why do you use Redux and Flux?***
 #### Q. ***How React Router and its techniques differ from more traditional JavaScript routers like Backbone’s Router?***
 #### Q. ***What is the difference between setState() and forceUpdate()?***
 #### Q. ***Which feature can we use to cause a component to render only when its ID changes?***
@@ -335,7 +293,6 @@
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
 #### Q. ***What is Flux concept in ReactJS? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
 #### Q. What is Suspense in React?
-#### Q. What is difference between component and container in react redux?
 #### Q. What is the difference between NavLink and Link?
 #### Q. What is withRouter for in react-router-dom?
 #### Q. How to display API data using Axios in React?
@@ -343,3 +300,42 @@
 #### Q. How to translate your React app with react-i18next?
 #### Q. How RxJS is used in React for state management?
 #### Q. What is difference between useEffect vs. componentDidMount?
+
+### Redux Questions 
+
+#### Q. ***What is Redux?***
+#### Q. ***What are the Features of Workflow in Redux?***
+#### Q. ***Explain the components of Redux?***
+#### Q. ***What is Redux Thunk used for?***
+#### Q. What is difference between component and container in react redux?
+#### Q. ***What is Redux in React.js?***
+#### Q. ***What is Flux in React.js?***
+#### Q. ***Why do you use Redux and Flux?***
+#### Q. ***How to create action creators react with redux?***
+#### Q. ***How to set the dataflow using react with redux?***
+#### Q. ***What are the three principles that Redux follows?***
+#### Q. ***What Is Redux Change Of State?***
+#### Q. ***Where Can Redux Be Used?***
+#### Q. ***What Is The Typical Flow Of Data In A React + Redux App?***
+#### Q. ***What Are Redux Workflow Features?***
+#### Q. ***Explain Action’s In Redux?***
+#### Q. ***What Are The Benefits Of Redux?***
+#### Q. ***How to utilize interface() from React Redux?***
+#### Q. ***What's the reason for at image in the Redux associate decorator?***
+#### Q. ***What is the contrast between React setting and React Redux?***
+#### Q. ***How to make AJAX ask for in Redux?***
+#### Q. ***How to get to Redux store outside a part?***
+#### Q. ***What are the center standards of Redux?***
+#### Q. ***What are the drawbacks of Redux contrasted with Flux?***
+#### Q. ***What is the difference between React context and React Redux?***
+#### Q. ***What is a store in Redux?***
+#### Q. ***Explain usage of react with redux application?***
+#### Q. ***What are the advantages of using Redux?***
+#### Q. ***How will be you able to handle more action using redux?***
+#### Q. ***Exaplin React with redux  archicture flow?***
+#### Q. ***How is flux different from redux?***
+#### Q. ***How will you distinguish Redux from Flux?***
+#### Q. ***Draw a diagram showing how data flows through Redux?***
+#### Q. ***How is Redux different from Flux?***
+#### Q. ***What are the advantages of Redux?***
+#### Q. ***How are Actions defined in Redux?***
