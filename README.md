@@ -268,17 +268,18 @@
 #### Q. ***How to use Forms in React? Give an example of using Forms in React by developing a User Registration Form?***
 #### Q. ***What is the difference between React Components in ES5 and ES6?***
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
-#### Q. What is Suspense in React?
-#### Q. What is the difference between NavLink and Link?
-#### Q. What is withRouter for in react-router-dom?
-#### Q. How to display API data using Axios in React?
-#### Q. What is difference between react hooks and lifecycle methods?
-#### Q. How to translate your React app with react-i18next?
-#### Q. How RxJS is used in React for state management?
-#### Q. What is difference between useEffect vs. componentDidMount?
-#### Q. Exmplain functional components and class components in React?
-#### Q. What are synthetic events in React js?
-#### Q. What is lazy function in React?
+#### Q. ***What is Suspense in React?***
+#### Q. ***What is the difference between NavLink and Link?***
+#### Q. ***What is withRouter for in react-router-dom?***
+#### Q. ***How to display API data using Axios in React?***
+#### Q. ***What is difference between react hooks and lifecycle methods?***
+#### Q. ***How to translate your React app with react-i18next?***
+#### Q. ***How RxJS is used in React for state management?***
+#### Q. ***What is difference between useEffect vs. componentDidMount?***
+#### Q. ***Exmplain functional components and class components in React?***
+#### Q. ***What are synthetic events in React js?***
+#### Q. ***What is lazy function in React?***
+#### Q. ***What does Side effects mean in React?***
 
 <br/>
 
@@ -326,10 +327,22 @@
 #### Q. ***How are Actions defined in Redux?***
 #### Q. ***Describe Flux vs MVC?***
 #### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
-
-
-<br/>
-
-### React Native Question
-
-#### Q. ***What is the difference between React Native and React?***
+#### Q. ***How to structure Redux top level directories?***
+#### Q. ***What are the features of Redux DevTools?*** 
+#### Q. ***How to add multiple middlewares to Redux?*** 
+#### Q. ***How to set initial state in Redux?*** 
+#### Q. ***What are the downsides of Redux over Flux?***
+#### Q. ***How to access redux store outside a react component?*** 
+#### Q. ***Are there any similarities between Redux and RxJS?*** 
+#### Q. ***How to use connect from react redux?*** 
+#### Q. ***What is the purpose of the constants in Redux?***
+#### Q. ***What are the differences between redux-saga and redux-thunk?***
+#### Q. ***Explain Redux form with an example?***
+#### Q. ***How to reset state in redux?***
+#### Q. ***Whats the purpose of at (@) symbol in the redux connect decorator?***
+#### Q. ***Why are Redux state functions called as reducers?***
+#### Q. ***How to make Ajax request in Redux?***
+#### Q. ***What is the proper way to access Redux store?***
+#### Q. ***What are the differences between call and put in redux-saga?***
+#### Q. ***What is the mental model of redux-saga?*** 
+#### Q. ***How Relay is different from Redux?*** 
