@@ -18,7 +18,7 @@ router.get('/api/get/user', function (req, res, next) {
         var request = new sql.Request();
            
         // query to the database and get the records
-        const stmt = `SELECT TOP 20 [name] 
+        const stmt = `SELECT TOP 100 [name] 
                         ,[email]
                     FROM [BFEnterprise].[webui].[TEST_USERS] ORDER BY [id]`;
 
