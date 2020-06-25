@@ -173,7 +173,6 @@
 #### Q. ***How many ways can we style the React Component?***
 #### Q. ***Explain CSS Module styling in React?***
 #### Q. ***What are Styled Components?***
-#### Q. ***Give An Example Of Using Events?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
 #### Q. ***How Distinct From Mvc And Flux?***
 #### Q. ***What Are Functional Programming Concepts?***
@@ -300,6 +299,11 @@
 #### Q. How to translate your React app with react-i18next?
 #### Q. How RxJS is used in React for state management?
 #### Q. What is difference between useEffect vs. componentDidMount?
+#### Q. Exmplain functional components and class components in React?
+#### Q. What are synthetic events in React js?
+#### Q. What is lazy function in React?
+
+<br/>
 
 ### Redux Questions 
 
