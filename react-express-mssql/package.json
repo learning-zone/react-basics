@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "pradeep.vwa@gmail.com",
-  "description": "React, Material-UI, Express, MySQL App",
+  "description": "React, Material-UI, Express, MSSQL App",
   "main": "server.js",
   "repository": {
     "type": "git",
