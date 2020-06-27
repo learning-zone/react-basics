@@ -5,6 +5,15 @@
 
 <br/>
 
+### List of React Projects for Practice
+
+
+|Sl.No| Project Name         | Technologies Used                                                  |Live Demo    |
+|-----|----------------------|------------------------------------------------------------------- |-------------|
+| 01  |	[Poke'Times](https://github.com/learning-zone/react-interview-questions/tree/master/poketimes)|React |  |
+
+
+<br/>
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
 #### Q. ***What are Components in React ?***
