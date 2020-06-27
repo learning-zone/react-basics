@@ -1,11 +1,11 @@
-## React Interview Questions 
+# React Interview Questions 
 
 
 *Click <img src="https://github.com/learning-zone/react-interview-questions/blob/master/assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
 
 <br/>
 
-### List of React Projects for Practice
+## List of React Projects 
 
 
 |Sl.No| Project Name         | Technologies Used                                                  |Live Demo    |
