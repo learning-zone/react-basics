@@ -90,7 +90,7 @@ export default class ReactForm extends React.Component {
                 ref={r => (this.form = r)}
                 onSubmit={this.handleSubmit}
             >
-                <h2>User React Form <hr/></h2><br/>
+                <h2>User Form <hr/></h2><br/>
                 <TextValidator className="react-form-input"
                     label="Name"
                     onChange={this.handleChange}
