@@ -5,8 +5,10 @@
 
 <br/>
 
-## List of React Projects 
+## Table of Contents 
 
+
+### React Basic Projects
 
 |Sl.No| Project Name         | Technologies Used                                                  |Live Demo    |
 |-----|----------------------|------------------------------------------------------------------- |-------------|
