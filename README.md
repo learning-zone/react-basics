@@ -8,7 +8,7 @@
 ## Table of Contents 
 
 
-### React Basic Projects
+### React Projects
 
 |Sl.No| Project Name                              | Technologies Used                             |Live Demo    |
 |-----|-------------------------------------------|---------------------------------------------- |-------------|
