@@ -155,12 +155,12 @@ this.props
 Set initial the state on `constructor()`. Add DOM event handlers, timers etc on `componentDidMount()`, then remove them on `componentWillUnmount()`.
 
 ```javascript
-constructor (props)	    # Before rendering 
-componentWillMount()	# Avoid using it 
-render()	            # Render 
-componentDidMount()	    # After rendering (DOM available) #
-componentWillUnmount()	# Before DOM removal 
-componentDidCatch()	    # Catch errors (16+) 
+constructor (props)	      # Before rendering 
+componentWillMount()	  # Avoid using it 
+render()	              # Render 
+componentDidMount()	      # After rendering (DOM available) 
+componentWillUnmount()	  # Before DOM removal 
+componentDidCatch()	      # Catch errors (16+) 
 ```
 
 ## Updating
