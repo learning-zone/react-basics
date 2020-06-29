@@ -252,3 +252,206 @@ useImperativeHandle(ref, () => { … })
 useLayoutEffect	            # identical to useEffect, but it fires synchronously after all DOM mutations
 useDebugValue(value)	        # display a label for custom hooks in React DevTools
 ```
+
+
+## DOM nodes
+
+## References
+
+Allows access to DOM nodes.
+
+```javascript
+class MyComponent extends Component {
+
+  render () {
+    return <div>
+      <input ref={el => this.input = el} />
+    </div>
+  }
+
+  componentDidMount () {
+    this.input.focus()
+  }
+}
+```
+
+## DOM Events
+
+Pass functions to attributes like onChange.
+
+```javascript
+class MyComponent extends Component {
+
+  render () {
+    <input type="text"
+        value={this.state.value}
+        onChange={event => this.onChange(event)} />
+  }
+
+  onChange (event) {
+    this.setState({ value: event.target.value })
+  }
+}
+```
+
+## Transferring props
+
+Propagates `src="..."` down to the sub-component.
+
+```javascript
+<VideoPlayer src="video.mp4" />
+
+class VideoPlayer extends Component {
+  render () {
+    return <VideoEmbed {...this.props} />
+  }
+}
+```
+
+## Top-level API
+
+There are more, but these are most common.
+
+```javascript
+React.createClass({ ... })
+React.isValidElement(c)
+ReactDOM.render(<Component />, domnode, [callback])
+ReactDOM.unmountComponentAtNode(domnode)
+ReactDOMServer.renderToString(<Component />)
+ReactDOMServer.renderToStaticMarkup(<Component />)
+```
+
+## JSX patterns
+
+## Style shorthand
+
+Inline styles
+
+```javascript
+const style = { height: 10 }
+return <div style={style}></div>
+return <div style={{ margin: 0, padding: 0 }}></div>
+```
+
+## Conditionals
+
+```javascript
+<Fragment>
+  {showMyComponent
+    ? <MyComponent />
+    : <OtherComponent />}
+</Fragment>
+```
+
+## Lists
+
+```javascript
+class TodoList extends Component {
+
+  render () {
+    const { items } = this.props
+
+    return <ul>
+      {items.map(item =>
+        <TodoItem item={item} key={item.key} />)}
+    </ul>
+  }
+}
+```
+
+## Short-circuit evaluation
+
+```javascript
+<Fragment>
+  {showPopup && <Popup />}
+  ...
+</Fragment>
+```
+
+##  Fragments and Arrays    
+
+```javascript
+// Arrays
+
+render () {
+  // Don't forget the keys!
+  return [
+    <li key="A">First item</li>,
+    <li key="B">Second item</li>
+  ]
+}
+
+// Fragments
+render () {
+  // Fragments don't require keys!
+  return (
+    <Fragment>
+      <li>First item</li>
+      <li>Second item</li>
+    </Fragment>
+  )
+}
+```
+
+## Errors
+
+Catch errors via `componentDidCatch()`.
+
+```javascript
+class MyComponent extends Component {
+  ···
+  componentDidCatch (error, info) {
+    this.setState({ error })
+  }
+}
+```
+
+## Portals
+
+This renders `this.props.children` into any location in the DOM.
+
+```javascript
+render () {
+  return React.createPortal(
+    this.props.children,
+    document.getElementById('menu')
+  )
+}
+```
+
+## Hydration
+
+Use `ReactDOM.hydrate()` instead of using `ReactDOM.render()` if you’re rendering over the output of ReactDOMServer.
+
+```javascript
+const el = document.getElementById('app')
+ReactDOM.hydrate(<App />, el)
+```
+
+## PropTypes
+
+Typechecking with PropTypes
+
+```javascript
+import PropTypes from 'prop-types';
+```
+
+|Property | Description |
+|---------|-------------|
+|any      |Anything     |
+|string   |             |
+|number   |             |
+|func     |Function     |
+|bool     |True or false|
+|oneOf(any)|Enum types  |
+|oneOfType(type array)|Union|
+|array    |             |
+|arrayOf(…)	|           |
+|object   |             |
+|objectOf(…)| Object with values of a certain type|
+|instanceOf(…)|Instance of a class|
+|shape(…)   |             |
+|element    |React element|
+|node       |DOM node     |
+|(···).isRequired|Required|
+    
