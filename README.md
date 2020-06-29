@@ -5,11 +5,11 @@
 
 <br/>
 
-* *[React Quick Reference](quick-reference.md)*
-
-
 ## Table of Contents 
 
+* *[React Quick Reference](quick-reference.md)*
+
+<br/>
 
 ### React Projects
 
