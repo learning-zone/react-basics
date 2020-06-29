@@ -156,10 +156,10 @@ Set initial the state on `constructor()`. Add DOM event handlers, timers etc on 
 
 ```javascript
 constructor (props)	      # Before rendering 
-componentWillMount()	  # Avoid using it 
+componentWillMount()	      # Avoid using it 
 render()	              # Render 
 componentDidMount()	      # After rendering (DOM available) 
-componentWillUnmount()	  # Before DOM removal 
+componentWillUnmount()	      # Before DOM removal 
 componentDidCatch()	      # Catch errors (16+) 
 ```
 
