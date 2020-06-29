@@ -236,3 +236,19 @@ function Example() {
   );
 }
 ```
+
+## Hooks API Reference
+
+```javascript
+useState(initialState)	 
+useEffect(() => { … })	 
+useContext(MyContext)	       # value returned from React.createContext
+
+seReducer(reducer, initialArg, init)	 
+useCallback(() => { … })	 
+useMemo(() => { … })	 
+useRef(initialValue)	 
+useImperativeHandle(ref, () => { … })	 
+useLayoutEffect	            # identical to useEffect, but it fires synchronously after all DOM mutations
+useDebugValue(value)	        # display a label for custom hooks in React DevTools
+```
