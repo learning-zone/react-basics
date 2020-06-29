@@ -211,7 +211,7 @@ function ExampleWithManyStates() {
 
 ## Effect hook
 
-The `useEffect()` Hook can be used as componentDidMount, componentDidUpdate, and componentWillUnmount combined.
+The `useEffect()` Hook can be used as `componentDidMount()`, `componentDidUpdate()`, and `componentWillUnmount()` combined.
 
 ```javascript
 import React, { useState, useEffect } from 'react';
