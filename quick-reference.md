@@ -454,4 +454,78 @@ import PropTypes from 'prop-types';
 |element    |React element|
 |node       |DOM node     |
 |(···).isRequired|Required|
-    
+
+## Basic types
+
+```javascript
+MyComponent.propTypes = {
+  email:      PropTypes.string,
+  seats:      PropTypes.number,
+  callback:   PropTypes.func,
+  isClosed:   PropTypes.bool,
+  any:        PropTypes.any
+}
+```
+
+## Required types
+
+```javascript
+MyCo.propTypes = {
+  name:  PropTypes.string.isRequired
+}
+```
+
+## Elements
+
+```javascript
+MyCo.propTypes = {
+  // React element
+  element: PropTypes.element,
+
+  // num, string, element, or an array of those
+  node: PropTypes.node
+}
+```
+
+## Enumerables (oneOf)
+
+```javascript
+MyCo.propTypes = {
+  direction: PropTypes.oneOf([
+    'left', 'right'
+  ])
+}
+```
+
+## Custom validation
+
+```javascript
+MyCo.propTypes = {
+ 
+  customProp: (props, key, componentName) => {
+    if (!/matchme/.test(props[key])) {
+      return new Error('Validation failed!')
+    }
+  }
+}
+```
+
+## Arrays and objects
+
+Use `.arrayOf()`, `.objectOf()`, `.instanceOf()`, `.shape()`.
+
+```javascript
+MyCo.propTypes = {
+  list: PropTypes.array,
+  ages: PropTypes.arrayOf(PropTypes.number),
+  user: PropTypes.object,
+  user: PropTypes.objectOf(PropTypes.number),
+  message: PropTypes.instanceOf(Message)
+}
+MyCo.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    age:  PropTypes.number
+  })
+}
+```
