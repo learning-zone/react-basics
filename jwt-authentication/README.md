@@ -1,4 +1,4 @@
-## JWT Authentication
+## Express and JSON Web Token Authentication
 
 
 #### Generate Random Access Token
