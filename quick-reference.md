@@ -19,6 +19,36 @@ const el = document.body
 ReactDOM.render(<Hello name='Alex' />, el)
 ```
 
+## Stateless Components
+
+```javascript
+// Stateless React Component
+const Headline = () => {
+  return <h1>React Quick Reference</h1>
+}
+
+// Component that receives props
+const Greetings = (props) => {
+  return <p>You will love it {props.name}.</p>
+}
+
+// Component must only return ONE element (eg. DIV)
+const Intro = () => {
+  return (
+    <div>
+     <Headline />
+     <p>Welcome to the React world!</p>
+     <Greetings name="Alex" />
+    </div>
+  )
+}
+
+ReactDOM.render(
+ <Intro />,
+ document.getElementById('root')
+);
+```
+
 ## Properties
 
 Use `this.props` to access properties passed to the component.
