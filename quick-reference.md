@@ -10,9 +10,11 @@ import ReactDOM from 'react-dom';
 
 class Hello extends React.Component {
   render () {
-    return <div className='message-box'>
-      Hello {this.props.name}
-    </div>
+    return (
+      <div className='message-box'>
+        Hello {this.props.name}
+      </div>
+      )
   }
 }
 const el = document.body
@@ -51,21 +53,18 @@ ReactDOM.render(
 
 ## Properties
 
-Use `this.props` to access properties passed to the component.
-
 ```javascript
 <Video fullscreen={true} autoplay={false} />
 
 render () {
-  this.props.fullscreen
-  const { fullscreen, autoplay } = this.props
-  ···
+  this.props.fullscreen;
+
+  // Use `this.props` to access properties passed to the component.
+  const { fullscreen, autoplay } = this.props;
 }
 ```
 
 ## States
-
-Use states `this.state` to manage dynamic data.
 
 ```javascript
 constructor(props) {
@@ -76,15 +75,14 @@ constructor(props) {
 this.setState({ username: 'Alex' })
 
 render () {
-  this.state.username
+  this.state.username;
+
+  // Use states `this.state` to manage dynamic data.
   const { username } = this.state
-  ···
 }
 ```
 
 ## Children
-
-Children are passed as the children property.
 
 ```javascript
 <AlertBox>
@@ -93,9 +91,13 @@ Children are passed as the children property.
  
 class AlertBox extends Component {
   render () {
-    return <div className='alert-box'>
-      {this.props.children}
-    </div>
+    return (
+
+      // Children are passed as the children property.
+      <div className='alert-box'>
+         {this.props.children}
+      </div>
+    )
   }
 }
 ```
@@ -103,10 +105,7 @@ class AlertBox extends Component {
 ## Nesting
 
 ```javascript
-import React, {
-  Component,
-  Fragment
-} from 'react'
+import React, { Component, Fragment } from 'react';
 
 class Info extends Component {
   render () {
@@ -148,18 +147,20 @@ Functional components have no state. Also, their props are passed as the first p
 ```javascript
 function MyComponent ({ name }) {
 
-  return <div className='message-box'>
-    Hello {name}
-  </div>
+  return (
+    <div className='message-box'>
+      Hello {name}
+    </div>
+  )
 }
 ```
 
-## Pure components
+## Pure Components
 
 Performance-optimized version of React.Component.
 
 ```javascript
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react';
 
 class MessageBox extends PureComponent {
   ···
@@ -178,9 +179,7 @@ this.state
 this.props
 ```
 
-## Lifecycle
-
-## Mounting
+## Lifecycle => Mounting
 
 Set initial the state on `constructor()`. Add DOM event handlers, timers etc on `componentDidMount()`, then remove them on `componentWillUnmount()`.
 
@@ -193,7 +192,7 @@ componentWillUnmount()	      # Before DOM removal
 componentDidCatch()	      # Catch errors (16+) 
 ```
 
-## Updating
+## Lifecycle => Updating
 
 Called when parents change properties and `setState()`. These are not called for initial renders.
 
@@ -204,9 +203,7 @@ render()	                                         # Render
 componentDidUpdate (prevProps, prevState)	         # Operate on the DOM here
 ```
 
-## Hooks
-
-## State Hook
+## Hooks => State Hook
 
 ```javascript
 import React, { useState } from 'react';
@@ -226,7 +223,7 @@ function Example() {
 }
 ```
 
-## Declaring multiple state variables
+## Hooks => Declaring multiple state variables
 
 ```javascript
 function ExampleWithManyStates() {
@@ -235,11 +232,10 @@ function ExampleWithManyStates() {
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
-  // ...
 }
 ```
 
-## Effect hook
+## Hooks => Effect Hook
 
 The `useEffect()` Hook can be used as `componentDidMount()`, `componentDidUpdate()`, and `componentWillUnmount()` combined.
 
@@ -284,8 +280,6 @@ useDebugValue(value)	        # display a label for custom hooks in React DevTool
 ```
 
 
-## DOM nodes
-
 ## References
 
 Allows access to DOM nodes.
@@ -294,9 +288,11 @@ Allows access to DOM nodes.
 class MyComponent extends Component {
 
   render () {
-    return <div>
-      <input ref={el => this.input = el} />
-    </div>
+    return (
+      <div>
+        <input ref={el => this.input = el} />
+      </div>
+    )
   }
 
   componentDidMount () {
@@ -307,7 +303,7 @@ class MyComponent extends Component {
 
 ## DOM Events
 
-Pass functions to attributes like onChange.
+Pass functions to attributes like `onChange()`.
 
 ```javascript
 class MyComponent extends Component {
@@ -451,7 +447,7 @@ render () {
 
 ## Hydration
 
-Use `ReactDOM.hydrate()` instead of using `ReactDOM.render()` if you’re rendering over the output of ReactDOMServer.
+Use `ReactDOM.hydrate()` instead of using `ReactDOM.render()` if you are rendering over the output of ReactDOMServer.
 
 ```javascript
 const el = document.getElementById('app')
@@ -466,24 +462,25 @@ Typechecking with PropTypes
 import PropTypes from 'prop-types';
 ```
 
-|Property | Description |
-|---------|-------------|
-|any      |Anything     |
-|string   |             |
-|number   |             |
-|func     |Function     |
-|bool     |True or false|
-|oneOf(any)|Enum types  |
-|oneOfType(type array)|Union|
-|array    |             |
-|arrayOf(…)	|           |
-|object   |             |
-|objectOf(…)| Object with values of a certain type|
-|instanceOf(…)|Instance of a class|
-|shape(…)   |             |
-|element    |React element|
-|node       |DOM node     |
-|(···).isRequired|Required|
+|Property             | Description |
+|---------------------|-------------|
+|any                  |Anything     |
+|string               |             |
+|number               |             |
+|func                 |Function     |
+|bool                 |True or false|
+|oneOf(any)           |Enum types   |
+|oneOfType(type array)|Union        |
+|array                |             |
+|arrayOf(…)	          |             |
+|object               |             |
+|objectOf(…)          | Object with values of a certain type|
+|instanceOf(…)        |Instance of a class|
+|shape(…)             |             |
+|element              |React element|
+|node                 |DOM node     |
+|(···).isRequired     |Required     |
+
 
 ## Basic types
 
@@ -497,7 +494,7 @@ MyComponent.propTypes = {
 }
 ```
 
-## Required types
+## Required Types
 
 ```javascript
 MyCo.propTypes = {
@@ -540,7 +537,7 @@ MyCo.propTypes = {
 }
 ```
 
-## Arrays and objects
+## Arrays and Objects
 
 Use `.arrayOf()`, `.objectOf()`, `.instanceOf()`, `.shape()`.
 
