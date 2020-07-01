@@ -31,5 +31,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "material-table": "^1.63.1",
+    "react-material-ui-form-validator": "^2.0.10",
+    "styled-components": "^5.1.1"
   }
 }
