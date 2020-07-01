@@ -26,4 +26,7 @@
 
 ### Resources
 
-* [React](https://reactjs.org/)
+* *[React](https://reactjs.org/)*
+* *[PM2](https://pm2.keymetrics.io/)*
+* *[Material-UI](https://material-ui.com/)*
+
