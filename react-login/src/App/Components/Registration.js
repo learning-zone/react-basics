@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Logout extends Component {
+export default class Registration extends Component {
     render() {
         return (
             <div>
-                Logout Page !
+                Registration Page !
             </div>
         )
     }
