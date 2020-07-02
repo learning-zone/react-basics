@@ -56,7 +56,6 @@ class LoginForm extends Component {
   }
 
   currentView = () => {
-    const { formData, submitted } = this.state;
     switch(this.state.currentView) {
       case "signUp":
         return (
@@ -99,16 +98,15 @@ class LoginForm extends Component {
             <Button 
                   variant="contained"
                   type="submit"
-                  disabled={submitted}
+                  disabled={this.state.submitted}
             >{
-                (submitted && 'Your form is submitted!')
-                || (!submitted && 'Submit')
+                (this.state.submitted && 'Your form is submitted!')
+                || (!this.state.submitted && 'Submit')
              }
             </Button>
             <Button variant="contained" onClick={ () => this.changeView("logIn")}>Have an Account?</Button>
           </form>
         )
-        break
       case "logIn":
         return (
           <form>
@@ -142,7 +140,6 @@ class LoginForm extends Component {
             <Button variant="contained" onClick={ () => this.changeView("signUp")}>Create an Account</Button>
           </form>
         )
-        break
       case "PWReset":
         return (
           <form>

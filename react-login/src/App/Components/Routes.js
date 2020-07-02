@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import LoginForm from './LoginForm';
-import Admin from './Admin';
-import Logout from './Logout';
+import LoginForm from '../Pages/LoginForm/LoginForm';
+import Admin from '../Pages/Admin/Admin';
+import Logout from '../Pages/Logout/Logout';
 
 const Routes = () => {
   return (
