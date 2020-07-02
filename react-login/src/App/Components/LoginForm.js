@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 import './LoginForm.scss';
 
 
@@ -9,9 +10,44 @@ class LoginForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      currentView: "signUp"
+      currentView: "signUp",
+      formData: {
+        email: '',
+        renpassword: '',
+        password: '',
+      },
+      submitted: false
     }
   }
+  
+  handleChange = (event) => {
+    const { formData } = this.state;
+    formData[event.target.name] = event.target.value;
+    this.setState({ formData });
+    //console.log(JSON.stringify(formData));
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ submitted: true }, () => {
+        setTimeout(() => this.setState({ 
+            submitted: false
+         }), 5000);
+    });
+
+    /**
+     * POST REQUEST
+     */
+    const { formData } = this.state;
+    console.log('formData: '+JSON.stringify(formData));
+    axios.post(`/api/post/user`, { formData })
+      .then(res => {
+          const result = res.data.recordset;
+          this.setState({ result });
+        console.log(res);
+        console.log(res.data);
+      })
+    }
 
   changeView = (view) => {
     this.setState({
@@ -20,19 +56,55 @@ class LoginForm extends Component {
   }
 
   currentView = () => {
-    
+    const { formData, submitted } = this.state;
     switch(this.state.currentView) {
       case "signUp":
         return (
 
-          <form noValidate autoComplete="off">
+          <form 
+                noValidate 
+                autoComplete="off" 
+                onSubmit={this.handleSubmit}
+                method="post">
             <h2>Sign Up! <hr/></h2>
             <fieldset>
-              <TextField label="Email" variant="outlined" className="login-input-box" />
-              <TextField label="Password" variant="outlined" className="login-input-box" type="password" />
-              <TextField label="Re-Enter Password" variant="outlined" className="login-input-box" type="password" />
+              <TextField 
+                  label="Email" 
+                  variant="outlined" 
+                  className="login-input-box"
+                  onChange={this.handleChange}
+                  name="email"
+                  value={this.state.formData.email || ""}
+              />
+              <TextField 
+                  label="Password" 
+                  variant="outlined" 
+                  className="login-input-box" 
+                  type="password" 
+                  onChange={this.handleChange}
+                  name="password"
+                  value={this.state.formData.password || ""}                  
+              />
+              <TextField 
+                  label="Re-Enter Password" 
+                  variant="outlined" 
+                  className="login-input-box" 
+                  type="password" 
+                  onChange={this.handleChange}
+                  name="renpassword"
+                  value={this.state.formData.renpassword || ""}
+                  
+              />
             </fieldset>
-            <Button variant="contained">Submit</Button>
+            <Button 
+                  variant="contained"
+                  type="submit"
+                  disabled={submitted}
+            >{
+                (submitted && 'Your form is submitted!')
+                || (!submitted && 'Submit')
+             }
+            </Button>
             <Button variant="contained" onClick={ () => this.changeView("logIn")}>Have an Account?</Button>
           </form>
         )
@@ -42,8 +114,23 @@ class LoginForm extends Component {
           <form>
             <h2>Log In <hr/></h2>
             <fieldset>
-              <TextField label="Username" variant="outlined" className="login-input-box" />
-              <TextField label="Password" variant="outlined" className="login-input-box" type="password" />
+              <TextField 
+                  label="Email" 
+                  variant="outlined" 
+                  className="login-input-box"
+                  onChange={this.handleChange}
+                  name="email"
+                  value={this.state.formData.email || ""}
+              />
+              <TextField 
+                  label="Password" 
+                  variant="outlined" 
+                  className="login-input-box" 
+                  type="password" 
+                  onChange={this.handleChange}
+                  name="password"
+                  value={this.state.formData.password || ""}                  
+              />
               <ul>
                 <li>
                   <i/>
@@ -66,7 +153,14 @@ class LoginForm extends Component {
                 <em>A reset link will be sent to your inbox!</em>
               </li>
             </ul>
-            <TextField label="Email" variant="outlined" className="login-input-box" />
+            <TextField 
+                  label="Email" 
+                  variant="outlined" 
+                  className="login-input-box"
+                  onChange={this.handleChange}
+                  name="email"
+                  value={this.state.formData.email || ""}
+            />
           </fieldset>
           <Button variant="contained">Send Reset Link</Button>
           <Button variant="contained" onClick={ () => this.changeView("logIn")}>Go Back</Button>
