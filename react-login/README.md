@@ -5,9 +5,11 @@
 > React Login and Registration based on jwt and passport authentication. 
 
 
-#### Technology 
+Technology
+---
+***
+___ 
 
-<hr style="height: .05em; margin: 4px 0;"/>
 
 * React
 * Material UI
