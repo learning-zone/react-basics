@@ -5,7 +5,7 @@ h1,h2,h3,h4,h5,h6,p { margin: 0; }
 
 section#entry-page {
   display: grid;
-  grid-template-columns: 1fr minmax(200px,400px) 1fr;
+  grid-template-columns: 1fr minmax(300px,500px) 1fr;
   grid-template-rows: 1fr minmax(auto,1fr) 1fr;
   grid-gap: 10px;
   width: 100%;
@@ -111,6 +111,16 @@ hr {
     rgba(0,0,0,1), 
     rgba(0,0,0,.2)
   );
+}
+.login-input-box {
+  width: 100%;
+  padding-bottom: 20px !important;
+}
+.UserForm {
+  border: 1px solid rgba(0,0,0,0.6);
+  border-radius: 4px;
+  padding: 50px;
+  margin: 50px;
 }
 @media only screen and (min-width: 420px) {
   form {
