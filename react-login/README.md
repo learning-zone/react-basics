@@ -5,11 +5,7 @@
 > React Login and Registration based on jwt and passport authentication. 
 
 
-### Technology
----
-
-
-
+#### Technology
 * React
 * Material UI
 * Express.js
