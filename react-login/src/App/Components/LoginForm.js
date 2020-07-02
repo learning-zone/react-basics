@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import './LoginForm.scss';
 
 
@@ -31,8 +32,8 @@ class LoginForm extends Component {
               <TextField label="Password" variant="outlined" className="login-input-box" type="password" />
               <TextField label="Re-Enter Password" variant="outlined" className="login-input-box" type="password" />
             </fieldset>
-            <button>Submit</button>
-            <button type="button" onClick={ () => this.changeView("logIn")}>Have an Account?</button>
+            <Button variant="contained">Submit</Button>
+            <Button variant="contained" onClick={ () => this.changeView("logIn")}>Have an Account?</Button>
           </form>
         )
         break
@@ -50,8 +51,8 @@ class LoginForm extends Component {
                 </li>
               </ul>
             </fieldset>
-            <button>Login</button>
-            <button type="button" onClick={ () => this.changeView("signUp")}>Create an Account</button>
+            <Button variant="contained">Login</Button>
+            <Button variant="contained" onClick={ () => this.changeView("signUp")}>Create an Account</Button>
           </form>
         )
         break
@@ -67,8 +68,8 @@ class LoginForm extends Component {
             </ul>
             <TextField label="Email" variant="outlined" className="login-input-box" />
           </fieldset>
-          <button>Send Reset Link</button>
-          <button type="button" onClick={ () => this.changeView("logIn")}>Go Back</button>
+          <Button variant="contained">Send Reset Link</Button>
+          <Button variant="contained" onClick={ () => this.changeView("logIn")}>Go Back</Button>
         </form>
         )
       default:
