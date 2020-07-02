@@ -1,11 +1,11 @@
 ## React Login & Registration
 
 
-### Project Description
+#### Project Description
 > React Login and Registration based on jwt and passport authentication. 
 
 
-### Technology
+#### Technology
 
 * React
 * Material UI
@@ -16,7 +16,7 @@
 * MySQL
 
 
-### Installation 
+#### Installation 
 
 ```
   npm install
@@ -24,7 +24,7 @@
   npm start
 ```
 
-### Resources
+#### Resources
 
 * *[React](https://reactjs.org/)*
 * *[PM2](https://pm2.keymetrics.io/)*
