@@ -6,6 +6,9 @@
 
 
 #### Technology
+
+<hr style="height: .05em; margin: 4px 0; border: 1px solid red"> </hr>
+
 * React
 * Material UI
 * Express.js
