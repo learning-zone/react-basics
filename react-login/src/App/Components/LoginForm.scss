@@ -101,6 +101,17 @@ section#entry-page {
     }
   }
 }
+hr {
+  border: 0;
+  height: 1px;
+  opacity: .3;
+  background-image: linear-gradient(
+    to right, 
+    rgba(0,0,0,.2), 
+    rgba(0,0,0,1), 
+    rgba(0,0,0,.2)
+  );
+}
 @media only screen and (min-width: 420px) {
   form {
     h2 {

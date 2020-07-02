@@ -22,7 +22,7 @@ class LoginForm extends Component {
       case "signUp":
         return (
           <form>
-            <h2>Sign Up!</h2>
+            <h2>Sign Up! <hr/></h2>
             <fieldset>
               <legend>Create Account</legend>
               <ul>
@@ -48,7 +48,7 @@ class LoginForm extends Component {
       case "logIn":
         return (
           <form>
-            <h2>Welcome Back!</h2>
+            <h2>Welcome Back! <hr/></h2>
             <fieldset>
               <legend>Log In</legend>
               <ul>
@@ -74,7 +74,7 @@ class LoginForm extends Component {
       case "PWReset":
         return (
           <form>
-          <h2>Reset Password</h2>
+          <h2>Reset Password <hr/></h2>
           <fieldset>
             <legend>Password Reset</legend>
             <ul>
