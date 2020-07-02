@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 import './LoginForm.scss';
 
 
 class LoginForm extends Component {
-
+  
   constructor(props){
     super(props)
     this.state = {
@@ -18,27 +19,17 @@ class LoginForm extends Component {
   }
 
   currentView = () => {
+    
     switch(this.state.currentView) {
       case "signUp":
         return (
-          <form>
+
+          <form noValidate autoComplete="off">
             <h2>Sign Up! <hr/></h2>
             <fieldset>
-              <legend>Create Account</legend>
-              <ul>
-                <li>
-                  <label htmlFor="username">Username:</label>
-                  <input type="text" id="username" required/>
-                </li>
-                <li>
-                  <label htmlFor="email">Email:</label>
-                  <input type="email" id="email" required/>
-                </li>
-                <li>
-                  <label htmlFor="password">Password:</label>
-                  <input type="password" id="password" required/>
-                </li>
-              </ul>
+              <TextField label="Email" variant="outlined" className="login-input-box" />
+              <TextField label="Password" variant="outlined" className="login-input-box" type="password" />
+              <TextField label="Re-Enter Password" variant="outlined" className="login-input-box" type="password" />
             </fieldset>
             <button>Submit</button>
             <button type="button" onClick={ () => this.changeView("logIn")}>Have an Account?</button>
@@ -48,18 +39,11 @@ class LoginForm extends Component {
       case "logIn":
         return (
           <form>
-            <h2>Welcome Back! <hr/></h2>
+            <h2>Log In <hr/></h2>
             <fieldset>
-              <legend>Log In</legend>
+              <TextField label="Username" variant="outlined" className="login-input-box" />
+              <TextField label="Password" variant="outlined" className="login-input-box" type="password" />
               <ul>
-                <li>
-                  <label htmlFor="username">Username:</label>
-                  <input type="text" id="username" required/>
-                </li>
-                <li>
-                  <label htmlFor="password">Password:</label>
-                  <input type="password" id="password" required/>
-                </li>
                 <li>
                   <i/>
                   <a onClick={ () => this.changeView("PWReset")} href="#">Forgot Password?</a>
@@ -76,16 +60,12 @@ class LoginForm extends Component {
           <form>
           <h2>Reset Password <hr/></h2>
           <fieldset>
-            <legend>Password Reset</legend>
             <ul>
               <li>
                 <em>A reset link will be sent to your inbox!</em>
               </li>
-              <li>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" required/>
-              </li>
             </ul>
+            <TextField label="Email" variant="outlined" className="login-input-box" />
           </fieldset>
           <button>Send Reset Link</button>
           <button type="button" onClick={ () => this.changeView("logIn")}>Go Back</button>

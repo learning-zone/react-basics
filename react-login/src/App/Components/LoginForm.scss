@@ -48,11 +48,11 @@ section#entry-page {
       font-weight: 100;
     }
     fieldset {
+      padding-top: 25px;
       margin: 0;
-      background-color: #fff;
       border: none;
       border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
       legend {
         padding: 5px;
         background-color: #fff;
@@ -121,6 +121,12 @@ hr {
   border-radius: 4px;
   padding: 50px;
   margin: 50px;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: rgba(47,100,90,1) !important;
+}
+.PrivateNotchedOutline-root-1 {
+  top: -10px !important;
 }
 @media only screen and (min-width: 420px) {
   form {
