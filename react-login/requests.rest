@@ -10,14 +10,6 @@ Content-Type: application/json
 }
 
 
-### All User
-GET http://localhost:3000/api/test/all
-
-
-### User Role
-GET http://localhost:3000/api/test/user
-
-
 ### Sign-In
 POST http://localhost:3000/api/auth/signin
 Content-Type: application/json
@@ -26,3 +18,20 @@ Content-Type: application/json
 	"username": "mod",
 	"password": "12345678"
 }
+
+
+### Retrieve Public Content
+GET http://localhost:3000/api/test/all
+
+
+### Access User Content
+GET http://localhost:3000/api/test/user
+
+
+### Access Moderator Content
+GET http://localhost:3000/api/test/mod
+
+
+
+### Access Admin Content
+GET http://localhost:3000/api/test/admin	
