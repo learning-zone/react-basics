@@ -1,8 +1,8 @@
-## React Login & Registration
+## React Login 
 
 
 #### Project Description
-> React Login and Registration based on jwt and passport authentication. 
+> React Auth based on jwt and passport authentication. 
 
 
 #### Technology
