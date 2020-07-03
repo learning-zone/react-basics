@@ -8,9 +8,8 @@ const app = express();
 app.post('/api/login', (req, res) => {
     //GET the user details from Database
     const user = {
-        id: 1,
-        username: 'admin',
-        email: 'pradeep.vwa@gmail.com'
+        email: 'pradeep.vwa@gmail.com',
+        password: 'admin'
     }
     jwt.sign({user}, 'secretkey', { expiresIn: '30s' }, (err, token) => {
         // Store generated token in localStorge()
