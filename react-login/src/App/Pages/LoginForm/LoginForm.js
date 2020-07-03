@@ -10,7 +10,7 @@ class LoginForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      currentView: "signUp",
+      currentView: "logIn",
       formData: {
         email: '',
         renpassword: '',
