@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const path = require('path'); 
+const db = require("./utils/models")
 const app = express();
 
 var corsOptions = {
@@ -10,6 +11,13 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
@@ -17,9 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // database
-const db = require("./app/models");
-const Role = db.role;
 
+const Role = db.role;
 db.sequelize.sync();
 // force: true will drop the table if it already exists
 // db.sequelize.sync({force: true}).then(() => {
@@ -29,17 +36,17 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Backend Server are Running.." });
 });
 
 // routes
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
+require('./utils/routes/auth.routes')(app);
+require('./utils/routes/user.routes')(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`React App Listening at http://localhost:3000`);
 });
 
 function initial() {
@@ -58,3 +65,5 @@ function initial() {
     name: "admin"
   });
 }
+
+module.exports = app;
