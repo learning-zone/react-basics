@@ -1,5 +1,5 @@
 ### Sign-Up
-POST http://localhost:8080/api/auth/signup
+POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
@@ -11,15 +11,15 @@ Content-Type: application/json
 
 
 ### All User
-GET http://localhost:8080/api/test/all
+GET http://localhost:3000/api/test/all
 
 
 ### User Role
-GET http://localhost:8080/api/test/user
+GET http://localhost:3000/api/test/user
 
 
 ### Sign-In
-POST http://localhost:8080/api/auth/signin
+POST http://localhost:3000/api/auth/signin
 Content-Type: application/json
 
 {
