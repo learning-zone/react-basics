@@ -40,7 +40,7 @@ class LoginForm extends Component {
      */
     const { formData } = this.state;
     console.log('formData: '+JSON.stringify(formData));
-    axios.post(`/api/post/user`, { formData })
+    axios.post(`/api/auth/signup`, { formData })
       .then(res => {
           const result = res.data.recordset;
           this.setState({ result });
