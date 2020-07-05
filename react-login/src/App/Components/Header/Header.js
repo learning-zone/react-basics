@@ -61,7 +61,7 @@ export default function Header() {
              </Menu>
            </div>
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
     </div>
