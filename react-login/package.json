@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "material-table": "^1.63.1",
     "node-sass": "^4.14.1",
+    "npm-watch": "^0.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-material-ui-form-validator": "^2.0.10",
@@ -19,7 +20,17 @@
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src, static"
+      ],
+      "extensions": "js,jsx"
+    }
+  },
   "scripts": {
+    "watch": "npm-watch",
+    "devStart": "react-scripts start",
     "start": "npm run-script build && nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
