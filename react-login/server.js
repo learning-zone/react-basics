@@ -3,6 +3,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const routes = require('./utils/routes');
+const verifyToken = require('./utils/verifyToken');
 const app = express();
 
 
@@ -22,12 +23,12 @@ app.post('/api/login', (req, res) => {
     //GET the user details from Database
     const user = {
         email: 'pradeep.vwa@gmail.com',
-        password: 'admin'
+        password: 'root'
     }
-    jwt.sign({user}, 'secretkey', { expiresIn: '30s' }, (err, token) => {
-        // Store generated token in localStorge()
+    // Reference: https://github.com/auth0/node-jsonwebtoken
+    jwt.sign({user}, 'secretkey', { expiresIn: '60s' }, (err, token) => {
         res.json({
-            token
+            token: token
         });
     });
 });
@@ -42,40 +43,13 @@ app.post('/api/posts', verifyToken, (req, res) => {
             res.sendStatus(403);
         } else {
             res.json({
-                message: 'POST Created...',
+                message: 'POST Successful',
                 authData
             });
         }
     });
 });
 
-
-/**
- * FORMAT OF TOKEN
- * Authorization: Bearer <access_token>
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- */
-function verifyToken(req, res, next) {
-    //Get auth header value
-    const bearerHeader = req.headers['authorization'];
-    // Check if bearer is undefined
-    if(typeof bearerHeader !== 'undefined') {
-        // Split at the space
-        const bearer = bearerHeader.split(' ');
-        // Get token from array
-        const bearerToken = bearer[1];
-        // Set the token
-        req.token = bearerToken;
-        // Next Middleware
-        next();
-    } else {
-        //forbidden
-        res.sendStatus(403);
-    }
-}
 
 // REGISTER API HERE
 app.get('/api/get/user', routes);
