@@ -195,7 +195,7 @@
 #### Q. ***How can you share an element in the parsing?***
 #### Q. ***Ho can you re-render a component without using setState() function?***
 #### Q. ***Can you update props in React?***
-#### Q. ***Explain the term ‘Restructuring.’?***
+#### Q. ***Explain the term "Restructuring"?***
 #### Q. ***Can you update the values of props?***
 #### Q. ***Explain the meaning of Mounting and Demounting?***
 #### Q. ***What is the use of ‘prop-types’ library?***
