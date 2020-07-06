@@ -10,25 +10,7 @@ section#entry-page {
   grid-gap: 10px;
   width: 100%;
   height: 100vh;
-  background: rgba(47,100,90,1);
-  background: -moz-linear-gradient(
-    left, 
-    rgba(47,100,90,1) 0%, 
-    rgba(111,161,123,1) 100%
-  );
-  background: -webkit-gradient(
-    left top, 
-    right top, 
-    color-stop(0%, rgba(47,100,90,1)), 
-    color-stop(100%, rgba(111,161,123,1))
-  );
-  background: -webkit-linear-gradient(
-    left, 
-    rgba(47,100,90,1) 0%, 
-    rgba(111,161,123,1) 100%
-  );
-  background-size: 400% 400%;
-  animation: Gradient 15s ease infinite;
+  background: rgba(0,0,0,0.1);
   box-sizing: border-box;
   form {
     grid-column: 2;
@@ -127,9 +109,6 @@ hr {
 }
 .PrivateNotchedOutline-root-1 {
   top: -10px !important;
-}
-.makeStyles-root-1 {
-  display: none;
 }
 @media only screen and (min-width: 420px) {
   form {
