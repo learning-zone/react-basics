@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import HomeIcon from '@material-ui/icons/Home';
 import './Header.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +57,7 @@ export default function Header() {
                open={Boolean(anchorEl)}
                onClose={handleClose}
              >
+               <Link to="home"><MenuItem onClick={handleClose}><HomeIcon className="Header-Menu" />Home</MenuItem></Link>
                <Link to="user-form"><MenuItem onClick={handleClose}><FormatListBulletedIcon className="Header-Menu" />User Form</MenuItem></Link>
                <Link to="user-details"><MenuItem onClick={handleClose}><PeopleOutlineIcon className="Header-Menu" />User Details</MenuItem></Link>
              </Menu>
