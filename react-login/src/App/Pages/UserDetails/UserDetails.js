@@ -12,7 +12,7 @@ class UserDetails extends React.Component {
     }
 
     componentDidMount() {
-      let user = JSON.parse(sessionStorage.getItem('login'));
+      let user = JSON.parse(sessionStorage.getItem('user'));
       const token = user.store;
 
       axios.get(`/api/get/user`, { headers: {"Authorization" : `Bearer ${token}`} })
