@@ -54,9 +54,9 @@
   "author": "pradeep.vwa@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^6.2.0",
