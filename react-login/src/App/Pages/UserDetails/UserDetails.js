@@ -12,14 +12,16 @@ class UserDetails extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/get/user`)
-          .then(res => {
-            const Results = res.data.recordset;
-            this.setState({ Results });
-          })
+      let user = JSON.parse(sessionStorage.getItem('login'));
+      const token = user.store;
+
+      axios.get(`/api/get/user`, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(res => {
+          const Results = res.data.recordsets;
+          this.setState({ Results });
+        })
     }
 
-      
   render() {
     return (
       <div style={{ maxWidth: '100%', padding: '50px' }}>
