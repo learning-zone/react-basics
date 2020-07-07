@@ -10,11 +10,10 @@ class LoginForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      currentView: "logIn",
       formData: {
         email: '',
         password: '',
-        login: false,
+        isLoggedIn: false,
         store: ''
       },
       submitted: false
@@ -27,9 +26,9 @@ class LoginForm extends Component {
    * Get the token from sessionStorage
    */
   storeCollector() {
-    let store = JSON.parse(sessionStorage.getItem('login'));
-    if(store && store.login) {
-      this.setState({login: true, store: store})
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    if(user && user.isLoggedIn) {
+      this.setState({isLoggedIn: true, store: user.store})
     }
   }
 
@@ -63,8 +62,8 @@ class LoginForm extends Component {
         this.setState({ result });
         console.log("Token: " + JSON.stringify(res.data.token));
 
-        sessionStorage.setItem('login', JSON.stringify({
-          login: true,
+        sessionStorage.setItem('user', JSON.stringify({
+          isLoggedIn: true,
           store: res.data.token
         }))
         this.storeCollector();
@@ -75,7 +74,7 @@ class LoginForm extends Component {
     /**
      * After successful login redirect to Home Page
      */
-    if (this.state.login) {
+    if (this.state.isLoggedIn) {
       return <Redirect to="/home" />
     }
     return (
