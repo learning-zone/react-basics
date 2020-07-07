@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import './LoginForm.scss';
-
 
 class LoginForm extends Component {
   
@@ -13,13 +13,26 @@ class LoginForm extends Component {
       currentView: "logIn",
       formData: {
         email: '',
-        renpassword: '',
         password: '',
+        login: false,
+        store: ''
       },
       submitted: false
     }
   }
-  
+  componentDidMount() {
+    this.storeCollector();
+  }
+  /**
+   * Get the token from sessionStorage
+   */
+  storeCollector() {
+    let store = JSON.parse(sessionStorage.getItem('login'));
+    if(store && store.login) {
+      this.setState({login: true, store: store})
+    }
+  }
+
   handleChange = (event) => {
     const { formData } = this.state;
     formData[event.target.name] = event.target.value;
@@ -27,7 +40,11 @@ class LoginForm extends Component {
     //console.log(JSON.stringify(formData));
   }
 
-  handleSubmit = (e) => {
+  /**
+   * Login Page
+   * @param {*} e 
+   */
+  handleLogin = (e) => {
     e.preventDefault();
     this.setState({ submitted: true }, () => {
         setTimeout(() => this.setState({ 
@@ -40,76 +57,34 @@ class LoginForm extends Component {
      */
     const { formData } = this.state;
     console.log('formData: '+JSON.stringify(formData));
-    axios.post(`/api/auth/signup`, { formData })
+    axios.post(`/api/post/login`, { formData })
       .then(res => {
-          const result = res.data.recordset;
-          this.setState({ result });
-        console.log(res);
-        console.log(res.data);
+        const result = res.data.recordset;
+        this.setState({ result });
+        console.log("JWT Token: " + JSON.stringify(res.data.token));
+
+        sessionStorage.setItem('login', JSON.stringify({
+          login: true,
+          store: res.data.token
+        }))
+        this.storeCollector();
       })
     }
 
-  changeView = (view) => {
-    this.setState({
-      currentView: view
-    })
-  }
-
-  currentView = () => {
-    switch(this.state.currentView) {
-      case "signUp":
-        return (
-
+    handleRoute = () => {
+      console.log('Route Change');
+    }
+  render() {
+    if (this.state.login) {
+      return <Redirect to="user-form" onChange={this.handleRoute} />
+    }
+    return (
+        <section id="entry-page">
           <form 
                 noValidate 
                 autoComplete="off" 
-                onSubmit={this.handleSubmit}
+                onSubmit={this.handleLogin}
                 method="post">
-            <h2>Sign Up! <hr/></h2>
-            <fieldset>
-              <TextField 
-                  label="Email" 
-                  variant="outlined" 
-                  className="login-input-box"
-                  onChange={this.handleChange}
-                  name="email"
-                  value={this.state.formData.email || ""}
-              />
-              <TextField 
-                  label="Password" 
-                  variant="outlined" 
-                  className="login-input-box" 
-                  type="password" 
-                  onChange={this.handleChange}
-                  name="password"
-                  value={this.state.formData.password || ""}                  
-              />
-              <TextField 
-                  label="Re-Enter Password" 
-                  variant="outlined" 
-                  className="login-input-box" 
-                  type="password" 
-                  onChange={this.handleChange}
-                  name="renpassword"
-                  value={this.state.formData.renpassword || ""}
-                  
-              />
-            </fieldset>
-            <Button 
-                  variant="contained"
-                  type="submit"
-                  disabled={this.state.submitted}
-            >{
-                (this.state.submitted && 'Your form is submitted!')
-                || (!this.state.submitted && 'Submit')
-             }
-            </Button>
-            <Button variant="contained" onClick={ () => this.changeView("logIn")}>Have an Account?</Button>
-          </form>
-        )
-      case "logIn":
-        return (
-          <form>
             <h2>Log In <hr/></h2>
             <fieldset>
               <TextField 
@@ -129,50 +104,17 @@ class LoginForm extends Component {
                   name="password"
                   value={this.state.formData.password || ""}                  
               />
-              <ul>
-                <li>
-                  <i/>
-                  <a onClick={ () => this.changeView("PWReset")} href="#">Forgot Password?</a>
-                </li>
-              </ul>
             </fieldset>
-            <Button variant="contained">Login</Button>
-            <Button variant="contained" onClick={ () => this.changeView("signUp")}>Create an Account</Button>
+            <Button 
+                  variant="contained"
+                  type="submit"
+                  disabled={this.state.submitted}
+            >{
+                (this.state.submitted && 'Your form is submitted!')
+                || (!this.state.submitted && 'Login')
+             }
+            </Button>
           </form>
-        )
-      case "PWReset":
-        return (
-          <form>
-          <h2>Reset Password <hr/></h2>
-          <fieldset>
-            <ul>
-              <li>
-                <em>A reset link will be sent to your inbox!</em>
-              </li>
-            </ul>
-            <TextField 
-                  label="Email" 
-                  variant="outlined" 
-                  className="login-input-box"
-                  onChange={this.handleChange}
-                  name="email"
-                  value={this.state.formData.email || ""}
-            />
-          </fieldset>
-          <Button variant="contained">Send Reset Link</Button>
-          <Button variant="contained" onClick={ () => this.changeView("logIn")}>Go Back</Button>
-        </form>
-        )
-      default:
-        break
-    }
-  }
-
-
-  render() {
-    return (
-      <section id="entry-page">
-        {this.currentView()}
       </section>
     )
   }
