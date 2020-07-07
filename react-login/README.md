@@ -18,15 +18,14 @@
 
 
 #### Technology
+
 * React
-* Material UI
+* Material-UI
 * Express.js
 * bcryptjs
 * jsonwebtoken
-* Sequelize
 * Passport.js
 * Session
-* RestClient
 * MySQL
 
 
