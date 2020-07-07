@@ -1,4 +1,4 @@
-## React Login 
+## React Login ( JWT Auth )
 
 
 #### Project Description
