@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import HomeIcon from '@material-ui/icons/Home';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import './Header.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -63,7 +64,7 @@ export default function Header() {
              </Menu>
            </div>
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Link to="logout"><Button color="inherit"><PowerSettingsNewIcon style={{color: '#fff'}} /></Button></Link>
         </Toolbar>
       </AppBar>
     </div>
