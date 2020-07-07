@@ -7,31 +7,31 @@ export default class Logout extends Component {
         super(props);
         this.state = {
           formData: {
-            login: false,
+            isLoggedIn: false,
             store: ''
           }
         }
     }
     componentDidMount() {
       // Clear User Session
-      sessionStorage.setItem('login', JSON.stringify({
-        login: false,
+      sessionStorage.setItem('user', JSON.stringify({
+        isLoggedIn: false,
         store: ''
       }));
       sessionStorage.clear();
-      this.setState({login: false, store: ''});
+      this.setState({isLoggedIn: false, store: ''});
     }
 
     render() {
       /**
        * Redirect to Login Page
        */
-      if (this.state.login === false) {
+      if (this.state.isLoggedIn === false) {
           return <Redirect to="/" />
       }
       return (
           <div>
-              Redirecting to Login...
+              Redirecting to Login Page...
           </div>
       )
     }
