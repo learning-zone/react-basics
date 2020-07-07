@@ -61,7 +61,7 @@ class LoginForm extends Component {
       .then(res => {
         const result = res.data.recordset;
         this.setState({ result });
-        console.log("JWT Token: " + JSON.stringify(res.data.token));
+        console.log("Token: " + JSON.stringify(res.data.token));
 
         sessionStorage.setItem('login', JSON.stringify({
           login: true,
@@ -71,12 +71,12 @@ class LoginForm extends Component {
       })
     }
 
-    handleRoute = () => {
-      console.log('Route Change');
-    }
   render() {
+    /**
+     * After successful login redirect to Home Page
+     */
     if (this.state.login) {
-      return <Redirect to="user-form" onChange={this.handleRoute} />
+      return <Redirect to="/home" />
     }
     return (
         <section id="entry-page">
