@@ -8,12 +8,11 @@ import LoginForm from '../../Pages/LoginForm/LoginForm';
 import Logout from '../../Pages/Logout/Logout';
 import Header from '../Header/Header';
 
-let header;
 
 const Routes = () => {
 
   // Hide Header from Login Page
-  header = (window.location.pathname === '/') ? '' : <Header />;
+  let header = (window.location.pathname === '/') ? '' : <Header />;
   return (
     <div>
      {header}
