@@ -109,7 +109,7 @@ class LoginForm extends Component {
                   type="submit"
                   disabled={this.state.submitted}
             >{
-                (this.state.submitted && 'Your form is submitted!')
+                (this.state.submitted && 'Please Wait...')
                 || (!this.state.submitted && 'Login')
              }
             </Button>
