@@ -22,13 +22,15 @@
 
 <br/>
 
+#### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
+React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application’s view layer. 
+
 #### Q. ***How React works? How Virtual-DOM works in React?***
 #### Q. ***What are Components in React ?***
-#### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
 #### Q. ***List some of the major advantages and limitations of React?***
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 #### Q. ***What is React.createClass?***
-#### Q. ***What is ReactDOM and What is the difference between ReactDOM and React?***
+#### Q. ***What is ReactDOM? What is the difference between ReactDOM and React?***
 #### Q. ***What are the differences between a class component and functional component?***
 #### Q. ***What is the difference between state and props?***
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
