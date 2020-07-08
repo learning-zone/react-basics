@@ -72,7 +72,7 @@ router.get('/api/get/user', verifyToken, function(req, res, next) {
     
             request.query(smt, function(err, recordsets) {
                 if(err) console.log(err)
-                console.log('authData: '+authData);
+                console.log('authData: '+JSON.stringify(authData));
                 res.send(recordsets);
             });
         });
@@ -106,7 +106,6 @@ router.post('/api/post/user', verifyToken, function(req, res, next) {
                    if(err) console.log(err)
                    console.log('authData: '+JSON.stringify(authData));
                    res.send(recordset);
-                   
                });
            });
         }
