@@ -13,11 +13,11 @@ class UserDetails extends React.Component {
 
     componentDidMount() {
       let user = JSON.parse(sessionStorage.getItem('user'));
-      const accessToken = user.accessToken;
+      let accessToken = user.accessToken;
 
       axios.get(`/api/get/user`, { headers: {"Authorization" : `Bearer ${accessToken}`} })
         .then(res => {
-          const Results = res.data.recordsets;
+          const Results = res.data.recordset;
           this.setState({ Results });
         })
     }
