@@ -35,7 +35,10 @@ export default class UserForm extends React.Component {
          */
         const { formData } = this.state;
         console.log(formData);
-        axios.post(`/api/post/user`, { formData })
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        let accessToken = user.accessToken;
+
+        axios.post(`/api/post/user`, { formData }, { headers: {"Authorization" : `Bearer ${accessToken}`} })
       .then(res => {
           const result = res.data.recordset;
           this.setState({ result });
