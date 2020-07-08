@@ -8,7 +8,7 @@ export default class Logout extends Component {
         this.state = {
           formData: {
             isLoggedIn: false,
-            store: ''
+            accessToken: ''
           }
         }
     }
@@ -16,10 +16,10 @@ export default class Logout extends Component {
       // Clear User Session
       sessionStorage.setItem('user', JSON.stringify({
         isLoggedIn: false,
-        store: ''
+        accessToken: ''
       }));
       sessionStorage.clear();
-      this.setState({isLoggedIn: false, store: ''});
+      this.setState({isLoggedIn: false, accessToken: ''});
     }
 
     render() {
