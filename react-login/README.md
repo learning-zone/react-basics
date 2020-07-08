@@ -7,14 +7,12 @@
 
 #### Rest APIs 
 
-| Methods | Urls             | Actions                 |
-|---------|------------------|-------------------------|
-| POST    | /api/auth/singup |Singup new account       |
-| POST    | /api/auth/singin | Login an account        |
-| GET     | /api/test/all    | Retrieve public content |
-| GET     | /api/test/user   | Access User Content     |
-| GET     | /api/test/mod    | Access Moderator Content|
-| GET     | /api/test/admin  | Access Admin Content    |
+| Methods | Urls             | Actions             |
+|---------|------------------|---------------------|
+| POST    | /api/post/login  | Login an account    |
+| GET     | /api/get/user    | Access User Content |
+| POST    | /api/post/user   | Access New User     |
+
 
 
 #### Technology
@@ -26,7 +24,7 @@
 * jsonwebtoken
 * Passport.js
 * Session
-* MySQL
+* MSSQL
 
 
 #### Installation 
@@ -35,6 +33,20 @@
   npm install
 
   npm start
+```
+
+#### Database Setup
+
+`config.js`
+```
+let config = {
+    "user": "sa",
+    "password": "<your-db-password>",
+    "server": "<your-db-ip-address>",
+    "database": "<your-db-name>",
+    "driver": "msnodesqlv8",
+    "port": 1433
+  };
 ```
 
 #### Resources
