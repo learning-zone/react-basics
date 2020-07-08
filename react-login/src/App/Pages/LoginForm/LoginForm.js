@@ -14,7 +14,7 @@ class LoginForm extends Component {
         email: '',
         password: '',
         isLoggedIn: false,
-        store: ''
+        accessToken: ''
       },
       submitted: false
     }
@@ -28,7 +28,7 @@ class LoginForm extends Component {
   storeCollector() {
     let user = JSON.parse(sessionStorage.getItem('user'));
     if(user && user.isLoggedIn) {
-      this.setState({isLoggedIn: true, store: user.store})
+      this.setState({isLoggedIn: true, accessToken: user.accessToken})
     }
   }
 
@@ -60,11 +60,11 @@ class LoginForm extends Component {
       .then(res => {
         const result = res.data.recordset;
         this.setState({ result });
-        console.log("Token: " + JSON.stringify(res.data.token));
+        console.log("accessToken: " + JSON.stringify(res.data.accessToken));
 
         sessionStorage.setItem('user', JSON.stringify({
           isLoggedIn: true,
-          store: res.data.token
+          accessToken: res.data.accessToken
         }))
         this.storeCollector();
       })
