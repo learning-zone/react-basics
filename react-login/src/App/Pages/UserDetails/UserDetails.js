@@ -13,9 +13,9 @@ class UserDetails extends React.Component {
 
     componentDidMount() {
       let user = JSON.parse(sessionStorage.getItem('user'));
-      const token = user.store;
+      const accessToken = user.accessToken;
 
-      axios.get(`/api/get/user`, { headers: {"Authorization" : `Bearer ${token}`} })
+      axios.get(`/api/get/user`, { headers: {"Authorization" : `Bearer ${accessToken}`} })
         .then(res => {
           const Results = res.data.recordsets;
           this.setState({ Results });
