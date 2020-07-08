@@ -6,7 +6,7 @@ h1,h2,h3,h4,h5,h6,p { margin: 0; }
 
 section#entry-page {
   display: grid;
-  grid-template-columns: 1fr minmax(200px,400px) 1fr;
+  grid-template-columns: 1fr minmax(300px,500px) 1fr;
   grid-template-rows: 1fr minmax(auto,1fr) 1fr;
   grid-gap: 10px;
   width: 100%;
