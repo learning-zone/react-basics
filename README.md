@@ -46,6 +46,19 @@ class Welcome extends React.Component {
 }
 ```
 #### Q. ***List some of the major advantages and limitations of React?***
+**Advantages**  
+
+* Updates process is optimised and accelerated.
+* JSX makes components/blocks code readable. It displays how components are plugged or combined with.
+* React data binding establishes conditions for creation dynamic applications.
+* Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
+Testable. React native tools are offered for testing, debugging code.
+* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:   
+    * React.renderComponentToString is called on the server. 
+    * React.renderComponent() is called on the client side. 
+    * React preserves markup rendered on the server side, attaches event handlers.  
+
+
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 #### Q. ***What is React.createClass?***
 #### Q. ***What is ReactDOM? What is the difference between ReactDOM and React?***
