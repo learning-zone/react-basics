@@ -203,9 +203,9 @@ class MyComponent extends React.Component {
 ReactDOM.render(<MyComponent />, node);
 
 ```
-**React** package contains: React.createElement, React.createClass, React.Component, React.PropTypes, React.Children
+**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
 
-**ReactDOM** package contains: ReactDOM.render, ReactDOM.unmountComponentAtNode, ReactDOM.findDOMNode, and react-dom/server that's including: ReactDOMServer.renderToString and ReactDOMServer.renderToStaticMarkup.
+**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
 
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
