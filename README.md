@@ -90,7 +90,7 @@ class App extends React.Component {
 export default App;
 ```
 
-#### Q. ***What is ReactDOM? What is the difference between ReactDOM and React?***
+#### Q. ***What is ReactDOM?***
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
 
 * render()
@@ -187,6 +187,27 @@ ReactDOM.createPortal(child, container)
 
 * **child**: This parameter expects a JSX expression or a React Component to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
+
+#### Q. ***What is the difference between ReactDOM and React?***
+```jsx
+import React from 'react'; /* importing react */
+import ReactDOM from 'react-dom'; /* importing react-dom */
+
+class MyComponent extends React.Component {
+
+  render() {
+    return <div>Hello World</div>;
+  }
+});
+
+ReactDOM.render(<MyComponent />, node);
+
+```
+**React** package contains: React.createElement, React.createClass, React.Component, React.PropTypes, React.Children
+
+**ReactDOM** package contains: ReactDOM.render, ReactDOM.unmountComponentAtNode, ReactDOM.findDOMNode, and react-dom/server that's including: ReactDOMServer.renderToString and ReactDOMServer.renderToStaticMarkup.
+
+The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
 #### Q. ***What are the differences between a class component and functional component?***
 #### Q. ***What is the difference between state and props?***
