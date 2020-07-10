@@ -126,7 +126,7 @@ To use the ReactDOM in any React web app we must first import ReactDOM from the 
 ```jsx
 import ReactDOM from 'react-dom'
 ```
-* **ReactDOM.render() Function**  
+1. **ReactDOM.render() Function**  
 
 This function is used to render a single React Component or several Components wrapped together in a Component or a div element. This function uses the efficient methods of React for updating the DOM by being able to change only a subtree, efficient diff methods etc.
 This function returns a reference to the component or null if a stateless component was rendered.
@@ -142,7 +142,7 @@ ReactDOM.render(element, container, callback)
 * **callback**: This is an optional parameter that expects a function that is to be executed once the render is complete.
 
 
-* **findDOMNode() Function**  
+1. **findDOMNode() Function**  
 
 This function is generally used to get the DOM node where a particular React component was rendered. This method is very less used as the following can be done adding a ref attribute to each component itself.
 
@@ -154,7 +154,7 @@ ReactDOM.findDOMNode(component)
 
 This method takes a single parameter component which expects a React Component to be searched in the Browser DOM. This function returns the DOM node where the component was rendered on success otherwise null.
 
-* **unmountComponentAtNode() Function**  
+1. **unmountComponentAtNode() Function**  
 
 This function is used to unmount or remove the React Component that was rendered to a particular container. 
 
@@ -163,7 +163,7 @@ ReactDOM.unmountComponentAtNode(container)
 ```
 This method takes a single parameter container which expects the DOM container from which the React component has to be removed. This function returns true on success otherwise false.
 
-* **hydrate() Function**  
+1. **hydrate() Function**  
 
 This method is equivalent to the render() method but is implemented while using server-side rendering.
 
@@ -177,7 +177,7 @@ ReactDOM.hydrate(element, container, callback)
 
 This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
 
-* **createPortal() Function**  
+1. **createPortal() Function**  
 
 Usually, when an element is returned from a component\'s render method, it\'s mounted on the DOM as a child of the nearest parent node which in some cases may not be desired. Portals allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
 
