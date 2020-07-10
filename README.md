@@ -67,6 +67,29 @@ Testable. React native tools are offered for testing, debugging code.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
+JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
+
+* It is faster because it performs optimization while compiling code to JavaScript.
+* It is also type-safe and most of the errors can be caught during compilation.
+* It makes it easier and faster to write templates.
+
+Example:
+```jsx
+import React from 'react';
+
+class App extends React.Component {
+  
+   render() {
+      return (
+         <div>
+            Hello World!!!
+         </div>
+      );
+   }
+}
+export default App;
+```
+
 #### Q. ***What is React.createClass?***
 #### Q. ***What is ReactDOM? What is the difference between ReactDOM and React?***
 #### Q. ***What are the differences between a class component and functional component?***
