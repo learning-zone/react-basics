@@ -13,11 +13,13 @@
 
 ### React Projects
 
-|Sl.No| Project Name                              | Technologies Used                             |Live Demo    |
-|-----|-------------------------------------------|---------------------------------------------- |-------------|
-| 01  |	[Poke'Times](poketimes)                   |React                                          |             |
-| 02  |	[React-Express-MSSQL](react-express-mssql)|React, Node.js, Express.js, SQL-Server         |             |
-| 03  |	[Todo-App](todo-app)                      |React                                          |             |
+|Sl.No| Project Name                              | Technologies Used                             |
+|-----|-------------------------------------------|---------------------------------------------- |
+| 01  |	[Poke'Times](poketimes)                   |React                                          |
+| 02  |	[React-Express-MSSQL](react-express-mssql)|React, Node.js, Express.js, SQL-Server         |
+| 03  |	[Todo-App](todo-app)                      |React                                          |
+| 04  |	[React Login (JWT)](react-login)          |React, JWT, MD5, MSSQL, Express.js             |
+| 05  |	[React Seed](react-seed)                  |React                                          |
 
 
 <br/>
