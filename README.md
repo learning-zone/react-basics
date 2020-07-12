@@ -297,6 +297,67 @@ class ClockUsingClass extends React.Component {
 export default ClockUsingClass
 ```
 #### Q. ***What is the difference between state and props?***
+
+**State**  
+
+This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
+
+Example:
+```js
+class Employee extends React.Component {    
+    constructor() {    
+        this.state = {      
+            id: 1,      
+            name: "Alex"    
+        };  
+    }    
+    
+    render() {    
+        return (      
+            <div>        
+              <p>{this.state.id}</p>        
+              <p>{this.state.name}</p>      
+            </div>    
+        );  
+    }
+}
+
+export default Employee
+```
+
+**Props**  
+
+Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+Example: 
+```js
+class ParentComponent extends Component {    
+    render() {    
+        return (        
+            <ChildComponent name="First Child" />    
+        );  
+    }
+}
+
+const ChildComponent = (props) => {    
+    return <p>{props.name}</p>; 
+};
+```
+
+**Difference between State and Props**  
+
+|Props	                           |State                             |
+|----------------------------------|----------------------------------|
+|Props are read-only.	             |State changes can be asynchronous.|
+|Props are immutable.	             |State is mutable.                 |
+|Props allow you to pass data from one component to other components as an argument.|	State holds information about the components.|
+|Props can be accessed by the child component.    |	State cannot be accessed by child components.|
+|Props are used to communicate between components.|	States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.	            |Stateless components cannot have State.|
+|Props make components reusable.	                |State cannot make components reusable.|
+|Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
+
+
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
