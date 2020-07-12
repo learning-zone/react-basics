@@ -60,7 +60,7 @@ class Welcome extends React.Component {
 
 **Advantages**  
 
-* It relies on a virtual-dom to know what is really changing in your UI and will re-render only what has really changed, hence better performance wise
+* It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
 * JSX makes components/blocks code readable. It displays how components are plugged or combined with.
 * React data binding establishes conditions for creation dynamic applications.
 * Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
