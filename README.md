@@ -48,6 +48,9 @@ class Welcome extends React.Component {
 }
 ```
 #### Q. ***List some of the major advantages and limitations of React?***
+
+<img src="assets/react-features.png" alt="React-Features" />
+
 **Advantages**  
 
 * It relies on a virtual-dom to know what is really changing in your UI and will re-render only what has really changed, hence better performance wise
