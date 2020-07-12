@@ -43,7 +43,7 @@ Components are the building blocks of any React app and a typical React app will
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
 *Example*: Class component 
-```jsx
+```js
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, World!</h1>;
@@ -80,7 +80,7 @@ JSX allows us to write HTML elements in JavaScript and place them in the DOM wit
 * It makes it easier and faster to write templates.
 
 Example:
-```jsx
+```js
 import React from 'react';
 
 class App extends React.Component {
@@ -112,7 +112,7 @@ ReactDOM uses observables thus provides an efficient way of DOM handling. ReactD
 
 Example: 
 
-```jsx
+```js
 // index.js
 
 import React from 'react';
@@ -129,7 +129,7 @@ ReactDOM.render(
 
 To use the ReactDOM in any React web app we must first import ReactDOM from the react-dom package by using the following code snippet:
 
-```jsx
+```js
 import ReactDOM from 'react-dom'
 ```
 **a.) ReactDOM.render() Function**  
@@ -195,7 +195,7 @@ ReactDOM.createPortal(child, container)
 * **container**: This parameter expects the container in which the element has to be rendered.
 
 #### Q. ***What is the difference between ReactDOM and React?***
-```jsx
+```js
 import React from 'react'; /* importing react */
 import ReactDOM from 'react-dom'; /* importing react-dom */
 
@@ -216,6 +216,84 @@ ReactDOM.render(<MyComponent />, node);
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
 #### Q. ***What are the differences between a class component and functional component?***
+
+**Functional Components**  
+
+* Functional components are basic JavaScript functions. These are typically arrow functions but can also be created with the regular  function keyword.
+* Sometimes referred to as `stateless` components as they simply accept data and display them in some form; that is they are mainly responsible for rendering UI.
+* React lifecycle methods (for example, `componentDidMount()`) cannot be used in functional components.
+* There is no render method used in functional components.
+* These are mainly responsible for UI and are typically presentational only (For example, a Button component).
+* Functional components can accept and use props.
+* Functional components should be favored if you do not need to make use of React state.
+
+Example:
+```js
+const ClockUsingHooks = props => {
+    const [time, setTime] = useState(new Date())
+
+    const changeTime = () => {
+        setTime(new Date())
+    }
+
+    useEffect(() => {
+        const tick = setInterval(() => {
+            changeTime()
+        }, 1000)
+        return () => clearInterval(tick)
+    })
+    return (
+        <div className="clock">
+            <h1>Hello! This is a function component clock.</h1>
+            <h2>It is {time.toLocaleTimeString()}.</h2>
+        </div>
+    )
+}
+
+export default ClockUsingHooks
+```
+
+**Class Components**  
+
+* Class components make use of ES6 class and extend the Component class in React.
+* Sometimes called `stateful` components as they tend to implement logic and state.
+* React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
+* We pass `props` down to class components and access them with `this.props`.
+
+Example:
+```js
+class ClockUsingClass extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { date: new Date() }
+    }
+
+    componentDidMount() {
+        this.time = setInterval(() => {
+            this.changeTime()
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.time)
+    }
+
+    changeTime() {
+        this.setState({ date: new Date() })
+    }
+
+    render() {
+        return (
+            <div className="clock">
+                <h1>Hello! This is a class component clock.</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            </div>
+        )
+    }
+}
+
+export default ClockUsingClass
+```
 #### Q. ***What is the difference between state and props?***
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
