@@ -46,7 +46,7 @@ Components are the building blocks of any React app and a typical React app will
 
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
-*Example*: Class component 
+*Example*: Class Component 
 ```js
 class Welcome extends React.Component {
   render() {
@@ -471,6 +471,7 @@ export default class Test extends PureComponent{
    }
 }
 ``` 
+
 Example
 ```js
 class Test extends React.PureComponent {
