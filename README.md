@@ -49,7 +49,7 @@ class Welcome extends React.Component {
 ```
 #### Q. ***List some of the major advantages and limitations of React?***
 
-<img src="assets/react-features.png" alt="React-Features" />
+<img src="assets/react-features.png" alt="React-Features" width="500px" />
 
 **Advantages**  
 
