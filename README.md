@@ -429,7 +429,7 @@ export default App;
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
-#### Q. ***What is PureComponent? When to use PureComponent over Component?***
+#### Q. ***What is PureComponent?***
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
 **Features of React Pure Components**
@@ -514,6 +514,26 @@ class Task extends React.Component {
 }
 ReactDOM.render(<Test />, document.getElementById('app'));
 ```
+
+#### Q. ***Why to use PureComponent? When to use PureComponent over Component?***
+Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
+
+Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
+
+That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn’t re-render if neither of them changed, no matter what happened to its parent component.
+
+That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
+
+**When to use PureComponent**  
+
+* We want to avoid re-rendering cycles of component when its props and state are not changed, and
+* The state and props of component are immutable, and
+* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+On the other hand, we should not use `PureComponent()` as a base component if:
+
+* props or state are not immutable, or
+* Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
