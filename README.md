@@ -430,6 +430,90 @@ export default App;
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
+
+**Features of React Pure Components**
+
+* Prevents re-rendering of Component if props or state is the same
+* Takes care of `shouldComponentUpdate()` implicitly
+* `State()` and `Props` are Shallow Compared
+* Pure Components are more performant in certain cases
+
+Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
+
+It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
+
+React Components re-renders in the following scenarios:
+
+1. `setState()` is called in Component
+1. `props` values are updated
+1. `this.forceUpdate()` is called
+
+In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
+
+**Stateless Component**
+```js
+import { pure } from 'recompose';
+
+export default pure ( (props) => {
+   
+   return 'Stateless Component Example';
+})
+```
+
+**Stateful Component**
+```js
+import React, { PureComponent } from 'react';
+
+export default class Test extends PureComponent{
+   render() {
+      return 'Stateful Component Example';
+   }
+}
+``` 
+Example
+```js
+class Test extends React.PureComponent {
+   constructor(props) {
+      super(props);
+      this.state = {
+         taskList: [
+            { title: 'Excercise'},
+            { title: 'Cooking'},
+            { title: 'Reacting'},
+         ]
+      };
+   }
+   componentDidMount() {
+      setInterval(() => {
+         this.setState((oldState) => {
+            return { taskList: [...oldState.taskList] }
+         });
+      }, 1000);
+   }
+   render() {
+      console.log("TaskList render() called");
+      return (<div>
+         {this.state.taskList.map((task, i) => {
+            return (<Task
+               key={i}
+               title={task.title}
+            />);
+         })}
+      </div>);
+   }
+}
+class Task extends React.Component {
+   render() {
+      console.log("task added");
+      return (<div>
+         {this.props.title}
+      </div>);
+   }
+}
+ReactDOM.render(<Test />, document.getElementById('app'));
+```
+
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
 #### Q. ***What are controlled and uncontrolled components in React?***
@@ -440,15 +524,15 @@ export default App;
 #### Q. ***What do you understand from “In React, everything is a component.”?***
 #### Q. ***What is arrow function in React? How is it used?***
 #### Q. ***Differentiate between stateful and stateless components?***
-#### Q. ***What are the different phases of React component’s lifecycle?***
+#### Q. ***What are the different phases of React component lifecycle?***
 #### Q. ***What is an event in React? How do you create an event in React?***
 #### Q. ***What do you understand by Refs in React? List some of the cases when you should use Refs?***
 #### Q. ***How do you modularize code in React?***
 #### Q. ***What is the significance of keys in React?***
 #### Q. ***What were the major problems with MVC framework?***
-#### Q. ***What do you understand by “Single source of truth”?***
+#### Q. ***What do you understand by "Single source of truth"?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
-#### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items’ significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
+#### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
 #### Q. ***How might React handle or restrict Props to certain types, or require certain Props to exist?***
 #### Q. ***What is prop drilling and how can you avoid it?***
