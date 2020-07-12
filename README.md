@@ -379,6 +379,50 @@ const ChildComponent = (props) => {
 </div>
 
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
+
+<img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="" />
+
+A higher-order component is a function that takes a component and returns a new component. A higher-order component (HOC) is the advanced technique in React.js for reusing a component logic. Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
+
+```js
+// HOC.js
+
+import React, {Component} from 'react';
+
+export default function Hoc(HocComponent){
+
+    return class extends Component{
+        render(){
+            return (
+                <div>
+                    <HocComponent></HocComponent>
+                </div>
+            );
+        }
+    } 
+}
+```
+
+```js
+// App.js
+
+import React, { Component } from 'react';
+import Hoc from './HOC';
+
+class App extends Component {
+  
+  render() {
+    return (
+      <div>
+        Higher-Order Component Example
+      </div>
+    )
+  }
+}
+App = Hoc(App);
+export default App;
+```
+
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
