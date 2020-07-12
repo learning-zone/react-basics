@@ -259,6 +259,8 @@ export default ClockUsingHooks
 * Sometimes called `stateful` components as they tend to implement logic and state.
 * React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
 * We pass `props` down to class components and access them with `this.props`.
+* Class-based components can have `refs` to underlying DOM nodes.
+* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimisation techniques.
 
 Example:
 ```js
