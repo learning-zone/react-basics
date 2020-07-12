@@ -34,6 +34,10 @@ While building client-side apps, a team at Facebook developers realized that the
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are Components in React?***
 
 <img src="assets/component-tree.png" alt="Components Tree" width="600px" />
@@ -71,6 +75,10 @@ Testable. React native tools are offered for testing, debugging code.
 * Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
 * View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
@@ -194,6 +202,10 @@ ReactDOM.createPortal(child, container)
 * **child**: This parameter expects a JSX expression or a React Component to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between ReactDOM and React?***
 ```js
 import React from 'react'; /* importing react */
@@ -296,6 +308,11 @@ class ClockUsingClass extends React.Component {
 
 export default ClockUsingClass
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between state and props?***
 
 **State**  
@@ -357,6 +374,9 @@ const ChildComponent = (props) => {
 |Props make components reusable.	                |State cannot make components reusable.|
 |Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 #### Q. ***What is PureComponent? When to use PureComponent over Component?***
@@ -691,3 +711,7 @@ const ChildComponent = (props) => {
 #### Q. ***What is the mental model of redux-saga?*** 
 #### Q. ***How Relay is different from Redux?*** 
 #### Q. ***What are the important Redux Terminology?***
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
