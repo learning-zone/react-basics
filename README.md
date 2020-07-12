@@ -36,7 +36,7 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 
 #### Q. ***What are Components in React?***
 
-<img src="assets/component-tree.png" alt="React-Features" width="500px" />
+<img src="assets/component-tree.png" alt="Components Tree" width="600px" />
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
