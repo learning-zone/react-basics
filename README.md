@@ -1,4 +1,4 @@
-# React Interview Questions
+# React Interview Questions and Answers
 
 *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
 
@@ -24,11 +24,9 @@
 
 #### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
 
-<hr/>
+ React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
-React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
-
-The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
+ The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
 
@@ -606,8 +604,11 @@ Even if state is updated synchronously, props are not, it mens we do not know pr
 
 This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
 
-
 #### Q. ***What are controlled and uncontrolled components in React?***
+
+<hr/>
+
+
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
