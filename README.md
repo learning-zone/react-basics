@@ -596,10 +596,18 @@ In brief, here is what happens when we update the DOM in React:
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
 
-#### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
+#### Q. ***Why is setState() in React async instead of sync?***
+
+<hr/>
+
+Even if state is updated synchronously, props are not, it mens we do not know props until it re-render the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
+
+`setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
+
+This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
+
 
 #### Q. ***What are controlled and uncontrolled components in React?***
-
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
