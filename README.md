@@ -536,6 +536,32 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
+**React Virtual DOM**  
+
+In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
+
+Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that. 
+
+Updating virtual DOM in ReactJS is faster because ReactJS uses
+
+1. It is efficient diff algorithm.
+1. It batched update operations
+1. It efficient update of sub tree only
+1. It uses observable instead of dirty checking to detect change
+
+**How Virtual DOM works in React**  
+
+When we render a JSX element, each virtual DOM updates. This approach updates everything very quickly. Once the Virtual DOM updates, React matches the virtual DOM with a virtual DOM copy that was taken just before the update. By Matching the new virtual DOM with pre-updated version, React calculates exactly which virtual DOM has changed. This entire process is called **diffing**.
+
+When React knows which virtual DOM has changed, then React updated those objects. and only those object, in the real DOM. React only updates the necessary parts of the DOM. React\'s reputation for performance comes largely from this innovation.
+
+In brief, here is what happens when we update the DOM in React:
+
+1. The entire virtual DOM gets updated.
+1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
+1. The changed objects and the changed objects only get updated on the real DOM.
+1. Changes on the real DOM cause the screen to change finally.
+
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
 #### Q. ***What are controlled and uncontrolled components in React?***
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
