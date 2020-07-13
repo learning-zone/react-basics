@@ -536,6 +536,9 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
+
+<img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
+
 **React Virtual DOM**  
 
 In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
