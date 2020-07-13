@@ -598,7 +598,7 @@ In brief, here is what happens when we update the DOM in React:
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
 
-#### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
+#### Q. ***<ins> Is setState() is async? Why is setState() in React Async instead of Sync? </ins>***
 #### Q. ***What are controlled and uncontrolled components in React?***
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
