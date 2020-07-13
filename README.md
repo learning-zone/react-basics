@@ -24,27 +24,25 @@
 
 #### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
 
-<hr/>
-
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-#### Q. ***How React works? How Virtual-DOM works in React?***
-
 <hr/>
+
+#### Q. ***How React works? How Virtual-DOM works in React?***
 
 While building client-side apps, a team at Facebook developers realized that the DOM is slow (The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated). So, to make it faster, React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
+
+<hr/>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 #### Q. ***What are Components in React?***
-
-<hr/>
 
 <img src="assets/component-tree.png" alt="Components Tree" width="600px" />
 
@@ -60,10 +58,9 @@ class Welcome extends React.Component {
   }
 }
 ```
+<hr/>
 
 #### Q. ***List some of the major advantages and limitations of React?***
-
-<hr/>
 
 <img src="assets/react-features.png" alt="React-Features" width="500px" />
 
@@ -85,13 +82,13 @@ Testable. React native tools are offered for testing, debugging code.
 * View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 
+<hr/>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
-
-<hr/>
 
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
 
@@ -115,10 +112,9 @@ class App extends React.Component {
 }
 export default App;
 ```
+<hr/>
 
 #### Q. ***What is ReactDOM?***
-
-<hr/>
 
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
 
@@ -216,13 +212,13 @@ ReactDOM.createPortal(child, container)
 * **child**: This parameter expects a JSX expression or a React Component to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
 
+<hr/>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 #### Q. ***What is the difference between ReactDOM and React?***
-
-<hr/>
 
 ```js
 import React from 'react'; /* importing react */
@@ -244,9 +240,9 @@ ReactDOM.render(<MyComponent />, node);
 
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
-#### Q. ***What are the differences between a class component and functional component?***
-
 <hr/>
+
+#### Q. ***What are the differences between a class component and functional component?***
 
 **Functional Components**  
 
@@ -328,13 +324,13 @@ class ClockUsingClass extends React.Component {
 export default ClockUsingClass
 ```
 
+<hr/>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 #### Q. ***What is the difference between state and props?***
-
-<hr/>
 
 **State**  
 
@@ -395,13 +391,13 @@ const ChildComponent = (props) => {
 |Props make components reusable.                 |State cannot make components reusable.|
 |Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
 
+<hr/>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
-
-<hr/>
 
 <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="500px" />
 
@@ -452,9 +448,9 @@ export default App;
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
-#### Q. ***What is PureComponent?***
-
 <hr/>
+
+#### Q. ***What is PureComponent?***
 
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
@@ -540,10 +536,9 @@ class Task extends React.Component {
 }
 ReactDOM.render(<Test />, document.getElementById('app'));
 ```
+<hr/>
 
 #### Q. ***Why to use PureComponent? When to use PureComponent over Component?***
-
-<hr/>
 
 Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
 
@@ -564,9 +559,9 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * props or state are not immutable, or
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
-#### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
-
 <hr/>
+
+#### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 
 <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
 
@@ -596,9 +591,9 @@ In brief, here is what happens when we update the DOM in React:
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
 
-#### Q. ***Why is setState() in React async instead of sync?***
-
 <hr/>
+
+#### Q. ***Why is setState() in React async instead of sync?***
 
 Even if state is updated synchronously, props are not, it mens we do not know props until it re-render the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
 
@@ -606,9 +601,9 @@ Even if state is updated synchronously, props are not, it mens we do not know pr
 
 This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
 
-#### Q. ***What are controlled and uncontrolled components in React?***
-
 <hr/>
+
+#### Q. ***What are controlled and uncontrolled components in React?***
 
 In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
 
@@ -681,6 +676,7 @@ class App extends Component {
 }
 export default App;
 ```
+<hr/>
 
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 
