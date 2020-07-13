@@ -25,11 +25,13 @@
 <br/>
 
 #### Q. ***What is React.js? How is it different from other javascript frameworks?*** 
+<hr/>
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
+<hr/>
 While building client-side apps, a team at Facebook developers realized that the DOM is slow (The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated). So, to make it faster, React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
@@ -39,7 +41,7 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 </div>
 
 #### Q. ***What are Components in React?***
-
+<hr/>
 <img src="assets/component-tree.png" alt="Components Tree" width="600px" />
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
@@ -55,7 +57,7 @@ class Welcome extends React.Component {
 }
 ```
 #### Q. ***List some of the major advantages and limitations of React?***
-
+<hr/>
 <img src="assets/react-features.png" alt="React-Features" width="500px" />
 
 **Advantages**  
