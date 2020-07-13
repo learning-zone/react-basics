@@ -610,8 +610,82 @@ This is because setState() alters the state and causes rerendering. This can be 
 
 <hr/>
 
+In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+**Controlled Components**  
+
+In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
+
+Example:
+```js
+import React, { Component } from 'react';
+
+class App extends Component {
+    state = {
+        message: ''
+    }
+    updateMessage = (newText) => {
+        console.log(newText);
+        this.setState(() => ({
+            message: newText
+        }));
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        value={this.state.message}
+                        onChange={(event) => this.updateMessage(event.target.value)}
+                    />
+                    <p>the message is: {this.state.message}</p>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default App;
+```
+**Uncontrolled Components**  
+
+Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
+
+```js
+import React, { Component } from 'react';
+
+class App extends Component {
+
+    constructor(props){
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.input = React.createRef();
+    }
+    handleChange = (newText) => {
+        console.log(newText);
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        ref={this.input}
+                        onChange={(event) => this.handleChange(event.target.value)}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+export default App;
+```
 
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
+
+<hr/>
+
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
