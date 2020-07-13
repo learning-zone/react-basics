@@ -33,7 +33,9 @@ React is a JavaScript library created for building fast and interactive user int
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
+
 <hr/>
+
 While building client-side apps, a team at Facebook developers realized that the DOM is slow (The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated). So, to make it faster, React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
@@ -43,7 +45,9 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 </div>
 
 #### Q. ***What are Components in React?***
+
 <hr/>
+
 <img src="assets/component-tree.png" alt="Components Tree" width="600px" />
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
@@ -59,7 +63,9 @@ class Welcome extends React.Component {
 }
 ```
 #### Q. ***List some of the major advantages and limitations of React?***
+
 <hr/>
+
 <img src="assets/react-features.png" alt="React-Features" width="500px" />
 
 **Advantages**  
@@ -85,6 +91,9 @@ Testable. React native tools are offered for testing, debugging code.
 </div>
 
 #### Q. ***What is JSX and how JSX can help applications in React.js?***
+
+<hr/>
+
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
 
 * It is faster because it performs optimization while compiling code to JavaScript.
@@ -109,6 +118,9 @@ export default App;
 ```
 
 #### Q. ***What is ReactDOM?***
+
+<hr/>
+
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
 
 * render()
@@ -211,6 +223,9 @@ ReactDOM.createPortal(child, container)
 </div>
 
 #### Q. ***What is the difference between ReactDOM and React?***
+
+<hr/>
+
 ```js
 import React from 'react'; /* importing react */
 import ReactDOM from 'react-dom'; /* importing react-dom */
@@ -232,6 +247,8 @@ ReactDOM.render(<MyComponent />, node);
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
 #### Q. ***What are the differences between a class component and functional component?***
+
+<hr/>
 
 **Functional Components**  
 
@@ -319,6 +336,8 @@ export default ClockUsingClass
 
 #### Q. ***What is the difference between state and props?***
 
+<hr/>
+
 **State**  
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
@@ -384,6 +403,8 @@ const ChildComponent = (props) => {
 
 #### Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
+<hr/>
+
 <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="500px" />
 
 A higher-order component is a function that takes a component and returns a new component. A higher-order component (HOC) is the advanced technique in React.js for reusing a component logic. Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
@@ -434,6 +455,9 @@ export default App;
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
 #### Q. ***What is PureComponent?***
+
+<hr/>
+
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
 **Features of React Pure Components**
@@ -520,6 +544,9 @@ ReactDOM.render(<Test />, document.getElementById('app'));
 ```
 
 #### Q. ***Why to use PureComponent? When to use PureComponent over Component?***
+
+<hr/>
+
 Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
 
 Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
@@ -540,6 +567,8 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
+
+<hr/>
 
 <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
 
