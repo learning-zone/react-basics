@@ -1,11 +1,10 @@
-# React Interview Questions 
-
+# React Interview Questions
 
 *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
 
 <br/>
 
-## Table of Contents 
+## Table of Contents
 
 * *[React Quick Reference](quick-reference.md)*
 
@@ -15,12 +14,11 @@
 
 |Sl.No| Name                                      | Technology                             |
 |-----|-------------------------------------------|----------------------------------------|
-| 01  |	[Poke'Times](poketimes)                   |React                                   |
-| 02  |	[React-Express-MSSQL](react-express-mssql)|React, Node.js, Express.js, SQL-Server  |
-| 03  |	[Todo-App](todo-app)                      |React                                   |
-| 04  |	[React Login (JWT)](react-login)          |React, JWT, MD5, MSSQL, Express.js      |
-| 05  |	[React Seed](react-seed)                  |React                                   |
-
+| 01  |[Poke'Times](poketimes)                   |React                                   |
+| 02  |[React-Express-MSSQL](react-express-mssql)|React, Node.js, Express.js, SQL-Server  |
+| 03  |[Todo-App](todo-app)                      |React                                   |
+| 04  |[React Login (JWT)](react-login)          |React, JWT, MD5, MSSQL, Express.js      |
+| 05  |[React Seed](react-seed)                  |React                                   |
 
 <br/>
 
@@ -29,7 +27,7 @@
 <hr/>
 
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
- 
+
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
@@ -54,7 +52,7 @@ Components are the building blocks of any React app and a typical React app will
 
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
-*Example*: Class Component 
+*Example*: Class Component
 ```js
 class Welcome extends React.Component {
   render() {
@@ -62,6 +60,7 @@ class Welcome extends React.Component {
   }
 }
 ```
+
 #### Q. ***List some of the major advantages and limitations of React?***
 
 <hr/>
@@ -170,7 +169,6 @@ ReactDOM.render(element, container, callback)
 * **element**: This parameter expects a JSX expression or a React Element to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
 * **callback**: This is an optional parameter that expects a function that is to be executed once the render is complete.
-
 
 **b.) findDOMNode() Function**  
 
@@ -344,20 +342,20 @@ This is data maintained inside a component. It is local or owned by that specifi
 
 Example:
 ```js
-class Employee extends React.Component {    
-    constructor() {    
-        this.state = {      
-            id: 1,      
-            name: "Alex"    
+class Employee extends React.Component {
+    constructor() {
+        this.state = {
+            id: 1,
+            name: "Alex"
         };  
-    }    
-    
-    render() {    
-        return (      
-            <div>        
-              <p>{this.state.id}</p>        
-              <p>{this.state.name}</p>      
-            </div>    
+    }
+
+    render() {
+        return (
+            <div>
+              <p>{this.state.id}</p>
+              <p>{this.state.name}</p>
+            </div>
         );  
     }
 }
@@ -369,32 +367,32 @@ export default Employee
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
-Example: 
+Example:
 ```js
-class ParentComponent extends Component {    
-    render() {    
-        return (        
-            <ChildComponent name="First Child" />    
+class ParentComponent extends Component {
+    render() {
+        return (
+            <ChildComponent name="First Child" />
         );  
     }
 }
 
-const ChildComponent = (props) => {    
-    return <p>{props.name}</p>; 
+const ChildComponent = (props) => {
+    return <p>{props.name}</p>;
 };
 ```
 
 **Difference between State and Props**  
 
-|Props	                           |State                             |
+|Props                             |State                             |
 |----------------------------------|----------------------------------|
-|Props are read-only.	             |State changes can be asynchronous.|
-|Props are immutable.	             |State is mutable.                 |
+|Props are read-only.              |State changes can be asynchronous.|
+|Props are immutable.              |State is mutable.                 |
 |Props allow you to pass data from one component to other components as an argument.|	State holds information about the components.|
-|Props can be accessed by the child component.    |	State cannot be accessed by child components.|
-|Props are used to communicate between components.|	States can be used for rendering dynamic changes with the component.|
-|Stateless component can have Props.	            |Stateless components cannot have State.|
-|Props make components reusable.	                |State cannot make components reusable.|
+|Props can be accessed by the child component.    |State cannot be accessed by child components.|
+|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.            |Stateless components cannot have State.|
+|Props make components reusable.                 |State cannot make components reusable.|
 |Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
 
 <div align="right">
@@ -424,7 +422,7 @@ export default function Hoc(HocComponent){
 
             );
         }
-    } 
+    }
 }
 ```
 
@@ -484,7 +482,7 @@ In the case of Pure Components, the React components do not re-render blindly wi
 import { pure } from 'recompose';
 
 export default pure ( (props) => {
-   
+
    return 'Stateless Component Example';
 })
 ```
@@ -599,7 +597,9 @@ In brief, here is what happens when we update the DOM in React:
 1. Changes on the real DOM cause the screen to change finally.
 
 #### Q. ***Is setState() is async? Why is setState() in React Async instead of Sync?***
+
 #### Q. ***What are controlled and uncontrolled components in React?***
+
 #### Q. ***What is React.cloneElement? And the difference with this.props.children?***
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
