@@ -797,6 +797,21 @@ B
 <hr/>
 
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
+
+A callback function which will be invoked when `setState()` has finished and the component is re-rendered.
+
+The `setState()` is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
+
+```js
+this.setState(
+  { username: 'Alex' },
+  () => console.log('setState has finished and the component has re-rendered.')
+)
+```
+`setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
+
+<hr/>
+
 #### Q. ***What is useState() in React?***
 #### Q. ***What is useHooks() in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
