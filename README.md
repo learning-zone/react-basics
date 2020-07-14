@@ -1119,15 +1119,15 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 #### Q. ***What are the advantages of Redux?***
 #### Q. ***How are Actions defined in Redux?***
 #### Q. ***Describe Flux vs MVC?***
-#### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View. Give a simple practical example of installing and using Flux in an application?***
+#### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View?***
 #### Q. ***How to structure Redux top level directories?***
-#### Q. ***What are the features of Redux DevTools?*** 
-#### Q. ***How to add multiple middlewares to Redux?*** 
-#### Q. ***How to set initial state in Redux?*** 
+#### Q. ***What are the features of Redux DevTools?***
+#### Q. ***How to add multiple middlewares to Redux?***
+#### Q. ***How to set initial state in Redux?***
 #### Q. ***What are the downsides of Redux over Flux?***
-#### Q. ***How to access redux store outside a react component?*** 
-#### Q. ***Are there any similarities between Redux and RxJS?*** 
-#### Q. ***How to use connect from react redux?*** 
+#### Q. ***How to access redux store outside a react component?***
+#### Q. ***Are there any similarities between Redux and RxJS?***
+#### Q. ***How to use connect from react redux?***
 #### Q. ***What is the purpose of the constants in Redux?***
 #### Q. ***What are the differences between redux-saga and redux-thunk?***
 #### Q. ***Explain Redux form with an example?***
@@ -1137,8 +1137,8 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 #### Q. ***How to make Ajax request in Redux?***
 #### Q. ***What is the proper way to access Redux store?***
 #### Q. ***What are the differences between call and put in redux-saga?***
-#### Q. ***What is the mental model of redux-saga?*** 
-#### Q. ***How Relay is different from Redux?*** 
+#### Q. ***What is the mental model of redux-saga?***
+#### Q. ***How Relay is different from Redux?***
 #### Q. ***What are the important Redux Terminology?***
 
 <div align="right">
