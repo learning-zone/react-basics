@@ -678,7 +678,67 @@ export default App;
 ```
 <hr/>
 
-#### Q. ***What is React.cloneElement? And the difference with this.props.children?***
+#### Q. ***What is React.cloneElement?***
+
+The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
+
+```js
+React.cloneElement(element, [props], [...children])
+```
+The react.cloneElement() method accepts three arguments.
+
+* element: Element we want to clone.
+* props: props we need to pass to the cloned element.
+* children: we can also pass children to the cloned element (passing new children replaces the old children).
+
+Example
+```js
+import React from 'react';
+
+export default class App extends React.Component {
+
+  // rendering the parent and child component
+  render() {
+    return (
+      <ParentComp>
+        <MyButton/>
+        <br></br>
+        <MyButton/>
+      </ParentComp>
+    )
+  }
+}
+// The parent component
+class ParentComp extends React.Component {
+  render() {
+    // The new prop to the added.
+    let newProp = 'red';
+      // Looping over the parent's entire children,
+      // cloning each child, adding a new prop.
+    return (
+      <div>
+        {React.Children.map(this.props.children,
+          child => {
+            return React.cloneElement(child,
+            {newProp}, null);
+        })}
+      </div>
+    )
+  }
+}
+// The child component
+class MyButton extends React.Component {
+  render() {
+    return <button style =
+    {{ color: this.props.newProp }}>
+    Hello World!</button>
+  }
+}
+```
+
+<hr/>
+
+#### Q. ***When we should use React.cloneElement vs this.props.children?***
 
 <hr/>
 
