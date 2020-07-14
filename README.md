@@ -1052,6 +1052,40 @@ class App extends React.Component {
 </div>
 
 #### Q. ***What will happen if you use setState() in constructor?***
+
+When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which you don\'t need in the constructor, since the component hasn\'t been rendered anyway.
+
+Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
+
+Example:
+```js
+import React, { Component } from 'react';
+
+class Food extends Component {
+  
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fruits: ['apple', 'orange'],
+      count: 0
+    }
+  }
+  render() {
+    return (
+      <div className = "container">
+        <h2> Hello!!!</h2>
+        <p> I have {this.state.count} fruit(s)</p>
+      </div>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the use of Context in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
