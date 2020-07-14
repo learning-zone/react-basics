@@ -850,6 +850,52 @@ The useState() function takes as argument a value for the initial state. In this
 
 <hr/>
 
+#### Q. ***What is useReducer() in React?***
+
+It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
+
+Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, `useState()` is actually implemented with `useReducer()`. This means `useReducer()` is primitive and we can use `useReducer()` for everything can do with useState(). Reducer is so powerful that it can apply for various use cases.
+
+Example:
+```js
+import React, { useReducer } from 'react';
+
+const initialState = 0;
+const reducer = (state, action) => {
+  switch (action) {
+    case 'increment': return state + 1;
+    case 'decrement': return state - 1;
+    case 'reset': return 0;
+    default: throw new Error('Unexpected action');
+  }
+};
+
+const ReducerExample = () => {
+  const [count, dispatch] = useReducer(reducer, initialState);
+  return (
+    <div>
+      {count}
+      <button onClick={() => dispatch('increment')}>+1</button>
+      <button onClick={() => dispatch('decrement')}>-1</button>
+      <button onClick={() => dispatch('reset')}>reset</button>
+    </div>
+  );
+};
+
+export default ReducerExample;
+```
+Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
+
+<hr/>
+
+#### Q. ***What is useContext() in React?***
+#### Q. ***What is useRef() in React?***
+#### Q. ***What is useHooks() in React?***
+#### Q. ***What is difference between useEffect vs. componentDidMount?***
+#### Q. ***What do you understand by Refs in React? List some of the cases when you should useRefs?***
+#### Q. ***What will happen if you use setState() in constructor?***
+#### Q. ***What is the use of Context in React?***
+#### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
@@ -857,7 +903,6 @@ The useState() function takes as argument a value for the initial state. In this
 #### Q. ***Differentiate between stateful and stateless components?***
 #### Q. ***What are the different phases of React component lifecycle?***
 #### Q. ***What is an event in React? How do you create an event in React?***
-#### Q. ***What do you understand by Refs in React? List some of the cases when you should use Refs?***
 #### Q. ***How do you modularize code in React?***
 #### Q. ***What is the significance of keys in React?***
 #### Q. ***What were the major problems with MVC framework?***
@@ -944,7 +989,6 @@ The useState() function takes as argument a value for the initial state. In this
 #### Q. ***What are portals in React?***
 #### Q. ***What is the use of react-dom package?***
 #### Q. ***What is React DOM Server?***
-#### Q. ***What will happen if you use set State() in constructor?***
 #### Q. ***What will happen if you use props in initial state?***
 #### Q. ***How to re-render the view when the browser is resized?***
 #### Q. ***What is the difference between setState() and replaceState() methods?***
@@ -1042,7 +1086,6 @@ The useState() function takes as argument a value for the initial state. In this
 #### Q. ***When can you avoid using setState() after a component has been unmounted ?***
 #### Q. ***How can you bind an event handler in JSX call back?***
 #### Q. ***Why do we use ‘key’ attribute and when do you use it?***
-#### Q. ***What is the use of Context in React?***
 #### Q. ***How to group list of children without adding extra nodes to the DOM?***
 #### Q. ***List out the predefined proptypes?***
 #### Q. ***How to catch JavaScript errors anywhere in their child component tree?***
@@ -1103,17 +1146,11 @@ The useState() function takes as argument a value for the initial state. In this
 #### Q. ***What is difference between react hooks and lifecycle methods?***
 #### Q. ***How to translate your React app with react-i18next?***
 #### Q. ***How RxJS is used in React for state management?***
-#### Q. ***What is difference between useEffect vs. componentDidMount?***
 #### Q. ***Exmplain functional components and class components in React?***
 #### Q. ***What are synthetic events in React js?***
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
-#### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
-#### Q. ***What is useReducer() in React?***
-#### Q. ***What is useContext() in React?***
-#### Q. ***What is useRef() in React?***
-#### Q. ***What is useHooks() in React?***
 
 <hr/>
 
