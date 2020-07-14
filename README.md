@@ -740,6 +740,60 @@ class MyButton extends React.Component {
 
 #### Q. ***When we should use React.cloneElement vs this.props.children?***
 
+The `React.cloneElement()` works if child is a single React element.
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+**React.Children**  
+
+Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
+
+Example:
+
+```js
+class Example extends React.Component {
+
+  render() {
+    return <div>
+      <div>Children ({this.props.children.length}):</div>
+      {this.props.children}
+    </div>;
+  }
+}
+
+class Widget extends React.Component {
+
+  render() {
+    return <div>
+      <div>First <code>Example</code>:</div>
+      <Example>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </Example>
+      <div>Second <code>Example</code> with different children:</div>
+      <Example>
+        <div>A</div>
+        <div>B</div>
+      </Example>
+    </div>;
+  }
+}
+```
+Output
+```
+First Example:
+Children (3):
+1
+2
+3
+Second Example with different children:
+Children (2):
+A
+B
+```
+`children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
+
 <hr/>
 
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
