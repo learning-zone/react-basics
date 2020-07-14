@@ -28,15 +28,15 @@ React is a JavaScript library created for building fast and interactive user int
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***How React works? How Virtual-DOM works in React?***
 
 While building client-side apps, a team at Facebook developers realized that the DOM is slow (The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated). So, to make it faster, React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
-
-<hr/>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -58,7 +58,10 @@ class Welcome extends React.Component {
   }
 }
 ```
-<hr/>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***List some of the major advantages and limitations of React?***
 
@@ -81,8 +84,6 @@ Testable. React native tools are offered for testing, debugging code.
 * Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
 * View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
-
-<hr/>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -112,7 +113,10 @@ class App extends React.Component {
 }
 export default App;
 ```
-<hr/>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is ReactDOM?***
 
@@ -212,8 +216,6 @@ ReactDOM.createPortal(child, container)
 * **child**: This parameter expects a JSX expression or a React Component to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
 
-<hr/>
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -240,7 +242,9 @@ ReactDOM.render(<MyComponent />, node);
 
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What are the differences between a class component and functional component?***
 
@@ -324,8 +328,6 @@ class ClockUsingClass extends React.Component {
 export default ClockUsingClass
 ```
 
-<hr/>
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -391,8 +393,6 @@ const ChildComponent = (props) => {
 |Props make components reusable.                 |State cannot make components reusable.|
 |Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
 
-<hr/>
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -448,7 +448,9 @@ export default App;
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is PureComponent?***
 
@@ -536,7 +538,9 @@ class Task extends React.Component {
 }
 ReactDOM.render(<Test />, document.getElementById('app'));
 ```
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***Why to use PureComponent? When to use PureComponent over Component?***
 
@@ -559,7 +563,9 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * props or state are not immutable, or
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 
@@ -591,7 +597,9 @@ In brief, here is what happens when we update the DOM in React:
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***Why is setState() in React async instead of sync?***
 
@@ -601,7 +609,9 @@ Even if state is updated synchronously, props are not, it mens we do not know pr
 
 This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What are controlled and uncontrolled components in React?***
 
@@ -676,7 +686,9 @@ class App extends Component {
 }
 export default App;
 ```
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is React.cloneElement?***
 
@@ -736,7 +748,9 @@ class MyButton extends React.Component {
 }
 ```
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***When we should use React.cloneElement vs this.props.children?***
 
@@ -794,7 +808,9 @@ B
 ```
 `children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 
@@ -810,7 +826,9 @@ this.setState(
 ```
 The `setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is useState() in React?***
 
@@ -848,7 +866,9 @@ const App = () => {
 ```
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is useReducer() in React?***
 
@@ -886,7 +906,9 @@ export default ReducerExample;
 ```
 Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is useContext() in React?***
 
@@ -919,7 +941,9 @@ function Display() {
 }
 ```
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What is useRef() in React?***
 
@@ -968,7 +992,9 @@ When useEffect() is used to get data from server.
 * When it is not present, the callback will always be fired after every render.
 * When it is an empty list, the callback will only be fired once, similar to componentDidMount.
 
-<hr/>
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***What do you understand by Refs in React? List some of the cases when you should useRefs?***
 #### Q. ***What will happen if you use setState() in constructor?***
