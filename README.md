@@ -935,7 +935,6 @@ The `useLayoutEffect()` was designed to have the same timing as componentDidMoun
 
 ```js
 //Using a class based component.
-
 import React, { Component } from 'react';
 
 export default class SampleComponent extends Component {
@@ -948,7 +947,6 @@ render() {
 }
 
 //Using a functional component
-
 import React, { useEffect } from 'react';
 
 const SampleComponent = () => {
