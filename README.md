@@ -996,7 +996,61 @@ When useEffect() is used to get data from server.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand by Refs in React? List some of the cases when you should useRefs?***
+#### Q. ***What do you understand by Refs in React? List some of the cases when you should use Refs?***
+
+`Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
+
+Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of ref forwarding.
+
+Example:
+```javascript
+class App extends React.Component {
+    constructor(props) {
+      super(props)
+      // create a ref to store the textInput DOM element
+      this.textInput = React.createRef();
+      this.state = {
+        value: ''
+      }
+    }
+  
+  // Set the state for the ref
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ value: this.textInput.current.value})
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>React Ref - createRef</h1>
+         {/** This is what will update **/}
+        <h3>Value: {this.state.value}</h3>
+        <form onSubmit={this.handleSubmit}>
+          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
+          <input type="text" ref={this.textInput} />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
+```
+**When to Use Refs**  
+
+* Managing focus, text selection, or media playback.
+* Triggering imperative animations.
+* Integrating with third-party DOM libraries.
+
+**When not to use refs**  
+
+* Should not be used with functional components because they dont have instances.
+* Not to be used on things that can be done declaritvely.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What will happen if you use setState() in constructor?***
 #### Q. ***What is the use of Context in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
