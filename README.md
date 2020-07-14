@@ -850,8 +850,6 @@ The useState() function takes as argument a value for the initial state. In this
 
 <hr/>
 
-#### Q. ***What is useHooks() in React?***
-#### Q. ***What is useReducer() in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
@@ -1111,8 +1109,13 @@ The useState() function takes as argument a value for the initial state. In this
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
+#### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
+#### Q. ***What is useReducer() in React?***
+#### Q. ***What is useContext() in React?***
+#### Q. ***What is useRef() in React?***
+#### Q. ***What is useHooks() in React?***
 
-<br/>
+<hr/>
 
 ## Redux Questions
 
