@@ -797,6 +797,8 @@ B
 <hr/>
 
 #### Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
+#### Q. ***What is useState() in React?***
+#### Q. ***What is useHooks() in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
