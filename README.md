@@ -1076,7 +1076,7 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 
 <br/>
 
-### Redux Questions 
+## Redux Questions
 
 #### Q. ***What is Redux?***
 #### Q. ***What are the features of Workflow in Redux?***
