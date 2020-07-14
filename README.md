@@ -889,6 +889,38 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 <hr/>
 
 #### Q. ***What is useContext() in React?***
+
+The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+
+// Create a Context
+const NumberContext = React.createContext();
+// It returns an object with 2 values:
+// { Provider, Consumer }
+
+function App() {
+  // Use the Provider to make a value available to all
+  // children and grandchildren
+  return (
+    <NumberContext.Provider value={10}>
+      <div>
+        <Display />
+      </div>
+    </NumberContext.Provider>
+  );
+}
+
+function Display() {
+  const value = useContext(NumberContext);
+  return <div>The answer is {value}.</div>;
+}
+```
+
+<hr/>
+
 #### Q. ***What is useRef() in React?***
 #### Q. ***What is useHooks() in React?***
 #### Q. ***What is difference between useEffect vs. componentDidMount?***
