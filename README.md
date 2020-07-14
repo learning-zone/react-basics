@@ -1256,7 +1256,7 @@ When useEffect() is used to get data from server.
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
 
-<hr/>
+<br/>
 
 ## Redux Questions
 
