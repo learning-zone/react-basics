@@ -1053,7 +1053,7 @@ class App extends React.Component {
 
 #### Q. ***What will happen if you use setState() in constructor?***
 
-When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which you don\'t need in the constructor, since the component hasn\'t been rendered anyway.
+When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
 
 Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
 
@@ -1062,7 +1062,7 @@ Example:
 import React, { Component } from 'react';
 
 class Food extends Component {
-  
+
   constructor(props) {
     super(props)
 
