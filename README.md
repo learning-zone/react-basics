@@ -1367,6 +1367,7 @@ class Food extends Component {
 #### Q. ***What is the difference between Flow and PropTypes?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***Does React re-render all components and sub components every time setState is called?***
+#### Q. ***What is reselect and how it works?***
 
 <br/>
 
