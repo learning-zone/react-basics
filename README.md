@@ -1343,6 +1343,7 @@ class Food extends Component {
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
+#### Q. ***How do we pass a property from a parent component props to a child component?***
 
 <br/>
 
