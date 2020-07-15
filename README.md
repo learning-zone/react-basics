@@ -1234,7 +1234,7 @@ class Food extends Component {
 #### Q. ***How can you update state in React js?***
 #### Q. ***What kind of information controls a segment in React?***
 #### Q. ***What are children prop?***
-#### Q. ***Explain error boundaries?***
+#### Q. ***What are error boundaries in ReactJS (16)?***
 #### Q. ***What is the use of empty tags <> </>?***
 #### Q. ***What are the major issues of using MVC architecture in React?***
 #### Q. ***What is the reduction?***
@@ -1356,6 +1356,8 @@ class Food extends Component {
 #### Q. ***What is the difference between ShadowDOM and VirtualDOM?***
 #### Q. ***What is Lifting State Up in ReactJS?***
 #### Q. ***How to setstate with a dynamic key name?***
+#### Q. ***What would be the common mistake of function being called every time the component renders?***
+
 
 <br/>
 
