@@ -1437,12 +1437,6 @@ class Food extends Component {
 #### Q. ***Where is the state kept in a React + Redux application?***
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 
-<br/>
-
-## React Native Questions
-
-#### Q. ***What is the difference between React Native and React?***
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
