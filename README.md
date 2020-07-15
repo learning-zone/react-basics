@@ -1360,7 +1360,8 @@ class Food extends Component {
 #### Q. ***Why do class methods need to be bound to a class instance?***
 #### Q. ***What is the difference between HTML and React event handling?***
 #### Q. ***What is "Children" in React?***
-
+#### Q. ***What Does Eject do in Create React App?***
+#### Q. ***Why are string refs considered legacy in React?***
 
 <br/>
 
