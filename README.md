@@ -1346,6 +1346,8 @@ class Food extends Component {
 #### Q. ***What does it mean for a component to be mounted in React?***
 #### Q. ***How would you prevent a component from rendering in React?***
 #### Q. ***What is Flow in react?***
+#### Q. ***What is the difference between a Presentational component and a Container component?***
+#### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 
 <br/>
 
@@ -1414,6 +1416,12 @@ class Food extends Component {
 #### Q. ***How Relay is different from Redux?***
 #### Q. ***What are the important Redux Terminology?***
 #### Q. ***Where is the state kept in a React + Redux application?***
+
+<br/>
+
+## React Native Questions
+
+#### Q. ***What is the difference between React Native and React?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
