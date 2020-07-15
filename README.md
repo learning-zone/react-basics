@@ -1350,6 +1350,7 @@ class Food extends Component {
 #### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 #### Q. ***What is the alternative of binding `this` in the constructor?***
+#### Q. ***What is the render method for?***
 
 <br/>
 
@@ -1361,7 +1362,6 @@ class Food extends Component {
 #### Q. ***What is Redux Thunk used for?***
 #### Q. ***What is difference between component and container in react redux?***
 #### Q. ***What is Redux in React.js?***
-#### Q. ***What is Flux in React.js?***
 #### Q. ***Explain the role of Reducer?***
 #### Q. ***Define Reducers in React?***
 #### Q. ***What are Pure Functions and how they are used in reducers?***
