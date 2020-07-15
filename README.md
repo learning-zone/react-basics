@@ -1358,6 +1358,7 @@ class Food extends Component {
 #### Q. ***How to setstate with a dynamic key name?***
 #### Q. ***What would be the common mistake of function being called every time the component renders?***
 #### Q. ***Why do class methods need to be bound to a class instance?***
+#### Q. ***What is the difference between HTML and React event handling?***
 
 
 <br/>
