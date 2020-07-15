@@ -1175,7 +1175,7 @@ class Food extends Component {
 #### Q. ***Different types of DOM?***
 #### Q. ***How to find the area of suitability in React?***
 #### Q. ***Which function is used to create UI representation?***
-#### Q. ***What is reconciliation?***
+#### Q. ***What is reconciliation in React?***
 #### Q. ***Why React uses class Name over class attribute?***
 #### Q. ***What are portals in React?***
 #### Q. ***What is the use of react-dom package?***
@@ -1351,6 +1351,7 @@ class Food extends Component {
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 #### Q. ***What is the alternative of binding `this` in the constructor?***
 #### Q. ***What is the render method for? What are some limitations of things you should not do in the component render method***
+#### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
 
 <br/>
 
