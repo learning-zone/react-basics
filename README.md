@@ -1362,6 +1362,7 @@ class Food extends Component {
 #### Q. ***What is "Children" in React?***
 #### Q. ***What Does Eject do in Create React App?***
 #### Q. ***Why are string refs considered legacy in React?***
+#### Q. ***How to apply validation on Props in ReactJS***
 
 <br/>
 
