@@ -1344,6 +1344,7 @@ class Food extends Component {
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
 #### Q. ***How do we pass a property from a parent component props to a child component?***
 #### Q. ***What does it mean for a component to be mounted in React?***
+#### Q. ***How would you prevent a component from rendering in React?***
 
 <br/>
 
