@@ -1350,7 +1350,7 @@ class Food extends Component {
 #### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 #### Q. ***What is the alternative of binding `this` in the constructor?***
-#### Q. ***What is the render method for?***
+#### Q. ***What is the render method for? What are some limitations of things you should not do in the component render method***
 
 <br/>
 
