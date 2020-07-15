@@ -1363,6 +1363,10 @@ class Food extends Component {
 #### Q. ***What Does Eject do in Create React App?***
 #### Q. ***Why are string refs considered legacy in React?***
 #### Q. ***How to apply validation on Props in ReactJS***
+#### Q. ***What are the recommended ways for static type checking?***
+#### Q. ***What is the difference between Flow and PropTypes?***
+#### Q. ***What is mapStateToProps and mapDispatchToProps?***
+#### Q. ***Does React re-render all components and sub components every time setState is called?***
 
 <br/>
 
