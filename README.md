@@ -1108,7 +1108,6 @@ class Food extends Component {
 #### Q. ***If you wanted a component to perform an action only once when the component initially rendered—e.g., make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?***
 #### Q. ***What are the most common approaches for styling a React application??***
 #### Q. ***How can automated tooling be used to improve the accessibility of a React application?***
-#### Q. ***If you were working on a React application that was rendering a page very slowly, how would you go about investigating and fixing the issue?***
 #### Q. ***What is the purpose of using super constructor with props argument?***
 #### Q. ***Why should not we update the state directly?***
 #### Q. ***What do these three dots (...) in React do?***
