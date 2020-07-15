@@ -1345,6 +1345,7 @@ class Food extends Component {
 #### Q. ***How do we pass a property from a parent component props to a child component?***
 #### Q. ***What does it mean for a component to be mounted in React?***
 #### Q. ***How would you prevent a component from rendering in React?***
+#### Q. ***What is Flow in react?***
 
 <br/>
 
@@ -1412,6 +1413,7 @@ class Food extends Component {
 #### Q. ***What is the mental model of redux-saga?***
 #### Q. ***How Relay is different from Redux?***
 #### Q. ***What are the important Redux Terminology?***
+#### Q. ***Where is the state kept in a React + Redux application?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
