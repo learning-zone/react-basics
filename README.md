@@ -1348,6 +1348,8 @@ class Food extends Component {
 #### Q. ***What is Flow in react?***
 #### Q. ***What is the difference between a Presentational component and a Container component?***
 #### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
+#### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
+#### Q. ***What is the alternative of binding `this` in the constructor?***
 
 <br/>
 
