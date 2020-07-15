@@ -1352,6 +1352,7 @@ class Food extends Component {
 #### Q. ***What is the alternative of binding `this` in the constructor?***
 #### Q. ***What is the render method for? What are some limitations of things you should not do in the component render method***
 #### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
+#### Q. ***How to bind methods or event handlers in JSX callbacks?***
 
 <br/>
 
@@ -1419,6 +1420,7 @@ class Food extends Component {
 #### Q. ***How Relay is different from Redux?***
 #### Q. ***What are the important Redux Terminology?***
 #### Q. ***Where is the state kept in a React + Redux application?***
+#### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 
 <br/>
 
