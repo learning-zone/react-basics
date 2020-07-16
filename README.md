@@ -1119,12 +1119,10 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 
 <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
 
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
 #### Q. ***What is arrow function in React? How is it used?***
 #### Q. ***Differentiate between stateful and stateless components?***
