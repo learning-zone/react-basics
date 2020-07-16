@@ -1087,7 +1087,6 @@ class Food extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the use of Context in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
