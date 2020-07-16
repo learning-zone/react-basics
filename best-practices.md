@@ -44,7 +44,6 @@ if (typeof myVariable === 'string') {
 
 ```js
 // If-else Statement
-
 if(condition) {
     //...
 } else {
@@ -52,7 +51,6 @@ if(condition) {
 }
 
 // Ternary operator
-
 let myVariable = condition ? exprIfTrue : exprIfFalse
 ```
 
@@ -90,15 +88,15 @@ render() {
 
 17. Index should not be used as a key
 
-18. Short-Circuit evaluation in jsx
+18. Short-Circuit evaluation should be used in jsx
 
 ```js
-// Instead of this
+// Avoid
 const sampleComponent = () => {
   return isTrue ? <p>True!</p> : null
 };
 
-// Use short-circuit evaluation
+// Recommended: short-circuit evaluation
 const sampleComponent = () => {
   return isTrue && <p>True!</p>
 };
