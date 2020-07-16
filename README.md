@@ -1164,8 +1164,8 @@ ReactDOM.render(
 
 Stateful and stateless components have many different names. They are also known as:
 
-– Container vs Presentational components
-– Smart vs Dumb components
+– Container vs Presentational components  
+– Smart vs Dumb components  
 
 The literal difference is that one has state, and the other does not. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
 
