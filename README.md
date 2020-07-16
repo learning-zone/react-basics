@@ -7,6 +7,7 @@
 ## Table of Contents
 
 * *[React Quick Reference](quick-reference.md)*
+* *[React Best Practices](best-practices.md)*
 
 <br/>
 
