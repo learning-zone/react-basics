@@ -1103,7 +1103,7 @@ The virtual DOM is only a virtual representation of the DOM. Everytime the state
 
 The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
 
-* **why Virtual DOM is faster**
+* **Why Virtual DOM is faster**
 
 When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
 
