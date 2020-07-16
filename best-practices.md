@@ -78,9 +78,9 @@ render() {
 
 11. Functional components should be favored if we do not need to make use of React state.
 
-12. Anonymous functions shouldn't be used as handlers.
+12. Anonymous functions should not be used as handlers.
 
-13. Inline styles shouldn't be used inside component.
+13. Inline styles should not be used inside component.
 
 14. For a component to hide itself return null from render.
 
