@@ -1161,6 +1161,71 @@ ReactDOM.render(
 </div>
 
 #### Q. ***Differentiate between stateful and stateless components?***
+
+Stateful and stateless components have many different names. They are also known as:
+
+– Container vs Presentational components
+– Smart vs Dumb components
+
+The literal difference is that one has state, and the other does not. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
+
+Example: Stateful/Container/Smart component
+```js
+class Main extends Component {
+ constructor() {
+   super()
+   this.state = {
+     books: []
+   }
+ }
+ render() {
+   <BooksList books={this.state.books} />
+ }
+}
+```
+
+Example: Stateless/Presentational/Dumb component
+```js
+const BooksList = ({books}) => {
+ return (
+   <ul>
+     {books.map(book => {
+       return <li>book</li>
+     })}
+   </ul>
+ )
+}
+```
+**Functional Component or Stateless component**  
+
+* Functional component is like pure function in JavaScript.
+* Functional component is also called as a stateless component.
+* The functional component only receives props from parent component and return you JSX elements.
+* The functional component doesn’t play with any lifecycle methods of React and doesn’t play with the component state.
+
+**Class component or statefull component**  
+
+* React class component is called as a stateful component.
+* Stateful component plays with all life cycle methods of React.
+* This component will modify state.
+
+**When would you use a stateless component**
+
+* When you just need to present the props
+* When you do not need a state, or any internal variables
+* When creating element does not need to be interactive
+* When you want reusable code
+
+**When would you use a stateful component?**  
+
+* When building element that accepts user input or element that is interactive on page
+* When dependent on state for rendering, such as, fetching data before rendering
+* When dependent on any data that cannot be passed down as props
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the different phases of React component lifecycle?***
 #### Q. ***What is an event in React? How do you create an event in React?***
 #### Q. ***How do you modularize code in React?***
