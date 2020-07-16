@@ -1123,8 +1123,43 @@ Once this is done, the virtual DOM calculates the best possible method to make t
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand from “In React, everything is a component.”?***
-#### Q. ***What is arrow function in React? How is it used?***
+#### Q. ***When should we use arrow functions with React?***
+
+**Arrows prevent `this` bugs**
+
+Arrow functions don not redefine the value of `this` within their function body. This makes it a lot easier to predict their behavior when passed as callbacks, and prevents bugs caused by use of this within callbacks. Using inline arrow functions in function components is a good way to achieve some decoupling.
+
+Example:
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.handleClick} style={this.state}>
+        Set background to red
+      </button>
+    )
+  }
+
+  handleClick = () => {
+    this.setState({ backgroundColor: 'red' })
+  }
+}
+
+ReactDOM.render(
+  <Button />,
+  document.getElementById('root')
+)
+```
+1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
+2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Differentiate between stateful and stateless components?***
 #### Q. ***What are the different phases of React component lifecycle?***
 #### Q. ***What is an event in React? How do you create an event in React?***
