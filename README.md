@@ -1088,7 +1088,36 @@ class Food extends Component {
 </div>
 
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
+
 #### Q. ***Differentiate between Real DOM and Virtual DOM?***
+
+**Real DOM**
+
+DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
+
+The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
+
+**Virtual DOM**  
+
+The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
+
+The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
+
+**Pros of Virtual DOM**  
+
+* Updates process is optimized and accelerated.
+* JSX makes components/blocks code readable.
+* React data binding establishes conditions for creation dynamic applications.
+* Virtual DOM is ideal for mobile first applications.
+* Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
+
+<img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
+
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How different is React’s ES6 syntax when compared to ES5?***
 #### Q. ***What do you understand from “In React, everything is a component.”?***
 #### Q. ***What is arrow function in React? How is it used?***
