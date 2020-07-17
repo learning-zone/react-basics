@@ -1701,7 +1701,7 @@ There are two main categories of automated tools that can be used to identify ac
 
 **Static Analysis Tools**
 
-Linting tools like `ESLint` can be used with plugins such as eslint-plugin-jsx-a11y to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
+Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
 
 **Browser Tools**  
 
