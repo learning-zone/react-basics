@@ -1091,25 +1091,25 @@ class Food extends Component {
 
 #### Q. ***What is the difference between DOM and virtual DOM?***
 
-1. **DOM**
+**DOM**
 
 DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
 
 The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
 
-2. **Virtual DOM**  
+**Virtual DOM**  
 
 The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
 
 The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
 
-* **Why Virtual DOM is faster**
+**Why Virtual DOM is faster**
 
 When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
 
 Once this is done, the virtual DOM calculates the best possible method to make these changes to the real DOM. This ensures that there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
 
-* **Pros of Virtual DOM**  
+**Pros of Virtual DOM**  
 
 * Updates process is optimized and accelerated.
 * JSX makes components/blocks code readable.
