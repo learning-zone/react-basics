@@ -1518,6 +1518,59 @@ ReactDOM.render(
 </div>
 
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
+
+React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
+
+* Setup
+```
+npm install react-router-dom
+```
+```js
+import React, { Component } from 'react';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
+
+import Todos from './components/Todos/Todos';
+import TodosNew from './components/TodosNew/TodosNew';
+import TodoShow from './components/TodoShow/TodoShow';
+
+class Router extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/todos/new' component={ TodosNew } />
+                    <Route path='/todos/:id' component={ TodoShow } />
+                    <Route exact path='/' component={ Todos } />
+                    <Redirect from='*' to='/' />
+                </Switch>
+            </Router>
+        );
+    }
+};
+
+export default Router;
+```
+
+**`< Router />`**  
+
+The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
+
+**`<Switch />`**
+
+The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
+
+**exact**
+
+The `exact` returns any number of routes that match exactly.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
 #### Q. ***How might React handle or restrict Props to certain types, or require certain Props to exist?***
