@@ -1587,8 +1587,12 @@ The rest of the tools belong in that group of sequential or parallel tasks:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
-#### Q. ***How might React handle or restrict Props to certain types, or require certain Props to exist?***
+#### Q. ***How React handle or restrict Props to certain types?***
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is prop drilling and how can you avoid it?***
 #### Q. ***If you wanted a component to perform an action only once when the component initially rendered—e.g., make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?***
 #### Q. ***What are the most common approaches for styling a React application??***
