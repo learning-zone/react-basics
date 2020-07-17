@@ -1655,7 +1655,50 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***If you wanted a component to perform an action only once when the component initially rendered—e.g., make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?***
+#### Q. ***If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?***
+
+**Using a Class Component**  
+
+The `componentDidMount()` lifecycle hook can be used with class components.
+```js
+class Homepage extends React.Component {
+  componentDidMount() {
+    trackPageView('Homepage');
+  }
+  render() {
+    return <div>Homepage</div>;
+  }
+}
+```
+Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+
+**Using a Function Component**  
+
+The `useEffect()` hook can be used with function components.
+```js
+const Homepage = () => {
+  useEffect(() => {
+    trackPageView('Homepage');
+  }, []);
+  
+  return <div>Homepage</div>;
+};
+```
+The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
+
+* The first parameter it takes is a callback function to be executed.
+* The optional second parameter it takes is an array containing any variables that are to be tracked.
+
+The value passed as the second argument controls when the callback is executed:
+
+* If the second parameter is undefined, the callback is executed every time that the component is rendered.
+* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle. The  example above shows how passing an empty array can result in similar behaviour to the `componentDidMount()` hook within a function component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the most common approaches for styling a React application??***
 #### Q. ***How can automated tooling be used to improve the accessibility of a React application?***
 #### Q. ***What is the purpose of using super constructor with props argument?***
