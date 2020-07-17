@@ -1489,7 +1489,6 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
 #### Q. ***How might React handle or restrict Props to certain types, or require certain Props to exist?***
 #### Q. ***What is prop drilling and how can you avoid it?***
-#### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
 #### Q. ***If you wanted a component to perform an action only once when the component initially rendered—e.g., make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?***
 #### Q. ***What are the most common approaches for styling a React application??***
 #### Q. ***How can automated tooling be used to improve the accessibility of a React application?***
@@ -1574,8 +1573,6 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 #### Q. ***What are the popular packages for animation?***
 #### Q. ***What is the purpose of push() and replace() methods of history?***
 #### Q. ***How to pass params to history.push() method in React Router v4?***
-#### Q. ***What is the purpose of the ReactTestUtils package?***
-#### Q. ***What is Jest?***
 #### Q. ***What is the difference between Element and Component?***
 #### Q. ***For what reason would it be advisable for us to utilize React, tell its points of interest as well?***
 #### Q. ***Enroll React constraints on the off chance that you know any?***
@@ -1683,7 +1680,6 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 #### Q. ***What is the use of {…this.props} ?***
 #### Q. ***How to hide a component based on state value?***
 #### Q. ***How to pass props in React router?***
-#### Q. ***Explain about shallow rendering in React testing?***
 #### Q. ***What are the Pr-defined keywords in react alternate to html attributes?***
 #### Q. ***How to get query parameters in react routing?***
 #### Q. ***How do you share code between components using render props?***
@@ -1753,6 +1749,19 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***Does React re-render all components and sub components every time setState is called?***
 #### Q. ***What is reselect and how it works?***
+#### Q. ***How to prevent components from re-rendering?***
+
+<br/>
+
+## React Testing Questions
+
+#### Q. ***Explain react unit testing with Enzyme and Jest?***
+#### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
+#### Q. ***What is the purpose of the ReactTestUtils package?***
+#### Q. ***Explain about shallow rendering in React testing?***
+#### Q. ***What is TestRenderer package in React?***
+#### Q. ***What are the advantages of Jest over Jasmine?***
+#### Q. ***Explain unit testing React with react-testing-library?***
 
 <br/>
 
