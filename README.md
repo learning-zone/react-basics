@@ -1517,7 +1517,6 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand by "Single source of truth"?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 #### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
 #### Q. ***Compare and contrast incorporating mixins and enforcing modularity in React Components. (extend, createClass and mixins, HOCs) Why would you use these techniques, and what are the drawbacks of each?***
@@ -1800,6 +1799,7 @@ ReactDOM.render(
 ## Redux Questions
 
 #### Q. ***What is Redux?***
+#### Q. ***What do you understand by "Single source of truth" in Redux?***
 #### Q. ***What are the features of Workflow in Redux?***
 #### Q. ***Explain the components of Redux?***
 #### Q. ***What is Redux Thunk used for?***
