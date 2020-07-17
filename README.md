@@ -1479,9 +1479,13 @@ ReactDOM.render(<Container />, document.getElementById('root'));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is an event in React? How do you create an event in React?***
-#### Q. ***How do you modularize code in React?***
 #### Q. ***What is the significance of keys in React?***
+
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What were the major problems with MVC framework?***
 #### Q. ***What do you understand by "Single source of truth"?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
@@ -1536,7 +1540,6 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 #### Q. ***Explain DOM diffing?***
 #### Q. ***Is it possible to nest JSX elements into other JSX elements?*** 
 #### Q. ***What happens when you call setState?***
-#### Q. ***What are keys in React and why are they important?***
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
