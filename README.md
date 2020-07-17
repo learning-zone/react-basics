@@ -1521,7 +1521,6 @@ ReactDOM.render(
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
-* Setup
 ```
 npm install react-router-dom
 ```
