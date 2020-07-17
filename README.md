@@ -1657,8 +1657,6 @@ function Display() {
 
 #### Q. ***If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?***
 
-**Using a Class Component**  
-
 The `componentDidMount()` lifecycle hook can be used with class components.
 ```js
 class Homepage extends React.Component {
@@ -1671,8 +1669,6 @@ class Homepage extends React.Component {
 }
 ```
 Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
-
-**Using a Function Component**  
 
 The `useEffect()` hook can be used with function components.
 ```js
