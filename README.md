@@ -1695,8 +1695,22 @@ The value passed as the second argument controls when the callback is executed:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the most common approaches for styling a React application??***
 #### Q. ***How can automated tooling be used to improve the accessibility of a React application?***
+
+There are two main categories of automated tools that can be used to identify accessibility issues:
+
+**Static Analysis Tools**
+
+Linting tools like `ESLint` can be used with plugins such as eslint-plugin-jsx-a11y to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
+
+**Browser Tools**  
+
+Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the purpose of using super constructor with props argument?***
 #### Q. ***Why should not we update the state directly?***
 #### Q. ***What do these three dots (...) in React do?***
