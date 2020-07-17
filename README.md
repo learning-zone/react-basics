@@ -1517,7 +1517,6 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What were the major problems with MVC framework?***
 #### Q. ***What do you understand by "Single source of truth"?***
 #### Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 #### Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development. What sort of tools might you use in the build steps to optimize the compiled output React code?***
@@ -1670,7 +1669,6 @@ ReactDOM.render(
 #### Q. ***What is the purpose of using bindActionsCreators?***
 #### Q. ***Can JSX element be attached to other JSX components?***
 #### Q. ***How to start a project in React?***
-#### Q. ***What is MVC and where does React stand in it?***
 #### Q. ***How to use a library like jQuery in React, which interacts directly with DOM?***
 #### Q. ***Explain the use of Webpack and Babel in React?***
 #### Q. ***Explain type-checking with PropTypes in React?***
