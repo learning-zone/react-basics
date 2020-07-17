@@ -1589,6 +1589,28 @@ The rest of the tools belong in that group of sequential or parallel tasks:
 
 #### Q. ***How React handle or restrict Props to certain types?***
 
+React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
+
+Example:
+```js
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Person = (props) => <div>
+  <h1>{props.firstName} {props.lastName}</h1>
+  {props.country ? <p>Country: {props.country}</p> : null}
+</div>;
+
+Person.propTypes = {
+  firstName:PropTypes.string,
+  lastName:PropTypes.string,
+  country:PropTypes.string
+};
+
+export default Person;
+```
+`PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
