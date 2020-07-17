@@ -1718,7 +1718,6 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 #### Q. ***What is React Fiber?***
 #### Q. ***How to apply validation on Props in React?***
 #### Q. ***What is the difference between using constructor vs getInitialState in React?***
-#### Q. ***When is it important to pass props to super(), and why?***
 #### Q. ***How to conditionally add attributes to React components?***
 #### Q. ***Do Hooks replace render props and higher-order components?***
 #### Q. ***How would you go about investigating slow React application rendering?***
@@ -1798,8 +1797,6 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 #### Q. ***What is the best approach to install at least two parts?***
 #### Q. ***By what method can the segment state be refreshed?***
 #### Q. ***What are the techniques for React segment lifecycle?***
-#### Q. ***What is different b/w super() and super(props)?***
-#### Q. ***What is the super keyword in React?***
 #### Q. ***What is yield catchphrase in JavaScript ?***
 #### Q. ***What is Presentational segment?***
 #### Q. ***What are the Component uses and features?***
@@ -1901,8 +1898,6 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 #### Q. ***How to get query parameters in react routing?***
 #### Q. ***How do you share code between components using render props?***
 #### Q. ***How do you remove an element in the react state?***
-#### Q. ***Name the lifecycle method that listen to state changes?***
-#### Q. ***What is called Super Props?***
 #### Q. ***What is called Destructuring?***
 #### Q. ***What is called render() function in react?***
 #### Q. ***What is called Stateless function?***
