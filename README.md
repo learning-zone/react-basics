@@ -1481,6 +1481,37 @@ ReactDOM.render(<Container />, document.getElementById('root'));
 
 #### Q. ***What is the significance of keys in React?***
 
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
+
+```js
+function NumberList(props) {
+
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <li key={number.toString()}>
+      {number}
+    </li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+);
+```
+
+**Exceptions where it is safe to use index as key**
+
+* If your list is static and will not change.
+* The list will never be re-ordered.
+* The list will not be filtered (adding/removing items from the list).
+* There are no ids for the items in the list.
+
+*Note: Using `index` as a key can lead to potential unexpected behaviour within the component.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
