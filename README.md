@@ -1737,6 +1737,71 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
 </div>
 
 #### Q. ***Why should not we update the state directly?***
+
+The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
+
+There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
+
+The `setState()` will always trigger a re-render unless conditional rendering logic is implemented in `shouldComponentUpdate()`. If mutable objects are being used and the logic cannot be implemented in `shouldComponentUpdate()`, calling `setState()` only when the new state differs from the previous state will avoid unnecessary re-renders.
+
+Basically, if we modify `this.state()` directly, we create a situation where those modifications might get overwritten.
+
+Example:
+
+```js
+import React, { Component } from 'react';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list: [
+        { id: '1', age: 42 },
+        { id: '2', age: 33 },
+        { id: '3', age: 68 },
+      ],
+    };
+  }
+
+  onRemoveItem = id => {
+    this.setState(state => {
+      const list = state.list.filter(item => item.id !== id);
+
+      return {
+        list,
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.list.map(item => (
+            <li key={item.id}>
+              The person is {item.age} years old.
+              <button
+                type="button"
+                onClick={() => this.onRemoveItem(item.id)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What do these three dots (...) in React do?***
 #### Q. ***What are React Hooks? What are advantages of using React Hooks?***
 #### Q. ***What is React Fiber?***
