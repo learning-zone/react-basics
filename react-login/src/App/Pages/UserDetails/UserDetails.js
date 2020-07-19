@@ -1,6 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import axios from 'axios';
+import { CSVLink } from "react-csv";
 
 class UserDetails extends React.Component {
     state = {
@@ -8,6 +9,10 @@ class UserDetails extends React.Component {
         columns: [
             { title: 'Name', field: 'name' },
             { title: 'Email', field: 'email' }
+        ],
+        headers: [
+          { label: "Name", key: "name" },
+          { label: "Email", key: "email" }
         ]
     }
 
@@ -25,11 +30,15 @@ class UserDetails extends React.Component {
   render() {
     return (
       <div style={{ maxWidth: '100%', padding: '50px' }}>
+        <CSVLink data={this.state.Results} headers={this.state.headers}>
+          Export to Excel
+        </CSVLink>
         <MaterialTable
           columns={this.state.columns}
           data={this.state.Results}
           title="User Details"
         />
+        
       </div>
     )
   }
