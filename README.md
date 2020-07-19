@@ -1803,6 +1803,53 @@ export default App;
 </div>
 
 #### Q. ***What do these three dots (...) in React do?***
+
+We can use the ES6 Spread operator to pass props to a React component. Let us take an example for a component that expects two props:
+
+```js
+function App() {
+  return <Hello firstName="Alex" lastName="K" />;
+}
+```
+Using the Spread operator, it become like this
+
+```js
+function App() {
+  const props = {firstName: 'Alex', lastName: 'K'};
+  return <Hello {...props} />;
+}
+```
+
+When we use the `...props` syntax, actaully it expand the props object from the parent component, which means all its attributes are passed down the child component that may not need them all. This will make things like debugging harder.
+
+**Using the Spread Operator with setState() for Setting the Nested State**
+
+let us suppose we have a state with a nested object in our component:
+
+```js
+this.state = {
+  stateObj: {
+    attr1: '',
+    attr2: '',
+  },
+}
+```
+We can use the Spread syntax to update the nested state object.
+
+```js
+this.setState(state => ({
+  person: {
+    ...state.stateObj,
+    attr1: 'value1',
+    attr2: 'value2',
+  },
+}))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are React Hooks? What are advantages of using React Hooks?***
 #### Q. ***What is React Fiber?***
 #### Q. ***How to apply validation on Props in React?***
