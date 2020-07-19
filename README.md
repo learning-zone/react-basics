@@ -1712,6 +1712,30 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 </div>
 
 #### Q. ***What is the purpose of using super constructor with props argument?***
+
+The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+
+```js
+class App extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {};
+   }
+
+  // React says we have to define render()
+  render() {
+    return <div>Hello world</div>
+  }
+}
+
+export default App
+```
+Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why should not we update the state directly?***
 #### Q. ***What do these three dots (...) in React do?***
 #### Q. ***What are React Hooks? What are advantages of using React Hooks?***
