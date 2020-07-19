@@ -1804,7 +1804,7 @@ export default App;
 
 #### Q. ***What do these three dots (...) in React do?***
 
-We can use the ES6 Spread operator to pass props to a React component. Let us take an example for a component that expects two props:
+The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
 
 ```js
 function App() {
