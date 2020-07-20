@@ -948,9 +948,9 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is useRef() in React?***
+#### Q. ***What is useRef() in React?***
 
-## Q. ***What is useHooks() in React?***
+#### Q. ***What is useHooks() in React?***
 
 ## Q. ***What is difference between useEffect() vs componentDidMount()?***
 
