@@ -913,6 +913,8 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 
 ## Q. ***What is useContext() in React?***
 
+<img src="assets/context-api.jpg" alt="Context API" width="800px" />
+
 The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
 
 ```js
@@ -941,8 +943,6 @@ function Display() {
   return <div>The answer is {value}.</div>;
 }
 ```
-
-<img src="assets/context-api.jpg" alt="Context API" width="800px" />
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
