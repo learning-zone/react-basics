@@ -6,6 +6,7 @@
 
 ## Table of Contents
 
+* *[Create React Application](https://create-react-app.dev/docs/getting-started)*
 * *[React Quick Reference](quick-reference.md)*
 * *[React Best Practices](best-practices.md)*
 
@@ -23,11 +24,13 @@
 
 <br/>
 
-## Q. ***What is React.js? How is it different from other javascript frameworks?*** 
+## Q. ***What is React.js? How is it different from other javascript frameworks?***
 
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
+
+[Read More](https://reactjs.org/tutorial/tutorial.html)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -75,7 +78,7 @@ class Welcome extends React.Component {
 * React data binding establishes conditions for creation dynamic applications.
 * Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
 Testable. React native tools are offered for testing, debugging code.
-* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:   
+* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
     * React.renderComponentToString is called on the server. 
     * React.renderComponent() is called on the client side. 
     * React preserves markup rendered on the server side, attaches event handlers.  
@@ -134,7 +137,7 @@ React DOM is the glue between React and the DOM. When u want to show your react 
 Before **v0.14** React Dom was part of React. The reason React and ReactDOM were split into two libraries was due to the arrival of React Native. React contains functionality utilised in web and mobile apps. ReactDOM functionality is utilised only in web apps.
 ReactDOM uses observables thus provides an efficient way of DOM handling. ReactDOM can be used in both client-side and server-side.
 
-Example: 
+Example:
 
 ```js
 // index.js
@@ -2172,7 +2175,7 @@ const App = () => {
 #### Q. ***Why do class methods need to be bound to a class instance?***
 #### Q. ***What is the difference between HTML and React event handling?***
 #### Q. ***What is "Children" in React?***
-#### Q. ***What Does Eject do in Create React App?***
+#### Q. ***What does Eject do in Create React App?***
 #### Q. ***Why are string refs considered legacy in React?***
 #### Q. ***How to apply validation on Props in ReactJS***
 #### Q. ***What are the recommended ways for static type checking?***
@@ -2184,7 +2187,7 @@ const App = () => {
 
 <br/>
 
-## React Testing Questions
+# React Unit Testing
 
 ## Q. ***Explain react unit testing using Jest and Enzyme?***
 
