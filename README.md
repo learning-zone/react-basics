@@ -8,6 +8,7 @@
 
 * *[Create React Application](https://create-react-app.dev/docs/getting-started)*
 * *[React Quick Reference](quick-reference.md)*
+* *[Jest Quick Reference](jest-quick-reference.md)*
 * *[React Best Practices](best-practices.md)*
 
 <br/>
