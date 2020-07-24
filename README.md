@@ -2336,7 +2336,7 @@ describe('App component', () => {
 
 #### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
 #### Q. ***What is the purpose of the ReactTestUtils package?***
-#### Q. ***Explain about shallow rendering in React testing?***
+#### Q. ***Explain about mount and shallow rendering in React testing?***
 #### Q. ***What is TestRenderer package in React?***
 #### Q. ***What are the advantages of Jest over Jasmine?***
 #### Q. ***Explain unit testing React with react-testing-library?***
