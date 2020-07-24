@@ -2324,7 +2324,10 @@ describe('App component', () => {
 });
 ```
 
-[Read More](https://jestjs.io/docs/en/tutorial-react)
+**Read More**
+
+* [Jest Framework](https://jestjs.io/docs/en/tutorial-react)
+* [Enzyme Framework](https://enzymejs.github.io/enzyme/)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
