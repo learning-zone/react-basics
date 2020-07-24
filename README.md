@@ -2307,7 +2307,7 @@ describe('App component', () => {
 });
 ```
 
-**Testing user interaction**
+**Testing User Interaction**
 
 ```js
 // src/App.test.js
