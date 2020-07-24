@@ -2186,7 +2186,24 @@ const App = () => {
 
 ## React Testing Questions
 
-#### Q. ***Explain react unit testing with Enzyme and Jest?***
+## Q. ***Explain react unit testing using Jest and Enzyme?***
+
+**Jest**  
+
+Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
+
+Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
+
+**Enzyme**
+
+Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
+
+[Read More](https://jestjs.io/docs/en/tutorial-react)
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
 #### Q. ***What is the purpose of the ReactTestUtils package?***
 #### Q. ***Explain about shallow rendering in React testing?***
