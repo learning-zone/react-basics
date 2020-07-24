@@ -2201,6 +2201,129 @@ Jest also provides Snapshot testing, the ability to create a rendered *snapshot*
 
 Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
 
+**Setup with Create React App**
+
+```bash
+# for rendering snapshots
+npm install  react-test-renderer --save-dev
+
+# for dom testing
+npm install enzyme --save-dev
+```
+
+```json
+{
+  "react": "^16.13.1",
+  "@testing-library/jest-dom": "^4.2.4",
+  "@testing-library/react": "^9.5.0",
+  "@testing-library/user-event": "^7.2.1",
+  "enzyme": "3.9",
+  "jest": "24.5.0",
+  "jest-cli": "24.5.0",
+  "babel-jest": "24.5.0"
+}
+```
+
+**Set up a React application**
+
+```bash
+npx create-react-app counter-app
+```
+
+```js
+// src/App.js
+
+import React, { Component } from 'react';
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    }
+  }
+  makeIncrementer = amount => () =>
+    this.setState(prevState => ({
+      count: prevState.count + amount,
+    }));
+  increment = this.makeIncrementer(1);
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button className="increment" onClick={this.increment}>Increment count</button>
+      </div>
+    )
+  }
+}
+export default App;
+```
+
+```js
+// src/App.test.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+// Default Test Case
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+
+// Pass Test Case
+describe('Addition', () => {
+  it('knows that 2 and 2 make 4', () => {
+    expect(2 + 2).toBe(4);
+  });
+});
+
+
+// Fil Test Case
+describe('Addition', () => {
+  it('knows that 2 and 2 make 4', () => {
+    expect(2 + 2).toBe(5);
+  });
+});
+```
+
+**Using Enzyme**
+
+```js
+ // src/App.test.js
+
+import React from 'react';
+import { shallow } from 'enzyme';
+import App from './App';
+
+describe('App component', () => {
+  it('starts with a count of 0', () => {
+    const wrapper = shallow(<App />);
+    const text = wrapper.find('p').text();
+    expect(text).toEqual('Count: 0');
+  });
+});
+```
+
+**Testing user interaction**
+
+```js
+// src/App.test.js
+
+describe('App component', () => {
+  ...
+  it('increments count by 1 when the increment button is clicked', () => {
+    const wrapper = shallow(<App />);
+    const incrementBtn = wrapper.find('button.increment');
+    incrementBtn.simulate('click');
+    const text = wrapper.find('p').text();
+    expect(text).toEqual('Count: 1');
+  });
+});
+```
+
 [Read More](https://jestjs.io/docs/en/tutorial-react)
 
 <div align="right">
@@ -2213,6 +2336,7 @@ Enzyme is a JavaScript Testing utility for React that makes it easier to assert,
 #### Q. ***What is TestRenderer package in React?***
 #### Q. ***What are the advantages of Jest over Jasmine?***
 #### Q. ***Explain unit testing React with react-testing-library?***
+#### Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 
 <br/>
 
