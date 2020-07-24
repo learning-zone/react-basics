@@ -32,10 +32,10 @@
 - [Skipping tests](#skipping-tests)
 - [Testing modules with side effects](#testing-modules-with-side-effects)
 
-## Test structure
+## Basic Test Structure
 
 ```js
-describe('makePoniesPink', () => {
+describe('Color Picker', () => {
   beforeAll(() => {
     /* Runs before all tests */
   })
@@ -49,7 +49,7 @@ describe('makePoniesPink', () => {
     /* Runs after each test */
   })
   
-  test('make each pony pink', () => {
+  test('Choose a color', () => {
     const actual = fn(['Alice', 'Bob', 'Eve'])
     expect(actual).toEqual(['Pink Alice', 'Pink Bob', 'Pink Eve'])
   })
@@ -143,12 +143,6 @@ expect(fn).toThrow()
 expect(fn).toThrow('Out of cheese')
 expect(fn).toThrowErrorMatchingSnapshot()
 ```
-
-<details>
-  <summary>Aliases</summary>
-
-- `toThrowError` → `toThrow`
-  </details>
 
 ### Snapshots
 
