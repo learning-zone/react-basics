@@ -2185,6 +2185,7 @@ const App = () => {
 #### Q. ***Does React re-render all components and sub components every time setState is called?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to prevent components from re-rendering?***
+#### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
 
 <br/>
 
