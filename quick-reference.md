@@ -1,6 +1,40 @@
 # React Quick Reference
 
-
+- Components
+  - [Components](#components)
+  - [Stateless Components](#stateless-components)
+  - [Functional Components](#functional-components)
+  - [Pure Components](#pure-components)
+- Properties
+  - [Props](#properties)
+  - [States](#states)
+  - [Children](#children)
+  - [Nesting](#nesting)
+  - [Transferring props](#transferring-props)
+  - [Portals](#portals)
+  - [Hydration](#hydration)
+  - [PropTypes](#proptypes)
+  - [Basic types](#basic-types)
+  - [Required Types](#required-types)
+  - [Elements](#elements)
+  - [Enumerables](#enumerables)
+  - [Custom validation](#custom-validation)
+  - [Arrays and Objects](#arrays-and-objects)
+- Lifecycle
+  - [Mounting](#mounting)
+  - [Updating](#updating)
+  - [Errors](#errors)
+- Hooks
+  - [State Hook](#state-hook)
+  - [Effect Hook](#effect-hook)
+- [References](#references)
+- [DOM Events](#dom-events)
+- JSX patterns
+  - [Style shorthand](#style-shorthand)
+  - [Conditionals](#conditionals)
+  - [Lists](#lists)
+  - [Short-Circuit Evaluation](#short-circuit-evaluation)
+  - [Fragments and Arrays](#fragments-and-arrays)
 
 ## Components
 
@@ -121,25 +155,6 @@ class Info extends Component {
 }
 ```
 
-## Setting default props
-
-```javascript
-Hello.defaultProps = {
-  color: 'blue'
-}
-```
-
-## Setting default state
-
-```javascript
-class Hello extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { visible: true }
-  }
-}
-```
-
 ## Functional components
 
 Functional components have no state. Also, their props are passed as the first parameter to a function.
@@ -167,19 +182,7 @@ class MessageBox extends PureComponent {
 }
 ```
 
-## Component API
-
-These methods and properties are available for Component instances.
-
-```javascript
-this.forceUpdate()
-this.setState({ ... })
-this.setState(state => { ... })
-this.state
-this.props
-```
-
-## Lifecycle => Mounting
+## Mounting
 
 Set initial the state on `constructor()`. Add DOM event handlers, timers etc on `componentDidMount()`, then remove them on `componentWillUnmount()`.
 
@@ -192,7 +195,7 @@ componentWillUnmount()	      # Before DOM removal
 componentDidCatch()	      # Catch errors (16+) 
 ```
 
-## Lifecycle => Updating
+## Updating
 
 Called when parents change properties and `setState()`. These are not called for initial renders.
 
@@ -203,7 +206,7 @@ render()	                                         # Render
 componentDidUpdate (prevProps, prevState)	         # Operate on the DOM here
 ```
 
-## Hooks => State Hook
+## State Hook
 
 ```javascript
 import React, { useState } from 'react';
@@ -223,19 +226,7 @@ function Example() {
 }
 ```
 
-## Hooks => Declaring multiple state variables
-
-```javascript
-function ExampleWithManyStates() {
- 
-  // Declare multiple state variables!
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
-}
-```
-
-## Hooks => Effect Hook
+## Effect Hook
 
 The `useEffect()` Hook can be used as `componentDidMount()`, `componentDidUpdate()`, and `componentWillUnmount()` combined.
 
@@ -262,23 +253,6 @@ function Example() {
   );
 }
 ```
-
-## Hooks API Reference
-
-```javascript
-useState(initialState)	 
-useEffect(() => { … })	 
-useContext(MyContext)	       # value returned from React.createContext
-
-seReducer(reducer, initialArg, init)	 
-useCallback(() => { … })	 
-useMemo(() => { … })	 
-useRef(initialValue)	 
-useImperativeHandle(ref, () => { … })	 
-useLayoutEffect	            # identical to useEffect, but it fires synchronously after all DOM mutations
-useDebugValue(value)	        # display a label for custom hooks in React DevTools
-```
-
 
 ## References
 
@@ -334,19 +308,6 @@ class VideoPlayer extends Component {
 }
 ```
 
-## Top-level API
-
-There are more, but these are most common.
-
-```javascript
-React.createClass({ ... })
-React.isValidElement(c)
-ReactDOM.render(<Component />, domnode, [callback])
-ReactDOM.unmountComponentAtNode(domnode)
-ReactDOMServer.renderToString(<Component />)
-ReactDOMServer.renderToStaticMarkup(<Component />)
-```
-
 ## JSX patterns
 
 ## Style shorthand
@@ -394,7 +355,7 @@ class TodoList extends Component {
 </Fragment>
 ```
 
-##  Fragments and Arrays    
+##  Fragments and Arrays
 
 ```javascript
 // Arrays
