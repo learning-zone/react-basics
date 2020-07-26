@@ -13,18 +13,6 @@
 
 <br/>
 
-### Projects
-
-|Sl.No| Name                                      | Technology                             |
-|-----|-------------------------------------------|----------------------------------------|
-| 01  |[Poke'Times](poketimes)                   |React                                   |
-| 02  |[React-Express-MSSQL](react-express-mssql)|React, Node.js, Express.js, SQL-Server  |
-| 03  |[Todo-App](todo-app)                      |React                                   |
-| 04  |[React Login (JWT)](react-login)          |React, JWT, MD5, MSSQL, Express.js      |
-| 05  |[React Seed](react-seed)                  |React                                   |
-
-<br/>
-
 ## Q. ***What is React.js? How is it different from other javascript frameworks?***
 
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
