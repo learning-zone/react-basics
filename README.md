@@ -2332,6 +2332,7 @@ describe('App component', () => {
 #### Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 #### Q. ***When should we use render and shallow in Enzyme React tests?***
 #### Q. ***What are benefits of snapshot testing using jest in react?***
+#### Q. ***What is adapter in enzyme?***
 
 <br/>
 
