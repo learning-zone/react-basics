@@ -2330,9 +2330,9 @@ describe('App component', () => {
 #### Q. ***What are the advantages of Jest over Jasmine?***
 #### Q. ***Explain unit testing React with react-testing-library?***
 #### Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
-#### Q. ***When should we use render and shallow in Enzyme React tests?***
 #### Q. ***What are benefits of snapshot testing using jest in react?***
 #### Q. ***What is adapter in enzyme?***
+#### Q. ***What are the benefits of using data-test over className or Id selector in Jest?***
 
 <br/>
 
