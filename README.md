@@ -2333,6 +2333,7 @@ describe('App component', () => {
 #### Q. ***What are benefits of snapshot testing using jest in react?***
 #### Q. ***What is adapter in enzyme?***
 #### Q. ***What are the benefits of using data-test over className or Id selector in Jest?***
+#### Q. ***Explain steps to generate code-coverage report in jest?***
 
 <br/>
 
