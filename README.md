@@ -2323,9 +2323,138 @@ describe('App component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain the positives and negatives of shallow rendering components in tests?***
 #### Q. ***What is the purpose of the ReactTestUtils package?***
-#### Q. ***Explain about shallow, render and mount rendering in React testing?***
+
+## Q. ***Explain about shallow() method in enzyme?***
+
+**shallow()**
+
+The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
+
+Example:
+
+```js
+import React from "react";
+import { shallow } from "enzyme";
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+Enzyme.configure({ adapter: new Adapter() });
+
+function Name(props) {
+  return <span>Welcome {props.name}</span>;
+}
+
+function Welcome(props) {
+  return (
+    <h1>
+      <Name name={props.name} />
+    </h1>
+  );
+}
+
+const wrapper = shallow(<Welcome name="Alex" />);
+console.log(wrapper.debug());
+```
+
+**When not to use Shallow Rendering**
+
+* Shallow rendering is not useful for testing the end-user experience.
+* Shallow rendering is not useful for testing DOM rendering or interactions.
+* Shallow rendering is not useful for integration testing.
+* Shallow rendering is not useful for browser testing.
+* Shallow rendering is not useful for end to end testing.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is mount() method in Enzyme?***
+
+**mount()**
+
+**Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
+
+This is more suitable when there are components which directly interfere with DOM API or lifecycle methods of React. Simple mount calls the `constructor()`, `render()`, `componentDidMount()` methods.
+
+Example:
+
+```js
+...
+import ListItem from './ListItem';
+...
+
+return (
+    <ul className="list-items">
+      {items.map(item => <ListItem key={item} item={item} />)}
+    </ul>
+);
+```
+```js
+import React from 'react';
+import { mount } from '../enzyme';
+import List from './List';
+
+describe('List tests', () => {
+
+  it('renders list-items', () => {
+    const items = ['one', 'two', 'three'];
+
+    const wrapper = mount(<List items={items} />);
+
+    // Let's check what wrong in our instance
+    console.log(wrapper.debug());
+
+    // Expect the wrapper object to be defined
+    expect(wrapper.find('.list-items')).toBeDefined();
+    expect(wrapper.find('.item')).toHaveLength(items.length);
+  });
+
+  ...
+});
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is render() method in Enzyme?***
+
+**render()**
+
+**Static rendering** is used to render react components to static HTML. It/'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
+
+For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
+
+Example:
+
+```js
+import React from 'react';
+import { render } from '../enzyme';
+
+import List from './List';
+import { wrap } from 'module';
+
+describe('List tests', () => {
+
+  it('renders list-items', () => {
+    const items = ['one', 'two', 'three'];
+    const wrapper = render(<List items={items} />);
+
+    wrapper.addClass('foo');
+    // Expect the wrapper object to be defined
+    expect(wrapper.find('.list-items')).toBeDefined();
+    expect(wrapper.find('.item')).toHaveLength(items.length);
+  });
+
+  ...
+});
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is TestRenderer package in React?***
 #### Q. ***What are the advantages of Jest over Jasmine?***
 #### Q. ***Explain unit testing React with react-testing-library?***
