@@ -2323,8 +2323,6 @@ describe('App component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the purpose of the ReactTestUtils package?***
-
 ## Q. ***Explain about shallow() method in enzyme?***
 
 **shallow()**
@@ -2455,6 +2453,7 @@ describe('List tests', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+#### Q. ***What is the purpose of the ReactTestUtils package?***
 #### Q. ***What is TestRenderer package in React?***
 #### Q. ***What are the advantages of Jest over Jasmine?***
 #### Q. ***Explain unit testing React with react-testing-library?***
