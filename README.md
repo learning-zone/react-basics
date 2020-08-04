@@ -2325,8 +2325,6 @@ describe('App component', () => {
 
 ## Q. ***Explain about shallow() method in enzyme?***
 
-**shallow()**
-
 The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
 
 Example:
@@ -2368,8 +2366,6 @@ console.log(wrapper.debug());
 </div>
 
 ## Q. ***What is mount() method in Enzyme?***
-
-**mount()**
 
 **Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
 
@@ -2417,8 +2413,6 @@ describe('List tests', () => {
 </div>
 
 ## Q. ***What is render() method in Enzyme?***
-
-**render()**
 
 **Static rendering** is used to render react components to static HTML. It/'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
 
