@@ -2223,7 +2223,8 @@ npx create-react-app counter-app
 ```js
 // src/App.js
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
 class App extends Component {
   constructor() {
     super();
@@ -2245,38 +2246,7 @@ class App extends Component {
     )
   }
 }
-export default App;
-```
-
-```js
-// src/App.test.js
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-// Default Test Case
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
-
-
-// Pass Test Case
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
-  });
-});
-
-
-// Fil Test Case
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(5);
-  });
-});
+export default App
 ```
 
 **Using Enzyme**
@@ -2284,17 +2254,17 @@ describe('Addition', () => {
 ```js
  // src/App.test.js
 
-import React from 'react';
-import { shallow } from 'enzyme';
-import App from './App';
+import React from 'react'
+import { shallow } from 'enzyme'
+import App from './App'
 
 describe('App component', () => {
   it('starts with a count of 0', () => {
-    const wrapper = shallow(<App />);
-    const text = wrapper.find('p').text();
-    expect(text).toEqual('Count: 0');
-  });
-});
+    const wrapper = shallow(<App />)
+    const text = wrapper.find('p').text()
+    expect(text).toEqual('Count: 0')
+  })
+})
 ```
 
 **Testing User Interaction**
@@ -2303,15 +2273,15 @@ describe('App component', () => {
 // src/App.test.js
 
 describe('App component', () => {
-  ...
+
   it('increments count by 1 when the increment button is clicked', () => {
-    const wrapper = shallow(<App />);
-    const incrementBtn = wrapper.find('button.increment');
-    incrementBtn.simulate('click');
-    const text = wrapper.find('p').text();
-    expect(text).toEqual('Count: 1');
-  });
-});
+    const wrapper = shallow(<App />)
+    const incrementBtn = wrapper.find('button.increment')
+    incrementBtn.simulate('click')
+    const text = wrapper.find('p').text()
+    expect(text).toEqual('Count: 1')
+  })
+})
 ```
 
 **Read More**
@@ -2567,8 +2537,14 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the advantages of Jest over Jasmine?***
-#### Q. ***Explain unit testing React with react-testing-library?***
+## Q. ***What are the advantages of Jest over Jasmine?***
+
+Used and recommended by Facebook alongside a variety of React applications, Jest is well supported. Jest also reports a very fast testing library due to its clever parallel testing.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 #### Q. ***What are benefits of snapshot testing using jest in react?***
 #### Q. ***What is adapter in enzyme?***
