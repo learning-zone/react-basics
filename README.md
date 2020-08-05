@@ -2537,15 +2537,35 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the advantages of Jest over Jasmine?***
+## Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 
-Used and recommended by Facebook alongside a variety of React applications, Jest is well supported. Jest also reports a very fast testing library due to its clever parallel testing.
+Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
+
+**Process:**
+
+1. Add a test
+1. Run all tests and see if the new test fails (red)
+1. Write the code to pass the test (green)
+1. Run all tests
+1. Refactor
+1. Repeat
+
+**Pros:**
+
+1. Design before implementation
+1. Helps prevent future regressions and bugs
+1. Increases confidence that the code works as expected
+
+**Cons:**
+
+1. Takes longer to develop (but it can save time in the long run)
+1. Testing edge cases is hard
+1. Mocking, faking, and stubbing are all even harder
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 #### Q. ***What are benefits of snapshot testing using jest in react?***
 #### Q. ***What is adapter in enzyme?***
 #### Q. ***What are the benefits of using data-test over className or Id selector in Jest?***
