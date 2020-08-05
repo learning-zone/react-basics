@@ -2566,9 +2566,45 @@ Test-driven development is an approach when developers create a product backward
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are benefits of snapshot testing using jest in react?***
-#### Q. ***What is adapter in enzyme?***
-#### Q. ***What are the benefits of using data-test over className or Id selector in Jest?***
+## Q. ***What are the benefits of using data-test selector over className or Id selector in Jest?***
+
+HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
+
+```js
+// APP Component
+import React from 'react'
+import './App.scss'
+
+function App() {
+  return (
+    <div data-test='app-header'>
+      Hello React
+    </div>
+  );
+}
+export default App
+```
+```js
+import React from 'react'
+import { shallow } from 'enzyme'
+import App from './App'
+
+
+describe('APP Component', () => {
+
+  test('title', () => {
+    let wrapper = shallow(<APP />)
+    let title = wrapper.find(`[data-test='app-header']`).text()
+
+    expect(title).toMatch('Hello React')
+  })
+
+})
+```
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain steps to generate code-coverage report in jest?***
 
 <br/>
