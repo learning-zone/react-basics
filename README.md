@@ -2414,7 +2414,7 @@ describe('List tests', () => {
 
 ## Q. ***What is render() method in Enzyme?***
 
-**Static rendering** is used to render react components to static HTML. It/'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
+**Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
 
 For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
 
