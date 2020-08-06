@@ -991,7 +991,7 @@ When useEffect() is used to get data from server.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What do you understand by Refs in React? List some of the cases when you should use Refs?***
+## Q. ***What do you understand by refs in React?***
 
 `Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
 
