@@ -2605,8 +2605,6 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain steps to generate code-coverage report in jest?***
-
 <br/>
 
 ## Redux Questions
