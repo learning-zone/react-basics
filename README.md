@@ -1926,7 +1926,6 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is React Fiber?***
 #### Q. ***How to apply validation on Props in React?***
 #### Q. ***What is the difference between using constructor vs getInitialState in React?***
 #### Q. ***How to conditionally add attributes to React components?***
@@ -2174,6 +2173,7 @@ const App = () => {
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to prevent components from re-rendering?***
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
+#### Q. ***What is React Fiber?***
 
 <br/>
 
