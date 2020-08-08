@@ -2112,7 +2112,7 @@ React uses many techniques to minimize the number of DOM operations for us alrea
 
 Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
 
-<img src="assets/react-dev-tools.png"  alt="React DevTools" width="500px" />
+<img src="assets/react-dev-tools.png"  alt="React DevTools" />
 
 **2. Using `shouldComponentUpdate()` method**
 
