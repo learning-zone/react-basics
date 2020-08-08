@@ -2228,18 +2228,18 @@ class Search extends Component {
     super(props)
 
     this.state = {
-      searchTerm: ''
+      searchString: ''
     }
   }
 }
 ```
-we are passing an empty string as a value and, to update the state of searchTerm, we have to call setState().
+we are passing an empty string as a value and, to update the state of searchString, we have to call setState().
 
 ```js
-setState({ searchTerm: event.target.value })
+setState({ searchString: event.target.value })
 ```
 
-Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchTerm. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
+Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
 
 When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
 
