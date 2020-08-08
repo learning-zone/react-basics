@@ -1928,7 +1928,7 @@ const App = () => {
 
 ## Q. ***How to apply validation on Props in React?***
 
-Props are an important mechanism for passing the read-only attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
+Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
 
 ```bash
 npm install prop-types --save-dev
@@ -1937,7 +1937,8 @@ npm install prop-types --save-dev
 Example:
 
 ```js
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 App.defaultProps = {
    propBool: true,
@@ -1947,6 +1948,7 @@ App.defaultProps = {
 }
 
 class App extends React.Component {
+
    render() {
       return (
          <fragment>
@@ -1960,10 +1962,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-   propBool: React.PropTypes.bool.isRequired,
-   propArray: React.PropTypes.array.isRequired,
-   propNumber: React.PropTypes.number,
-   propString: React.PropTypes.string,
+   propBool: PropTypes.bool.isRequired,
+   propArray: PropTypes.array.isRequired,
+   propNumber: PropTypes.number,
+   propString: PropTypes.string,
 }
 
 export default App
