@@ -1975,7 +1975,35 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between using constructor vs getInitialState in React?***
+## Q. ***What is the difference between using constructor vs getInitialState in React?***
+
+The two approaches are not interchangeable. You should initialize state in the `constructor()` when using ES6 classes, and define the `getInitialState()` method when using React.createClass.
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { /* initial state */ }
+  }
+}
+```
+
+is equivalent to
+
+```js
+var MyComponent = React.createClass({
+  getInitialState() {
+    return { /* initial state */ }
+  },
+})
+```
+
+The `getInitialState()` is used with `React.createClass` and `constructor()` is used with `React.Component`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to conditionally add attributes to React components?***
 #### Q. ***Do Hooks replace render props and higher-order components?***
 #### Q. ***How would you go about investigating slow React application rendering?***
