@@ -2104,7 +2104,62 @@ export default page(MyPageComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How would you go about investigating slow React application rendering?***
+## Q. ***How to optimize React Performance?***
+
+React uses many techniques to minimize the number of DOM operations for us already. For many applications, if you are using the production build, you may already meet or surpass your performance expectations. Nevertheless, there are several ways you can speed up your application.
+
+**1. React DevTools Profiler**
+
+Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
+
+**2. Using `shouldComponentUpdate()` method**
+
+By default, React will render the virtual DOM and compare the difference for every component in the tree for any change in its props or state. But that is obviously not reasonable. As our app grows, attempting to re-render and compare the entire virtual DOM at every action will eventually slow the whole thing down.
+
+React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate which is triggered before the re-rendering process starts. The default implementation of this function returns true.
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  return true
+}
+```
+
+When this function returns true for any component, it allows the render differentiating process to be triggered. This gives us the power of controlling the render differentiating process. Suppose we need to prevent a component from being re-rendered, we need simply to return false from that function. As we can see from the implementation of the method, we can compare the current and next props and state to determine whether a re-render is necessary:
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  return nextProps.id !== this.props.id
+}
+```
+
+**3. Using pure components**
+
+A pure component is a component that only re-renders if `props/state` is different from the previous props and state.
+
+**4. Using React.memo**
+
+React.memo is a higher order component. It\'s similar to `React.PureComponent` but for function components instead of classes.
+
+```js
+const MyComponent = React.memo(function MyComponent(props) {
+  /* render using props */
+})
+```
+
+If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for `prop` changes. If your function component wrapped in `React.memo` has a `useState` or `useContext` Hook in its implementation, it will still rerender when `state` or `context` change.
+
+**5. Virtualizing Long Lists**
+
+In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
+
+* *[Additional Resources](https://reactjs.org/docs/optimizing-performance.html)*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***When would you use StrictMode component in React?***
 #### Q. ***How does React renderer work exactly when we call setState?***
 #### Q. ***How to avoid the need for binding in React?***
