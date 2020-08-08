@@ -1980,7 +1980,10 @@ export default App
 The two approaches are not interchangeable. You should initialize state in the `constructor()` when using ES6 classes, and define the `getInitialState()` method when using React.createClass.
 
 ```js
+import React from 'react'
+
 class MyComponent extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = { /* initial state */ }
@@ -2004,7 +2007,31 @@ The `getInitialState()` is used with `React.createClass` and `constructor()` is 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to conditionally add attributes to React components?***
+## Q. ***How to conditionally add attributes to React components?***
+
+Inline conditionals in attribute props
+
+```js
+import React from 'react'
+
+function App() {
+
+  const [mood] = React.useState("happy")
+
+  const greet = () => alert("Hi there! :)")
+
+  return (
+    <button onClick={greet} disabled={"happy" === mood ? false : true}>
+      Say Hi
+    </button>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Do Hooks replace render props and higher-order components?***
 #### Q. ***How would you go about investigating slow React application rendering?***
 #### Q. ***When would you use StrictMode component in React?***
