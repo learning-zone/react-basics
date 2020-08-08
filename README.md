@@ -1926,7 +1926,53 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to apply validation on Props in React?***
+## Q. ***How to apply validation on Props in React?***
+
+Props are an important mechanism for passing the read-only attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
+
+```bash
+npm install prop-types --save-dev
+```
+
+Example:
+
+```js
+import React from 'react';
+
+App.defaultProps = {
+   propBool: true,
+   propArray: [1, 2, 3, 4, 5],
+   propNumber: 100,
+   propString: "Hello React!"
+}
+
+class App extends React.Component {
+   render() {
+      return (
+         <fragment>
+            <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
+            <h3>Array: {this.props.propArray}</h3>
+            <h3>Number: {this.props.propNumber}</h3>
+            <h3>String: {this.props.propString}</h3>
+         </fragment>
+      );
+   }
+}
+
+App.propTypes = {
+   propBool: React.PropTypes.bool.isRequired,
+   propArray: React.PropTypes.array.isRequired,
+   propNumber: React.PropTypes.number,
+   propString: React.PropTypes.string,
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between using constructor vs getInitialState in React?***
 #### Q. ***How to conditionally add attributes to React components?***
 #### Q. ***Do Hooks replace render props and higher-order components?***
