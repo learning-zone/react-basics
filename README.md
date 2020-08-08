@@ -2112,6 +2112,8 @@ React uses many techniques to minimize the number of DOM operations for us alrea
 
 Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
 
+<img src="assets/react-dev-tools.png"  alt="React DevTools" width="500px" />
+
 **2. Using `shouldComponentUpdate()` method**
 
 By default, React will render the virtual DOM and compare the difference for every component in the tree for any change in its props or state. But that is obviously not reasonable. As our app grows, attempting to re-render and compare the entire virtual DOM at every action will eventually slow the whole thing down.
