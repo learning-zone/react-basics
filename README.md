@@ -2191,6 +2191,14 @@ export default function App() {
 
 In the above example, strict mode checks will not be run against the `<Header>` and `<Footer>` components. However, `<ComponentOne>` and `<ComponentTwo>`, as well as all of their descendants, will have the checks.
 
+`React.StrictMode`, in order to be efficient and avoid potential problems by any side-effects, needs to trigger some methods and lifecycle hooks twice. These are:
+
+* Class component constructor() method
+* The render() method
+* setState() updater functions (the first argument)
+* The static getDerivedStateFromProps() lifecycle
+* React.useState() function
+
 **Benefits of StrictMode**
 
 * Identifying components with unsafe lifecycles
