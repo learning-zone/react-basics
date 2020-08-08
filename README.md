@@ -2138,7 +2138,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
 **3. Using Pure Components**
 
-A pure component is a component that only re-renders if `props/state` is different from the previous props and state.
+Pure Components in React are the components which do not re-renders when the value of `state` and `props` has been updated with the same values. If the value of the previous `state` or `props` and the new `state` or `props` is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
 
 **4. Using React.memo**
 
