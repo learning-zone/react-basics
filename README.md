@@ -2170,8 +2170,6 @@ In order to address the issue with our long chat feed, the React team recommends
 
 `StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants. Strict mode checks are run in development mode only; they do not impact the production build.
 
-It can enabled strict mode for any part of application.
-
 ```js
 import React from 'react';
 
@@ -2190,7 +2188,8 @@ export default function App() {
   );
 }
 ```
-In the above example, strict mode checks will not be run against the Header and Footer components. However, ComponentOne and ComponentTwo, as well as all of their descendants, will have the checks.
+
+In the above example, strict mode checks will not be run against the `<Header>` and `<Footer>` components. However, `<ComponentOne>` and `<ComponentTwo>`, as well as all of their descendants, will have the checks.
 
 **Benefits of StrictMode**
 
