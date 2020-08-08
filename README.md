@@ -2166,7 +2166,44 @@ In order to address the issue with our long chat feed, the React team recommends
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***When would you use StrictMode component in React?***
+## Q. ***When would you use StrictMode component in React?***
+
+`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants. Strict mode checks are run in development mode only; they do not impact the production build.
+
+It can enabled strict mode for any part of application.
+
+```js
+import React from 'react';
+
+export default function App() {
+  return (
+    <Fragment>
+      <Header />
+      <React.StrictMode>
+        <div>
+          <ComponentOne />
+          <ComponentTwo />
+        </div>
+      </React.StrictMode>
+      <Footer />
+    </Fragment>
+  );
+}
+```
+In the above example, strict mode checks will not be run against the Header and Footer components. However, ComponentOne and ComponentTwo, as well as all of their descendants, will have the checks.
+
+**Benefits of StrictMode**
+
+* Identifying components with unsafe lifecycles
+* Warning about legacy string ref API usage
+* Warning about deprecated findDOMNode usage
+* Detecting unexpected side effects
+* Detecting legacy context API
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How does React renderer work exactly when we call setState?***
 #### Q. ***How to avoid the need for binding in React?***
 #### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples?***
