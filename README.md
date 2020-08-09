@@ -2247,7 +2247,51 @@ When the request to `setState()` is triggered, React creates a new tree containi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to avoid the need for binding in React?***
+## Q. ***How to avoid the need for binding in React?***
+
+**1. Use Arrow Function in Class Property**
+
+Usually when we want to access this inside a class method we would need to bind it to method like so:
+
+```js
+class Button extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { clicked: false }
+  }
+  handleClick = () => this.setState({ clicked: true })
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+Binding `this` to `handleClick()` in the `constructor()` allows us to use `this.setState()` from Component inside `handleClick()`.
+
+**2. Bind in Render**
+
+```js
+onChange={this.handleChange.bind(this)}
+```
+
+This approach is terse and clear, however, there are performance implications since the function is reallocated on every render.
+
+**3. Bind in Constructor**
+
+One way to avoid binding in render is to bind in the constructor
+
+```js
+constructor(props) {
+  super(props);
+  this.handleChange = this.handleChange.bind(this);
+}
+```
+
+This is the approach currently recommended in the React docs for "better performance in your application".
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples?***
 #### Q. ***Give a code example to demonstrate embedding two or more components into one?***
 #### Q. ***How does the state differ from props in React?***
