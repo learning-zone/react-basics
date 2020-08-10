@@ -2531,6 +2531,7 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***How to prevent components from re-rendering?***
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
 #### Q. ***What is React Fiber?***
+#### Q. ***Explain Composition vs Inheritance in React?***
 
 <br/>
 
