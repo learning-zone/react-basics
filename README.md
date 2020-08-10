@@ -2292,7 +2292,6 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain major differences between the ES5 and ES6 syntax with relevant examples?***
 #### Q. ***Give a code example to demonstrate embedding two or more components into one?***
 #### Q. ***How does the state differ from props in React?***
 #### Q. ***How would you create a form in React?***
