@@ -2988,7 +2988,7 @@ describe('APP Component', () => {
 #### Q. ***Explain action’s in Redux?***
 #### Q. ***What are the benefits of Redux?***
 #### Q. ***How to utilize interface() from React Redux?***
-#### Q. ***What's the reason for at image in the Redux associate decorator?***
+#### Q. ***What is the reason for at image in the Redux associate decorator?***
 #### Q. ***What is the contrast between React setting and React Redux?***
 #### Q. ***How to make AJAX ask for in Redux?***
 #### Q. ***How to get to Redux store outside a part?***
