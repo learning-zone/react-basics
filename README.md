@@ -2294,10 +2294,7 @@ This is the approach currently recommended in the React docs for "better perform
 
 #### Q. ***How does the state differ from props in React?***
 #### Q. ***How would you create a form in React?***
-#### Q. ***What do you understand by Props in React?***
 #### Q. ***Where would you put AJAX calls in your React code?***
-#### Q. ***Write a sample code to update the state of a component in React?***
-#### Q. ***What are states in React?***
 #### Q. ***Can parent component change value in States and Props?***
 #### Q. ***Can changes be made inside the component?***
 #### Q. ***Can we make changes inside child components?***
@@ -2305,7 +2302,6 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***How the parent and child components exchange information?***
 #### Q. ***What is the higher-order component?***
 #### Q. ***How to embed two components in One component?***
-#### Q. ***Give one basic difference between pros and state?***
 #### Q. ***How do you tell React to build in Production mode and what will that do?***
 #### Q. ***What do you understand with the term polling?***
 #### Q. ***What is the difference between an Element and a Component in React?***
@@ -2314,19 +2310,16 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***How many outermost elements can be there in a JSX expression?***
 #### Q. ***What exactly you can do if the expression contains more than one line?***
 #### Q. ***Is it possible to use the word “Class” in JSX. Why or why not?***
-#### Q. ***What are the stateless components?***
 #### Q. ***What is one of the core types in React?***
 #### Q. ***Is it possible to display props on a parent component?***
 #### Q. ***Explain DOM diffing?***
 #### Q. ***Is it possible to nest JSX elements into other JSX elements?*** 
-#### Q. ***What happens when you call setState?***
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
 #### Q. ***How to use Events in React ?***
 #### Q. ***What is the purpose of render() function in React?***
 #### Q. ***What are React components? Why are components so important to React?***
-#### Q. ***What’s the main difference between props and state?***
 #### Q. ***How would you debug an issue in React code? What debugging tools have you used?***
 #### Q. ***What are some of the major advantages to using React when building uis?***
 #### Q. ***Can you bind JavaScript with XML in which front-end applications using which scripting language?***
@@ -2335,7 +2328,6 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***What are the different types of components?***
 #### Q. ***Which component have a Life-time basis in React?***
 #### Q. ***How to pass values as input to Component?***
-#### Q. ***Which method is used to change the state of an object?***
 #### Q. ***How to pass a parameter to an event handler or callback?***
 #### Q. ***Which is the return statement in React?***
 #### Q. ***How to kept a representation of UI part?***
@@ -2370,8 +2362,6 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***Would i be able to dispatch an activity in reducer?***
 #### Q. ***What are the drawbacks of MVW pattern?***
 #### Q. ***What is the difference between creating Element and clone Element?***
-#### Q. ***Characterize State in React and the manner in which it is utilized in React?***
-#### Q. ***How React\'s ES6 syntax is different from ES5 syntax?***
 #### Q. ***Explain the Lists in React?***
 #### Q. ***How to write comments in React?***
 #### Q. ***Why is it necessary to start component names with a capital letter?***
@@ -2387,14 +2377,11 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***What are Styled Components?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
 #### Q. ***What Are Functional Programming Concepts?***
-#### Q. ***What are the Props?***
 #### Q. ***Does React use HTML?***
 #### Q. ***What are the popular animation package in React ecosystem?***
 #### Q. ***What is dispatcher?***
 #### Q. ***What is meant by callback function? What is its purpose?***
 #### Q. ***Explain synthetic event in React js?***
-#### Q. ***What is React State?***
-#### Q. ***How can you update state in React js?***
 #### Q. ***What kind of information controls a segment in React?***
 #### Q. ***What are children prop?***
 #### Q. ***What are error boundaries in ReactJS (16)?***
@@ -2404,9 +2391,7 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***When should you use the top-class elements for the function element?***
 #### Q. ***How can you share an element in the parsing?***
 #### Q. ***Ho can you re-render a component without using setState() function?***
-#### Q. ***Can you update props in React?***
 #### Q. ***Explain the term "Restructuring"?***
-#### Q. ***Can you update the values of props?***
 #### Q. ***Explain the meaning of Mounting and Demounting?***
 #### Q. ***What is the use of ‘prop-types’ library?***
 #### Q. ***What is the main difference between createElement and cloneElment?***
@@ -2430,13 +2415,12 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***What can be done if there is more than one line of expression?***
 #### Q. ***What do you know about the rounder?***
 #### Q. ***What is one of the main types of reflection?***
-#### Q. ***What do you mean in the state?***
 #### Q. ***Can props be found in parenting elements?***
 #### Q. ***What do you know about artificial events?***
 #### Q. ***Doom variation?***
 #### Q. ***When you use the top class elements for the function element?***
 #### Q. ***How do we share between elements in the parsing?***
-#### Q. ***When can you avoid using setState() after a component has been unmounted ?***
+#### Q. ***When can you avoid using setState() after a component has been unmounted?***
 #### Q. ***How can you bind an event handler in JSX call back?***
 #### Q. ***Why do we use ‘key’ attribute and when do you use it?***
 #### Q. ***How to group list of children without adding extra nodes to the DOM?***
@@ -2501,7 +2485,6 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
-#### Q. ***How do we pass a property from a parent component props to a child component?***
 #### Q. ***What does it mean for a component to be mounted in React?***
 #### Q. ***How would you prevent a component from rendering in React?***
 #### Q. ***What is Flow in react?***
