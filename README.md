@@ -2292,7 +2292,6 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Give a code example to demonstrate embedding two or more components into one?***
 #### Q. ***How does the state differ from props in React?***
 #### Q. ***How would you create a form in React?***
 #### Q. ***What do you understand by Props in React?***
@@ -2309,7 +2308,7 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***Give one basic difference between pros and state?***
 #### Q. ***How do you tell React to build in Production mode and what will that do?***
 #### Q. ***What do you understand with the term polling?***
-#### Q. ***What’s the difference between an Element and a Component in React?***
+#### Q. ***What is the difference between an Element and a Component in React?***
 #### Q. ***In which lifecycle event do you make AJAX requests and why?***
 #### Q. ***What is meant by event handling?***
 #### Q. ***How many outermost elements can be there in a JSX expression?***
@@ -2372,7 +2371,7 @@ This is the approach currently recommended in the React docs for "better perform
 #### Q. ***What are the drawbacks of MVW pattern?***
 #### Q. ***What is the difference between creating Element and clone Element?***
 #### Q. ***Characterize State in React and the manner in which it is utilized in React?***
-#### Q. ***How React's ES6 syntax is different from ES5 syntax?***
+#### Q. ***How React\'s ES6 syntax is different from ES5 syntax?***
 #### Q. ***Explain the Lists in React?***
 #### Q. ***How to write comments in React?***
 #### Q. ***Why is it necessary to start component names with a capital letter?***
