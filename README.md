@@ -2292,7 +2292,74 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How does the state differ from props in React?***
+## Q. ***How does the state differ from props in React?***
+
+**State**
+
+This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
+
+Example:
+
+```js
+class AppComponent extends React.component {
+  state = {
+      msg : 'Hello World!';
+  }
+
+  render() {
+      return <div>Message {this.state.msg}</div>
+  }
+}
+```
+
+**Props**
+
+Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+Example: The parent can pass a props by using this
+
+```js
+<ChildComponent color='red' />
+```
+Inside the ChildComponent constructor we could access the props
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props.color)
+  }
+}
+```
+
+Props can be used to set the internal state based on a prop value in the constructor, like this
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state.colorName = props.color
+  }
+}
+```
+
+Props should never be changed in a child component. Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.
+
+**Difference between State and Props**
+
+|  Props                                          | State                            |
+|-------------------------------------------------|----------------------------------|
+|Props are read-only.                             |State changes can be asynchronous.|
+|Props allow to pass data from one component to other components as an argument.| State holds information about the components.|
+|Props can be accessed by the child component.    |State cannot be accessed by child components.|
+|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.              |Stateless components cannot have State.|
+|Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How would you create a form in React?***
 #### Q. ***Where would you put AJAX calls in your React code?***
 #### Q. ***Can parent component change value in States and Props?***
