@@ -2361,7 +2361,6 @@ Props should never be changed in a child component. Props are also used to allow
 </div>
 
 #### Q. ***How would you create a form in React?***
-#### Q. ***Where would you put AJAX calls in your React code?***
 #### Q. ***Can parent component change value in States and Props?***
 #### Q. ***Can changes be made inside the component?***
 #### Q. ***Can we make changes inside child components?***
