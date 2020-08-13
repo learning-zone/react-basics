@@ -2563,7 +2563,7 @@ export default [
 
 Output:
 
-<img src='assets/react-form.png' alt='React Form' />
+<img src='assets/react-form.png' alt='React Form' width='500px' />
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
