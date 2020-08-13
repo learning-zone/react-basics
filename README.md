@@ -2548,12 +2548,17 @@ button:hover {
 
 ```js
 export default [
-  'Albania',
-  'Andorra',
-  'Armenia',
   'Austria',
-  'Azerbaijan'
-]
+  'Denmark',
+  'France',
+  'Germany',
+  'India',
+  'Italy',
+  'Poland',
+  'Russia',
+  'Sweden',
+  'United States'
+];
 ```
 
 Output:
