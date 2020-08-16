@@ -2620,7 +2620,7 @@ useEffect(() => {
 }, []);
 ```
 
-The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return clearInterval from the useEffect Hook, passing in the interval.
+The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
 
 **Using setInterval in React Components**
 
