@@ -2607,7 +2607,56 @@ On the above codes, we have created function handleChange that will pass the val
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand with the term polling?***
+## Q. ***What do you understand with the term polling in React?***
+
+Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals.
+
+```js
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log('This will run every second!');
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
+```
+
+The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return clearInterval from the useEffect Hook, passing in the interval.
+
+**Using setInterval in React Components**
+
+To schedule a new interval, we call the setInterval method inside of a React component, like so:
+
+```js
+import React, { useState, useEffect } from 'react'
+
+const IntervalExample = () => {
+  const [seconds, setSeconds] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(seconds => seconds + 1)
+    }, 1000);
+    return () => clearInterval(interval)
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {seconds} seconds have elapsed since mounting.
+      </header>
+    </div>
+  )
+}
+
+export default IntervalExample
+```
+
+The example above shows a React component, IntervalExample, scheduling a new interval once it mounts to the DOM. The interval increments the seconds state value by one, every second.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between an Element and a Component in React?***
 #### Q. ***In which lifecycle event do you make AJAX requests and why?***
 #### Q. ***What is meant by event handling?***
