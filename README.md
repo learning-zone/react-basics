@@ -2607,7 +2607,6 @@ On the above codes, we have created function handleChange that will pass the val
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to access childs state from parent component in React?***
 #### Q. ***Why do we need a Router to React?***
 #### Q. ***How the parent and child components exchange information?***
 #### Q. ***What is the higher-order component?***
