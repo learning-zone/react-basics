@@ -2607,11 +2607,6 @@ On the above codes, we have created function handleChange that will pass the val
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why do we need a Router to React?***
-#### Q. ***How the parent and child components exchange information?***
-#### Q. ***What is the higher-order component?***
-#### Q. ***How to embed two components in One component?***
-#### Q. ***How do you tell React to build in Production mode and what will that do?***
 #### Q. ***What do you understand with the term polling?***
 #### Q. ***What is the difference between an Element and a Component in React?***
 #### Q. ***In which lifecycle event do you make AJAX requests and why?***
@@ -2773,7 +2768,6 @@ On the above codes, we have created function handleChange that will pass the val
 #### Q. ***Can you explain about the standard JavaScript toolchain, transpilation, JSX?***
 #### Q. ***Please explain step by step approach on how to setup environment for React?***
 #### Q. ***Have you used HTML while working with React.js?***
-#### Q. ***How React Router and its techniques differ from more traditional JavaScript routers like Backbone’s Router?***
 #### Q. ***What is the difference between setState() and forceUpdate()?***
 #### Q. ***Which feature can we use to cause a component to render only when its ID changes?***
 #### Q. ***What kind of tools might you use in the build steps to optimize the compiled output of the React code?***
