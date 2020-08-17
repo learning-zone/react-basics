@@ -2701,7 +2701,6 @@ The example above shows a React component, IntervalExample, scheduling a new int
 #### Q. ***What are the popular packages for animation?***
 #### Q. ***What is the purpose of push() and replace() methods of history?***
 #### Q. ***How to pass params to history.push() method in React Router v4?***
-#### Q. ***What is the difference between Element and Component?***
 #### Q. ***For what reason would it be advisable for us to utilize React, tell its points of interest as well?***
 #### Q. ***Enroll React constraints on the off chance that you know any?***
 #### Q. ***What is the importance of the announcement ‘In React, everything is part’?***
