@@ -2657,7 +2657,69 @@ The example above shows a React component, IntervalExample, scheduling a new int
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between an Element and a Component in React?***
+## Q. ***What is the difference between Element, Component and Component instance in React?***
+
+A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
+
+A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
+
+Example:
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log('This is a component instance:', this)
+  }
+
+  render() {
+    const another_element = <div>Hello, World!</div>
+    console.log('This is also an element:', another_element)
+    return another_element
+  }
+}
+
+console.log('This is a component:', MyComponent)
+
+const element = <MyComponent/>
+
+console.log('This is an element:', element)
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+)
+```
+
+**React Elements**
+
+A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
+
+* `type`, a String representing an HTML tag or a reference referring to a React Component
+* `key`, a String to uniquely identify an React Element
+* `ref`, a reference to access either the underlying DOM node or React Component Instance)
+* `props` (properties Object)
+
+A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
+
+A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
+
+React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
+
+**React Components and React Component Instances**
+
+A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
+
+A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***In which lifecycle event do you make AJAX requests and why?***
 #### Q. ***What is meant by event handling?***
 #### Q. ***How many outermost elements can be there in a JSX expression?***
