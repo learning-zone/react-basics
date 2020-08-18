@@ -3452,7 +3452,6 @@ describe('APP Component', () => {
 #### Q. ***How to utilize interface() from React Redux?***
 #### Q. ***What is the reason for at image in the Redux associate decorator?***
 #### Q. ***What is the contrast between React setting and React Redux?***
-#### Q. ***How to make AJAX ask for in Redux?***
 #### Q. ***How to get to Redux store outside a part?***
 #### Q. ***What are the center standards of Redux?***
 #### Q. ***What are the drawbacks of Redux contrasted with Flux?***
