@@ -2786,7 +2786,48 @@ class MyComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is meant by event handling?***
+## Q. ***What is meant by event handling in React?***
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+
+* React events are named using camelCase, rather than lowercase.
+* With JSX you pass a function as the event handler, rather than a string.
+
+```js
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How many outermost elements can be there in a JSX expression?***
 #### Q. ***What exactly you can do if the expression contains more than one line?***
 #### Q. ***Is it possible to use the word “Class” in JSX. Why or why not?***
