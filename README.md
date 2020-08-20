@@ -2867,11 +2867,36 @@ const headings = (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What exactly you can do if the expression contains more than one line?***
-#### Q. ***Is it possible to use the word “Class” in JSX. Why or why not?***
-#### Q. ***What is one of the core types in React?***
-#### Q. ***Is it possible to display props on a parent component?***
-#### Q. ***Explain DOM diffing?***
+## Q. ***Explain DOM diffing?***
+
+**Document Object Model**
+
+The DOM (Document Object Model) is an interface that represents an HTML document in a tree-like structure with nodes. This structure allows the document to be traversed and modified by programmers with each node being represented as an object. The DOM is created by the browser when
+a web page is loaded.
+
+**React\'s "Virtual DOM"**
+
+The "Virtual DOM" or VDOM is very similar to the real DOM, in that it is a tree-like structure kept in-memory, where React elements are represented as objects. This tree has many of the same properties as the real DOM without the power to change what is on the screen. It is a javascript object representing components in your application which can be updated quickly and efficiently by React.
+
+When a JSX element is rendered or the state of an element changes, a new VDOM tree is created. The function responsible for the creation of this tree is React\'s render() function. This is a fast process because the virtual DOM tree is just a javascript object and the UI will not be re-painted based on this new tree.
+
+**DOM Diffing**
+
+Once the Virtual DOM is created, React compares this new representation with a snapshot of the previous version of the virtual DOM to see exactly which elements have changed.
+
+Once the difference is known, React updates only those objects that differ on the actual DOM and the browser re-paints the screen. The next time state or props changes for a component in the application, a new virtual DOM tree of React elements will be created and the process will repeat.
+
+The process of checking the difference between the new Virtual DOM tree and the old Virtual DOM tree is called **diffing**. Diffing is accomplished by a **heuristic O(n)** algorithm. During this process, React will deduce the minimum number of steps needed to update the real DOM, eliminating unnecessary costly changes. This process is also referred to as **reconciliation**.
+
+React implements a heuristic O(n) algorithm based on two assumptions:
+
+1. Two elements of different types will produce different trees.
+1. The developer can hint at which child elements may be stable across different renders with a key prop."
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Is it possible to nest JSX elements into other JSX elements?*** 
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
