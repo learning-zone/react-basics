@@ -2828,7 +2828,23 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How many outermost elements can be there in a JSX expression?***
+## Q. ***How many outermost elements can be there in a JSX expression?***
+
+A JSX expression must have only one outer element. For Example:
+
+```js
+const headings = (
+    <div id = "outermost-element">
+       <h1>I am a heading </h1>
+       <h2>I am also a heading</h1>
+    </div>
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What exactly you can do if the expression contains more than one line?***
 #### Q. ***Is it possible to use the word “Class” in JSX. Why or why not?***
 #### Q. ***What is one of the core types in React?***
