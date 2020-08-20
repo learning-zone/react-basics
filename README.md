@@ -109,6 +109,28 @@ class App extends React.Component {
 export default App;
 ```
 
+**JSX is a JavaScript Expression**
+
+JSX expressions are JavaScript expressions too. When compiled, they actually become regular JavaScript objects. For instance, the code below:
+
+```js
+const hello = <h1 className = "greet"> Hello World </h1>
+```
+
+will be compiled to
+
+```js
+const hello = React.createElement {
+    type: "h1",
+    props: {
+      className: "greet",  
+      children: "Hello World"
+    }
+}
+```
+
+Since they are compiled to objects, JSX can be used wherever a regular JavaScript expression can be used.
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
