@@ -2897,7 +2897,6 @@ React implements a heuristic O(n) algorithm based on two assumptions:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Is it possible to nest JSX elements into other JSX elements?*** 
 #### Q. ***What does shouldComponentUpdate do and why is it important?***
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
