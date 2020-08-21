@@ -2897,7 +2897,28 @@ React implements a heuristic O(n) algorithm based on two assumptions:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What does shouldComponentUpdate do and why is it important?***
+## Q. ***What does shouldComponentUpdate do and why is it important?***
+
+The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
+
+The default implementation of this function returns true so to stop the re-render you need to return false here:
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  console.log(nextProps, nextState);
+  console.log(this.props, this.state);
+  return false;  
+}
+```
+
+**Preventing unnecessary renders**
+
+The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
 #### Q. ***Describe how events are handled in React?***
 #### Q. ***How to use Events in React ?***
