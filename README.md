@@ -2919,7 +2919,47 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the purpose of render() function in React?***
+## Q. ***What is the purpose of render() function in React?***
+
+All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
+
+Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
+
+```js
+// App.js
+import React from 'react'
+import './App.css'
+
+function App() {
+  return (
+    <div className="App">
+      Hello World !
+    </div>
+  );
+}
+
+export default App
+```
+
+```js
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App/App'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are React components? Why are components so important to React?***
 #### Q. ***How would you debug an issue in React code? What debugging tools have you used?***
 #### Q. ***What are some of the major advantages to using React when building uis?***
