@@ -2960,13 +2960,94 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are React components? Why are components so important to React?***
+## Q. ***What are React components?***
+
+Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
+
+A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
+
+**Stateless Component**
+
+```js
+import React from 'react';
+//an example of function type component
+const ExampleComponent = (props) => {
+    return ( <h1>Welcome to React!</h1>);
+}
+
+export default class App extends React.Component {
+  render() {
+    //rendering ExampleComponent component in App Component
+    return (
+      <div>
+        <ExampleComponent/>
+      </div>
+    )
+  }
+}
+```
+
+The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
+
+**Stateful Component**
+
+```js
+import React from 'react';
+
+//an example of class type component
+class ExampleComponent extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      heading: "This is an Example Component!"
+    }
+  }
+  render() {
+    return (
+        <div>
+            <h1>{ this.props.welcomeMsg }</h1>
+            <h2>{ this.state.heading }</h2>
+        </div>
+    )
+  }
+}
+
+export default class App extends React.Component {
+  render() {
+    const welcomeMsg="Welcome to React!";
+    return (
+      <div>
+        <ExampleComponent welcomeMsg={welcomeMsg}/>
+      </div>
+    )
+  }
+}
+```
+
+The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
+
+**Props**
+
+Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
+
+**State**
+
+A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
+
+**LifeCycle**
+
+Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How would you debug an issue in React code? What debugging tools have you used?***
 #### Q. ***What are some of the major advantages to using React when building uis?***
 #### Q. ***Can you bind JavaScript with XML in which front-end applications using which scripting language?***
 #### Q. ***Display or Create DOM properties in Reacts ?***
 #### Q. ***Which function is used to display a DOM?***
-#### Q. ***What are the different types of components?***
 #### Q. ***Which component have a Life-time basis in React?***
 #### Q. ***How to pass values as input to Component?***
 #### Q. ***How to pass a parameter to an event handler or callback?***
@@ -3106,7 +3187,6 @@ ReactDOM.render(
 #### Q. ***What is high-level component lifecycle in React.js?***
 #### Q. ***What is low-level component lifecycle in React.js?***
 #### Q. ***How to use Forms in React? Give an example of using Forms in React by developing a User Registration Form?***
-#### Q. ***What is the difference between React Components in ES5 and ES6?***
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
 #### Q. ***What is Suspense in React?***
 #### Q. ***What is the difference between NavLink and Link?***
