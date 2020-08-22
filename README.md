@@ -3041,14 +3041,75 @@ Every component has **lifecycle methods**. They specify the behavior of the comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How would you debug an issue in React code? What debugging tools have you used?***
-#### Q. ***What are some of the major advantages to using React when building uis?***
-#### Q. ***Can you bind JavaScript with XML in which front-end applications using which scripting language?***
-#### Q. ***Display or Create DOM properties in Reacts ?***
-#### Q. ***Which function is used to display a DOM?***
-#### Q. ***Which component have a Life-time basis in React?***
-#### Q. ***How to pass values as input to Component?***
-#### Q. ***How to pass a parameter to an event handler or callback?***
+## Q. ***How to pass a parameter to an event handler or callback?***
+
+There are several ways to make sure functions have access to component attributes like this.props and this.state, depending on which syntax and build steps you are using.
+
+**Bind in Constructor (ES5)**
+
+```js
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    console.log('Click happened');
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+**Class Properties**
+
+```js
+class App extends Component {
+  // Note: this syntax is experimental and not standardized yet.
+  handleClick = () => {
+    console.log('Click happened');
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+**Bind in Render**
+
+```js
+class App extends Component {
+  handleClick() {
+    console.log('Click happened');
+  }
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
+  }
+}
+```
+
+*Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
+
+**Arrow Function in Render**
+
+```js
+class App extends Component {
+  handleClick() {
+    console.log('Click happened');
+  }
+  render() {
+    return <button onClick={() => this.handleClick()}>Click Me</button>;
+  }
+}
+```
+
+*Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Which is the return statement in React?***
 #### Q. ***How to kept a representation of UI part?***
 #### Q. ***Different types of DOM?***
