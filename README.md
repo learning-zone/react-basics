@@ -3338,10 +3338,6 @@ class ScrollListener extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Which is the return statement in React?***
-#### Q. ***How to kept a representation of UI part?***
-#### Q. ***Different types of DOM?***
-#### Q. ***How to find the area of suitability in React?***
 #### Q. ***Which function is used to create UI representation?***
 #### Q. ***What is reconciliation in React?***
 #### Q. ***Why React uses class Name over class attribute?***
