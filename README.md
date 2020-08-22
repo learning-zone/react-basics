@@ -3215,7 +3215,7 @@ class Alphabet extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## ***How can I prevent a function from being called too quickly or too many times in a row?***
+## ***How can I prevent a function from being called too quickly?***
 
 **Throttle**
 
