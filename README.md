@@ -2970,14 +2970,13 @@ A React component can be either **stateful** or **stateless**. Stateful componen
 
 ```js
 import React from 'react';
-//an example of function type component
+
 const ExampleComponent = (props) => {
-    return ( <h1>Welcome to React!</h1>);
+    return (<h1>Welcome to React!</h1>);
 }
 
 export default class App extends React.Component {
   render() {
-    //rendering ExampleComponent component in App Component
     return (
       <div>
         <ExampleComponent/>
@@ -2994,7 +2993,6 @@ The above example shows a stateless component named ExampleComponent which is in
 ```js
 import React from 'react';
 
-//an example of class type component
 class ExampleComponent extends React.Component {
 
   constructor(props) {
@@ -3015,7 +3013,7 @@ class ExampleComponent extends React.Component {
 
 export default class App extends React.Component {
   render() {
-    const welcomeMsg="Welcome to React!";
+    const welcomeMsg = "Welcome to React!";
     return (
       <div>
         <ExampleComponent welcomeMsg={welcomeMsg}/>
