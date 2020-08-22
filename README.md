@@ -3215,6 +3215,129 @@ class Alphabet extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## ***How can I prevent a function from being called too quickly or too many times in a row?***
+
+**Throttle**
+
+Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
+
+```js
+import throttle from 'lodash.throttle';
+
+class LoadMoreButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClickThrottled = throttle(this.handleClick, 1000);
+  }
+
+  componentWillUnmount() {
+    this.handleClickThrottled.cancel();
+  }
+
+  render() {
+    return <button onClick={this.handleClickThrottled}>Load More</button>;
+  }
+
+  handleClick() {
+    this.props.loadMore();
+  }
+}
+```
+
+**Debounce**
+
+Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
+
+The example below debounces text input with a 250ms delay.
+
+```js
+import debounce from 'lodash.debounce'
+
+class Searchbox extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.emitChangeDebounced = debounce(this.emitChange, 250)
+  }
+
+  componentWillUnmount() {
+    this.emitChangeDebounced.cancel()
+  }
+
+  render() {
+    return (
+      <input
+        type="text"
+        onChange={this.handleChange}
+        placeholder="Search..."
+        defaultValue={this.props.value}
+      />
+    )
+  }
+
+  handleChange(e) {
+    // React pools events, so we read the value before debounce.
+    // Alternately we could call `event.persist()` and pass the entire event.
+    // For more info see reactjs.org/docs/events.html#event-pooling
+    this.emitChangeDebounced(e.target.value);
+  }
+
+  emitChange(value) {
+    this.props.onChange(value)
+  }
+}
+```
+
+**requestAnimationFrame throttling**
+
+`requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
+
+For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second. Using requestAnimationFrame for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second. If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.
+
+```js
+import rafSchedule from 'raf-schd';
+
+class ScrollListener extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleScroll = this.handleScroll.bind(this);
+
+    // Create a new function to schedule updates.
+    this.scheduleUpdate = rafSchedule(
+      point => this.props.onScroll(point)
+    );
+  }
+
+  handleScroll(e) {
+    // When we receive a scroll event, schedule an update.
+    // If we receive many updates within a frame, we'll only publish the latest value.
+    this.scheduleUpdate({ x: e.clientX, y: e.clientY })
+  }
+
+  componentWillUnmount() {
+    // Cancel any pending updates since we're unmounting.
+    this.scheduleUpdate.cancel();
+  }
+
+  render() {
+    return (
+      <div
+        style={{ overflow: 'scroll' }}
+        onScroll={this.handleScroll}
+      >
+        <img src="/my-huge-image.jpg" />
+      </div>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Which is the return statement in React?***
 #### Q. ***How to kept a representation of UI part?***
 #### Q. ***Different types of DOM?***
