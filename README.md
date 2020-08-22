@@ -3041,9 +3041,9 @@ Every component has **lifecycle methods**. They specify the behavior of the comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to pass a parameter to an event handler or callback?***
+## Q. ***How do I bind a function to a component instance?***
 
-There are several ways to make sure functions have access to component attributes like this.props and this.state, depending on which syntax and build steps you are using.
+There are several ways to make sure functions have access to component attributes like `this.props` and `this.state`, depending on which syntax and build steps you are using.
 
 **Bind in Constructor (ES5)**
 
