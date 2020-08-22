@@ -2919,9 +2919,6 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?***
-#### Q. ***Describe how events are handled in React?***
-#### Q. ***How to use Events in React ?***
 #### Q. ***What is the purpose of render() function in React?***
 #### Q. ***What are React components? Why are components so important to React?***
 #### Q. ***How would you debug an issue in React code? What debugging tools have you used?***
@@ -3052,14 +3049,10 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
 #### Q. ***How do you share code between components using render props?***
 #### Q. ***How do you remove an element in the react state?***
 #### Q. ***What is called Destructuring?***
-#### Q. ***What is called render() function in react?***
 #### Q. ***What is called Stateless function?***
 #### Q. ***Write the syntax to create the state and change the value of state?***
 #### Q. ***What is the function using in react to list the values?***
 #### Q. ***What is the benchmark in react comparing another javascript framework?***
-#### Q. ***How Diff Algorithm is implemented in React?***
-#### Q. ***How to render the react DOM in browser?***
-#### Q. ***What is the DOM?***
 #### Q. ***What is the main goal of React Fiber?***
 #### Q. ***Why it is a must to capitalize component names?***
 #### Q. ***How to set the state in React using the dynamic key name?***
@@ -3094,7 +3087,6 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
 #### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 #### Q. ***What is the alternative of binding `this` in the constructor?***
-#### Q. ***What is the render method for? What are some limitations of things you should not do in the component render method***
 #### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
 #### Q. ***How to bind methods or event handlers in JSX callbacks?***
 #### Q. ***What is the difference between ShadowDOM and VirtualDOM?***
