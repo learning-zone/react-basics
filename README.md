@@ -3500,8 +3500,126 @@ Now, open the Index.html file and add a <div id="portal-root"></div> element to 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the use of react-dom package?***
-#### Q. ***What is React DOM Server?***
+## Q. ***What is ReactDOMServer?***
+
+The `ReactDOMServer` object enables you to render components to static markup. Typically, it\'s used on a Node server:
+
+```js
+// ES modules
+import ReactDOMServer from 'react-dom/server'
+// CommonJS
+var ReactDOMServer = require('react-dom/server')
+```
+
+The **Server-side rendering (SSR)** is a popular technique for rendering a client-side single page application (SPA) on the server and then sending a fully rendered page to the client. This allows for dynamic components to be served as static HTML markup.
+
+* It allows your site to have a faster first page load time, which is the key to a good user experience
+* This approach can be useful for search engine optimization (SEO) when indexing does not handle JavaScript properly.
+* It is great when people share a page of your site on social media, as they can easily gather the metadata needed to nicely share the link (images, title, description..)
+
+*Example:*
+
+**Creating an Express Server**
+
+```bash
+npm install express
+```
+
+All the content inside the build folder is going to be served as-is, statically by Express.
+
+```js
+// server/server.js
+
+import path from 'path'
+import fs from 'fs'
+
+import express from 'express'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
+import App from '../src/App'
+
+const PORT = 8080
+const app = express()
+
+const router = express.Router()
+
+const serverRenderer = (req, res, next) => {
+  fs.readFile(path.resolve('./build/index.html'), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err)
+      return res.status(500).send('An error occurred')
+    }
+    return res.send(
+      data.replace(
+        '<div id="root"></div>',
+        `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
+      )
+    )
+  })
+}
+router.use('^/$', serverRenderer)
+
+router.use(
+  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
+)
+
+// tell the app to use the above rules
+app.use(router)
+
+// app.use(express.static('./build'))
+app.listen(PORT, () => {
+  console.log(`SSR running on port ${PORT}`)
+})
+```
+
+Now, in the client application, in your src/index.js, instead of calling `ReactDOM.render()`:
+
+```js
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+call ReactDOM.hydrate(), which is the same but has the additional ability to attach event listeners to existing markup once React loads:
+
+```js
+ReactDOM.hydrate(<App />, document.getElementById('root'))
+```
+
+All the Node.js code needs to be transpiled by Babel, as server-side Node.js code does not know anything about JSX, nor ES Modules (which we use for the include statements).
+
+**Babel Package**
+
+```bash
+npm install @babel/register @babel/preset-env @babel/preset-react ignore-styles
+```
+
+Let\'s create an entry point in `server/index.js`:
+
+```js
+require('ignore-styles')
+
+require('@babel/register')({
+  ignore: [/(node_modules)/],
+  presets: ['@babel/preset-env', '@babel/preset-react']
+})
+
+require('./server')
+```
+
+Build the React application, so that the build/ folder is populated and run this:
+
+```bash
+# Build App
+npm run build
+
+# Run App on Express
+node server/index.js
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What will happen if you use props in initial state?***
 #### Q. ***How to re-render the view when the browser is resized?***
 #### Q. ***What is the difference between setState() and replaceState() methods?***
