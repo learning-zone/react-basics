@@ -3742,8 +3742,18 @@ class ShowWindowDimensions extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between setState() and replaceState() methods?***
-#### Q. ***How can find the version of React at runtime in the browser?***
+## Q. ***How can find the version of React at runtime in the browser?***
+
+**Chrome Dev Tools**
+
+```bash
+window.React.version
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to use https instead of http in create-react-app?***
 #### Q. ***Why is a component constructor called only once?***
 #### Q. ***What are the popular packages for animation?***
