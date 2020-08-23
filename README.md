@@ -3346,7 +3346,7 @@ As a developer we are creating tree of components, react then takes this tree, p
 
 <img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
 
-Also synced versions between Virtual DOM and "real" DOM are served by libraries such as ReactDOM. React needs to be very fast at comparing those trees, so it uses heuristic algorithm with complexity of O(n), so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of O(n\^3) => for 1000 nodes we need 1 bilion comparasions.
+Also synced versions between Virtual DOM and "real" DOM are served by libraries such as **ReactDOM**. React needs to be very fast at comparing those trees, so it uses **heuristic algorithm** with complexity of **O(n)**, so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of **O(n\^3)** => for 1000 nodes we need 1 bilion comparasions.
 
 *Example:* Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
 
