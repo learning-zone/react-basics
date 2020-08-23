@@ -3620,7 +3620,61 @@ node server/index.js
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What will happen if you use props in initial state?***
+## Q. ***What will happen if you use props in initial state?***
+
+Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
+
+The danger is that if the `props` on the component are changed without the component being *'refreshed'*, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
+
+**Bad**
+
+The below component won\'t display the updated input value
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: [],
+      inputValue: this.props.inputValue
+    };
+  }
+
+  render() {
+    return <div>{this.state.inputValue}</div>
+  }
+}
+```
+
+**Good**
+
+Using props inside render method will update the value:
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: []
+    }
+  }
+
+  render() {
+    return <div>{this.props.inputValue}</div>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to re-render the view when the browser is resized?***
 #### Q. ***What is the difference between setState() and replaceState() methods?***
 #### Q. ***How can find the version of React at runtime in the browser?***
