@@ -3338,8 +3338,69 @@ class ScrollListener extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Which function is used to create UI representation?***
-#### Q. ***What is reconciliation in React?***
+## Q. ***What is reconciliation in React?***
+
+Reconciliation is the process through which React updates the DOM.
+
+As a developer we are creating tree of components, react then takes this tree, process it and we get a Virtual DOM that it\'s kept in memory. When there is an update in our application (e.g. change in `state` or `props`) react will take the updated Virtual DOM and compares it with the old one Virtual DOM, then decides what and how should be changed. This procedure is repeated all over again.
+
+<img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
+
+Also synced versions between Virtual DOM and "real" DOM are served by libraries such as ReactDOM. React needs to be very fast at comparing those trees, so it uses heuristic algorithm with complexity of O(n), so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of O(n\^3) => for 1000 nodes we need 1 bilion comparasions.
+
+*Example:* Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
+
+```js
+class App extends React.Component {
+  
+  state = {
+    result: '',
+    entry1: '',
+    entry2: ''
+  }
+
+  handleEntry1 = (event) => {
+    this.setState({entry1: event.target.value})
+  }
+  
+  handleEntry2 = (event) => {
+    this.setState({entry2: event.target.value})
+  }
+
+  handleAddition = (event) => {
+    const firstInt = parseInt(this.state.entry1)
+    const secondInt = parseInt(this.state.entry2)
+    this.setState({result: firstInt + secondInt })
+  }
+  
+  render() {
+    const { entry1, entry2, result } = this.state
+    return(
+      <div>  
+        <div>
+          Result: { result }
+        </div>
+        <span><input type='text' onChange={this.handleEntry1} /></span>
+        <br />
+        <br />
+        <span><input type='text' onChange={this.handleEntry2} /></span>
+        <div>
+          <button onClick={this.handleAddition} type='submit'>Add</button>
+        </div>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+
+When an entry is made in the first input field, React creates a new tree. The new tree which is the virtual DOM will contain the new state for **entry1**. Then, React compares the virtual DOM with the old DOM and, from the comparison, it figures out the difference between both DOMs and makes an update to only the part that is different. A new tree is created each time the state of App component changes — when a value is entered in either of the inputs field, or when the button is clicked.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why React uses class Name over class attribute?***
 #### Q. ***What are portals in React?***
 #### Q. ***What is the use of react-dom package?***
