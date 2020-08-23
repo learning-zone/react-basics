@@ -3675,7 +3675,73 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to re-render the view when the browser is resized?***
+## Q. ***How to re-render the view when the browser is resized?***
+
+**Using React Hooks**
+
+```js
+import React, { useLayoutEffect, useState } from 'react'
+
+function useWindowSize() {
+
+  const [size, setSize] = useState([0, 0]);
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  return size;
+}
+
+function ShowWindowDimensions(props) {
+
+  const [width, height] = useWindowSize();
+  return <span>Window size: {width} x {height}</span>;
+}
+```
+
+**Using React classes**
+
+```js
+import React from 'react';
+
+class ShowWindowDimensions extends React.Component {
+  
+  state = { width: 0, height: 0 };
+  
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+  /**
+   * Add event listener
+   */
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  render() {
+    return (
+      <span>Window size: {this.state.width} x {this.state.height}</span>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between setState() and replaceState() methods?***
 #### Q. ***How can find the version of React at runtime in the browser?***
 #### Q. ***How to use https instead of http in create-react-app?***
