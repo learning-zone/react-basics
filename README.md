@@ -3401,8 +3401,105 @@ When an entry is made in the first input field, React creates a new tree. The ne
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why React uses class Name over class attribute?***
-#### Q. ***What are portals in React?***
+## Q. ***What are portals in React?***
+
+Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+Normally, a functional or a class component renders a tree of React elements (usually generated from JSX). The React element defines how the DOM of the parent component should look.
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+**Features**
+
+* It transports its children component into a new React portal which is appended by default to `document.body`.
+* It can also target user specified DOM element.
+* It supports server-side rendering
+* It supports returning arrays (no wrapper div\'s needed)
+* It uses `<Portal />` and `<PortalWithState />` so there is no compromise between flexibility and convenience.
+
+**When to use**
+
+The common use-cases of React portal include:
+
+* Modals
+* Tooltips
+* Floating menus
+* Widgets
+
+**Installation**
+
+```bash
+npm install react-portal --save
+```
+
+*Example:* React Portal
+
+```js
+// App.js
+
+import React, {Component} from 'react'
+import './App.css'  
+import PortalDemo from './PortalDemo.js'  
+  
+class App extends Component {
+    render () {
+      return (
+        <div className='App'>  
+          <PortalDemo />  
+        </div>
+        )
+    }
+}
+
+export default App
+```
+
+The next step is to create a portal component and import it in the App.js file.
+
+```js
+// PortalDemo.js
+
+import React from 'react'  
+import ReactDOM from 'react-dom'  
+  
+function PortalDemo(){  
+    return ReactDOM.createPortal(  
+      <h1>Portals Demo</h1>,  
+      document.getElementById('portal-root')  
+    )  
+}  
+export default PortalDemo
+```
+
+Now, open the Index.html file and add a <div id="portal-root"></div> element to access the child component outside the root node.
+
+```html
+<!-- index.html -->
+
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+    <meta charset="utf-8" />  
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <meta name="theme-color" content="#000000" />  
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />  
+    <title>React App using Portal</title>  
+  </head>  
+  <body>  
+    <noscript>It is required to enable JavaScript to run this app.</noscript>  
+    <div id="root"></div>  
+    <div id="portal-root"></div>  
+  </body>  
+</html>  
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the use of react-dom package?***
 #### Q. ***What is React DOM Server?***
 #### Q. ***What will happen if you use props in initial state?***
