@@ -3754,7 +3754,19 @@ window.React.version
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to use https instead of http in create-react-app?***
+## Q. ***How to use https instead of http in create-react-app?***
+
+set the HTTPS environment variable to `true`, then start the dev server as usual with `npm start`:
+
+```bash
+# Windows
+set HTTPS=true&&npm start
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why is a component constructor called only once?***
 #### Q. ***What are the popular packages for animation?***
 #### Q. ***What is the purpose of push() and replace() methods of history?***
