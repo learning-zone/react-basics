@@ -3921,7 +3921,6 @@ this.props.history.push("/first");
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***For what reason would it be advisable for us to utilize React, tell its points of interest as well?***
 #### Q. ***Enroll React constraints on the off chance that you know any?***
 #### Q. ***What is the importance of the announcement ‘In React, everything is part’?***
 #### Q. ***What is the best approach to install at least two parts?***
