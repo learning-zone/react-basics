@@ -3767,7 +3767,30 @@ set HTTPS=true&&npm start
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why is a component constructor called only once?***
+## Q. ***Why is a component constructor called only once?***
+
+React\'s **reconciliation algorithm** assumes that without any information to the contrary, if a custom component appears in the same place on subsequent renders, it\'s the same component as before, so reuses the previous instance rather than creating a new one.
+
+If you give each component a unique key `prop`, React can use the key change to infer that the component has actually been substituted and will create a new one from scratch, giving it the full component lifecycle.
+
+```js
+renderContent() {
+  if (this.state.activeItem === 'item-one') {
+    return (
+      <Content title="First" key="first" />
+    )
+  } else {
+    return (
+      <Content title="Second" key="second" />
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the popular packages for animation?***
 #### Q. ***What is the purpose of push() and replace() methods of history?***
 #### Q. ***How to pass params to history.push() method in React Router v4?***
