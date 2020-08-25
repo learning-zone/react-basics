@@ -3958,7 +3958,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 
 #### Q. ***What is the difference between creating Element and clone Element?***
 #### Q. ***Explain the Lists in React?***
-#### Q. ***How to write comments in React?***
 #### Q. ***Why is it necessary to start component names with a capital letter?***
 #### Q. ***What are fragments? Why are fragments better than container divs?***
 #### Q. ***What are Forward Refs?***
