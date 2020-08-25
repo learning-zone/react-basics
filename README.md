@@ -3932,8 +3932,30 @@ There are mainly two sorts of information that control a segment
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Would i be able to dispatch an activity in reducer?***
-#### Q. ***What are the drawbacks of MVW pattern?***
+## Q. ***What are the drawbacks of MVW pattern?***
+
+MVW stands for **Model-View-Whatever**
+
+* `MVC` - Model-View-Controller
+* `MVP` - Model-View-Presenter
+* `MVVM` - Model-View-ViewModel
+* `MVW / MV* / MVx` - Model-View-Whatever
+* `HMVC` - Hierarchical Model-View-Controller
+* `MMV` - Multiuse Model View
+* `MVA` - Model-View-Adapter
+
+MVW is easy to manage in a simple application, with few models/controllers. But we can easily start to witness problems as we grow in size with the following problems:
+
+1. There is need when models/controllers communicate with each others (through a service layer probably), and these modules changes the states of each others, and the more controllers, the more easy to lose control of who changed the state of a controller.
+2. Asynchronous network calls to retrieve data add uncertainty of when the model will be changed or modified, and imagine the user changing the UI while a callback from asynchronous call comeback, then we will have "nondeterministic" status of the UI.
+3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
+4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
+5. No way to do undo (travel back in time) easily without adding so much extra code.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between creating Element and clone Element?***
 #### Q. ***Explain the Lists in React?***
 #### Q. ***How to write comments in React?***
@@ -4580,6 +4602,7 @@ describe('APP Component', () => {
 #### Q. ***Where is the state kept in a React + Redux application?***
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 #### Q. ***What is Presentational segment?***
+#### Q. ***Would i be able to dispatch an activity in reducer?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
