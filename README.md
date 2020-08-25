@@ -4601,7 +4601,7 @@ describe('APP Component', () => {
 #### Q. ***Where is the state kept in a React + Redux application?***
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 #### Q. ***What is Presentational segment?***
-#### Q. ***Would i be able to dispatch an activity in reducer?***
+#### Q. ***How to dispatch an activity in reducer?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
