@@ -3921,15 +3921,17 @@ this.props.history.push("/first");
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Enroll React constraints on the off chance that you know any?***
-#### Q. ***What is the importance of the announcement ‘In React, everything is part’?***
-#### Q. ***What is the best approach to install at least two parts?***
-#### Q. ***By what method can the segment state be refreshed?***
-#### Q. ***What are the techniques for React segment lifecycle?***
-#### Q. ***What is yield catchphrase in JavaScript ?***
-#### Q. ***What is Presentational segment?***
-#### Q. ***What are the Component uses and features?***
-#### Q. ***What are the kinds of information that control a segment in React?***
+## Q. ***What are the kinds of information that control a segment in React?***
+
+There are mainly two sorts of information that control a segment
+
+* `State`: State information that will change, we need to utilize State.
+* `Props`: Props are set by the parent and which are settled all through the lifetime of a part.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Would i be able to dispatch an activity in reducer?***
 #### Q. ***What are the drawbacks of MVW pattern?***
 #### Q. ***What is the difference between creating Element and clone Element?***
@@ -4577,6 +4579,7 @@ describe('APP Component', () => {
 #### Q. ***What are the important Redux Terminology?***
 #### Q. ***Where is the state kept in a React + Redux application?***
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
+#### Q. ***What is Presentational segment?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
