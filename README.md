@@ -3956,7 +3956,59 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between creating Element and clone Element?***
+## Q. ***What is the difference between creating Element and clone Element?***
+
+JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
+
+The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. We shoul use this function when a parent component wants to add or modify the `props` of its children.
+
+```js
+import React from 'react'
+
+export default class App extends React.Component {
+  // rendering the parent and child component
+  render() {
+    return (
+      <ParentComp>
+        <MyButton/>
+        <br/>
+        <MyButton/>
+      </ParentComp>
+    )
+  }
+}
+// The parent component
+class ParentComp extends React.Component {
+  render() {
+    // The new prop to the added.
+    let newProp = 'red';
+      // Looping over the parent's entire children,
+      // cloning each child, adding a new prop.
+    return (
+      <div>
+        {React.Children.map(this.props.children,
+          child => {
+            return React.cloneElement(child,
+            {newProp}, null);
+        })}
+      </div>
+    )
+  }
+}
+// The child component
+class MyButton extends React.Component {
+  render() {
+    return <button style =
+    {{ color: this.props.newProp }}>
+    Hello World!</button>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the Lists in React?***
 #### Q. ***Why is it necessary to start component names with a capital letter?***
 #### Q. ***What are fragments? Why are fragments better than container divs?***
