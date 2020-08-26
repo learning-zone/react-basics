@@ -4009,6 +4009,46 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***When should I be using React.cloneElement vs this.props.children?***
+
+The `React.cloneElement` only works if your child is a single React element.
+
+*Example:*
+
+```js
+<ReactCSSTransitionGroup
+     component="div"
+     transitionName="example"
+     transitionEnterTimeout={500}
+     transitionLeaveTimeout={500}
+     >
+     {React.cloneElement(this.props.children, {
+       key: this.props.location.pathname
+      })}
+</ReactCSSTransitionGroup>
+```
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+*Example:*
+
+```js
+class Users extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Users</h2>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the Lists in React?***
 #### Q. ***Why is it necessary to start component names with a capital letter?***
 #### Q. ***What are fragments? Why are fragments better than container divs?***
