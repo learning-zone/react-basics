@@ -4049,7 +4049,60 @@ class Users extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain the Lists in React?***
+## Q. ***Explain the Lists in React?***
+
+Using JSX we can show lists using JavaScript\'s built-in `Array.map()` method. The `.map()` method is often used to take one piece of data and convert it to another.
+
+Keys are unique identifiers that must be attached to the top-level element inside a map. Keys are used by React to know how to update a list whether adding, updating, or deleting items. This is part of how React is so fast with large lists.
+
+*Example:* Rendering an Array of Objects as a List
+
+```js
+import React, { Component } from "react";
+
+class Item extends Component {
+  state = {
+    lists: [
+      {
+        id: 0,
+        context: "Success",
+        modifier: "list-group-item list-group-item-success"
+      },
+      {
+        id: 1,
+        context: "Warning",
+        modifier: "list-group-item list-group-item-warning"
+      },
+      {
+        id: 2,
+        context: "Danger",
+        modifier: "list-group-item list-group-item-danger"
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <ul className = "list-group">
+          {this.state.lists.map(list => (
+            <li key = {list.id} className = {list.modifier}>
+              {list.context}
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  }
+}
+
+export default Item
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why is it necessary to start component names with a capital letter?***
 #### Q. ***What are fragments? Why are fragments better than container divs?***
 #### Q. ***What are Forward Refs?***
