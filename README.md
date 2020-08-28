@@ -4103,7 +4103,20 @@ export default Item
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why is it necessary to start component names with a capital letter?***
+## Q. ***Why is it necessary to start component names with a capital letter?***
+
+In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
+
+When an element type starts with a lowercase letter, it refers to a built-in component like or and results in a string `<div>` or `<span>` passed to `React.createElement`. Types that start with a capital letter like compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
+
+* `<component />` compiles to `React.createElement('component')` (html tag)
+* `<Component />` compiles to `React.createElement(Component)`
+* `<obj.component />` compiles to `React.createElement(obj.component)`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are fragments? Why are fragments better than container divs?***
 #### Q. ***What are Forward Refs?***
 #### Q. ***Which is the preferred option callback refs or findDOMNode()?***
