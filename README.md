@@ -4147,7 +4147,53 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are Forward Refs?***
+## Q. ***What is Forwarding Refs in React?***
+
+Ref forwarding is a technique for passing a ref through a component to one of its children. It is very useful for cases like reusable component libraries and Higher Order Components (HOC).
+
+We can forward a `ref` to a component by using the `React.forwardRef()` function. Ref forwarding allows components to take a ref they receive and pass it further down (in other words, "forward" it) to a child.
+
+*Example:*
+
+```js
+// Ref.js
+const TextInput = React.forwardRef((props, ref) => (
+  <input type="text" placeholder="Hello World" ref={ref} />
+));
+
+const inputRef = React.createRef();
+
+class CustomTextInput extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(inputRef.current.value);
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <TextInput ref={inputRef} />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
+```
+
+In the example above, we have a component called TextInput that has a child which is an input field. First, we start by creating a ref with the line of code below:
+
+```js
+const inputRef = React.createRef()
+```
+
+Then, We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the ref to the forwardRef function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Which is the preferred option callback refs or findDOMNode()?***
 #### Q. ***Why do we need a Router in React? List down the advantages of React Router?***
 #### Q. ***How is React Router different from Conventional Routing?***
