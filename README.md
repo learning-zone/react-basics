@@ -4117,7 +4117,36 @@ When an element type starts with a lowercase letter, it refers to a built-in com
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are fragments? Why are fragments better than container divs?***
+## Q. ***What are fragments? Why are fragments better than container divs?***
+
+Fragments allows to group a list of children without adding extra nodes to the DOM.
+
+*Example:*
+
+```js
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <ChildA />
+        <ChildB />
+        <ChildC />
+      </React.Fragment>
+    )
+  }
+}
+```
+
+**Benefits**
+
+* It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
+* Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
+* The DOM inspector is less cluttered.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are Forward Refs?***
 #### Q. ***Which is the preferred option callback refs or findDOMNode()?***
 #### Q. ***Why do we need a Router in React? List down the advantages of React Router?***
