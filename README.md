@@ -4230,13 +4230,20 @@ class MyComponent extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why do we need a Router in React? List down the advantages of React Router?***
-#### Q. ***How is React Router different from Conventional Routing?***
+## Q. ***How is React Router different from Conventional Routing?***
+
+In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
+
+**How does React achieve this?**
+
+In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why you get "Router may have only one child element" warning?***
-#### Q. ***How to use styles in React?***
 #### Q. ***How many ways can we style the React Component?***
-#### Q. ***Explain CSS Module styling in React?***
-#### Q. ***What are Styled Components?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
 #### Q. ***What Are Functional Programming Concepts?***
 #### Q. ***Does React use HTML?***
