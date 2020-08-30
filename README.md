@@ -4232,6 +4232,8 @@ class MyComponent extends Component {
 
 ## Q. ***How is React Router different from Conventional Routing?***
 
+<img src="assets/react-router.png" alt="React Router" width="500px" />
+
 In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
 
 **How does React achieve this?**
