@@ -4194,7 +4194,42 @@ We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX a
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Which is the preferred option callback refs or findDOMNode()?***
+## Q. ***Which is the preferred option callback refs or findDOMNode()?***
+
+It is preferred to use **callback refs** over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
+
+The legacy approach of using `findDOMNode()`:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView()
+  }
+
+  render() {
+    return <div />
+  }
+}
+```
+
+The recommended approach is:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    this.node.scrollIntoView()
+  }
+
+  render() {
+    return <div ref={node => this.node = node} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why do we need a Router in React? List down the advantages of React Router?***
 #### Q. ***How is React Router different from Conventional Routing?***
 #### Q. ***Why you get "Router may have only one child element" warning?***
