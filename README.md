@@ -4244,7 +4244,6 @@ In React, the Router looks at the **History** of each Component and when there i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why you get "Router may have only one child element" warning?***
 #### Q. ***How many ways can we style the React Component?***
 #### Q. ***What Are The Advantages Of Using Jsx?***
 #### Q. ***What Are Functional Programming Concepts?***
