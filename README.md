@@ -4244,7 +4244,136 @@ In React, the Router looks at the **History** of each Component and when there i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How many ways can we style the React Component?***
+## Q. ***How many ways can we style the React Component?***
+
+There are many ways to style React components.
+
+**1. CSS Stylesheet**
+
+```css
+.DottedBox {
+  margin: 40px;
+  border: 5px dotted pink;
+}
+
+.DottedBox_content {
+  font-size: 15px;
+  text-align: center;
+}
+```
+
+```js
+import React from 'react'
+import './DottedBox.css'
+
+const DottedBox = () => (
+  <div className="DottedBox">
+    <p className="DottedBox_content">Get started with CSS styling</p>
+  </div>
+)
+
+export default DottedBox
+```
+
+**2. Inline styling**
+
+In React, inline styles are not specified as a string. Instead they are specified with an object whose **key** is the **camelCased** version of the style name, and whose value is the style\'s value, usually a string.
+
+```js
+import React from 'react'
+
+const divStyle = {
+  margin: '40px',
+  border: '5px solid pink'
+}
+const pStyle = {
+  fontSize: '15px',
+  textAlign: 'center'
+}
+
+const Box = () => (
+  <div style={divStyle}>
+    <p style={pStyle}>Get started with inline style</p>
+  </div>
+)
+
+export default Box
+```
+
+* We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
+* We can also pass the styling directly `style={{color: 'pink'}}`
+
+**3. CSS Modules**
+
+A CSS Module is a CSS file in which all class names and animation names are scoped locally by default.
+
+```css
+:local(.container) {
+   margin: 40px;
+   border: 5px dashed pink;
+ }
+ :local(.content) {
+   font-size: 15px;
+   text-align: center;
+ }
+```
+
+```js
+import React from 'react'
+import styles from './DashedBox.css'
+
+const DashedBox = () => (
+  <div className={styles.container}>
+    <p className={styles.content}>Get started with CSS Modules style</p>
+  </div>
+);
+
+export default DashedBox
+```
+
+we import css file `import styles './DashedBox.css'`, then we access to className as we access to object.
+
+* `:local(.className)`- this when you use create-react-app because of webpack configurations
+* `.className` - this if you use your own react boilerplate.
+
+**4. Styled-components**
+
+Styled-components is a library for React and React Native that allows to use component-level styles in component application that are written with a mixture of JavaScript and CSS
+
+```bash
+npm install styled-components --save
+```
+
+```js
+import React from 'react'
+import styled from 'styled-components'
+
+const Div = styled.div`
+  margin: 40px;
+  border: 5px outset pink;
+  &:hover {
+   background-color: yellow;
+ }
+`;
+
+const Paragraph = styled.p`
+  font-size: 15px;
+  text-align: center;
+`;
+
+const OutsetBox = () => (
+  <Div>
+    <Paragraph>Get started with styled-components</Paragraph>
+  </Div>
+)
+
+export default OutsetBox
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What Are The Advantages Of Using Jsx?***
 #### Q. ***What Are Functional Programming Concepts?***
 #### Q. ***Does React use HTML?***
