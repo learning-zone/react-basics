@@ -4246,8 +4246,6 @@ In React, the Router looks at the **History** of each Component and when there i
 
 ## Q. ***How many ways can we style the React Component?***
 
-There are many ways to style React components.
-
 **1. CSS Stylesheet**
 
 ```css
