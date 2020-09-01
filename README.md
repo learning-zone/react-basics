@@ -4382,9 +4382,70 @@ While JSX is often a matter of dispute, it can prove useful in building high-vol
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are functional programming concepts?***
-#### Q. ***Does React use HTML?***
-#### Q. ***What are the popular animation package in React ecosystem?***
+## Q. ***What are the popular animation package in React?***
+
+**ReactCSSTransitionGroup**
+
+ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is an easy way to perform CSS transitions and animations when a React component enters or leaves the DOM. It has four components that display transitions from one component state to another using a declarative API used for mounting and unmounting of components:
+
+1. Transition
+2. CSSTransition
+3. SwitchTransition
+4. TransitionGroup
+
+*Example:*
+
+```js
+import ReactCSSTransitionGroup from 'react-transition-group'
+
+class TodoList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {items: ['hello', 'world', 'click', 'me']}
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+
+  handleAdd() {
+    const newItems = this.state.items.concat([
+      prompt('Enter some text')
+    ])
+    this.setState({items: newItems})
+  }
+
+  handleRemove(i) {
+    let newItems = this.state.items.slice()
+    newItems.splice(i, 1)
+    this.setState({items: newItems})
+  }
+
+  render() {
+    const items = this.state.items.map((item, i) => (
+      <div key={item} onClick={() => this.handleRemove(i)}>
+        {item}
+      </div>
+    ))
+
+    return (
+      <div>
+        <button onClick={this.handleAdd}>Add Item</button>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {items}
+        </ReactCSSTransitionGroup>
+      </div>
+    )
+  }
+}
+```
+
+In this component, when a new item is added to ReactCSSTransitionGroup it will get the `example-enter` CSS class and the `example-enter-active` CSS class added in the next tick. This is a convention based on the `transitionName` prop.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is dispatcher?***
 #### Q. ***What is meant by callback function? What is its purpose?***
 #### Q. ***Explain synthetic event in React js?***
