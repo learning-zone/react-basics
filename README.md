@@ -4372,8 +4372,17 @@ export default OutsetBox
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What Are The Advantages Of Using Jsx?***
-#### Q. ***What Are Functional Programming Concepts?***
+## Q. ***What are the advantages of using jsx?***
+
+JSX is an optional syntax extension to JavaScript that makes writing your own components much easier. It accepts HTML quoting and makes a subcomponent rendering easier. In fact, it is a set of shortcuts for writing `React.createElement` with a few rules to make your source cleaner and simpler.
+
+While JSX is often a matter of dispute, it can prove useful in building high-volume apps or custom components, excluding typos in large tree structures, and making it easier to convert from HTML mockups to ReactElement trees. Besides that, it provides React developers with informative warning and error messages and also helps to prevent code injections.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. ***What are functional programming concepts?***
 #### Q. ***Does React use HTML?***
 #### Q. ***What are the popular animation package in React ecosystem?***
 #### Q. ***What is dispatcher?***
