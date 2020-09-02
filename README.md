@@ -1108,8 +1108,6 @@ class Food extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
-
 ## Q. ***What is the difference between DOM and virtual DOM?***
 
 **DOM**
@@ -4581,12 +4579,84 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the use of empty tags <> </>?***
-#### Q. ***What are the major issues of using MVC architecture in React?***
-#### Q. ***What is the reduction?***
-#### Q. ***When should you use the top-class elements for the function element?***
-#### Q. ***How can you share an element in the parsing?***
-#### Q. ***Ho can you re-render a component without using setState() function?***
+## Q. ***How can you re-render a component without using setState() function?***
+
+React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
+
+However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
+
+**1. Using setState()**
+
+In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
+
+```js
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+
+class Greeting extends Component {
+  state = {
+    fullname: '',
+  }
+
+  stateChange = (f) => {
+    const {name, value} = f.target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  render() {
+    return (
+      <div className="text-center">
+        <label htmlFor="fullname"> Full Name: </label>
+        <input type="text" name="fullname" onChange={this.stateChange} />
+        <div className="border border-primary py-3">
+            <h4> Greetings, {this.state.fullname}!</h4>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Greeting;
+```
+
+**2. Using forceUpdate()**
+
+The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
+
+```js
+import React, { Component } from 'react'
+
+class App extends React.Component{
+  constructor() {
+    super()
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this)
+  }
+  
+  forceUpdateHandler() {
+    this.forceUpdate()
+  }
+  
+  render() {
+    return (
+      <div>
+        <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
+        <h4>Random Number: { Math.random() }</h4>
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+*Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the term "Restructuring"?***
 #### Q. ***Explain the meaning of Mounting and Demounting?***
 #### Q. ***What is the use of ‘prop-types’ library?***
@@ -4702,10 +4772,11 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
 #### Q. ***What is React Fiber?***
 #### Q. ***Explain Composition vs Inheritance in React?***
 #### Q. ***What is a Webhook in React?***
+#### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 
 <br/>
 
-# React Unit Testing
+### React Unit Testing
 
 ## Q. ***Explain react unit testing using Jest and Enzyme?***
 
