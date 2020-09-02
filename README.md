@@ -4526,9 +4526,61 @@ If we want to access the event properties in an asynchronous way, we should call
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What kind of information controls a segment in React?***
-#### Q. ***What are children prop?***
-#### Q. ***What are error boundaries in ReactJS (16)?***
+## Q. ***What are error boundaries in React?***
+
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+
+A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`. Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+
+*Example:*
+
+```js
+import React, {Component} from 'react'
+
+class ErrorBoundary extends Component {
+   state = {
+      isErrorOccured: false,
+      errorMessage: ''
+   }
+   componentDidCatch = (error,info) => {
+      this.setState({
+        isErrorOccured: true,
+        errorMessage: error
+      })
+   }
+   render() {
+      if(this.state.isErrorOccured) {
+         return <p>Something went wrong</p>
+      } else {
+         return <div>{this.props.children}</div>
+      }
+   }
+}
+
+export default ErrorBoundary
+```
+
+Here, We have a state object having two variables isErrorOccured and errorMessage which will be updated to true if any error occurs. We have used a React life cycle method componentDidCatch which receives two arguments error and info related to it.
+
+**How to use error boundary**
+
+```js
+<ErrorBoundary>
+   <User/>
+</ErrorBoundary>
+```
+
+**Error boundaries do not catch errors for:**
+
+* Event handlers
+* Asynchronous code (e.g. setTimeout() )
+* Server side rendering
+* Errors thrown in the error boundary itself
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the use of empty tags <> </>?***
 #### Q. ***What are the major issues of using MVC architecture in React?***
 #### Q. ***What is the reduction?***
@@ -4570,7 +4622,6 @@ If we want to access the event properties in an asynchronous way, we should call
 #### Q. ***How to group list of children without adding extra nodes to the DOM?***
 #### Q. ***List out the predefined proptypes?***
 #### Q. ***How to catch JavaScript errors anywhere in their child component tree?***
-#### Q. ***Can you write an error boundary component?***
 #### Q. ***How to apply focus to an input element?***
 #### Q. ***How do you set a timer to update every second?***
 #### Q. ***How to implement two way data binding in React js?***
@@ -4650,7 +4701,7 @@ If we want to access the event properties in an asynchronous way, we should call
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
 #### Q. ***What is React Fiber?***
 #### Q. ***Explain Composition vs Inheritance in React?***
-#### Q. ***What is a Webhook in React?
+#### Q. ***What is a Webhook in React?***
 
 <br/>
 
