@@ -4471,7 +4471,7 @@ function handleClick(event) {
 }
 ```
 
-Every SyntheticEvent object has the following attributes:
+**SyntheticEvent Object**
 
 ```js
 void preventDefault()
