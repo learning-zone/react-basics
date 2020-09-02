@@ -4446,7 +4446,6 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is dispatcher?***
 #### Q. ***What is meant by callback function? What is its purpose?***
 #### Q. ***Explain synthetic event in React js?***
 #### Q. ***What kind of information controls a segment in React?***
@@ -5011,6 +5010,7 @@ describe('APP Component', () => {
 ## Redux Questions
 
 #### Q. ***What is Redux?***
+#### Q. ***What is dispatcher in Redux?***
 #### Q. ***What do you understand by "Single source of truth" in Redux?***
 #### Q. ***What are the features of Workflow in Redux?***
 #### Q. ***Explain the components of Redux?***
