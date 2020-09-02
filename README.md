@@ -4446,8 +4446,55 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is meant by callback function? What is its purpose?***
-#### Q. ***Explain synthetic event in React js?***
+## Q. ***Explain synthetic event in React js?***
+
+Inside React event handlers, the event object is wrapped in a `SyntheticEvent` object. These objects are pooled, which means that the objects received at an event handler will be reused for other events to increase performance. This also means that accessing the event object\'s properties asynchronously will be impossible since the event\'s properties have been reset due to reuse.
+
+The following piece of code will log null because event has been reused inside the SyntheticEvent pool:
+
+```js
+function handleClick(event) {
+  setTimeout(function () {
+    console.log(event.target.name);
+  }, 1000);
+}
+```
+
+To avoid this we need to store the event\'s property:
+
+```js
+function handleClick(event) {
+  let name = event.target.name;
+  setTimeout(function () {
+    console.log(name);
+  }, 1000);
+}
+```
+
+Every SyntheticEvent object has the following attributes:
+
+```js
+void preventDefault()
+void stopPropagation()
+boolean isPropagationStopped()
+boolean isDefaultPrevented()
+void persist()
+boolean bubbles
+boolean cancelable
+DOMEventTarget currentTarget
+boolean defaultPrevented
+number eventPhase
+boolean isTrusted
+DOMEvent nativeEvent
+DOMEventTarget target
+number timeStamp
+string type
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What kind of information controls a segment in React?***
 #### Q. ***What are children prop?***
 #### Q. ***What are error boundaries in ReactJS (16)?***
@@ -4541,7 +4588,6 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
 #### Q. ***How to translate your React app with react-i18next?***
 #### Q. ***How RxJS is used in React for state management?***
 #### Q. ***Exmplain functional components and class components in React?***
-#### Q. ***What are synthetic events in React js?***
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
