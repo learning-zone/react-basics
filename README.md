@@ -4764,7 +4764,7 @@ Webpack is a modular build tool that has two sets of functionality — Loaders a
 
 **create-react-app**
 
-`create-react-app`, a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
+[create-react-app](https://create-react-app.dev/docs/getting-started/), a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
 
 *Example:* Quick Start
 
