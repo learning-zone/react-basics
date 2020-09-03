@@ -4752,14 +4752,32 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to dispatch the data in-store?***
-#### Q. ***What is the purpose of using bindActionsCreators?***
-#### Q. ***Can JSX element be attached to other JSX components?***
-#### Q. ***How to use a library like jQuery in React, which interacts directly with DOM?***
-#### Q. ***Explain the use of Webpack and Babel in React?***
-#### Q. ***Explain type-checking with PropTypes in React?***
-#### Q. ***What is the difference between this.state.name=”Thomas” and this.setState({name: “Thomas”}) ?***
-#### Q. ***Explain the purpose of providing reflection()?***
+## Q. ***Explain the use of Webpack and Babel in React?***
+
+**Babel**
+
+Babel is a JS transpiler that converts new JS code into old ones. It is a very flexible tool in terms of transpiling. One can easily add presets such as `es2015`, `es2016`, `es2017`, or `env`; so that Babel compiles them to ES5. Babel allows us to have a clean, maintainable code using the latest JS specifications without needing to worry about browser support.
+
+**Webpack**
+
+Webpack is a modular build tool that has two sets of functionality — Loaders and Plugins. Loaders transform the source code of a module. For example, style-loader adds CSS to DOM using style tags. sass-loader compiles SASS files to CSS. babel-loader transpiles JS code given the presets. Plugins are the core of Webpack. They can do things that loaders can\'t. For example, there is a plugin called UglifyJS that minifies and uglifies the output of webpack.
+
+**create-react-app**
+
+`create-react-app`, a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
+
+*Example:* Quick Start
+
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is a situation in response, and how is it used?***
 #### Q. ***What is the response rat?***
 #### Q. ***How many external elements are there in JSX output?***
@@ -4767,10 +4785,8 @@ export default App
 #### Q. ***How do the DOM and the Virtual Top Object differ from one person?***
 #### Q. ***What can be done if there is more than one line of expression?***
 #### Q. ***What do you know about the rounder?***
-#### Q. ***What is one of the main types of reflection?***
 #### Q. ***Can props be found in parenting elements?***
 #### Q. ***What do you know about artificial events?***
-#### Q. ***Doom variation?***
 #### Q. ***When you use the top class elements for the function element?***
 #### Q. ***How do we share between elements in the parsing?***
 #### Q. ***When can you avoid using setState() after a component has been unmounted?***
@@ -5361,6 +5377,8 @@ describe('APP Component', () => {
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 #### Q. ***What is Presentational segment?***
 #### Q. ***How to dispatch an activity in reducer?***
+#### Q. ***How to dispatch the data in-store?***
+#### Q. ***What is the purpose of using bindActionsCreators?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
