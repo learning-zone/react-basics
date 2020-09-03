@@ -3954,7 +3954,7 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the difference between creating Element and clone Element?***
+## Q. ***What is the difference between createElement and cloneElement?***
 
 JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
 
@@ -4657,17 +4657,104 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain the term "Restructuring"?***
-#### Q. ***Explain the meaning of Mounting and Demounting?***
-#### Q. ***What is the use of ‘prop-types’ library?***
-#### Q. ***What is the main difference between createElement and cloneElment?***
-#### Q. ***How can we do server-side rendering in React?***
-#### Q. ***State the difference between getIntialState() and constructor()?***
-#### Q. ***What is ComponentWillMount()?***
+## Q. ***What is difference between componentDidMount() and componentWillMount()?***
+
+**componentDidMount()**
+
+The `componentDidMount()` is executed after the first render only on the client side. This is where AJAX requests and DOM or state updates should occur. This method is also used for integration with other JavaScript frameworks and any functions with delayed execution such as `setTimeout()` or `setInterval()`.
+
+*Example:*
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: 'Alex Belfort'
+    }
+  }
+
+  getData(){
+    setTimeout(() => {
+      console.log('Our data is fetched')
+      this.setState({
+        data: 'Hello Alex'
+      })
+    }, 1000)
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.data}
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+**componentWillMount()**
+
+The `componentWillMount()` method is executed before rendering, on both the server and the client side. `componentWillMount()` method is the least used lifecycle method and called before any HTML element is rendered. It is useful when we want to do something programatically right before the component mounts.
+
+*Example:*
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: 'Alex Belfort'
+    }
+  }
+  componentWillMount() {
+    console.log('First this called')
+  }
+
+  getData() {
+    setTimeout(() => {
+      console.log('Our data is fetched')
+      this.setState({
+        data: 'Hello Alex'
+      })
+    }, 1000)
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.data}
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to dispatch the data in-store?***
 #### Q. ***What is the purpose of using bindActionsCreators?***
 #### Q. ***Can JSX element be attached to other JSX components?***
-#### Q. ***How to start a project in React?***
 #### Q. ***How to use a library like jQuery in React, which interacts directly with DOM?***
 #### Q. ***Explain the use of Webpack and Babel in React?***
 #### Q. ***Explain type-checking with PropTypes in React?***
