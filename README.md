@@ -4778,14 +4778,6 @@ npm start
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is a situation in response, and how is it used?***
-#### Q. ***What is the response rat?***
-#### Q. ***How many external elements are there in JSX output?***
-#### Q. ***Do you mention the main benefits of Fluoxes?***
-#### Q. ***How do the DOM and the Virtual Top Object differ from one person?***
-#### Q. ***What can be done if there is more than one line of expression?***
-#### Q. ***What do you know about the rounder?***
-#### Q. ***Can props be found in parenting elements?***
 #### Q. ***What do you know about artificial events?***
 #### Q. ***When you use the top class elements for the function element?***
 #### Q. ***How do we share between elements in the parsing?***
