@@ -4899,7 +4899,74 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to implement two way data binding in React js?***
+## Q. ***How to implement two way data binding in React js?***
+
+Two data binding means
+
+* The data we changed in the view has updated the state.
+* The data in the state has updated the view.
+
+<img src="assets/react-twoway-data-binding.png" alt="Two way Data Binding" width="600px" />
+
+```js
+class UserInput extends React.Component{
+
+  state = {
+      name:"reactgo"
+  }
+
+  handleChange = (e) =>{
+    this.setState({
+        name: e.target.value
+    })
+  }
+
+   render(){
+    return(
+      <div>
+       <h1>{this.state.name}</h1>
+       <input type="text"
+         onChange={this.handleChange}
+         value={this.state.name} />
+      </div>
+      )
+   }
+}
+```
+
+In the above code, we have attached an `onChange()` event handler to the input element and also value attribute is connected to the `this.state.name` so that the value attribute is always synced with `this.state.name` property.
+
+Whenever the user changes an input in the view it triggers the onChange event handler then it calls the this.setState method and updates the this.state.name property value at final the UserInput component is re-rendered with the updated changes.
+
+This is also called **controlled component** because the value of an input element is controlled by the react.
+
+**Two way data binding in React hooks**
+
+```js
+import React, {useState} "react"
+
+function App(){
+  const [name,setName] = useState('')
+
+  const handleChange = (e) => {
+     setName(e.target.value)
+  }
+
+ return (
+   <div>
+     <input onChange={handleChange} value={name} />
+     <h1>{name}</h1>
+   </div>
+ )
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How do you display falsy values in JSX?***
 #### Q. ***How to trigger click event programmatically?***
 #### Q. ***How to display styles based on props value?***
