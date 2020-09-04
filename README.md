@@ -4833,12 +4833,30 @@ Here, even though the component got unmounted and the request resolves eventuall
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How can you bind an event handler in JSX call back?***
-#### Q. ***Why do we use ‘key’ attribute and when do you use it?***
-#### Q. ***How to group list of children without adding extra nodes to the DOM?***
-#### Q. ***List out the predefined proptypes?***
-#### Q. ***How to catch JavaScript errors anywhere in their child component tree?***
-#### Q. ***How to apply focus to an input element?***
+## Q. ***How to set focus on an input field after rendering?***
+
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+
+```js
+class AutoFocusTextInput extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.textInput = React.createRef()
+  }
+  componentDidMount() {
+    this.textInput.current.focus()
+  }
+  render() {
+    return <input ref={this.textInput} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How do you set a timer to update every second?***
 #### Q. ***How to implement two way data binding in React js?***
 #### Q. ***How do you display falsy values in JSX?***
