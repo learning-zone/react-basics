@@ -4912,7 +4912,7 @@ Two data binding means
 class UserInput extends React.Component{
 
   state = {
-      name:"reactgo"
+      name: "Hello React"
   }
 
   handleChange = (e) =>{
