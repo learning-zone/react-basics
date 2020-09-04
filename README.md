@@ -4835,7 +4835,7 @@ Here, even though the component got unmounted and the request resolves eventuall
 
 ## Q. ***How to set focus on an input field after rendering?***
 
-Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with <code>React.createRef()</code> function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
 
 ```js
 class AutoFocusTextInput extends React.Component {
@@ -4857,7 +4857,48 @@ class AutoFocusTextInput extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How do you set a timer to update every second?***
+## Q. ***How do you set a timer to update every second?***
+
+Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
+
+*Example:*
+
+```js
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      time: new Date().toLocaleString()
+    }
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID)
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    });
+  }
+  render() {
+    return (
+      <p className="App-clock">
+        The time is {this.state.time}.
+      </p>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to implement two way data binding in React js?***
 #### Q. ***How do you display falsy values in JSX?***
 #### Q. ***How to trigger click event programmatically?***
