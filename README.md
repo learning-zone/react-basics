@@ -4875,7 +4875,7 @@ class Clock extends React.Component {
     this.intervalID = setInterval(
       () => this.tick(),
       1000
-    );
+    )
   }
   componentWillUnmount() {
     clearInterval(this.intervalID)
@@ -4883,14 +4883,14 @@ class Clock extends React.Component {
   tick() {
     this.setState({
       time: new Date().toLocaleString()
-    });
+    })
   }
   render() {
     return (
       <p className="App-clock">
         The time is {this.state.time}.
       </p>
-    );
+    )
   }
 }
 ```
