@@ -4835,7 +4835,7 @@ Here, even though the component got unmounted and the request resolves eventuall
 
 ## Q. ***How to set focus on an input field after rendering?***
 
-Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with <code>React.createRef()</code> function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
 
 ```js
 class AutoFocusTextInput extends React.Component {
