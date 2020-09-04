@@ -4778,10 +4778,61 @@ npm start
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you know about artificial events?***
-#### Q. ***When you use the top class elements for the function element?***
-#### Q. ***How do we share between elements in the parsing?***
-#### Q. ***When can you avoid using setState() after a component has been unmounted?***
+## Q. ***Why to avoid using setState() after a component has been unmounted?***
+
+Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
+
+*Example:*
+
+```js
+class News extends Component {
+  _isMounted = false // flag to check Mounted
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      news: [],
+    };
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    axios
+      .get('https://hn.algolia.com/api/v1/search?query=react')
+      .then(result => {
+        if (this._isMounted) {
+          this.setState({
+            news: result.data.hits,
+          });
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.state.news.map(topic => (
+          <li key={topic.objectID}>{topic.title}</li>
+        ))}
+      </ul>
+    );
+  }
+  }
+}
+```
+
+Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How can you bind an event handler in JSX call back?***
 #### Q. ***Why do we use ‘key’ attribute and when do you use it?***
 #### Q. ***How to group list of children without adding extra nodes to the DOM?***
