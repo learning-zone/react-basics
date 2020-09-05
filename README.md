@@ -4967,7 +4967,63 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How do you display falsy values in JSX?***
+## Q. ***How to show and hide elements in React***
+
+**Returning Null**
+
+```js
+const AddToCart = ({ available }) => {
+  if (!available) return null
+
+  return (
+    <div className="full tr">
+      <button className="product--cart-button">Add to Cart</button>
+    </div>
+  )
+}
+```
+
+**Ternary Display**
+
+When you need to control whether one element vs. another is displayed, or even one element vs. nothing at all (null), you can use the ternary operator embedded inside of a larger portion of JSX.
+
+```js
+<div className="half">
+  <p>{description}</p>
+
+  {remaining === 0 ? (
+    <span className="product-sold-out">Sold Out</span>
+  ) : (
+    <span className="product-remaining">{remaining} remaining</span>
+  )}
+</div>
+```
+
+In this case, if there are no products remaining, we will display "Sold Out"; otherwise we will display the number of products remaining.
+
+**Shortcut Display**
+
+It involves using a conditional inside of your JSX that looks like `checkIfTrue && <span>display if true</span>`. Because if statements that use `&&` operands stop as soon as they find the first value that evaluates to false, it won\'t reach the right side (the JSX) if the left side of the equation evaluates to false.
+
+```js
+<h2>
+  <span className="product--title__large">{nameFirst}</span>
+  {nameRest.length > 0 && (
+    <span className="product--title__small">{nameRest.join(" ")}</span>
+  )}
+</h2>
+```
+
+**Using Style Property**
+
+```js
+<div style={{ display: showInfo ? "block" : "none" }}>info</div>
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to trigger click event programmatically?***
 #### Q. ***How to display styles based on props value?***
 #### Q. ***Explain strict mode in React with example?***
@@ -5046,6 +5102,7 @@ export default App
 #### Q. ***What is a Webhook in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***How does Interceptors work in react?***
+#### Q. ***how to use useSpring() for animation?***
 
 <br/>
 
