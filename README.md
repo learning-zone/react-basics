@@ -5045,6 +5045,7 @@ export default App
 #### Q. ***Explain Composition vs Inheritance in React?***
 #### Q. ***What is a Webhook in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
+#### Q. ***How does Interceptors work in react?***
 
 <br/>
 
