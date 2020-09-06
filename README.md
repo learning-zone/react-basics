@@ -5145,6 +5145,72 @@ const propsProxyHOC = (WrappedComponent) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Explain Inheritance Inversion (iiHOC) in react?***
+
+Inverted Inheritance HOCs are elementarily expressed like this
+
+```js
+const inheritanceInversionHOC = (WrappedComponent) => {
+  return class extens WrappedComponent {
+    render() {
+      return super.render()
+    }
+  }
+}
+```
+
+Here, the returned class **extends** the WrappedComponent. It is called Inheritance Inversion, because instead of the WrappedComponent extending some Enhancer class, it is passively extended. In this way the relationship between them seems **inverse**.
+
+Inheritance Inversion gives the HOC access to the WrappedComponent instance via this, which means we can use the `state`, `props`, component lifecycle and even the `render` method.
+
+**Inversion Inheritance HOCs are useful for the following situations**
+
+* Render Highjacking
+* Manipulating state
+
+*Example:*
+
+```js
+class Welcome extends React.Component {
+  render() {
+    return (
+      <div> Welcome {his.props.user}</div>
+    )
+  }
+}
+
+const withUser = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      if(this.props.user) {
+        return  (
+          <WrappedComponent {...this.props} />
+        )
+      }
+      return <div>Welcome Guest!</div>
+    }
+  }
+}
+
+const withLoader = (WrappedComponent) => {
+  return class extends WrappedComponent {
+    render() {
+      const { isLoader } = this.props
+      if(!isLoaded) {
+        return <div>Loading...</div>
+      }
+      return super.render()
+    }
+  }
+}
+
+export default withLoader(withUser(Welcome))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to set a dynamic key for state?***
 #### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
 #### Q. ***Can you name the pointer events in React?***
