@@ -5113,22 +5113,33 @@ ReactDOM.render(<App />, document.getElementById("root"))
 
 ## Q. ***How to create props proxy for HOC component?***
 
+It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
+
+When we return the Wrapped Component we have the possibility to manipulate props and to abstract state, even passing state as a prop into the Wrapped Component.
+
 We can create `props` passed to the component using props proxy pattern as below
 
 ```js
-function HOC(WrappedComponent) {
+const propsProxyHOC = (WrappedComponent) => {
 
-  return class App extends Component {
+  return class extends React.Component {
     render() {
       const newProps = {
         user: currentLoggedInUser
-      };
+      }
 
       return <WrappedComponent {...this.props} {...newProps} />
     }
   }
 }
 ```
+
+**Props Proxy HOCs are useful to the following situations:**
+
+* Manipulating props
+* Accessing the instance via Refs (be careful, avoid using refs)
+* Abstracting State
+* Wrapping/Composing the WrappedComponent with other elements
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
