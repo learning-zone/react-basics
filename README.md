@@ -5049,7 +5049,39 @@ class MyComponent extends React.Component {
 
 *Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
 
-#### Q. ***How to display styles based on props value?***
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to display style based on props value?***
+
+```js
+export default function UiToggle(props) {
+
+  const { leftLabel, rightLabel, selected, rightSideColor, leftSideColor } = props
+
+  const rightToggleStyle = {
+     backgroundColor: selected ? rightSideColor : null
+  }
+
+  return (
+    <div className="lr-toggle-select" style={{ width: `${width}px` }} >
+      <div className="lr-gray-background" />
+      <div>
+        {leftLabel}
+      </div>
+      <div className="lr-toggle right-toggle" style={rightToggleStyle}>
+        {rightLabel}
+      </div>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain strict mode in React with example?***
 #### Q. ***How to convert text to uppercase on user input entered?***
 #### Q. ***Give an example on how to create props proxy for HOC component?***
