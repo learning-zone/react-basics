@@ -5113,7 +5113,22 @@ ReactDOM.render(<App />, document.getElementById("root"))
 
 ## Q. ***How to create props proxy for HOC component?***
 
+We can create `props` passed to the component using props proxy pattern as below
 
+```js
+function HOC(WrappedComponent) {
+
+  return class App extends Component {
+    render() {
+      const newProps = {
+        user: currentLoggedInUser
+      };
+
+      return <WrappedComponent {...this.props} {...newProps} />
+    }
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
