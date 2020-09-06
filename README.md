@@ -5056,25 +5056,20 @@ class MyComponent extends React.Component {
 ## Q. ***How to display style based on props value?***
 
 ```js
-export default function UiToggle(props) {
+import styled from 'styled-components';
 
-  const { leftLabel, rightLabel, selected, rightSideColor, leftSideColor } = props
+const Button = styled.button`
+  background: ${props => props.primary ? 'palevioletred' : 'white'};
+  color: ${props => props.primary ? 'white' : 'palevioletred'};
+`;
 
-  const rightToggleStyle = {
-     backgroundColor: selected ? rightSideColor : null
-  }
-
+function MyPureComponent(props) {
   return (
-    <div className="lr-toggle-select" style={{ width: ${width}px }} >
-      <div className="lr-gray-background" />
-      <div>
-        {leftLabel}
-      </div>
-      <div className="lr-toggle right-toggle" style={rightToggleStyle}>
-        {rightLabel}
-      </div>
+    <div>
+      <Button>Normal</Button>
+      <Button primary>Primary</Button>
     </div>
-  )
+  );
 }
 ```
 
