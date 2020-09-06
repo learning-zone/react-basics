@@ -5082,8 +5082,35 @@ export default function UiToggle(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain strict mode in React with example?***
-#### Q. ***How to convert text to uppercase on user input entered?***
+## Q. ***How to convert text to uppercase on user input entered?***
+
+```js
+import React, { useState } from "react"
+import ReactDOM from "react-dom"
+
+const toInputUppercase = e => {
+  e.target.value = ("" + e.target.value).toUpperCase()
+}
+
+const App = () => {
+  const [name, setName] = useState("")
+
+  return (
+    <input
+      name={name}
+      onChange={e => setName(e.target.value)}
+      onInput={toInputUppercase} // apply on input which do you want to be capitalize
+    />
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById("root"))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Give an example on how to create props proxy for HOC component?***
 #### Q. ***How to set a dynamic key for state?***
 #### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
