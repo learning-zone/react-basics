@@ -5024,7 +5024,31 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to trigger click event programmatically?***
+## Q. ***How to trigger click event programmatically?***
+
+We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
+
+*Example:*
+
+```js
+class MyComponent extends React.Component {
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <input ref={input => this.inputElement = input} />
+      </div>
+    )
+  }
+
+  handleClick = (e) => {
+    this.inputElement.click()
+  }
+}
+```
+
+*Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
+
 #### Q. ***How to display styles based on props value?***
 #### Q. ***Explain strict mode in React with example?***
 #### Q. ***How to convert text to uppercase on user input entered?***
