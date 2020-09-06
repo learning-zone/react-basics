@@ -5065,7 +5065,7 @@ export default function UiToggle(props) {
   }
 
   return (
-    <div className="lr-toggle-select" style={{ width: `${width}px` }} >
+    <div className="lr-toggle-select" style={{ width: ${width}px }} >
       <div className="lr-gray-background" />
       <div>
         {leftLabel}
@@ -5111,7 +5111,14 @@ ReactDOM.render(<App />, document.getElementById("root"))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Give an example on how to create props proxy for HOC component?***
+## Q. ***How to create props proxy for HOC component?***
+
+
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to set a dynamic key for state?***
 #### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
 #### Q. ***Can you name the pointer events in React?***
