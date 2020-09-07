@@ -5232,8 +5232,142 @@ handleSetState(cat, key, val) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
-#### Q. ***Can you name the pointer events in React?***
+## Q. ***What are the pointer events in React?***
+
+Pointer events, in essence, are very similar to mouse events (mousedown, mouseup, etc.) but are hardware-agnostic and thus can handle all input devices such as a mouse, stylus or touch. This is great since it removes the need for separate implementations for each device and makes authoring for cross-device pointers easier.
+
+The API of pointer events works in the same manner as existing various event handlers. Pointer events are added as attributes to React component and are passed a callback that accepts an event. Inside the callback we process the event.
+
+The following event types are now available in React DOM
+
+* onPointerDown
+* onPointerMove
+* onPointerUp
+* onPointerCancel
+* onGotPointerCapture
+* onLostPointerCapture
+* onPointerEnter
+* onPointerLeave
+* onPointerOver
+* onPointerOut
+
+*Example:* Drag and Drop using Point Events
+
+```js
+// App Component
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import DragItem from './DragItem'
+
+class App extends Component {
+   render() {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React sample of Point Events</h1>
+          </header>
+          <div className="App-intro">
+            <DragItem />
+          </div>
+        </div>
+      )
+   }
+}
+export default App
+```
+
+DragItem Component
+
+```js
+import React from 'react'
+const CIRCLE_DIAMETER = 100
+
+export default class DragItem extends React.Component {
+
+  state = {
+     gotCapture: false,
+     circleLeft: 500,
+     circleTop: 100
+  }
+  isDragging = false;
+  previousLeft = 0;
+  previousTop = 0;
+
+  onDown = e => {
+     this.isDragging = true;
+     e.target.setPointerCapture(e.pointerId);
+     this.getDelta(e);
+  };
+  onMove = e => {
+      if (!this.isDragging) {
+         return;
+      }
+  
+      const {left, top} = this.getDelta(e);
+      this.setState(({circleLeft, circleTop}) => ({
+         circleLeft: circleLeft + left,
+         circleTop: circleTop + top
+      }))
+  }
+  onUp = e => (this.isDragging = false);
+  onGotCapture = e => this.setState({gotCapture: true});
+  onLostCapture = e => this.setState({gotCapture: false});
+  getDelta = e => {
+      const left = e.pageX;
+      const top = e.pageY;
+      const delta = {
+         left: left - this.previousLeft,
+         top: top - this.previousTop,
+      };
+      this.previousLeft = left;
+      this.previousTop = top;
+
+      return delta;
+  }
+  render() {
+      const {gotCapture, circleLeft, circleTop} = this.state;
+      const boxStyle = {
+         border: '2px solid #cccccc',
+         margin: '10px 0 20px',
+         minHeight: 400,
+         width: '100%',
+         position: 'relative',
+      };
+      const circleStyle = {
+         width: CIRCLE_DIAMETER,
+         height: CIRCLE_DIAMETER,
+         borderRadius: CIRCLE_DIAMETER / 2,
+         position: 'absolute',
+         left: circleLeft,
+         top: circleTop,
+         backgroundColor: gotCapture ? 'red' : 'green',
+         touchAction: 'none',
+      };
+      return (
+         <div style={boxStyle}>
+            <div
+               style={circleStyle}
+               onPointerDown={this.onDown}
+               onPointerMove={this.onMove}
+               onPointerUp={this.onUp}
+               onPointerCancel={this.onUp}
+               onGotPointerCapture={this.onGotCapture}
+               onLostPointerCapture={this.onLostCapture}
+            />
+         </div>
+      )
+  }
+}
+```
+
+*Note: It work only in browsers that support the Pointer Events specification*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is difference between Pure Component Vs Component?***
 #### Q. ***How to programmatically redirect to another page using React router?***
 #### Q. ***What is the use of {…this.props} ?***
