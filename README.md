@@ -5206,7 +5206,32 @@ export default withLoader(withUser(Welcome))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to set a dynamic key for state?***
+## Q. ***How to set a dynamic key for state?***
+
+**Dynamic Key**
+
+```js
+onChange(e) {
+  const key = e.target.name;
+  const value = e.target.value;
+  this.setState({ [key]: value });
+}
+```
+
+**Nested States**
+
+```js
+handleSetState(cat, key, val) {
+  const category = {...this.state[cat]};
+  category[key] = val;
+  this.setState({ [cat]: category });
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to render children into a DOM node that exists outside the DOM hierarchy?***
 #### Q. ***Can you name the pointer events in React?***
 #### Q. ***What is difference between Pure Component Vs Component?***
