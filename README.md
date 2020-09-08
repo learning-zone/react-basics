@@ -5403,7 +5403,44 @@ class Message extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to programmatically redirect to another page using React router?***
+## Q. ***How to programmatically redirect to another page using React router?***
+
+**1. Using useHistory()**
+
+```js
+import { useHistory } from "react-router-dom"
+
+function HomeButton() {
+  const history = useHistory()
+
+  function handleClick() {
+    history.push('/home')
+  }
+
+  return (
+    <button type="button" onClick={handleClick}>
+      Navigate to Home Page
+    </button>
+  )
+}
+```
+
+**2. Using withRouter()**
+
+```js
+import { withRouter } from 'react-router-dom'
+
+const Button = withRouter(({ history }) => (
+  <button type='button' onClick={() => { history.push('/home') }}>
+    Navigate to Home Page
+  </button>
+))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the use of {…this.props} ?***
 #### Q. ***How to hide a component based on state value?***
 #### Q. ***How to pass props in React router?***
