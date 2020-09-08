@@ -5441,8 +5441,53 @@ const Button = withRouter(({ history }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the use of {…this.props} ?***
-#### Q. ***How to hide a component based on state value?***
+## Q. ***What is the use of {…this.props} ?***
+
+It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
+
+*Example:*
+
+```js
+<div {...this.props}>
+  Content Here
+</div>
+```
+
+It is equal to Class Component
+
+```js
+const person = {
+    name: "Alex",
+    age: 26,
+    country: "India"
+}
+
+class SpreadExample extends React.Component {
+    render() {
+      const {name, age, country} = {...this.props}
+      return (
+        <div>
+            <h3> Person Information: </h3>
+            <ul>
+              <li>name={name}</li>
+              <li>age={age}</li>
+              <li>country={country}</li>
+            </ul>
+        </div>
+      )
+    }
+}
+
+ReactDOM.render(
+    <SpreadExample {...person}/>
+    , mountNode
+)
+````
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to pass props in React router?***
 #### Q. ***What are the Pr-defined keywords in react alternate to html attributes?***
 #### Q. ***How to get query parameters in react routing?***
