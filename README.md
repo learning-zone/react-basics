@@ -5368,7 +5368,41 @@ export default class DragItem extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is difference between Pure Component Vs Component?***
+## Q. ***What is difference between Pure Component vs Component?***
+
+PureComponent is exactly the same as Component except that it handles the `shouldComponentUpdate()` method. The major difference between React.PureComponent and React.Component is PureComponent does a shallow comparison on state change. It means that when comparing scalar values it compares their values, but when comparing objects it compares only references. It helps to improve the performance of the app.
+
+A component rerenders every time its parent rerenders, regardless of whether the component\'s props and state have changed.
+On the other hand, a pure component will not rerender if its parent rerenders, unless the pure component\'s `props` (or `state`) have changed.
+
+**When to use React.PureComponent**
+
+* State/Props should be an immutable object
+* State/Props should not have a hierarchy
+* We should call forceUpdate when data changes
+
+*Example*
+
+```js
+// Regular class component
+class App extends React.Component {
+  render() {
+    return <h1>Component Example !</h1>
+  }
+}
+
+// React Pure class component
+class Message extends React.Component {
+  render() {
+    return <h1>PureComponent Example !</h1>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to programmatically redirect to another page using React router?***
 #### Q. ***What is the use of {…this.props} ?***
 #### Q. ***How to hide a component based on state value?***
