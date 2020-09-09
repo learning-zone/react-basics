@@ -5482,13 +5482,85 @@ ReactDOM.render(
     <SpreadExample {...person}/>
     , mountNode
 )
-````
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to pass props in React router?***
+## Q. ***How to pass props in React router?***
+
+A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
+
+*Example:*
+
+```js
+import React from "react"
+import { render } from "react-dom"
+import { Greeting } from "./components"
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+
+const styles = {
+  fontFamily: "sans-serif",
+  textAlign: "center"
+};
+
+const App = () => (
+  <div style={styles}>
+    <h2>Click below to go to other page. Also, open source code</h2>
+    <Link to="/greeting/World">Go to /greeting/World</Link>
+  </div>
+);
+
+const RouterExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route exact path="/" component={App} />
+      <Route
+        path="/greeting/:name"
+        render={props => <Greeting text="Hello, " {...props} />}
+      />
+    </div>
+  </Router>
+)
+
+render(<RouterExample />, document.getElementById("root"))
+```
+
+```js
+import React from "react";
+
+export class Greeting extends React.Component {
+  render() {
+    const { text, match: { params } } = this.props;
+
+    const { name } = params;
+
+    return (
+      <React.Fragment>
+        <h1>Greeting page</h1>
+        <p>
+          {text} {name}
+        </p>
+      </React.Fragment>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the Pr-defined keywords in react alternate to html attributes?***
 #### Q. ***How to get query parameters in react routing?***
 #### Q. ***How do you share code between components using render props?***
