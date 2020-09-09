@@ -5561,8 +5561,62 @@ export class Greeting extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the Pr-defined keywords in react alternate to html attributes?***
-#### Q. ***How to get query parameters in react routing?***
+## Q. ***How to get query parameters in react routing?***
+
+**Using `useParams()`**
+
+*Example:*
+
+```js
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"
+
+export default function ParamsExample() {
+
+  return (
+    <Router>
+      <div>
+        <h2>Accounts</h2>
+        <ul>
+          <li>
+            <Link to="/netflix">Netflix</Link>
+          </li>
+          <li>
+            <Link to="/zillow-group">Zillow Group</Link>
+          </li>
+          <li>
+            <Link to="/yahoo">Yahoo</Link>
+          </li>
+          <li>
+            <Link to="/modus-create">Modus Create</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+        </Switch>
+      </div>
+    </Router>
+  )
+}
+
+function Child() {
+  // We can use the `useParams` hook here to access
+  // the dynamic pieces of the URL.
+  let { id } = useParams()
+
+  return (
+    <div>
+      <h3>ID: {id}</h3>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How do you share code between components using render props?***
 #### Q. ***How do you remove an element in the react state?***
 #### Q. ***What is called Destructuring?***
