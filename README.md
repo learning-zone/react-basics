@@ -5617,7 +5617,6 @@ function Child() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How do you share code between components using render props?***
 #### Q. ***How do you remove an element in the react state?***
 #### Q. ***What is called Destructuring?***
 #### Q. ***What is called Stateless function?***
