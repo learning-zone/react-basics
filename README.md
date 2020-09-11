@@ -5716,7 +5716,83 @@ export default Items
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is called Destructuring?***
+## Q. ***What is Destructuring in React?***
+
+Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
+
+When used, destructuring does not modify an object or array but rather copies the desired items from those data structures into variables. These new variables can be accessed later on in a React component.
+
+**Destructuring in JS**
+
+Without destructuring
+
+```js
+const person = {
+  firstName: "Alex",
+  lastName: "K",
+  age: 25,
+  sex: ""
+}
+
+const first = person.firstName;
+const age = person.age;
+const sex = person.sex || "Male";
+
+console.log(first) // "Alex"
+console.log(age) // 25
+console.log(sex) // Male --> default value
+```
+
+With destructuring
+
+```js
+const person = {
+  firstName: "Alex",
+  lastName: "K",
+  age: 25,
+  sex: "M"
+}
+
+const { firstName, lastName, age, sex } = person;
+
+console.log(firstName) // Alex
+console.log(lastName) // K
+console.log(age) // 25
+console.log(sex) // M
+```
+
+**Destructuring in React**
+
+*Example:*
+
+```js
+import React from 'react'
+import Button from '@material-ui/core/Button'
+
+
+export default function Events() {
+
+  const [counter, setcounter] = React.useState(0);
+
+  return (
+      <div className='Counter'>
+          <div>Result: {counter}</div>
+          <Button variant='contained' color='primary' onClick={() => setcounter(counter + 1)} >
+            Increment
+          </Button>
+
+          <Button variant='contained' color='primary' onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)} >
+            Decrement
+          </Button>
+      </div>
+    )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is called Stateless function?***
 #### Q. ***Write the syntax to create the state and change the value of state?***
 #### Q. ***What is the function using in react to list the values?***
