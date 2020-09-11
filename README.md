@@ -5793,23 +5793,6 @@ export default function Events() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is called Stateless function?***
-#### Q. ***Write the syntax to create the state and change the value of state?***
-#### Q. ***What is the function using in react to list the values?***
-#### Q. ***What is the benchmark in react comparing another javascript framework?***
-#### Q. ***What is the main goal of React Fiber?***
-#### Q. ***Why it is a must to capitalize component names?***
-#### Q. ***How to set the state in React using the dynamic key name?***
-#### Q. ***Real Disadvantages of utilizing React?***
-#### Q. ***Can you explain about the standard JavaScript toolchain, transpilation, JSX?***
-#### Q. ***Please explain step by step approach on how to setup environment for React?***
-#### Q. ***Have you used HTML while working with React.js?***
-#### Q. ***What is the difference between setState() and forceUpdate()?***
-#### Q. ***Which feature can we use to cause a component to render only when its ID changes?***
-#### Q. ***What kind of tools might you use in the build steps to optimize the compiled output of the React code?***
-#### Q. ***What is high-level component lifecycle in React.js?***
-#### Q. ***What is low-level component lifecycle in React.js?***
-#### Q. ***How to use Forms in React? Give an example of using Forms in React by developing a User Registration Form?***
 #### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
 #### Q. ***What is Suspense in React?***
 #### Q. ***What is the difference between NavLink and Link?***
