@@ -19,7 +19,7 @@ React is a JavaScript library created for building fast and interactive user int
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-[**[Read More](https://reactjs.org/tutorial/tutorial.html)**]
+**[[Read More](https://reactjs.org/tutorial/tutorial.html)]**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2197,9 +2197,7 @@ If your function component renders the same result given the same props, you can
 
 In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
 
-**Read More**
-
-* [Optimizing Performance](https://reactjs.org/docs/optimizing-performance.html)
+**[[Read More](https://reactjs.org/docs/optimizing-performance.html)]**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6065,7 +6063,7 @@ describe('App component', () => {
 })
 ```
 
-**Read More**
+**[Read More]**
 
 * [Jest Framework](https://jestjs.io/docs/en/tutorial-react)
 * [Enzyme Framework](https://enzymejs.github.io/enzyme/)
