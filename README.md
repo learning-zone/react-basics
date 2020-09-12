@@ -5929,7 +5929,18 @@ Axios is a promise based HTTP client for making HTTP requests from a browser to 
 npm install axios -- save
 ```
 
-**POST Request**
+**Shorthand Methods**
+
+* `axios.request(config)`
+* `axios.get(url[, config])`
+* `axios.delete(url[, config])`
+* `axios.head(url[, config])`
+* `axios.options(url[, config])`
+* `axios.post(url[, data[, config]])`
+* `axios.put(url[, data[, config]])`
+* `axios.patch(url[, data[, config]])`
+
+**POST Request Example**
 
 ```js
 
@@ -5942,7 +5953,7 @@ axios.post('/url',{data: 'data'})
   })
 ```
 
-**GET Request**
+**GET Request Example**
 
 ```js
 axios.get('/url')
@@ -5954,7 +5965,7 @@ axios.get('/url')
   })
 ```
 
-**Performing Multiple Concurrent Requests**
+**Performing Multiple Concurrent Requests Example**
 
 ```js
 function getUserAccount() {
