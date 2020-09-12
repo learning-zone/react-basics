@@ -5913,7 +5913,114 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to display API data using Axios in React?***
+## Q. ***How to display API data using Axios in React?***
+
+Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
+
+**Features**
+
+* **Interceptors**: Access the request or response configuration (headers, data, etc) as they are outgoing or incoming. These functions can act as gateways to check configuration or add data.
+* **Instances**: Create reusable instances with baseUrl, headers, and other configuration already set up.
+* **Defaults**: Set default values for common headers (like Authorization) on outgoing requests. This can be useful if you are authenticating to a server on every request.
+
+**Installation**
+
+```bash
+npm install axios -- save
+```
+
+**POST Request**
+
+```js
+
+axios.post('/url',{data: 'data'})
+  .then((res)=>{
+    //on success
+  })
+  .catch((error)=>{
+    //on error
+  })
+```
+
+**GET Request**
+
+```js
+axios.get('/url')
+  .then((res)=>{
+    //on success
+  })
+  .catch((error)=>{
+    //on error
+  })
+```
+
+**Performing Multiple Concurrent Requests**
+
+```js
+function getUserAccount() {
+  return axios.get('/user/12345')
+}
+
+function getUserPermissions() {
+  return axios.get('/user/12345/permissions')
+}
+
+axios.all([getUserAccount(), getUserPermissions()])
+  .then(axios.spread(function (acct, perms) {
+    // Both requests are now complete
+  }))
+
+```
+
+*Example*: Making a POST Request
+
+```js
+import React from 'react'
+import axios from 'axios'
+
+export default class PersonList extends React.Component {
+  state = {
+    name: '',
+  }
+
+  handleChange = event => {
+    this.setState({ name: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+
+    const user = {
+      name: this.state.name
+    }
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then(res => {
+        console.log(res)
+        console.log(res.data)
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Person Name:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is difference between react hooks and lifecycle methods?***
 #### Q. ***How to translate your React app with react-i18next?***
 #### Q. ***How RxJS is used in React for state management?***
