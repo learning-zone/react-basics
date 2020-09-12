@@ -5793,9 +5793,81 @@ export default function Events() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between React Components extend, createClass and mixins, HOCs?***
-#### Q. ***What is Suspense in React?***
-#### Q. ***What is the difference between NavLink and Link?***
+## Q. ***What is the difference between NavLink and Link?***
+
+The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
+
+**Link**
+
+```js
+<Link to="/">Home</Link>
+```
+
+**NavLink**
+
+```js
+<NavLink to="/" activeClassName="active">Home</NavLink>
+```
+
+*Example:*
+
+index.css
+
+```css
+.active {
+  color: blue;
+}
+```
+
+Routes.js
+
+```js
+import ReactDOM from 'react-dom'
+import './index.css'
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
+import App from './App'
+import Users from './users'
+import Contact from './contact'
+import Notfound from './notfound'
+
+const Routes = (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/users">
+            Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/contact">
+            Contact
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/users" component={Users} />
+        <Route path="/contact" component={Contact} />
+        <Route component={Notfound} />
+      </Switch>
+    </div>
+  </Router>
+)
+
+ReactDOM.render(Routes, document.getElementById('root'))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is withRouter for in react-router-dom?***
 #### Q. ***How to display API data using Axios in React?***
 #### Q. ***What is difference between react hooks and lifecycle methods?***
