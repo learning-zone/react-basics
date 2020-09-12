@@ -46,10 +46,11 @@ Components are the building blocks of any React app and a typical React app will
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
 *Example*: Class Component
+
 ```js
 class Welcome extends React.Component {
   render() {
-    return <h1>Hello, World!</h1>;
+    return <h1>Hello, World!</h1>
   }
 }
 ```
@@ -93,8 +94,9 @@ JSX allows us to write HTML elements in JavaScript and place them in the DOM wit
 * It makes it easier and faster to write templates.
 
 *Example*:
+
 ```js
-import React from 'react';
+import React from 'react'
 
 class App extends React.Component {
 
@@ -103,10 +105,10 @@ class App extends React.Component {
          <div>
             Hello World!
          </div>
-      );
+      )
    }
 }
-export default App;
+export default App
 ```
 
 **JSX is a JavaScript Expression**
@@ -139,15 +141,14 @@ Since they are compiled to objects, JSX can be used wherever a regular JavaScrip
 
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
 
-* render()
-* findDOMNode()
-* unmountComponentAtNode()
-* hydrate()
-* createPortal()
-
-React DOM is the glue between React and the DOM. When u want to show your react component on DOM u need to use this ReactDOM.render(); from React Dom.
+* `render()`
+* `findDOMNode()`
+* `unmountComponentAtNode()`
+* `hydrate()`
+* `createPortal()`
 
 Before **v0.14** React Dom was part of React. The reason React and ReactDOM were split into two libraries was due to the arrival of React Native. React contains functionality utilised in web and mobile apps. ReactDOM functionality is utilised only in web apps.
+
 ReactDOM uses observables thus provides an efficient way of DOM handling. ReactDOM can be used in both client-side and server-side.
 
 *Example*:
@@ -155,16 +156,16 @@ ReactDOM uses observables thus provides an efficient way of DOM handling. ReactD
 ```js
 // index.js
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App/App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App/App'
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 ```
 
 To use the ReactDOM in any React web app we must first import ReactDOM from the react-dom package by using the following code snippet:
@@ -240,17 +241,17 @@ ReactDOM.createPortal(child, container)
 ## Q. ***What is the difference between ReactDOM and React?***
 
 ```js
-import React from 'react'; /* importing react */
-import ReactDOM from 'react-dom'; /* importing react-dom */
+import React from 'react' /* importing react */
+import ReactDOM from 'react-dom' /* importing react-dom */
 
 class MyComponent extends React.Component {
 
   render() {
-    return <div>Hello World</div>;
+    return <div>Hello World</div>
   }
-});
+})
 
-ReactDOM.render(<MyComponent />, node);
+ReactDOM.render(<MyComponent />, node)
 
 ```
 **React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
@@ -356,13 +357,14 @@ export default ClockUsingClass
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
 *Example*:
+
 ```js
 class Employee extends React.Component {
     constructor() {
         this.state = {
             id: 1,
             name: "Alex"
-        };  
+        }  
     }
 
     render() {
@@ -371,7 +373,7 @@ class Employee extends React.Component {
               <p>{this.state.id}</p>
               <p>{this.state.name}</p>
             </div>
-        );  
+        )  
     }
 }
 
@@ -383,18 +385,19 @@ export default Employee
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
 *Example*:
+
 ```js
 class ParentComponent extends Component {
     render() {
         return (
             <ChildComponent name="First Child" />
-        );  
+        )  
     }
 }
 
 const ChildComponent = (props) => {
-    return <p>{props.name}</p>;
-};
+    return <p>{props.name}</p>
+}
 ```
 
 **Difference between State and Props**  
@@ -423,7 +426,7 @@ A higher-order component is a function that takes a component and returns a new 
 ```js
 // HOC.js
 
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 export default function Hoc(HocComponent){
     return class extends Component{
@@ -433,7 +436,7 @@ export default function Hoc(HocComponent){
                     <HocComponent></HocComponent>
                 </div>
 
-            );
+            )
         }
     }
 }
@@ -442,8 +445,8 @@ export default function Hoc(HocComponent){
 ```js
 // App.js
 
-import React, { Component } from 'react';
-import Hoc from './HOC';
+import React, { Component } from 'react'
+import Hoc from './HOC'
 
 class App extends Component {
   
@@ -455,8 +458,8 @@ class App extends Component {
     )
   }
 }
-App = Hoc(App);
-export default App;
+App = Hoc(App)
+export default App
 ```
 
 *Notes*
@@ -493,67 +496,69 @@ React Components re-renders in the following scenarios:
 In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
 
 **Stateless Component**
+
 ```js
-import { pure } from 'recompose';
+import { pure } from 'recompose'
 
 export default pure ( (props) => {
-
-   return 'Stateless Component Example';
+   return 'Stateless Component Example'
 })
 ```
 
 **Stateful Component**
+
 ```js
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
 
 export default class Test extends PureComponent{
    render() {
-      return 'Stateful Component Example';
+      return 'Stateful Component Example'
    }
 }
-``` 
+```
 
-Example
+*Example*:
+
 ```js
 class Test extends React.PureComponent {
    constructor(props) {
-      super(props);
+      super(props)
       this.state = {
          taskList: [
             { title: 'Excercise'},
             { title: 'Cooking'},
             { title: 'Reacting'},
          ]
-      };
+      }
    }
    componentDidMount() {
       setInterval(() => {
          this.setState((oldState) => {
             return { taskList: [...oldState.taskList] }
-         });
-      }, 1000);
+         })
+      }, 1000)
    }
    render() {
-      console.log("TaskList render() called");
+      console.log("TaskList render() called")
       return (<div>
          {this.state.taskList.map((task, i) => {
             return (<Task
                key={i}
                title={task.title}
-            />);
+            />)
          })}
-      </div>);
+      </div>)
    }
 }
 class Task extends React.Component {
    render() {
-      console.log("task added");
+      console.log("task added")
       return (<div>
          {this.props.title}
-      </div>);
+      </div>)
    }
 }
-ReactDOM.render(<Test />, document.getElementById('app'));
+ReactDOM.render(<Test />, document.getElementById('app'))
 ```
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -639,18 +644,19 @@ In a controlled component, form data is handled by a React component. The altern
 In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
 
 *Example*:
+
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
     state = {
         message: ''
     }
     updateMessage = (newText) => {
-        console.log(newText);
+        console.log(newText)
         this.setState(() => ({
             message: newText
-        }));
+        }))
     }
     render() {
         return (
@@ -664,28 +670,29 @@ class App extends Component {
                     <p>the message is: {this.state.message}</p>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default App;
+export default App
 ```
+
 **Uncontrolled Components**  
 
 Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
 
     constructor(props){
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.input = React.createRef();
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.input = React.createRef()
     }
     handleChange = (newText) => {
-        console.log(newText);
+        console.log(newText)
     }
     render() {
         return (
@@ -698,10 +705,10 @@ class App extends Component {
                     />
                 </div>
             </div>
-        );
+        )
     }
 }
-export default App;
+export default App
 ```
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -722,7 +729,7 @@ The react.cloneElement() method accepts three arguments.
 
 Example
 ```js
-import React from 'react';
+import React from 'react'
 
 export default class App extends React.Component {
 
@@ -741,7 +748,7 @@ export default class App extends React.Component {
 class ParentComp extends React.Component {
   render() {
     // The new prop to the added.
-    let newProp = 'red';
+    let newProp = 'red'
       // Looping over the parent's entire children,
       // cloning each child, adding a new prop.
     return (
@@ -749,7 +756,7 @@ class ParentComp extends React.Component {
         {React.Children.map(this.props.children,
           child => {
             return React.cloneElement(child,
-            {newProp}, null);
+            {newProp}, null)
         })}
       </div>
     )
@@ -788,7 +795,7 @@ class Example extends React.Component {
     return <div>
       <div>Children ({this.props.children.length}):</div>
       {this.props.children}
-    </div>;
+    </div>
   }
 }
 
@@ -807,7 +814,7 @@ class Widget extends React.Component {
         <div>A</div>
         <div>B</div>
       </Example>
-    </div>;
+    </div>
   }
 }
 ```
@@ -852,18 +859,18 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 The `useState()` is a Hook that allows to have state variables in functional components.
 
 ```js
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const App = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(0)
 
   const handleIncrease = () => {
-    setCount(count + 1);
-  };
+    setCount(count + 1)
+  }
 
   const handleDecrease = () => {
-    setCount(count - 1);
-  };
+    setCount(count - 1)
+  }
 
   return (
     <div>
@@ -878,8 +885,8 @@ const App = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 ```
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
 
@@ -896,20 +903,20 @@ Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, 
 *Example*:
 
 ```js
-import React, { useReducer } from 'react';
+import React, { useReducer } from 'react'
 
-const initialState = 0;
+const initialState = 0
 const reducer = (state, action) => {
   switch (action) {
-    case 'increment': return state + 1;
-    case 'decrement': return state - 1;
-    case 'reset': return 0;
-    default: throw new Error('Unexpected action');
+    case 'increment': return state + 1
+    case 'decrement': return state - 1
+    case 'reset': return 0
+    default: throw new Error('Unexpected action')
   }
-};
+}
 
 const ReducerExample = () => {
-  const [count, dispatch] = useReducer(reducer, initialState);
+  const [count, dispatch] = useReducer(reducer, initialState)
   return (
     <div>
       {count}
@@ -917,10 +924,10 @@ const ReducerExample = () => {
       <button onClick={() => dispatch('decrement')}>-1</button>
       <button onClick={() => dispatch('reset')}>reset</button>
     </div>
-  );
-};
+  )
+}
 
-export default ReducerExample;
+export default ReducerExample
 ```
 Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
 
@@ -935,11 +942,11 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from "react-dom"
 
 // Create a Context
-const NumberContext = React.createContext();
+const NumberContext = React.createContext()
 // It returns an object with 2 values:
 // { Provider, Consumer }
 
@@ -952,12 +959,12 @@ function App() {
         <Display />
       </div>
     </NumberContext.Provider>
-  );
+  )
 }
 
 function Display() {
-  const value = useContext(NumberContext);
-  return <div>The answer is {value}.</div>;
+  const value = useContext(NumberContext)
+  return <div>The answer is {value}.</div>
 }
 ```
 
@@ -979,7 +986,7 @@ The `useLayoutEffect()` was designed to have the same timing as componentDidMoun
 
 ```js
 //Using a class based component.
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class SampleComponent extends Component {
   componentDidMount() {
@@ -991,7 +998,7 @@ render() {
 }
 
 //Using a functional component
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 const SampleComponent = () => {
   useEffect(() => {
@@ -1029,7 +1036,7 @@ class App extends React.Component {
     constructor(props) {
       super(props)
       // create a ref to store the textInput DOM element
-      this.textInput = React.createRef();
+      this.textInput = React.createRef()
       this.state = {
         value: ''
       }
@@ -1037,9 +1044,9 @@ class App extends React.Component {
   
   // Set the state for the ref
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
     this.setState({ value: this.textInput.current.value})
-  };
+  }
 
   render() {
     return (
@@ -1053,7 +1060,7 @@ class App extends React.Component {
           <button>Submit</button>
         </form>
       </div>
-    );
+    )
   }
 }
 ```
@@ -1081,7 +1088,7 @@ Inside constructor uses `this.state = {}` directly, other places use `this.setSt
 *Example*:
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Food extends Component {
 
@@ -1099,7 +1106,7 @@ class Food extends Component {
         <h2> Hello!!!</h2>
         <p> I have {this.state.count} fruit(s)</p>
       </div>
-    );
+    )
   }
 }
 ```
@@ -1151,8 +1158,8 @@ Arrow functions don not redefine the value of `this` within their function body.
 *Example*:
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 class Button extends React.Component {
   render() {
@@ -1279,20 +1286,20 @@ The `getDerivedStateFromProps()` method is called right before rendering the ele
 class Color extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {color: "red"};
+    super(props)
+    this.state = {color: "red"}
   }
   static getDerivedStateFromProps(props, state) {
-    return {color: props.favcol };
+    return {color: props.favcol }
   }
   render() {
     return (
       <h1>My Favorite Color is {this.state.color}</h1>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'));
+ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'))
 ```
 
 **render()**
@@ -1325,14 +1332,14 @@ This is the first method that is called when a component gets updated. This is s
 class Color extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {color: "red"};
+    super(props)
+    this.state = {color: "red"}
   }
   static getDerivedStateFromProps(props, state) {
-    return {color: props.favcol };
+    return {color: props.favcol }
   }
   changeColor = () => {
-    this.setState({color: "blue"});
+    this.setState({color: "blue"})
   }
   render() {
     return (
@@ -1340,11 +1347,11 @@ class Color extends React.Component {
       <h1>My Favorite Color is {this.state.color}</h1>
       <button type="button" onClick={this.changeColor}>Change color</button>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'));
+ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'))
 ```
 
 **shouldComponentUpdate**
@@ -1355,14 +1362,14 @@ In the `shouldComponentUpdate()` method you can return a Boolean value that spec
 class Color extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {color: "red"};
+    super(props)
+    this.state = {color: "red"}
   }
   shouldComponentUpdate() {
-    return false;
+    return false
   }
   changeColor = () => {
-    this.setState({color: "blue"});
+    this.setState({color: "blue"})
   }
   render() {
     return (
@@ -1370,11 +1377,11 @@ class Color extends React.Component {
       <h1>My Favorite Color is {this.state.color}</h1>
       <button type="button" onClick={this.changeColor}>Change color</button>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Color />, document.getElementById('root'));
+ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
 **render()**
@@ -1393,8 +1400,8 @@ If the `getSnapshotBeforeUpdate()` method is present, we should also include the
 class Color extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {color: "red"};
+    super(props)
+    this.state = {color: "red"}
   }
   componentDidMount() {
     setTimeout(() => {
@@ -1403,11 +1410,11 @@ class Color extends React.Component {
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     document.getElementById("div1").innerHTML =
-    "Before the update, the favorite was " + prevState.color;
+    "Before the update, the favorite was " + prevState.color
   }
   componentDidUpdate() {
     document.getElementById("div2").innerHTML =
-    "The updated favorite is " + this.state.color;
+    "The updated favorite is " + this.state.color
   }
   render() {
     return (
@@ -1416,11 +1423,11 @@ class Color extends React.Component {
         <div id="div1"></div>
         <div id="div2"></div>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Color />, document.getElementById('root'));
+ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
 **componentDidUpdate**  
@@ -1432,8 +1439,8 @@ The `componentDidUpdate()` method is called after the component is updated in th
 ```js
 class Color extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {color: "red"};
+    super(props)
+    this.state = {color: "red"}
   }
   componentDidMount() {
     setTimeout(() => {
@@ -1442,7 +1449,7 @@ class Color extends React.Component {
   }
   componentDidUpdate() {
     document.getElementById("mydiv").innerHTML =
-    "The updated favorite is " + this.state.color;
+    "The updated favorite is " + this.state.color
   }
   render() {
     return (
@@ -1450,11 +1457,11 @@ class Color extends React.Component {
       <h1>My Favorite Color is {this.state.color}</h1>
       <div id="mydiv"></div>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Color />, document.getElementById('root'));
+ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
 **3. Unmounting**  
@@ -1468,38 +1475,38 @@ The next phase in the lifecycle is when a component is removed from the DOM, or 
 ```js
 class Container extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {show: true};
+    super(props)
+    this.state = {show: true}
   }
   delHeader = () => {
-    this.setState({show: false});
+    this.setState({show: false})
   }
   render() {
-    let myheader;
+    let myheader
     if (this.state.show) {
-      myheader = <Child />;
-    };
+      myheader = <Child />
+    }
     return (
       <div>
       {myheader}
       <button type="button" onClick={this.delHeader}>Delete Header</button>
       </div>
-    );
+    )
   }
 }
 
 class Child extends React.Component {
   componentWillUnmount() {
-    alert("The component named Header is about to be unmounted.");
+    alert("The component named Header is about to be unmounted.")
   }
   render() {
     return (
       <h1>Hello World!</h1>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Container />, document.getElementById('root'));
+ReactDOM.render(<Container />, document.getElementById('root'))
 ```
 
 <div align="right">
@@ -1513,22 +1520,22 @@ Keys help React identify which items have changed, are added, or are removed. Ke
 ```js
 function NumberList(props) {
 
-  const numbers = props.numbers;
+  const numbers = props.numbers
   const listItems = numbers.map((number) =>
     <li key={number.toString()}>
       {number}
     </li>
-  );
+  )
   return (
     <ul>{listItems}</ul>
-  );
+  )
 }
 
-const numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 5]
 ReactDOM.render(
   <NumberList numbers={numbers} />,
   document.getElementById('root')
-);
+)
 ```
 
 **Exceptions where it is safe to use index as key**
@@ -1548,20 +1555,21 @@ ReactDOM.render(
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
-```
+```bash
 npm install react-router-dom
 ```
-```js
-import React, { Component } from 'react';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import Todos from './components/Todos/Todos';
-import TodosNew from './components/TodosNew/TodosNew';
-import TodoShow from './components/TodoShow/TodoShow';
+```js
+import React, { Component } from 'react'
+import { Router, Route, Redirect, Switch } from 'react-router-dom'
+
+import Todos from './components/Todos/Todos'
+import TodosNew from './components/TodosNew/TodosNew'
+import TodoShow from './components/TodoShow/TodoShow'
 
 class Router extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -1574,11 +1582,11 @@ class Router extends Component {
                     <Redirect from='*' to='/' />
                 </Switch>
             </Router>
-        );
+        )
     }
-};
+}
 
-export default Router;
+export default Router
 ```
 
 **`< Router />`**  
@@ -1621,21 +1629,21 @@ React `PropTypes` are a good way to help you catching bugs by validating data ty
 *Example*:
 
 ```js
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Person = (props) => <div>
   <h1>{props.firstName} {props.lastName}</h1>
   {props.country ? <p>Country: {props.country}</p> : null}
-</div>;
+</div>
 
 Person.propTypes = {
   firstName:PropTypes.string,
   lastName:PropTypes.string,
   country:PropTypes.string
-};
+}
 
-export default Person;
+export default Person
 ```
 `PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
 
@@ -1654,11 +1662,11 @@ The Context API solves some of these prop drilling problems. It let pass data to
 *Example*:
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from "react-dom"
 
 // Create a Context
-const NumberContext = React.createContext();
+const NumberContext = React.createContext()
 // It returns an object with 2 values:
 // { Provider, Consumer }
 
@@ -1671,12 +1679,12 @@ function App() {
         <Display />
       </div>
     </NumberContext.Provider>
-  );
+  )
 }
 
 function Display() {
-  const value = useContext(NumberContext);
-  return <div>The answer is {value}.</div>;
+  const value = useContext(NumberContext)
+  return <div>The answer is {value}.</div>
 }
 ```
 
@@ -1690,10 +1698,10 @@ The `componentDidMount()` lifecycle hook can be used with class components.
 ```js
 class Homepage extends React.Component {
   componentDidMount() {
-    trackPageView('Homepage');
+    trackPageView('Homepage')
   }
   render() {
-    return <div>Homepage</div>;
+    return <div>Homepage</div>
   }
 }
 ```
@@ -1703,11 +1711,11 @@ The `useEffect()` hook can be used with function components.
 ```js
 const Homepage = () => {
   useEffect(() => {
-    trackPageView('Homepage');
-  }, []);
+    trackPageView('Homepage')
+  }, [])
   
-  return <div>Homepage</div>;
-};
+  return <div>Homepage</div>
+}
 ```
 The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
 
@@ -1747,8 +1755,8 @@ The `super()` keyword is used to call the parent constructor. `super(props)` wou
 ```js
 class App extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {};
+      super(props)
+      this.state = {}
    }
 
   // React says we have to define render()
@@ -1778,11 +1786,11 @@ Basically, if we modify `this.state()` directly, we create a situation where tho
 *Example*:
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       list: [
@@ -1790,18 +1798,18 @@ class App extends Component {
         { id: '2', age: 33 },
         { id: '3', age: 68 },
       ],
-    };
+    }
   }
 
   onRemoveItem = id => {
     this.setState(state => {
-      const list = state.list.filter(item => item.id !== id);
+      const list = state.list.filter(item => item.id !== id)
 
       return {
         list,
-      };
-    });
-  };
+      }
+    })
+  }
 
   render() {
     return (
@@ -1820,11 +1828,11 @@ class App extends Component {
           ))}
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
 ```
 
 <div align="right">
@@ -1837,15 +1845,15 @@ The ES6 Spread operator or Rest Parameters is use to pass `props` to a React com
 
 ```js
 function App() {
-  return <Hello firstName="Alex" lastName="K" />;
+  return <Hello firstName="Alex" lastName="K" />
 }
 ```
 Using the Spread operator, it become like this
 
 ```js
 function App() {
-  const props = {firstName: 'Alex', lastName: 'K'};
-  return <Hello {...props} />;
+  const props = {firstName: 'Alex', lastName: 'K'}
+  return <Hello {...props} />
 }
 ```
 
@@ -1919,16 +1927,16 @@ React Hooks are in-built functions that allow to use **state** and **lifecycle**
 *Example*: using classes
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
   constuctor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       isButtonClicked: false,
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
@@ -1945,7 +1953,7 @@ class App extends Component {
 import React, { useState } from 'react'
 
 const App = () => {
-  const [isButtonClicked, setIsButtonClickedStatus] = useState(false);
+  const [isButtonClicked, setIsButtonClickedStatus] = useState(false)
   
   return (
     <button
@@ -1992,7 +2000,7 @@ class App extends React.Component {
             <h3>Number: {this.props.propNumber}</h3>
             <h3>String: {this.props.propString}</h3>
          </fragment>
-      );
+      )
    }
 }
 
@@ -2122,7 +2130,7 @@ const page = compose(
   withAuth,
   withLogging,
   withLayout('default'),
-);
+)
 export default page
 ```
 
@@ -2204,7 +2212,7 @@ In order to address the issue with our long chat feed, the React team recommends
 `StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants. Strict mode checks are run in development mode only; they do not impact the production build.
 
 ```js
-import React from 'react';
+import React from 'react'
 
 export default function App() {
   return (
@@ -2218,7 +2226,7 @@ export default function App() {
       </React.StrictMode>
       <Footer />
     </Fragment>
-  );
+  )
 }
 ```
 
@@ -2314,8 +2322,8 @@ One way to avoid binding in render is to bind in the constructor
 
 ```js
 constructor(props) {
-  super(props);
-  this.handleChange = this.handleChange.bind(this);
+  super(props)
+  this.handleChange = this.handleChange.bind(this)
 }
 ```
 
@@ -2336,7 +2344,7 @@ This is data maintained inside a component. It is local or owned by that specifi
 ```js
 class AppComponent extends React.component {
   state = {
-      msg : 'Hello World!';
+      msg : 'Hello World!'
   }
 
   render() {
@@ -2398,15 +2406,15 @@ Props should never be changed in a child component. Props are also used to allow
 **App.js**
 
 ```js
-import React, { Component } from "react";
-import countries from "./countries";
+import React, { Component } from "react"
+import countries from "./countries"
 import './App.css'
 
 export default function App() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [country, setCountry] = React.useState("")
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false)
 
   const handleSubmit = (event) => {
     console.log(`
@@ -2414,8 +2422,8 @@ export default function App() {
       Password: ${password}
       Country: ${country}
       Accepted Terms: ${acceptedTerms}
-    `);
-    event.preventDefault();
+    `)
+    event.preventDefault()
   }
 
   return (
@@ -2467,7 +2475,7 @@ export default function App() {
 
       <button>Submit</button>
     </form>
-  );
+  )
 }
 ```
 
@@ -2627,7 +2635,7 @@ As you see that we set the onChange property to the Child component. Next step i
 function Child(props) {
     function handleChange(event) {
         // Here, we invoke the callback with the new value
-        props.onChange(event.target.value);
+        props.onChange(event.target.value)
     }
   
     return <input value={props.value} onChange={handleChange} />
@@ -2647,10 +2655,10 @@ Using `setInterval()` inside React components allows us to execute a function or
 ```js
 useEffect(() => {
   const interval = setInterval(() => {
-    console.log('This will run every second!');
-  }, 1000);
-  return () => clearInterval(interval);
-}, []);
+    console.log('This will run every second!')
+  }, 1000)
+  return () => clearInterval(interval)
+}, [])
 ```
 
 The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
@@ -2668,9 +2676,9 @@ const IntervalExample = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds(seconds => seconds + 1)
-    }, 1000);
+    }, 1000)
     return () => clearInterval(interval)
-  }, []);
+  }, [])
 
   return (
     <div className="App">
@@ -2764,12 +2772,12 @@ import React from 'react'
 
 class MyComponent extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       error: null,
       isLoaded: false,
       items: []
-    };
+    }
   }
 
   componentDidMount() {
@@ -2780,7 +2788,7 @@ class MyComponent extends React.Component {
           this.setState({
             isLoaded: true,
             items: result.items
-          });
+          })
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -2789,17 +2797,17 @@ class MyComponent extends React.Component {
           this.setState({
             isLoaded: true,
             error
-          });
+          })
         }
       )
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items } = this.state
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>Error: {error.message}</div>
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Loading...</div>
     } else {
       return (
         <ul>
@@ -2809,7 +2817,7 @@ class MyComponent extends React.Component {
             </li>
           ))}
         </ul>
-      );
+      )
     }
   }
 }
@@ -2829,17 +2837,17 @@ Handling events with React elements is very similar to handling events on DOM el
 ```js
 class Toggle extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {isToggleOn: true};
+    super(props)
+    this.state = {isToggleOn: true}
 
     // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
-    }));
+    }))
   }
 
   render() {
@@ -2847,14 +2855,14 @@ class Toggle extends React.Component {
       <button onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
-    );
+    )
   }
 }
 
 ReactDOM.render(
   <Toggle />,
   document.getElementById('root')
-);
+)
 ```
 
 <div align="right">
@@ -2916,9 +2924,9 @@ The default implementation of this function returns true so to stop the re-rende
 
 ```js
 shouldComponentUpdate(nextProps, nextState) {
-  console.log(nextProps, nextState);
-  console.log(this.props, this.state);
-  return false;  
+  console.log(nextProps, nextState)
+  console.log(this.props, this.state)
+  return false  
 }
 ```
 
@@ -2946,7 +2954,7 @@ function App() {
     <div className="App">
       Hello World !
     </div>
-  );
+  )
 }
 
 export default App
@@ -2980,10 +2988,10 @@ A React component can be either **stateful** or **stateless**. Stateful componen
 **Stateless Component**
 
 ```js
-import React from 'react';
+import React from 'react'
 
 const ExampleComponent = (props) => {
-    return (<h1>Welcome to React!</h1>);
+    return (<h1>Welcome to React!</h1>)
 }
 
 export default class App extends React.Component {
@@ -3002,7 +3010,7 @@ The above example shows a stateless component named ExampleComponent which is in
 **Stateful Component**
 
 ```js
-import React from 'react';
+import React from 'react'
 
 class ExampleComponent extends React.Component {
 
@@ -3024,7 +3032,7 @@ class ExampleComponent extends React.Component {
 
 export default class App extends React.Component {
   render() {
-    const welcomeMsg = "Welcome to React!";
+    const welcomeMsg = "Welcome to React!"
     return (
       <div>
         <ExampleComponent welcomeMsg={welcomeMsg}/>
@@ -3061,14 +3069,14 @@ There are several ways to make sure functions have access to component attribute
 ```js
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
   handleClick() {
-    console.log('Click happened');
+    console.log('Click happened')
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>;
+    return <button onClick={this.handleClick}>Click Me</button>
   }
 }
 ```
@@ -3079,10 +3087,10 @@ class App extends Component {
 class App extends Component {
   // Note: this syntax is experimental and not standardized yet.
   handleClick = () => {
-    console.log('Click happened');
+    console.log('Click happened')
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>;
+    return <button onClick={this.handleClick}>Click Me</button>
   }
 }
 ```
@@ -3092,10 +3100,10 @@ class App extends Component {
 ```js
 class App extends Component {
   handleClick() {
-    console.log('Click happened');
+    console.log('Click happened')
   }
   render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
   }
 }
 ```
@@ -3107,10 +3115,10 @@ class App extends Component {
 ```js
 class App extends Component {
   handleClick() {
-    console.log('Click happened');
+    console.log('Click happened')
   }
   render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>;
+    return <button onClick={() => this.handleClick()}>Click Me</button>
   }
 }
 ```
@@ -3142,15 +3150,15 @@ const A = 65 // ASCII character code
 
 class Alphabet extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
     this.state = {
       justClicked: null,
       letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    };
+    }
   }
   handleClick(letter) {
-    this.setState({ justClicked: letter });
+    this.setState({ justClicked: letter })
   }
   render() {
     return (
@@ -3178,18 +3186,18 @@ const A = 65 // ASCII character code
 
 class Alphabet extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
     this.state = {
       justClicked: null,
       letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    };
+    }
   }
 
   handleClick(e) {
     this.setState({
       justClicked: e.target.dataset.letter
-    });
+    })
   }
 
   render() {
@@ -3220,25 +3228,25 @@ class Alphabet extends React.Component {
 Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
 
 ```js
-import throttle from 'lodash.throttle';
+import throttle from 'lodash.throttle'
 
 class LoadMoreButton extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClickThrottled = throttle(this.handleClick, 1000);
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleClickThrottled = throttle(this.handleClick, 1000)
   }
 
   componentWillUnmount() {
-    this.handleClickThrottled.cancel();
+    this.handleClickThrottled.cancel()
   }
 
   render() {
-    return <button onClick={this.handleClickThrottled}>Load More</button>;
+    return <button onClick={this.handleClickThrottled}>Load More</button>
   }
 
   handleClick() {
-    this.props.loadMore();
+    this.props.loadMore()
   }
 }
 ```
@@ -3278,7 +3286,7 @@ class Searchbox extends React.Component {
     // React pools events, so we read the value before debounce.
     // Alternately we could call `event.persist()` and pass the entire event.
     // For more info see reactjs.org/docs/events.html#event-pooling
-    this.emitChangeDebounced(e.target.value);
+    this.emitChangeDebounced(e.target.value)
   }
 
   emitChange(value) {
@@ -3294,18 +3302,18 @@ class Searchbox extends React.Component {
 For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second. Using requestAnimationFrame for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second. If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.
 
 ```js
-import rafSchedule from 'raf-schd';
+import rafSchedule from 'raf-schd'
 
 class ScrollListener extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = this.handleScroll.bind(this)
 
     // Create a new function to schedule updates.
     this.scheduleUpdate = rafSchedule(
       point => this.props.onScroll(point)
-    );
+    )
   }
 
   handleScroll(e) {
@@ -3316,7 +3324,7 @@ class ScrollListener extends React.Component {
 
   componentWillUnmount() {
     // Cancel any pending updates since we're unmounting.
-    this.scheduleUpdate.cancel();
+    this.scheduleUpdate.cancel()
   }
 
   render() {
@@ -3327,7 +3335,7 @@ class ScrollListener extends React.Component {
       >
         <img src="/my-huge-image.jpg" />
       </div>
-    );
+    )
   }
 }
 ```
@@ -3390,7 +3398,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"))
 ```
 
 When an entry is made in the first input field, React creates a new tree. The new tree which is the virtual DOM will contain the new state for **entry1**. Then, React compares the virtual DOM with the old DOM and, from the comparison, it figures out the difference between both DOMs and makes an update to only the part that is different. A new tree is created each time the state of App component changes — when a value is entered in either of the inputs field, or when the button is clicked.
@@ -3638,7 +3646,7 @@ class App extends React.Component {
     this.state = {
       records: [],
       inputValue: this.props.inputValue
-    };
+    }
   }
 
   render() {
@@ -3682,50 +3690,50 @@ import React, { useLayoutEffect, useState } from 'react'
 
 function useWindowSize() {
 
-  const [size, setSize] = useState([0, 0]);
+  const [size, setSize] = useState([0, 0])
 
   useLayoutEffect(() => {
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
+      setSize([window.innerWidth, window.innerHeight])
     }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
+    window.addEventListener('resize', updateSize)
+    updateSize()
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
 
-  return size;
+  return size
 }
 
 function ShowWindowDimensions(props) {
 
-  const [width, height] = useWindowSize();
-  return <span>Window size: {width} x {height}</span>;
+  const [width, height] = useWindowSize()
+  return <span>Window size: {width} x {height}</span>
 }
 ```
 
 **Using React classes**
 
 ```js
-import React from 'react';
+import React from 'react'
 
 class ShowWindowDimensions extends React.Component {
   
-  state = { width: 0, height: 0 };
+  state = { width: 0, height: 0 }
   
   updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
   /**
    * Add event listener
    */
   componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
+    window.addEventListener('resize', this.updateDimensions)
   }
   /**
    * Remove event listener
    */
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions)
   }
 
   render() {
@@ -3806,11 +3814,11 @@ React Router 5 embraces the power of hooks and has introduced four different hoo
 * A primary use case would be for programmatic routing with functions, like `push`, `replace`, etc.
 
 ```js
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
 function Home() {
-  const history = useHistory();
-  return <button onClick={() => history.push('/profile')}>Profile</button>;
+  const history = useHistory()
+  return <button onClick={() => history.push('/profile')}>Profile</button>
 }
 ```
 
@@ -3821,15 +3829,15 @@ function Home() {
 * A primary use case for this would be to access the query params or the complete route string.
 
 ```js
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
 function Profile() {
-  const location = useLocation();
+  const location = useLocation()
   useEffect(() => {
-    const currentPath = location.pathname;
-    const searchParams = new URLSearchParams(location.search);
-  }, [location]);
-  return <p>Profile</p>;
+    const currentPath = location.pathname
+    const searchParams = new URLSearchParams(location.search)
+  }, [location])
+  return <p>Profile</p>
 }
 ```
 
@@ -3839,11 +3847,11 @@ function Profile() {
 * This was possible earlier only using match.params.
 
 ```js
-import { useParams, Route } from 'react-router-dom';
+import { useParams, Route } from 'react-router-dom'
 
 function Profile() {
-  const { name } = useParams();
-  return <p>{name}'s Profile</p>;
+  const { name } = useParams()
+  return <p>{name}'s Profile</p>
 }
 
 function Dashboard() {
@@ -3858,7 +3866,7 @@ function Dashboard() {
         </Route>
       </main>
     </>
-  );
+  )
 }
 ```
 
@@ -3869,10 +3877,10 @@ function Dashboard() {
 * A primary use case would be to construct nested paths.
 
 ```js
-import { useRouteMatch, Route } from 'react-router-dom';
+import { useRouteMatch, Route } from 'react-router-dom'
 
 function Auth() {
-  const match = useRouteMatch();
+  const match = useRouteMatch()
   return (
     <>
       <Route path={`${match.url}/login`}>
@@ -3882,7 +3890,7 @@ function Auth() {
         <Register />
       </Route>
     </>
-  );
+  )
 }
 ```
 
@@ -3912,7 +3920,7 @@ render() {
 Every component that is an immediate child of the `<Route>` component receives history object as a prop. This is the same history (library) which keeps history of the session of React Router. We can thus use its properties to navigate to the required paths.
 
 ```js
-this.props.history.push("/first");
+this.props.history.push("/first")
 ```
 
 <div align="right">
@@ -3979,7 +3987,7 @@ export default class App extends React.Component {
 class ParentComp extends React.Component {
   render() {
     // The new prop to the added.
-    let newProp = 'red';
+    let newProp = 'red'
       // Looping over the parent's entire children,
       // cloning each child, adding a new prop.
     return (
@@ -3987,7 +3995,7 @@ class ParentComp extends React.Component {
         {React.Children.map(this.props.children,
           child => {
             return React.cloneElement(child,
-            {newProp}, null);
+            {newProp}, null)
         })}
       </div>
     )
@@ -4056,7 +4064,7 @@ Keys are unique identifiers that must be attached to the top-level element insid
 *Example:* Rendering an Array of Objects as a List
 
 ```js
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 class Item extends Component {
   state = {
@@ -4157,15 +4165,15 @@ We can forward a `ref` to a component by using the `React.forwardRef()` function
 // Ref.js
 const TextInput = React.forwardRef((props, ref) => (
   <input type="text" placeholder="Hello World" ref={ref} />
-));
+))
 
-const inputRef = React.createRef();
+const inputRef = React.createRef()
 
 class CustomTextInput extends React.Component {
   handleSubmit = e => {
-    e.preventDefault();
-    console.log(inputRef.current.value);
-  };
+    e.preventDefault()
+    console.log(inputRef.current.value)
+  }
 
   render() {
     return (
@@ -4175,7 +4183,7 @@ class CustomTextInput extends React.Component {
           <button>Submit</button>
         </form>
       </div>
-    );
+    )
   }
 }
 ```
@@ -4322,7 +4330,7 @@ const DashedBox = () => (
   <div className={styles.container}>
     <p className={styles.content}>Get started with CSS Modules style</p>
   </div>
-);
+)
 
 export default DashedBox
 ```
@@ -4453,8 +4461,8 @@ The following piece of code will log null because event has been reused inside t
 ```js
 function handleClick(event) {
   setTimeout(function () {
-    console.log(event.target.name);
-  }, 1000);
+    console.log(event.target.name)
+  }, 1000)
 }
 ```
 
@@ -4462,10 +4470,10 @@ To avoid this we need to store the event\'s property:
 
 ```js
 function handleClick(event) {
-  let name = event.target.name;
+  let name = event.target.name
   setTimeout(function () {
-    console.log(name);
-  }, 1000);
+    console.log(name)
+  }, 1000)
 }
 ```
 
@@ -4501,20 +4509,20 @@ The `SyntheticEvent` is pooled. This means that the SyntheticEvent object will b
 
 ```js
 function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
+  console.log(event) // => nullified object.
+  console.log(event.type) // => "click"
+  const eventType = event.type // => "click"
 
   setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
+    console.log(event.type) // => null
+    console.log(eventType) // => "click"
+  }, 0)
 
   // Won't work. this.state.clickEvent will only contain null values.
-  this.setState({clickEvent: event});
+  this.setState({clickEvent: event})
 
   // You can still export event properties.
-  this.setState({eventType: event.type});
+  this.setState({eventType: event.type})
 }
 ```
 
@@ -4590,8 +4598,8 @@ However, there may be cases where the render() method depends on some other data
 In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
 
 ```js
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
 
 class Greeting extends Component {
   state = {
@@ -4599,10 +4607,10 @@ class Greeting extends Component {
   }
 
   stateChange = (f) => {
-    const {name, value} = f.target;
+    const {name, value} = f.target
     this.setState({
       [name]: value,
-    });
+    })
   }
 
   render() {
@@ -4614,11 +4622,11 @@ class Greeting extends Component {
             <h4> Greetings, {this.state.fullname}!</h4>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Greeting;
+export default Greeting
 ```
 
 **2. Using forceUpdate()**
@@ -4687,7 +4695,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getData()
   }
 
   render() {
@@ -4789,15 +4797,15 @@ class News extends Component {
   _isMounted = false // flag to check Mounted
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       news: [],
-    };
+    }
   }
 
   componentDidMount() {
-    this._isMounted = true;
+    this._isMounted = true
 
     axios
       .get('https://hn.algolia.com/api/v1/search?query=react')
@@ -4805,13 +4813,13 @@ class News extends Component {
         if (this._isMounted) {
           this.setState({
             news: result.data.hits,
-          });
+          })
         }
-      });
+      })
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this._isMounted = false
   }
 
   render() {
@@ -4821,7 +4829,7 @@ class News extends Component {
           <li key={topic.objectID}>{topic.title}</li>
         ))}
       </ul>
-    );
+    )
   }
   }
 }
@@ -5056,11 +5064,11 @@ class MyComponent extends React.Component {
 ## Q. ***How to display style based on props value?***
 
 ```js
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Button = styled.button`
-  background: ${props => props.primary ? 'palevioletred' : 'white'};
-  color: ${props => props.primary ? 'white' : 'palevioletred'};
+  background: ${props => props.primary ? 'palevioletred' : 'white'}
+  color: ${props => props.primary ? 'white' : 'palevioletred'}
 `;
 
 function MyPureComponent(props) {
@@ -5069,7 +5077,7 @@ function MyPureComponent(props) {
       <Button>Normal</Button>
       <Button primary>Primary</Button>
     </div>
-  );
+  )
 }
 ```
 
@@ -5212,9 +5220,9 @@ export default withLoader(withUser(Welcome))
 
 ```js
 onChange(e) {
-  const key = e.target.name;
-  const value = e.target.value;
-  this.setState({ [key]: value });
+  const key = e.target.name
+  const value = e.target.value
+  this.setState({ [key]: value })
 }
 ```
 
@@ -5222,9 +5230,9 @@ onChange(e) {
 
 ```js
 handleSetState(cat, key, val) {
-  const category = {...this.state[cat]};
-  category[key] = val;
-  this.setState({ [cat]: category });
+  const category = {...this.state[cat]}
+  category[key] = val
+  this.setState({ [cat]: category })
 }
 ```
 
@@ -5291,50 +5299,50 @@ export default class DragItem extends React.Component {
      circleLeft: 500,
      circleTop: 100
   }
-  isDragging = false;
-  previousLeft = 0;
-  previousTop = 0;
+  isDragging = false
+  previousLeft = 0
+  previousTop = 0
 
   onDown = e => {
-     this.isDragging = true;
-     e.target.setPointerCapture(e.pointerId);
-     this.getDelta(e);
-  };
+     this.isDragging = true
+     e.target.setPointerCapture(e.pointerId)
+     this.getDelta(e)
+  }
   onMove = e => {
       if (!this.isDragging) {
-         return;
+         return
       }
   
-      const {left, top} = this.getDelta(e);
+      const {left, top} = this.getDelta(e)
       this.setState(({circleLeft, circleTop}) => ({
          circleLeft: circleLeft + left,
          circleTop: circleTop + top
       }))
   }
-  onUp = e => (this.isDragging = false);
-  onGotCapture = e => this.setState({gotCapture: true});
-  onLostCapture = e => this.setState({gotCapture: false});
+  onUp = e => (this.isDragging = false)
+  onGotCapture = e => this.setState({gotCapture: true})
+  onLostCapture = e => this.setState({gotCapture: false})
   getDelta = e => {
-      const left = e.pageX;
-      const top = e.pageY;
+      const left = e.pageX
+      const top = e.pageY
       const delta = {
          left: left - this.previousLeft,
          top: top - this.previousTop,
-      };
-      this.previousLeft = left;
-      this.previousTop = top;
+      }
+      this.previousLeft = left
+      this.previousTop = top
 
-      return delta;
+      return delta
   }
   render() {
-      const {gotCapture, circleLeft, circleTop} = this.state;
+      const {gotCapture, circleLeft, circleTop} = this.state
       const boxStyle = {
          border: '2px solid #cccccc',
          margin: '10px 0 20px',
          minHeight: 400,
          width: '100%',
          position: 'relative',
-      };
+      }
       const circleStyle = {
          width: CIRCLE_DIAMETER,
          height: CIRCLE_DIAMETER,
@@ -5344,7 +5352,7 @@ export default class DragItem extends React.Component {
          top: circleTop,
          backgroundColor: gotCapture ? 'red' : 'green',
          touchAction: 'none',
-      };
+      }
       return (
          <div style={boxStyle}>
             <div
@@ -5504,14 +5512,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center"
-};
+}
 
 const App = () => (
   <div style={styles}>
     <h2>Click below to go to other page. Also, open source code</h2>
     <Link to="/greeting/World">Go to /greeting/World</Link>
   </div>
-);
+)
 
 const RouterExample = () => (
   <Router>
@@ -5537,13 +5545,13 @@ render(<RouterExample />, document.getElementById("root"))
 ```
 
 ```js
-import React from "react";
+import React from "react"
 
 export class Greeting extends React.Component {
   render() {
-    const { text, match: { params } } = this.props;
+    const { text, match: { params } } = this.props
 
-    const { name } = params;
+    const { name } = params
 
     return (
       <React.Fragment>
@@ -5552,7 +5560,7 @@ export class Greeting extends React.Component {
           {text} {name}
         </p>
       </React.Fragment>
-    );
+    )
   }
 }
 ```
@@ -5734,9 +5742,9 @@ const person = {
   sex: ""
 }
 
-const first = person.firstName;
-const age = person.age;
-const sex = person.sex || "Male";
+const first = person.firstName
+const age = person.age
+const sex = person.sex || "Male"
 
 console.log(first) // "Alex"
 console.log(age) // 25
@@ -5753,7 +5761,7 @@ const person = {
   sex: "M"
 }
 
-const { firstName, lastName, age, sex } = person;
+const { firstName, lastName, age, sex } = person
 
 console.log(firstName) // Alex
 console.log(lastName) // K
@@ -5772,16 +5780,24 @@ import Button from '@material-ui/core/Button'
 
 export default function Events() {
 
-  const [counter, setcounter] = React.useState(0);
+  const [counter, setcounter] = React.useState(0)
 
   return (
       <div className='Counter'>
           <div>Result: {counter}</div>
-          <Button variant='contained' color='primary' onClick={() => setcounter(counter + 1)} >
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => setcounter(counter + 1)}
+          >
             Increment
           </Button>
 
-          <Button variant='contained' color='primary' onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)} >
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)}
+          >
             Decrement
           </Button>
       </div>
@@ -5994,7 +6010,7 @@ import React, { Component } from 'react'
 
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       count: 0,
     }
@@ -6002,8 +6018,8 @@ class App extends Component {
   makeIncrementer = amount => () =>
     this.setState(prevState => ({
       count: prevState.count + amount,
-    }));
-  increment = this.makeIncrementer(1);
+    }))
+  increment = this.makeIncrementer(1)
   render() {
     return (
       <div>
@@ -6067,15 +6083,15 @@ The `shallow()` method is used to render the single component that we are testin
 *Example*:
 
 ```js
-import React from "react";
-import { shallow } from "enzyme";
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from "react"
+import { shallow } from "enzyme"
+import Enzyme from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
 
 function Name(props) {
-  return <span>Welcome {props.name}</span>;
+  return <span>Welcome {props.name}</span>
 }
 
 function Welcome(props) {
@@ -6083,11 +6099,11 @@ function Welcome(props) {
     <h1>
       <Name name={props.name} />
     </h1>
-  );
+  )
 }
 
-const wrapper = shallow(<Welcome name="Alex" />);
-console.log(wrapper.debug());
+const wrapper = shallow(<Welcome name="Alex" />)
+console.log(wrapper.debug())
 ```
 
 **When not to use Shallow Rendering**
@@ -6112,37 +6128,38 @@ This is more suitable when there are components which directly interfere with DO
 
 ```js
 ...
-import ListItem from './ListItem';
+import ListItem from './ListItem'
 ...
 
 return (
     <ul className="list-items">
       {items.map(item => <ListItem key={item} item={item} />)}
     </ul>
-);
+)
 ```
+
 ```js
-import React from 'react';
-import { mount } from '../enzyme';
-import List from './List';
+import React from 'react'
+import { mount } from '../enzyme'
+import List from './List'
 
 describe('List tests', () => {
 
   it('renders list-items', () => {
-    const items = ['one', 'two', 'three'];
+    const items = ['one', 'two', 'three']
 
-    const wrapper = mount(<List items={items} />);
+    const wrapper = mount(<List items={items} />)
 
     // Let's check what wrong in our instance
-    console.log(wrapper.debug());
+    console.log(wrapper.debug())
 
     // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined();
-    expect(wrapper.find('.item')).toHaveLength(items.length);
-  });
+    expect(wrapper.find('.list-items')).toBeDefined()
+    expect(wrapper.find('.item')).toHaveLength(items.length)
+  })
 
   ...
-});
+})
 ```
 
 <div align="right">
@@ -6158,26 +6175,26 @@ For static rendering, we can not access to Enzyme API methods such as `contains(
 *Example*:
 
 ```js
-import React from 'react';
-import { render } from '../enzyme';
+import React from 'react'
+import { render } from '../enzyme'
 
-import List from './List';
-import { wrap } from 'module';
+import List from './List'
+import { wrap } from 'module'
 
 describe('List tests', () => {
 
   it('renders list-items', () => {
-    const items = ['one', 'two', 'three'];
-    const wrapper = render(<List items={items} />);
+    const items = ['one', 'two', 'three']
+    const wrapper = render(<List items={items} />)
 
-    wrapper.addClass('foo');
+    wrapper.addClass('foo')
     // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined();
-    expect(wrapper.find('.item')).toHaveLength(items.length);
-  });
+    expect(wrapper.find('.list-items')).toBeDefined()
+    expect(wrapper.find('.item')).toHaveLength(items.length)
+  })
 
   ...
-});
+})
 ```
 
 <div align="right">
@@ -6203,20 +6220,20 @@ To prepare a component for assertions, wrap the code rendering it and performing
 ```js
 class Counter extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {count: 0};
-    this.handleClick = this.handleClick.bind(this);
+    super(props)
+    this.state = {count: 0}
+    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `You clicked ${this.state.count} times`
   }
   componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `You clicked ${this.state.count} times`
   }
   handleClick() {
     this.setState(state => ({
       count: state.count + 1,
-    }));
+    }))
   }
   render() {
     return (
@@ -6226,45 +6243,45 @@ class Counter extends React.Component {
           Click me
         </button>
       </div>
-    );
+    )
   }
 }
 ```
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { act } from 'react-dom/test-utils';
-import Counter from './Counter';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { act } from 'react-dom/test-utils'
+import Counter from './Counter'
 
-let container;
+let container
 
 beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
 
 afterEach(() => {
-  document.body.removeChild(container);
-  container = null;
-});
+  document.body.removeChild(container)
+  container = null
+})
 
 it('can render and update a counter', () => {
   // Test first render and componentDidMount
   act(() => {
-    ReactDOM.render(<Counter />, container);
-  });
-  const button = container.querySelector('button');
-  const label = container.querySelector('p');
-  expect(label.textContent).toBe('You clicked 0 times');
-  expect(document.title).toBe('You clicked 0 times');
+    ReactDOM.render(<Counter />, container)
+  })
+  const button = container.querySelector('button')
+  const label = container.querySelector('p')
+  expect(label.textContent).toBe('You clicked 0 times')
+  expect(document.title).toBe('You clicked 0 times')
 
   // Test second render and componentDidUpdate
   act(() => {
-    button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
-  });
-  expect(label.textContent).toBe('You clicked 1 times');
-  expect(document.title).toBe('You clicked 1 times');
+    button.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+  })
+  expect(label.textContent).toBe('You clicked 1 times')
+  expect(document.title).toBe('You clicked 1 times')
 })
 ```
 
@@ -6283,7 +6300,7 @@ Essentially, this package makes it easy to grab a snapshot of the platform view 
 ```js
 import React from 'react'
 import renderer from 'react-test-renderer'
-import App from './app.js'; // The component being tested
+import App from './app.js' // The component being tested
 
 /**
  * Snapshot tests are a useful when UI does not change frequently.
@@ -6347,7 +6364,7 @@ function App() {
     <div data-test='app-header'>
       Hello React
     </div>
-  );
+  )
 }
 export default App
 ```
