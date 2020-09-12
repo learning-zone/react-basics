@@ -5868,7 +5868,39 @@ ReactDOM.render(Routes, document.getElementById('root'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is withRouter for in react-router-dom?***
+## Q. ***What is withRouter for in react-router-dom?***
+
+`withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
+
+*Example:*
+
+```js
+import React from "react"
+import PropTypes from "prop-types"
+import { withRouter } from "react-router"
+
+// A simple component that shows the pathname of the current location
+class ShowTheLocation extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  }
+
+  render() {
+    const { match, location, history } = this.props
+
+    return <div>You are now at {location.pathname}</div>
+  }
+}
+
+const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to display API data using Axios in React?***
 #### Q. ***What is difference between react hooks and lifecycle methods?***
 #### Q. ***How to translate your React app with react-i18next?***
