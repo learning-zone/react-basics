@@ -6342,7 +6342,46 @@ axios.get('url')
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What does it mean for a component to be mounted in React?***
+## Q. ***What is the difference between rendering and mounting in ReactJS?***
+
+**Rendering** is any time a function component gets called (or a class-based render method gets called) which returns a set of instructions for creating DOM. `render()` function will be invoked every time rerendering happens in the component. It may happen either through a `state` change or a `prop` change.
+
+**Mounting** is when React `renders` the component for the first time and actually builds the initial DOM from those instructions. Mounting a react component means the actual addition of the DOM elements created by the react component into the browser DOM for the first time.
+
+A **re-render** is when React calls the function component again to get a new set of instructions on an already mounted component.
+
+*Example:*
+
+```js
+class App extends React.Component {
+  state = {
+    showUser: false
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.showUser && <User name="Brad" />}
+        <button onClick={() => this.setState({ showUser: true })}>
+          Show User
+        </button>
+        <button onClick={() => this.setState({ showUser: false })}>
+          Hide User
+        </button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+Internally, React will create an instance of `App` and will eventually call the `render()` method to get the first set of instructions for what it needs to build in the DOM. Anytime React calls the render method of a class-based component, we call that a **render**.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How would you prevent a component from rendering in React?***
 #### Q. ***What is Flow in react?***
 #### Q. ***What is the difference between a Presentational component and a Container component?***
