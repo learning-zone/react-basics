@@ -6292,7 +6292,6 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
 #### Q. ***What does it mean for a component to be mounted in React?***
 #### Q. ***How would you prevent a component from rendering in React?***
@@ -6830,6 +6829,7 @@ describe('APP Component', () => {
 #### Q. ***How to dispatch an activity in reducer?***
 #### Q. ***How to dispatch the data in-store?***
 #### Q. ***What is the purpose of using bindActionsCreators?***
+#### Q. ***What does Side effects mean in React?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
