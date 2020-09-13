@@ -6262,6 +6262,8 @@ render(<App/>, document.getElementById('root'));
 
 The ConsumerA and ConsumerB components keep a state counter individual. In their componentDidMount they subscribe to the same stream subscriber, anytime an event is published they both update the counter. The ProducerA and ProducerB have buttons Increment Counter and Decrement Counter when clicked they emit `1` or `-1`.
 
+**[[Read More](https://www.learnrxjs.io/)]**
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
