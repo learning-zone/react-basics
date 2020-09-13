@@ -6268,7 +6268,30 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is lazy function in React?***
+## Q. ***What is lazy function in React?***
+
+`React.lazy()` makes it easy to create components that are loaded using dynamic `import()` but are rendered like regular components. This will automatically cause the bundle containing the component to be loaded when the component is rendered.
+
+`React.lazy()` takes a function as its argument that must return a promise by calling `import()` to load the component. The returned Promise resolves to a module with a default export containing the React component.
+
+*Example:*
+
+```js
+import React, { lazy } from 'react'
+
+const MyComponent = React.lazy(() => import('./MyComponent'))
+
+const App = () => {
+  <div>
+    <MyComponent />
+  </div>
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
 #### Q. ***What does it mean for a component to be mounted in React?***
