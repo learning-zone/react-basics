@@ -6268,7 +6268,6 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Exmplain functional components and class components in React?***
 #### Q. ***What is lazy function in React?***
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
