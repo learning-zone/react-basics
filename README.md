@@ -6032,8 +6032,100 @@ export default class PersonList extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is difference between react hooks and lifecycle methods?***
-#### Q. ***How to translate your React app with react-i18next?***
+## Q. ***How to translate your React app with react-i18next?***
+
+**Installing dependencies**
+
+```bash
+npm install react-i18next i18next --save
+```
+
+**Configure i18next**
+
+Create a new file `i18n.js` beside your `index.js` containing following content:
+
+```js
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
+
+// Translations
+const resources = {
+  en: {
+    translation: {
+      "welcome.title": "Welcome to React and react-i18next"
+    }
+  }
+}
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng: "en",
+    keySeparator: false, // we do not use keys in form messages.welcome
+    interpolation: {
+      escapeValue: false // react already safes from xss
+    }
+  })
+
+export default i18n
+```
+
+we pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
+
+```js
+import React, { Component } from "react"
+import ReactDOM from "react-dom"
+import './i18n'
+import App from './App'
+
+// append app to dom
+ReactDOM.render(
+  <App />,
+  document.getElementById("root")
+)
+```
+
+**Using the Hook**
+
+The `t` function is the main function in i18next to translate content.
+
+```js
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+
+function MyComponent () {
+  const { t, i18n } = useTranslation()
+  return <h1>{t('welcome.title')}</h1>
+}
+```
+
+**Using the HOC**
+
+Using higher order components is one of the most used method to extend existing components by passing additional props to them. The `t` function is in `i18next` the main function to translate content.
+
+```js
+import React from 'react'
+import { withTranslation } from 'react-i18next'
+
+class HighOrderComponent extends React.Component {
+    render() {
+
+      return (
+        <h1>{this.props.t('welcome.title')}</h1>
+      )
+    }
+}
+
+export default withTranslation()(HighOrderComponent)
+```
+
+**[[Read More](https://react.i18next.com/guides/quick-start)]**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How RxJS is used in React for state management?***
 #### Q. ***Exmplain functional components and class components in React?***
 #### Q. ***What is lazy function in React?***
