@@ -558,6 +558,7 @@ class Task extends React.Component {
 }
 ReactDOM.render(<Test />, document.getElementById('app'))
 ```
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -6382,8 +6383,56 @@ Internally, React will create an instance of `App` and will eventually call the 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How would you prevent a component from rendering in React?***
-#### Q. ***What is Flow in react?***
+## Q. ***What is Flow in react?***
+
+**Type Checking**
+
+Type checking means ensuring that the type of a property (variable, object, function, string) in a programming language is being used as it should be. It is the process of verifying and enforcing the constraints of types, and it can occur either at compile time or at runtime. It helps to detect and report errors.
+
+Type checking can be divided into two: static type checking and dynamic type checking.
+
+**1. Static Type Checking**
+
+Static type checking is used in static-typed languages where the type of the variable is known at the compile time. This means that the type of the variable must be declared beforehand. Static typing usually results in compiled code that executes more quickly because the compiler already knows the exact data types that are in use.
+
+**2. Dynamic type checking**
+
+Dynamic type checking is used in dynamic-typed languages where the type is usually known at runtime. This means that the type of the variable doesn\'t need to be explicitly defined.
+
+**Flow**
+
+Flow is a static type checker for JavaScript apps that aims to find and eliminate problems as you code. Designed by the Facebook team for JavaScript developers, it\'s a static type checker that catches common errors in your application before they run.
+
+**Integrating Flow**
+
+```bash
+# Create React App with Flowchecker
+npx create-react-app flowchecker
+
+# Add Dependency
+npm install --save-dev flow-bin
+```
+
+The next thing to do is add Flow to the "scripts" section of your package.json so that Flow can be used in the terminal. In the package.json file, add the code snippet below.
+
+```json
+ "scripts": {
+      "flow": "flow",
+    }
+```
+
+Finally, for the Flow setup, run any of the commands below:
+
+```bash
+npm run flow init
+```
+
+This will help to create a Flow configuration file that should be committed. The Flow config file helps to determine the files that Flow should work with and what should be ignored.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between a Presentational component and a Container component?***
 #### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
@@ -6405,7 +6454,6 @@ Internally, React will create an instance of `App` and will eventually call the 
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***Does React re-render all components and sub components every time setState is called?***
 #### Q. ***What is reselect and how it works?***
-#### Q. ***How to prevent components from re-rendering?***
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
 #### Q. ***What is React Fiber?***
 #### Q. ***Explain Composition vs Inheritance in React?***
