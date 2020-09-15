@@ -6433,7 +6433,60 @@ This will help to create a Flow configuration file that should be committed. The
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
+## Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
+
+**Bind in Constructor**
+
+```js
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+
+**Bind in Render**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+  }
+}
+```
+
+**Arrow Function in Render**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={() => this.handleClick()}>Click Me</button>
+  }
+}
+```
+
+Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 #### Q. ***What is the alternative of binding `this` in the constructor?***
 #### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
