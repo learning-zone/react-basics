@@ -6491,7 +6491,7 @@ Using an arrow function in render creates a new function each time the component
 
 Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
 
-*Example:* setState Callback in a Class Component
+*Example: setState Callback in a Class Component*
 
 ```js
 import React, { Component } from 'react'
@@ -6535,7 +6535,7 @@ class App extends Component {
 export default App
 ```
 
-*Example:* setState Callback in a Functional Component
+*Example: setState Callback in a Functional Component*
 
 ```js
 import React, { useEffect, useState } from 'react'
