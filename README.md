@@ -1,4 +1,4 @@
-# React Interview Questions and Answers
+# React Interview Questions
 
 *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
 
@@ -6487,7 +6487,93 @@ Using an arrow function in render creates a new function each time the component
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
+## Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
+
+Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
+
+*Example:* setState Callback in a Class Component
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      age: 0,
+    }
+  }
+  
+  // this.checkAge is passed as the callback to setState
+  updateAge = (value) => {
+    this.setState({ age: value}, this.checkAge)
+  }
+
+  checkAge = () => {
+    const { age } = this.state
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }
+
+  render() {
+    const { age } = this.state
+    return (
+      <div>
+        <p>Drinking Age Checker</p>
+        <input
+          type="number"
+          value={age}
+          onChange={e => this.updateAge(e.target.value)}
+        />
+      </div>
+    )
+  }
+}
+export default App
+```
+
+*Example:* setState Callback in a Functional Component
+
+```js
+import React, { useEffect, useState } from 'react'
+
+function App() {
+  const [age, setAge] = useState(0)
+  
+  updateAge(value) {
+    setAge(value)
+  }
+
+  useEffect(() => {
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }, [age])
+
+  return (
+    <div>
+      <p>Drinking Age Checker</p>
+      <input
+        type="number"
+        value={age} 
+        onChange={e => setAge(e.target.value)}
+      />
+    </div>
+  )
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the alternative of binding `this` in the constructor?***
 #### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
 #### Q. ***How to bind methods or event handlers in JSX callbacks?***
