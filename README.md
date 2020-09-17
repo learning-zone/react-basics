@@ -6596,8 +6596,6 @@ class Button extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
-#### Q. ***How to bind methods or event handlers in JSX callbacks?***
 #### Q. ***What is the difference between ShadowDOM and VirtualDOM?***
 #### Q. ***What is Lifting State Up in ReactJS?***
 #### Q. ***How to setstate with a dynamic key name?***
