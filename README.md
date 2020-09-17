@@ -6620,7 +6620,93 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Lifting State Up in ReactJS?***
+## Q. ***What is Lifting State Up in ReactJS?***
+
+The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
+
+*Example:*
+
+The App component containing PlayerContent and PlayerDetails component. PlayerContent shows the player name buttons. PlayerDetails shows the details of the in one line.
+
+The app component contains the state for both the component. The selected player is shown once we click on the one of the player button.
+
+App.js
+
+```js
+import React from 'react'
+import PlayerContent from './PlayerContent'
+import PlayerDetails from './PlayerDetails'
+import './App.css'
+
+class App extends React.Component {
+   constructor(props) {
+      super(props)
+      this.state = { selectedPlayer: [0,0], playerName: ''}
+      this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this)
+   }
+   updateSelectedPlayer(id, name) {
+      var arr = [0, 0, 0, 0]
+      arr[id] = 1
+      this.setState({
+         playerName: name,
+         selectedPlayer: arr
+      })
+   }
+   render () {
+      return (
+        <div>
+            <PlayerContent active={this.state.selectedPlayer[0]}
+            clickHandler={this.updateSelectedPlayer} id={0} name="David"/>
+            <PlayerContent active={this.state.selectedPlayer[1]}
+            clickHandler={this.updateSelectedPlayer} id={1} name="Steve"/>
+            <PlayerDetails name={this.state.playerName}/>
+        </div>
+      )
+   }
+}
+export default App
+```
+
+PlayerContent.js
+
+```js
+import React , { Component} from 'react'
+
+class PlayerContent extends Component {
+   render () {
+      return (
+        <button
+          onClick={() => {this.props.clickHandler(this.props.id, this.props.name)}}
+          style={{color: this.props.active? 'red': 'blue'}}
+        >
+          {this.props.name}
+        </button>
+      )
+   }
+}
+export default PlayerContent
+```
+
+PlayerDetails.js
+
+```js
+import React, { Component } from 'react'
+
+class PlayerDetails extends Component {
+  render () {
+    return (
+      <div>{this.props.name}</div>
+    )
+  }
+}
+
+export default PlayerDetails
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to setstate with a dynamic key name?***
 #### Q. ***What would be the common mistake of function being called every time the component renders?***
 #### Q. ***Why do class methods need to be bound to a class instance?***
