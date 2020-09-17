@@ -6624,7 +6624,7 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
 
 The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
 
-*Example:*
+**Example:**
 
 The App component containing PlayerContent and PlayerDetails component. PlayerContent shows the player name buttons. PlayerDetails shows the details of the in one line.
 
@@ -6711,7 +6711,7 @@ export default PlayerDetails
 
 The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
 
-**Example:**
+*Example:*
 
 ```js
 const Picture = (props) => {
