@@ -6574,7 +6574,28 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the alternative of binding `this` in the constructor?***
+## Q. ***What is the alternative of binding `this` in the constructor?***
+
+**Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
+
+*Example:*
+
+```js
+class Button extends React.Component {
+  // no binding
+  handleClick = (e) => {
+    console.log('clicked !');
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the typical pattern for rendering a list of components from an array of data?***
 #### Q. ***How to bind methods or event handlers in JSX callbacks?***
 #### Q. ***What is the difference between ShadowDOM and VirtualDOM?***
