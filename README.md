@@ -6707,18 +6707,49 @@ export default PlayerDetails
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to setstate with a dynamic key name?***
-#### Q. ***What would be the common mistake of function being called every time the component renders?***
-#### Q. ***Why do class methods need to be bound to a class instance?***
-#### Q. ***What is the difference between HTML and React event handling?***
-#### Q. ***What is "Children" in React?***
+## Q. ***What is "Children" in React?***
+
+The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
+
+*Example:*
+
+```js
+const Picture = (props) => {
+  return (
+    <div>
+      <img src={props.src}/>
+      {props.children}
+    </div>
+  )
+}
+```
+
+This component contains an `<img>` that is receiving some props and then it is displaying `{props.children}`.
+Whenever this component is invoked `{props.children}` will also be displayed and this is just a reference to what is between the opening and closing tags of the component.
+
+```js
+//App.js
+
+render () {
+  return (
+    <div className='container'>
+      <Picture key={picture.id} src={picture.src}>
+          //what is placed here is passed as props.children  
+      </Picture>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What does Eject do in Create React App?***
 #### Q. ***Why are string refs considered legacy in React?***
-#### Q. ***How to apply validation on Props in ReactJS***
 #### Q. ***What are the recommended ways for static type checking?***
 #### Q. ***What is the difference between Flow and PropTypes?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
-#### Q. ***Does React re-render all components and sub components every time setState is called?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
 #### Q. ***What is React Fiber?***
