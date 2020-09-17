@@ -6596,7 +6596,30 @@ class Button extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between ShadowDOM and VirtualDOM?***
+## Q. ***What is the difference between ShadowDOM and VirtualDOM?***
+
+<img src="assets/shadow-dom.png" alt="DOM" width="600px" />
+
+**Document Object Model**
+
+It a way of representing a structured document via objects. It is cross-platform and language-independent convention for representing and interacting with data in HTML, XML, and others. Web browsers handle the DOM implementation details, so we can interact with it using JavaScript and CSS.
+
+**Virtual DOM**
+
+Virtual DOM is any kind of representation of a real DOM. Virtual DOM is about avoiding unnecessary changes to the DOM, which are expensive performance-wise, because changes to the DOM usually cause re-rendering of the page. It allows to collect several changes to be applied at once, so not every single change causes a re-render, but instead re-rendering only happens once after a set of changes was applied to the DOM.
+
+**Shadow DOM**
+
+Shadow DOM is mostly about encapsulation of the implementation. A single custom element can implement more-or-less complex logic combined with more-or-less complex DOM. Shadow DOM refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.
+
+**Difference**
+
+The virtual DOM creates an additional DOM. The shadow DOM simply hides implementation details and provides isolated scope for web components.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is Lifting State Up in ReactJS?***
 #### Q. ***How to setstate with a dynamic key name?***
 #### Q. ***What would be the common mistake of function being called every time the component renders?***
