@@ -6745,7 +6745,16 @@ render () {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What does Eject do in Create React App?***
+## Q. ***What does Eject do in Create React App?***
+
+The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
+
+After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why are string refs considered legacy in React?***
 #### Q. ***What are the recommended ways for static type checking?***
 #### Q. ***What is the difference between Flow and PropTypes?***
