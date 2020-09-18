@@ -6792,7 +6792,7 @@ This callback is called when the component `mounts` with a reference to the dom 
 
 ## Q. ***What are the recommended way for static type checking?***
 
-Static type checkers like `Flow` and `TypeScript` identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we recommend using `Flow` or `TypeScript` instead of `PropTypes` for larger code bases.
+Static type checkers like `Flow` and `TypeScript` identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we should use `Flow` or `TypeScript` instead of `PropTypes` for larger code bases.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
