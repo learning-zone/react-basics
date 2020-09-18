@@ -1645,6 +1645,7 @@ Person.propTypes = {
 
 export default Person
 ```
+
 `PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
 
 <div align="right">
@@ -6798,7 +6799,16 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between Flow and PropTypes?***
+## Q. ***What is the difference between Flow and PropTypes?***
+
+`Flow` is a static analysis tool which uses a superset of the language, allows to add type annotations to all of your code and catch an entire class of bugs at compile time.
+
+`PropTypes` is a basic type checker which has been patched onto React. It can't check anything other than the types of the props being passed to a given component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to use Component Composition to create a Flexible Compound Component in React?***
