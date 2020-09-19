@@ -6938,7 +6938,7 @@ ReactDOM.render(
 )
 ```
 
-Here, We extended the UserNameForm component and extracted its method in child component using `super.render()`
+Here, We extended the `UserNameForm` component and extracted its method in child component using `super.render()`
 
 **Composition**
 
@@ -6986,7 +6986,7 @@ ReactDOM.render(
 
 **Inheritance vs Composition**
 
-Inheritance used the is-a relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component. 
+Inheritance used the `is-a` relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component.
 
 Composition does not inherit properties, only the behavior. In inheritance, it was difficult to add new behavior because the derived component was inheriting all the properties of parent class and it was quite difficult to add new behavior. But in composition, we only inherit behavior and adding new behavior is fairly simple and easy.
 
