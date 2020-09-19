@@ -6890,7 +6890,112 @@ Fiber is currently available for use but it runs in compatibility mode with the 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain Composition vs Inheritance in React?***
+## Q. ***Explain Composition vs Inheritance in React?***
+
+**Inheritance**
+
+Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
+
+*Example:*
+
+```js
+class UserNameForm extends React.Component {
+   render() {
+      return (
+         <div>
+            <input type="text" />
+         </div>
+      )
+   }
+}
+class CreateUserName extends UserNameForm {
+   render() {
+      const parent = super.render();
+      return (
+         <div>
+            {parent}
+            <button>Create</button>
+         </div>
+      )
+   }
+}
+class UpdateUserName extends UserNameForm {
+   render() {
+      const parent = super.render();
+      return (
+         <div>
+            {parent}
+            <button>Update</button>
+         </div>
+      )
+   }
+}
+ReactDOM.render(
+   (<div>
+      < CreateUserName />
+      < UpdateUserName />
+   </div>), document.getElementById('root')
+)
+```
+
+Here, We extended the UserNameForm component and extracted its method in child component using `super.render()`
+
+**Composition**
+
+Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
+
+*Example:*
+
+```js
+class UserNameForm extends React.Component {
+   render() {
+      return (
+         <div>
+            <input type="text" />
+         </div>
+      );
+   }
+}
+class CreateUserName extends React.Component {
+   render() {
+      return (
+         <div>
+            < UserNameForm />
+            <button>Create</button>
+         </div>
+      )
+   }
+}
+class UpdateUserName extends React.Component {
+   render() {
+      return (
+         <div>
+            < UserNameForm />
+            <button>Update</button>
+         </div>
+      )
+   }
+}
+ReactDOM.render(
+   (<div>
+      <CreateUserName />
+      <UpdateUserName />
+   </div>), document.getElementById('root')
+)
+```
+
+**Inheritance vs Composition**
+
+Inheritance used the is-a relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component. 
+
+Composition does not inherit properties, only the behavior. In inheritance, it was difficult to add new behavior because the derived component was inheriting all the properties of parent class and it was quite difficult to add new behavior. But in composition, we only inherit behavior and adding new behavior is fairly simple and easy.
+
+React recommends use of Composition over Inheritance, here is why. Everything in React is a component, and it follows a strong component based model. This is one of the primary reasons that composition is a better approach than inheritance for code reuse.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is a Webhook in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***How does Interceptors work in react?***
