@@ -6840,7 +6840,56 @@ In this example, the `<Menu>` establishes some shared implicit state. The `<Menu
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is React Fiber?***
+## Q. ***What is React Fiber?***
+
+React Fiber is the new **reconciliation algorithm**. Reconciliation is the process of comparing or diffing old trees with a new tree in order to find what is changed or modified. In the original reconciliation algorithm (now called **Stack Reconciler**), the processing of component trees was done synchronously in a single pass, so the main thread was not available for other UI related tasks like animation, layouts, and gesture handling. Fiber Reconciler has different goals:
+
+* Ability to split interruptible work in chunks.
+* Ability to prioritize, rebase, and reuse work in progress.
+* Ability to yield back and forth between parents and children to support layout in React.
+* Ability to return multiple elements from `render()`.
+
+A fiber is a JavaScript object that contains information about a component, its input, and output. At any time, a component instance has at most two fibers that correspond to it: the current fiber and the work-in-progress fiber. A fiber can be defined as a unit of work.
+
+React Fiber performs reconciliation in two phases: Render and Commit
+
+**1. Lifecycle methods called during render phase:**
+
+* `UNSAFE_componentWillMount()`
+* `UNSAFE_componentWillReceiveProps()`
+* `getDerivedStateFromProps()`
+* `shouldComponentUpdate()`
+* `UNSAFE_componentWillUpdate()`
+* `render()`
+
+**2. Lifecycle methods called during commit phase:**
+
+* `getSnapshotBeforeUpdate()`
+* `componentDidMount()`
+* `componentDidUpdate()`
+* `componentWillUnmount()`
+
+The earlier whole reconciliation process was synchronous (recursive), but in Fiber, it is divided into two phases. Render phase (a.k.a. Reconciliation phase) is asynchronous, so three of the lifecycle methods were marked unsafe because putting the code with side-effects inside these methods can cause problems, as lifecycle methods of different components are not guaranteed to fire in a predictable order.
+
+React Fiber uses `requestIdleCallback()` to schedule the low priority work and `requestAnimationFrame()` to schedule high priority work.
+
+**Problems with Current Implementation:**
+
+* Long-running tasks cause frame drops.
+* Different tasks have different priorities.
+
+**How React Fiber works**
+
+* It makes apps more fluid and responsible.
+* In the future, it could parallelize work a.k.a. Time Slicing.
+* It would improve startup time while rendering components using React Suspense.
+
+Fiber is currently available for use but it runs in compatibility mode with the current implementation.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain Composition vs Inheritance in React?***
 #### Q. ***What is a Webhook in React?***
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
