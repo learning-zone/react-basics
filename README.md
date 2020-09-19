@@ -7002,6 +7002,10 @@ Web hooks provide a mechanism where by a server-side application can notify a cl
 
 Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-side application calls (consumes) the server-side application. Whereas, in case of web hooks it is the server-side that calls (consumes) the web hook (the end-point URL provided by the client-side application), i.e. it is the server-side application that calls the client-side application.
 
+*Example:*
+
+*ToDo*
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
