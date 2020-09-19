@@ -6996,7 +6996,16 @@ React recommends use of Composition over Inheritance, here is why. Everything in
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is a Webhook in React?***
+## Q. ***What is a Webhook in React?***
+
+Web hooks provide a mechanism where by a server-side application can notify a client-side application when a new event (that the client-side application might be interested in) has occurred on the server.
+
+Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-side application calls (consumes) the server-side application. Whereas, in case of web hooks it is the server-side that calls (consumes) the web hook (the end-point URL provided by the client-side application), i.e. it is the server-side application that calls the client-side application.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 #### Q. ***How does Interceptors work in react?***
 #### Q. ***how to use useSpring() for animation?***
