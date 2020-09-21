@@ -7237,6 +7237,7 @@ axiosInstance.interceptors.response.use(
 </div>
 
 #### Q. ***how to use useSpring() for animation?***
+#### Q. ***How to create a custom react hook to fetch and cache data?***
 
 <br/>
 
