@@ -7649,6 +7649,7 @@ function App() {
 }
 export default App
 ```
+
 ```js
 import React from 'react'
 import { shallow } from 'enzyme'
@@ -7666,6 +7667,7 @@ describe('APP Component', () => {
 
 })
 ```
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -7745,6 +7747,7 @@ describe('APP Component', () => {
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***What is reselect and how it works?***
+#### Q. ***Explain caching in redux?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
