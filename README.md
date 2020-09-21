@@ -7174,7 +7174,69 @@ function useFriendStatus(friendID) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How does Interceptors work in react?***
+## Q. ***How does Axios Interceptors work in react?***
+
+Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
+
+There are two types of interceptors:
+
+* **request interceptor**: This is called before the actual call to the endpoint is made.
+* **response interceptor**: This is called before the promise is completed and the data is received by the then callback.
+
+**1. Request interceptor**
+
+One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
+
+*Example:*
+
+```js
+// Add request handler
+const requestHandler = (request) => {
+  if (isHandlerEnabled(request)) {
+    // Modify request here
+    request.headers['X-Auth'] = 'https://example.com/vPvKWe'
+  }
+  return request
+}
+
+// Enable request interceptor
+axiosInstance.interceptors.request.use(
+  request => requestHandler(request)
+)
+```
+
+**2. Response and error interceptors**
+
+*Example:*
+
+```js
+// Add response handlers
+const errorHandler = (error) => {
+  if (isHandlerEnabled(error.config)) {
+    // Handle errors
+  }
+  return Promise.reject({ ...error })
+}
+
+const successHandler = (response) => {
+  if (isHandlerEnabled(response.config)) {
+    // Handle responses
+  }
+  return response
+}
+
+// Enable interceptors
+axiosInstance.interceptors.response.use(
+  response => successHandler(response),
+  error => errorHandler(error)
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+
 #### Q. ***how to use useSpring() for animation?***
 
 <br/>
