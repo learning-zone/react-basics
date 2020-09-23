@@ -7848,8 +7848,39 @@ describe('APP Component', () => {
 
 ## Redux Questions
 
-#### Q. ***What is Redux?***
-#### Q. ***What is dispatcher in Redux?***
+## Q. ***What is Redux?***
+
+Redux is a predictable state container for JavaScript applications. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
+
+Simply put, Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
+
+**How Redux works**
+
+There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another. There are three building parts: actions, store, and reducers.
+
+**Benefits and limitations of Redux**
+
+**1. State transfer**
+
+State is stored together in a single place called the ‘store.’ While you do not need to store all the state variables in the ‘store,’ it is especially important to when state is being shared by multiple components or in a more complex architecture. It also allows you to call state data from any component easily.
+
+**2. Predictability**
+
+Redux is “a predictable state container for Javascript apps.” Because reducers are pure functions, the same result will always be produced when a state and action are passed in.
+
+**3. Maintainability**
+
+Redux provides a strict structure for how the code and state should be managed, which makes the architecture easy to replicate and scale for somebody who has previous experience with Redux.
+
+**4. Ease of testing and debugging**
+
+Redux makes it easy to test and debug your code since it offers powerful tools such as Redux DevTools in which you can time travel to debug, track your changes, and much more to streamline your development process.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. ***What are the components of redux?***
 #### Q. ***What do you understand by "Single source of truth" in Redux?***
 #### Q. ***What are the features of Workflow in Redux?***
 #### Q. ***Explain the components of Redux?***
