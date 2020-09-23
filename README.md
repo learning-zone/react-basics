@@ -7855,12 +7855,9 @@ describe('APP Component', () => {
 #### Q. ***Explain the components of Redux?***
 #### Q. ***What is Redux Thunk used for?***
 #### Q. ***What is difference between component and container in react redux?***
-#### Q. ***What is Redux in React.js?***
 #### Q. ***Explain the role of Reducer?***
-#### Q. ***Define Reducers in React?***
 #### Q. ***What are Pure Functions and how they are used in reducers?***
 #### Q. ***How to splitting the reducers?***
-#### Q. ***Why do you use Redux and Flux?***
 #### Q. ***How to create action creators react with redux?***
 #### Q. ***How to set the dataflow using react with redux?***
 #### Q. ***What are the three principles that Redux follows?***
@@ -7868,7 +7865,7 @@ describe('APP Component', () => {
 #### Q. ***Where Can Redux Be Used?***
 #### Q. ***What is the typical flow Of data in a React + Redux App?***
 #### Q. ***What are Redux workflow features?***
-#### Q. ***Explain action’s in Redux?***
+#### Q. ***Explain action in Redux?***
 #### Q. ***What are the benefits of Redux?***
 #### Q. ***How to utilize interface() from React Redux?***
 #### Q. ***What is the reason for at image in the Redux associate decorator?***
@@ -7919,7 +7916,9 @@ describe('APP Component', () => {
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***What is reselect and how it works?***
-#### Q. ***Explain caching in redux?***
+#### Q. ***How to do caching using redux?***
+#### Q. ***How to setup Redux for a REST api?***
+#### Q. ***How to use Redux for Error Handling?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
