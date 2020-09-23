@@ -7882,7 +7882,7 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
 
 ## Q. ***What are the components of redux?***
 
-<img src="assets/redux-components.jpg" alt="Redux Components" width="600px" />
+<img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
 
 Redux has mainly 3 components namely, Action, Reducer, and Store.
 
