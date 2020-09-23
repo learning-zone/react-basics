@@ -7880,7 +7880,97 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the components of redux?***
+## Q. ***What are the components of redux?***
+
+<img src="assets/redux-components.jpg" alt="Redux Components" width="600px" />
+
+Redux has mainly 3 components namely, Action, Reducer, and Store.
+
+**1. Actions in Redux**
+
+Action is static information about the event that initiates a state change. When you update your state with Redux, you always start with an action. Actions are in the form of Javascript objects, containing a `type` and an optional `payload`. Actions are sent using the `store.dispatch()` method. Actions are created via an action creator.
+
+**Action creators**
+
+These are simple functions that help you create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
+
+*Example:*
+
+```js
+const setLoginStatus = (name, password) => {
+  return {
+    type: "LOGIN",
+    payload: {
+      username: "foo",
+      password: "bar"
+    }
+  }
+}
+```
+
+**2. Reducers in Redux**
+
+Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
+
+It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
+
+```js
+const LoginComponent = (state = initialState, action) => {
+    switch (action.type) {
+
+      // This reducer handles any action with type "LOGIN"
+      case "LOGIN":
+          return state.map(user => {
+              if (user.username !== action.username) {
+                  return user
+              }
+
+              if (user.password == action.password) {
+                  return {
+                      ...user,
+                      login_status: "LOGGED IN"
+                  }
+              }
+          });
+      default:
+          return state;
+      }
+}
+```
+
+**3. Store in Redux**
+
+The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+
+*Example:*
+
+Let\'s create a store for our login app:
+
+```js
+const store = createStore(LoginComponent);
+```
+
+Actions performed on the state always return a new state. Thus, the state is very easy and predictable. With Redux, there is one general state in the store, and each component has access to the state. This eliminates the need to continuously pass state from one component to another.
+
+```js
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <Status user={this.props.user.name}/>
+                <Login login={this.props.setLoginStatus}/>
+            </div>
+        )
+    }
+}
+```
+
+When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What do you understand by "Single source of truth" in Redux?***
 #### Q. ***What are the features of Workflow in Redux?***
 #### Q. ***Explain the components of Redux?***
