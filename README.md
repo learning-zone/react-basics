@@ -7880,19 +7880,15 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the components of redux?***
+## Q. ***What are redux core concepts?***
 
 <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
-
-Redux has mainly 3 components namely, Action, Reducer, and Store.
 
 **1. Actions in Redux**
 
 Action is static information about the event that initiates a state change. When you update your state with Redux, you always start with an action. Actions are in the form of Javascript objects, containing a `type` and an optional `payload`. Actions are sent using the `store.dispatch()` method. Actions are created via an action creator.
 
-**Action creators**
-
-These are simple functions that help you create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
+**Action creators** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
 
 *Example:*
 
@@ -7940,32 +7936,52 @@ const LoginComponent = (state = initialState, action) => {
 
 **3. Store in Redux**
 
-The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
 
 *Example:*
 
-Let\'s create a store for our login app:
-
 ```js
-const store = createStore(LoginComponent);
-```
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './reducers'
+import App from './components/App'
 
-Actions performed on the state always return a new state. Thus, the state is very easy and predictable. With Redux, there is one general state in the store, and each component has access to the state. This eliminates the need to continuously pass state from one component to another.
-
-```js
-class App extends React.Component {
-    render() {
-        return (
-            <div>
-                <Status user={this.props.user.name}/>
-                <Login login={this.props.setLoginStatus}/>
-            </div>
-        )
-    }
-}
+const store = createStore(rootReducer)
+ render (
+   <provider store="{store}">
+     <app>
+   </app></provider>,
+   document.getElementById('root')
+ )
 ```
 
 When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
+
+**4. Dispatch**
+
+Dispatch is a method that triggers an action with type and payload to Reducer.
+
+```js
+store.dispatch() 
+```
+
+**5. Subscribe**
+
+Subscribe is a method that is used to subscribe data/state from the Store.
+
+```js
+store.subscribe()
+```
+
+**6. Provider**
+
+The Provider is a component that has a reference to the Store and provides the data from the Store to the component it wraps.
+
+**7. Connect**
+
+Connect is a function that communicates with the Provider.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
