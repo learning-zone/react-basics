@@ -7977,7 +7977,7 @@ The single source of truth is our state tree, that is not rewritten or reshaped.
 
 In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
 
-<img src="assets/redux-state.png" alt="Redux State" width="400px" />
+<img src="assets/redux-state.png" alt="Redux State" width="600px" />
 
 A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
 
@@ -7985,8 +7985,41 @@ A practical example would be that you have Redux store which contains items you 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are the features of Workflow in Redux?***
 
-#### Q. ***What are the features of Workflow in Redux?***
+When using Redux with React, states will no longer need to be lifted up. Everything is handled by Redux. Redux simplifies the app and makes it easier to maintain.
+
+* Redux offers a solution for storing all your application state in one place, called a **store**.
+* Components then **dispatch** state changes to the store, not directly to other components.
+* The components that need to be aware of state changes can subscribe to the store.
+* The **store** can be thought of as a "middleman" for all state changes in the application.
+* With Redux involved, components don\'t communicate directly with each other. Rather, all state changes must go  through the single source of truth, the **store**.
+
+**Core Principal**
+
+Redux has three core principals:
+
+**1. Single Source of Truth**: The state of your whole application is stored in an object tree within a single **store**.
+**2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.
+**3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.
+
+**Redux Workflow**
+
+Redux allows you to manage the state of the application using Store. A child component can directly access the state from the Store.
+
+The following are details of how Redux works:
+
+* When UI Event triggers (OnClick, OnChange, etc) it can dispatch Actions based on the event.
+* Reducers process Actions and return a new state as an Object.
+* The new state of the whole application goes into a single Store.
+* Components can easily subscribe to the Store.
+
+<img src="assets/redux-workflow.png" alt="Redux Workflow" widh="600px" />
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the components of Redux?***
 #### Q. ***What is Redux Thunk used for?***
 #### Q. ***What is difference between component and container in react redux?***
