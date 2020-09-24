@@ -7971,7 +7971,21 @@ When using Redux with React, states will no longer need to be lifted up; thus, i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand by "Single source of truth" in Redux?***
+## Q. ***What do you understand by "Single source of truth" in Redux?***
+
+The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
+
+In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
+
+<img src="assets/redux-state.png" alt="Redux State" width="400px" />
+
+A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+
 #### Q. ***What are the features of Workflow in Redux?***
 #### Q. ***Explain the components of Redux?***
 #### Q. ***What is Redux Thunk used for?***
