@@ -7999,9 +7999,9 @@ When using Redux with React, states will no longer need to be lifted up. Everyth
 
 Redux has three core principals:
 
-**1. Single Source of Truth**: The state of your whole application is stored in an object tree within a single **store**.
-**2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.
-**3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.
+**1. Single Source of Truth**: The state of your whole application is stored in an object tree within a single **store**.  
+**2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.  
+**3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.  
 
 **Redux Workflow**
 
@@ -8014,7 +8014,7 @@ The following are details of how Redux works:
 * The new state of the whole application goes into a single Store.
 * Components can easily subscribe to the Store.
 
-<img src="assets/redux-workflow.png" alt="Redux Workflow" widh="600px" />
+<img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
