@@ -8054,7 +8054,186 @@ The following are details of how Redux works:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Redux Thunk used for?***
+## Q. ***What is Redux Thunk used for?***
+
+Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
+
+**Setup**
+
+```bash
+# install create react app
+npm install -g create-react-app
+
+# Create a React App
+create-react-app my-simple-async-app
+
+# Switch directory
+cd my-simple-app
+
+# install Redux-Thunk
+npm install --save redux react-redux redux-thunk
+```
+
+*Example:*
+
+We are going to use Redux Thunk to asynchronously fetch the most recently updated repos by username from Github using this REST URL:
+
+https://api.github.com/users/learning-zone/repos?sort=updated
+
+```js
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+
+import thunk from 'redux-thunk'
+
+// actions.js
+export const addRepos = repos => ({
+  type: 'ADD_REPOS',
+  repos,
+})
+
+export const clearRepos = () => ({ type: 'CLEAR_REPOS' })
+
+export const getRepos = username => async dispatch => {
+  try {
+    const url = `https://api.github.com/users/${username}/repos?sort=updated`
+    const response = await fetch(url)
+    const responseBody = await response.json()
+    dispatch(addRepos(responseBody))
+  } catch (error) {
+    console.error(error)
+    dispatch(clearRepos())
+  }
+}
+
+// reducers.js
+export const repos = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_REPOS':
+      return action.repos
+    case 'CLEAR_REPOS':
+      return []
+    default:
+      return state
+  }
+}
+
+export const reducers = combineReducers({ repos })
+
+// store.js
+export function configureStore(initialState = {}) {
+  const store = createStore(reducers, initialState, applyMiddleware(thunk))
+  return store
+}
+
+export const store = configureStore()
+```
+
+`applyMiddleware(thunk)`: This tells redux to accept and execute functions as return values. Redux usually only accepts objects like { type: 'ADD_THINGS', things: ['list', 'of', 'things'] }.
+
+The middleware checks if the action\'s return value is a function and if it is it will execute the function and inject a callback function named dispatch. This way you can start an asynchronous task and then use the dispatch callback to return a regular redux object action some time in the future.
+
+```js
+// This is your typical redux sync action
+function syncAction(listOfThings) {
+  return { type: 'ADD_THINGS', things: listOfThings  }
+}
+
+// This would be the async version
+// where we may need to go fetch the
+// list of things from a server before
+// adding them via the sync action
+function asyncAction() {
+  return function(dispatch) {
+    setTimeout(function() {
+      dispatch(syncAction(['list', 'of', 'things']))
+    }, 1000)
+  }
+}
+```
+
+**App.js**
+
+```js
+import React, { Component } from 'react'
+
+import { connect } from 'react-redux'
+
+import { getRepos } from './redux'
+
+// App.js
+export class App extends Component {
+  state = { username: 'learning-zone' }
+
+  componentDidMount() {
+    this.updateRepoList(this.state.username)
+  }
+
+  updateRepoList = username => this.props.getRepos(username)
+
+  render() {
+    return (
+      <div>
+        <h1>I AM AN ASYNC APP!!!</h1>
+
+        <strong>Github username: </strong>
+        <input
+          type="text"
+          value={this.state.username}
+          onChange={ev => this.setState({ username: ev.target.value })}
+          placeholder="Github username..."
+        />
+        <button onClick={() => this.updateRepoList(this.state.username)}>
+          Get Lastest Repos
+        </button>
+
+        <ul>
+          {this.props.repos.map((repo, index) => (
+            <li key={index}>
+              <a href={repo.html_url} target="_blank">
+                {repo.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    )
+  }
+}
+
+// AppContainer.js
+const mapStateToProps = (state, ownProps) => ({ repos: state.repos })
+const mapDispatchToProps = { getRepos }
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default AppContainer
+```
+
+**index.js**
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppContainer from './App'
+import './index.css'
+
+// Add these imports - Step 1
+import { Provider } from 'react-redux'
+import { store } from './redux'
+
+// Wrap existing app in Provider - Step 2
+ReactDOM.render(
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is difference between component and container in react redux?***
 #### Q. ***Explain the role of Reducer?***
 #### Q. ***What are Pure Functions and how they are used in reducers?***
