@@ -7934,6 +7934,14 @@ const LoginComponent = (state = initialState, action) => {
 }
 ```
 
+**combine multiple reducers**: The `combineReducers()` helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.
+
+*Syntax*
+
+```js
+const rootReducert = combineReducer(reducer1, reducer2)
+```
+
 **3. Store in Redux**
 
 A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
@@ -7982,6 +7990,16 @@ The Provider is a component that has a reference to the Store and provides the d
 **7. Connect**
 
 Connect is a function that communicates with the Provider.
+
+**8. Middleware**
+
+Middleware is the suggested way to extend Redux with custom functionality. Middlewares are used to dispatch async functions. We configure Middleware\'s while creating a store.
+
+*Syntax*
+
+```js
+const store = createStore(reducers, initialState, middleware);
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8036,7 +8054,6 @@ The following are details of how Redux works:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain the components of Redux?***
 #### Q. ***What is Redux Thunk used for?***
 #### Q. ***What is difference between component and container in react redux?***
 #### Q. ***Explain the role of Reducer?***
