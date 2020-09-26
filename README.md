@@ -8234,7 +8234,75 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is difference between component and container in react redux?***
+## Q. ***What is difference between component and container in react redux?***
+
+**1. Container Components**
+
+* Container components are primarily concerned with how things work
+* They rarely have any HTML tags of their own, aside from a wrapping `<div>`
+* They are often stateful
+* They are responsible for providing data and behavior to their children (usually presentational components)
+
+Container is an informal term for a React component that is `connect`-ed to a redux store. Containers receive Redux state updates and `dispatch` actions, and they usually don\'t render DOM elements; they delegate rendering to **presentational** child components.
+
+*Example:*
+
+```js
+class Collage extends Component {
+   constructor(props) {
+      super(props);
+
+      this.state = {
+         images: []
+      };
+   }
+   componentDidMount() {
+      fetch('/api/current_user/image_list')
+         .then(response => response.json())
+         .then(images => this.setState({images}));
+   }
+   render() {
+      return (
+         <div className="image-list">
+            {this.state.images.map(image => {
+               <div className="image">
+                  <img src={book.image_url} />
+               </div>
+            })}
+         </div>
+      )
+   }
+}
+```
+
+**2. Presentational Components**
+
+* Presentational Components are primarily concerned with how things look
+* Probably only contain a render method and little else logic
+* They do not know how to load or alter the data that they render
+* They are best written as stateless functional components
+
+*Example:*
+
+```js
+//defining the component as a React Component
+class Image extends Component {
+   render() {
+      return <img src={this.props.image} />;
+   }
+}
+export default Image
+//defining the component as a constant
+const Image = props => (
+   <img src={props.image} />
+)
+export default Image
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain the role of Reducer?***
 #### Q. ***What are Pure Functions and how they are used in reducers?***
 #### Q. ***How to splitting the reducers?***
