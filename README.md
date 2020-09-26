@@ -971,10 +971,6 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is useRef() in React?***
-
-#### Q. ***What is useHooks() in React?***
-
 ## Q22. ***What is difference between useEffect() vs componentDidMount()?***
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
@@ -7409,13 +7405,15 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to create a custom react hook to fetch and cache data?***
+#### Q136. ***What is useRef() in React?***
+#### Q137. ***What is useHooks() in React?***
+#### Q138. ***How to create a custom react hook to fetch and cache data?***
 
 <br/>
 
 ### React Unit Testing
 
-## Q136. ***Explain react unit testing using Jest and Enzyme?***
+## Q1. ***Explain react unit testing using Jest and Enzyme?***
 
 **Jest**  
 
@@ -7529,7 +7527,7 @@ describe('App component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q137. ***Explain about shallow() method in enzyme?***
+## Q2. ***Explain about shallow() method in enzyme?***
 
 The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
 
@@ -7571,7 +7569,7 @@ console.log(wrapper.debug())
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q138. ***What is mount() method in Enzyme?***
+## Q3. ***What is mount() method in Enzyme?***
 
 **Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
 
@@ -7619,7 +7617,7 @@ describe('List tests', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q139. ***What is render() method in Enzyme?***
+## Q4. ***What is render() method in Enzyme?***
 
 **Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
 
@@ -7654,7 +7652,7 @@ describe('List tests', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q140. ***What is the purpose of the ReactTestUtils package?***
+## Q5. ***What is the purpose of the ReactTestUtils package?***
 
 **ReactTestUtils** is used to test React-based components. It can simulate all the JavaScript-based events, which ReactJS supports. Some of its frequently methods are
 
@@ -7742,7 +7740,7 @@ it('can render and update a counter', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q141. ***What is react-test-renderer package in React?***
+## Q6. ***What is react-test-renderer package in React?***
 
 This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
 
@@ -7774,7 +7772,7 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q142. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
+## Q7. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 
 Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
 
@@ -7803,7 +7801,7 @@ Test-driven development is an approach when developers create a product backward
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q143. ***What are the benefits of using data-test selector over className or Id selector in Jest?***
+## Q8. ***What are the benefits of using data-test selector over className or Id selector in Jest?***
 
 HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
 
