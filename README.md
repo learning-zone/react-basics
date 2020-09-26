@@ -8301,7 +8301,154 @@ export default Image
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain the role of Reducer?***
+## Q. ***Explain the role of Reducer?***
+
+A reducer is a function that determines changes to an application\'s state. It uses the action it receives to determine this change. Redux manage an application\'s state changes in a single store so that they behave consistently. Redux relies heavily on reducer functions that take the previous state and an action in order to execute the next state.
+
+**1. State**
+
+State changes are based on a user\'s interaction, or even something like a network request. If the application\'s state is managed by Redux, the changes happen inside a reducer function — this is the only place where state changes happen. The reducer function makes use of the initial state of the application and something called action, to determine what the new state will look like.
+
+*Syntax*
+
+```js
+const contactReducer = (state = initialState, action) => {
+  // Do something
+}
+```
+
+**2. State Parameter**
+
+The state parameter that gets passed to the reducer function has to be the current state of the application. In this case, we\'re calling that our initialState because it will be the first (and current) state and nothing will precede it.
+
+```js
+contactReducer(initialState, action)
+```
+
+*Example:*
+
+Let\'s say the initial state of our app is an empty list of contacts and our action is adding a new contact to the list.
+
+```js
+const initialState = {
+  contacts: []
+}
+```
+
+**3. Action Parameter**
+
+An action is an object that contains two keys and their values. The state update that happens in the reducer is always dependent on the value of action.type.
+
+```js
+const action = {
+  type: 'NEW_CONTACT',
+  name: 'Alex K',
+  location: 'Lagos Nigeria',
+  email: 'alex@example.com'
+}
+```
+
+There is typically a `payload` value that contains what the user is sending and would be used to update the state of the application. It is important to note that `action.type` is required, but `action.payload` is optional. Making use of `payload` brings a level of structure to how the action object looks like.
+
+**4. Updating State**
+
+The state is meant to be immutable, meaning it shouldn\'t be changed directly. To create an updated state, we can make use of `Object.assign()` or opt for the **spread operator**.
+
+*Example:*
+
+```js
+const contactReducer = (state, action) => {
+  switch (action.type) {
+    case 'NEW_CONTACT':
+    return {
+        ...state, contacts:
+        [...state.contacts, action.payload]
+    }
+    default:
+      return state
+  }
+}
+```
+
+This ensures that the incoming state stays intact as we append the new item to the bottom.
+
+```js
+const initialState = {
+  contacts: [{
+    name: 'Alex K',
+    age: 26
+  }]
+}
+
+const contactReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "NEW_CONTACT":
+      return Object.assign({}, state, {
+        contacts: [...state.contacts, action.payload]
+      });
+    default:
+      return state
+  }
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.name = React.createRef()
+    this.age = React.createRef()
+    this.state = initialState
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const action = {
+      type: "NEW_CONTACT",
+      payload: {
+        name: this.name.current.value,
+        age: this.age.current.value
+      }
+    }
+    const newState = contactReducer(this.state, action)
+    this.setState(newState)
+  }
+
+  render() {
+    const { contacts } = this.state
+    return (
+      <div className="box">
+        <div className="content">
+          <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        </div>
+
+        <div className="field">
+          <form onSubmit={this.handleSubmit}>
+            <div className="control">
+              <input className="input" placeholder="Full Name" type="text" ref={this.name} />
+            </div>
+            <div className="control">
+              <input className="input" placeholder="Age" type="number" ref={this.age} />
+            </div>
+            <div>
+              <button type="submit" className="button">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+}
+
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are Pure Functions and how they are used in reducers?***
 #### Q. ***How to splitting the reducers?***
 #### Q. ***How to create action creators react with redux?***
