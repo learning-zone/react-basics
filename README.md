@@ -8480,7 +8480,7 @@ Redux simply checks whether the old object is the same as the new object by comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to splitting the reducers?***
+## Q. ***How to split the reducers?***
 
 Putting all your update logic into a single reducer function is quickly going to become unmaintainable. While there\'s no single rule for how long a function should be, it\'s generally agreed that functions should be relatively short and ideally only do one specific thing. It\'s good programming practice to take pieces of code that are very long or do many different things, and break them into smaller pieces that are easier to understand.
 
