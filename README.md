@@ -8480,7 +8480,46 @@ Redux simply checks whether the old object is the same as the new object by comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to splitting the reducers?***
+## Q. ***How to splitting the reducers?***
+
+Putting all your update logic into a single reducer function is quickly going to become unmaintainable. While there\'s no single rule for how long a function should be, it\'s generally agreed that functions should be relatively short and ideally only do one specific thing. It\'s good programming practice to take pieces of code that are very long or do many different things, and break them into smaller pieces that are easier to understand.
+
+In Redux reducer, we can split some of our reducer logic out into another function, and call that new function from the parent function. These new functions would typically fall into one of three categories:
+
+1. Small utility functions containing some reusable chunk of logic that is needed in multiple places (which may or may not be actually related to the specific business logic)
+2. Functions for handling a specific update case, which often need parameters other than the typical (state, action) pair
+3. Functions which handle all updates for a given slice of state. These functions do generally have the typical  (state, action) parameter signature
+
+These terms will be used to distinguish between different types of functions and different use cases:
+
+* **reducer**: any function with the signature `(state, action) -> newState` (ie, any function that could be used as an argument to `Array.prototype.reduce`)
+* **root reducer**: the reducer function that is actually passed as the first argument to `createStore`. This is the only part of the reducer logic that must have the `(state, action) -> newState` signature.
+* **slice reducer**: a reducer that is being used to handle updates to one specific slice of the state tree, usually done by passing it to `combineReducers`
+* **case function**: a function that is being used to handle the update logic for a specific action. This may actually be a reducer function, or it may require other parameters to do its work properly.
+* **higher-order reducer**: a function that takes a reducer function as an argument, and/or returns a new reducer  function as a result (such as `combineReducers`, or `redux-undo`).
+
+**Benefits**
+
+* **For fast page loads**
+
+Splitting reducers will have and advantage of loading only required part of web application which in turn makes it very efficient in rendering time of main pages
+
+* **Organization of code**
+
+Splitting reducers on page level or component level will give a better code organization instead of just putting all reducers at one place. Since reducer is loaded only when page/component is loaded will ensure that there are standalone pages which are not dependent on other parts of the application.
+
+* **One page/component**
+
+One reducer design pattern. Things are better written, read and understood when they are modular. With dynamic reducers, it becomes possible to achieve it.
+
+* **SEO**
+
+With reducer level code-splitting, reducers can be code split on a split component level which will reduce the loading time of website thereby increasing SEO rankings.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to create action creators react with redux?***
 #### Q. ***How to set the dataflow using react with redux?***
 #### Q. ***What are the three principles that Redux follows?***
