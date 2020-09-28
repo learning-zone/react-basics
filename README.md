@@ -8520,7 +8520,77 @@ With reducer level code-splitting, reducers can be code split on a split compone
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to create action creators react with redux?***
+## Q. ***How to create action creators react with redux?***
+
+**Action Type**
+
+An action type is a string that simply describes the type of an action. They\'re commonly stored as constants or collected in enumerations to help reduce typos.
+
+*Example:*
+
+```js
+export const Actions = {
+  GET_USER_DETAILS_REQUEST: 'GET_USER_DETAILS_REQUEST',
+  GET_USER_DETAILS_SUCCESS: 'GET_USER_DETAILS_SUCCESS',
+  GET_USER_DETAILS_FAILURE: 'GET_USER_DETAILS_FAILURE',
+  UPDATE_USER_DETAILS_REQUEST: 'UPDATE_USER_DETAILS_REQUEST',
+  UPDATE_USER_DETAILS_SUCCESS: 'UPDATE_USER_DETAILS_SUCCESS',
+  UPDATE_USER_DETAILS_FAILURE: 'UPDATE_USER_DETAILS_FAILURE',
+  // more...
+}
+```
+
+**Action**
+
+An action is like a message that we send (i.e. dispatch) to our central Redux store. It can literally be anything. But ideally we want to stick to an agreed-upon pattern. And the standard pattern is as follows (this is a TypeScript type declaration):
+
+```ts
+type Action = {
+    type: string;    // Actions MUST have a type
+    payload?: any;   // Actions MAY have a payload
+    meta?: any;      // Actions MAY have meta information
+    error?: boolean; // Actions MAY have an error field
+                     // when true, payload SHOULD contain an Error
+}
+```
+
+An action to fetch the user named "Alex" might look something like this
+
+```js
+{
+    type: 'GET_USER_DETAILS_REQUEST',
+    payload: 'Alex'
+}
+```
+
+**Action Creator**
+
+```js
+export const getUserDetailsRequest = id => ({
+  type: Actions.GET_USER_DETAILS_REQUEST,
+  payload: id,
+})
+```
+
+When writing basic Redux, an action creator simply returns an action. You would typically dispatch the action to your store immediately.
+
+```js
+store.dispatch(getUserDetailsRequest('Alex'))
+```
+
+Although, realistically, you\'ll be doing this via dispatch properties that are passed into a React component like this:
+
+```js
+// ES6
+export const mapDispatchToProps = dispatch => ({
+  onClick: () => dispatch(getUserDetailsRequest('Alex'))
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to set the dataflow using react with redux?***
 #### Q. ***What are the three principles that Redux follows?***
 #### Q. ***What is Redux Change Of State?***
