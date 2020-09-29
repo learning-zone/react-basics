@@ -8588,7 +8588,23 @@ export const mapDispatchToProps = dispatch => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to set the dataflow using react with redux?***
+## Q. ***How to set the dataflow using react with redux?***
+
+<img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="500px" />
+
+Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
+
+Redux has five main entities. Action Creators, Dispatching Function, Reducers, State and Store.
+
+* An action is dispatched when a user interacts with the application.
+* The root reducer function is called with the current state and the dispatched action. The root reducer may divide the task among smaller reducer functions, which ultimately returns a new state.
+* The store notifies the view by executing their callback functions.
+* The view can retrieve updated state and re-render again.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the three principles that Redux follows?***
 #### Q. ***What is Redux Change Of State?***
 #### Q. ***Where Can Redux Be Used?***
