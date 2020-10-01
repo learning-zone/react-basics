@@ -8717,9 +8717,61 @@ Redux is inspired by functional programming, and out of the box, has no place fo
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the benefits of Redux?***
-#### Q. ***How to utilize interface() from React Redux?***
-#### Q. ***What is the reason for at image in the Redux associate decorator?***
+## Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
+
+Decorators make it possible to annotate and modify classes and properties at design time.
+
+Here\'s an example of setting up Redux without and with a decorator:
+
+**Without a decorator**
+
+```js
+import React from 'react'
+import * as actionCreators from './actionCreators'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+function mapStateToProps(state) {
+  return { todos: state.todos }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+class MyApp extends React.Component {
+  // ...define your main app here
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyApp)
+```
+
+**Using a decorator**
+
+```js
+import React from 'react'
+import * as actionCreators from './actionCreators'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+function mapStateToProps(state) {
+  return { todos: state.todos }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class MyApp extends React.Component {
+  // ...define your main app here
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the contrast between React setting and React Redux?***
 #### Q. ***How to get to Redux store outside a part?***
 #### Q. ***What are the center standards of Redux?***
