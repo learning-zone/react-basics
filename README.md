@@ -8707,11 +8707,16 @@ const store = createStore(reducer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Redux Change Of State?***
-#### Q. ***Where Can Redux Be Used?***
-#### Q. ***What is the typical flow Of data in a React + Redux App?***
-#### Q. ***What are Redux workflow features?***
-#### Q. ***Explain action in Redux?***
+## Q. ***How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?***
+
+Any meaningful web app needs to execute complex logic, usually including asynchronous work such as making AJAX requests. That code is no longer purely a function of its inputs, and the interactions with the outside world are known as "side effects".
+
+Redux is inspired by functional programming, and out of the box, has no place for side effects to be executed. In particular, reducer functions must always be pure functions of `(state, action) => newState`. However, Redux\'s middleware (eg. **Redux Thunk**, **Redux Saga**) makes it possible to intercept dispatched actions and add additional complex behavior around them, including side effects.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the benefits of Redux?***
 #### Q. ***How to utilize interface() from React Redux?***
 #### Q. ***What is the reason for at image in the Redux associate decorator?***
