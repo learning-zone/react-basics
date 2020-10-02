@@ -8772,7 +8772,16 @@ export default class MyApp extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the contrast between React setting and React Redux?***
+## Q. ***What is the difference between React State vs Redux State?***
+
+React state is stored locally within a component. When it needs to be shared with other components, it is passed down through props. In practice, this means that the top-most component in your app needing access to a mutable value will hold that value in its state. If it can be mutated by subcomponents, you must pass a callback to handle the change into subcomponents.
+
+When using Redux, state is stored globally in the Redux store. Any component that needs access to a value may subscribe to the store and gain access to that value. Typically, this is done using container components. This centralizes all data but makes it very easy for a component to get the state it needs, without surrounding components knowing of its needs.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to get to Redux store outside a part?***
 #### Q. ***What are the center standards of Redux?***
 #### Q. ***What are the drawbacks of Redux contrasted with Flux?***
