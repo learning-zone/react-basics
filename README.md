@@ -8881,14 +8881,55 @@ export connect(mapStateToProps)(ItemList)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the center standards of Redux?***
-#### Q. ***What are the drawbacks of Redux contrasted with Flux?***
+## Q. ***What are the drawbacks of Redux contrasted with Flux?***
+
+<img src="assets/flux-structure.png" alt="Flux" width="500px" />
+
+Flux is application architecture or pattern designed, developed and used by Facebook for building user interface or client-side web application. Flux follows unidirectional data flow which supports or empowers composable view of React\'s components.
+
+**Flux Architecture**
+
+The Flux architecture is based on the following components:
+
+* **Store/ Stores**: Serves as a container for the app state & logic
+* **Action**: Enables data passing to the dispatcher
+* **View**: Same as the view in MVC architecture, but in the context of React components
+* **Dispatcher**: Coordinates actions & updates to stores
+
+<img src="assets/flux-architecture.png" alt="Flux Architecture" width="500px" />
+
+In the Flux architecture, when a user clicks on something, the view creates actions. Action can create new data and send it to the dispatcher. The dispatcher then dispatches the action result to the appropriate store. The store updates the state based on the result and sends an update to the view.
+
+**Redux Architecture**
+
+Redux is a library, which implements the idea of Flux but in quite a different way. Redux architecture introduces new components like:
+
+* **Reducer**: Logic that decides how your data changes exist in pure functions
+* **Centralized store**: Holds a state object that denotes the state of the entire app
+
+<img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
+
+In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
+
+**Flux vs Redux**
+
+| Flux                                       | Redux                            |
+|--------------------------------------------|----------------------------------|
+|Follows the unidirectional flow             |Follows the unidirectional flow   |
+|Includes multiple stores                    |Includes single store             |
+|Store handles all logic                     |Reducer handles all logic         |
+|Ensures simple debugging with the dispatcher|Single store makes debugging lot easier|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference between React context and React Redux?***
 #### Q. ***What is a store in Redux?***
 #### Q. ***Explain usage of react with redux application?***
 #### Q. ***What are the advantages of using Redux?***
 #### Q. ***How will be you able to handle more action using redux?***
-#### Q. ***Exaplin React with redux  archicture flow?***
+#### Q. ***Explain React with redux  archicture flow?***
 #### Q. ***How is flux different from redux?***
 #### Q. ***How will you distinguish Redux from Flux?***
 #### Q. ***Draw a diagram showing how data flows through Redux?***
