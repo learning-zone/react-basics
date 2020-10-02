@@ -7878,6 +7878,26 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Explain pros and cons of Redux?***
+
+**Pros using redux**
+
+* Central store, any component can access any state from the store, there is no need of passing props back and forth.
+* Another way to look at centralised store, it persists the state of a component even after the component has  unmounted.
+* Prevents unnecessary re-renders, as when the state changes it returns new state which uses shallow copy.
+* Testing will be easy as UI and data management are separated.
+* History of state is maintained which helps in implementing features like undo very easily.
+
+**Cons using redux**
+
+* No encapsulation. Any component can access the data which can cause security issues.
+* Boilerplate code. Restricted design.
+* As state is immutable in redux, the reducer updates the state by returning a new state every time which can cause excessive use of memory.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are redux core concepts?***
 
 <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
