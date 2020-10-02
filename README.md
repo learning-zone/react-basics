@@ -8924,18 +8924,6 @@ In Redux architecture, application event is denoted as an Action, which is dispa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference between React context and React Redux?***
-#### Q. ***What is a store in Redux?***
-#### Q. ***Explain usage of react with redux application?***
-#### Q. ***What are the advantages of using Redux?***
-#### Q. ***How will be you able to handle more action using redux?***
-#### Q. ***Explain React with redux  archicture flow?***
-#### Q. ***How is flux different from redux?***
-#### Q. ***How will you distinguish Redux from Flux?***
-#### Q. ***Draw a diagram showing how data flows through Redux?***
-#### Q. ***How is Redux different from Flux?***
-#### Q. ***What are the advantages of Redux?***
-#### Q. ***How are Actions defined in Redux?***
 #### Q. ***Describe Flux vs MVC?***
 #### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View?***
 #### Q. ***How to structure Redux top level directories?***
