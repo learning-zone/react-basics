@@ -8930,7 +8930,7 @@ In Redux architecture, application event is denoted as an Action, which is dispa
 
 MVC stands for Model View Controller. It is an architectural pattern used for developing the user interface. It divides the application into three different logical components: the Model, the View, and the Controller.
 
-<img src="assets/mvc.png" alt="MVC" width="500px" />
+<img src="assets/mvc.png" alt="MVC" />
 
 * **Model**: It is responsible for maintaining the behavior and data of an application.
 * **View**: It is used to display the model in the user interface.
@@ -8952,7 +8952,7 @@ Flux places unidirectional data flow front and center, by making it a requiremen
 * The Dispatcher receives Actions and acts as the sole registry of callbacks to all stores within an application. It also manages the dependencies between stores
 * Views are the same as the view in MVC, except in the context of React and Flux, and also include Controller-Views for change events and retrieve application state from stores as required.
 
-<img src="assets/flux-2.png" alt="Flux" width="500px" />
+<img src="assets/flux-2.png" alt="Flux" width="600px" />
 
 1. All data in the application flow through a central hub called the Dispatcher
 2. This data is tracked as actions, which are provided to the dispatcher in an action creator method, often as a result of a user interacting with the view
