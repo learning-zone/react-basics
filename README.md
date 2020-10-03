@@ -8975,20 +8975,60 @@ Flux places unidirectional data flow front and center, by making it a requiremen
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View?***
-#### Q. ***How to structure Redux top level directories?***
-#### Q. ***What are the features of Redux DevTools?***
-#### Q. ***How to add multiple middlewares to Redux?***
+## Q. ***How to add multiple middleware to redux?***
+
+The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like `RxJS`. It does so by letting you dispatch async actions in addition to normal actions.
+
+`applyMiddleware` takes each piece of middleware as a new argument (not an array). It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer. It can be use for logging, crash reporting, talking to an asynchronous API, routing, and more.
+
+```js
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk, logger)(createStore);
+```
+
+**Example: Custom Logger Middleware**
+
+```js
+import { createStore, applyMiddleware } from 'redux'
+import todos from './reducers'
+
+function logger({ getState }) {
+  return next => action => {
+    console.log('will dispatch', action)
+
+    // Call the next dispatch method in the middleware chain.
+    const returnValue = next(action)
+
+    console.log('state after dispatch', getState())
+
+    // This will likely be the action itself, unless
+    // a middleware further in chain changed it.
+    return returnValue
+  }
+}
+
+const store = createStore(todos, ['Use Redux'], applyMiddleware(logger))
+
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Understand the middleware'
+})
+// (These lines will be logged by the middleware:)
+// will dispatch: { type: 'ADD_TODO', text: 'Understand the middleware' }
+// state after dispatch: [ 'Use Redux', 'Understand the middleware' ]
+```
+
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to set initial state in Redux?***
-#### Q. ***What are the downsides of Redux over Flux?***
-#### Q. ***How to access redux store outside a react component?***
 #### Q. ***Are there any similarities between Redux and RxJS?***
 #### Q. ***How to use connect from react redux?***
 #### Q. ***What is the purpose of the constants in Redux?***
 #### Q. ***What are the differences between redux-saga and redux-thunk?***
 #### Q. ***Explain Redux form with an example?***
 #### Q. ***How to reset state in redux?***
-#### Q. ***Whats the purpose of at (@) symbol in the redux connect decorator?***
 #### Q. ***Why are Redux state functions called as reducers?***
 #### Q. ***How to make Ajax request in Redux?***
 #### Q. ***What is the proper way to access Redux store?***
