@@ -8924,7 +8924,57 @@ In Redux architecture, application event is denoted as an Action, which is dispa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Describe Flux vs MVC?***
+## Q. ***Describe Flux vs MVC?***
+
+**1. MVC**
+
+MVC stands for Model View Controller. It is an architectural pattern used for developing the user interface. It divides the application into three different logical components: the Model, the View, and the Controller.
+
+<img src="assets/mvc.png" alt="MVC" width="500px" />
+
+* **Model**: It is responsible for maintaining the behavior and data of an application.
+* **View**: It is used to display the model in the user interface.
+* **Controller**: It acts as an interface between the Model and the View components. It takes user input, manipulates the data(model) and causes the view to update.
+
+MVC can be interpreted or modified in many ways to fit a particular framework or library. The core ideas of MVC can be formulated as:
+
+* Separating the presentation from the model: enables implementation of different UIs and better testability
+* Separating the controller from the view: most useful with web interfaces and not commonly used in most GUI frameworks
+
+In general, MVC makes no assumptions about whether data flow within an application should be unidirectional or bidirectional. In server Side, MVC is good, but in Client side most of the JS frameworks provide data binding support which let the view can talk with model directly, It shoudn\'t be, Many times it become hard to debug something as there are scope for a property being changed by many ways.
+
+**2. Flux**
+
+Flux places unidirectional data flow front and center, by making it a requirement. Here are the four major roles that make up the Flux architecture:
+
+* Actions, which are helper methods that relay information to the dispatcher
+* Stores are similar to the models in MVC, except they act as containers for application state and logic for a particular domain within the application
+* The Dispatcher receives Actions and acts as the sole registry of callbacks to all stores within an application. It also manages the dependencies between stores
+* Views are the same as the view in MVC, except in the context of React and Flux, and also include Controller-Views for change events and retrieve application state from stores as required.
+
+<img src="assets/flux-2.png" alt="Flux" width="500px" />
+
+1. All data in the application flow through a central hub called the Dispatcher
+2. This data is tracked as actions, which are provided to the dispatcher in an action creator method, often as a result of a user interacting with the view
+3. The dispatcher invokes the registered callback, effectively dispatching the action to all stores that have registered with that callback
+4. The stores in turn relay that change event to the controller-views to alert them of the change
+5. The controller-views listen for events, retrieve data from the appropriate stores as required and re-render themselves and all their children in the component tree accordingly.
+
+**MVC Vs. Flux**
+
+|  MVC                   |Flux                              |
+|------------------------|----------------------------------|
+|Bidirectional data flow |Unidirectional data flow          |
+|Data binding is the key |Events or actions are the main players |
+|Controllers handle the business logic | Store does all calculations |
+|Somewhat synchronous    |Can be implemented as completely asynchronous |
+|It is hard to debug.    |It is easy to debug because it has common initiating point: Dispatcher.|
+|Its maintainability is difficult as the project scope goes huge. | Its maintainability is easy and reduces runtime errors.|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is Flux concept in React? Explain various flux elements including Action, Dispatcher, Store and View?***
 #### Q. ***How to structure Redux top level directories?***
 #### Q. ***What are the features of Redux DevTools?***
