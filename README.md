@@ -9306,7 +9306,7 @@ It allows to easily find all usages of that constant across the project. It also
 
 Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
 
-<img src="assets/redux-thunk.jpeg" alt="Redux Thunk" width="500px" />
+<img src="assets/redux-thunk.jpeg" alt="Redux Thunk" width="500px" style="padding-left: 20%;" />
 
 ```bash
 npm i --save react-redux redux redux-logger redux-saga redux-thunk
@@ -9354,7 +9354,7 @@ export { fetchList }
 
 Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
 
-<img src="assets/redux-saga.png" alt="Redux Saga" width="500px" />
+<img src="assets/redux-saga.png" alt="Redux Saga" width="500px" style="padding-left: 20%;" />
 
 *Example:*
 
