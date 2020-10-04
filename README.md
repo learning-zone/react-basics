@@ -9354,7 +9354,7 @@ export { fetchList }
 
 Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
 
-<img src="assets/redux-saga.png" alt="Redux Saga" width="500px" style="padding-left: 20%;" />
+<img src="assets/redux-saga.png" alt="Redux Saga" width="500px" align="center" />
 
 *Example:*
 
