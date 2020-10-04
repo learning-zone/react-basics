@@ -1149,7 +1149,9 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 * Virtual DOM is ideal for mobile first applications.
 * Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
 
-<img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
+<p align="center">
+  <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1263,7 +1265,9 @@ const BooksList = ({books}) => {
 
 ## Q28. ***What are the different phases of React component lifecycle?***
 
-<img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
+<p align="center">
+  <img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
+</p>
 
 React provides several methods that notify us when certain stage of this process occurs. These methods are called the component lifecycle methods and they are invoked in a predictable order. The lifecycle of the component is divided into four phases.
 
@@ -2162,7 +2166,9 @@ React uses many techniques to minimize the number of DOM operations for us alrea
 
 Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
 
-<img src="assets/react-dev-tools.png"  alt="React DevTools" />
+<p align="center">
+  <img src="assets/react-dev-tools.png"  alt="React DevTools" />
+</p>
 
 **2. Using `shouldComponentUpdate()` method**
 
@@ -2609,7 +2615,9 @@ export default [
 
 Output:
 
-<img src='assets/react-form.png' alt='React Form' width='500px' />
+<p align="center">
+  <img src='assets/react-form.png' alt='React Form' width='500px' />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3355,7 +3363,9 @@ Reconciliation is the process through which React updates the DOM.
 
 As a developer we are creating tree of components, react then takes this tree, process it and we get a Virtual DOM that it\'s kept in memory. When there is an update in our application (e.g. change in `state` or `props`) react will take the updated Virtual DOM and compares it with the old one Virtual DOM, then decides what and how should be changed. This procedure is repeated all over again.
 
-<img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
+<p align="center">
+  <img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
+</p>
 
 Also synced versions between Virtual DOM and "real" DOM are served by libraries such as **ReactDOM**. React needs to be very fast at comparing those trees, so it uses **heuristic algorithm** with complexity of **O(n)**, so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of **O(n\^3)** => for 1000 nodes we need 1 bilion comparasions.
 
@@ -4243,7 +4253,9 @@ class MyComponent extends Component {
 
 ## Q81. ***How is React Router different from Conventional Routing?***
 
-<img src="assets/react-routing.png" alt="React Router" width="600px" />
+<p align="center">
+  <img src="assets/react-routing.png" alt="React Router" width="600px" />
+</p>
 
 In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
 
@@ -4919,7 +4931,9 @@ Two data binding means
 * The data we changed in the view has updated the state.
 * The data in the state has updated the view.
 
-<img src="assets/react-twoway-data-binding.png" alt="Two way Data Binding" width="600px" />
+<p align="center">
+  <img src="assets/react-twoway-data-binding.png" alt="Two way Data Binding" width="600px" />
+</p>
 
 ```js
 class UserInput extends React.Component{
@@ -6606,7 +6620,9 @@ class Button extends React.Component {
 
 ## Q122. ***What is the difference between ShadowDOM and VirtualDOM?***
 
-<img src="assets/shadow-dom.png" alt="DOM" width="600px" />
+<p align="center">
+  <img src="assets/shadow-dom.png" alt="DOM" width="600px" />
+</p>
 
 **Document Object Model**
 
@@ -7118,7 +7134,9 @@ FancyInput = forwardRef(FancyInput)
 
 **4. useLayoutEffect()**
 
-<img src="assets/useLayoutEffect.png" alt="useLayoutEffect" width="600px" />
+<p align="center">
+  <img src="assets/useLayoutEffect.png" alt="useLayoutEffect" width="600px" />
+</p>
 
 This runs synchronously immediately after React has performed all DOM mutations. This can be useful if you need to make DOM measurements (like getting the scroll position or other styles for an element) and then make DOM mutations or trigger a synchronous re-render by updating state.
 
@@ -7910,7 +7928,9 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
 
 ## Q. ***What are redux core concepts?***
 
-<img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
+<p align="center">
+  <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
+</p>
 
 **1. Actions in Redux**
 
@@ -8039,7 +8059,9 @@ The single source of truth is our state tree, that is not rewritten or reshaped.
 
 In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
 
-<img src="assets/redux-state.png" alt="Redux State" width="600px" />
+<p align="center">
+  <img src="assets/redux-state.png" alt="Redux State" width="600px" />
+</p>
 
 A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
 
@@ -8076,7 +8098,9 @@ The following are details of how Redux works:
 * The new state of the whole application goes into a single Store.
 * Components can easily subscribe to the Store.
 
-<img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
+<p align="center">
+  <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8620,7 +8644,9 @@ export const mapDispatchToProps = dispatch => ({
 
 ## Q. ***How to set the dataflow using react with redux?***
 
-<img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="500px" />
+<p align="center">
+  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="500px" />
+</p>
 
 Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
 
@@ -8893,7 +8919,9 @@ export connect(mapStateToProps)(ItemList)
 
 ## Q. ***What are the drawbacks of Redux contrasted with Flux?***
 
-<img src="assets/flux-structure.png" alt="Flux" width="500px" />
+<p align="center">
+  <img src="assets/flux-structure.png" alt="Flux" width="500px" />
+</p>
 
 Flux is application architecture or pattern designed, developed and used by Facebook for building user interface or client-side web application. Flux follows unidirectional data flow which supports or empowers composable view of React\'s components.
 
@@ -8906,7 +8934,9 @@ The Flux architecture is based on the following components:
 * **View**: Same as the view in MVC architecture, but in the context of React components
 * **Dispatcher**: Coordinates actions & updates to stores
 
-<img src="assets/flux-architecture.png" alt="Flux Architecture" width="500px" />
+<p align="center">
+  <img src="assets/flux-architecture.png" alt="Flux Architecture" width="500px" />
+</p>
 
 In the Flux architecture, when a user clicks on something, the view creates actions. Action can create new data and send it to the dispatcher. The dispatcher then dispatches the action result to the appropriate store. The store updates the state based on the result and sends an update to the view.
 
@@ -8917,7 +8947,9 @@ Redux is a library, which implements the idea of Flux but in quite a different w
 * **Reducer**: Logic that decides how your data changes exist in pure functions
 * **Centralized store**: Holds a state object that denotes the state of the entire app
 
-<img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
+<p align="center">
+  <img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
+</p>
 
 In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
 
@@ -8940,7 +8972,9 @@ In Redux architecture, application event is denoted as an Action, which is dispa
 
 MVC stands for Model View Controller. It is an architectural pattern used for developing the user interface. It divides the application into three different logical components: the Model, the View, and the Controller.
 
-<img src="assets/mvc.png" alt="MVC" />
+<p align="center">
+  <img src="assets/mvc.png" alt="MVC" />
+</p>
 
 * **Model**: It is responsible for maintaining the behavior and data of an application.
 * **View**: It is used to display the model in the user interface.
@@ -8962,7 +8996,9 @@ Flux places unidirectional data flow front and center, by making it a requiremen
 * The Dispatcher receives Actions and acts as the sole registry of callbacks to all stores within an application. It also manages the dependencies between stores
 * Views are the same as the view in MVC, except in the context of React and Flux, and also include Controller-Views for change events and retrieve application state from stores as required.
 
-<img src="assets/flux-2.png" alt="Flux" width="600px" />
+<p align="center">
+  <img src="assets/flux-2.png" alt="Flux" width="600px" />
+</p>
 
 1. All data in the application flow through a central hub called the Dispatcher
 2. This data is tracked as actions, which are provided to the dispatcher in an action creator method, often as a result of a user interacting with the view
