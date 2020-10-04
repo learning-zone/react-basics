@@ -9300,7 +9300,91 @@ It allows to easily find all usages of that constant across the project. It also
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the differences between redux-saga and redux-thunk?***
+## Q. ***What are the differences between redux-saga and redux-thunk?***
+
+**1. Redux Thunk**
+
+Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
+
+<img src="assests/redux-thunk.jpeg" alt="Redux Thunk" width="500px" />
+
+```bash
+npm i --save react-redux redux redux-logger redux-saga redux-thunk
+```
+
+Thunk is a function which optionaly takes some parameters and returns another function, it takes dispatch and getState functions and both of these are supplied by Redux Thunk middleware.
+
+Here is the basic structure of Redux-thunk
+
+```js
+export const thunkName = parameters => (dispatch, getState) => {
+// You can write your application logic here
+}
+```
+
+*Example*
+
+```js
+import axios from "axios"
+import GET_LIST_API_URL from "../config"
+
+const fetchList = () => {
+  return (dispatch) => {
+    axios.get(GET_LIST_API_URL)
+    .then((responseData) => {
+      dispatch(getList(responseData.list))
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+  }
+}
+
+const getList = (payload) => {
+  return {
+    type: "GET_LIST",
+    payload
+  }
+}
+
+export { fetchList }
+```
+
+**2. Redux Saga**
+
+Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
+
+<img src="assests/redux-saga.png" alt="Redux Saga" width="500px" />
+
+*Example:*
+
+```js
+import axios from "axios"
+import GET_LIST_API_URL from "../config"
+import {call, put} from "redux-saga/effects"
+
+const fetchList = () => {
+  return axios.get(GET_LIST_API_URL)
+}
+
+function *fetchList () {
+  try {
+    const responseData = yield call(getCharacters)
+    yield put({type: "GET_LIST", payload: responseData.list})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export { fetchList }
+```
+
+Both Redux Thunk and Redux Saga take care of dealing with side effects. In very simple terms, applied to the most common scenario (async functions, specifically AJAX calls) Thunk allows Promises" to deal with them, Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers, Saga/Generators are more powerful but you will need to learn them. When Promises are just good enough, so is Thunk, when you deal with more complex cases on a regular basis, Saga gives you better tools.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain Redux form with an example?***
 #### Q. ***How to reset state in redux?***
 #### Q. ***Why are Redux state functions called as reducers?***
