@@ -37,7 +37,9 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 
 ## Q3. ***What are Components in React?***
 
-<img src="assets/component-tree.png" alt="Components Tree" width="600px" />
+<p align="center">
+  <img src="assets/component-tree.png" alt="Components Tree" width="600px" />
+</p>
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
@@ -59,7 +61,9 @@ class Welcome extends React.Component {
 
 ## Q4. ***List some of the major advantages and limitations of React?***
 
-<img src="assets/react-features.png" alt="React-Features" width="500px" />
+<p align="center">
+  <img src="assets/react-features.png" alt="React-Features" width="500px" />
+</p>
 
 **Advantages**  
 
@@ -417,7 +421,9 @@ const ChildComponent = (props) => {
 
 ## Q10. ***How would you create Higher Order Components (HOCs) in React.js?***
 
-<img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="500px" />
+<p align="center">
+  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="500px" />
+</p>
 
 A higher-order component is a function that takes a component and returns a new component. A higher-order component (HOC) is the advanced technique in React.js for reusing a component logic. Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
 
@@ -590,7 +596,9 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 
 ## Q13. ***How Virtual-DOM is more efficient than Dirty checking?***
 
-<img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
+<p align="center">
+  <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
+</p>
 
 **React Virtual DOM**  
 
@@ -936,7 +944,9 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 
 ## Q21. ***What is useContext() in React?***
 
-<img src="assets/context-api.jpg" alt="Context API" width="800px" />
+<p align="center">
+  <img src="assets/context-api.jpg" alt="Context API" width="800px" />
+</p>
 
 The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
 
