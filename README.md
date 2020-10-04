@@ -9017,12 +9017,85 @@ store.dispatch({
 // state after dispatch: [ 'Use Redux', 'Understand the middleware' ]
 ```
 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to set initial state in Redux?***
+
+**1. Initializing State**
+
+In Redux, all application state is held in the store; which is an object that holds the complete state tree of your app. There is only one way to change its state and that is by dispatching actions.
+
+Actions are objects that consist of a type and a payload property. They are created and dispatched by special functions called action creators.
+
+*Example: First creating the Redux store*
+
+```js
+import { createStore } from 'redux'
+
+function todosReducer(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([action.payload])
+    default:
+      return state
+  }
+}
+
+const store = createStore(todosReducer)
+```
+
+Next updating the store
+
+```js
+const ADD_TODO = add_todo; // creates the action type
+const newTodo = ["blog on dev.to"];
+function todoActionCreator (newTodo) {
+  const action = {
+    type: ADD_TODO,
+    payload: newTodo
+  }
+  dispatch(action)
+}
+```
+
+When a store is created, Redux dispatches a dummy action to your reducer to populate the store with the initial state.
+
+**2. createStore Pattern**
+
+The createStore method can accept an optional preloadedState value as its second argument. In our example, we called `createStore()` without passing this value. When a value is passed to the `preloadedState` it becomes the initial state.
+
+```js
+const initialState = ["eat", "code", "sleep"];
+const store = createStore(todosReducer, initialState)
+```
+
+**3. Reducer Pattern**
+
+Reducers can also specify an initial state value by looking for an incoming state argument that is undefined, and returning the value they'd like to use as a default.
+
+```js
+function todosReducer(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([action.payload])
+    default:
+      return state
+  }
+}
+/**
+* sets initial state to []. But would only take effect if the initial state is undefined,
+* which means it was not set using createStore().
+**/
+```
+
+In general, `preloadedState` wins over the state specified by the `reducer`. This lets reducers specify initial data that makes sense to them as default arguments, but also allows loading existing data (fully or partially) when you\'re hydrating the store from some persistent storage or the server.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to set initial state in Redux?***
 #### Q. ***Are there any similarities between Redux and RxJS?***
 #### Q. ***How to use connect from react redux?***
 #### Q. ***What is the purpose of the constants in Redux?***
