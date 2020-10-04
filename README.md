@@ -9175,7 +9175,7 @@ store$.subscribe((state) =>
 
 **Async actions**
 
-Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, flatMap to squash the results of the asynchronous operation back onto the action$ stream.
+Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, `flatMap()` to squash the results of the asynchronous operation back onto the `action$` stream.
 
 ```js
 import { isObservable } from './utils';
@@ -9241,8 +9241,65 @@ The advantage of swapping the action payload for a stream is so we can send data
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to use connect from react redux?***
-#### Q. ***What is the purpose of the constants in Redux?***
+## Q. ***What is the purpose of the constants in Redux?***
+
+* It helps keep the naming consistent because all action types are gathered in a single place.
+* Sometimes you want to see all existing actions before working on a new feature. It may be that the action you need was already added by somebody on the team, but you didn\'t know.
+* The list of action types that were added, removed, and changed in a Pull Request helps everyone on the team keep track of scope and implementation of new features.
+* If you make a typo when importing an action constant, you will get undefined. This is much easier to notice than a typo when you wonder why nothing happens when the action is dispatched.
+
+*Example:* Constants in Redux can be used into two places, reducers and during actions creation.
+
+```js
+// actionTypes.js
+
+export const ADD_TODO = 'ADD_TODO'
+export const DELETE_TODO = 'DELETE_TODO'
+export const EDIT_TODO = 'EDIT_TODO'
+export const COMPLETE_TODO = 'COMPLETE_TODO'
+export const COMPLETE_ALL = 'COMPLETE_ALL'
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
+```
+
+And then require it in actions creator file
+
+```js
+// actions.js
+
+import { ADD_TODO } from './actionTypes'
+
+export function addTodo(text) {
+  return { type: ADD_TODO, text }
+}
+```
+
+And in some reducer
+
+```js
+import { ADD_TODO } from './actionTypes'
+
+export default (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return [
+        ...state,
+        {
+          text: action.text,
+          completed: false
+        }
+      ]
+    default:
+      return state
+  }
+}
+```
+
+It allows to easily find all usages of that constant across the project. It also prevents from introducing silly bugs caused by typos -- in which case, you will get a `ReferenceError` immediately.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the differences between redux-saga and redux-thunk?***
 #### Q. ***Explain Redux form with an example?***
 #### Q. ***How to reset state in redux?***
