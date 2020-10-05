@@ -9518,6 +9518,8 @@ export default reduxForm({
   <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
 </p>
 
+**[[READ MORE](https://redux-form.com/6.5.0/examples/syncvalidation/)]**
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
