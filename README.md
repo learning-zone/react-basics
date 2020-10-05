@@ -9437,9 +9437,11 @@ Both Redux Thunk and Redux Saga take care of dealing with side effects. In very 
 
 ## Q. ***Explain Redux form with an example?***
 
-<p align="center">
-  <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
-</p>
+This is a simple demonstration of how to connect all the standard HTML form elements to redux-form.
+
+For the most part, it is a matter of wrapping each form control in a `<Field>` component, specifying which type of `React.DOM` component you wish to be rendered.
+
+The Field component will provide your input with `onChange`, `onBlur`, `onFocus`, `onDrag`, and `onDrop` props to listen to the events, as well as a **value** prop to make each input a **controlled component**. Notice that the SimpleForm component has no state; in fact, it uses the functional stateless component syntax.
 
 ```js
 // SimpleForm.js
@@ -9511,6 +9513,10 @@ export default reduxForm({
   form: 'simple'  // a unique identifier for this form
 })(SimpleForm)
 ```
+
+<p align="center">
+  <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
