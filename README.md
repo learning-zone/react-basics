@@ -9583,7 +9583,94 @@ Therefore, they act as a reducer of state. Each time a redux reducer is called, 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to make Ajax request in Redux?***
+## Q. ***How to make Ajax request in Redux?***
+
+There are three most widely used and stable Redux Ajax middleware are:
+
+* Redux Promise Middleware
+* Redux Thunk Middleware
+* Redux Saga Middleware
+
+**1. Redux Promise Middleware**
+
+This is the most simple way of doing Ajax calls with Redux. When using Redux Promise, your action creator can return a Promise inside the Action.
+
+```js
+function getUserName(userId) {
+    return {
+        type: "SET_USERNAME",
+        payload: fetch(`/api/personalDetails/${userId}`)
+                .then(response => response.json())
+                .then(json =>  json.userName)
+    }
+}
+```
+
+This middleware automatically dispatches two events when the Ajax call succeeds: `SETUSERNAMEPENDING`  and `SETUSERNAMEFULFILLED`. If something fails it dispatches `SETUSERNAMEREJECTED`.
+
+**When to use**
+
+* You want the simplest thing with minimum overhead
+* You prefer convention over configuration
+* You have simple Ajax requirements
+
+**2. Redux Thunk Middleware**
+
+This is the standard way of doing Ajax with Redux. When using Redux Thunk, your action creators returns a function that takes one argument dispatch:
+
+```js
+function getUserName(userId) {
+    return dispatch => {
+        return fetch(`/api/personalDetails/${userId}`)
+        .then(response => response.json())
+        .then(json => dispatch({ type: "SET_USERNAME", userName: json.userName })
+    }
+}
+```
+
+The action creator can call dispatch inside `.then` to execute it asynchronously. The action creator can call dispatch as many time as it wants.
+
+**When to use**
+
+* You make many Ajax calls in one action, and need to dispatch many actions
+* You require full control of the format of your actions
+
+**3. Redux Saga Middleware**
+
+This is the most advanced way of doing Ajax with Redux. It uses an ES6 feature called `generators`. When using Redux Saga you do your Ajax calls in a saga instead of an action creator. This is how a saga looks like:
+
+```js
+import { call, put, takeEvery } from 'redux-saga/effects'
+
+// call getUserName when action SET_USERNAME is dispatched
+function* mySaga() {
+  yield takeEvery("SET_USERNAME", getUserName);
+}
+
+function* getUserName(action) {
+   try {
+      const user = yield call(fetch, `/api/personalDetails/${userId}`);
+      yield put({type: "SET_USERNAME_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put({type: "SET_USERNAME_FAILED", message: e.message});
+   }
+}
+
+export default mySaga
+```
+
+Here, sagas listen to actions which you dispatch as regular synchronous actions. In this case, the saga `getUserName` is executed when the action `SET_USERNAME` is dispatched. The `*` next to the function means it\'s a generator and yield is a generator keyword.
+
+**When to use**
+
+* You need to be able to test the asynchronous flow easily
+* You are comfortable working with ES6 Generators
+* You value pure functions
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the proper way to access Redux store?***
 #### Q. ***What are the differences between call and put in redux-saga?***
 #### Q. ***What is the mental model of redux-saga?***
