@@ -9671,7 +9671,6 @@ Here, sagas listen to actions which you dispatch as regular synchronous actions.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the proper way to access Redux store?***
 #### Q. ***What are the differences between call and put in redux-saga?***
 #### Q. ***What is the mental model of redux-saga?***
 #### Q. ***How Relay is different from Redux?***
