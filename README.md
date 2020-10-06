@@ -9573,7 +9573,16 @@ export default rootReducer
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why are Redux state functions called as reducers?***
+## Q. ***Why are Redux state functions called as reducers?***
+
+Redux state functions called a reducer because it\'s the type of function we pass to `Array.prototype.reduce(reducer, ?initialValue)`. Reducers do not just return default values. They always return the accumulation of the state (based on all previous and current actions).
+
+Therefore, they act as a reducer of state. Each time a redux reducer is called, the state is passed in with the action `(state, action)`. This state is then reduced (or accumulated) based on the action, and then the next state is returned. This is one cycle of the classic `fold` or `reduce` function.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to make Ajax request in Redux?***
 #### Q. ***What is the proper way to access Redux store?***
 #### Q. ***What are the differences between call and put in redux-saga?***
