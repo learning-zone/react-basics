@@ -9815,10 +9815,6 @@ Relay provides the following key features:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-
-#### Q. ***What are the important Redux Terminology?***
-#### Q. ***Where is the state kept in a React + Redux application?***
-#### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 #### Q. ***What is Presentational segment?***
 #### Q. ***How to dispatch an activity in reducer?***
 #### Q. ***How to dispatch the data in-store?***
