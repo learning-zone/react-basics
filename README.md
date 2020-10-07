@@ -9787,7 +9787,35 @@ sagaMiddleware.run(mySaga)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How Relay is different from Redux?***
+## Q. ***How Relay is different from Redux?***
+
+**Redux**
+
+Predictable state container for JavaScript apps. Redux helps you write applications that behave consistently, run in different environments (client, server, and native). In redux the application state is located in a single store, each component can access the state, and can also change the state by dispatching actions. Redux doesn\'t handle data fetching out of the box, though it can be done manually: simply create an action that fetches the data from the server into the store.
+
+Some of the features offered by Redux are:
+
+* Predictable state
+* Easy testing
+* Works with other view layers besides React
+
+**Relay**
+
+Created by facebook for react, and also used internally there. Relay is similar to redux in that they both use a single store. The main difference is that relay only manages state originated from the server, and all access to the state is used via GraphQL querys (for reading data) and mutations (for changing data). Relay caches the data for you and optimizes data fetching for you, by fetching only changed data and nothing more. Relay also supports optimistic updates, i.e. changing the state before the server\'s result arrives.
+
+Relay provides the following key features:
+
+* Build data driven apps
+* Declarative style
+* Mutate data on the client and server
+
+**GraphQL** is a web service framework and protocol using declarative and composable queries, and solves problem like over fetching and under fetching, it is believed to be a valid candidate to replace REST.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+
 #### Q. ***What are the important Redux Terminology?***
 #### Q. ***Where is the state kept in a React + Redux application?***
 #### Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
