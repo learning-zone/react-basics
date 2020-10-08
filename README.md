@@ -9920,13 +9920,12 @@ export default connect(state => ({ todos: state.todos }))(TodoListContainer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What does Side effects mean in React?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to do caching using redux?***
 #### Q. ***How to setup Redux for a REST api?***
 #### Q. ***How to use Redux for Error Handling?***
-## Q. ***How to dispatch the data in-store?***
+#### Q. ***How to dispatch the data in-store?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
