@@ -9815,15 +9815,118 @@ Relay provides the following key features:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to dispatch an activity in reducer?***
-#### Q. ***How to dispatch the data in-store?***
-#### Q. ***What is the purpose of using bindActionsCreators?***
+## Q. ***When would bindActionCreators be used in react/redux?***
+
+`bindActionCreators(actionCreators, dispatch)`: Turns an object whose values are action creators, into an object with the same keys, but with every action creator wrapped into a dispatch call so they may be invoked directly.
+
+When we use Redux with React, react-redux will provide `dispatch()` function and we can call it directly. The only use case for `bindActionCreators()` is when we want to pass some action creators down to a component that isn\'t aware of Redux, and we don\'t want to pass `dispatch` or the Redux store to it.
+
+**Parameters**
+
+1. `actionCreators` (Function or Object): An action creator, or an object whose values are action creators.
+2. `dispatch` (Function): A dispatch function available on the Store instance.
+
+**Returns**
+
+(Function or Object): An object mimicking the original object, but with each function immediately dispatching the action returned by the corresponding action creator. If you passed a function as actionCreators, the return value will also be a single function.
+
+*Example:*
+
+```js
+// TodoActionCreators.js
+
+export function addTodo(text) {
+  return {
+    type: 'ADD_TODO',
+    text
+  }
+}
+
+export function removeTodo(id) {
+  return {
+    type: 'REMOVE_TODO',
+    id
+  }
+}
+```
+
+```js
+// TodoListContainer.js
+
+import { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import * as TodoActionCreators from './TodoActionCreators'
+
+console.log(TodoActionCreators)
+// {
+//   addTodo: Function,
+//   removeTodo: Function
+// }
+
+class TodoListContainer extends Component {
+  constructor(props) {
+    super(props)
+
+    const { dispatch } = props
+
+    // Here's a good use case for bindActionCreators:
+    // You want a child component to be completely unaware of Redux.
+    // We create bound versions of these functions now so we can
+    // pass them down to our child later.
+
+    this.boundActionCreators = bindActionCreators(TodoActionCreators, dispatch)
+    console.log(this.boundActionCreators)
+    // {
+    //   addTodo: Function,
+    //   removeTodo: Function
+    // }
+  }
+
+  componentDidMount() {
+    // Injected by react-redux:
+    let { dispatch } = this.props
+
+    // Note: this won't work:
+    // TodoActionCreators.addTodo('Use Redux')
+
+    // You're just calling a function that creates an action.
+    // You must dispatch the action, too!
+
+    // This will work:
+    let action = TodoActionCreators.addTodo('Use Redux')
+    dispatch(action)
+  }
+
+  render() {
+    // Injected by react-redux:
+    let { todos } = this.props
+
+    return <TodoList todos={todos} {...this.boundActionCreators} />
+
+    // An alternative to bindActionCreators is to pass
+    // just the dispatch function down, but then your child component
+    // needs to import action creators and know about them.
+
+    // return <TodoList todos={todos} dispatch={dispatch} />
+  }
+}
+
+export default connect(state => ({ todos: state.todos }))(TodoListContainer)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What does Side effects mean in React?***
 #### Q. ***What is mapStateToProps and mapDispatchToProps?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to do caching using redux?***
 #### Q. ***How to setup Redux for a REST api?***
 #### Q. ***How to use Redux for Error Handling?***
+## Q. ***How to dispatch the data in-store?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
