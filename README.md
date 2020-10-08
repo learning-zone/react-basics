@@ -8286,7 +8286,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is difference between component and container in react redux?***
+## Q. ***What is difference between presentational component and container component in react redux?***
 
 **1. Container Components**
 
@@ -9815,7 +9815,6 @@ Relay provides the following key features:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Presentational segment?***
 #### Q. ***How to dispatch an activity in reducer?***
 #### Q. ***How to dispatch the data in-store?***
 #### Q. ***What is the purpose of using bindActionsCreators?***
