@@ -9934,7 +9934,7 @@ In React, `MapStatetoProps` pulls in the state of a specific reducer state objec
 
 In a simple term,
 
-**mapStateToProps**: It connects redux state to props of react component.
+**mapStateToProps**: It connects redux state to props of react component.  
 **mapDispatchToProps**: It connects redux actions to react props.
 
 *Example:*
