@@ -9920,7 +9920,86 @@ export default connect(state => ({ todos: state.todos }))(TodoListContainer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is mapStateToProps and mapDispatchToProps?***
+## Q. ***What is mapStateToProps and mapDispatchToProps?***
+
+`react-redux`package provides 3 functions `Connect`, `mapStapteToProps` and `mapDispatchToProps`. Connect is a higher order function that takes in both mapStateToProps and mapDispatchToProps as parameters.
+
+**1. Using MapStateToProps**
+
+In React, `MapStatetoProps` pulls in the state of a specific reducer state object from global store and maps it to the props of component. MapStateToProps is called everytime your store is updated. You pass in your state a retrieve that specific objects from the reducer.
+
+**2. Using MapDisptachToProps**
+
+`MapDispatchToProp` takes the dispatch functions in component and executes them against the Redux Reducer when that function is fired. MapDispatchToProps allows to dispatch state changes to your store.
+
+In a simple term,
+
+**mapStateToProps**: It connects redux state to props of react component.
+**mapDispatchToProps**: It connects redux actions to react props.
+
+*Example:*
+
+```js
+const {createStore} = Redux
+const {connect, Provider} = ReactRedux
+const InitialState = {Collection: ["COW", "COW", "DUCK", "DUCK"]}
+
+function reducer(state=InitialState, action) {
+    if (action.type === "REVERSE") {
+      return Object.assign({}, state, {
+         Collection: state.Collection.slice().reverse()
+      })
+    }
+    return state
+}
+
+var store = createStore(reducer)
+
+function mapStateToProps(state) {
+  return state
+}
+
+var PresentationalComponent = React.createClass({
+    render: function() {
+        return (
+          <div>
+            <h2>Store State ( as Props) </h2>
+            <pre> {JSON.stringify(this.props.Collection)}</pre>
+            <StateChangerUI />
+          </div>
+          )
+    }
+})
+
+// State changer UI
+var StateChangerUI = React.createClass({
+ // Action Dispatch  
+  handleClick: function() {
+     store.dispatch({
+         type: 'REVERSE'
+      })
+  },
+  render: function() {
+    return (
+      <button type="button" className="btn btn-success" onClick={this.handleClick}>REVERSE</button>
+    )
+  }
+})
+
+PresentationalComponent = connect(mapStateToProps)(PresentationalComponent)
+
+ReactDOM.render(
+    <Provider store={store}>
+        <PresentationalComponent />
+    </Provider>,
+    document.getElementById('App')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is reselect and how it works?***
 #### Q. ***How to do caching using redux?***
 #### Q. ***How to setup Redux for a REST api?***
