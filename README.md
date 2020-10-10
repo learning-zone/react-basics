@@ -7595,7 +7595,6 @@ export default Counter
 
 #### Q137. ***What is useRef() in React?***
 #### Q138. ***What is useHooks() in React?***
-#### Q139. ***How to create a custom react hook to fetch and cache data?***
 
 <br/>
 
