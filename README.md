@@ -8033,7 +8033,7 @@ describe('APP Component', () => {
 
 ## Redux Questions
 
-## Q. ***What is Redux?***
+## 1Q. ***What is Redux?***
 
 Redux is a predictable state container for JavaScript applications. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
 
@@ -8065,7 +8065,7 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain pros and cons of Redux?***
+## 2Q. ***Explain pros and cons of Redux?***
 
 **Pros using redux**
 
@@ -8085,7 +8085,7 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are redux core concepts?***
+## 3Q. ***What are redux core concepts?***
 
 <p align="center">
   <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
@@ -8212,7 +8212,7 @@ const store = createStore(reducers, initialState, middleware);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What do you understand by "Single source of truth" in Redux?***
+## 4Q. ***What do you understand by "Single source of truth" in Redux?***
 
 The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
 
@@ -8228,7 +8228,7 @@ A practical example would be that you have Redux store which contains items you 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the features of Workflow in Redux?***
+## 5Q. ***What are the features of Workflow in Redux?***
 
 When using Redux with React, states will no longer need to be lifted up. Everything is handled by Redux. Redux simplifies the app and makes it easier to maintain.
 
@@ -8265,7 +8265,7 @@ The following are details of how Redux works:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Redux Thunk used for?***
+## 6Q. ***What is Redux Thunk used for?***
 
 Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
 
@@ -8445,7 +8445,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is difference between presentational component and container component in react redux?***
+## 7Q. ***What is difference between presentational component and container component in react redux?***
 
 **1. Container Components**
 
@@ -8514,7 +8514,7 @@ export default Image
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain the role of Reducer?***
+## 8Q. ***Explain the role of Reducer?***
 
 A reducer is a function that determines changes to an application\'s state. It uses the action it receives to determine this change. Redux manage an application\'s state changes in a single store so that they behave consistently. Redux relies heavily on reducer functions that take the previous state and an action in order to execute the next state.
 
@@ -8662,7 +8662,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are Pure Functions and why should the reducer be a "pure" function?***
+## 9Q. ***What are Pure Functions and why should the reducer be a "pure" function?***
 
 **Pure Functions**
 
@@ -8693,7 +8693,7 @@ Redux simply checks whether the old object is the same as the new object by comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to split the reducers?***
+## 10Q. ***How to split the reducers?***
 
 Putting all your update logic into a single reducer function is quickly going to become unmaintainable. While there\'s no single rule for how long a function should be, it\'s generally agreed that functions should be relatively short and ideally only do one specific thing. It\'s good programming practice to take pieces of code that are very long or do many different things, and break them into smaller pieces that are easier to understand.
 
@@ -8733,7 +8733,7 @@ With reducer level code-splitting, reducers can be code split on a split compone
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to create action creators react with redux?***
+## 11Q. ***How to create action creators react with redux?***
 
 **Action Type**
 
@@ -8801,7 +8801,7 @@ export const mapDispatchToProps = dispatch => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to set the dataflow using react with redux?***
+## 12Q. ***How to set the dataflow using react with redux?***
 
 <p align="center">
   <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="500px" />
@@ -8820,7 +8820,7 @@ Redux has five main entities. Action Creators, Dispatching Function, Reducers, S
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the three principles that Redux follows?***
+## 13Q. ***What are the three principles that Redux follows?***
 
 Redux can be described in three fundamental principles:
 
@@ -8922,7 +8922,7 @@ const store = createStore(reducer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?***
+## 14Q. ***How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?***
 
 Any meaningful web app needs to execute complex logic, usually including asynchronous work such as making AJAX requests. That code is no longer purely a function of its inputs, and the interactions with the outside world are known as "side effects".
 
@@ -8932,7 +8932,7 @@ Redux is inspired by functional programming, and out of the box, has no place fo
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
+## 15Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
 
 Decorators make it possible to annotate and modify classes and properties at design time.
 
@@ -8987,7 +8987,7 @@ export default class MyApp extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the difference between React State vs Redux State?***
+## 16Q. ***What is the difference between React State vs Redux State?***
 
 React state is stored locally within a component. When it needs to be shared with other components, it is passed down through props. In practice, this means that the top-most component in your app needing access to a mutable value will hold that value in its state. If it can be mutated by subcomponents, you must pass a callback to handle the change into subcomponents.
 
@@ -8997,7 +8997,7 @@ When using Redux, state is stored globally in the Redux store. Any component tha
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the best way to access redux store outside a react component?***
+## 17Q. ***What is the best way to access redux store outside a react component?***
 
 To access redux store outside a react component, Redux `connect` function works great for regular React components.
 
@@ -9076,7 +9076,7 @@ export connect(mapStateToProps)(ItemList)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the drawbacks of Redux contrasted with Flux?***
+## 18Q. ***What are the drawbacks of Redux contrasted with Flux?***
 
 <p align="center">
   <img src="assets/flux-structure.png" alt="Flux" width="500px" />
@@ -9125,7 +9125,7 @@ In Redux architecture, application event is denoted as an Action, which is dispa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Describe Flux vs MVC?***
+## 19Q. ***Describe Flux vs MVC?***
 
 **1. MVC**
 
@@ -9180,7 +9180,7 @@ Flux places unidirectional data flow front and center, by making it a requiremen
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to add multiple middleware to redux?***
+## 20Q. ***How to add multiple middleware to redux?***
 
 The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like `RxJS`. It does so by letting you dispatch async actions in addition to normal actions.
 
@@ -9226,7 +9226,7 @@ store.dispatch({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to set initial state in Redux?***
+## 21Q. ***How to set initial state in Redux?***
 
 **1. Initializing State**
 
@@ -9301,7 +9301,7 @@ In general, `preloadedState` wins over the state specified by the `reducer`. Thi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Are there any similarities between Redux and RxJS?***
+## 22Q. ***Are there any similarities between Redux and RxJS?***
 
 **Redux**:
 
@@ -9446,7 +9446,7 @@ The advantage of swapping the action payload for a stream is so we can send data
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the purpose of the constants in Redux?***
+## 23Q. ***What is the purpose of the constants in Redux?***
 
 * It helps keep the naming consistent because all action types are gathered in a single place.
 * Sometimes you want to see all existing actions before working on a new feature. It may be that the action you need was already added by somebody on the team, but you didn\'t know.
@@ -9505,7 +9505,7 @@ It allows to easily find all usages of that constant across the project. It also
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the differences between redux-saga and redux-thunk?***
+## 24Q. ***What are the differences between redux-saga and redux-thunk?***
 
 **1. Redux Thunk**
 
@@ -9594,7 +9594,7 @@ Both Redux Thunk and Redux Saga take care of dealing with side effects. In very 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain Redux form with an example?***
+## 25Q. ***Explain Redux form with an example?***
 
 This is a simple demonstration of how to connect all the standard HTML form elements to redux-form.
 
@@ -9683,7 +9683,7 @@ export default reduxForm({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to reset state in redux?***
+## 26Q. ***How to reset state in redux?***
 
 The root reducer would normally delegate handling the action to the reducer generated by `combineReducers()`. However, whenever it receives `USER_LOGOUT` action, it returns the initial state all over again.
 
@@ -9732,7 +9732,7 @@ export default rootReducer
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why are Redux state functions called as reducers?***
+## 27Q. ***Why are Redux state functions called as reducers?***
 
 Redux state functions called a reducer because it\'s the type of function we pass to `Array.prototype.reduce(reducer, ?initialValue)`. Reducers do not just return default values. They always return the accumulation of the state (based on all previous and current actions).
 
@@ -9742,7 +9742,7 @@ Therefore, they act as a reducer of state. Each time a redux reducer is called, 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to make Ajax request in Redux?***
+## 28Q. ***How to make Ajax request in Redux?***
 
 There are three most widely used and stable Redux Ajax middleware are:
 
@@ -9830,7 +9830,7 @@ Here, sagas listen to actions which you dispatch as regular synchronous actions.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the differences between call and put in redux-saga?***
+## 29Q. ***What are the differences between call and put in redux-saga?***
 
 Both `call()` and `put()` are effect creator functions. `call()` function is used to create effect description, which instructs middleware to call the promise. `put()` function creates an effect, which instructs middleware to dispatch an action to the store.
 
@@ -9854,7 +9854,7 @@ function* fetchUserSaga(action) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the mental model of redux-saga?***
+## 30Q. ***What is the mental model of redux-saga?***
 
 Saga is like a separate thread in your application, that is solely responsible for side effects. `redux-saga` is a redux middleware, which means this thread can be **started**, **paused** and **cancelled** from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
 
@@ -9946,7 +9946,7 @@ sagaMiddleware.run(mySaga)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How Relay is different from Redux?***
+## 31Q. ***How Relay is different from Redux?***
 
 **Redux**
 
@@ -9974,7 +9974,7 @@ Relay provides the following key features:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***When would bindActionCreators be used in react/redux?***
+## 32Q. ***When would bindActionCreators be used in react/redux?***
 
 **`bindActionCreators(actionCreators, dispatch)`**: Turns an object whose values are action creators, into an object with the same keys, but with every action creator wrapped into a dispatch call so they may be invoked directly.
 
@@ -10079,7 +10079,7 @@ export default connect(state => ({ todos: state.todos }))(TodoListContainer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is mapStateToProps and mapDispatchToProps?***
+## 33Q. ***What is mapStateToProps and mapDispatchToProps?***
 
 `react-redux`package provides 3 functions `Connect`, `mapStapteToProps` and `mapDispatchToProps`. Connect is a higher order function that takes in both mapStateToProps and mapDispatchToProps as parameters.
 
@@ -10159,7 +10159,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is reselect and how it works?***
+## 34Q. ***What is reselect and how it works?***
 
 **`Reselect`** is a simple library for creating memoized, composable **selector** functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.
 
@@ -10207,8 +10207,8 @@ We can use the `filteredTodos` selectors to get all the todos if there\'s no sea
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to use Redux for Error Handling?***
-#### Q. ***How to dispatch the data in-store?***
+#### 35Q. ***How to use Redux for Error Handling?***
+#### 36Q. ***How to dispatch the data in-store?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
