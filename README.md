@@ -7,7 +7,8 @@
 ## Table of Contents
 
 * *[Create React Application](https://create-react-app.dev/docs/getting-started)*
-* *[React Quick Reference](quick-reference.md)*
+* *[React Quick Reference](react-quick-reference.md)*
+* *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
 * *[React Best Practices](best-practices.md)*
 
