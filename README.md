@@ -10000,7 +10000,54 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is reselect and how it works?***
+## Q. ***What is reselect and how it works?***
+
+**`Reselect`** is a simple library for creating memoized, composable **selector** functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.
+
+Selectors can compute derived data, allowing Redux to store the minimal possible state. Which can be considered as keep the store as minimal as possible. A selector is not recomputed unless one of its arguments change. A memoized selector that recalculates only when that part of the start tree changes which are input arguments to the selector. The value of selector doesn\'t change when there is no change in other (unrelated) parts of the state tree.
+
+**selectors**
+
+In our context, selectors are nothing but functions which can compute or retrive data from the store. We usually fetch the state data using `mapStateToProps()` function like this.
+
+```js
+const mapStateToProps = (state) => {
+  return {
+    activeData: getActiveData(state.someData, state.isActive)
+  }
+}
+```
+
+Where `getActiveData()` will be a function which returns all the records from `someData` having the status as `isActive`. The drawback with this function is, whenever any part of the state state updates, this function will recalculate this data.
+
+When we use `Reselect` it caches the input arguments to the memoized function. So only when the arguments of the function changes from the previous call, the selector recalculates.
+
+*Example:*
+
+```js
+// todo.reducer.js
+// ...
+import { createSelector } from 'reselect';
+
+const todoSelector = state => state.todo.todos;
+const searchTermSelector = state => state.todo.searchTerm;
+
+export const filteredTodos = createSelector(
+  [todoSelector, searchTermSelector],
+  (todos, searchTerm) => {
+    return todos.filter(todo => todo.title.match(new RegExp(searchTerm, 'i')));
+  }
+);
+
+// ...
+```
+
+We can use the `filteredTodos` selectors to get all the todos if there\'s no searchTerm set in the state, or a filtered list otherwise.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to do caching using redux?***
 #### Q. ***How to setup Redux for a REST api?***
 #### Q. ***How to use Redux for Error Handling?***
