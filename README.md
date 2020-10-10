@@ -7459,6 +7459,7 @@ const useFetch = (url) => {
 
     const fetchData = async () => {
       setStatus('fetching')
+
       if (cache[url]) {
         const data = cache[url]
         setData(data)
@@ -7493,20 +7494,22 @@ const useFetch = (url) => {
 
   useEffect(() => {
     if (!url) return
-      const fetchData = async () => {
-        setStatus('fetching')
-        if (cache.current[url]) {
-          const data = cache.current[url]
-          setData(data)
-          setStatus('fetched')
-        } else {
-          const response = await fetch(url)
-          const data = await response.json()
-          cache.current[url] = data // set response in cache
-          setData(data)
-          setStatus('fetched')
-        }
+
+    const fetchData = async () => {
+      setStatus('fetching')
+
+      if (cache.current[url]) {
+        const data = cache.current[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache.current[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
       }
+    }
 
     fetchData()
   }, [url])
