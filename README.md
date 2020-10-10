@@ -7433,9 +7433,166 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q136. ***What is useRef() in React?***
-#### Q137. ***What is useHooks() in React?***
-#### Q138. ***How to create a custom react hook to fetch and cache data?***
+## Q136. ***How to do caching in React?***
+
+In React, caching data can be achieved in multiple ways
+
+* Local Storage
+* Redux Store
+* Keep data between mouting and unmounting
+
+**1. Memoizing Fetched Data**
+
+Memoization is a technique we would use to make sure that we don\'t hit the API if we have made some kind of request to fetch it at some initial phase. Storing the result of expensive fetch calls will save the users some load time, therefore, increasing overall performance.
+
+*Example:*
+
+```js
+const cache = {}
+
+const useFetch = (url) => {
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+
+    const fetchData = async () => {
+      setStatus('fetching')
+      if (cache[url]) {
+        const data = cache[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
+      }
+    }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
+
+**2. Memoizing Data With `useRef()`**
+
+With `useRef()`, we can set and retrieve mutable values at ease and its value persists throughout the component\'s lifecycle.
+
+```js
+const useFetch = (url) => {
+  const cache = useRef({})
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+      const fetchData = async () => {
+        setStatus('fetching')
+        if (cache.current[url]) {
+          const data = cache.current[url]
+          setData(data)
+          setStatus('fetched')
+        } else {
+          const response = await fetch(url)
+          const data = await response.json()
+          cache.current[url] = data // set response in cache
+          setData(data)
+          setStatus('fetched')
+        }
+      }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+**3. Using `localStorage()`**
+
+```js
+const InitialState = {
+   someState: 'a'
+}
+class App extends Component {
+
+ constructor(props) {
+  super(props)
+
+  // Retrieve the last state
+  this.state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState
+
+}
+
+componentWillUnmount() {
+  // Remember state for the next mount
+  localStorage.setItem('appState', JSON.stringify(this.state))
+}
+
+render() {
+  ...
+ }
+}
+
+export default App
+```
+
+**4. Keep data between mouting and unmounting**
+
+```js
+import React, { Component } from 'react'
+
+// Set initial state
+let state = { counter: 5 }
+
+class Counter extends Component {
+
+ constructor(props) {
+  super(props)
+
+  // Retrieve the last state
+  this.state = state
+
+  this.onClick = this.onClick.bind(this)
+}
+
+componentWillUnmount() {
+  // Remember state for the next mount
+  state = this.state
+}
+
+onClick(e) {
+  e.preventDefault()
+  this.setState(prev => ({ counter: prev.counter + 1 }))
+}
+
+render() {
+  return (
+    <div>
+      <span>{ this.state.counter }</span>
+      <button onClick={this.onClick}>Increase</button>
+    </div>
+  )
+ }
+}
+
+export default Counter
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q137. ***What is useRef() in React?***
+#### Q138. ***What is useHooks() in React?***
+#### Q139. ***How to create a custom react hook to fetch and cache data?***
 
 <br/>
 
@@ -10048,8 +10205,6 @@ We can use the `filteredTodos` selectors to get all the todos if there\'s no sea
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to do caching using redux?***
-#### Q. ***How to setup Redux for a REST api?***
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to dispatch the data in-store?***
 
