@@ -10208,8 +10208,92 @@ We can use the `filteredTodos` selectors to get all the todos if there\'s no sea
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## 36Q. ***What are the different ways to dispatch actions in Redux?***
+
+**Redux** is a state container for Javascript apps, mostly used with React. It\'s based on actions that are dispatched and listened by reducers which modify the state properly.
+
+**1. Passing dispatch method to our component**
+
+The dispatch method is a method of the store object. An action is dispatched to trigger an update to the store.
+
+```js
+// App.js
+import { createStore } from 'redux';
+import { MessageSender } from './MessageSender';
+import reducer from './reducer';
+
+const store = createStore(reducer);
+class App extends React.Component {
+ render() {
+ <MessageSender store={store} />
+ };
+};
+```
+
+```js
+// MessageSender.js
+import { sendMsg } from './actions';
+// ...
+this.props.store.dispatch(sendMsg(msg))
+// ...
+```
+
+**2. Using React-Redux to make dumb/smart components**
+
+The downside of the above approach is that our React component is aware of the app logic. It\'s best to separate the logic in our smart component connected to the store from the user interface, i.e., from the dumb component.
+
+From the official docs for `connect()`, we can describe `mapDispatchToProps()` this way: If an object is passed, each function inside it is assumed to be a Redux action creator. An object with the same function names, but with every action creator wrapped into a dispatch call so they may be invoked directly, will be merged into the component\'s props.
+
+```js
+// MessageSender.container.js
+
+import { connect } from 'react-redux';
+import { sendMsg } from './actions';
+import MessageSender from './MessageSender';
+
+const mapDispatchToProps = {
+ sendMsg
+};
+
+export default connect(null, mapDispatchToProps)(MessageSender);
+
+// MessageSender.js
+// ...
+this.props.sendMsg(msg);
+// ...
+```
+
+**3. Using the bindActionCreators() method**
+
+The `bindActionCreators()` method allows us to dispatch actions from any React component that is not connected to the store as `mapDispatchToPros()` in the connect function of react-redux.
+
+```js
+// MsgSenderPage.js
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from './actions';
+
+class MsgSenderPage extends React.Component {
+ constructor(props) {
+ super(props);
+ const { dispatch } = props;
+ this.boundedActions = bindActionCreators(actions, dispatch);
+ }
+
+ render() {
+ return <MsgSending {...this.boundedActions} />;
+ }
+}
+
+export default connect()(MsgSenderPage);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### 35Q. ***How to use Redux for Error Handling?***
-#### 36Q. ***How to dispatch the data in-store?***
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
