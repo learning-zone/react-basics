@@ -633,7 +633,7 @@ In brief, here is what happens when we update the DOM in React:
 
 ## Q14. ***Why is setState() in React async instead of sync?***
 
-Even if state is updated synchronously, props are not, it mens we do not know props until it re-render the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
+Even if state is updated synchronously, props are not, it means we do not know props until it re-renders the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
 
 `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
 
