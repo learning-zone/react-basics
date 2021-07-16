@@ -14,7 +14,7 @@
 
 <br/>
 
-## Q1. ***What is React.js?***
+## Q. ***What is React.js?***
 
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
@@ -26,7 +26,7 @@ The main objective of ReactJS is to develop User Interfaces (UI) that improves t
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q2. ***How React works?***
+## Q. ***How React works?***
 
 While building client-side apps, a team at Facebook developers realized that the DOM is slow (The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated). So, to make it faster, React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
@@ -36,7 +36,7 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q3. ***What are Components in React?***
+## Q. ***What are Components in React?***
 
 <p align="center">
   <img src="assets/component-tree.png" alt="Components Tree" />
@@ -60,7 +60,7 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q4. ***List some of the major advantages and limitations of React?***
+## Q. ***List some of the major advantages and limitations of React?***
 
 <p align="center">
   <img src="assets/react-features.png" alt="React-Features" width="500px" />
@@ -88,7 +88,7 @@ Testable. React native tools are offered for testing, debugging code.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q5. ***What is JSX and how JSX can help applications in React.js?***
+## Q. ***What is JSX and how JSX can help applications in React.js?***
 
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
 
@@ -140,7 +140,7 @@ Since they are compiled to objects, JSX can be used wherever a regular JavaScrip
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q6. ***What is ReactDOM?***
+## Q. ***What is ReactDOM?***
 
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
 
@@ -241,7 +241,7 @@ ReactDOM.createPortal(child, container)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q7. ***What is the difference between ReactDOM and React?***
+## Q. ***What is the difference between ReactDOM and React?***
 
 ```js
 import React from 'react' /* importing react */
@@ -267,7 +267,7 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q8. ***What are the differences between a class component and functional component?***
+## Q. ***What are the differences between a class component and functional component?***
 
 **Functional Components**  
 
@@ -353,7 +353,7 @@ export default ClockUsingClass
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q9. ***What is the difference between state and props?***
+## Q. ***What is the difference between state and props?***
 
 **State**  
 
@@ -420,7 +420,7 @@ const ChildComponent = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q10. ***How would you create Higher Order Components (HOCs) in React.js?***
+## Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
 <p align="center">
   <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="500px" />
@@ -477,7 +477,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q11. ***What is PureComponent?***
+## Q. ***What is PureComponent?***
 
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
@@ -570,7 +570,7 @@ ReactDOM.render(<Test />, document.getElementById('app'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q12. ***Why to use PureComponent? When to use PureComponent over Component?***
+## Q. ***Why to use PureComponent? When to use PureComponent over Component?***
 
 Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
 
@@ -595,7 +595,7 @@ On the other hand, we should not use `PureComponent()` as a base component if:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q13. ***How Virtual-DOM is more efficient than Dirty checking?***
+## Q. ***How Virtual-DOM is more efficient than Dirty checking?***
 
 <p align="center">
   <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
@@ -631,7 +631,7 @@ In brief, here is what happens when we update the DOM in React:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q14. ***Why is setState() in React async instead of sync?***
+## Q. ***Why is setState() in React async instead of sync?***
 
 Even if state is updated synchronously, props are not, it means we do not know props until it re-renders the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
 
@@ -643,7 +643,7 @@ This is because setState() alters the state and causes rerendering. This can be 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q15. ***What are controlled and uncontrolled components in React?***
+## Q. ***What are controlled and uncontrolled components in React?***
 
 In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
 
@@ -722,7 +722,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q16. ***What is React.cloneElement?***
+## Q. ***What is React.cloneElement?***
 
 The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
 
@@ -784,7 +784,7 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q17. ***When we should use React.cloneElement vs this.props.children?***
+## Q. ***When we should use React.cloneElement vs this.props.children?***
 
 The `React.cloneElement()` works if child is a single React element.
 
@@ -844,7 +844,7 @@ B
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q18. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
+## Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
 
 A callback function which will be invoked when `setState()` has finished and the component is re-rendered.
 
@@ -862,7 +862,7 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q19. ***What is useState() in React?***
+## Q. ***What is useState() in React?***
 
 The `useState()` is a Hook that allows to have state variables in functional components.
 
@@ -902,7 +902,7 @@ The useState() function takes as argument a value for the initial state. In this
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q20. ***What is useReducer() in React?***
+## Q. ***What is useReducer() in React?***
 
 It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
 
@@ -943,7 +943,7 @@ Here, we first define an initialState and a reducer. When a user clicks a button
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q21. ***What is useContext() in React?***
+## Q. ***What is useContext() in React?***
 
 <p align="center">
   <img src="assets/context-api.jpg" alt="Context API" width="800px" />
@@ -982,7 +982,7 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q22. ***What is difference between useEffect() vs componentDidMount()?***
+## Q. ***What is difference between useEffect() vs componentDidMount()?***
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
 
@@ -1029,7 +1029,7 @@ When useEffect() is used to get data from server.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q23. ***What do you understand by refs in React?***
+## Q. ***What do you understand by refs in React?***
 
 `Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
 
@@ -1086,7 +1086,7 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q24. ***What will happen if you use setState() in constructor?***
+## Q. ***What will happen if you use setState() in constructor?***
 
 When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
 
@@ -1122,7 +1122,7 @@ class Food extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q25. ***What is the difference between DOM and virtual DOM?***
+## Q. ***What is the difference between DOM and virtual DOM?***
 
 **DOM**
 
@@ -1158,7 +1158,7 @@ Once this is done, the virtual DOM calculates the best possible method to make t
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q26. ***When should we use arrow functions with React?***
+## Q. ***When should we use arrow functions with React?***
 
 **Arrows prevent `this` bugs**
 
@@ -1196,7 +1196,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q27. ***Differentiate between stateful and stateless components?***
+## Q. ***Differentiate between stateful and stateless components?***
 
 Stateful and stateless components have many different names. They are also known as:
 
@@ -1264,7 +1264,7 @@ const BooksList = ({books}) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q28. ***What are the different phases of React component lifecycle?***
+## Q. ***What are the different phases of React component lifecycle?***
 
 <p align="center">
   <img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
@@ -1524,7 +1524,7 @@ ReactDOM.render(<Container />, document.getElementById('root'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q29. ***What is the significance of keys in React?***
+## Q. ***What is the significance of keys in React?***
 
 Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
 
@@ -1562,7 +1562,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q30. ***What is React Router? Why is switch keyword used in React Router v4?***
+## Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
@@ -1616,7 +1616,7 @@ The `exact` returns any number of routes that match exactly.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q31. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?***
+## Q. ***Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?***
 
 Typically, we use build tools like Grunt, Watchify/Browserify, Broccoli, or Webpack to watch the filesystem for file events (like when you add or edit a file). After this occurs, the build tool is configured to carry out a group of sequential or parallel tasks.
 
@@ -1633,7 +1633,7 @@ The rest of the tools belong in that group of sequential or parallel tasks:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q32. ***How React handle or restrict Props to certain types?***
+## Q. ***How React handle or restrict Props to certain types?***
 
 React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
 
@@ -1663,7 +1663,7 @@ export default Person
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q33. ***What is prop drilling and how can you avoid it?***
+## Q. ***What is prop drilling and how can you avoid it?***
 
 React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
 
@@ -1704,7 +1704,7 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q34. ***If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?***
+## Q. ***If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?***
 
 The `componentDidMount()` lifecycle hook can be used with class components.
 ```js
@@ -1744,7 +1744,7 @@ The value passed as the second argument controls when the callback is executed:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q35. ***How can automated tooling be used to improve the accessibility of a React application?***
+## Q. ***How can automated tooling be used to improve the accessibility of a React application?***
 
 There are two main categories of automated tools that can be used to identify accessibility issues:
 
@@ -1760,7 +1760,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q36. ***What is the purpose of using super constructor with props argument?***
+## Q. ***What is the purpose of using super constructor with props argument?***
 
 The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
 
@@ -1785,7 +1785,7 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q37. ***Why should not we update the state directly?***
+## Q. ***Why should not we update the state directly?***
 
 The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
 
@@ -1851,7 +1851,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q38. ***What do these three dots (...) in React do?***
+## Q. ***What do these three dots (...) in React do?***
 
 The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
 
@@ -1899,7 +1899,7 @@ this.setState(state => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q39. ***What are React Hooks? What are advantages of using React Hooks?***
+## Q. ***What are React Hooks? What are advantages of using React Hooks?***
 
 React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
 
@@ -1981,7 +1981,7 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q40. ***How to apply validation on Props in React?***
+## Q. ***How to apply validation on Props in React?***
 
 Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
 
@@ -2030,7 +2030,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q41. ***What is the difference between using constructor vs getInitialState in React?***
+## Q. ***What is the difference between using constructor vs getInitialState in React?***
 
 The two approaches are not interchangeable. You should initialize state in the `constructor()` when using ES6 classes, and define the `getInitialState()` method when using React.createClass.
 
@@ -2062,7 +2062,7 @@ The `getInitialState()` is used with `React.createClass` and `constructor()` is 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q42. ***How to conditionally add attributes to React components?***
+## Q. ***How to conditionally add attributes to React components?***
 
 Inline conditionals in attribute props
 
@@ -2087,7 +2087,7 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q43. ***Do Hooks replace render props and higher-order components?***
+## Q. ***Do Hooks replace render props and higher-order components?***
 
 **React Hooks**
 
@@ -2159,7 +2159,7 @@ export default page(MyPageComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q44. ***How to optimize React Performance?***
+## Q. ***How to optimize React Performance?***
 
 React uses many techniques to minimize the number of DOM operations for us already. For many applications, if you are using the production build, you may already meet or surpass your performance expectations. Nevertheless, there are several ways you can speed up your application.
 
@@ -2219,7 +2219,7 @@ In order to address the issue with our long chat feed, the React team recommends
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q45. ***When would you use StrictMode component in React?***
+## Q. ***When would you use StrictMode component in React?***
 
 `StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants. Strict mode checks are run in development mode only; they do not impact the production build.
 
@@ -2264,7 +2264,7 @@ In the above example, strict mode checks will not be run against the `<Header>` 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q46. ***How does React renderer work exactly when we call setState?***
+## Q. ***How does React renderer work exactly when we call setState?***
 
 The `state` allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule. Components defined as classes have some additional features. Local state is a feature available only to class Components.
 
@@ -2300,7 +2300,7 @@ When the request to `setState()` is triggered, React creates a new tree containi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q47. ***How to avoid the need for binding in React?***
+## Q. ***How to avoid the need for binding in React?***
 
 **1. Use Arrow Function in Class Property**
 
@@ -2345,7 +2345,7 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q48. ***How does the state differ from props in React?***
+## Q. ***How does the state differ from props in React?***
 
 **State**
 
@@ -2413,7 +2413,7 @@ Props should never be changed in a child component. Props are also used to allow
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q49. ***How would you create a form in React?***
+## Q. ***How would you create a form in React?***
 
 **App.js**
 
@@ -2624,7 +2624,7 @@ Output:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q50. ***How to change the state of a child component from its parent in React?***
+## Q. ***How to change the state of a child component from its parent in React?***
 
 **Using Props**
 
@@ -2662,7 +2662,7 @@ On the above codes, we have created function handleChange that will pass the val
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q51. ***What do you understand with the term polling in React?***
+## Q. ***What do you understand with the term polling in React?***
 
 Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals.
 
@@ -2712,7 +2712,7 @@ The example above shows a React component, IntervalExample, scheduling a new int
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q52. ***What is the difference between Element, Component and Component instance in React?***
+## Q. ***What is the difference between Element, Component and Component instance in React?***
 
 A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
 
@@ -2775,7 +2775,7 @@ A React Component can contain state and has access to the React Lifecycle method
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q53. ***In which lifecycle event do you make AJAX requests in React?***
+## Q. ***In which lifecycle event do you make AJAX requests in React?***
 
 According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
 
@@ -2841,7 +2841,7 @@ class MyComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q54. ***What is meant by event handling in React?***
+## Q. ***What is meant by event handling in React?***
 
 Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
 
@@ -2883,7 +2883,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q55. ***How many outermost elements can be there in a JSX expression?***
+## Q. ***How many outermost elements can be there in a JSX expression?***
 
 A JSX expression must have only one outer element. For Example:
 
@@ -2900,7 +2900,7 @@ const headings = (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q56. ***Explain DOM diffing?***
+## Q. ***Explain DOM diffing?***
 
 **Document Object Model**
 
@@ -2930,7 +2930,7 @@ React implements a heuristic O(n) algorithm based on two assumptions:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q57. ***What does shouldComponentUpdate do and why is it important?***
+## Q. ***What does shouldComponentUpdate do and why is it important?***
 
 The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
 
@@ -2952,7 +2952,7 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q58. ***What is the purpose of render() function in React?***
+## Q. ***What is the purpose of render() function in React?***
 
 All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
 
@@ -2993,7 +2993,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q59. ***What are React components?***
+## Q. ***What are React components?***
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
@@ -3074,7 +3074,7 @@ Every component has **lifecycle methods**. They specify the behavior of the comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q60. ***How do I bind a function to a component instance?***
+## Q. ***How do I bind a function to a component instance?***
 
 There are several ways to make sure functions have access to component attributes like `this.props` and `this.state`, depending on which syntax and build steps you are using.
 
@@ -3143,7 +3143,7 @@ class App extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q61. ***How do I pass a parameter to an event handler or callback?***
+## Q. ***How do I pass a parameter to an event handler or callback?***
 
 You can use an arrow function to wrap around an event handler and pass parameters:
 
@@ -3235,7 +3235,7 @@ class Alphabet extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q62. ***How can I prevent a function from being called too quickly?***
+## Q. ***How can I prevent a function from being called too quickly?***
 
 **Throttle**
 
@@ -3358,7 +3358,7 @@ class ScrollListener extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q63. ***What is reconciliation in React?***
+## Q. ***What is reconciliation in React?***
 
 Reconciliation is the process through which React updates the DOM.
 
@@ -3423,7 +3423,7 @@ When an entry is made in the first input field, React creates a new tree. The ne
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q64. ***What are portals in React?***
+## Q. ***What are portals in React?***
 
 Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
@@ -3522,7 +3522,7 @@ Now, open the Index.html file and add a <div id="portal-root"></div> element to 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q65. ***What is ReactDOMServer?***
+## Q. ***What is ReactDOMServer?***
 
 The `ReactDOMServer` object enables you to render components to static markup. Typically, it\'s used on a Node server:
 
@@ -3642,7 +3642,7 @@ node server/index.js
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q66. ***What will happen if you use props in initial state?***
+## Q. ***What will happen if you use props in initial state?***
 
 Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
 
@@ -3697,7 +3697,7 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q67. ***How to re-render the view when the browser is resized?***
+## Q. ***How to re-render the view when the browser is resized?***
 
 **Using React Hooks**
 
@@ -3764,7 +3764,7 @@ class ShowWindowDimensions extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q68. ***How can find the version of React at runtime in the browser?***
+## Q. ***How can find the version of React at runtime in the browser?***
 
 **Chrome Dev Tools**
 
@@ -3776,7 +3776,7 @@ window.React.version
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q69. ***How to use https instead of http in create-react-app?***
+## Q. ***How to use https instead of http in create-react-app?***
 
 set the HTTPS environment variable to `true`, then start the dev server as usual with `npm start`:
 
@@ -3789,7 +3789,7 @@ set HTTPS=true&&npm start
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q70. ***Why is a component constructor called only once?***
+## Q. ***Why is a component constructor called only once?***
 
 React\'s **reconciliation algorithm** assumes that without any information to the contrary, if a custom component appears in the same place on subsequent renders, it\'s the same component as before, so reuses the previous instance rather than creating a new one.
 
@@ -3813,7 +3813,7 @@ renderContent() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q71. ***Explain React Router 5 features?***
+## Q. ***Explain React Router 5 features?***
 
 React Router 5 embraces the power of hooks and has introduced four different hooks to help with routing.
 
@@ -3943,7 +3943,7 @@ this.props.history.push("/first")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q72. ***What are the kinds of information that control a segment in React?***
+## Q. ***What are the kinds of information that control a segment in React?***
 
 There are mainly two sorts of information that control a segment
 
@@ -3954,7 +3954,7 @@ There are mainly two sorts of information that control a segment
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q73. ***What are the drawbacks of MVW pattern?***
+## Q. ***What are the drawbacks of MVW pattern?***
 
 MVW stands for **Model-View-Whatever**
 
@@ -3978,7 +3978,7 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q74. ***What is the difference between createElement and cloneElement?***
+## Q. ***What is the difference between createElement and cloneElement?***
 
 JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
 
@@ -4031,7 +4031,7 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q75. ***When should I be using React.cloneElement vs this.props.children?***
+## Q. ***When should I be using React.cloneElement vs this.props.children?***
 
 The `React.cloneElement` only works if your child is a single React element.
 
@@ -4071,7 +4071,7 @@ class Users extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q76. ***Explain the Lists in React?***
+## Q. ***Explain the Lists in React?***
 
 Using JSX we can show lists using JavaScript\'s built-in `Array.map()` method. The `.map()` method is often used to take one piece of data and convert it to another.
 
@@ -4125,7 +4125,7 @@ export default Item
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q77. ***Why is it necessary to start component names with a capital letter?***
+## Q. ***Why is it necessary to start component names with a capital letter?***
 
 In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
 
@@ -4139,7 +4139,7 @@ When an element type starts with a lowercase letter, it refers to a built-in com
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q78. ***What are fragments? Why are fragments better than container divs?***
+## Q. ***What are fragments? Why are fragments better than container divs?***
 
 Fragments allows to group a list of children without adding extra nodes to the DOM.
 
@@ -4169,7 +4169,7 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q79. ***What is Forwarding Refs in React?***
+## Q. ***What is Forwarding Refs in React?***
 
 Ref forwarding is a technique for passing a `ref` through a component to one of its children. It is very useful for cases like reusable component libraries and Higher Order Components (HOC).
 
@@ -4216,7 +4216,7 @@ We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX a
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q80. ***Which is the preferred option callback refs or findDOMNode()?***
+## Q. ***Which is the preferred option callback refs or findDOMNode()?***
 
 It is preferred to use **callback refs** over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
 
@@ -4252,7 +4252,7 @@ class MyComponent extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q81. ***How is React Router different from Conventional Routing?***
+## Q. ***How is React Router different from Conventional Routing?***
 
 <p align="center">
   <img src="assets/react-routing.png" alt="React Router" width="600px" />
@@ -4268,7 +4268,7 @@ In React, the Router looks at the **History** of each Component and when there i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q82. ***How many ways can we style the React Component?***
+## Q. ***How many ways can we style the React Component?***
 
 **1. CSS Stylesheet**
 
@@ -4396,7 +4396,7 @@ export default OutsetBox
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q83. ***What are the advantages of using jsx?***
+## Q. ***What are the advantages of using jsx?***
 
 JSX is an optional syntax extension to JavaScript that makes writing your own components much easier. It accepts HTML quoting and makes a subcomponent rendering easier. In fact, it is a set of shortcuts for writing `React.createElement` with a few rules to make your source cleaner and simpler.
 
@@ -4406,7 +4406,7 @@ While JSX is often a matter of dispute, it can prove useful in building high-vol
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q84. ***What are the popular animation package in React?***
+## Q. ***What are the popular animation package in React?***
 
 **ReactCSSTransitionGroup**
 
@@ -4470,7 +4470,7 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q85. ***Explain synthetic event in React js?***
+## Q. ***Explain synthetic event in React js?***
 
 Inside React event handlers, the event object is wrapped in a `SyntheticEvent` object. These objects are pooled, which means that the objects received at an event handler will be reused for other events to increase performance. This also means that accessing the event object\'s properties asynchronously will be impossible since the event\'s properties have been reset due to reuse.
 
@@ -4519,7 +4519,7 @@ string type
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q86. ***What is Event Pooling in React?***
+## Q. ***What is Event Pooling in React?***
 
 The `SyntheticEvent` is pooled. This means that the SyntheticEvent object will be reused and all properties will be nullified after the event callback has been invoked. This is for performance reasons. As such, you cannot access the event in an `asynchronous` way.
 
@@ -4550,7 +4550,7 @@ If we want to access the event properties in an asynchronous way, we should call
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q87. ***What are error boundaries in React?***
+## Q. ***What are error boundaries in React?***
 
 Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
 
@@ -4605,7 +4605,7 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q88. ***How can you re-render a component without using setState() function?***
+## Q. ***How can you re-render a component without using setState() function?***
 
 React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
 
@@ -4683,7 +4683,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q89. ***What is difference between componentDidMount() and componentWillMount()?***
+## Q. ***What is difference between componentDidMount() and componentWillMount()?***
 
 **componentDidMount()**
 
@@ -4778,7 +4778,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q90. ***Explain the use of Webpack and Babel in React?***
+## Q. ***Explain the use of Webpack and Babel in React?***
 
 **Babel**
 
@@ -4804,7 +4804,7 @@ npm start
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q91. ***Why to avoid using setState() after a component has been unmounted?***
+## Q. ***Why to avoid using setState() after a component has been unmounted?***
 
 Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
 
@@ -4859,7 +4859,7 @@ Here, even though the component got unmounted and the request resolves eventuall
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q92. ***How to set focus on an input field after rendering?***
+## Q. ***How to set focus on an input field after rendering?***
 
 Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
 
@@ -4883,7 +4883,7 @@ class AutoFocusTextInput extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q93. ***How do you set a timer to update every second?***
+## Q. ***How do you set a timer to update every second?***
 
 Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
 
@@ -4925,7 +4925,7 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q94. ***How to implement two way data binding in React js?***
+## Q. ***How to implement two way data binding in React js?***
 
 Two data binding means
 
@@ -4995,7 +4995,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q95. ***How to show and hide elements in React***
+## Q. ***How to show and hide elements in React***
 
 **Returning Null**
 
@@ -5052,7 +5052,7 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q96. ***How to trigger click event programmatically?***
+## Q. ***How to trigger click event programmatically?***
 
 We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
 
@@ -5081,7 +5081,7 @@ class MyComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q97. ***How to display style based on props value?***
+## Q. ***How to display style based on props value?***
 
 ```js
 import styled from 'styled-components'
@@ -5105,7 +5105,7 @@ function MyPureComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q98. ***How to convert text to uppercase on user input entered?***
+## Q. ***How to convert text to uppercase on user input entered?***
 
 ```js
 import React, { useState } from "react"
@@ -5134,7 +5134,7 @@ ReactDOM.render(<App />, document.getElementById("root"))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q99. ***How to create props proxy for HOC component?***
+## Q. ***How to create props proxy for HOC component?***
 
 It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
 
@@ -5168,7 +5168,7 @@ const propsProxyHOC = (WrappedComponent) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q100. ***Explain Inheritance Inversion (iiHOC) in react?***
+## Q. ***Explain Inheritance Inversion (iiHOC) in react?***
 
 Inverted Inheritance HOCs are elementarily expressed like this
 
@@ -5234,7 +5234,7 @@ export default withLoader(withUser(Welcome))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q101. ***How to set a dynamic key for state?***
+## Q. ***How to set a dynamic key for state?***
 
 **Dynamic Key**
 
@@ -5260,7 +5260,7 @@ handleSetState(cat, key, val) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q102. ***What are the pointer events in React?***
+## Q. ***What are the pointer events in React?***
 
 Pointer events, in essence, are very similar to mouse events (mousedown, mouseup, etc.) but are hardware-agnostic and thus can handle all input devices such as a mouse, stylus or touch. This is great since it removes the need for separate implementations for each device and makes authoring for cross-device pointers easier.
 
@@ -5396,7 +5396,7 @@ export default class DragItem extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q103. ***What is difference between Pure Component vs Component?***
+## Q. ***What is difference between Pure Component vs Component?***
 
 PureComponent is exactly the same as Component except that it handles the `shouldComponentUpdate()` method. The major difference between React.PureComponent and React.Component is PureComponent does a shallow comparison on state change. It means that when comparing scalar values it compares their values, but when comparing objects it compares only references. It helps to improve the performance of the app.
 
@@ -5431,7 +5431,7 @@ class Message extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q104. ***How to programmatically redirect to another page using React router?***
+## Q. ***How to programmatically redirect to another page using React router?***
 
 **1. Using useHistory()**
 
@@ -5469,7 +5469,7 @@ const Button = withRouter(({ history }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q105. ***What is the use of {…this.props} ?***
+## Q. ***What is the use of {…this.props} ?***
 
 It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
 
@@ -5516,7 +5516,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q106. ***How to pass props in React router?***
+## Q. ***How to pass props in React router?***
 
 A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
 
@@ -5589,7 +5589,7 @@ export class Greeting extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q107. ***How to get query parameters in react routing?***
+## Q. ***How to get query parameters in react routing?***
 
 **Using `useParams()`**
 
@@ -5645,7 +5645,7 @@ function Child() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q108. ***How do you remove an element in the react state?***
+## Q. ***How do you remove an element in the react state?***
 
 **Using filter()**
 
@@ -5744,7 +5744,7 @@ export default Items
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q109. ***What is Destructuring in React?***
+## Q. ***What is Destructuring in React?***
 
 Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
 
@@ -5829,7 +5829,7 @@ export default function Events() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q110. ***What is the difference between NavLink and Link?***
+## Q. ***What is the difference between NavLink and Link?***
 
 The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
 
@@ -5904,7 +5904,7 @@ ReactDOM.render(Routes, document.getElementById('root'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q111. ***What is withRouter for in react-router-dom?***
+## Q. ***What is withRouter for in react-router-dom?***
 
 `withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
 
@@ -5937,7 +5937,7 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q112. ***How to display API data using Axios in React?***
+## Q. ***How to display API data using Axios in React?***
 
 Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
 
@@ -6056,7 +6056,7 @@ export default class PersonList extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q113. ***How to translate your React app with react-i18next?***
+## Q. ***How to translate your React app with react-i18next?***
 
 **Installing dependencies**
 
@@ -6150,7 +6150,7 @@ export default withTranslation()(HighOrderComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q114. ***How RxJS is used in React for state management?***
+## Q. ***How RxJS is used in React for state management?***
 
 RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. Reactive programming is an event-based paradigm that allows us to run asynchronous sequences of events as soon as data is pushed to a consumer.
 
@@ -6292,7 +6292,7 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q115. ***What is lazy function in React?***
+## Q. ***What is lazy function in React?***
 
 `React.lazy()` makes it easy to create components that are loaded using dynamic `import()` but are rendered like regular components. This will automatically cause the bundle containing the component to be loaded when the component is rendered.
 
@@ -6316,7 +6316,7 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q116. ***What are the benefits of using Axios() over Fetch() for making http requests?***
+## Q. ***What are the benefits of using Axios() over Fetch() for making http requests?***
 
 **Fetch**: The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
 
@@ -6366,7 +6366,7 @@ axios.get('url')
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q117. ***What is the difference between rendering and mounting in ReactJS?***
+## Q. ***What is the difference between rendering and mounting in ReactJS?***
 
 **Rendering** is any time a function component gets called (or a class-based render method gets called) which returns a set of instructions for creating DOM. `render()` function will be invoked every time rerendering happens in the component. It may happen either through a `state` change or a `prop` change.
 
@@ -6406,7 +6406,7 @@ Internally, React will create an instance of `App` and will eventually call the 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q118. ***What is Flow in react?***
+## Q. ***What is Flow in react?***
 
 **Type Checking**
 
@@ -6456,7 +6456,7 @@ This will help to create a Flow configuration file that should be committed. The
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q119. ***What is an alternative way to avoid having to bind to this in event callback methods?***
+## Q. ***What is an alternative way to avoid having to bind to this in event callback methods?***
 
 **Bind in Constructor**
 
@@ -6510,7 +6510,7 @@ Using an arrow function in render creates a new function each time the component
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q120. ***Why is it advised to pass a callback function to setState as opposed to an object?***
+## Q. ***Why is it advised to pass a callback function to setState as opposed to an object?***
 
 Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
 
@@ -6597,7 +6597,7 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q121. ***What is the alternative of binding `this` in the constructor?***
+## Q. ***What is the alternative of binding `this` in the constructor?***
 
 **Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
 
@@ -6619,7 +6619,7 @@ class Button extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q122. ***What is the difference between ShadowDOM and VirtualDOM?***
+## Q. ***What is the difference between ShadowDOM and VirtualDOM?***
 
 <p align="center">
   <img src="assets/shadow-dom.png" alt="DOM" width="600px" />
@@ -6645,7 +6645,7 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q123. ***What is Lifting State Up in ReactJS?***
+## Q. ***What is Lifting State Up in ReactJS?***
 
 The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
 
@@ -6732,7 +6732,7 @@ export default PlayerDetails
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q124. ***What is "Children" in React?***
+## Q. ***What is "Children" in React?***
 
 The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
 
@@ -6770,7 +6770,7 @@ render () {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q125. ***What does Eject do in Create React App?***
+## Q. ***What does Eject do in Create React App?***
 
 The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
 
@@ -6780,7 +6780,7 @@ After running the `eject`, commands like `npm start` and `npm run build` will st
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q126. ***Why are string refs considered legacy in React?***
+## Q. ***Why are string refs considered legacy in React?***
 
 Reactjs provides a way to get references to dom elements that react is rendering through jsx. Previously, it was through what are now legacy refs:
 
@@ -6814,7 +6814,7 @@ This callback is called when the component `mounts` with a reference to the dom 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q127. ***What are the recommended way for static type checking?***
+## Q. ***What are the recommended way for static type checking?***
 
 Static type checkers like `Flow` and `TypeScript` identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we should use `Flow` or `TypeScript` instead of `PropTypes` for larger code bases.
 
@@ -6822,7 +6822,7 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q128. ***What is the difference between Flow and PropTypes?***
+## Q. ***What is the difference between Flow and PropTypes?***
 
 `Flow` is a static analysis tool which uses a superset of the language, allows to add type annotations to all of your code and catch an entire class of bugs at compile time.
 
@@ -6832,7 +6832,7 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q129. ***What is Compound Components in React?***
+## Q. ***What is Compound Components in React?***
 
 A compound component is a type of component that manages the internal state of a feature while delegating control of the rendering to the place of implementation opposed to the point of declaration. They provide a way to shield feature specific logic from the rest of the app providing a clean and expressive API for consuming the component.
 
@@ -6863,7 +6863,7 @@ In this example, the `<Menu>` establishes some shared implicit state. The `<Menu
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q130. ***What is React Fiber?***
+## Q. ***What is React Fiber?***
 
 React Fiber is the new **reconciliation algorithm**. Reconciliation is the process of comparing or diffing old trees with a new tree in order to find what is changed or modified. In the original reconciliation algorithm (now called **Stack Reconciler**), the processing of component trees was done synchronously in a single pass, so the main thread was not available for other UI related tasks like animation, layouts, and gesture handling. Fiber Reconciler has different goals:
 
@@ -6913,7 +6913,7 @@ Fiber is currently available for use but it runs in compatibility mode with the 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q131. ***Explain Composition vs Inheritance in React?***
+## Q. ***Explain Composition vs Inheritance in React?***
 
 **Inheritance**
 
@@ -7019,7 +7019,7 @@ React recommends use of Composition over Inheritance, here is why. Everything in
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q132. ***What is a Webhook in React?***
+## Q. ***What is a Webhook in React?***
 
 Web hooks provide a mechanism where by a server-side application can notify a client-side application when a new event (that the client-side application might be interested in) has occurred on the server.
 
@@ -7031,7 +7031,7 @@ Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q133. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
+## Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
 
 **1. useCallback()**
 
@@ -7199,7 +7199,7 @@ function useFriendStatus(friendID) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q134. ***How does Axios Interceptors work in react?***
+## Q. ***How does Axios Interceptors work in react?***
 
 Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
 
@@ -7261,7 +7261,7 @@ axiosInstance.interceptors.response.use(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q135. ***How to use useSpring() for animation?***
+## Q. ***How to use useSpring() for animation?***
 
 React Spring is a spring-physics based animation library that powers most UI related animation in React. It is a bridge on the two existing React animation libraries; `React Motion` and `Animated`. It inherits animated powerful interpolations and performance while maintaining react-motion\'s ease of use.
 
@@ -7434,7 +7434,7 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q136. ***How to do caching in React?***
+## Q. ***How to do caching in React?***
 
 In React, caching data can be achieved in multiple ways
 
@@ -7601,7 +7601,7 @@ export default Counter
 
 ### React Unit Testing
 
-## Q1. ***Explain react unit testing using Jest and Enzyme?***
+## Q. ***Explain react unit testing using Jest and Enzyme?***
 
 **Jest**  
 
@@ -7715,7 +7715,7 @@ describe('App component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q2. ***Explain about shallow() method in enzyme?***
+## Q. ***Explain about shallow() method in enzyme?***
 
 The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
 
@@ -7757,7 +7757,7 @@ console.log(wrapper.debug())
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q3. ***What is mount() method in Enzyme?***
+## Q. ***What is mount() method in Enzyme?***
 
 **Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
 
@@ -7805,7 +7805,7 @@ describe('List tests', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q4. ***What is render() method in Enzyme?***
+## Q. ***What is render() method in Enzyme?***
 
 **Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
 
@@ -7840,7 +7840,7 @@ describe('List tests', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q5. ***What is the purpose of the ReactTestUtils package?***
+## Q. ***What is the purpose of the ReactTestUtils package?***
 
 **ReactTestUtils** is used to test React-based components. It can simulate all the JavaScript-based events, which ReactJS supports. Some of its frequently methods are
 
@@ -7928,7 +7928,7 @@ it('can render and update a counter', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q6. ***What is react-test-renderer package in React?***
+## Q. ***What is react-test-renderer package in React?***
 
 This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
 
@@ -7960,7 +7960,7 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q7. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
+## Q. ***Why should we use Test-Driven Development (TDD) for ReactJS?***
 
 Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
 
@@ -7989,7 +7989,7 @@ Test-driven development is an approach when developers create a product backward
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q8. ***What are the benefits of using data-test selector over className or Id selector in Jest?***
+## Q. ***What are the benefits of using data-test selector over className or Id selector in Jest?***
 
 HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
 
@@ -8034,7 +8034,7 @@ describe('APP Component', () => {
 
 ## Redux Questions
 
-## 1Q. ***What is Redux?***
+## Q. ***What is Redux?***
 
 Redux is a predictable state container for JavaScript applications. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
 
@@ -8066,7 +8066,7 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 2Q. ***Explain pros and cons of Redux?***
+## Q. ***Explain pros and cons of Redux?***
 
 **Pros using redux**
 
@@ -8086,7 +8086,7 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 3Q. ***What are redux core concepts?***
+## Q. ***What are redux core concepts?***
 
 <p align="center">
   <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
@@ -8213,7 +8213,7 @@ const store = createStore(reducers, initialState, middleware);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 4Q. ***What do you understand by "Single source of truth" in Redux?***
+## Q. ***What do you understand by "Single source of truth" in Redux?***
 
 The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
 
@@ -8229,7 +8229,7 @@ A practical example would be that you have Redux store which contains items you 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 5Q. ***What are the features of Workflow in Redux?***
+## Q. ***What are the features of Workflow in Redux?***
 
 When using Redux with React, states will no longer need to be lifted up. Everything is handled by Redux. Redux simplifies the app and makes it easier to maintain.
 
@@ -8266,7 +8266,7 @@ The following are details of how Redux works:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 6Q. ***What is Redux Thunk used for?***
+## Q. ***What is Redux Thunk used for?***
 
 Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
 
@@ -8446,7 +8446,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 7Q. ***What is difference between presentational component and container component in react redux?***
+## Q. ***What is difference between presentational component and container component in react redux?***
 
 **1. Container Components**
 
@@ -8515,7 +8515,7 @@ export default Image
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 8Q. ***Explain the role of Reducer?***
+## Q. ***Explain the role of Reducer?***
 
 A reducer is a function that determines changes to an application\'s state. It uses the action it receives to determine this change. Redux manage an application\'s state changes in a single store so that they behave consistently. Redux relies heavily on reducer functions that take the previous state and an action in order to execute the next state.
 
@@ -8663,7 +8663,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 9Q. ***What are Pure Functions and why should the reducer be a "pure" function?***
+## Q. ***What are Pure Functions and why should the reducer be a "pure" function?***
 
 **Pure Functions**
 
@@ -8694,7 +8694,7 @@ Redux simply checks whether the old object is the same as the new object by comp
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 10Q. ***How to split the reducers?***
+## Q. ***How to split the reducers?***
 
 Putting all your update logic into a single reducer function is quickly going to become unmaintainable. While there\'s no single rule for how long a function should be, it\'s generally agreed that functions should be relatively short and ideally only do one specific thing. It\'s good programming practice to take pieces of code that are very long or do many different things, and break them into smaller pieces that are easier to understand.
 
@@ -8734,7 +8734,7 @@ With reducer level code-splitting, reducers can be code split on a split compone
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 11Q. ***How to create action creators react with redux?***
+## Q. ***How to create action creators react with redux?***
 
 **Action Type**
 
@@ -8801,7 +8801,6 @@ export const mapDispatchToProps = dispatch => ({
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
-
 ## 12Q. ***How to set the dataflow using react with redux?***
 
 <p align="center">
@@ -8821,7 +8820,7 @@ Redux has five main entities. Action Creators, Dispatching Function, Reducers, S
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 13Q. ***What are the three principles that Redux follows?***
+## Q. ***What are the three principles that Redux follows?***
 
 Redux can be described in three fundamental principles:
 
@@ -8923,7 +8922,7 @@ const store = createStore(reducer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 14Q. ***How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?***
+## Q. ***How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?***
 
 Any meaningful web app needs to execute complex logic, usually including asynchronous work such as making AJAX requests. That code is no longer purely a function of its inputs, and the interactions with the outside world are known as "side effects".
 
@@ -8933,7 +8932,7 @@ Redux is inspired by functional programming, and out of the box, has no place fo
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 15Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
+## Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
 
 Decorators make it possible to annotate and modify classes and properties at design time.
 
@@ -8988,7 +8987,7 @@ export default class MyApp extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 16Q. ***What is the difference between React State vs Redux State?***
+## Q. ***What is the difference between React State vs Redux State?***
 
 React state is stored locally within a component. When it needs to be shared with other components, it is passed down through props. In practice, this means that the top-most component in your app needing access to a mutable value will hold that value in its state. If it can be mutated by subcomponents, you must pass a callback to handle the change into subcomponents.
 
@@ -8998,7 +8997,7 @@ When using Redux, state is stored globally in the Redux store. Any component tha
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 17Q. ***What is the best way to access redux store outside a react component?***
+## Q. ***What is the best way to access redux store outside a react component?***
 
 To access redux store outside a react component, Redux `connect` function works great for regular React components.
 
@@ -9077,7 +9076,7 @@ export connect(mapStateToProps)(ItemList)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 18Q. ***What are the drawbacks of Redux contrasted with Flux?***
+## Q. ***What are the drawbacks of Redux contrasted with Flux?***
 
 <p align="center">
   <img src="assets/flux-structure.png" alt="Flux" width="500px" />
@@ -9126,7 +9125,7 @@ In Redux architecture, application event is denoted as an Action, which is dispa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 19Q. ***Describe Flux vs MVC?***
+## Q. ***Describe Flux vs MVC?***
 
 **1. MVC**
 
@@ -9181,7 +9180,7 @@ Flux places unidirectional data flow front and center, by making it a requiremen
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 20Q. ***How to add multiple middleware to redux?***
+## Q. ***How to add multiple middleware to redux?***
 
 The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like `RxJS`. It does so by letting you dispatch async actions in addition to normal actions.
 
@@ -9227,7 +9226,7 @@ store.dispatch({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 21Q. ***How to set initial state in Redux?***
+## Q. ***How to set initial state in Redux?***
 
 **1. Initializing State**
 
@@ -9302,7 +9301,7 @@ In general, `preloadedState` wins over the state specified by the `reducer`. Thi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 22Q. ***Are there any similarities between Redux and RxJS?***
+## Q. ***Are there any similarities between Redux and RxJS?***
 
 **Redux**:
 
@@ -9447,7 +9446,7 @@ The advantage of swapping the action payload for a stream is so we can send data
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 23Q. ***What is the purpose of the constants in Redux?***
+## Q. ***What is the purpose of the constants in Redux?***
 
 * It helps keep the naming consistent because all action types are gathered in a single place.
 * Sometimes you want to see all existing actions before working on a new feature. It may be that the action you need was already added by somebody on the team, but you didn\'t know.
@@ -9506,7 +9505,7 @@ It allows to easily find all usages of that constant across the project. It also
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 24Q. ***What are the differences between redux-saga and redux-thunk?***
+## Q. ***What are the differences between redux-saga and redux-thunk?***
 
 **1. Redux Thunk**
 
@@ -9595,7 +9594,7 @@ Both Redux Thunk and Redux Saga take care of dealing with side effects. In very 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 25Q. ***Explain Redux form with an example?***
+## Q. ***Explain Redux form with an example?***
 
 This is a simple demonstration of how to connect all the standard HTML form elements to redux-form.
 
@@ -9684,7 +9683,7 @@ export default reduxForm({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 26Q. ***How to reset state in redux?***
+## Q. ***How to reset state in redux?***
 
 The root reducer would normally delegate handling the action to the reducer generated by `combineReducers()`. However, whenever it receives `USER_LOGOUT` action, it returns the initial state all over again.
 
@@ -9733,7 +9732,7 @@ export default rootReducer
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 27Q. ***Why are Redux state functions called as reducers?***
+## Q. ***Why are Redux state functions called as reducers?***
 
 Redux state functions called a reducer because it\'s the type of function we pass to `Array.prototype.reduce(reducer, ?initialValue)`. Reducers do not just return default values. They always return the accumulation of the state (based on all previous and current actions).
 
@@ -9743,7 +9742,7 @@ Therefore, they act as a reducer of state. Each time a redux reducer is called, 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 28Q. ***How to make Ajax request in Redux?***
+## Q. ***How to make Ajax request in Redux?***
 
 There are three most widely used and stable Redux Ajax middleware are:
 
@@ -9831,7 +9830,7 @@ Here, sagas listen to actions which you dispatch as regular synchronous actions.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 29Q. ***What are the differences between call and put in redux-saga?***
+## Q. ***What are the differences between call and put in redux-saga?***
 
 Both `call()` and `put()` are effect creator functions. `call()` function is used to create effect description, which instructs middleware to call the promise. `put()` function creates an effect, which instructs middleware to dispatch an action to the store.
 
@@ -9855,7 +9854,7 @@ function* fetchUserSaga(action) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 30Q. ***What is the mental model of redux-saga?***
+## Q. ***What is the mental model of redux-saga?***
 
 Saga is like a separate thread in your application, that is solely responsible for side effects. `redux-saga` is a redux middleware, which means this thread can be **started**, **paused** and **cancelled** from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
 
@@ -9947,7 +9946,7 @@ sagaMiddleware.run(mySaga)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 31Q. ***How Relay is different from Redux?***
+## Q. ***How Relay is different from Redux?***
 
 **Redux**
 
@@ -9975,7 +9974,7 @@ Relay provides the following key features:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 32Q. ***When would bindActionCreators be used in react/redux?***
+## Q. ***When would bindActionCreators be used in react/redux?***
 
 **`bindActionCreators(actionCreators, dispatch)`**: Turns an object whose values are action creators, into an object with the same keys, but with every action creator wrapped into a dispatch call so they may be invoked directly.
 
@@ -10080,7 +10079,7 @@ export default connect(state => ({ todos: state.todos }))(TodoListContainer)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 33Q. ***What is mapStateToProps and mapDispatchToProps?***
+## Q. ***What is mapStateToProps and mapDispatchToProps?***
 
 `react-redux`package provides 3 functions `Connect`, `mapStapteToProps` and `mapDispatchToProps`. Connect is a higher order function that takes in both mapStateToProps and mapDispatchToProps as parameters.
 
@@ -10160,7 +10159,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 34Q. ***What is reselect and how it works?***
+## Q. ***What is reselect and how it works?***
 
 **`Reselect`** is a simple library for creating memoized, composable **selector** functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.
 
@@ -10208,7 +10207,7 @@ We can use the `filteredTodos` selectors to get all the todos if there\'s no sea
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## 36Q. ***What are the different ways to dispatch actions in Redux?***
+## Q. ***What are the different ways to dispatch actions in Redux?***
 
 **Redux** is a state container for Javascript apps, mostly used with React. It\'s based on actions that are dispatched and listened by reducers which modify the state properly.
 
@@ -10293,7 +10292,9 @@ export default connect()(MsgSenderPage);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### 35Q. ***How to use Redux for Error Handling?***
+#### Q. ***How to use Redux for Error Handling?***
+
+*ToDO*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
