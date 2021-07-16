@@ -362,18 +362,14 @@ Data passed in from a parent component. `props` are read-only in the child compo
 *Example*:
 
 ```js
-class ParentComponent extends Component {
-    render() {
-        return (
-            <ChildComponent name="First Child" />
-        )  
-    }
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
 }
 
-const ChildComponent = (props) => {
-    return <p>{props.name}</p>
-}
+const element = <Welcome name="World!" />;
 ```
+
+**Live Demo**: [props](https://codepen.io/learning-zone/pen/mdmWgxz)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
