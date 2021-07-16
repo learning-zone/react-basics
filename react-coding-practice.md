@@ -10,6 +10,7 @@
 ## Q. React Simple Counter
 ## Q. ToDo Program
 ## Q. Search text based on list
+## Q. Fizz Buzz
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
