@@ -6,6 +6,7 @@
 
 ## Table of Contents
 
+* *[React Coding Practice](react-coding-practice.md)*
 * *[Create React Application](https://create-react-app.dev/docs/getting-started)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
