@@ -947,7 +947,7 @@ Here, we first define an initialState and a reducer. When a user clicks a button
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is useContext() in React?***
+## Q. ***What is Context API in React?***
 
 <p align="center">
   <img src="assets/context-api.jpg" alt="Context API" width="800px" />
