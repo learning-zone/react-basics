@@ -1159,7 +1159,7 @@ When useEffect() is used to get data from server.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to compare oldValues and newValues on React Hooks useEffect?
+## Q. ***How to compare oldValues and newValues on React Hooks useEffect?***
 
 *ToDo*
 
