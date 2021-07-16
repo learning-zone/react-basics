@@ -1,4 +1,4 @@
-# React Interview Questions
+# React Interview Questions ( v17.0.2 )
 
 *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
 
@@ -355,9 +355,31 @@ export default ClockUsingClass
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the difference between state and props?***
+## Q. ***What is props in React?***
 
-**State**  
+Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+*Example*:
+
+```js
+class ParentComponent extends Component {
+    render() {
+        return (
+            <ChildComponent name="First Child" />
+        )  
+    }
+}
+
+const ChildComponent = (props) => {
+    return <p>{props.name}</p>
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is State in React?***
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
@@ -385,27 +407,11 @@ class Employee extends React.Component {
 export default Employee
 ```
 
-**Props**  
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
-Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
-
-*Example*:
-
-```js
-class ParentComponent extends Component {
-    render() {
-        return (
-            <ChildComponent name="First Child" />
-        )  
-    }
-}
-
-const ChildComponent = (props) => {
-    return <p>{props.name}</p>
-}
-```
-
-**Difference between State and Props**  
+## Q. ***What is the difference between state and props?***
 
 |Props                             |State                             |
 |----------------------------------|----------------------------------|
