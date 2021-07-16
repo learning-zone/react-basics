@@ -62,6 +62,22 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the typical pattern for rendering a list of components from an array of data?***  
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between Element and Component?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***List some of the major advantages and limitations of React?***
 
 <p align="center">
@@ -424,6 +440,22 @@ export default Employee
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to set state with a dynamic key name?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to bind methods or event handlers in JSX callbacks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
 <p align="center">
@@ -722,6 +754,15 @@ class App extends Component {
 }
 export default App
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why do class methods need to be bound to a class instance?***
+
+*ToDo*
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -843,6 +884,14 @@ A
 B
 ```
 `children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why does not this.props.children.map work?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1263,6 +1312,14 @@ const BooksList = ({books}) => {
 * When building element that accepts user input or element that is interactive on page
 * When dependent on state for rendering, such as, fetching data before rendering
 * When dependent on any data that cannot be passed down as props
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can you force a React component to rerender without calling setState?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2066,6 +2123,14 @@ The `getInitialState()` is used with `React.createClass` and `constructor()` is 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are inline conditional expressions?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to conditionally add attributes to React components?***
 
 Inline conditionals in attribute props
@@ -2086,6 +2151,14 @@ function App() {
   )
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How would you prevent a component from rendering?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4035,6 +4108,14 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is children props?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***When should I be using React.cloneElement vs this.props.children?***
 
 The `React.cloneElement` only works if your child is a single React element.
@@ -4215,6 +4296,14 @@ const inputRef = React.createRef()
 ```
 
 We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between useRef and createRef?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6649,6 +6738,14 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why React uses className over class attribute?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is Lifting State Up in ReactJS?***
 
 The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
@@ -8217,6 +8314,22 @@ const store = createStore(reducers, initialState, middleware);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the typical flow of data like in a React + Redux app?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is an action?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What do you understand by "Single source of truth" in Redux?***
 
 The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
@@ -8265,6 +8378,14 @@ The following are details of how Redux works:
 <p align="center">
   <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
 </p>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between Component and Container in Redux?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
