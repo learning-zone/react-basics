@@ -63,7 +63,23 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is difference between declarative and imperative in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the typical pattern for rendering a list of components from an array of data?***  
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to get dynamic table header from an array in react?***
 
 *ToDo*
 
@@ -449,6 +465,14 @@ export default Employee
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to listen state changes in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to bind methods or event handlers in JSX callbacks?***
 
 *ToDo*
@@ -627,6 +651,14 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 
 * props or state are not immutable, or
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How can I force a component to re-render with hooks in React?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -872,7 +904,9 @@ class Widget extends React.Component {
   }
 }
 ```
+
 Output
+
 ```
 First Example:
 Children (3):
@@ -884,7 +918,16 @@ Children (2):
 A
 B
 ```
+
 `children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to pass props to {this.props.children}?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -950,7 +993,24 @@ const App = () => {
   )
 }
 ```
+
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to get acces to a child useState in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can you force a React component to rerender without calling setState?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1036,6 +1096,22 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to update React Context from inside a child component?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to use context api inside react-router-dom?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is difference between useEffect() vs componentDidMount()?***
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
@@ -1078,6 +1154,14 @@ When useEffect() is used to get data from server.
 * If any of the value in the array changes, the callback will be fired after every render.
 * When it is not present, the callback will always be fired after every render.
 * When it is an empty list, the callback will only be fired once, similar to componentDidMount.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to compare oldValues and newValues on React Hooks useEffect?
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1135,6 +1219,22 @@ class App extends React.Component {
 
 * Should not be used with functional components because they dont have instances.
 * Not to be used on things that can be done declaritvely.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How can I use multiple refs for an array of elements with hooks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between `useRef` and `createRef`?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1673,6 +1773,14 @@ The Switch component helps us to render the components only when path matches ot
 **exact**
 
 The `exact` returns any number of routes that match exactly.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the purpose of IndexRoute?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3313,6 +3421,14 @@ class Alphabet extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to perform debounce in React.js?***
+
+ *ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How can I prevent a function from being called too quickly?***
 
 **Throttle**
@@ -4021,6 +4137,22 @@ this.props.history.push("/first")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to get parameter value from query string?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to dynamicallly pass the routing coordinates to leaflet-routing using react hooks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are the kinds of information that control a segment in React?***
 
 There are mainly two sorts of information that control a segment
@@ -4109,6 +4241,14 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How dynamically generate menu options for `<select>` from an array using `React.CreateElement()`?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is children props?***
 
 *ToDo*
@@ -4152,6 +4292,14 @@ class Users extends React.Component {
   }
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to filter input values obtained in a child component in react?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4777,6 +4925,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to update nested state properties in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is difference between componentDidMount() and componentWillMount()?***
 
 **componentDidMount()**
@@ -5170,6 +5326,14 @@ class MyComponent extends React.Component {
 ```
 
 *Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to listen for click events that are outside of a component?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5734,6 +5898,14 @@ function Child() {
   )
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between HashRouter and BrowserRouter in React?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8132,6 +8304,14 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is service worker in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 <br/>
 
 ## Redux Questions
@@ -10419,6 +10599,9 @@ export default connect()(MsgSenderPage);
 </div>
 
 #### Q. ***How to use Redux for Error Handling?***
+#### Q. ***How to set conditional payload in Reducer React Typescript***
+#### Q. ***What is the best way to access redux store outside a react component?***
+#### Q. ***Can I dispatch an action in reducer?***
 
 *ToDO*
 
