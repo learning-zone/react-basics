@@ -183,6 +183,14 @@ Since they are compiled to objects, JSX can be used wherever a regular JavaScrip
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How JSX prevents Injection Attacks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is ReactDOM?***
 
 `ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
@@ -279,6 +287,14 @@ ReactDOM.createPortal(child, container)
 
 * **child**: This parameter expects a JSX expression or a React Component to be rendered.
 * **container**: This parameter expects the container in which the element has to be rendered.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How Diff Algorithm is implemented in Reactjs?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -472,6 +488,14 @@ const element = <Welcome name="World!" />;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why props in React are read only?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are default props?***
 
 *ToDo*
@@ -481,6 +505,14 @@ const element = <Welcome name="World!" />;
 </div>
 
 ## Q. ***How to access props inside quotes in React JSX?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How are boolean props used in React?***
 
 *ToDo*
 
@@ -701,6 +733,132 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why should not call setState in componentWillUnmount?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***what will happen if you use setstate() in constructor***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How can you re-render a component without using setState() function?***
+
+React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
+
+However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
+
+**1. Using setState()**
+
+In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
+
+```js
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
+
+class Greeting extends Component {
+  state = {
+    fullname: '',
+  }
+
+  stateChange = (f) => {
+    const {name, value} = f.target
+    this.setState({
+      [name]: value,
+    })
+  }
+
+  render() {
+    return (
+      <div className="text-center">
+        <label htmlFor="fullname"> Full Name: </label>
+        <input type="text" name="fullname" onChange={this.stateChange} />
+        <div className="border border-primary py-3">
+            <h4> Greetings, {this.state.fullname}!</h4>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Greeting
+```
+
+**2. Using forceUpdate()**
+
+The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
+
+```js
+import React, { Component } from 'react'
+
+class App extends React.Component{
+  constructor() {
+    super()
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this)
+  }
+  
+  forceUpdateHandler() {
+    this.forceUpdate()
+  }
+  
+  render() {
+    return (
+      <div>
+        <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
+        <h4>Random Number: { Math.random() }</h4>
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+*Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why we need to pass a function to setState()?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to update nested state properties in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between setState and replaceState methods?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How state updates are merged in React***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the difference between state and props?***
 
 |Props                             |State                             |
@@ -855,7 +1013,15 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are HOC factory implementations?***
+## Q. ***How do you create Higher Order Component using render props?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are Higher Order Component factory implementations?***
 
 *ToDo*
 
@@ -959,6 +1125,14 @@ class Task extends React.Component {
 }
 ReactDOM.render(<Test />, document.getElementById('app'))
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the problems of using render props with PureComponent?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1399,6 +1573,30 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How do you solve performance corner cases while using context?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the purpose of default value in context?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to use contextType react?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to update React Context from inside a child component?***
 
 *ToDo*
@@ -1620,6 +1818,14 @@ ReactDOM.render(
 ```
 1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
 2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Is it good to use arrow functions in render methods?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2634,6 +2840,14 @@ export default page(MyPageComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is windowing technique in react?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to optimize React Performance?***
 
 React uses many techniques to minimize the number of DOM operations for us already. For many applications, if you are using the production build, you may already meet or surpass your performance expectations. Nevertheless, there are several ways you can speed up your application.
@@ -3107,6 +3321,22 @@ Output:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to use react hook form with material-ui?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why You Should Choose React Hook Form Over Formik and Redux-Form?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to change the state of a child component from its parent in React?***
 
 **Using Props**
@@ -3361,6 +3591,22 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to pass a parameter to event handlers in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How do you pass an event handler to a component?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3743,6 +3989,14 @@ class Alphabet extends React.Component {
 </div>
 
 ## Q. ***How to perform debounce in React.js?***
+
+ *ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to prevent a function from being called multiple times?***
 
  *ToDo*
 
@@ -4720,6 +4974,14 @@ export default Item
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why using Index as a key is an anti-pattern in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Why is it necessary to start component names with a capital letter?***
 
 In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
@@ -4806,6 +5068,14 @@ const inputRef = React.createRef()
 ```
 
 We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to debug forwardRefs in DevTools?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5248,7 +5518,7 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***what will happen if you use setstate() in constructor***
+## Q. ***What are the methods invoked during error handling?***
 
 *ToDo*
 
@@ -5256,101 +5526,7 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How can you re-render a component without using setState() function?***
-
-React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
-
-However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
-
-**1. Using setState()**
-
-In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
-
-```js
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
-
-class Greeting extends Component {
-  state = {
-    fullname: '',
-  }
-
-  stateChange = (f) => {
-    const {name, value} = f.target
-    this.setState({
-      [name]: value,
-    })
-  }
-
-  render() {
-    return (
-      <div className="text-center">
-        <label htmlFor="fullname"> Full Name: </label>
-        <input type="text" name="fullname" onChange={this.stateChange} />
-        <div className="border border-primary py-3">
-            <h4> Greetings, {this.state.fullname}!</h4>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Greeting
-```
-
-**2. Using forceUpdate()**
-
-The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
-
-```js
-import React, { Component } from 'react'
-
-class App extends React.Component{
-  constructor() {
-    super()
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this)
-  }
-  
-  forceUpdateHandler() {
-    this.forceUpdate()
-  }
-  
-  render() {
-    return (
-      <div>
-        <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
-        <h4>Random Number: { Math.random() }</h4>
-      </div>
-    )
-  }
-}
-
-export default App
-```
-
-*Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Why we need to pass a function to setState()?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to update nested state properties in React.js?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is the difference between setState and replaceState methods?***
+## Q. ***What is the purpose of displayName class property?***
 
 *ToDo*
 
@@ -5551,6 +5727,14 @@ Here, even though the component got unmounted and the request resolves eventuall
 </div>
 
 ## Q. ***Why is isMounted() an anti-pattern and what is the proper solution?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How do you update rendered elements?***
 
 *ToDo*
 
@@ -5841,7 +6025,7 @@ ReactDOM.render(<App />, document.getElementById("root"))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to create props proxy for HOC component?***
+## Q. ***How to create props proxy for Higher Order Component component?***
 
 It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
 
@@ -6855,7 +7039,7 @@ function MyComponent () {
 }
 ```
 
-**Using the HOC**
+**Using the Higher Order Component**
 
 Using higher order components is one of the most used method to extend existing components by passing additional props to them. The `t` function is in `i18next` the main function to translate content.
 
@@ -8411,6 +8595,11 @@ export default Counter
 #### Q. ***What is useHooks() in React?***
 #### Q. ***What are the popular React-specific linter?***
 #### Q. ***Does the static object work with ES6 classes in React?***
+#### Q. ***What is the browser support for react applications?***
+#### Q. ***What is code-splitting?***
+#### Q. ***What is dynamic import in react***
+#### Q. ***What are loadable components?***
+#### Q. ***What is route based code splitting?***
 
 <br/>
 
