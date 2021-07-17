@@ -276,6 +276,22 @@ ReactDOM.createPortal(child, container)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the use of react-dom package?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the purpose of render method of react-dom?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the difference between ReactDOM and React?***
 
 ```js
@@ -297,6 +313,14 @@ ReactDOM.render(<MyComponent />, node)
 **ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
 
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to write comments in React?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -383,6 +407,22 @@ class ClockUsingClass extends React.Component {
 
 export default ClockUsingClass
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the recommended ordering of methods in component class?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How do you conditionally render components?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -481,6 +521,14 @@ export default Employee
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to use styles in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
 <p align="center">
@@ -538,7 +586,15 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is PureComponent?***
+## Q. ***How to use decorators in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are Pure Components in React?***
 
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
@@ -1686,6 +1742,14 @@ ReactDOM.render(<Container />, document.getElementById('root'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to use InnerHtml in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the significance of keys in React?***
 
 Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
@@ -2069,6 +2133,14 @@ this.setState(state => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why we need to be careful when spreading props on DOM elements?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are React Hooks? What are advantages of using React Hooks?***
 
 React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
@@ -2146,6 +2218,14 @@ const App = () => {
   )
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Do Hooks replace render props and higher order components?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2526,6 +2606,14 @@ constructor(props) {
 ```
 
 This is the approach currently recommended in the React docs for "better performance in your application".
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What would be the common mistake of function being called every time the component renders?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3069,6 +3157,14 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the difference between HTML and React event handling?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How many outermost elements can be there in a JSX expression?***
 
 A JSX expression must have only one outer element. For Example:
@@ -3324,6 +3420,14 @@ class App extends Component {
 ```
 
 *Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to set up lazy loading components in React?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3831,6 +3935,14 @@ npm run build
 # Run App on Express
 node server/index.js
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to enable Server-Side Rendering in React App?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4359,6 +4471,14 @@ export default Item
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why do I need Keys in React Lists?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Why is it necessary to start component names with a capital letter?***
 
 In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
@@ -4403,7 +4523,7 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Forwarding Refs in React?***
+## Q. ***What is `forwardRef()` in React?***
 
 Ref forwarding is a technique for passing a `ref` through a component to one of its children. It is very useful for cases like reusable component libraries and Higher Order Components (HOC).
 
@@ -4494,6 +4614,14 @@ class MyComponent extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why are string refs considered legacy in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How is React Router different from Conventional Routing?***
 
 <p align="center">
@@ -4505,6 +4633,14 @@ In React, there is only a single 'Html' file involved. Whenever a user types in 
 **How does React achieve this?**
 
 In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is a switching component?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4847,6 +4983,14 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***what will happen if you use setstate() in constructor***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How can you re-render a component without using setState() function?***
 
 React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
@@ -4920,6 +5064,14 @@ export default App
 ```
 
 *Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why we need to pass a function to setState()?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5028,6 +5180,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Is it good to use setState() in componentWillMount() method?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Explain the use of Webpack and Babel in React?***
 
 **Babel**
@@ -5104,6 +5264,14 @@ class News extends Component {
 ```
 
 Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why is isMounted() an anti-pattern and what is the proper solution?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6885,6 +7053,14 @@ class Button extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is Virtual DOM?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the difference between ShadowDOM and VirtualDOM?***
 
 <p align="center">
@@ -7473,6 +7649,14 @@ function useFriendStatus(friendID) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to Memoize Components in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How does Axios Interceptors work in react?***
 
 Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
@@ -7868,8 +8052,9 @@ export default Counter
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q137. ***What is useRef() in React?***
-#### Q138. ***What is useHooks() in React?***
+#### Q. ***What is useRef() in React?***
+#### Q. ***What is useHooks() in React?***
+#### Q. ***How to put React in production mode?***
 
 <br/>
 
