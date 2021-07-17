@@ -40,6 +40,11 @@
 ## Q. How to restrict access to routes in react-router?
 ## Q. How do I set multipart in axios with react?
 ## Q. How to start search only when user stops typing?
+## Q. How to implement default or NotFound page?
+## Q. How to focus an input element on page load?
+## Q. Give a simple example of Jest test case?
+## Q. How to use font-awesome icons in React?
+## Q. How to use SVGs in React?
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
