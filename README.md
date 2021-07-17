@@ -63,6 +63,14 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to import and export components using React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is difference between declarative and imperative in React.js?***
 
 *ToDo*
@@ -318,6 +326,22 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Is it possible to use React without rendering HTML?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Are custom DOM attributes supported in React v16?**
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to write comments in React?***
 
 *ToDo*
@@ -448,6 +472,22 @@ const element = <Welcome name="World!" />;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to access props inside quotes in React JSX?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to specify the shape of an object with PropTypes***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is State in React?***
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
@@ -475,6 +515,171 @@ class Employee extends React.Component {
 
 export default Employee
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why is setState() in React async instead of sync?***
+
+Even if state is updated synchronously, props are not, it means we do not know props until it re-renders the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
+
+`setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
+
+This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
+
+A callback function which will be invoked when `setState()` has finished and the component is re-rendered.
+
+The `setState()` is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
+
+```js
+this.setState(
+  { username: 'Alex' },
+  () => console.log('setState has finished and the component has re-rendered.')
+)
+```
+
+The `setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the possible ways of updating objects in state?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can you force a React component to rerender without calling setState?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What will happen if you use setState() in constructor?***
+
+When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
+
+Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
+
+*Example*:
+
+```js
+import React, { Component } from 'react'
+
+class Food extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fruits: ['apple', 'orange'],
+      count: 0
+    }
+  }
+  render() {
+    return (
+      <div className = "container">
+        <h2> Hello!!!</h2>
+        <p> I have {this.state.count} fruit(s)</p>
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can you force a React component to rerender without calling setState?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why should not we update the state directly?***
+
+The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
+
+There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
+
+The `setState()` will always trigger a re-render unless conditional rendering logic is implemented in `shouldComponentUpdate()`. If mutable objects are being used and the logic cannot be implemented in `shouldComponentUpdate()`, calling `setState()` only when the new state differs from the previous state will avoid unnecessary re-renders.
+
+Basically, if we modify `this.state()` directly, we create a situation where those modifications might get overwritten.
+
+*Example*:
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      list: [
+        { id: '1', age: 42 },
+        { id: '2', age: 33 },
+        { id: '3', age: 68 },
+      ],
+    }
+  }
+
+  onRemoveItem = id => {
+    this.setState(state => {
+      const list = state.list.filter(item => item.id !== id)
+
+      return {
+        list,
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.list.map(item => (
+            <li key={item.id}>
+              The person is {item.age} years old.
+              <button
+                type="button"
+                onClick={() => this.onRemoveItem(item.id)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the recommended approach of removing an array element in react state?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -521,7 +726,47 @@ export default Employee
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to use React label element?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to use styles in React.js?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to conditionally apply CSS classes in React JS?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to combine multiple inline style objects?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the popular packages for animation?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the benefit of styles modules?***
 
 *ToDo*
 
@@ -756,18 +1001,6 @@ In brief, here is what happens when we update the DOM in React:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why is setState() in React async instead of sync?***
-
-Even if state is updated synchronously, props are not, it means we do not know props until it re-renders the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
-
-`setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
-
-This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What are controlled and uncontrolled components in React?***
 
 In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
@@ -997,24 +1230,6 @@ B
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the second argument that can optionally be passed to setState and what is its purpose?***
-
-A callback function which will be invoked when `setState()` has finished and the component is re-rendered.
-
-The `setState()` is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
-
-```js
-this.setState(
-  { username: 'Alex' },
-  () => console.log('setState has finished and the component has re-rendered.')
-)
-```
-The `setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is useState() in React?***
 
 The `useState()` is a Hook that allows to have state variables in functional components.
@@ -1057,14 +1272,6 @@ The useState() function takes as argument a value for the initial state. In this
 </div>
 
 ## Q. ***How to get acces to a child useState in React?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Can you force a React component to rerender without calling setState?***
 
 *ToDo*
 
@@ -1296,42 +1503,6 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What will happen if you use setState() in constructor?***
-
-When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
-
-Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
-
-*Example*:
-
-```js
-import React, { Component } from 'react'
-
-class Food extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      fruits: ['apple', 'orange'],
-      count: 0
-    }
-  }
-  render() {
-    return (
-      <div className = "container">
-        <h2> Hello!!!</h2>
-        <p> I have {this.state.count} fruit(s)</p>
-      </div>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is the difference between DOM and virtual DOM?***
 
 **DOM**
@@ -1469,14 +1640,6 @@ const BooksList = ({books}) => {
 * When building element that accepts user input or element that is interactive on page
 * When dependent on state for rendering, such as, fetching data before rendering
 * When dependent on any data that cannot be passed down as props
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Can you force a React component to rerender without calling setState?***
-
-*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1788,6 +1951,14 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to pretty print JSON with React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
@@ -2019,72 +2190,6 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why should not we update the state directly?***
-
-The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
-
-There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
-
-The `setState()` will always trigger a re-render unless conditional rendering logic is implemented in `shouldComponentUpdate()`. If mutable objects are being used and the logic cannot be implemented in `shouldComponentUpdate()`, calling `setState()` only when the new state differs from the previous state will avoid unnecessary re-renders.
-
-Basically, if we modify `this.state()` directly, we create a situation where those modifications might get overwritten.
-
-*Example*:
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      list: [
-        { id: '1', age: 42 },
-        { id: '2', age: 33 },
-        { id: '3', age: 68 },
-      ],
-    }
-  }
-
-  onRemoveItem = id => {
-    this.setState(state => {
-      const list = state.list.filter(item => item.id !== id)
-
-      return {
-        list,
-      }
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.list.map(item => (
-            <li key={item.id}>
-              The person is {item.age} years old.
-              <button
-                type="button"
-                onClick={() => this.onRemoveItem(item.id)}
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
-
-export default App
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What do these three dots (...) in React do?***
 
 The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
@@ -2223,14 +2328,6 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Do Hooks replace render props and higher order components?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How to apply validation on Props in React?***
 
 Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
@@ -2346,6 +2443,14 @@ function App() {
 </div>
 
 ## Q. ***How would you prevent a component from rendering?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are render props?***
 
 *ToDo*
 
@@ -3177,6 +3282,14 @@ const headings = (
     </div>
 )
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to loop inside JSX?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4249,6 +4362,22 @@ this.props.history.push("/first")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How React Router is different from history library?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. **What is the purpose of push and replace methods of history?**
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to get parameter value from query string?***
 
 *ToDo*
@@ -4410,6 +4539,14 @@ class Users extends React.Component {
 </div>
 
 ## Q. ***How to filter input values obtained in a child component in react?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to declare constant in react class?***
 
 *ToDo*
 
@@ -4774,6 +4911,14 @@ export default OutsetBox
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How do you apply vendor prefixes to inline styles in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are the advantages of using jsx?***
 
 JSX is an optional syntax extension to JavaScript that makes writing your own components much easier. It accepts HTML quoting and makes a subcomponent rendering easier. In fact, it is a set of shortcuts for writing `React.createElement` with a few rules to make your source cleaner and simpler.
@@ -5085,6 +5230,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the difference between setState and replaceState methods?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is difference between componentDidMount() and componentWillMount()?***
 
 **componentDidMount()**
@@ -5181,6 +5334,14 @@ export default App
 </div>
 
 ## Q. ***Is it good to use setState() in componentWillMount() method?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to make AJAX call and In which component lifecycle methods should I make an AJAX call?***
 
 *ToDo*
 
@@ -5895,6 +6056,14 @@ const Button = withRouter(({ history }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to pass params to history.push method in React Router?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the use of {…this.props} ?***
 
 It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
@@ -6066,6 +6235,14 @@ function Child() {
   )
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why you get "Router may have only one child element" warning?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6584,6 +6761,14 @@ export default withTranslation()(HighOrderComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Is it possible to use async/await in plain React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How RxJS is used in React for state management?***
 
 RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. Reactive programming is an event-based paradigm that allows us to run asynchronous sequences of events as soon as data is pushed to a consumer.
@@ -7026,6 +7211,14 @@ function App() {
 
 export default App
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to listen to state changes?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8052,9 +8245,12 @@ export default Counter
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+#### Q. ***How to put React in production mode?***
+#### Q. ***What are the common folder structures for React?***
 #### Q. ***What is useRef() in React?***
 #### Q. ***What is useHooks() in React?***
-#### Q. ***How to put React in production mode?***
+#### Q. ***How to focus an input element on page load?***
+#### Q. ***What are the popular React-specific linter?***
 
 <br/>
 
