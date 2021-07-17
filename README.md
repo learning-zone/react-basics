@@ -472,6 +472,14 @@ const element = <Welcome name="World!" />;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are default props?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to access props inside quotes in React JSX?***
 
 *ToDo*
@@ -481,6 +489,14 @@ const element = <Welcome name="World!" />;
 </div>
 
 ## Q. ***How to specify the shape of an object with PropTypes***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How React PropTypes allow different types for one prop?***
 
 *ToDo*
 
@@ -774,6 +790,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are styled components?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
 <p align="center">
@@ -826,6 +850,14 @@ export default App
 * We do not modify or mutate components. We create new ones.
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are HOC factory implementations?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1279,6 +1311,14 @@ The useState() function takes as argument a value for the initial state. In this
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to prevent unnecessary updates using useState?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is useReducer() in React?***
 
 It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
@@ -1496,6 +1536,14 @@ class App extends React.Component {
 </div>
 
 ## Q. ***What is the difference between `useRef` and `createRef`?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why are inline ref callback or function not recommended?***
 
 *ToDo*
 
@@ -1951,6 +1999,30 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to pass numbers to React component?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to display an array of strings in react component?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How do you render Array, Strings and Numbers in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to pretty print JSON with React?***
 
 *ToDo*
@@ -2014,6 +2086,22 @@ The `exact` returns any number of routes that match exactly.
 </div>
 
 ## Q. ***What is the purpose of IndexRoute?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to get history on React Router?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to perform automatic redirect after login?***
 
 *ToDo*
 
@@ -2458,6 +2546,14 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is render hijacking in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Do Hooks replace render props and higher-order components?***
 
 **React Hooks**
@@ -2525,6 +2621,14 @@ import MyPageComponent from './my-page-component.js'
 
 export default page(MyPageComponent)
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is React memo function?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5128,6 +5232,22 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the difference between try catch block and error boundaries?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the benefit of component stack trace from error boundary?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***what will happen if you use setstate() in constructor***
 
 *ToDo*
@@ -6761,6 +6881,46 @@ export default withTranslation()(HighOrderComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is React-Intl?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the two ways of formatting in React Intl?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to use FormattedMessage as placeholder using React Intl?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to access current locale with React Intl***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to format date using React Intl?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Is it possible to use async/await in plain React?***
 
 *ToDo*
@@ -8249,12 +8409,28 @@ export default Counter
 #### Q. ***What are the common folder structures for React?***
 #### Q. ***What is useRef() in React?***
 #### Q. ***What is useHooks() in React?***
-#### Q. ***How to focus an input element on page load?***
 #### Q. ***What are the popular React-specific linter?***
+#### Q. ***Does the static object work with ES6 classes in React?***
 
 <br/>
 
 ### React Unit Testing
+
+## Q. ***What is Shallow Renderer in React testing?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is TestRenderer package in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 ## Q. ***Explain react unit testing using Jest and Enzyme?***
 
@@ -8693,6 +8869,14 @@ describe('APP Component', () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the purpose of registerServiceWorker in React?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 <br/>
 
 ## Redux Questions
@@ -8871,6 +9055,14 @@ Middleware is the suggested way to extend Redux with custom functionality. Middl
 ```js
 const store = createStore(reducers, initialState, middleware);
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to structure Redux top level directories?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -9684,6 +9876,14 @@ When using Redux, state is stored globally in the Redux store. Any component tha
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the proper way to access Redux store?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is the best way to access redux store outside a react component?***
 
 To access redux store outside a react component, Redux `connect` function works great for regular React components.
@@ -9758,6 +9958,22 @@ const mapStateToProps = state => ({
 
 export connect(mapStateToProps)(ItemList)
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Should all component states be kept in Redux Store***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is Flux?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -10192,6 +10408,22 @@ It allows to easily find all usages of that constant across the project. It also
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to use connect from React Redux?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between React context and React Redux?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What are the differences between redux-saga and redux-thunk?***
 
 **1. Redux Thunk**
@@ -10365,6 +10597,14 @@ export default reduxForm({
 </p>
 
 **[[READ MORE](https://redux-form.com/6.5.0/examples/syncvalidation/)]**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How Redux Form initialValues get updated from state?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -10633,6 +10873,22 @@ sagaMiddleware.run(mySaga)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to dispatch an action on load?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is Relay?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How Relay is different from Redux?***
 
 **Redux**
@@ -10846,6 +11102,22 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are the different ways to write mapDispatchToProps()?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the use of the ownProps parameter in mapStateToProps() and mapDispatchToProps()?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is reselect and how it works?***
 
 **`Reselect`** is a simple library for creating memoized, composable **selector** functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.
@@ -10979,10 +11251,12 @@ export default connect()(MsgSenderPage);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+#### Q. ***What are Redux selectors and Why to use them?***
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to set conditional payload in Reducer React Typescript***
-#### Q. ***What is the best way to access redux store outside a react component?***
 #### Q. ***Can I dispatch an action in reducer?***
+#### Q. ***What is Redux DevTools?***
+#### Q. ***What is reselect and how it works?***
 
 *ToDO*
 
