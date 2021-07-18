@@ -65,7 +65,30 @@ class Welcome extends React.Component {
 
 ## Q. ***How to import and export components using React.js?***
 
-*ToDo*
+```js
+// Importing combination
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+// Wrapping components with braces if no default exports
+import { Button }  from './Button';
+
+// Default exports ( recommended )
+import  Button  from './Button';
+ 
+class DangerButton extends Component {
+    render()
+    {
+        return <Button color="red" />;
+    }
+}
+
+export default DangerButton; 
+// or export DangerButton;
+```
+
+By using default you express that\'s going to be member in that module which would be imported if no specific member name is provided. You could also express you want to import the specific member called DangerButton by doing so: `import { DangerButton } from './comp/danger-button';` in this case, no default is needed
+
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
