@@ -96,7 +96,39 @@ By using default you express that\'s going to be member in that module which wou
 
 ## Q. ***What is difference between declarative and imperative in React.js?***
 
-*ToDo*
+**Imperative programming** is a programming paradigm that uses statements that change a program\'s state.
+
+```js
+var string = "Hi there , I'm a web developer";
+var removeSpace = "";
+for (var i = 0; i < i.string.length; i++) {
+  if (string[i] === " ") removeSpace += "-";
+  else removeSpace += string[i]; 
+}
+console.log(removeSpace);
+```
+
+In this example, we loop through every character in the string, replacing spaces as they occur. Just looking at the code, it doesn\'t say much. Imperative requires lots of comments in order to understand code. Whereas in the declarative program, the syntax itself describes what should happen and the details of how things happen are abstracted way.
+
+**Declarative programming** is a programming paradigm that expresses the logic of a computation without describing its control flow.
+
+**Example**
+
+```js
+const { render } = ReactDOM
+const Welcome = () => (
+  <div id="App">
+    //your HTML code 
+    //your react components
+  </div>
+)
+render(
+<App />,
+document.getElementById('root')
+)
+```
+
+React is declarative. Here, the **Welcome component** describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome component** into the element with the ID of 'target'.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
