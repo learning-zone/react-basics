@@ -131,6 +131,14 @@ Testable. React native tools are offered for testing, debugging code.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Describe about data flow in react?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is JSX and how JSX can help applications in React.js?***
 
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
@@ -184,6 +192,22 @@ Since they are compiled to objects, JSX can be used wherever a regular JavaScrip
 </div>
 
 ## Q. ***How JSX prevents Injection Attacks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the benefits of new JSX transform?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How does new JSX transform different from old transform?***
 
 *ToDo*
 
@@ -1287,6 +1311,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How do you set default value for uncontrolled component?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Why do class methods need to be bound to a class instance?***
 
 *ToDo*
@@ -1493,6 +1525,14 @@ The useState() function takes as argument a value for the initial state. In this
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Why do we use array destructuring in useState?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is useReducer() in React?***
 
 It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
@@ -1572,6 +1612,15 @@ function Display() {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. ***How do you make sure that user remains authenticated on page refresh while using Context API State Management?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 
 ## Q. ***How do you solve performance corner cases while using context?***
 
@@ -2622,6 +2671,86 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How to fetch data with React Hooks?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Do Hooks replace render props and higher-order components?***
+
+**React Hooks**
+
+Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
+
+```js
+const [active, setActive] = useState(defaultActive)
+```
+
+There are few build-in Hooks
+
+```js
+import {
+  useState,
+  useReducer,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+  ...
+} from 'react'
+```
+
+**Higher Order Components**
+
+A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
+
+*Example*: logger API
+
+```js
+import React, { useEffect } from 'react'
+
+const withLogging = Component => props => {
+  useEffect(() => {
+    fetch(`/logger?location=${ window.location}`)
+  }, [])
+  return <Component {...props } />
+}
+export default withLogging
+```
+
+To use it, you can mix it into an HOC that you\’ll wrap around every page:
+
+```js
+import React from 'react'
+import withAuth from './with-auth.js'
+import withLogging from './with-logging.js'
+import withLayout from './with-layout.js'
+
+const page = compose(
+  withRedux,
+  withAuth,
+  withLogging,
+  withLayout('default'),
+)
+export default page
+```
+
+To use this for a page
+
+```js
+import page from '../hocs/page.js'
+import MyPageComponent from './my-page-component.js'
+
+export default page(MyPageComponent)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to apply validation on Props in React?***
 
 Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
@@ -2755,78 +2884,6 @@ function App() {
 ## Q. ***What is render hijacking in React?***
 
 *ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Do Hooks replace render props and higher-order components?***
-
-**React Hooks**
-
-Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
-
-```js
-const [active, setActive] = useState(defaultActive)
-```
-
-There are few build-in Hooks
-
-```js
-import {
-  useState,
-  useReducer,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-  ...
-} from 'react'
-```
-
-**Higher Order Components**
-
-A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
-
-*Example*: logger API
-
-```js
-import React, { useEffect } from 'react'
-
-const withLogging = Component => props => {
-  useEffect(() => {
-    fetch(`/logger?location=${ window.location}`)
-  }, [])
-  return <Component {...props } />
-}
-export default withLogging
-```
-
-To use it, you can mix it into an HOC that you\’ll wrap around every page:
-
-```js
-import React from 'react'
-import withAuth from './with-auth.js'
-import withLogging from './with-logging.js'
-import withLayout from './with-layout.js'
-
-const page = compose(
-  withRedux,
-  withAuth,
-  withLogging,
-  withLayout('default'),
-)
-export default page
-```
-
-To use this for a page
-
-```js
-import page from '../hocs/page.js'
-import MyPageComponent from './my-page-component.js'
-
-export default page(MyPageComponent)
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3645,6 +3702,14 @@ const headings = (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How do you print falsy values in JSX?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Explain DOM diffing?***
 
 **Document Object Model**
@@ -4419,6 +4484,22 @@ node server/index.js
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are React Server components?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the purpose of renderToNodeStream method?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What will happen if you use props in initial state?***
 
 Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
@@ -4728,7 +4809,7 @@ this.props.history.push("/first")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. **What is the purpose of push and replace methods of history?**
+## Q. ***What is the purpose of push and replace methods of history?***
 
 *ToDo*
 
@@ -7757,6 +7838,14 @@ render () {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are the features of create react app?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What does Eject do in Create React App?***
 
 The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
@@ -8600,6 +8689,10 @@ export default Counter
 #### Q. ***What is dynamic import in react***
 #### Q. ***What are loadable components?***
 #### Q. ***What is route based code splitting?***
+#### Q. ***How do you access imperative API of web components?***
+#### Q. ***What is Concurrent Rendering?***
+#### Q. ***What is the difference between async mode and concurrent mode?***
+#### Q. ***What is the purpose of eslint plugin for hooks?***
 
 <br/>
 
@@ -9509,6 +9602,14 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -11446,6 +11547,9 @@ export default connect()(MsgSenderPage);
 #### Q. ***Can I dispatch an action in reducer?***
 #### Q. ***What is Redux DevTools?***
 #### Q. ***What is reselect and how it works?***
+#### Q. ***What is MobX?***
+#### Q. ***What are the differences between Redux and MobX?***
+#### Q. ***How do you get redux scaffolding using create-react-app?***
 
 *ToDO*
 
