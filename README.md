@@ -96,7 +96,9 @@ By using default you express that\'s going to be member in that module which wou
 
 ## Q. ***What is difference between declarative and imperative in React.js?***
 
-**Imperative programming** is a programming paradigm that uses statements that change a program\'s state.
+### **Imperative programming**
+
+It is a programming paradigm that uses statements that change a program\'s state.
 
 ```js
 var string = "Hi there , I'm a web developer";
@@ -110,7 +112,9 @@ console.log(removeSpace);
 
 In this example, we loop through every character in the string, replacing spaces as they occur. Just looking at the code, it doesn\'t say much. Imperative requires lots of comments in order to understand code. Whereas in the declarative program, the syntax itself describes what should happen and the details of how things happen are abstracted way.
 
-**Declarative programming** is a programming paradigm that expresses the logic of a computation without describing its control flow.
+### **Declarative programming**
+
+It is a programming paradigm that expresses the logic of a computation without describing its control flow.
 
 **Example**
 
