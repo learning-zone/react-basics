@@ -2589,7 +2589,7 @@ this.setState(state => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are React Hooks? What are advantages of using React Hooks?***
+## Q. ***What are React Hooks?***
 
 React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
 
@@ -2616,40 +2616,7 @@ React Hooks are in-built functions that allow to use **state** and **lifecycle**
 * useLayoutEffect()
 * useDebugValue()
 
-**React Hooks advantages**  
-
-* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
-* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
-* Improved code reuse
-* Better code composition
-* Better defaults
-* Sharing non-visual logic with the use of custom hooks
-* Flexibility in moving up and down the components tree.
-
-*Example*: using classes
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-  constuctor(props) {
-    super(props)
-
-    this.state = {
-      isButtonClicked: false,
-    }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    this.setState((prevState) => ({
-      isButtonClicked: !prevState.isButtonClicked,
-    }))
-  }
-}
-```
-
-*Example*: using React Hooks
+**Example**
 
 ```js
 import React, { useState } from 'react'
@@ -2666,6 +2633,20 @@ const App = () => {
   )
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are advantages of using React Hooks?***
+
+* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
+* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
+* Improved code reuse
+* Better code composition
+* Better defaults
+* Sharing non-visual logic with the use of custom hooks
+* Flexibility in moving up and down the components tree.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
