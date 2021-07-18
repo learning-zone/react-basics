@@ -374,7 +374,7 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Are custom DOM attributes supported in React v16?**
+## Q. ***How to add custom DOM attributes in JSX?***
 
 *ToDo*
 
