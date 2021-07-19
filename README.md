@@ -502,7 +502,19 @@ React is declarative. Here, the **Welcome component** describes the DOM that sho
 
 ## Q. ***What is the typical pattern for rendering a list of components from an array of data?***  
 
-*ToDo*
+The usual pattern for rendering lists of components often ends with delegating all of the responsibilities of each child component to the entire list container component. But with a few optimizations, we can make a change in a child component not cause the parent component to re-render.
+
+**Example**: using custom `shouldComponentUpdate()`
+
+```js
+class AnimalTable extends React.Component<Props, never> {
+  shouldComponentUpdate(nextProps: Props) {
+    return !nextProps.animalIds.equals(this.props.animalIds);
+  }
+  ...
+```
+
+Here, `shouldComponentUpdate()` will return false if the props its receiving are equal to the props it already has. And because the AnimalTable is receiving just a List of string IDs, a change in the adoption status won\'t cause AnimalTable to receive a different set of IDs.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
