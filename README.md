@@ -15,7 +15,7 @@
 
 <br/>
 
-|Sl. No|   Questions                                              |
+|Sl.No|   Questions                                              |
 |-----|----------------------------------------------------------|
  |01. |[What is React.js?](#q-what-is-reactjs)|
  |02. |[How React works?](#q-how-react-works)|
