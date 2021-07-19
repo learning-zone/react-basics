@@ -383,8 +383,6 @@ React is a JavaScript library created for building fast and interactive user int
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-**Live Demo**: [Hello World](https://codepen.io/learning-zone/pen/eYWvXaY)
-
 **[[Read More](https://reactjs.org/tutorial/tutorial.html)]**
 
 <div align="right">
@@ -411,7 +409,7 @@ Components are the building blocks of any React app and a typical React app will
 
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
-*Example*: Class Component
+**Example**: Class Component
 
 ```js
 class Welcome extends React.Component {
@@ -420,6 +418,8 @@ class Welcome extends React.Component {
   }
 }
 ```
+
+**Live Demo**: [Hello World](https://codepen.io/learning-zone/pen/eYWvXaY)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -568,7 +568,7 @@ JSX allows us to write HTML elements in JavaScript and place them in the DOM wit
 * It is also type-safe and most of the errors can be caught during compilation.
 * It makes it easier and faster to write templates.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -650,7 +650,7 @@ Before **v0.14** React Dom was part of React. The reason React and ReactDOM were
 
 ReactDOM uses observables thus provides an efficient way of DOM handling. ReactDOM can be used in both client-side and server-side.
 
-*Example*:
+**Example**:
 
 ```js
 // index.js
@@ -823,7 +823,8 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
 * Functional components can accept and use props.
 * Functional components should be favored if you do not need to make use of React state.
 
-*Example*:
+**Example**:
+
 ```js
 const ClockUsingHooks = props => {
     const [time, setTime] = useState(new Date())
@@ -858,7 +859,8 @@ export default ClockUsingHooks
 * Class-based components can have `refs` to underlying DOM nodes.
 * Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimisation techniques.
 
-*Example*:
+**Example**:
+
 ```js
 class ClockUsingClass extends React.Component {
     constructor(props) {
@@ -917,7 +919,7 @@ export default ClockUsingClass
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
-*Example*:
+**Example**:
 
 ```js
 function Welcome(props) {
@@ -985,7 +987,7 @@ const element = <Welcome name="World!" />;
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
-*Example*:
+**Example**:
 
 ```js
 class Employee extends React.Component {
@@ -1066,7 +1068,7 @@ When we use `setState()`, then apart from assigning to the object state react al
 
 Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
 
-*Example*:
+**Example**:
 
 ```js
 import React, { Component } from 'react'
@@ -1114,7 +1116,7 @@ The `setState()` will always trigger a re-render unless conditional rendering lo
 
 Basically, if we modify `this.state()` directly, we create a situation where those modifications might get overwritten.
 
-*Example*:
+**Example**:
 
 ```js
 import React, { Component } from 'react'
@@ -1527,7 +1529,7 @@ export default class Test extends PureComponent{
 }
 ```
 
-*Example*:
+**Example**:
 
 ```js
 class Test extends React.PureComponent {
@@ -1660,7 +1662,7 @@ In a controlled component, form data is handled by a React component. The altern
 
 In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
 
-*Example*:
+**Example**:
 
 ```js
 import React, { Component } from 'react'
@@ -1820,7 +1822,7 @@ For almost everything `{this.props.children}` is used. Cloning is useful in some
 
 Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
 
-*Example*:
+**Example**:
 
 ```js
 class Example extends React.Component {
@@ -1960,7 +1962,7 @@ It accepts a reducer function with the application initial state, returns the cu
 
 Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, `useState()` is actually implemented with `useReducer()`. This means `useReducer()` is primitive and we can use `useReducer()` for everything can do with useState(). Reducer is so powerful that it can apply for various use cases.
 
-*Example*:
+**Example**:
 
 ```js
 import React, { useReducer } from 'react'
@@ -2144,7 +2146,7 @@ When useEffect() is used to get data from server.
 
 Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of ref forwarding.
 
-*Example*:
+**Example**:
 
 ```javascript
 class App extends React.Component {
@@ -2261,7 +2263,7 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 
 Arrow functions don not redefine the value of `this` within their function body. This makes it a lot easier to predict their behavior when passed as callbacks, and prevents bugs caused by use of this within callbacks. Using inline arrow functions in function components is a good way to achieve some decoupling.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -2310,7 +2312,7 @@ Stateful and stateless components have many different names. They are also known
 
 The literal difference is that one has state, and the other does not. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
 
-*Example*: Stateful/Container/Smart component
+**Example**: Stateful/Container/Smart component
 
 ```js
 class Main extends Component {
@@ -2326,7 +2328,7 @@ class Main extends Component {
 }
 ```
 
-*Example*: Stateless/Presentational/Dumb component
+**Example**: Stateless/Presentational/Dumb component
 
 ```js
 const BooksList = ({books}) => {
@@ -2396,7 +2398,7 @@ The `constructor()` method is called with the `props`, as arguments, and we shou
 
 The `getDerivedStateFromProps()` method is called right before rendering the element(s) in the DOM. It takes state as an argument, and returns an object with changes to the state.
 
-*Example*:
+**Example**:
 
 ```js
 class Color extends React.Component {
@@ -2442,7 +2444,7 @@ React has five built-in methods that gets called, in this order, when a componen
 
 This is the first method that is called when a component gets updated. This is still the natural place to set the state object based on the initial props.
 
-*Example*:
+**Example**:
 
 ```js
 class Color extends React.Component {
@@ -2510,7 +2512,7 @@ In the `getSnapshotBeforeUpdate()` method we have access to the `props` and `sta
 
 If the `getSnapshotBeforeUpdate()` method is present, we should also include the `componentDidUpdate()` method, otherwise it will throw an error.
 
-*Example*:
+**Example**:
 
 ```js
 class Color extends React.Component {
@@ -2550,7 +2552,7 @@ ReactDOM.render(<Color />, document.getElementById('root'))
 
 The `componentDidUpdate()` method is called after the component is updated in the DOM.
 
-*Example*:
+**Example**:
 
 ```js
 class Color extends React.Component {
@@ -2586,7 +2588,7 @@ The next phase in the lifecycle is when a component is removed from the DOM, or 
 
 * `componentWillUnmount()`
 
-*Example*: Click the button to delete the header
+**Example**: Click the button to delete the header
 
 ```js
 class Container extends React.Component {
@@ -2806,7 +2808,7 @@ The rest of the tools belong in that group of sequential or parallel tasks:
 
 React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -2840,7 +2842,7 @@ React passes data to child components via props from top to bottom. While there 
 
 The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
 
-*Example*:
+**Example**:
 
 ```js
 import React from "react"
@@ -3109,7 +3111,7 @@ import {
 
 A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
 
-*Example*: logger API
+**Example**: logger API
 
 ```js
 import React, { useEffect } from 'react'
@@ -3161,7 +3163,7 @@ Props are an important mechanism for passing the **read-only** attributes to Rea
 npm install prop-types --save-dev
 ```
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -3419,7 +3421,7 @@ The `state` allows React components to change their output over time in response
 The `setState()` is the API method provided with the library so that the user is able to define and manipulate state over time.
 `setState()` is the only legitimate way to update state after the initial state setup.
 
-*Example*:
+**Example**:
 
 ```js
 import React, { Component } from 'react'
@@ -3507,7 +3509,7 @@ This is the approach currently recommended in the React docs for "better perform
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
-*Example*:
+**Example**:
 
 ```js
 class AppComponent extends React.component {
@@ -3525,7 +3527,7 @@ class AppComponent extends React.component {
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
-*Example*: The parent can pass a props by using this
+**Example**: The parent can pass a props by using this
 
 ```js
 <ChildComponent color='red' />
@@ -3890,7 +3892,7 @@ A React Component is a template. A blueprint. A global definition. This can be e
 
 A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -3951,7 +3953,7 @@ A React Component can contain state and has access to the React Lifecycle method
 
 According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -4377,7 +4379,7 @@ This is equivalent to calling `.bind`
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-*Example*: Passing params using arrow functions
+**Example**: Passing params using arrow functions
 
 ```js
 const A = 65 // ASCII character code
@@ -4411,7 +4413,7 @@ class Alphabet extends React.Component {
 }
 ```
 
-*Example*: Passing params using data-attributes
+**Example**: Passing params using data-attributes
 
 Alternately, you can use DOM APIs to store data needed for event handlers. Consider this approach if you need to optimize a large number of elements or have a render tree that relies on React.PureComponent equality checks.
 
@@ -6876,7 +6878,7 @@ On the other hand, a pure component will not rerender if its parent rerenders, u
 * State/Props should not have a hierarchy
 * We should call forceUpdate when data changes
 
-*Example*
+**Example**
 
 ```js
 // Regular class component
@@ -7413,7 +7415,7 @@ axios.all([getUserAccount(), getUserPermissions()])
 
 ```
 
-*Example*: Making a POST Request
+**Example**: Making a POST Request
 
 ```js
 import React from 'react'
@@ -9241,7 +9243,7 @@ describe('App component', () => {
 
 The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
 
-*Example*:
+**Example**:
 
 ```js
 import React from "react"
@@ -9285,7 +9287,7 @@ console.log(wrapper.debug())
 
 This is more suitable when there are components which directly interfere with DOM API or lifecycle methods of React. Simple mount calls the `constructor()`, `render()`, `componentDidMount()` methods.
 
-*Example*:
+**Example**:
 
 ```js
 ...
@@ -9333,7 +9335,7 @@ describe('List tests', () => {
 
 For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -9456,7 +9458,7 @@ This package provides a React renderer that can be used to render React componen
 
 Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or `jsdom`.
 
-*Example*:
+**Example**:
 
 ```js
 import React from 'react'
@@ -11148,7 +11150,7 @@ export const thunkName = parameters => (dispatch, getState) => {
 }
 ```
 
-*Example*
+**Example**
 
 ```js
 import axios from "axios"
