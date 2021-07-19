@@ -21,7 +21,7 @@
  |04. |[How to import and export components using React.js?](#q-how-to-import-and-export-components-using-reactjs)|
  |05. |[What is difference between declarative and imperative in React.js?](#q-what-is-difference-between-declarative-and-imperative-in-reactjs)|
  |06. |[What is the typical pattern for rendering a list of components from an array of data?](#q-what-is-the-typical-pattern-for-rendering-a-list-of-components-from-an-array-of-data)|
- |07. |[How to get dynamic table header from an array in react?](#q-how-to-get-dynamic-table-header-from-an-array-in-react)|
+ |07. |[How to create a dynamic table in react?](#q-how-to-create-a-dynamic-table-in-react)|
  |08. |[What is the difference between Element and Component?](#q-what-is-the-difference-between-element-and-component)|
  |09. |[List some of the major advantages and limitations of React?](#q-list-some-of-the-major-advantages-and-limitations-of-react)|
  |10. |[Describe about data flow in react?](#q-describe-about-data-flow-in-react)|
@@ -520,9 +520,103 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to get dynamic table header from an array in react?***
+## Q. ***How to create a dynamic table in react?***
 
-*ToDo*
+Lets create a simple component and store the data in the state.
+
+```js
+import React, { Component } from 'react'
+
+class Table extends Component {
+   constructor(props) {
+      super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+      this.state = { //state is by default an object
+         students: [
+            { id: 1, name: 'Alex Hicks', age: 21, email: 'alex@email.com' },
+            { id: 2, name: 'Edie Carter', age: 29, email: 'edie@email.com' },
+            { id: 3, name: 'Scarlett Mendez', age: 26, email: 'scarlett@email.com' },
+            { id: 4, name: 'Maggie Clarke', age: 25, email: 'maggie@email.com' },
+            { id: 4, name: 'Hannah Manning', age: 22, email: 'hannah@email.com' }
+         ]
+      }
+   }
+
+   render() { 
+      return (
+         <div>
+            <h1>React Dynamic Table</h1>
+         </div>
+      )
+   }
+}
+
+export default Table; //exporting a component make it reusable and this is the beauty of react
+```
+
+### **Table Data**
+
+Now we want to print out students data in the Dom. We often use `map function` in react to itearate over array.
+Lets write a separate function for table data and calling it in our render method. This approach will make our code cleaner and easier to read.
+
+```js
+renderTableData() {
+      return this.state.students.map((student, index) => {
+         const { id, name, age, email } = student //destructuring
+         return (
+            <tr key={id}>
+               <td>{id}</td>
+               <td>{name}</td>
+               <td>{age}</td>
+               <td>{email}</td>
+            </tr>
+         )
+      })
+   }
+
+   render() {
+      return (
+         <div>
+            <h1 id='title'>React Dynamic Table</h1>
+            <table id='students'>
+               <tbody>
+                  {this.renderTableData()}
+               </tbody>
+            </table>
+         </div>
+      )
+   }
+```
+
+### **Table Header**
+
+Now we will write another method for table header.
+
+```js
+renderTableHeader() {
+      let header = Object.keys(this.state.students[0])
+      return header.map((key, index) => {
+         return <th key={index}>{key.toUpperCase()}</th>
+      })
+   }
+
+   render() {
+      return (
+         <div>
+            <h1 id='title'>React Dynamic Table</h1>
+            <table id='students'>
+               <tbody>
+                  <tr>{this.renderTableHeader()}</tr>
+                  {this.renderTableData()}
+               </tbody>
+            </table>
+         </div>
+      )
+   }
+```
+
+`Object.Keys()` gives us all the keys of students in the form of array and we stored it in a variable header. So we can iterate the header (array) using map method.
+
+**Live Demo**: [React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
