@@ -24,7 +24,7 @@
  |07. |[How to create a dynamic table in react?](#q-how-to-create-a-dynamic-table-in-react)|
  |08. |[What is the difference between Element and Component?](#q-what-is-the-difference-between-element-and-component)|
  |09. |[List some of the major advantages and limitations of React?](#q-list-some-of-the-major-advantages-and-limitations-of-react)|
- |10. |[Describe about data flow in react?](#q-describe-about-data-flow-in-react)|
+ |10. |[Why does React emphasize on unidirectional data flow?](#q-why-does-react-emphasize-on-unidirectional-data-flow)|
  |11. |[What is JSX and how JSX can help applications in React.js?](#q-what-is-jsx-and-how-jsx-can-help-applications-in-reactjs)|
  |12. |[How JSX prevents Injection Attacks?](#q-how-jsx-prevents-injection-attacks)|
  |13. |[What are the benefits of new JSX transform?](#q-what-are-the-benefits-of-new-jsx-transform)|
@@ -681,9 +681,26 @@ Testable. React native tools are offered for testing, debugging code.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Describe about data flow in react?***
+## Q. ***Why does React emphasize on unidirectional data flow?***
 
-*ToDo*
+### **Unidirectional Data Flow**
+
+It is also known as one-way data flow, which means the data has one, and only one way to be transferred to other parts of the application. In essence, this means child components are not able to update the data that is coming from the parent component. In React, data coming from a parent is called **props**.
+
+In React this means that:
+
+* state is passed to the view and to child components
+* actions are triggered by the view
+* actions can update the state
+* the state change is passed to the view and to child components
+
+The view is a result of the application state. State can only change when actions happen. When actions happen, the state is updated. One-way data binding provides us with some key advantages
+
+* Easier to debug, as we know what data is coming from where.
+* Less prone to errors, as we have more control over our data.
+* More efficient, as the library knows what the boundaries are of each part of the system.
+
+In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
