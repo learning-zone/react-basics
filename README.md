@@ -625,7 +625,7 @@ renderTableHeader() {
 
 ## Q. ***What is the difference between Element and Component?***
 
-## **React Element**
+### **React Element**
 
 It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
 
@@ -636,7 +636,7 @@ ReactDOM.render(element, document.getElementById('app'));
 
 **Live Demo**: [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)
 
-## **React Component**
+### **React Component**
 
 It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
 
