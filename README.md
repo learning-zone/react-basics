@@ -1,6 +1,6 @@
 # React Interview Questions ( v17.0.2 )
 
-*Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
+*Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Your contributions are heartily ♡ welcome.*
 
 ## Table of Contents
 
@@ -625,7 +625,29 @@ renderTableHeader() {
 
 ## Q. ***What is the difference between Element and Component?***
 
-*ToDo*
+## **React Element**
+
+It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
+
+```js
+const element = <h1>React Element Example!</h1>;
+ReactDOM.render(element, document.getElementById('app'));
+```
+
+**Live Demo**: [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)
+
+## **React Component**
+
+It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
+
+```js
+function Message() {
+  return <h2>React Component Example!</h2>;
+}
+ReactDOM.render(<Message />, document.getElementById('app'));
+```
+
+**Live Demo**: [React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
