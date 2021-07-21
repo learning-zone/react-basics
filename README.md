@@ -897,7 +897,28 @@ Note that React can also run on the server side so, it will be possible to use i
 
 ## Q. ***How to add custom DOM attributes in JSX?***
 
-*ToDo*
+Often we need to store information associated with a DOM element. This data might not be useful for displaying data to the DOM, but it is helpful for developers to access additional data. Custom attributes allow you to attach other values onto an HTML element.
+
+Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
+
+```js
+// Custom DOM Attribute
+render() {
+  return (
+    <div custom-attribute="some-value" />
+  );
+}
+
+
+// Data Attribute ( starts with "data-" )
+<div data-foo="42" />
+
+
+// ARIA Attribute ( starts with "aria-" )
+<button aria-label="Close" onClick={onClose} />
+```
+
+**Live Demo**: [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
