@@ -683,8 +683,6 @@ Testable. React native tools are offered for testing, debugging code.
 
 ## Q. ***Why does React emphasize on unidirectional data flow?***
 
-### **Unidirectional Data Flow**
-
 It is also known as one-way data flow, which means the data has one, and only one way to be transferred to other parts of the application. In essence, this means child components are not able to update the data that is coming from the parent component. In React, data coming from a parent is called **props**.
 
 In React this means that:
