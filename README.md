@@ -760,7 +760,28 @@ Since they are compiled to objects, JSX can be used wherever a regular JavaScrip
 
 ## Q. ***How JSX prevents Injection Attacks?***
 
-*ToDo*
+React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that\'s not explicitly written in your application. Everything is converted to a string before being rendered.
+
+For example, you can embed user input as below,
+
+```js
+class JSXInjectionExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userContent: `JSX prevents Injection Attacks Example <script src="http://example.com/malicious-script.js><\/script>`
+        };
+    }
+    
+    render() {
+        return <div>User content: {this.state.userContent}</div>;
+    }
+}
+
+ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
+```
+
+**Live Demo**: [JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
