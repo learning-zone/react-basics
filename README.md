@@ -25,7 +25,7 @@
  |08. |[What is the difference between Element and Component?](#q-what-is-the-difference-between-element-and-component)|
  |09. |[List some of the major advantages and limitations of React?](#q-list-some-of-the-major-advantages-and-limitations-of-react)|
  |10. |[Why does React emphasize on unidirectional data flow?](#q-why-does-react-emphasize-on-unidirectional-data-flow)|
- |11. |[What is JSX and how JSX can help applications in React.js?](#q-what-is-jsx-and-how-jsx-can-help-applications-in-reactjs)|
+ |11. |[What is JSX?](#q-what-is-jsx)|
  |12. |[How JSX prevents Injection Attacks?](#q-how-jsx-prevents-injection-attacks)|
  |13. |[What are the benefits of new JSX transform?](#q-what-are-the-benefits-of-new-jsx-transform)|
  |14. |[How does new JSX transform different from old transform?](#q-how-does-new-jsx-transform-different-from-old-transform)|
@@ -706,7 +706,7 @@ In React, a state is always owned by one component. Any changes made by this sta
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is JSX and how JSX can help applications in React.js?***
+## Q. ***What is JSX?***
 
 JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
 
