@@ -1032,7 +1032,7 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
 
 ## Q. ***What are the differences between a class component and functional component?***
 
-**Functional Components**  
+### **Functional Components**  
 
 * Functional components are basic JavaScript functions. These are typically arrow functions but can also be created with the regular  function keyword.
 * Sometimes referred to as `stateless` components as they simply accept data and display them in some form; that is they are mainly responsible for rendering UI.
@@ -1069,7 +1069,7 @@ const ClockUsingHooks = props => {
 export default ClockUsingHooks
 ```
 
-**Class Components**  
+### **Class Components**  
 
 * Class components make use of ES6 class and extend the Component class in React.
 * Sometimes called `stateful` components as they tend to implement logic and state.
