@@ -790,7 +790,7 @@ ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
 
 ## Q. ***What are the benefits of new JSX transform?***
 
-There are three major benefits of new JSX transform,
+The React 17 release provides support for a new version of the JSX transform. There are three major benefits of new JSX transform,
 
 * It enables you to use JSX without having to import React.
 * The compiled output relatively improves the bundle size.
