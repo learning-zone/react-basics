@@ -769,7 +769,8 @@ class JSXInjectionExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userContent: `JSX prevents Injection Attacks Example <script src="http://example.com/malicious-script.js><\/script>`
+            userContent: `JSX prevents Injection Attacks Example 
+            <script src="http://example.com/malicious-script.js><\/script>`
         };
     }
     
