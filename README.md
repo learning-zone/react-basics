@@ -901,6 +901,8 @@ Often we need to store information associated with a DOM element. This data migh
 
 Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
 
+**Example**
+
 ```js
 // Custom DOM Attribute
 render() {
@@ -911,11 +913,19 @@ render() {
 
 
 // Data Attribute ( starts with "data-" )
-<div data-foo="42" />
+render() {
+  return (
+    <div data-id="10" />
+  );
+}
 
 
 // ARIA Attribute ( starts with "aria-" )
-<button aria-label="Close" onClick={onClose} />
+render() {
+  return (
+    <button aria-label="Close" onClick={onClose} />
+  );
+}
 ```
 
 **Live Demo**: [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)
