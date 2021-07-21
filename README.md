@@ -855,7 +855,41 @@ function App() {
 
 ## Q. ***Is it possible to use React without rendering HTML?***
 
-*ToDo*
+It is possible with latest version (>=16.2). Below are the possible options:
+
+```js
+render() {
+  return false
+}
+```
+
+```js
+render() {
+  return null
+}
+```
+
+```js
+render() {
+  return []
+}
+```
+
+```js
+render() {
+  return <React.Fragment></React.Fragment>
+}
+```
+
+```js
+render() {
+  return <></>
+}
+```
+
+Note that React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
+
+*Note: Returning `undefined` does not work.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
