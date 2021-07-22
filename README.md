@@ -989,29 +989,19 @@ export default function App() {
 **Example**:
 
 ```js
-const ClockUsingHooks = props => {
-    const [time, setTime] = useState(new Date())
-
-    const changeTime = () => {
-        setTime(new Date())
-    }
-
-    useEffect(() => {
-        const tick = setInterval(() => {
-            changeTime()
-        }, 1000)
-        return () => clearInterval(tick)
-    })
-    return (
-        <div className="clock">
-            <h1>Hello! This is a function component clock.</h1>
-            <h2>It is {time.toLocaleTimeString()}.</h2>
-        </div>
-    )
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
 }
 
-export default ClockUsingHooks
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
 ```
+
+**Live Demo**: [Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)
 
 ### **Class Components**  
 
@@ -1025,38 +1015,21 @@ export default ClockUsingHooks
 **Example**:
 
 ```js
-class ClockUsingClass extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { date: new Date() }
-    }
-
-    componentDidMount() {
-        this.time = setInterval(() => {
-            this.changeTime()
-        }, 1000)
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.time)
-    }
-
-    changeTime() {
-        this.setState({ date: new Date() })
-    }
-
-    render() {
-        return (
-            <div className="clock">
-                <h1>Hello! This is a class component clock.</h1>
-                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-            </div>
-        )
-    }
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
 }
 
-export default ClockUsingClass
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
 ```
+
+**Live Demo**: [Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
