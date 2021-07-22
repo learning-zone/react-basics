@@ -38,8 +38,8 @@
  |21. |[How to add custom DOM attributes in JSX?](#q-how-to-add-custom-dom-attributes-in-jsx)|
  |22. |[How to write comments in React and JSX?](#q-how-to-write-comments-in-react-and-jsx)|
  |23. |[What are the differences between a class component and functional component?](#q-what-are-the-differences-between-a-class-component-and-functional-component)|
- |24. |[What is the recommended ordering of methods in component class?](#q-what-is-the-recommended-ordering-of-methods-in-component-class)|
- |25. |[How do you conditionally render components?](#q-how-do-you-conditionally-render-components)|
+ |24. |[What is the recommended ordering of methods in class component?](#q-what-is-the-recommended-ordering-of-methods-in-class-component)|
+ |25. |[How to conditionally render components in react?](#q-how-to-conditionally-render-components-in-react)|
  |26. |[What is props in React?](#q-what-is-props-in-react)|
  |27. |[Why props in React are read only?](#q-why-props-in-react-are-read-only)|
  |28. |[What are default props?](#q-what-are-default-props)|
@@ -1035,17 +1035,68 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the recommended ordering of methods in component class?***
+## Q. ***What is the recommended ordering of methods in class component?***
 
-*ToDo*
+* `static` methods
+* `constructor()`
+* `getChildContext()`
+* `componentWillMount()`
+* `componentDidMount()`
+* `componentWillReceiveProps()`
+* `shouldComponentUpdate()`
+* `componentWillUpdate()`
+* `componentDidUpdate()`
+* `componentWillUnmount()`
+* click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
+* getter methods for render like `getSelectReason()` or `getFooterContent()`
+* optional render methods like `renderNavigation()` or `renderProfilePicture()`
+* `render()`
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How do you conditionally render components?***
+## Q. ***How to conditionally render components in react?***
 
-*ToDo*
+Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false. In React, it allows us to render different elements or components based on a condition.
+
+**Element Variables:**
+
+You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
+
+```js
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+
+ReactDOM.render(
+  // Try changing to isLoggedIn={true}:
+  <Greeting isLoggedIn={false} />,
+  document.getElementById('root')
+);
+```
+
+**Inline If-Else with Conditional Operator:**
+
+```js
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+```
+
+**Live Demo**: [Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
