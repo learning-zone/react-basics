@@ -1102,6 +1102,66 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. **How to prevent component from rendering in React?**
+
+You can prevent component from rendering by returning `null` based on specific condition. This way it can conditionally render component.
+
+In the example below, the `<WarningBanner />` is rendered depending on the value of the prop called warn. If the value of the prop is `false`, then the component does not render:
+
+```js
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    <div className="warning">
+      Warning!
+    </div>
+  );
+}
+```
+
+```js
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+
+  handleToggleClick() {
+    this.setState(state => ({
+      showWarning: !state.showWarning
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        { /* Prevent component render if value of the prop is false */}
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Page />,
+  document.getElementById('root')
+);
+```
+
+**Live Demo**: [prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+
 ## Q. ***What is props in React?***
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
