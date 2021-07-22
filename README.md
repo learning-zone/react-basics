@@ -36,7 +36,7 @@
  |19. |[What is the difference between ReactDOM and React?](#q-what-is-the-difference-between-reactdom-and-react)|
  |20. |[Is it possible to use React without rendering HTML?](#q-is-it-possible-to-use-react-without-rendering-html)|
  |21. |[How to add custom DOM attributes in JSX?](#q-how-to-add-custom-dom-attributes-in-jsx)|
- |22. |[How to write comments in React?](#q-how-to-write-comments-in-react)|
+ |22. |[How to write comments in React and JSX?](#q-how-to-write-comments-in-react-and-jsx)|
  |23. |[What are the differences between a class component and functional component?](#q-what-are-the-differences-between-a-class-component-and-functional-component)|
  |24. |[What is the recommended ordering of methods in component class?](#q-what-is-the-recommended-ordering-of-methods-in-component-class)|
  |25. |[How do you conditionally render components?](#q-how-do-you-conditionally-render-components)|
@@ -934,9 +934,41 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to write comments in React?***
+## Q. ***How to write comments in React and JSX?***
 
-*ToDo*
+Writing comments in React components can be done just like comment in regular JavaScript classes and functions.
+
+**React comments:**
+
+```js
+function App() {
+
+  // Single line Comment
+
+  /*
+  * multi
+  * line
+  * comment
+  **/
+
+  return (
+    <h1>My Application</h1>
+  );
+}
+```
+
+**JSX comments:**
+
+```js
+export default function App() {
+  return (
+    <div>
+      {/* A JSX comment */}
+      <h1>My Application</h1>
+    </div>
+  );
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
