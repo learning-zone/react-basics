@@ -382,7 +382,7 @@ React is a JavaScript library created for building fast and interactive user int
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-### **Read More**
+**Read More:**
 
 * *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
 
@@ -3610,7 +3610,7 @@ If your function component renders the same result given the same props, you can
 
 In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
 
-### **Read More**
+**Read More:**
 
 * *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
 
@@ -8224,7 +8224,7 @@ class HighOrderComponent extends React.Component {
 export default withTranslation()(HighOrderComponent)
 ```
 
-### **Read More**
+**Read More:**
 
 * *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
 
@@ -8416,7 +8416,7 @@ render(<App/>, document.getElementById('root'));
 
 The ConsumerA and ConsumerB components keep a state counter individual. In their componentDidMount they subscribe to the same stream subscriber, anytime an event is published they both update the counter. The ProducerA and ProducerB have buttons Increment Counter and Decrement Counter when clicked they emit `1` or `-1`.
 
-### **Read More**
+**Read More:**
 
 * *[https://www.learnrxjs.io/](https://www.learnrxjs.io/)*
 
@@ -9634,7 +9634,7 @@ describe('App component', () => {
 })
 ```
 
-### **Read More**
+**Read More:**
 
 * *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
 * *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
@@ -11702,7 +11702,7 @@ export default reduxForm({
   <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
 </p>
 
-### **Read More**
+**Read More:**
 
 * *[https://redux-form.com/6.5.0/examples/syncvalidation/](https://redux-form.com/6.5.0/examples/syncvalidation/)*
 
