@@ -1284,7 +1284,30 @@ export default App;
 
 ## Q. ***How are boolean props used in React?***
 
-*ToDo*
+React JSX has exactly two ways of passing true, `<MyComponent prop />` and `<MyComponent prop={true} />` and exactly one way of passing false `<MyComponent prop={false} />`.
+
+**Example:**
+
+```js
+const MyComponent = ({ prop1, prop2 }) => (
+  <div>
+    <div>Prop1: {String(prop1)}</div>
+    <div>Prop2: {String(prop2)}</div>
+  </div>
+) 
+
+function App() {
+  return (
+    <div>
+      <MyComponent prop1={true} prop2={false} />
+      <MyComponent prop1 prop2 />
+      <MyComponent prop1={false} prop2 />
+    </div>
+  );
+}
+```
+
+**Live Demo**: [Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
