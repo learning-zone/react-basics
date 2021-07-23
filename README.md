@@ -1206,7 +1206,34 @@ In fact, props of a component is concretely "the state of the another component 
 
 ## Q. ***What are default props?***
 
-*ToDo*
+The defaultProps is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed. The `defaultProps` can be defined as a property on the component class itself to set the default props for the class. `defaultProps` is used for **undefined** props, not for **null** props.
+
+```js
+class MessageComponent extends React.Component {
+   render() {
+        return (
+          <div>Hello, {this.props.value}.</div>
+        )
+    }
+}
+
+// Default Props
+MessageComponent.defaultProps = {
+  value: 'World'  
+}
+
+ReactDOM.render(
+  <MessageComponent />, 
+  document.getElementById('default')
+)
+
+ReactDOM.render(
+  <MessageComponent value='Folks'/>, 
+  document.getElementById('custom')
+)
+```
+
+**Live Demo**: [Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
