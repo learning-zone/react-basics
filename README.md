@@ -1243,13 +1243,13 @@ ReactDOM.render(
 
 React JSX doesn\'t support variable interpolation inside an attribute value, but we can put any JS expression inside curly braces as the entire attribute value.
 
-* **Approach 1**: Putting js expression inside curly braces
+**Approach 1**: Putting js expression inside curly braces
 
 ```js
 <img className="image" src={"images/" + this.props.image} />
 ```
 
-* **Approach 2**: Using ES6 template literals.
+**Approach 2**: Using ES6 template literals.
 
 ```js
 <img className="image" src={`images/${this.props.image}`} />
@@ -1276,7 +1276,7 @@ class App extends Component {
 export default App;
 ```
 
-**Live Demo**: [React JSX](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)
+**Live Demo**: [React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
