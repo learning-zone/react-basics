@@ -5,7 +5,6 @@
 ## Table of Contents
 
 * *[React Coding Practice](react-coding-practice.md)*
-* *[Create React Application](https://create-react-app.dev/docs/getting-started)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
@@ -382,8 +381,6 @@
 React is a JavaScript library created for building fast and interactive user interfaces for web and mobile applications. It is an open-source, component-based, front-end library responsible only for the application view layer.
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
-
-**[[Read More](https://reactjs.org/tutorial/tutorial.html)]**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1160,7 +1157,6 @@ ReactDOM.render(
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
-
 
 ## Q. ***What is props in React?***
 
@@ -12362,6 +12358,12 @@ export default connect()(MsgSenderPage);
 #### Q. ***How do you get redux scaffolding using create-react-app?***
 
 *ToDO*
+
+### **References**
+
+* *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
+* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
+* *[https://redux.js.org/introduction/getting-started](https://redux.js.org/introduction/getting-started)*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
