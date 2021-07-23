@@ -1176,7 +1176,7 @@ function Welcome(props) {
 const element = <Welcome name="World!" />;
 ```
 
-**Live Demo**: [props](https://codepen.io/learning-zone/pen/mdmWgxz)
+**Live Demo**: [Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1184,7 +1184,21 @@ const element = <Welcome name="World!" />;
 
 ## Q. ***Why props in React are read only?***
 
-*ToDo*
+When you declare a component as a function or a class, it must never modify its own props.
+
+Consider this sum function:
+
+```js
+function sum(a, b) {
+  return a + b;
+}
+```
+
+Such functions are called **pure** because they do not attempt to change their inputs, and always return the same result for the same inputs. All React components must act like pure functions with respect to their props. A component should only manage its own state, but it should not manage its own props.
+
+In fact, props of a component is concretely "the state of the another component (parent component)". So props must be managed by their component owner. That\'s why all React components must act like pure functions with respect to their props (not to mutate directly their props).
+
+**Live Demo**: [Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
