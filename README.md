@@ -12371,12 +12371,6 @@ export default connect()(MsgSenderPage);
 
 *ToDO*
 
-### **References**
-
-* *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
-* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
-* *[https://redux.js.org/introduction/getting-started](https://redux.js.org/introduction/getting-started)*
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
