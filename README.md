@@ -1066,17 +1066,17 @@ Conditional rendering is a term to describe the ability to render different user
 You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
 
 ```js
-function Greeting(props) {
+function LogInComponent(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
-    return <UserGreeting />;
+    return <UserComponent />;
   }
-  return <GuestGreeting />;
+  return <GuestComponent />;
 }
 
 ReactDOM.render(
   // Try changing to isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
+  <LogInComponent isLoggedIn={false} />,
   document.getElementById('root')
 );
 ```
