@@ -54,7 +54,7 @@
  |38. |[What will happen if you use setState() in constructor?](#q-what-will-happen-if-you-use-setstate-in-constructor)|
  |39. |[Can you force a React component to rerender without calling setState?](#q-can-you-force-a-react-component-to-rerender-without-calling-setstate-1)
  |40. |[Why should not we update the state directly?](#q-why-should-not-we-update-the-state-directly)|
- |41. |[What is the recommended approach of removing an array element in react state?](#q-what-is-the-recommended-approach-of-removing-an-array-element-in-react-state)|
+ |41. |[How to delete an item from state array?](#q-how-to-delete-an-item-from-state-array?)|
  |42. |[Why should not call setState in componentWillUnmount?](#q-why-should-not-call-setstate-in-componentwillunmount)|
  |43. |[what will happen if you use setstate() in constructor](#q-what-will-happen-if-you-use-setstate-in-constructor)|
  |44. |[How can you re-render a component without using setState() function?](#q-how-can-you-re-render-a-component-without-using-setstate-function)|
@@ -1651,9 +1651,24 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the recommended approach of removing an array element in react state?***
+## Q. ***How to delete an item from state array?***
 
-*ToDo*
+When using React, we should never mutate the state directly. If an object is changed, we should create a new copy. The better approach is to use `Array.prototype.filter()` method which creates a new array.
+
+**Example:**
+
+```js
+onDeleteByIndex = (index) => {
+  const newUsers = [...this.state.users];
+  newUsers.splice(index, 1);
+
+  this.setState((state) => ({
+    users: newUsers
+  }));
+};
+```
+
+**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
