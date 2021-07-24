@@ -1470,7 +1470,36 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 
 ## Q. ***What are the possible ways of updating objects in state?***
 
-*ToDo*
+Instead of directly modifying the state using `this.state()`, we use `this.setState()`. This is a function available to all React components that use state, and allows us to let React know that the component state has changed. This way the component knows it should re-render, because its state has changed and its UI will most likely also change.
+
+```js
+this.state = {
+  user: { name: 'Alex K', age: 28 }
+}
+```
+
+* **Using Object.assign()**
+
+```js
+this.setState(prevState => {
+  let user = Object.assign({}, prevState.user);  // creating copy of state variable user
+  user.name = 'New-Name';                            // update the name property, assign a new value                 
+  return { user };                                 // return new object user object
+})
+```
+
+* **Using spread syntax**
+
+```js
+this.setState(prevState => ({
+    user: {                   // object that we want to update
+        ...prevState.user,    // keep all other key-value pairs
+        name: 'New-Name'       // update the value of specific key
+    }
+}))
+```
+
+**Live Demo**: [React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
