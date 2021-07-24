@@ -1583,14 +1583,6 @@ class Food extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Can you force a React component to rerender without calling setState?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***Why should not we update the state directly?***
 
 The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
