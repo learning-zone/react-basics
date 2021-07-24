@@ -1509,7 +1509,37 @@ this.setState(prevState => ({
 
 ## Q. ***Can you force a React component to rerender without calling setState?***
 
-*ToDo*
+React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
+
+However, In class components, we can call `this.forceUpdate()` to force a rerender. In function components, there\'s no equivalent of `forceUpdate()`, but we can contrive a way to force updates with the `useState()` hook.
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor(){
+    super();
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  };
+  
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
+  
+  render(){
+    return(
+      <div>
+        <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
+        <h4>Random Number : { Math.random() }</h4>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+**Live Demo**: [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
