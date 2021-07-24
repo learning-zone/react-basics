@@ -1681,14 +1681,6 @@ The `componentWillUnmount()` is invoked immediately before a component is unmoun
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***what will happen if you use setstate() in constructor***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How can you re-render a component without using setState() function?***
 
 React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
