@@ -1315,7 +1315,59 @@ function App() {
 
 ## Q. ***How to specify the shape of an object with PropTypes***
 
-*ToDo*
+The `PropTypes.shape()` validator can be used when describing an object whose keys are known ahead of time, and may represent different types.
+
+**Example:**
+
+```js
+import PropTypes from 'prop-types';
+
+const Component = (props) => <div>Component badge: {props.badge ? JSON.stringify(props.badge) : 'none'}</div>
+
+// PropTypes validation for the prop object
+Component.propTypes = {
+  badge: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }),
+}
+
+const App = () => (
+  <div>
+    <Component badge={{ src: 'horse.png', alt: 'Running Horse' }}/>
+    {/*<Component badge={{src:null, alt: 'this one gives an error'}}/>*/}
+    <Component/>
+  </div>
+);
+```
+
+**Live Demo**: [PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How PropTypes.objectOf is different from PropTypes.shape?***
+
+The `PropTypes.objectOf()` validator is used when describing an object whose keys might not be known ahead of time, and often represent the same type.
+
+**Example:**
+
+```js
+import PropTypes from 'prop-types';
+
+// Expected prop object - dynamic keys (i.e. user ids)
+const myProp = {
+  25891102: 'Alexk',
+  34712915: 'employee',
+  76912999: 'alex.k@email.com'
+};
+
+// PropTypes validation for the prop object
+MyComponent.propTypes = {
+  myProp: PropTypes.objectOf(PropTypes.number)
+};
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1323,7 +1375,28 @@ function App() {
 
 ## Q. ***How React PropTypes allow different types for one prop?***
 
-*ToDo*
+Using `PropTypes.oneOfType()` says that a prop can be one of any number of types. For instance, a phone number may either be passed to a component as a string or an integer:
+
+```js
+
+const Component = (props) => <div>Phone Number: {props.phoneNumber}</div>
+
+Component.propTypes = {
+  phoneNumber: PropTypes.oneOfType([
+     PropTypes.number,
+     PropTypes.string
+  ]),
+}
+
+const App = () => (
+  <div>
+    <Component phoneNumber={04403472916}/>
+    {/*<Component phoneNumber={"2823788557"}/>*/}
+  </div>
+);
+```
+
+**Live Demo**: [PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
