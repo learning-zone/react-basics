@@ -1658,17 +1658,14 @@ When using React, we should never mutate the state directly. If an object is cha
 **Example:**
 
 ```js
-onDeleteByIndex = (index) => {
-  const newUsers = [...this.state.users];
-  newUsers.splice(index, 1);
-
-  this.setState((state) => ({
-    users: newUsers
-  }));
-};
+onDeleteByIndex(index) {
+  this.setState({
+    users: this.state.users.filter((item, i) => i !== index)
+  });
+}
 ```
 
-**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)
+**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0011)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
