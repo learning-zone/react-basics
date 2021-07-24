@@ -1577,6 +1577,8 @@ class Food extends Component {
 }
 ```
 
+**Live Demo**: [React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
