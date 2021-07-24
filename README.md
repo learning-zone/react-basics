@@ -1472,6 +1472,8 @@ The `setState()` will always lead to a re-render unless `shouldComponentUpdate()
 
 Instead of directly modifying the state using `this.state()`, we use `this.setState()`. This is a function available to all React components that use state, and allows us to let React know that the component state has changed. This way the component knows it should re-render, because its state has changed and its UI will most likely also change.
 
+**Example:**
+
 ```js
 this.state = {
   user: { name: 'Alex K', age: 28 }
