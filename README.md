@@ -1665,7 +1665,7 @@ onDeleteByIndex(index) {
 }
 ```
 
-**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0011)
+**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
