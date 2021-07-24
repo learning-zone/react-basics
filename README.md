@@ -1411,10 +1411,11 @@ This is data maintained inside a component. It is local or owned by that specifi
 ```js
 class Employee extends React.Component {
     constructor() {
-        this.state = {
-            id: 1,
-            name: "Alex"
-        }  
+      super()
+      this.state = {
+          id: 100,
+          name: "Alex K"
+      }  
     }
 
     render() {
@@ -1429,6 +1430,8 @@ class Employee extends React.Component {
 
 export default Employee
 ```
+
+**Live Demo**: [React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
