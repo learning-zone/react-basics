@@ -1483,7 +1483,7 @@ this.state = {
 ```js
 this.setState(prevState => {
   let user = Object.assign({}, prevState.user);  // creating copy of state variable user
-  user.name = 'New-Name';                            // update the name property, assign a new value                 
+  user.name = 'New-Name';                            // update the name property, assign a new value
   return { user };                                 // return new object user object
 })
 ```
