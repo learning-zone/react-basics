@@ -1673,7 +1673,9 @@ onDeleteByIndex(index) {
 
 ## Q. ***Why should not call setState in componentWillUnmount?***
 
-*ToDo*
+We should not call `setState()` in `componentWillUnmount()` because the component will never be re-rendered. Once a component instance is unmounted, it will never be mounted again.
+
+The `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. This method can be used to perform any necessary cleanup method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
