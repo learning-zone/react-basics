@@ -1360,9 +1360,9 @@ import PropTypes from 'prop-types';
 
 // Expected prop object - dynamic keys (i.e. user ids)
 const myProp = {
-  25891102: 'Alexk',
-  34712915: 'employee',
-  76912999: 'alex.k@email.com'
+  25891102: 'Shila Jayashri',
+  34712915: 'Employee',
+  76912999: 'shila.jayashri@email.com'
 };
 
 // PropTypes validation for the prop object
