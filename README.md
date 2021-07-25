@@ -420,7 +420,7 @@ class Welcome extends React.Component {
 }
 ```
 
-**Live Demo**: [Hello World](https://codepen.io/learning-zone/pen/eYWvXaY)
+**Live Demo: [Hello World](https://codepen.io/learning-zone/pen/eYWvXaY)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -618,7 +618,7 @@ renderTableHeader() {
 
 `Object.Keys()` gives us all the keys of employees in the form of array and we stored it in a variable header. So we can iterate the header (array) using map method.
 
-**Live Demo**: [React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)
+**Live Demo: [React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -635,7 +635,7 @@ const element = <h1>React Element Example!</h1>;
 ReactDOM.render(element, document.getElementById('app'));
 ```
 
-**Live Demo**: [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)
+**Live Demo: [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
 
 ### **React Component**
 
@@ -648,7 +648,7 @@ function Message() {
 ReactDOM.render(<Message />, document.getElementById('app'));
 ```
 
-**Live Demo**: [React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)
+**Live Demo: [React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -731,7 +731,9 @@ class App extends React.Component {
 export default App
 ```
 
-**JSX is a JavaScript Expression**
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
+
+**JSX is a JavaScript Expression:**
 
 JSX expressions are JavaScript expressions too. When compiled, they actually become regular JavaScript objects. For instance, the code below:
 
@@ -781,7 +783,7 @@ class JSXInjectionExample extends React.Component {
 ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
 ```
 
-**Live Demo**: [JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)
+**Live Demo: [JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -929,7 +931,7 @@ render() {
 }
 ```
 
-**Live Demo**: [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)
+**Live Demo: [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1002,7 +1004,7 @@ ReactDOM.render(
 );
 ```
 
-**Live Demo**: [Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)
+**Live Demo: [Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
 
 ### **Class Components**  
 
@@ -1030,7 +1032,7 @@ ReactDOM.render(
 );
 ```
 
-**Live Demo**: [Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)
+**Live Demo: [Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1097,7 +1099,7 @@ render() {
 }
 ```
 
-**Live Demo**: [Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)
+**Live Demo: [Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1156,7 +1158,7 @@ ReactDOM.render(
 );
 ```
 
-**Live Demo**: [prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)
+**Live Demo: [prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1176,7 +1178,7 @@ function Welcome(props) {
 const element = <Welcome name="World!" />;
 ```
 
-**Live Demo**: [Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)
+**Live Demo: [Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1198,7 +1200,7 @@ Such functions are called **pure** because they do not attempt to change their i
 
 In fact, props of a component is concretely "the state of the another component (parent component)". So props must be managed by their component owner. That\'s why all React components must act like pure functions with respect to their props (not to mutate directly their props).
 
-**Live Demo**: [Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)
+**Live Demo: [Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1233,7 +1235,7 @@ ReactDOM.render(
 )
 ```
 
-**Live Demo**: [Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)
+**Live Demo: [Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1276,7 +1278,7 @@ class App extends Component {
 export default App;
 ```
 
-**Live Demo**: [React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)
+**Live Demo: [React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1307,7 +1309,7 @@ function App() {
 }
 ```
 
-**Live Demo**: [Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)
+**Live Demo: [Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1341,7 +1343,7 @@ const App = () => (
 );
 ```
 
-**Live Demo**: [PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)
+**Live Demo: [PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1396,7 +1398,7 @@ const App = () => (
 );
 ```
 
-**Live Demo**: [PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)
+**Live Demo: [PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1431,7 +1433,7 @@ class Employee extends React.Component {
 export default Employee
 ```
 
-**Live Demo**: [React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)
+**Live Demo: [React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1501,7 +1503,7 @@ this.setState(prevState => ({
 }))
 ```
 
-**Live Demo**: [React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)
+**Live Demo: [React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1539,7 +1541,7 @@ class App extends React.Component {
 export default App;
 ```
 
-**Live Demo**: [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)
+**Live Demo: [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1577,7 +1579,7 @@ class Food extends Component {
 }
 ```
 
-**Live Demo**: [React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)
+**Live Demo: [React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1645,7 +1647,7 @@ class App extends Component {
 export default App
 ```
 
-**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1665,7 +1667,7 @@ onDeleteByIndex(index) {
 }
 ```
 
-**Live Demo**: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
