@@ -1687,6 +1687,8 @@ class Greeting extends Component {
 export default Greeting
 ```
 
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
+
 **2. Using forceUpdate()**
 
 The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
