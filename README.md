@@ -1812,7 +1812,18 @@ handleUpdate = () => {
 
 ## Q. ***How to set state with a dynamic key name?***
 
-*ToDo*
+If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with *computed property* names.
+
+```js
+inputChangeHandler : function (event) {
+  this.setState({ [event.target.id]: event.target.value });
+
+  // alternatively using template strings for strings
+  // this.setState({ [`key${event.target.id}`]: event.target.value });
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
