@@ -1509,44 +1509,6 @@ this.setState(prevState => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Can you force a React component to rerender without calling setState?***
-
-React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
-
-However, In class components, we can call `this.forceUpdate()` to force a rerender. In function components, there\'s no equivalent of `forceUpdate()`, but we can contrive a way to force updates with the `useState()` hook.
-
-**Example:**
-
-```js
-class App extends React.Component {
-  constructor(){
-    super();
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-  };
-  
-  forceUpdateHandler(){
-    this.forceUpdate();
-  };
-  
-  render(){
-    return(
-      <div>
-        <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
-        <h4>Random Number : { Math.random() }</h4>
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
-**Live Demo: [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What will happen if you use setState() in constructor?***
 
 When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
@@ -1730,30 +1692,30 @@ export default Greeting
 The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
 
 ```js
-import React, { Component } from 'react'
-
-class App extends React.Component{
-  constructor() {
-    super()
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this)
-  }
+class App extends React.Component {
+  constructor(){
+    super();
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  };
   
-  forceUpdateHandler() {
-    this.forceUpdate()
-  }
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
   
-  render() {
-    return (
+  render(){
+    return(
       <div>
-        <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
-        <h4>Random Number: { Math.random() }</h4>
+        <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
+        <h4>Random Number : { Math.random() }</h4>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
 ```
+
+**Live Demo: [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
 
 *Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
 
