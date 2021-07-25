@@ -1766,7 +1766,28 @@ this.setState((prevState) => ({
 
 ## Q. ***How to update nested state properties in React.js?***
 
-*ToDo*
+We can pass the old nested object using the spread operator and then override the particular properties of the nested object.
+
+**Example:**
+
+```js
+// Nested object
+state = {
+  name: 'Vyasa Agarwal',
+  address: {
+    colony: 'Old Cross Rds, Mehdipatnam',
+    city: 'Patna',
+    state: 'Jharkhand'
+  }
+};
+  
+handleUpdate = () => {
+  // Overriding the city property of address object
+  this.setState({ address: { ...this.state.address, city: "Ranchi" } })
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
