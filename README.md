@@ -1793,22 +1793,6 @@ handleUpdate = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the difference between setState and replaceState methods?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How state updates are merged in React***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is the difference between state and props?***
 
 |Props                             |State                             |
