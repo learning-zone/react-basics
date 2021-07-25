@@ -1727,7 +1727,38 @@ export default App;
 
 ## Q. ***Why we need to pass a function to setState()?***
 
-*ToDo*
+The reason behind for this is that `setState()` is an asynchronous operation. React batches state changes for performance reasons, so the state may not change immediately after `setState()` is called. That means we should not rely on the current state when calling `setState()`.
+
+The solution is to **pass a function to setState()**, with the previous state as an argument. By doing this we can avoid issues with the user getting the old state value on access due to the asynchronous nature of `setState()`.
+
+**Problem:**
+
+```js
+// assuming this.state.count === 0
+this.setState({count: this.state.count + 1});
+this.setState({count: this.state.count + 1});
+this.setState({count: this.state.count + 1});
+// this.state.count === 1, not 3
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
+
+**Solution:**
+
+```js
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+// this.state.count === 3 as expected
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
