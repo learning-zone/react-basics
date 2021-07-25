@@ -534,11 +534,11 @@ class Table extends React.Component {
       Component class constructor **/
       this.state = { // state is by default an object
          employees: [
-            { id: 1, name: 'Alex Hicks', age: 21, email: 'alex@email.com' },
-            { id: 2, name: 'Edie Carter', age: 29, email: 'edie@email.com' },
-            { id: 3, name: 'Scarlett Mendez', age: 26, email: 'scarlett@email.com' },
-            { id: 4, name: 'Maggie Clarke', age: 25, email: 'maggie@email.com' },
-            { id: 4, name: 'Hannah Manning', age: 22, email: 'hannah@email.com' }
+            { id: 1, name: 'Swarna Sachdeva', age: 28, email: 'swarna@email.com' },
+            { id: 2, name: 'Sarvesh Date', age: 33, email: 'sarvesh@email.com' },
+            { id: 3, name: 'Diksha Meka', age: 46, email: 'diksha@email.com' },
+            { id: 4, name: 'Tanvi Deol', age: 45, email: 'tanvi@email.com' },
+            { id: 4, name: 'Aapti Kara', age: 32, email: 'aapti@email.com' }
          ]
       }
    }
