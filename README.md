@@ -1856,7 +1856,55 @@ export function MyComponent(props) {
 
 ## Q. ***How to bind methods or event handlers in JSX callbacks?***
 
-*ToDo*
+There are 3 possible ways to achieve this
+
+### **Event Handler in Render Method:**
+
+We can bind the handler when it is called in the render method using `bind()` method.
+
+```js
+handleClick() {
+  // ...       
+}
+
+<button onClick={this.handleClick.bind(this)}>Click</button> 
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
+
+### **Event Handler using Arrow Function:**
+
+In this approach we are binding the event handler implicitly. This approach is the best if you want to pass parameters to your event.
+
+```js
+handleClick() {
+  // ...       
+}
+
+<button onClick={() => this.handleClick()}>Click</button> 
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
+
+### **Event Handler in Constructor:**
+
+This has performance benefits as the events aren\'t binding every time the method is called, as opposed to the previous two approaches.
+
+```js
+constructor(props) {
+
+  // This binding is necessary to make `this` work in the callback
+  this.handleClick = this.handleClick.bind(this);
+}
+
+handleClick() {
+  // ...       
+}
+
+<button onClick={this.handleClick}>Click</button>
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
