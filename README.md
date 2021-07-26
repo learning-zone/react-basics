@@ -2045,7 +2045,24 @@ class HeaderComponent extends React.Component {
 
 ## Q. ***How to conditionally apply CSS classes in React JS?***
 
-*ToDo*
+**Example:** Using the ternary operator
+
+```js
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { isRed: true }
+  }
+
+  render() {
+    const isRed = this.state.isRed
+
+    return <p style={{ color: isRed ? 'red' : 'blue' }}>Example Text</p>
+  }
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
