@@ -1934,7 +1934,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
 React Components can add styling in the following ways:
 
-**Inline Styling:**
+### **Inline Styling:**
 
 In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces `{{}}`. Since the inline CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax:
 
@@ -1953,7 +1953,7 @@ class HeaderComponent extends React.Component {
 
 **Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
 
-**JavaScript Object:**
+### **JavaScript Object:**
 
 We can also create an object with styling information, and refer to it in the style attribute:
 
@@ -1978,7 +1978,7 @@ class HeaderComponent extends React.Component {
 
 **Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
 
-**CSS Stylesheet:**
+### **CSS Stylesheet:**
 
 You can write your CSS styling in a separate file, just save the file with the .css file extension, and import it in your application.
 
@@ -2009,7 +2009,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-**CSS Modules:**
+### **CSS Modules:**
 
 CSS Modules are convenient for components that are placed in separate files
 
