@@ -2070,7 +2070,29 @@ class App extends Component {
 
 ## Q. ***How to combine multiple inline style objects?***
 
-*ToDo*
+**Using Spread operator:**
+
+```js
+const box = {
+    color: "green",
+    fontSize: '23px'
+}
+
+const shadow = {
+    background: "orange",
+    boxShadow: "1px 1px 1px 1px #cccd"
+}
+
+export default function App(){
+    return (
+      <div style={{...box, ...shadow}}>
+         <h1>Hello React</h1>
+      </div>
+    )
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
