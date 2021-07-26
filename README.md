@@ -64,7 +64,7 @@
  |48. |[How state updates are merged in React](#q-how-state-updates-are-merged-in-react)|
  |49. |[What is the difference between state and props?](#q-what-is-the-difference-between-state-and-props)|
  |50. |[How to set state with a dynamic key name?](#q-how-to-set-state-with-a-dynamic-key-name)|
- |51. |[How to listen state changes in React.js?](#q-how-to-listen-state-changes-in-reactjs)|
+ |51. |[How to listen state change in React.js?](#q-how-to-listen-state-change-in-reactjs)|
  |52. |[How to bind methods or event handlers in JSX callbacks?](#q-how-to-bind-methods-or-event-handlers-in-jsx-callbacks)|
  |53. |[How to use React label element?](#q-how-to-use-react-label-element)|
  |54. |[How to use styles in React.js?](#q-how-to-use-styles-in-reactjs)|
@@ -1829,9 +1829,26 @@ inputChangeHandler : function (event) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to listen state changes in React.js?***
+## Q. ***How to listen state change in React.js?***
 
-*ToDo*
+The following lifecycle methods will be called when state changes. You can use the provided arguments and the current state to determine if something meaningful changed.
+
+```js
+componentWillUpdate(object nextProps, object nextState)
+componentDidUpdate(object prevProps, object prevState)
+```
+
+In functional component, listen state changes with useEffect hook like this
+
+```js
+export function MyComponent(props) {
+    const [myState, setMystate] = useState('initialState')
+
+    useEffect(() => {
+        console.log(myState, '- Has changed')
+    },[myState]) // <-- here put the parameter to listen
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
