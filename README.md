@@ -1932,7 +1932,112 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
 ## Q. ***How to use styles in React.js?***
 
-*ToDo*
+React Components can add styling in the following ways:
+
+**Inline Styling:**
+
+In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces `{{}}`. Since the inline CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax:
+
+```js
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 style={{backgroundColor: "lightblue"}}>Header Component Style!</h1>
+        <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
+
+**JavaScript Object:**
+
+We can also create an object with styling information, and refer to it in the style attribute:
+
+```js
+class HeaderComponent extends React.Component {
+  render() {
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
+    return (
+      <div>
+        <h1 style={mystyle}>Header Component Style!</h1>
+        <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
+
+**CSS Stylesheet:**
+
+You can write your CSS styling in a separate file, just save the file with the .css file extension, and import it in your application.
+
+```css
+/**  App.css **/
+
+body {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+```
+
+```js
+import './App.css';
+
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Header Component Style!</h1>
+        <p>Add a little style!.</p>
+      </div>
+    );
+  }
+}
+```
+
+**CSS Modules:**
+
+CSS Modules are convenient for components that are placed in separate files
+
+```css
+/** mystyle.module.css **/
+
+.bigblue {
+  color: DodgerBlue;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+```
+
+```js
+import styles from './mystyle.module.css'; 
+
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 className={styles.bigblue}>Header Component Style!</h1>
+        <p>Add a little style!.</p>
+      </div>
+    );
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
