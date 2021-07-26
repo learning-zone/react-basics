@@ -420,7 +420,7 @@ class Welcome extends React.Component {
 }
 ```
 
-**Live Demo: [Hello World](https://codepen.io/learning-zone/pen/eYWvXaY)**
+**Live Demo: [Run this Code](https://codepen.io/learning-zone/pen/eYWvXaY)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
