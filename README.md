@@ -420,7 +420,7 @@ class Welcome extends React.Component {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/eYWvXaY)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/eYWvXaY)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -618,7 +618,7 @@ renderTableHeader() {
 
 `Object.Keys()` gives us all the keys of employees in the form of array and we stored it in a variable header. So we can iterate the header (array) using map method.
 
-**[React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
+**&#9885; [React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -635,7 +635,7 @@ const element = <h1>React Element Example!</h1>;
 ReactDOM.render(element, document.getElementById('app'));
 ```
 
-**[React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
+**&#9885; [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
 
 ### **React Component**
 
@@ -648,7 +648,7 @@ function Message() {
 ReactDOM.render(<Message />, document.getElementById('app'));
 ```
 
-**[React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
+**&#9885; [React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -731,7 +731,7 @@ class App extends React.Component {
 export default App
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
 
 **JSX is a JavaScript Expression:**
 
@@ -783,7 +783,7 @@ class JSXInjectionExample extends React.Component {
 ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
 ```
 
-**[JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
+**&#9885; [JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -931,7 +931,7 @@ render() {
 }
 ```
 
-**[Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
+**&#9885; [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1004,7 +1004,7 @@ ReactDOM.render(
 );
 ```
 
-**[Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
+**&#9885; [Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
 
 ### **Class Components**  
 
@@ -1032,7 +1032,7 @@ ReactDOM.render(
 );
 ```
 
-**[Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)**
+**&#9885; [Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1099,7 +1099,7 @@ render() {
 }
 ```
 
-**[Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
+**&#9885; [Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1158,7 +1158,7 @@ ReactDOM.render(
 );
 ```
 
-**[prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
+**&#9885; [prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1178,7 +1178,7 @@ function Welcome(props) {
 const element = <Welcome name="World!" />;
 ```
 
-**[Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)**
+**&#9885; [Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1200,7 +1200,7 @@ Such functions are called **pure** because they do not attempt to change their i
 
 In fact, props of a component is concretely "the state of the another component (parent component)". So props must be managed by their component owner. That\'s why all React components must act like pure functions with respect to their props (not to mutate directly their props).
 
-**[Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
+**&#9885; [Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1235,7 +1235,7 @@ ReactDOM.render(
 )
 ```
 
-**[Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
+**&#9885; [Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1278,7 +1278,7 @@ class App extends Component {
 export default App;
 ```
 
-**[React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)**
+**&#9885; [React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1309,7 +1309,7 @@ function App() {
 }
 ```
 
-**[Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)**
+**&#9885; [Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1343,7 +1343,7 @@ const App = () => (
 );
 ```
 
-**[PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
+**&#9885; [PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1398,7 +1398,7 @@ const App = () => (
 );
 ```
 
-**[PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
+**&#9885; [PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1433,7 +1433,7 @@ class Employee extends React.Component {
 export default Employee
 ```
 
-**[React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
+**&#9885; [React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1503,7 +1503,7 @@ this.setState(prevState => ({
 }))
 ```
 
-**[React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
+**&#9885; [React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1541,7 +1541,7 @@ class Food extends Component {
 }
 ```
 
-**[React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
+**&#9885; [React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1609,7 +1609,7 @@ class App extends Component {
 export default App
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1629,7 +1629,7 @@ onDeleteByIndex(index) {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1687,7 +1687,7 @@ class Greeting extends Component {
 export default Greeting
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
 
 **2. Using forceUpdate()**
 
@@ -1717,7 +1717,7 @@ class App extends React.Component {
 export default App;
 ```
 
-**[React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
+**&#9885; [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
 
 *Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
 
@@ -1741,7 +1741,7 @@ this.setState({count: this.state.count + 1});
 // this.state.count === 1, not 3
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
 
 **Solution:**
 
@@ -1758,7 +1758,7 @@ this.setState((prevState) => ({
 // this.state.count === 3 as expected
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1787,7 +1787,7 @@ handleUpdate = () => {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1823,7 +1823,7 @@ inputChangeHandler : function (event) {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1870,7 +1870,7 @@ handleClick() {
 <button onClick={this.handleClick.bind(this)}>Click</button> 
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
 
 ### **Event Handler using Arrow Function:**
 
@@ -1884,7 +1884,7 @@ handleClick() {
 <button onClick={() => this.handleClick()}>Click</button> 
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
 
 ### **Event Handler in Constructor:**
 
@@ -1904,7 +1904,7 @@ handleClick() {
 <button onClick={this.handleClick}>Click</button>
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1951,7 +1951,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
 
 ### **JavaScript Object:**
 
@@ -1976,7 +1976,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
 
 ### **CSS Stylesheet:**
 
@@ -2062,7 +2062,7 @@ class App extends Component {
 }
 ```
 
-**[Run this Code](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
+**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
