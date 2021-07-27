@@ -2131,7 +2131,32 @@ But using CSS modules helps to create separate CSS files for each component and 
 
 ## Q. ***What are styled components?***
 
-*ToDo*
+The `Styled-components` is a CSS-in-JS styling framework that uses tagged template literals in JavaScript and the power of CSS to provide a platform that allows you to write actual CSS to style React components.
+
+The `styled-components` comes with a collection of helper methods, each corresponding to a DOM node for example `<h1>`, `<header>`, `<button>`, and SVG elements like `line` and `path`. The helper methods are called with a chunk of CSS, using an obscure JavaScript feature known as “tagged template literals”.
+
+**Example:**
+
+```js
+import styled from 'styled-components'
+
+const Button = styled.button`
+  color: black;
+  //...
+`
+
+const WhiteButton = Button.extend`
+  color: white;
+  //...
+`
+
+render(
+  <div>
+    <Button>A black button, like all buttons</Button>
+    <WhiteButton>A white button</WhiteButton>
+  </div>
+)
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
