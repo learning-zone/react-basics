@@ -2114,7 +2114,16 @@ export default function App(){
 
 ## Q. ***What is the benefit of styles modules?***
 
-*ToDo*
+CSS module is a CSS file in which all class names and animation names are scoped locally by default. In the React application, we usually create a single `.css` file and import it to the main file so the CSS will be applied to all the components.
+
+But using CSS modules helps to create separate CSS files for each component and is local to that particular file and avoids class name collision.
+
+**Benefits of CSS modules:**
+
+* Using CSS modules avoid namespace collision for CSS classes
+* You can use the same CSS class in multiple CSS files
+* You can confidently update any CSS file without worrying about affecting other pages
+* Using CSS Modules generates random CSS classes when displayed in the browser
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
