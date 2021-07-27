@@ -2092,7 +2092,7 @@ export default function App(){
 }
 ```
 
-**<span style='font-size:30px;'>&#9885;</span> [Run this Code](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
+**<span style='font-size:40px;'>&#9885;</span> [Run this Code](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
