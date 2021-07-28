@@ -2294,7 +2294,41 @@ Inheritance Inversion can be used in:
 
 ## Q. ***How to use decorators in React?***
 
-*ToDo*
+Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
+
+**Example:**
+
+```js
+export const withUniqueId = (Target) => {
+  return class WithUniqueId extends React.Component {
+    uid = uuid();
+
+    render() {
+      return <Target {...this.props} uuid={this.uid} />;
+    }
+  };
+}
+```
+
+```js
+@withUniqueId
+class UniqueIdComponent extends React.Component {
+  render() {
+    return <div>Generated Unique ID is: {this.props.uuid}</div>;
+  }
+}
+
+const App = () => (
+  <div>
+    <h2>Decorators in React!</h2>
+    <UniqueIdComponent />
+  </div>
+);
+```
+
+*Note: Decorators are an experimental feature in React that may change in future releases.*
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
