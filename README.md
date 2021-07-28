@@ -2219,6 +2219,14 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are render props?***
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How do you create Higher Order Component using render props?***
 
 *ToDo*
@@ -2229,7 +2237,56 @@ export default App
 
 ## Q. ***What are Higher Order Component factory implementations?***
 
-*ToDo*
+Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
+
+* Props Proxy
+* Inheritance Inversion
+
+Both enable different ways of manipulating the WrappedComponent.
+
+### **Props Proxy**
+
+In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
+
+**Example:**
+
+```js
+function ppHOC(WrappedComponent) {
+   return class PP extends React.Component {
+     render() {
+       return <WrappedComponent {...this.props}/>
+     }
+   }
+}
+```
+
+Props Proxy can be implemented via a number of ways
+
+* Manipulating props
+* Accessing the instance via Refs
+* Abstracting State
+* Wrapping the WrappedComponent with other elements
+
+### **Inheritance Inversion**
+
+Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
+
+**Example:**
+
+```js
+function iiHOC(WrappedComponent) {
+   return class Enhancer extends WrappedComponent {
+     render() {
+       return super.render()
+     }
+   }
+}
+```
+
+Inheritance Inversion can be used in:
+
+* Conditional Rendering (Render Highjacking)
+* State Manipulation
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4029,14 +4086,6 @@ function App() {
 </div>
 
 ## Q. ***How would you prevent a component from rendering?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What are render props?***
 
 *ToDo*
 
