@@ -84,7 +84,7 @@
  |68. |[How Virtual-DOM is more efficient than Dirty checking?](#q-how-virtual-dom-is-more-efficient-than-dirty-checking)|
  |69. |[What are controlled and uncontrolled components in React?](#q-what-are-controlled-and-uncontrolled-components-in-react)|
  |70. |[How do you set default value for uncontrolled components?](#q-how-do-you-set-default-value-for-uncontrolled-components)|
- |71. |[Why do we need to bind methods inside our class component constructor?](#q-why-do-we-need-to-bind-methods-inside-our-class-component-constructor)|
+ |71. |[Why do we need to bind methods inside class component constructor?](#q-why-do-we-need-to-bind-methods-inside-class-component-constructor)|
  |72. |[What is React.cloneElement?](#q-what-is-reactcloneelement)|
  |73. |[When we should use React.cloneElement vs this.props.children?](#q-when-we-should-use-reactcloneelement-vs-thispropschildren)|
  |74. |[How to pass props to {this.props.children}?](#q-how-to-pass-props-to-thispropschildren)|
@@ -2613,7 +2613,7 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why do we need to bind methods inside our class component constructor?***
+## Q. ***Why do we need to bind methods inside class component constructor?***
 
 In Class Components, when we pass the event handler function reference as a callback like this
 
