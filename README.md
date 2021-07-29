@@ -87,7 +87,7 @@
  |71. |[Why do we need to bind methods inside class component constructor?](#q-why-do-we-need-to-bind-methods-inside-class-component-constructor)|
  |72. |[What is React.cloneElement?](#q-what-is-reactcloneelement)|
  |73. |[When we should use React.cloneElement vs this.props.children?](#q-when-we-should-use-reactcloneelement-vs-thispropschildren)|
- |74. |[How to pass props to {this.props.children}?](#q-how-to-pass-props-to-thispropschildren)|
+ |74. |[What is children props and when you should use it?](#q-what-is-children-props-and-when-you-should-use-it)|
  |75. |[Why does not this.props.children.map work?](#q-why-does-not-thispropschildrenmap-work)|
  |76. |[What is useState() in React?](#q-what-is-usestate-in-react)|
  |77. |[How to get acces to a child useState in React?](#q-how-to-get-acces-to-a-child-usestate-in-react)|
@@ -2720,6 +2720,56 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is children props and when you should use it?***
+
+The `{this.props.children}` is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
+
+**Example:**
+
+```js
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>React Children Props Example</h1>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class OtherComponent extends React.Component {
+  render() {
+    return <div>Other Component Props</div>;
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
+
+**React.Children** is a module has a bunch of functionality so that you can avoid type-checking every time if it\'s an object, or an array.
+
+```js
+// Turns children into an array
+React.Children.toArray(children)
+
+// Counts the children
+React.Children.count(children)
+
+// Makes sure there's only one child
+React.Children.only(children)
+
+// Lets you run map over children without having to worry about if it's an object or not
+React.Children.map(children, fn)
+
+// Lets you run forEach over children without having to worry about if it's an object or not
+React.Children.forEach(children, fn)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***When we should use React.cloneElement vs this.props.children?***
 
 The `React.cloneElement()` works if child is a single React element.
@@ -2778,14 +2828,6 @@ B
 ```
 
 `children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to pass props to {this.props.children}?***
-
-*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
