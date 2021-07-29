@@ -2747,25 +2747,6 @@ class OtherComponent extends React.Component {
 
 **&#9885; [Run this Code](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
 
-**React.Children** is a module has a bunch of functionality so that you can avoid type-checking every time if it\'s an object, or an array.
-
-```js
-// Turns children into an array
-React.Children.toArray(children)
-
-// Counts the children
-React.Children.count(children)
-
-// Makes sure there's only one child
-React.Children.only(children)
-
-// Lets you run map over children without having to worry about if it's an object or not
-React.Children.map(children, fn)
-
-// Lets you run forEach over children without having to worry about if it's an object or not
-React.Children.forEach(children, fn)
-```
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
