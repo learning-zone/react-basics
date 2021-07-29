@@ -83,7 +83,7 @@
  |67. |[How can I force a component to re-render with hooks in React?](#q-how-can-i-force-a-component-to-re-render-with-hooks-in-react)|
  |68. |[How Virtual-DOM is more efficient than Dirty checking?](#q-how-virtual-dom-is-more-efficient-than-dirty-checking)|
  |69. |[What are controlled and uncontrolled components in React?](#q-what-are-controlled-and-uncontrolled-components-in-react)|
- |70. |[How do you set default value for uncontrolled component?](#q-how-do-you-set-default-value-for-uncontrolled-component)|
+ |70. |[How do you set default value for uncontrolled components?](#q-how-do-you-set-default-value-for-uncontrolled-components)|
  |71. |[Why do class methods need to be bound to a class instance?](#q-why-do-class-methods-need-to-be-bound-to-a-class-instance)|
  |72. |[What is React.cloneElement?](#q-what-is-reactcloneelement)|
  |73. |[When we should use React.cloneElement vs this.props.children?](#q-when-we-should-use-reactcloneelement-vs-thispropschildren)|
@@ -2584,9 +2584,30 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How do you set default value for uncontrolled component?***
+## Q. ***How do you set default value for uncontrolled components?***
 
-*ToDo*
+In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
+
+**Example:**
+
+```js
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input
+          defaultValue="Samir Chahal"
+          type="text"
+          ref={this.input} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
