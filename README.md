@@ -2743,6 +2743,13 @@ class OtherComponent extends React.Component {
     return <div>Other Component Props</div>;
   }
 }
+
+ReactDOM.render(
+  <MyComponent>
+    <OtherComponent />
+  </MyComponent>,
+  document.getElementById("root")
+);
 ```
 
 **&#9885; [Run this Code](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
