@@ -2654,18 +2654,20 @@ Arrow functions are exempt from this behavior because they use **lexical** `this
 
 ## Q. ***What is React.cloneElement?***
 
-The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
+The **React.cloneElement()** function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
 
 ```js
 React.cloneElement(element, [props], [...children])
 ```
+
 The react.cloneElement() method accepts three arguments.
 
 * element: Element we want to clone.
 * props: props we need to pass to the cloned element.
 * children: we can also pass children to the cloned element (passing new children replaces the old children).
 
-Example
+**Example:**
+
 ```js
 import React from 'react'
 
@@ -2682,6 +2684,7 @@ export default class App extends React.Component {
     )
   }
 }
+
 // The parent component
 class ParentComp extends React.Component {
   render() {
@@ -2700,6 +2703,7 @@ class ParentComp extends React.Component {
     )
   }
 }
+
 // The child component
 class MyButton extends React.Component {
   render() {
@@ -2709,6 +2713,8 @@ class MyButton extends React.Component {
   }
 }
 ```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
