@@ -84,7 +84,7 @@
  |68. |[How Virtual-DOM is more efficient than Dirty checking?](#q-how-virtual-dom-is-more-efficient-than-dirty-checking)|
  |69. |[What are controlled and uncontrolled components in React?](#q-what-are-controlled-and-uncontrolled-components-in-react)|
  |70. |[How do you set default value for uncontrolled components?](#q-how-do-you-set-default-value-for-uncontrolled-components)|
- |71. |[Why do class methods need to be bound to a class instance?](#q-why-do-class-methods-need-to-be-bound-to-a-class-instance)|
+ |71. |[Why do we need to bind methods inside our class component constructor?](#q-why-do-we-need-to-bind-methods-inside-our-class-component-constructor)|
  |72. |[What is React.cloneElement?](#q-what-is-reactcloneelement)|
  |73. |[When we should use React.cloneElement vs this.props.children?](#q-when-we-should-use-reactcloneelement-vs-thispropschildren)|
  |74. |[How to pass props to {this.props.children}?](#q-how-to-pass-props-to-thispropschildren)|
@@ -2613,9 +2613,40 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why do class methods need to be bound to a class instance?***
+## Q. ***Why do we need to bind methods inside our class component constructor?***
 
-*ToDo*
+In Class Components, when we pass the event handler function reference as a callback like this
+
+```js
+<button type="button" onClick={this.handleClick}>Click Me</button>
+```
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor( props ){
+    super( props );
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick(event){
+    // event handling logic
+  }
+  
+  render() {
+    return (
+      <button type="button" onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+the event handler method loses its **implicitly bound** context. When the event occurs and the handler is invoked, the `this` value falls back to **default binding** and is set to `undefined`, as class declarations and prototype methods run in strict mode.
+
+When we bind the `this` of the event handler to the component instance in the constructor, we can pass it as a callback without worrying about it losing its context.
+
+Arrow functions are exempt from this behavior because they use **lexical** `this` binding which automatically binds them to the scope they are defined in.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
