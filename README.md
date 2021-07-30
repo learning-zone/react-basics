@@ -2168,7 +2168,9 @@ render(
   <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="400px" />
 </p>
 
-A higher-order component is a function that takes a component and returns a new component. A higher-order component (HOC) is the advanced technique in React.js for reusing a component logic. Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
+A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
+
+Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
 
 ```js
 // HOC.js
@@ -2298,6 +2300,45 @@ function withMouse(Component) {
   }
 }
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Explain HOC vs render props in react.js?***
+
+The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
+
+### **Higher-order components**
+
+Essentially HOC are similar to the decorator pattern, a function that takes a component as the first parameter and returns a new component. This is where you apply your crosscutting functionality.
+
+**Example:**
+
+```js
+function withExample(Component) {
+  return function(props) {
+    // cross cutting logic added here
+    return <Component {...props} />;
+  };
+}
+```
+
+### **Render Props**
+
+A render prop is where a component’s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
+
+**Example:**
+
+```js
+render(){
+  <FetchData render={(data) => {
+    return <p>{data}</p>
+  }} />
+}
+```
+
+The React community is moving away from HOC (higher order components) in favor of render prop components (RPC). For the most part, HOC and render prop components solve the same problem. However, render prop components provide are gaining popularity because they are more declarative and flexible than an HOC.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
