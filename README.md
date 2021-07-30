@@ -2281,7 +2281,23 @@ class App extends React.Component {
 
 ## Q. ***How do you create Higher Order Component using render props?***
 
-*ToDo*
+It is possible to implement most higher-order components (HOC) using a regular component with a render prop. This way render props gives the flexibility of using either pattern.
+
+**Example:**
+
+```js
+function withMouse(Component) {
+  return class extends React.Component {
+    render() {
+      return (
+        <Mouse render={mouse => (
+          <Component {...this.props} mouse={mouse} />
+        )}/>
+      );
+    }
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
