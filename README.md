@@ -2649,12 +2649,12 @@ const Hooks = () => {
 };
 ```
 
+**&#9885; [Run this Code](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
+
 The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
 
 * The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
 * In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
-
-**&#9885; [Run this Code](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
