@@ -2164,11 +2164,11 @@ render(
 
 ## Q. ***How would you create Higher Order Components (HOCs) in React.js?***
 
-<p align="center">
-  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="400px" />
-</p>
-
 A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
+
+<p align="center">
+  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
+</p>
 
 Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
 
