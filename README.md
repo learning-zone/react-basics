@@ -2631,7 +2631,30 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 
 ## Q. ***How can I force a component to re-render with hooks in React?***
 
-*ToDo*
+You can force re-renders of your components in React with a custom hook that uses the built-in `useState()` hook:
+
+```js
+// Create a custom useForceUpdate hook with useState
+const useForceUpdate = () => useState()[1];
+
+// Call it inside your component
+const Hooks = () => {
+  const forceUpdate = useForceUpdate();
+
+  return (
+    <button onClick={forceUpdate}>
+      Update me
+    </button>
+  );
+};
+```
+
+The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
+
+* The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
+* In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
