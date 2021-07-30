@@ -2246,10 +2246,7 @@ class Wrapper extends React.Component {
 
     return (
       <div>
-        {this.props.render({
-          increment: this.increment,
-          count: count
-        })}
+        {this.props.render({ increment: this.increment, count: count })}
       </div>
     );
   }
