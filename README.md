@@ -2221,7 +2221,56 @@ export default App
 
 ## Q. ***What are render props?***
 
-*ToDo*
+The term **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
+
+In simple words, render props are simply props of a component where you can pass functions. These functions need to return elements, which will be used in rendering the components.
+
+**Example:**
+
+```js
+class Wrapper extends React.Component {
+  state = {
+    count: 0
+  };
+
+  // Increase count
+  increment = () => {
+    const { count } = this.state;
+    return this.setState({ count: count + 1 });
+  };
+
+  render() {
+    const { count } = this.state;
+
+    return (
+      <div>
+        {this.props.render({
+          increment: this.increment,
+          count: count
+        })}
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <Wrapper
+        render={({ increment, count }) => (
+          <div>
+            <h3>Render Props Counter</h3>
+            <p>{count}</p>
+            <button onClick={() => increment()}>Increment</button> 
+          </div>
+        )}
+      />
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
