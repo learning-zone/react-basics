@@ -2228,6 +2228,8 @@ In simple words, render props are simply props of a component where you can pass
 **Example:**
 
 ```js
+// Wrapper.js
+
 class Wrapper extends React.Component {
   state = {
     count: 0
@@ -2252,6 +2254,10 @@ class Wrapper extends React.Component {
     );
   }
 }
+```
+
+```js
+// App.js
 
 class App extends React.Component {
   render() {
