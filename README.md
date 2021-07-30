@@ -2577,7 +2577,28 @@ ReactDOM.render(<Test />, document.getElementById('app'))
 
 ## Q. ***What are the problems of using render props with PureComponent?***
 
-*ToDo*
+If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
+
+**Example:**
+
+```js
+class MouseTracker extends React.Component {
+  // Defined as an instance method, `this.renderTheCat` always
+  // refers to *same* function when we use it in render
+  renderTheCat(mouse) {
+    return <Cat mouse={mouse} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={this.renderTheCat} />
+      </div>
+    );
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2589,7 +2610,7 @@ Both functional-based and class-based components have the same downside: they al
 
 Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
 
-That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn’t re-render if neither of them changed, no matter what happened to its parent component.
+That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
 
 That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
 
