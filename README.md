@@ -2162,7 +2162,7 @@ render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Higher Order Components (HOCs) in React.js?***
+## Q. ***What is Higher Order Components in React.js?***
 
 A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
 
