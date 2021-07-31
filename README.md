@@ -3237,11 +3237,13 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 
 ## Q. ***What is Context API in React?***
 
+The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
+
 <p align="center">
   <img src="assets/context-api.jpg" alt="Context API" width="800px" />
 </p>
 
-The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
+**Example:**
 
 ```js
 // Counter.js
