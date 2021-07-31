@@ -3056,7 +3056,7 @@ The useState() function takes as argument a value for the initial state. In this
 
 ## Q. ***How to access child\'s state in React?***
 
-### **Using Refs**
+**Using Refs:**
 
 In React we can access the child\'s state using `React.createRef()`. We will assign a Refs for the child component in the parent component, then using Refs we can access the child\'s state.
 
