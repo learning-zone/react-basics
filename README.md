@@ -3070,14 +3070,13 @@ class App extends React.Component {
   }
   handleClick = () => {
     const childelement = this.ChildElement.current;
-    console.log("current state of child is:  "+ childelement.state.name);
-    childelement.changeName("Padma Manda");
+    childelement.getMsg("Message from Parent Component!");
   };
   render() {
     return (
-      <div >
+      <div>
         <Child ref={this.ChildElement} />
-        <button onClick={this.handleClick}>Show real name</button>
+        <button onClick={this.handleClick}>CLICK ME</button>
       </div>
     );
   }
@@ -3089,18 +3088,20 @@ class App extends React.Component {
 
 class Child extends React.Component {
   state = {
-    name: "Sharma Bhattacharyya"
+    name: "Message from Child Component!"
   };
-  changeName = (newname ) => {
+  getMsg = (msg) => {
     this.setState({
-      name:newname
+      name: msg
     });
   };
   render() {
-    return <div>{this.state.name}</div>;
+    return <h2>{this.state.name}</h2>;
   }
 }
 ```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/friendly-poincare-n5uzr?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
