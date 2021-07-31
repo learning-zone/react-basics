@@ -3013,14 +3013,6 @@ B
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why does not this.props.children.map work?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is useState() in React?***
 
 The `useState()` is a Hook that allows to have state variables in functional components.
