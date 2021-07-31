@@ -3166,7 +3166,29 @@ const App = () => {
 
 ## Q. ***Why do we use array destructuring in useState?***
 
-*ToDo*
+The `useState` hook allows us to make our function components stateful. When called, `useState()` returns an array of two items. The first being our state value and the second being a function for setting or updating that value. The `useState` hook takes a single argument, the initial value for the associated piece of state, which can be of any Javascript data type.
+
+```js
+import React, { useState } from 'react';
+
+const Component = () => {
+    const [value, setValue] = useState(initial value)
+    ...
+```
+
+**Example:** State with Various Data Types
+
+```js
+const [count, setCount] = useState(0)
+const [color, setColor] = useState('#526b2d')
+const [isHidden, setIsHidden] = useState(true)
+const [products, setProducts] = useState([])
+const [user, setUser] = useState({
+    username: '',
+    avatar: '',
+    email: '',
+})
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
