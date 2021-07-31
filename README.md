@@ -3274,15 +3274,6 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How do you make sure that user remains authenticated on page refresh while using Context API State Management?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-
 ## Q. ***How do you solve performance corner cases while using context?***
 
 *ToDo*
