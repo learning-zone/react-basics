@@ -2604,7 +2604,7 @@ class MouseTracker extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why to use PureComponent? When to use PureComponent over Component?***
+## Q. ***What is PureComponent?***
 
 Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
 
@@ -2614,7 +2614,11 @@ That behaviour may mean a lot of wasted re-renderings. Indeed, if our component 
 
 That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
 
-**When to use PureComponent**  
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***When to use PureComponent over Component?***
 
 * We want to avoid re-rendering cycles of component when its props and state are not changed, and
 * The state and props of component are immutable, and
@@ -3101,15 +3105,60 @@ class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/friendly-poincare-n5uzr?file=/src/App.js)**
+**&#9885; [Run this Code](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to prevent unnecessary updates using useState?***
+## Q. ***How to prevent unnecessary updates using React.memo()?***
 
-*ToDo*
+The **React.memo()** is a higher-order component that will memoize your component, very similar to **PureComponent**. It will shallowly compare current and new props of the component, and if nothing changes, React will skip the rendering of that component.
+
+```js
+// Memo.js
+
+const Text = (props) => {
+  console.log(`Text Component`);
+  return <div>Text Component re-render: {props.count} times </div>;
+};
+
+const MemoText = React.memo(
+  (props) => {
+    console.log(`MemoText Component`);
+    return <div>MemoText Component re-render: {props.count} times </div>;
+  },
+  (preprops, nextprops) => true
+);
+
+```
+
+```js
+// App.js
+
+const App = () => {
+  console.log(`App Component`);
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <h2>This is function component re-render: {count} times </h2>
+      <Text count={count} />
+      <MemoText count={count} />
+      <br />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        CLICK ME
+      </button>
+    </>
+  );
+};
+
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
