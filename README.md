@@ -3244,31 +3244,48 @@ Here, we first define an initialState and a reducer. When a user clicks a button
 The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
 
 ```js
-import React from "react"
-import ReactDOM from "react-dom"
+// Counter.js
 
-// Create a Context
-const NumberContext = React.createContext()
-// It returns an object with 2 values:
-// { Provider, Consumer }
+const { useState, useContext } = React;
 
-function App() {
-  // Use the Provider to make a value available to all
-  // children and grandchildren
+const CountContext = React.createContext();
+
+const Counter = () => {
+  const { count, increase, decrease } = useContext(CountContext);
   return (
-    <NumberContext.Provider value={10}>
-      <div>
-        <Display />
-      </div>
-    </NumberContext.Provider>
-  )
-}
-
-function Display() {
-  const value = useContext(NumberContext)
-  return <div>The answer is {value}.</div>
-}
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count">{count}</span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+};
 ```
+
+```js
+// App.js
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <CountContext.Provider value={{ count, increase, decrease }}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+};
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3276,7 +3293,17 @@ function Display() {
 
 ## Q. ***How do you solve performance corner cases while using context?***
 
-*ToDo*
+Context provides a way to pass data or state through the component tree without having to pass props down manually through each nested component. It is designed to share data that can be considered as global data for a tree of React components, such as the current authenticated user or theme (e.g. color, paddings, margins, font-sizes).
+
+Context API uses Context. Provider and Context. Consumer Components pass down the data but it is very cumbersome to write the long functional code to use this Context API. So useContext hook helps to make the code more readable, less verbose and removes the need to introduce Consumer Component. The useContext hook is the new addition in React 16.8.
+
+**Syntax:**
+
+```js
+const authContext = useContext(initialValue);
+```
+
+The useContext accepts the value provided by React.createContext and then re-render the component whenever its value changes but you can still optimize its performance by using memorization.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
