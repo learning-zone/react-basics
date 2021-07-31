@@ -3054,9 +3054,53 @@ The useState() function takes as argument a value for the initial state. In this
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to get acces to a child useState in React?***
+## Q. ***How to access child\'s state in React?***
 
-*ToDo*
+### **Using Refs**
+
+In React we can access the child\'s state using `React.createRef()`. We will assign a Refs for the child component in the parent component, then using Refs we can access the child\'s state.
+
+```js
+// App.js
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ChildElement = React.createRef();
+  }
+  handleClick = () => {
+    const childelement = this.ChildElement.current;
+    console.log("current state of child is:  "+ childelement.state.name);
+    childelement.changeName("Padma Manda");
+  };
+  render() {
+    return (
+      <div >
+        <Child ref={this.ChildElement} />
+        <button onClick={this.handleClick}>Show real name</button>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// Child.js
+
+class Child extends React.Component {
+  state = {
+    name: "Sharma Bhattacharyya"
+  };
+  changeName = (newname ) => {
+    this.setState({
+      name:newname
+    });
+  };
+  render() {
+    return <div>{this.state.name}</div>;
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
