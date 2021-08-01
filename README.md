@@ -3349,7 +3349,37 @@ function App() {
 
 ## Q. ***How to use contextType react?***
 
-*ToDo*
+The **ContextType** property on a class component can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions also.
+
+**Example:**
+
+```js
+class ContextConsumingInLifeCycle extends React.Component {
+
+  static contextType = UserContext;
+ 
+  componentDidMount() {
+    const user = this.context;
+    console.log(user); // { name: "Vipin Tak", address: "INDIA", mobile: ""0123456789"" }
+  }
+ 
+  componentDidUpdate() {
+    const user = this.context;
+    /* ... */
+  }
+ 
+  componentWillUnmount() {
+    const user = this.context;
+    /* ... */
+  }
+ 
+  render() {
+    const user = this.context;
+    /* render something based on the value of user */
+    return null;
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
