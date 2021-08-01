@@ -3313,7 +3313,35 @@ The useContext accepts the value provided by React.createContext and then re-ren
 
 ## Q. ***What is the purpose of default value in context?***
 
-*ToDo*
+The **defaultValue** argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Passing **undefined** as a Provider value does not cause consuming components to use **defaultValue**.
+
+```js
+const Context = createContext( "Default Value" );
+
+function Child() {
+  const context = useContext(Context);
+  return <h2>Child1: {context}</h2>;
+}
+
+function Child2() {
+  const context = useContext(Context);
+  return <h2>Child2: {context}</h2>;
+}
+
+function App() {
+
+  return (
+    <>
+      <Context.Provider value={ "Initial Value" }>
+        <Child /> {/* Child inside Provider will get "Initial Value" */}
+      </Context.Provider>
+        <Child2 /> {/* Child outside Provider will get "Default Value" */}
+    </>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
