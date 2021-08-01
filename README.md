@@ -3425,14 +3425,6 @@ Here, we are storing data in the state of the component in which we want to use 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to use context api inside react-router-dom?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is difference between useEffect() vs componentDidMount()?***
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
