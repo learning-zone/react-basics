@@ -3474,7 +3474,41 @@ When useEffect() is used to get data from server.
 
 ## Q. ***How to compare oldValues and newValues on React Hooks useEffect?***
 
-*ToDo*
+We can store old values in a ref since assigning values to them won’t trigger a re-rendering of the component but the value will persist after each render cycle.
+
+**Example:**
+
+```js
+// To store old values
+const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count);
+
+  useEffect(() => {
+    console.log("prevCount: ", prevCount, "count: ", count);
+  }, [prevCount, count]);
+
+  return (
+    <div>
+      <button onClick={() => setCount((c) => c + 10)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+Here, We create the **usePrevious** hook with the value parameter which is state we want to get the previous value from,
+In the hook, we create a ref with the **useRef** hook to create a non-reactive property. Then we add the **useEffect** hook with a callback that sets the **ref.current** to value to set the previous value.
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
