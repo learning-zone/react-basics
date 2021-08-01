@@ -3387,7 +3387,39 @@ class ContextConsumingInLifeCycle extends React.Component {
 
 ## Q. ***How to update React Context from inside a child component?***
 
-*ToDo*
+The Context API allows data storage and makes it accessible to any child component who want to use it. This is valid whatever level of component graph the children is in.
+
+**Example:**
+
+```js
+const MyContext = React.createContext()
+
+const MyComponent = () => {
+  const { count, increment } = useContext(MyContext)
+
+  return (
+    <div onClick={increment}>price: {count}</div>
+  )
+}
+
+const App = () => {
+  const [count, updateCount] = useState(0)
+  function increment() {
+    updateCount(count + 1)
+  }
+
+  return (
+    <MyContext.Provider value={{ count, increment }}>
+      <div>
+        <MyComponent />
+        <MyComponent />
+      </div>
+    </MyContext.Provider>
+  )
+}
+```
+
+Here, we are storing data in the state of the component in which we want to use context and we create a function that can modify this state. We pass the state and the function as context values. It then become possible from the child to get the modification function and to use it to update your context.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
