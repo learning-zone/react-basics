@@ -452,7 +452,6 @@ export default DangerButton;
 
 By using default you express that\'s going to be member in that module which would be imported if no specific member name is provided. You could also express you want to import the specific member called DangerButton by doing so: `import { DangerButton } from './comp/danger-button';` in this case, no default is needed
 
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
@@ -660,7 +659,7 @@ ReactDOM.render(<Message />, document.getElementById('app'));
   <img src="assets/react-features.png" alt="React-Features" width="500px" />
 </p>
 
-**Advantages**  
+**Advantages:**  
 
 * It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
 * JSX makes components/blocks code readable. It displays how components are plugged or combined with.
@@ -672,7 +671,7 @@ Testable. React native tools are offered for testing, debugging code.
     * React.renderComponent() is called on the client side. 
     * React preserves markup rendered on the server side, attaches event handlers.  
 
-**Limitations**  
+**Limitations:**  
 
 * Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
 * View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
@@ -1651,7 +1650,7 @@ React components automatically re-render whenever there is a change in their sta
 
 However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
 
-**1. Using setState()**
+### **1. Using setState()**
 
 In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
 
@@ -1689,7 +1688,7 @@ export default Greeting
 
 **&#9885; [Run this Code](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
 
-**2. Using forceUpdate()**
+### **2. Using forceUpdate()**
 
 The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
 
@@ -2960,7 +2959,7 @@ The `React.cloneElement()` works if child is a single React element.
 
 For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
 
-**React.Children**  
+**React.Children:**  
 
 Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
 
@@ -2999,7 +2998,7 @@ class Widget extends React.Component {
 
 Output
 
-```
+```js
 First Example:
 Children (3):
 1
@@ -3229,6 +3228,7 @@ const ReducerExample = () => {
 
 export default ReducerExample
 ```
+
 Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
 
 <div align="right">
@@ -3458,7 +3458,7 @@ return (<div>foo</div>)
 export SampleComponent
 ```
 
-**useEffect() Limitations**
+**useEffect() Limitations:**
 
 When useEffect() is used to get data from server.
 
@@ -3556,13 +3556,13 @@ class App extends React.Component {
 }
 ```
 
-**When to Use Refs**  
+**When to Use Refs:**  
 
 * Managing focus, text selection, or media playback.
 * Triggering imperative animations.
 * Integrating with third-party DOM libraries.
 
-**When not to use refs**  
+**When not to use refs:**  
 
 * Should not be used with functional components because they dont have instances.
 * Not to be used on things that can be done declaritvely.
@@ -3573,7 +3573,34 @@ class App extends React.Component {
 
 ## Q. ***How can I use multiple refs for an array of elements with hooks?***
 
-*ToDo*
+**Example:**
+
+```js
+function App() {
+  const arr = [1, 2, 3];
+  // for multiple refs
+  const refs = useRef([]);
+
+  return (
+    <div className="App">
+      {arr.map((item, index) => {
+        return (
+          <div
+            key={index}
+            ref={(element) => {
+              refs.current[index] = element;
+            }}
+          >
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3597,25 +3624,25 @@ class App extends React.Component {
 
 ## Q. ***What is the difference between DOM and virtual DOM?***
 
-**DOM**
+**DOM:**
 
 DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
 
 The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
 
-**Virtual DOM**  
+**Virtual DOM:**  
 
 The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
 
 The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
 
-**Why Virtual DOM is faster**
+**Why Virtual DOM is faster:**
 
 When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
 
 Once this is done, the virtual DOM calculates the best possible method to make these changes to the real DOM. This ensures that there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
 
-**Pros of Virtual DOM**  
+**Pros of Virtual DOM:**  
 
 * Updates process is optimized and accelerated.
 * JSX makes components/blocks code readable.
@@ -3662,6 +3689,7 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+
 1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
 2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
 
@@ -3715,20 +3743,21 @@ const BooksList = ({books}) => {
  )
 }
 ```
-**Functional Component or Stateless component**  
+
+**Functional Component or Stateless component:**  
 
 * Functional component is like pure function in JavaScript.
 * Functional component is also called as a stateless component.
 * The functional component only receives props from parent component and return you JSX elements.
 * The functional component doesn’t play with any lifecycle methods of React and doesn’t play with the component state.
 
-**Class component or statefull component**  
+**Class component or statefull component:**  
 
 * React class component is called as a stateful component.
 * Stateful component plays with all life cycle methods of React.
 * This component will modify state.
 
-**When would you use a stateless component**
+**When would you use a stateless component:**
 
 * When you just need to present the props
 * When you do not need a state, or any internal variables
