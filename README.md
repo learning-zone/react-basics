@@ -3826,9 +3826,34 @@ class App extends React.Component {
 
 **&#9885; [Run this Code](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
 
-**solution:**
+**Solution:**
+
+In below example, **App Component** has no arrow function in render. Instead, the relevant data is passed down to **User Component**. In User Component, `onDeleteClick()` calls the onClick function passed in on props with the relevant user.id.
 
 ```js
+// User Component
+
+class User extends React.PureComponent {
+  onDeleteClick = () => {
+    // No bind needed since we can compose the relevant data for this item here
+    this.props.onClick(this.props.user.id);
+  };
+
+  render() {
+    console.log(`${this.props.user.name} just rendered`);
+    return (
+      <li>
+        <input type="button" value="Delete" onClick={this.onDeleteClick} />
+        {this.props.user.name}
+      </li>
+    );
+  }
+}
+```
+
+```js
+// App Component
+
 class App extends React.Component {
   constructor(props) {
     super(props);
