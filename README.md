@@ -4221,7 +4221,23 @@ ReactDOM.render(<Container />, document.getElementById('root'))
 
 ## Q. ***How to use InnerHtml in React?***
 
-*ToDo*
+The `innerHTML` is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides `dangerouslySetInnerHTML` as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
+
+**Example:**
+
+```js
+function App() {
+    return (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: "<h2>This text is set using dangerouslySetInnerHTML</h2>"
+        }}
+      ></div>
+    );
+  }
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
