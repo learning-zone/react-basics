@@ -3682,7 +3682,27 @@ export default function App() {
 
 ## Q. ***Why are inline ref callback or function not recommended?***
 
-*ToDo*
+If the **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the ref callback as a bound method on the class, but note that it shouldn\'t matter in most cases.
+
+**Example:** Here\'s an example of a very simple React Component class that uses the ref callback feature.
+
+```js
+class ExampleComponent extends Component {
+  setFocus() {
+    this.textInput.focus();
+  }
+  render() {
+    return (
+      <input type="text"
+             ref={(input) => { this.textInput = input; }} />
+    );
+  }
+}
+```
+
+Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
