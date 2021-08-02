@@ -3606,9 +3606,75 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the difference between `useRef` and `createRef`?***
+## Q. ***What is ref in React?***
 
-*ToDo*
+A ref is defined as any value that does not trigger a component re-render when it is changed. This behavior is contrary to the function of states and props. A ref can be created in two ways- by the **useRef** hook or by the **createRef** function.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the difference between useRef() and createRef()?***
+
+### **useRef():**
+
+The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
+
+**Example:**
+
+```js
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
+
+### **createRef():**
+
+The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
+
+**Example:**
+
+```js
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = createRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7192,22 +7258,6 @@ We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX a
 </div>
 
 ## Q. ***How to debug forwardRefs() in DevTools?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is useRef() in React?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is the difference between useRef() and createRef()?***
 
 *ToDo*
 
