@@ -3785,7 +3785,81 @@ ReactDOM.render(
 
 ## Q. ***Is it good to use arrow functions in render methods?***
 
-*ToDo*
+**Problem:**
+
+The **bind()** method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called. When arrow functions and binds in render. It breaks performance optimizations like `shouldComponentUpdate()` and `PureComponent`.
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    ...
+  }
+
+  deleteUser = id => {
+    this.setState(prevState => {
+      return {
+        users: prevState.users.filter(user => user.id !== id)
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.users.map(user => {
+            return (
+              <User key={user.id} name={user.name} id={user.id}
+                onDeleteClick={() => this.deleteUser(user.id)}
+              />
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
+
+**solution:**
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    ...
+  }
+
+  deleteUser = id => {
+    this.setState(prevState => {
+      return { 
+        users: prevState.users.filter(user => user.id !== id) 
+      };
+    });
+  };
+
+  renderUser = user => {
+    return <User key={user.id} user={user} onClick={this.deleteUser} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.users.map(this.renderUser)}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
