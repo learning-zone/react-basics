@@ -4369,7 +4369,7 @@ const NumberList = (props) => (
 );
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
+**&#9885; [Run this Code](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
