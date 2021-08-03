@@ -4311,7 +4311,21 @@ function Greetings(props) {
 
 ## Q. ***How to display an array of strings in react component?***
 
-*ToDo*
+```js
+const data = ["this is line #1", "this is line #2", "this is line #3"];
+
+export default function App() {
+  return (
+    <div>
+      {data.map((item, index) => (
+        <div key={index}>{item}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
