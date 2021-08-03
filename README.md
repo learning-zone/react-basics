@@ -4283,7 +4283,27 @@ ReactDOM.render(
 
 ## Q. ***How to pass numbers to React component?***
 
-*ToDo*
+In react, numbers can be passed via curly braces(`{}`) where as strings in quotes (`""`);
+
+**Example:**
+
+```js
+function App() {
+  return <Greetings name="Nathan" age={27} occupation="Software Developer" />;
+}
+
+// Greetings Component
+function Greetings(props) {
+  return (
+    <h2>
+      Hello! I'm {props.name}, a {props.age} years old {props.occupation}.
+      Pleased to meet you!
+    </h2>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
