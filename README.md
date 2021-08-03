@@ -4375,14 +4375,6 @@ const NumberList = (props) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to pretty print JSON with React?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is React Router? Why is switch keyword used in React Router v4?***
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
