@@ -120,7 +120,7 @@
  |104. |[How to pretty print JSON with React?](#q-how-to-pretty-print-json-with-react)|
  |105. |[What is React Router? Why is switch keyword used in React Router v4?](#q-what-is-react-router-why-is-switch-keyword-used-in-react-router-v4)|
  |106. |[What is the purpose of IndexRoute?](#q-what-is-the-purpose-of-indexroute)|
- |107. |[How to get history on React Router?](#q-how-to-get-history-on-react-router)|
+ |107. |[How to access history object in React Router?](#q-how-to-access-history-object-in-react-router)|
  |108. |[How to perform automatic redirect after login?](#q-how-to-perform-automatic-redirect-after-login)|
  |109. |[Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?](#q-explain-the-standard-javascript-toolchain-transpilation-via-babel-or-other-compilers-jsx-and-these-items-significance-in-recent-development)|
  |110. |[How React handle or restrict Props to certain types?](#q-how-react-handle-or-restrict-props-to-certain-types)|
@@ -4429,15 +4429,7 @@ The `exact` returns any number of routes that match exactly.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the purpose of IndexRoute?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to get history on React Router?***
+## Q. ***How to access history object in React Router?***
 
 *ToDo*
 
