@@ -4333,7 +4333,43 @@ export default function App() {
 
 ## Q. ***How do you render Array, Strings and Numbers in React?***
 
-*ToDo*
+```js
+// Array Component
+const items = [
+  { name: "AngularJS", description: "" },
+  { name: "React", description: "" },
+  { name: "Vue.js", description: "" }
+];
+const ArrayList = (props) => (
+  <div>
+    <h2>Render Array List</h2>
+    {items.map((item, index) => (
+      <div key={index}>{item.name}</div>
+    ))}
+  </div>
+);
+
+// String Component
+const StringList = (props) => (
+  <div>
+    <h2>Render String List</h2>
+    {["test", "render", "array", "list"]}
+  </div>
+);
+
+// Number Component
+const numbers = [10, 20, 30];
+const NumberList = (props) => (
+  <div>
+    <h2>Render Number List</h2>
+    {numbers.map((item, index) => (
+      <div key={index}>{item}</div>
+    ))}
+  </div>
+);
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
