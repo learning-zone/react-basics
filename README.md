@@ -118,7 +118,7 @@
  |102. |[How to display an array of strings in react component?](#q-how-to-display-an-array-of-strings-in-react-component)|
  |103. |[How do you render Array, Strings and Numbers in React?](#q-how-do-you-render-array-strings-and-numbers-in-react)|
  |104. |[How to pretty print JSON with React?](#q-how-to-pretty-print-json-with-react)|
- |105. |[What is React Router? Why is switch keyword used in React Router v4?](#q-what-is-react-router-why-is-switch-keyword-used-in-react-router-v4)|
+ |105. |[What is React Router?](#q-what-is-react-router)|
  |106. |[What is the purpose of IndexRoute?](#q-what-is-the-purpose-of-indexroute)|
  |107. |[How to access history object in React Router v5?](#q-how-to-access-history-object-in-react-router-v5)|
  |108. |[How to perform automatic redirect in React.js?](#q-how-to-perform-automatic-redirect-in-reactjs)|
@@ -4375,7 +4375,7 @@ const NumberList = (props) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is React Router? Why is switch keyword used in React Router v4?***
+## Q. ***What is React Router?***
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
