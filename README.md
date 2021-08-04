@@ -121,7 +121,7 @@
  |105. |[What is React Router? Why is switch keyword used in React Router v4?](#q-what-is-react-router-why-is-switch-keyword-used-in-react-router-v4)|
  |106. |[What is the purpose of IndexRoute?](#q-what-is-the-purpose-of-indexroute)|
  |107. |[How to access history object in React Router v5?](#q-how-to-access-history-object-in-react-router-v5)|
- |108. |[How to perform automatic redirect after login?](#q-how-to-perform-automatic-redirect-after-login)|
+ |108. |[How to perform automatic redirect in React.js?](#q-how-to-perform-automatic-redirect-in-reactjs)|
  |109. |[Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?](#q-explain-the-standard-javascript-toolchain-transpilation-via-babel-or-other-compilers-jsx-and-these-items-significance-in-recent-development)|
  |110. |[How React handle or restrict Props to certain types?](#q-how-react-handle-or-restrict-props-to-certain-types)|
  |111. |[What is prop drilling and how can you avoid it?](#q-what-is-prop-drilling-and-how-can-you-avoid-it)|
@@ -4420,7 +4420,7 @@ The `exact` returns any number of routes that match exactly.
 
 ## Q. ***How to access history object in React Router v5?***
 
-Using React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
+React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
 
 **Example:**
 
@@ -4470,9 +4470,52 @@ function HomeButton() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to perform automatic redirect after login?***
+## Q. ***How to perform automatic redirect in React.js?***
 
-*ToDo*
+The `react-router-dom` package provides `<Redirect>` component in React Router. Rendering a `<Redirect>` will navigate to a new location and the new location will override the current location in the history stack.
+
+**Example:**
+
+```js
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "React",
+      isUserAuthenticated: true
+    };
+  }
+
+  render() {
+    return (
+        <Router>
+            <ul>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/user">User Profile</Link></li>
+            </ul>
+            <Switch>
+            {/** Automatic Redirect to User Page **/}
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  return this.state.isUserAuthenticated ? (
+                    <Redirect to="/home" />
+                  ) : (
+                    <Redirect to="/user" />
+                  );
+                }}
+              />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/user" component={User} />
+            </Switch>
+        </Router>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
