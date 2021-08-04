@@ -4836,7 +4836,40 @@ const App = () => {
 
 ## Q. ***How to fetch data with React Hooks?***
 
-*ToDo*
+`useState` is a hook used to maintain local states in function components. `useEffect` is used to execute functions after a component gets rendered (to "perform side effects").
+
+**Example:**
+
+```js
+import React, { useState, useEffect } from "react";
+
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      {users.map((user) => (
+        <div key={user.id}>
+          <span>
+            <img src={user.avatar_url} width={"30px"} alt={user.avatar_url} />
+          </span>
+          <span> {user.login.toUpperCase()}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
