@@ -4740,7 +4740,32 @@ this.setState(state => ({
 
 ## Q. ***Why we need to be careful when spreading props on DOM elements?***
 
-*ToDo*
+When we spread props we run into the risk of adding unknown HTML attributes, which is a bad practice.
+
+**Problem:** This will try to add the unknown HTML attribute `flag` to the DOM element.
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = (props) => (<div {...props}>Test</div>);
+```
+
+**Solution:** By creating props specifically for DOM attribute, we can safely spread.
+
+```js
+const Sample = () => (<Spread flag={true} domProps={{className: "content"}}/>);
+const Spread = (props) => (<div {...props.domProps}>Test</div>);
+```
+
+Or alternatively we can use prop destructuring with `...rest`:
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
+```
+
+**Note:**
+
+*In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
