@@ -120,7 +120,7 @@
  |104. |[How to pretty print JSON with React?](#q-how-to-pretty-print-json-with-react)|
  |105. |[What is React Router? Why is switch keyword used in React Router v4?](#q-what-is-react-router-why-is-switch-keyword-used-in-react-router-v4)|
  |106. |[What is the purpose of IndexRoute?](#q-what-is-the-purpose-of-indexroute)|
- |107. |[How to access history object in React Router?](#q-how-to-access-history-object-in-react-router)|
+ |107. |[How to access history object in React Router v5?](#q-how-to-access-history-object-in-react-router-v5)|
  |108. |[How to perform automatic redirect after login?](#q-how-to-perform-automatic-redirect-after-login)|
  |109. |[Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?](#q-explain-the-standard-javascript-toolchain-transpilation-via-babel-or-other-compilers-jsx-and-these-items-significance-in-recent-development)|
  |110. |[How React handle or restrict Props to certain types?](#q-how-react-handle-or-restrict-props-to-certain-types)|
@@ -4379,38 +4379,27 @@ const NumberList = (props) => (
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
-```bash
-npm install react-router-dom
-```
-
 ```js
-import React, { Component } from 'react'
 import { Router, Route, Redirect, Switch } from 'react-router-dom'
-
-import Todos from './components/Todos/Todos'
-import TodosNew from './components/TodosNew/TodosNew'
-import TodoShow from './components/TodoShow/TodoShow'
 
 class Router extends Component {
     constructor(props) {
-        super(props)
+      super(props)
     }
 
     render() {
         return (
             <Router>
                 <Switch>
-                    <Route path='/todos/new' component={ TodosNew } />
-                    <Route path='/todos/:id' component={ TodoShow } />
-                    <Route exact path='/' component={ Todos } />
+                    <Route path='/news/new' component={ NewsComponent } />
+                    <Route path='/user/:id' component={ UserComponent } />
+                    <Route exact path='/' component={ HomeComponent } />
                     <Redirect from='*' to='/' />
                 </Switch>
             </Router>
         )
     }
 }
-
-export default Router
 ```
 
 **`< Router />`**  
@@ -4421,7 +4410,7 @@ The `< Router />` component wraps our main application routing. Nested within Ro
 
 The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
 
-**exact**
+**exact:**
 
 The `exact` returns any number of routes that match exactly.
 
@@ -4429,9 +4418,53 @@ The `exact` returns any number of routes that match exactly.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to access history object in React Router?***
+## Q. ***How to access history object in React Router v5?***
 
-*ToDo*
+Using React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
+
+**Example:**
+
+```js
+function App() {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/user/ABC/male">User Profile</Link></li>
+      </ul>
+    </nav>
+    ...
+  );
+}
+
+function HomeButton() {
+  let history = useHistory();
+
+  function handleClick() {
+    console.log(history);
+    history.push("/home");
+  }
+
+  function handleBack() {
+    history.goBack();
+    // history.go(-1);
+  }
+
+  function handleForward() {
+    history.goForward();
+    // history.go(1)
+  }
+  return (
+    <>
+      <button type="button" onClick={handleClick}>Go Home</button>
+      <button type="button" onClick={handleBack}> Go Back </button>
+      <button type="button" onClick={handleForward}> Go Forward </button>
+    </>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
