@@ -5028,14 +5028,6 @@ The `getInitialState()` is used with `React.createClass` and `constructor()` is 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are inline conditional expressions?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How to conditionally add attributes to React components?***
 
 Inline conditionals in attribute props
