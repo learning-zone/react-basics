@@ -5121,14 +5121,6 @@ In Render Highjacking we can:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is React memo function?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is windowing technique in react?***
 
 *ToDo*
