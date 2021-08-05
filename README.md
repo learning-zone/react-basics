@@ -5346,17 +5346,9 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What would be the common mistake of function being called every time the component renders?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How does the state differ from props in React?***
 
-**State**
+**State:**
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
@@ -5374,7 +5366,7 @@ class AppComponent extends React.component {
 }
 ```
 
-**Props**
+**Props:**
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
@@ -5383,6 +5375,7 @@ Data passed in from a parent component. `props` are read-only in the child compo
 ```js
 <ChildComponent color='red' />
 ```
+
 Inside the ChildComponent constructor we could access the props
 
 ```js
@@ -5407,7 +5400,7 @@ class ChildComponent extends React.Component {
 
 Props should never be changed in a child component. Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.
 
-**Difference between State and Props**
+**Difference between State and Props:**
 
 |  Props                                          | State                            |
 |-------------------------------------------------|----------------------------------|
@@ -5424,9 +5417,9 @@ Props should never be changed in a child component. Props are also used to allow
 
 ## Q. ***How would you create a form in React?***
 
-**App.js**
-
 ```js
+// App.js
+
 import React, { Component } from "react"
 import countries from "./countries"
 import './App.css'
@@ -5500,9 +5493,9 @@ export default function App() {
 }
 ```
 
-**App.css**
-
 ```css
+/** App.css **/
+
 * {
   box-sizing: border-box;
 }
@@ -5606,9 +5599,9 @@ button:hover {
 }
 ```
 
-**Countries.js**
-
 ```js
+// Countries.js
+
 export default [
   'Austria',
   'Denmark',
@@ -5651,7 +5644,7 @@ Output:
 
 ## Q. ***How to change the state of a child component from its parent in React?***
 
-**Using Props**
+**Using Props:**
 
 We will take two components, Parent and Child. And our Parent component will set the value depends on the Child Component. Child component holds the Input field and we are going to send the input field value to the Parent component.
 
@@ -5702,7 +5695,7 @@ useEffect(() => {
 
 The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
 
-**Using setInterval in React Components**
+**Using setInterval in React Components:**
 
 To schedule a new interval, we call the setInterval method inside of a React component, like so:
 
@@ -5775,7 +5768,7 @@ ReactDOM.render(
 )
 ```
 
-**React Elements**
+**React Elements:**
 
 A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
 
@@ -5790,7 +5783,7 @@ A React Element that describes a React Component doesn't know to which DOM node 
 
 React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
 
-**React Components and React Component Instances**
+**React Components and React Component Instances:**
 
 A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
 
@@ -5967,18 +5960,18 @@ const headings = (
 
 ## Q. ***Explain DOM diffing?***
 
-**Document Object Model**
+**Document Object Model:**
 
 The DOM (Document Object Model) is an interface that represents an HTML document in a tree-like structure with nodes. This structure allows the document to be traversed and modified by programmers with each node being represented as an object. The DOM is created by the browser when
 a web page is loaded.
 
-**React\'s "Virtual DOM"**
+**React\'s "Virtual DOM":**
 
 The "Virtual DOM" is very similar to the real DOM, in that it is a tree-like structure kept in-memory, where React elements are represented as objects. This tree has many of the same properties as the real DOM without the power to change what is on the screen. It is a javascript object representing components in your application which can be updated quickly and efficiently by React.
 
 When a JSX element is rendered or the state of an element changes, a new Virtual DOM tree is created. The function responsible for the creation of this tree is React\'s render() function. This is a fast process because the virtual DOM tree is just a javascript object and the UI will not be re-painted based on this new tree.
 
-**DOM Diffing**
+**DOM Diffing:**
 
 Once the Virtual DOM is created, React compares this new representation with a snapshot of the previous version of the virtual DOM to see exactly which elements have changed.
 
