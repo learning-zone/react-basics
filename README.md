@@ -5108,7 +5108,14 @@ class App extends React.Component {
 
 ## Q. ***What is render hijacking in React?***
 
-*ToDo*
+The phenomena of **render hijacking** is the ability to control what a component will output from another component. It actually means that, the users decorate their component by wrapping it into a Higher-Order component. By wrapping, they can inject additional props or make other changes, which can cause changing logic of rendering. It does not actually allow hijacking, but by using HOC, users can make the component behave in a different way.
+
+In Render Highjacking we can:
+
+* Read, add, edit, remove props in any of the React Elements outputted by render
+* Read, and modify the React Elements tree outputted by render
+* Conditionally display the elements tree
+* Wrapping the element\'s tree for styling purposes.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
