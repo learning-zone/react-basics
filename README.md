@@ -5123,7 +5123,36 @@ In Render Highjacking we can:
 
 ## Q. ***What is windowing technique in react?***
 
-*ToDo*
+**Windowing** or **List virtualization** is a concept of only rendering or write the visible portion in the current "window" to the DOM. The number of items that rendered at first time are smaller than the original one. The remaining items are rendered when you scroll down to it. The DOM nodes of items that exit the window are replaced by the new ones. This improves the performance of rendering a large list.
+
+**[react-window](https://react-window.vercel.app/#/examples/list/fixed-size)** and **[react-virtualized](https://bvaughn.github.io/react-virtualized/#/components/List)** are popular windowing libraries. They provide several reusable components for displaying lists, grids, and tabular data.
+
+**Example:** react-window
+
+```js
+function renderRow(props) {
+  const { index, style } = props;
+
+  return (
+    <ListItem button style={style} key={index}>
+      <ListItemText primary={`Item ${index + 1}`} />
+    </ListItem>
+  );
+}
+
+export default function VirtualizedList() {
+
+  return (
+    <div>
+      <FixedSizeList height={400} width={200} itemSize={46} itemCount={100000}>
+        {renderRow}
+      </FixedSizeList>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-window-rz5hf?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
