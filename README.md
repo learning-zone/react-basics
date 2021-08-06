@@ -5958,7 +5958,28 @@ const CustomButton = ({onCustomClick}) => {
 
 ## Q. ***What is the difference between HTML and React event handling?***
 
-*ToDo*
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
+
+```js
+<button onclick="handleClick()"></button>
+```
+
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
+```
+
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault()` has to be called explicitly.
+
+```js
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
+
+function handleClick(e) {
+  e.preventDefault()
+  console.log("The link was clicked.")
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
