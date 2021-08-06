@@ -5598,7 +5598,31 @@ const Form = ({ handleClose }) => {
 
 ## Q. ***Why You Should Choose React Hook Form Over Formik and Redux-Form?***
 
-*ToDo*
+Below are the main reasons to recommend React Hook Form Over Formik and Redux-Form,
+
+**1. Isolate Component Re-Rendering:**
+
+React Hook Form isolates the component and avoids the other components from re-rending. This feature will improve the performance by avoiding unwanted rendering in other child components. However, libraries like Formik and Redux-Form re-render the other child components along with the form component.
+
+**2. Reduce Rendering:**
+
+Besides isolating the component, it also limits its own (form components) form re-rendering on particular events such as onChange, onBlur, etc.
+
+**3. Faster Mounting:**
+
+Mounting time is about 13% faster than Formik and 25% faster than Redux-Form. In other words, the form\'s DOM elements will be inserted into the DOM tree quicker, leading to fast rendering compared with other libraries.
+
+**4. Input Change Subscriptions:**
+
+React Hook Form allows you to subscribe to each input element without going through the re-rendering of each element inside the form component.
+
+**5. Typescript Support:**
+
+React Hook Form is built with TypeScript and can define a FormData type to support form values.
+
+**6. Less Code to Maintain:**
+
+The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
