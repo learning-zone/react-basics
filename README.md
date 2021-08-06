@@ -5914,7 +5914,43 @@ export default class App extends React.Component {
 
 ## Q. ***How do you pass an event handler to a component?***
 
-*ToDo*
+**Example:**
+
+```js
+import React, {useState} from "react";
+import "./styles.css";
+
+export default function App() {
+  return (
+    <Container/>
+  );
+}
+
+const Container = () => {
+  const [counter, setCounter] = useState(0);
+  
+  const handleCustomClick = () => {
+    setCounter(counter + 1)
+  }
+
+  return (
+    <div>
+      <div>Counter: {counter}</div>
+      <CustomButton onCustomClick={handleCustomClick}/>
+    </div>
+  );
+}
+
+const CustomButton = ({onCustomClick}) => {
+  return (
+    <button onClick={onCustomClick}>
+      My Custom Button
+    </button>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
