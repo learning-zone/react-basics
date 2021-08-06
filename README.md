@@ -6004,7 +6004,31 @@ const headings = (
 
 ## Q. ***How to loop inside JSX?***
 
-*ToDo*
+You can simply use `Array.prototype.map` with ES6 arrow function syntax.
+
+**Example:**
+
+```js
+const animals = [
+  { id: 1, animal: "Dog" },
+  { id: 2, animal: "Bird" },
+  { id: 3, animal: "Cat" },
+  { id: 4, animal: "Mouse" },
+  { id: 5, animal: "Horse" }
+];
+
+export default function App() {
+  return (
+    <ul>
+      {animals.map((item) => (
+        <li key={item.id}>{item.animal}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
