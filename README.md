@@ -6034,9 +6034,33 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How do you print falsy values in JSX?***
+## Q. ***How do you print false values in JSX?***
 
-*ToDo*
+In React, boolean values (`true` and `false`), `null`, and `undefined` are valid children, but these values will not be rendered in UI if you put them directly inside {} in JSX.
+
+For example, all these JSX expressions will result in the same empty div:
+
+```js
+<div />
+<div></div>
+<div>{false}</div>
+<div>{null}</div>
+<div>{undefined}</div>
+<div>{true}</div>
+```
+
+If you want a value like `false`, `true`, `null`, or `undefined` to show in the output, you have to convert it to a string first.
+
+```js
+<div>{String(true)}</div>
+<div>{String(false)}</div>
+<div>{String(undefined)}</div>
+<div>{String(null)}</div>
+```
+
+In the output, this will render `true`, `false`, `undefined`, and `null` respectively.
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
