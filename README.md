@@ -5417,18 +5417,19 @@ Props should never be changed in a child component. Props are also used to allow
 
 ## Q. ***How would you create a form in React?***
 
-```js
-// App.js
+**Example:**
 
-import React, { Component } from "react"
-import countries from "./countries"
-import './App.css'
+```js
+import React from "react";
+import "./styles.css";
+
+const countries = ["Austria", "India", "Italy", "Russia", "United States"];
 
 export default function App() {
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-  const [country, setCountry] = React.useState("")
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false)
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [country, setCountry] = React.useState("");
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
 
   const handleSubmit = (event) => {
     console.log(`
@@ -5436,191 +5437,60 @@ export default function App() {
       Password: ${password}
       Country: ${country}
       Accepted Terms: ${acceptedTerms}
-    `)
-    event.preventDefault()
-  }
+    `);
+    event.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Create Account</h1>
 
-      <label>
-        Email:
-        <input
-          name="email"
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required />
+      <label>Email:
+        <input name="email" type="email" value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
       </label>
 
-      <label>
-        Password:
-        <input
-          name="password"
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required />
+      <label>Password:
+        <input name="password" type="password" value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
       </label>
 
-      <label>
-        Country:
-        <select
-          name="country"
-          value={country}
-          onChange={e => setCountry(e.target.value)}
-          required>
+      <label>Country:
+        <select name="country" value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          required
+        >
           <option key=""></option>
-          {countries.map(country => (
+          {countries.map((country) => (
             <option key={country}>{country}</option>
           ))}
         </select>
       </label>
 
-      <label>
-        <input
-          name="acceptedTerms"
-          type="checkbox"
-          onChange={e => setAcceptedTerms(e.target.value)}
-          required />
+      <label><input name="acceptedTerms" type="checkbox"
+          onChange={(e) => setAcceptedTerms(e.target.value)}
+          required
+        />
         I accept the terms of service
       </label>
 
       <button>Submit</button>
     </form>
-  )
+  );
 }
 ```
 
-```css
-/** App.css **/
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Lato;
-  height: 97vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #4A4E69;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  min-width: 100px;
-  min-height: 400px;
-  padding: 20px 40px 40px 40px;
-  border-radius: 6px;
-  box-shadow: 0px 8px 36px #222;
-  background-color: #fefefe;
-}
-
-form > h1 {
-  display: flex;
-  justify-content: center;
-  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  margin-top: 0.25em;
-  color: #222;
-  letter-spacing: 2px;
-}
-
-.info {
-  padding-bottom: 1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-}
-
-label {
-  margin-bottom: 0.5em;
-  color: #444;
-  font-weight: lighter;
-}
-
-input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  width: 100%;
-}
-input, select {
-  padding: 10px 10px;
-  border-radius: 5px;
-  border: 1px solid #d6d1d5;
-  margin-top: 5px;
-}
-select {
-  display: block;
-  width: 100%;
-  height: 35px;
-}
-input[type="checkbox"] {
-  display: inline-block;
-  width: auto;
-  margin-top: 2em;
-  margin-right: 10px;
-}
-
-button {
-  min-width: 100%;
-  cursor: pointer;
-  margin-right: 0.25em;
-  margin-top: 0.5em;
-  padding: 	0.938em;
-  border: none;
-  border-radius: 4px;
-  background-color: #22223B;
-  color: #fefefe;
-}
-button:hover {
-  background-color: #4A4E69;
-  color: #fefefe;
-}
-
-.error {
-  color:#db2269;
-  font-size: 0.5em;
-  display: relative;
-}
-
-.submit {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-```
-
-```js
-// Countries.js
-
-export default [
-  'Austria',
-  'Denmark',
-  'France',
-  'Germany',
-  'India',
-  'Italy',
-  'Poland',
-  'Russia',
-  'Sweden',
-  'United States'
-];
-```
-
-Output:
+**Output:**
 
 <p align="center">
   <img src='assets/react-form.png' alt='React Form' width='500px' />
 </p>
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-form-p9z2y)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
