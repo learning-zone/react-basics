@@ -6311,7 +6311,69 @@ class App extends Component {
 
 ## Q. ***How to set up lazy loading components in React?***
 
-*ToDo*
+Lazy loading is the technique used in optimizing your web and mobile apps, this works by rendering only needed or critical user interface items first, then quietly rendering the non-critical items later.
+
+### **REACT.LAZY():**
+
+In **React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
+
+React.lazy() takes a function that returns a promise as it’s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
+
+```js
+// without lazy
+import MyComponent from './MyComponent';
+ 
+// with lazy
+const MyComponent = React.lazy(() => import('./MyComponent'));
+```
+
+### **SUSPENSE:**
+
+**React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
+
+```js
+//using suspense
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+const App = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading ... </div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Example:** The following code snippet shows lazy loading routes
+
+```js
+import React, { Suspense, lazy } from "react";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+
+const Home = lazy(() => import("./Home"));
+const ContactUs = lazy(() => import("./ContactUs"));
+const HelpPage = lazy(() => import("./Help"));
+
+export default function App() {
+  return (
+    <Router>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Switch>
+          <Route exact component={Home} path="/" />
+          <Route component={ContactUs} path="/contact-us" />
+          <Route component={HelpPage} path="/help" />
+        </Switch>
+      </Suspense>
+    </Router>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
