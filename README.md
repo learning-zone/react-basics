@@ -5889,7 +5889,24 @@ ReactDOM.render(
 
 ## Q. ***How to pass a parameter to event handlers in React?***
 
-*ToDo*
+**Example:**
+
+```js
+const message = "Hey there!";
+export default class App extends React.Component {
+  displayMessage(message) {
+    alert(message);
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.displayMessage(message)}>CLICK ME</button>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
