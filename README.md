@@ -6471,25 +6471,9 @@ class Alphabet extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to perform debounce in React.js?***
-
- *ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to prevent a function from being called multiple times?***
-
- *ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How can I prevent a function from being called too quickly?***
 
-**Throttle**
+### **Throttle**
 
 Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
 
@@ -6517,7 +6501,7 @@ class LoadMoreButton extends React.Component {
 }
 ```
 
-**Debounce**
+### **Debounce**
 
 Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
 
@@ -6561,7 +6545,7 @@ class Searchbox extends React.Component {
 }
 ```
 
-**requestAnimationFrame throttling**
+### **RequestAnimationFrame Throttling**
 
 `requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
 
