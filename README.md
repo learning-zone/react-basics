@@ -6697,7 +6697,68 @@ ReactDOM.createPortal(child, container)
 
 ## Q. ***How Diff Algorithm is implemented in Reactjs?***
 
-*ToDo*
+The main work of a **diff algorithm** is to find a heuristic to change anything from a state to another. When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
+
+### **Elements Of Different Types**
+
+Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
+When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
+
+When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+
+### **DOM Elements Of The Same Type**
+
+When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
+
+**Example:** By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
+
+```js
+<div className="before" title="React JS" />
+
+<div className="after" title="React JS" />
+```
+
+### **Component Elements Of The Same Type**
+
+When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
+
+### **Recursing On Children**
+
+By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there\'s a difference.
+
+For example, when adding an element at the end of the children, converting between these two trees works well:
+
+```js
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+```
+
+React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
+
+### **Keys**
+
+When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
+
+```js
+<ul>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+
+<ul>
+  <li key="2014">Connecticut</li>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7378,7 +7439,7 @@ this.props.history.push("/first")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to dynamicallly pass the routing coordinates to leaflet-routing using react hooks?***
+## Q. ***How to dynamically pass the routing coordinates to leaflet-routing using react hooks?***
 
 *ToDo*
 
