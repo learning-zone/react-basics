@@ -6654,6 +6654,8 @@ ReactDOM.createPortal(child, container)
 
 createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
 
+**&#9885; [ReactDOM.createPortal() Example](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
