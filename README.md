@@ -6624,6 +6624,8 @@ ReactDOM.hydrate(element, container, callback)
 
 This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
 
+**&#9885; [ReactDOM.hydrate() Example](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
+
 ### **unmountComponentAtNode()**
 
 ```js
