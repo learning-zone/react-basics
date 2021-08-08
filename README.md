@@ -6596,100 +6596,57 @@ class ScrollListener extends React.Component {
 
 ## Q. ***What is ReactDOM?***
 
-`ReactDOM()` is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. ReactDOM provides the developers with an API containing following methods and a few more.
+ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
 
-* `render()`
-* `findDOMNode()`
-* `unmountComponentAtNode()`
-* `hydrate()`
-* `createPortal()`
+ReactDOM provides the developers with an API containing the following methods
 
-Before **v0.14** React Dom was part of React. The reason React and ReactDOM were split into two libraries was due to the arrival of React Native. React contains functionality utilised in web and mobile apps. ReactDOM functionality is utilised only in web apps.
+* render()
+* findDOMNode()
+* unmountComponentAtNode()
+* hydrate()
+* createPortal()
 
-ReactDOM uses observables thus provides an efficient way of DOM handling. ReactDOM can be used in both client-side and server-side.
-
-**Example:**
+### **render()**
 
 ```js
-// index.js
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App/App'
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-```
-
-To use the ReactDOM in any React web app we must first import ReactDOM from the react-dom package by using the following code snippet:
-
-```js
-import ReactDOM from 'react-dom'
-```
-**a.) ReactDOM.render() Function**  
-
-This function is used to render a single React Component or several Components wrapped together in a Component or a div element. This function uses the efficient methods of React for updating the DOM by being able to change only a subtree, efficient diff methods etc.
-This function returns a reference to the component or null if a stateless component was rendered.
-
-`ReactDOM.render()` replaces the child of the given container if any. It uses highly efficient diff algorithm and can modify any subtree of the DOM.
-
-```jsx
 ReactDOM.render(element, container, callback)
 ```
 
-* **element**: This parameter expects a JSX expression or a React Element to be rendered.
-* **container**: This parameter expects the container in which the element has to be rendered.
-* **callback**: This is an optional parameter that expects a function that is to be executed once the render is complete.
+Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
 
-**b.) findDOMNode() Function**  
+**&#9885; [ReactDOM.render(Example)](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
 
-This function is generally used to get the DOM node where a particular React component was rendered. This method is very less used as the following can be done adding a ref attribute to each component itself.
+### **hydrate()**
 
-`findDOMNode()` function can only be implemented upon mounted components thus Functional components can not be used in findDOMNode() method.
-
-```jsx
-ReactDOM.findDOMNode(component)
-```
-
-This method takes a single parameter component which expects a React Component to be searched in the Browser DOM. This function returns the DOM node where the component was rendered on success otherwise null.
-
-**c.) unmountComponentAtNode() Function**  
-
-This function is used to unmount or remove the React Component that was rendered to a particular container. 
-
-```jsx
-ReactDOM.unmountComponentAtNode(container)
-```
-This method takes a single parameter container which expects the DOM container from which the React component has to be removed. This function returns true on success otherwise false.
-
-**d.) hydrate() Function**  
-
-This method is equivalent to the render() method but is implemented while using server-side rendering.
-
-```jsx
+```js
 ReactDOM.hydrate(element, container, callback)
 ```
 
-* **element**: This parameter expects a JSX expression or a React Component to be rendered.
-* **container**: This parameter expects the container in which the element has to be rendered.
-* **callback**: This is an optional parameter that expects a function that is to be executed once the render is complete.
+This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
 
-This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
+### **unmountComponentAtNode()**
 
-**e.) createPortal() Function**  
+```js
+ReactDOM.unmountComponentAtNode(container)
+```
 
-Usually, when an element is returned from a component\'s render method, it\'s mounted on the DOM as a child of the nearest parent node which in some cases may not be desired. Portals allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
+This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
 
-```jsx
+### **findDOMNode()**
+
+```js
+ReactDOM.findDOMNode(component)
+```
+
+If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+
+### **createPortal()**
+
+```js
 ReactDOM.createPortal(child, container)
 ```
 
-* **child**: This parameter expects a JSX expression or a React Component to be rendered.
-* **container**: This parameter expects the container in which the element has to be rendered.
+createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6759,22 +6716,6 @@ When children have keys, React uses the key to match children in the original tr
   <li key="2016">Villanova</li>
 </ul>
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is the use of react-dom package?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is the purpose of render method of react-dom?***
-
-*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
