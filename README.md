@@ -10444,7 +10444,9 @@ class Button extends React.Component {
 
 ## Q. ***What is Virtual DOM?***
 
-*ToDo*
+In React, for every **DOM object**, there is a corresponding "virtual DOM object". A virtual DOM object is a representation of a DOM object, like a lightweight copy. A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing\'s power to directly change what\'s on the screen.
+
+Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM. 
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
