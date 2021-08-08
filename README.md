@@ -7397,7 +7397,24 @@ The above code creates a history instance for our entire `<App>` component. Each
 
 ## Q. ***What is the purpose of push and replace methods of history?***
 
-*ToDo*
+The **history.push()** method is invoked when you click on a `<Link>` component, and **history.replace()** is called when you use a `<Redirect>`.
+
+```js
+import { useHistory } from "react-router-dom"
+
+function HomeButton() {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/home");
+  }
+  return (
+    <button type="button" onClick={handleClick}>
+      Go home
+    </button>
+  );
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
