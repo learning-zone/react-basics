@@ -6634,6 +6634,8 @@ ReactDOM.unmountComponentAtNode(container)
 
 This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
 
+**&#9885; [ReactDOM.unmountComponentAtNode() Example](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
+
 ### **findDOMNode()**
 
 ```js
@@ -6641,6 +6643,8 @@ ReactDOM.findDOMNode(component)
 ```
 
 If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+
+**&#9885; [ReactDOM.findDOMNode() Example](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
 
 ### **createPortal()**
 
