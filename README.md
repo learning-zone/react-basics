@@ -87,7 +87,7 @@
  |71. |[Why do we need to bind methods inside class component constructor?](#q-why-do-we-need-to-bind-methods-inside-class-component-constructor)|
  |72. |[What is React.cloneElement?](#q-what-is-reactcloneelement)|
  |73. |[When we should use React.cloneElement vs this.props.children?](#q-when-we-should-use-reactcloneelement-vs-thispropschildren)|
- |74. |[What is children props and when you should use it?](#q-what-is-children-props-and-when-you-should-use-it)|
+ |74. |[What is children props?](#q-what-is-children-props)|
  |75. |[Why does not this.props.children.map work?](#q-why-does-not-thispropschildrenmap-work)|
  |76. |[What is useState() in React?](#q-what-is-usestate-in-react)|
  |77. |[How to get acces to a child useState in React?](#q-how-to-get-acces-to-a-child-usestate-in-react)|
@@ -2915,7 +2915,7 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is children props and when you should use it?***
+## Q. ***What is children props?***
 
 The `{this.props.children}` is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
 
@@ -7582,14 +7582,6 @@ class App extends React.Component {
 ```
 
 **&#9885; [Run this Code](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is children props?***
-
-*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
