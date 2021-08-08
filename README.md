@@ -7356,7 +7356,40 @@ this.props.history.push("/first")
 
 ## Q. ***How React Router is different from history library?***
 
-*ToDo*
+React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
+
+* BrowserRouter
+* HashRouter
+
+```js
+// <BrowserRouter>
+http://example.com/about
+
+// <HashRouter>
+http://example.com/#/about
+```
+
+The `<BrowserRouter>` is the more popular of the two because it uses the HTML5 History API to keep your UI in sync with the URL, whereas the `<HashRouter>` uses the hash portion of the URL (`window.location.hash`). If you need to support legacy browsers that don\'t support the History API, you should use `<HashRouter>`. Otherwise `<BrowserRouter>` is the better choice for most use cases.
+
+**Example:**
+
+```js
+// src/index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+The above code creates a history instance for our entire `<App>` component. Each `<Router>` component creates a history object that keeps track of the current location (`history.location`) and also the previous locations in a stack. The history object has methods such as `history.push`, `history.replace`, `history.goBack`, `history.goForward` etc.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
