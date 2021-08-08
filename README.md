@@ -7444,14 +7444,6 @@ console.log(id, name, type); // 10 test null
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to dynamically pass the routing coordinates to leaflet-routing using react hooks?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What are the kinds of information that control a segment in React?***
 
 There are mainly two sorts of information that control a segment
