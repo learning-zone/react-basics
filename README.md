@@ -7422,7 +7422,23 @@ function HomeButton() {
 
 ## Q. ***How to get parameter value from query string?***
 
-*ToDo*
+In order to get query parameters from the URL, we can use **URLSearchParams**. In simple words, URLSearchParams is a defined interface, implemented by modern browsers, that allows us to work with the query string. It does not require React Router or even React itself.
+
+**Example:**
+
+```js
+// http://localhost:3000/?id=10&name=test
+
+const queryParams = new URLSearchParams(window.location.search);
+
+const id = queryParams.get('id');
+const name = queryParams.get('name');
+const type = queryParams.get('type');
+
+console.log(id, name, type); // 10 test null
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
