@@ -192,7 +192,7 @@
  |176. |[What are the kinds of information that control a segment in React?](#q-what-are-the-kinds-of-information-that-control-a-segment-in-react)|
  |177. |[What are the drawbacks of MVW pattern?](#q-what-are-the-drawbacks-of-mvw-pattern)|
  |178. |[What is the difference between createElement and cloneElement?](#q-what-is-the-difference-between-createelement-and-cloneelement)|
- |179. |[How dynamically generate menu options for `<select>` from an array using `React.CreateElement()`?](#q-how-dynamically-generate-menu-options-for-select-from-an-array-using-reactcreateelement)|
+ |179. |[How dynamically generate menu options for `<select>` from an array?](#q-how-dynamically-generate-menu-options-for-select-from-an-array)|
  |180. |[What is children props?](#q-what-is-children-props)|
  |181. |[When should I be using React.cloneElement vs this.props.children?](#q-when-should-i-be-using-reactcloneelement-vs-thispropschildren)|
  |182. |[How to filter input values obtained in a child component in react?](#q-how-to-filter-input-values-obtained-in-a-child-component-in-react)|
@@ -7532,9 +7532,56 @@ class MyButton extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How dynamically generate menu options for `<select>` from an array using `React.CreateElement()`?***
+## Q. ***How dynamically generate menu options for `<select>` from an array?***
 
-*ToDo*
+**Example:**
+
+```js
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      colors: {}
+    };
+    this.selectColor = this.selectColor.bind(this);
+  }
+
+  selectColor = (e) => {
+    console.log("Selected Color: ", e.target.value);
+  };
+
+  componentDidMount() {
+    this.setState({
+      colors: {
+        "#ff0000": "Red",
+        "#00ff00": "Green",
+        "#0000ff": "Blue"
+      }
+    });
+  }
+
+  render() {
+    const { colors } = this.state;
+
+    let colorsList = Object.keys(colors).map((k) => {
+      return (
+        <option key={k} value={k}>
+          {colors[k]}
+        </option>
+      );
+    }, this);
+
+    return (
+      <div>
+        <select onChange={this.selectColor}>{colorsList}</select>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
