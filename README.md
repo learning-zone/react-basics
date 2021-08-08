@@ -195,7 +195,7 @@
  |179. |[How dynamically generate menu options for `<select>` from an array?](#q-how-dynamically-generate-menu-options-for-select-from-an-array)|
  |180. |[What is children props?](#q-what-is-children-props)|
  |181. |[When should I be using React.cloneElement vs this.props.children?](#q-when-should-i-be-using-reactcloneelement-vs-thispropschildren)|
- |182. |[How to filter input values obtained in a child component in react?](#q-how-to-filter-input-values-obtained-in-a-child-component-in-react)|
+ |182. |[How to filter input value obtained in a child component in react?](#q-how-to-filter-input-value-obtained-in-a-child-component-in-react)|
  |183. |[How to declare constant in react class?](#q-how-to-declare-constant-in-react-class)|
  |184. |[Explain the Lists in React?](#q-explain-the-lists-in-react)|
  |185. |[Why do I need Keys in React Lists?](#q-why-do-i-need-keys-in-react-lists)|
@@ -7627,9 +7627,83 @@ class Users extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to filter input values obtained in a child component in react?***
+## Q. ***How to pass JSON Objects from Child to Parent Component?***
 
-*ToDo*
+**Example:** Passing JSON Objects from Child to Parent Component using callback function
+
+```js
+// Parent Component
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: ""
+    };
+    this.onSubmitMessage = this.onSubmitMessage.bind(this);
+  }
+
+  onSubmitMessage(message) {
+    this.setState({ message: message });
+  }
+
+  render() {
+    const { message } = this.state;
+
+    return (
+      <div>
+        <h3>Parent component</h3>
+        <div>The message coming from the child component is : {message}</div>
+        <hr />
+        <Child
+          // passing as callback function
+          onSubmitMessage={this.onSubmitMessage}
+        />
+      </div>
+    );
+  }
+}
+```
+```js
+// Child Component
+
+export default class Child extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      greetingMessag: ""
+    };
+    this.onMessageChange = this.onMessageChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onMessageChange(event) {
+    let message = event.target.value;
+    this.setState({ greetingMessag: message });
+  }
+
+  // pass message to parent component using callback
+  onSubmit() {
+    this.props.onSubmitMessage(this.state.greetingMessag);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Child Component</h3>
+        <input
+          type="text"
+          onChange={this.onMessageChange}
+          placeholder="Enter a message"
+        />
+        <button onClick={this.onSubmit}>Submit</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
