@@ -7039,25 +7039,15 @@ node server/index.js
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to enable Server-Side Rendering in React App?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What are React Server components?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is the purpose of renderToNodeStream method?***
 
-*ToDo*
+```js
+ReactDOMServer.renderToNodeStream(element)
+```
+
+This method is used to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+
+*Note: This method is not available in the browser but only server.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
