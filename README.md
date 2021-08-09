@@ -8005,7 +8005,55 @@ We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX a
 
 ## Q. ***How to debug forwardRefs() in DevTools?***
 
-*ToDo*
+**React.forwardRef** accepts a render function as parameter and DevTools uses this function to determine what to display for the ref forwarding component.
+
+**Problem:** If you don\'t name the render function or not using displayName property then it will appear as "ForwardRef" in the DevTools,
+
+```js
+const WrappedComponent = React.forwardRef((props, ref) => {
+  return <LogProps {...props} forwardedRef={ref} />;
+});
+```
+
+**Solution:** If you name the render function then it will appear as "ForwardRef(myFunction)"
+
+```js
+const WrappedComponent = React.forwardRef(function myFunction(props, ref) {
+  return <LogProps {...props} forwardedRef={ref} />;
+});
+```
+
+**Example:**
+
+```js
+const ForwardP = React.forwardRef(function ForwardP(props, ref) {
+  return (
+    <>
+      <p>I'm a real component too</p>
+      <p>
+        Especially with <code>useImperativeMethods</code>
+      </p>
+      <p {...props} ref={ref} />
+    </>
+  );
+});
+
+function App() {
+  return (
+    <div className="App">
+      <ForwardP style={{ opacity: 0.5 }}>
+        But my props are <code>null</code> in DevTools
+      </ForwardP>
+    </div>
+  );
+}
+```
+
+<p align="center">
+  <img src="assets/forwardRef.png" alt="forwardRef()" width="500px" />
+</p>
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
