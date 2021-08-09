@@ -196,7 +196,7 @@
  |180. |[What is children props?](#q-what-is-children-props)|
  |181. |[When should I be using React.cloneElement vs this.props.children?](#q-when-should-i-be-using-reactcloneelement-vs-thispropschildren)|
  |182. |[How to filter input value obtained in a child component in react?](#q-how-to-filter-input-value-obtained-in-a-child-component-in-react)|
- |183. |[How to declare constant in react class?](#q-how-to-declare-constant-in-react-class)|
+ |183. |[How to declare constant in react?](#q-how-to-declare-constant-in-react)|
  |184. |[Explain the Lists in React?](#q-explain-the-lists-in-react)|
  |185. |[Why do I need Keys in React Lists?](#q-why-do-i-need-keys-in-react-lists)|
  |186. |[What is Destructuring in React?](#q-what-is-destructuring-in-react)|
@@ -7709,9 +7709,43 @@ export default class Child extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to declare constant in react class?***
+## Q. ***How to declare constant in react?***
 
-*ToDo*
+```js
+// Constants.js
+
+export const POSTURL = "http://localhost:3000/api/v1/patterns";
+export const DELETEURL = "http://localhost:3000/api/v1/patterns/";
+
+export const DeleteButton = require("./images/delete-icon.png");
+export const LoadingWheel = require("./images/loading-wheel.gif");
+
+```
+
+```js
+// App.js
+
+import * as Constants from "./Constants";
+
+const employee = {
+  emp_id: 10,
+  name: "Nakul Agate",
+  email: "nakul.agate@email.com"
+};
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div>Employee Details :{JSON.stringify(employee)}</div>
+        <div><img src={Constants.LoadingWheel} alt="Loading..." /></div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
