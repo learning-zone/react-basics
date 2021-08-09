@@ -8097,7 +8097,57 @@ class MyComponent extends Component {
 
 ## Q. ***Why are string refs considered legacy in React?***
 
-*ToDo*
+> Although string refs are not deprecated, they are considered legacy, and will likely be deprecated at some point in the future. Callback refs are preferred.
+
+**Callback Refs:**
+
+Instead of passing a **ref** attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
+
+**Example:**
+
+```js
+// Ref.js
+
+class CustomTextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.textInput = null;
+
+    this.setTextInputRef = (element) => {
+      this.textInput = element;
+    };
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.textInput.value);
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type="text" ref={this.setTextInputRef} />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// App.js
+
+const App = () => (
+  <div style={styles}>
+    <Hello name="React Refs" />
+    <CustomText />
+  </div>
+)
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
