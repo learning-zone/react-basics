@@ -7912,14 +7912,6 @@ export default function Events() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why using Index as a key is an anti-pattern in React?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***Why is it necessary to start component names with a capital letter?***
 
 In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
