@@ -7809,6 +7809,8 @@ export default Item
 
 Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
 
+**Example:**
+
 ```js
 const numbers = [10, 20, 30, 40, 50];
 
