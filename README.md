@@ -7807,7 +7807,19 @@ export default Item
 
 ## Q. ***Why do I need Keys in React Lists?***
 
-*ToDo*
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+
+```js
+const numbers = [10, 20, 30, 40, 50];
+
+const listItems = numbers.map((number) =>
+  <li key={number.toString()}>
+    {number}
+  </li>
+);
+```
+
+React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
