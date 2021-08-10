@@ -9119,7 +9119,47 @@ class MyComponent extends React.Component {
 
 ## Q. ***How to listen for click events that are outside of a component?***
 
-*ToDo*
+**Example:**
+
+```js
+class OutsideAlerter extends Component {
+  // ...
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  /**
+   * Set the wrapper ref
+   */
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      alert("You clicked outside of me!");
+    }
+  }
+
+  render() {
+    return <div ref={this.setWrapperRef}>{this.props.children}</div>;
+  }
+}
+
+OutsideAlerter.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
