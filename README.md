@@ -9553,9 +9553,47 @@ const Button = withRouter(({ history }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to pass params to history.push method in React Router?***
+## Q. ***How to pass additional data while redirecting to a route in React?***
 
-*ToDo*
+### **Using Link:**
+
+Normally we use the Link component from react-router-dom as shown below:
+
+```js
+<Link to="/register">Register</Link>
+```
+
+So when we click on the Register link, it will redirect to the /register route, but Link also allows us to pass additional data while redirecting.
+
+```js
+<Link to={{ 
+ pathname: "/register", 
+ state: some_data 
+}}>
+ Register
+</Link>
+```
+
+Here, at the place of `some_data`, we can pass a string or object, array etc. and in the `/register` route we will get that data in `props.location.state`.
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
+
+### **Using history.push:**
+
+Normally, to redirect using the push method, we use it like this:
+
+```js
+props.history.push('/register');
+```
+
+If you need to do some processing before sending the data like removing some values or to trim the values, we can call a handler on submit button click and pass data as shown below
+
+```js
+props.history.push({ 
+  pathname: '/register',
+  state: some_data
+});
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
