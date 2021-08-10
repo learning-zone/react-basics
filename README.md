@@ -8299,7 +8299,20 @@ export default OutsetBox
 
 ## Q. ***How do you apply vendor prefixes to inline styles in React?***
 
-*ToDo*
+In React, inline styles keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes other than `ms` should begin with a capital letter.
+
+```js
+const divStyle = {
+  background: "#eee",
+  color: "blue",
+  padding: "20px",
+  margin: "20px",
+  WebkitTransition: "all", // note the capital 'W' here
+  msTransition: "all" // 'ms' is the only lowercase vendor prefix
+};
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
