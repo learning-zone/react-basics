@@ -8592,7 +8592,23 @@ Use `static getDerivedStateFromError()` to render a fallback UI after an error h
 
 ## Q. ***What is the purpose of displayName class property?***
 
-*ToDo*
+The **displayName** string is used in debugging messages. Usually, you don\'t need to set it explicitly because it\'s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component.
+
+**Example:**
+
+```js
+function withSubscription(WrappedComponent) {
+  
+  class WithSubscription extends React.Component {/* ... */}
+  
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  return WithSubscription;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
