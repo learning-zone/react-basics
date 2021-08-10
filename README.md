@@ -9777,7 +9777,59 @@ function Child() {
 
 ## Q. ***Why you get "Router may have only one child element" warning?***
 
-*ToDo*
+React router dom throws the error that a router may have only one child element if more than 1 routes are defined without enclosing them in `<div>` or `<switch>`.
+
+Generally, navigation is used over the whole application. That\'s why component like **BrowserRouter** or **Router** expects that the top level component like App, should be enclosed in them. They do not expect multiple routes to be listed in them as children. 
+
+**Problem:** This code will throw the router error
+
+```js
+import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+
+export default function App() {
+    return (
+       <BrowserRouter>
+           <Route exact={true} path='/route1' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 2</p>
+               </div>
+            )}/>
+       </BrowserRouter>
+    );
+}
+```
+
+**Solution:**
+
+```js
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+export default function App() {
+    return (
+       <BrowserRouter>
+         <Switch>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+         </Switch>
+       </BrowserRouter>
+    );
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
