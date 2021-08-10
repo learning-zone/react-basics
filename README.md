@@ -3967,7 +3967,7 @@ const BooksList = ({books}) => {
 
 React provides several methods that notify us when certain stage of this process occurs. These methods are called the component lifecycle methods and they are invoked in a predictable order. The lifecycle of the component is divided into four phases.
 
-**1. Mounting**  
+**1. Mounting:**  
 
 These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
 
@@ -3976,13 +3976,13 @@ These methods are called in the following order when an instance of a component 
 * `render()`
 * `componentDidMount()`
 
-**constructor**  
+**`Constructor()`:**  
 
 The `constructor()` method is called before anything else, when the component is initiated, and it is the natural place to set up the initial state and other initial values.
 
 The `constructor()` method is called with the `props`, as arguments, and we should always start by calling the `super(props)` before anything else, this will initiate the parent\'s constructor method and allows the component to inherit methods from its parent (`React.Component`).
 
-**getDerivedStateFromProps**
+**`getDerivedStateFromProps()`:**
 
 The `getDerivedStateFromProps()` method is called right before rendering the element(s) in the DOM. It takes state as an argument, and returns an object with changes to the state.
 
@@ -4008,15 +4008,15 @@ class Color extends React.Component {
 ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'))
 ```
 
-**render()**
+**`render()`:**
 
 The render() method is required, and is the method that actual outputs HTML to the DOM.
 
-**componentDidMount()**  
+**`componentDidMount()`:**  
 
 The `componentDidMount()` method is called after the component is rendered.
 
-**2. Updating**  
+**2. Updating:**  
 
 The next phase in the lifecycle is when a component is updated. A component is updated whenever there is a change in the component\'s state or props.
 
@@ -4028,7 +4028,7 @@ React has five built-in methods that gets called, in this order, when a componen
 * `getSnapshotBeforeUpdate()`
 * `componentDidUpdate()`
 
-**getDerivedStateFromProps**  
+**`getDerivedStateFromProps()`:**  
 
 This is the first method that is called when a component gets updated. This is still the natural place to set the state object based on the initial props.
 
@@ -4060,7 +4060,7 @@ class Color extends React.Component {
 ReactDOM.render(<Color favcol="yellow"/>, document.getElementById('root'))
 ```
 
-**shouldComponentUpdate**
+**`shouldComponentUpdate()`:**
 
 In the `shouldComponentUpdate()` method you can return a Boolean value that specifies whether React should continue with the rendering or not. The default value is `true`.
 
@@ -4090,11 +4090,11 @@ class Color extends React.Component {
 ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
-**render()**
+**`render()`:**
 
 The `render()` method is of course called when a component gets updated, it has to re-render the HTML to the DOM, with the new changes.
 
-**getSnapshotBeforeUpdate**
+**`getSnapshotBeforeUpdate()`:**
 
 In the `getSnapshotBeforeUpdate()` method we have access to the `props` and `state` before the update, meaning that even after the update, we can check what the values were before the update.
 
@@ -4136,7 +4136,7 @@ class Color extends React.Component {
 ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
-**componentDidUpdate**  
+**`componentDidUpdate()`:**  
 
 The `componentDidUpdate()` method is called after the component is updated in the DOM.
 
@@ -4170,7 +4170,7 @@ class Color extends React.Component {
 ReactDOM.render(<Color />, document.getElementById('root'))
 ```
 
-**3. Unmounting**  
+**3. Unmounting:**  
 
 The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
 
@@ -8815,9 +8815,11 @@ npm start
 
 ## Q. ***Why to avoid using setState() after a component has been unmounted?***
 
-Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
+Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. 
 
-*Example:*
+Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
+
+**Example:**
 
 ```js
 class News extends Component {
@@ -8921,7 +8923,7 @@ class AutoFocusTextInput extends React.Component {
 
 Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
 
-*Example:*
+**Example:**
 
 ```js
 class Clock extends React.Component {
@@ -9090,7 +9092,7 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 
 We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
 
-*Example:*
+**Example:**
 
 ```js
 class MyComponent extends React.Component {
@@ -9233,7 +9235,7 @@ Inheritance Inversion gives the HOC access to the WrappedComponent instance via 
 * Render Highjacking
 * Manipulating state
 
-*Example:*
+**Example:**
 
 ```js
 class Welcome extends React.Component {
@@ -9321,7 +9323,7 @@ The following event types are now available in React DOM
 * onPointerOver
 * onPointerOut
 
-*Example:* Drag and Drop using Point Events
+**Example:** Drag and Drop using Point Events
 
 ```js
 // App Component
@@ -9523,7 +9525,7 @@ const Button = withRouter(({ history }) => (
 
 It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
 
-*Example:*
+**Example:**
 
 ```js
 <div {...this.props}>
@@ -9570,7 +9572,7 @@ ReactDOM.render(
 
 A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
 
-*Example:*
+**Example:**
 
 ```js
 import React from "react"
@@ -9643,7 +9645,7 @@ export class Greeting extends React.Component {
 
 **Using `useParams()`**
 
-*Example:*
+**Example:**
 
 ```js
 import React from "react"
@@ -9826,7 +9828,7 @@ The `<Link>` component is used to navigate the different routes on the site. But
 <NavLink to="/" activeClassName="active">Home</NavLink>
 ```
 
-*Example:*
+**Example:**
 
 index.css
 
@@ -9889,7 +9891,7 @@ ReactDOM.render(Routes, document.getElementById('root'))
 
 `withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
 
-*Example:*
+**Example:**
 
 ```js
 import React from "react"
@@ -10041,7 +10043,7 @@ export default class PersonList extends React.Component {
 
 **Fetch**: The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
 
-*Example:*
+**Example:**
 
 ```js
 fetch('path-to-the-resource-to-be-fetched')
@@ -10100,7 +10102,7 @@ There are two types of interceptors:
 
 One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
 
-*Example:*
+**Example:**
 
 ```js
 // Add request handler
@@ -10120,7 +10122,7 @@ axiosInstance.interceptors.request.use(
 
 **2. Response and error interceptors**
 
-*Example:*
+**Example:**
 
 ```js
 // Add response handlers
@@ -10161,7 +10163,7 @@ In React, caching data can be achieved in multiple ways
 
 Memoization is a technique we would use to make sure that we don\'t hit the API if we have made some kind of request to fetch it at some initial phase. Storing the result of expensive fetch calls will save the users some load time, therefore, increasing overall performance.
 
-*Example:*
+**Example:**
 
 ```js
 const cache = {}
@@ -10466,7 +10468,7 @@ RxJS is a library for reactive programming using Observables, to make it easier 
 * **Operators**: Operators are methods that can use on Observables and subjects to manipulate, filter or change the Observable in a specified manner into a new Observable.
 * **BehaviorSubject**: It allows multiple observers to listen on stream and events multicasted to the observers, BehaviorSubject stores the latest value and broadcasts it to any new subscribers.
 
-*Example:*
+**Example:**
 
 ```js
 // messageService.js
@@ -10603,7 +10605,7 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
 
 `React.lazy()` takes a function as its argument that must return a promise by calling `import()` to load the component. The returned Promise resolves to a module with a default export containing the React component.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { lazy } from 'react'
@@ -10629,7 +10631,7 @@ const App = () => {
 
 A **re-render** is when React calls the function component again to get a new set of instructions on an already mounted component.
 
-*Example:*
+**Example:**
 
 ```js
 class App extends React.Component {
@@ -10864,7 +10866,7 @@ export default App
 
 **Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
 
-*Example:*
+**Example:**
 
 ```js
 class Button extends React.Component {
@@ -11019,7 +11021,7 @@ export default PlayerDetails
 
 The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
 
-*Example:*
+**Example:**
 
 ```js
 const Picture = (props) => {
@@ -11129,7 +11131,7 @@ A compound component is a type of component that manages the internal state of a
 
 Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
 
-*Example:*
+**Example:**
 
 ```js
 function App() {
@@ -11210,7 +11212,7 @@ Fiber is currently available for use but it runs in compatibility mode with the 
 
 Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
 
-*Example:*
+**Example:**
 
 ```js
 class UserNameForm extends React.Component {
@@ -11258,7 +11260,7 @@ Here, We extended the `UserNameForm` component and extracted its method in child
 
 Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
 
-*Example:*
+**Example:**
 
 ```js
 class UserNameForm extends React.Component {
@@ -11340,7 +11342,7 @@ function App() {
 
 React\'s `useMemo()` Hook can be used to optimize the computation costs of your React function components. The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type (not just functions). It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved (which typically will only happen once each time an element in the dependencies array changes between renders).
 
-*Example:*
+**Example:**
 
 React application which renders a list of users and allows us to filter the users by their name. The filter happens only when a user explicitly clicks a button; not already when the user types into the input field.
 
@@ -11432,7 +11434,7 @@ This runs synchronously immediately after React has performed all DOM mutations.
 
 As far as scheduling, this works the same way as `componentDidMount` and `componentDidUpdate`. Your code runs immediately after the DOM has been updated, but before the browser has had a chance to "paint" those changes (the user doesn\'t actually see the updates until after the browser has repainted).
 
-*Example:*
+**Example:**
 
 ```js
 import React, { useState, useLayoutEffect } from 'react'
@@ -11468,7 +11470,7 @@ ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
 
 `useDebugValue()` can be used to display a label for custom hooks in React DevTools.
 
-*Example:*
+**Example:**
 
 ```js
 function useFriendStatus(friendID) {
@@ -11512,7 +11514,7 @@ There are 5 hooks in react-spring currently:
 
 It turns defined values into animated values. It does this in two ways, either by overwriting the existing props with a different set of props on component re-render or by passing an updater function that returns a different set of props that is then used to update the props using set.
 
-*Example:*
+**Example:**
 
 ```js
 import {useSpring, animated} from 'react-spring'
@@ -11527,7 +11529,7 @@ function App() {
 
 It works kind of like a mix between useSpring and useTransition in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { useState } from 'react'
@@ -11568,7 +11570,7 @@ const App = () => {
 
 `useTrail` allows to create an effect similar to both useSpring and useSprings, it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
 
-*Example:*
+**Example:**
 
 ```js
 import { animated, useTrail, config } from 'react-spring'
@@ -11597,7 +11599,7 @@ const App = () => {
 
 `useTransition` allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { useState } from 'react'
@@ -11626,7 +11628,7 @@ return (
 
 `useChain` allows to set the execution sequence of previously defined animation hooks. To do this, you need to use `refs`, which will subsequently prevent the independent execution of the animation.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { useState, useRef } from 'react'
@@ -12217,7 +12219,7 @@ Action is static information about the event that initiates a state change. When
 
 **Action creators** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
 
-*Example:*
+**Example:**
 
 ```js
 const setLoginStatus = (name, password) => {
@@ -12273,7 +12275,7 @@ const rootReducert = combineReducer(reducer1, reducer2)
 
 A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
 
-*Example:*
+**Example:**
 
 ```js
 import React from 'react'
@@ -12437,7 +12439,7 @@ cd my-simple-app
 npm install --save redux react-redux redux-thunk
 ```
 
-*Example:*
+**Example:**
 
 We are going to use Redux Thunk to asynchronously fetch the most recently updated repos by username from Github using this REST URL:
 
@@ -12616,7 +12618,7 @@ ReactDOM.render(
 
 Container is an informal term for a React component that is `connect`-ed to a redux store. Containers receive Redux state updates and `dispatch` actions, and they usually don\'t render DOM elements; they delegate rendering to **presentational** child components.
 
-*Example:*
+**Example:**
 
 ```js
 class Collage extends Component {
@@ -12653,7 +12655,7 @@ class Collage extends Component {
 * They do not know how to load or alter the data that they render
 * They are best written as stateless functional components
 
-*Example:*
+**Example:**
 
 ```js
 //defining the component as a React Component
@@ -12698,7 +12700,7 @@ The state parameter that gets passed to the reducer function has to be the curre
 contactReducer(initialState, action)
 ```
 
-*Example:*
+**Example:**
 
 Let\'s say the initial state of our app is an empty list of contacts and our action is adding a new contact to the list.
 
@@ -12727,7 +12729,7 @@ There is typically a `payload` value that contains what the user is sending and 
 
 The state is meant to be immutable, meaning it shouldn\'t be changed directly. To create an updated state, we can make use of `Object.assign()` or opt for the **spread operator**.
 
-*Example:*
+**Example:**
 
 ```js
 const contactReducer = (state, action) => {
@@ -12835,7 +12837,7 @@ A  pure function adheres to the following rules:
 * No mutation of local & global variables.
 * It does not depend on the external state like a global variable.
 
-*Example:*
+**Example:**
 
 The below `add()` function doesn\'t alter “a” or “b”, doesn\'t depending on external state, and always returns the same output for the same input.
 
@@ -12899,7 +12901,7 @@ With reducer level code-splitting, reducers can be code split on a split compone
 
 An action type is a string that simply describes the type of an action. They\'re commonly stored as constants or collected in enumerations to help reduce typos.
 
-*Example:*
+**Example:**
 
 ```js
 export const Actions = {
@@ -12990,7 +12992,7 @@ Redux can be described in three fundamental principles:
 
 This makes it easy to create universal apps, as the state from your server can be serialized and hydrated into the client with no extra coding effort. A single state tree also makes it easier to debug or inspect an application; it also enables you to persist your app\'s state in development, for a faster development cycle.
 
-*Example:*
+**Example:**
 
 ```js
 console.log(store.getState())
@@ -13018,7 +13020,7 @@ console.log(store.getState())
 
 This ensures that neither the views nor the network callbacks will ever write directly to the state. Instead, they express an intent to transform the state. Because all changes are centralized and happen one by one in a strict order, there are no subtle race conditions to watch out for.
 
-*Example:*
+**Example:**
 
 ```js
 store.dispatch({
@@ -13503,7 +13505,7 @@ Redux belongs to "State Management Library" category of the tech stack, while Rx
 |It is usually used as an architecture for UIs. |It is usually used as a tool to accomplish asynchronous tasks in JavaScript.|
 |Redux uses the Reactive paradigm because the Store is reactive. The Store observes actions from a distance, and changes itself.|RxJS also uses the Reactive paradigm, but instead of being an architecture, it gives you basic building blocks, Observables, to accomplish this pattern.|
 
-*Example:* React, Redux and RxJS
+**Example:** React, Redux and RxJS
 
 ```js
 import React from 'react';  
@@ -13637,7 +13639,7 @@ The advantage of swapping the action payload for a stream is so we can send data
 * The list of action types that were added, removed, and changed in a Pull Request helps everyone on the team keep track of scope and implementation of new features.
 * If you make a typo when importing an action constant, you will get undefined. This is much easier to notice than a typo when you wonder why nothing happens when the action is dispatched.
 
-*Example:* Constants in Redux can be used into two places, reducers and during actions creation.
+**Example:** Constants in Redux can be used into two places, reducers and during actions creation.
 
 ```js
 // actionTypes.js
@@ -13765,7 +13767,7 @@ Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write 
   <img src="assets/redux-saga.png" alt="Redux Saga" width="500px" />
 </p>
 
-*Example:*
+**Example:**
 
 ```js
 import axios from "axios"
@@ -14068,7 +14070,7 @@ function* fetchUserSaga(action) {
 
 Saga is like a separate thread in your application, that is solely responsible for side effects. `redux-saga` is a redux middleware, which means this thread can be **started**, **paused** and **cancelled** from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
 
-*Example:*
+**Example:**
 
 ```bash
 npm install --save redux-saga
@@ -14215,7 +14217,7 @@ When we use Redux with React, react-redux will provide `dispatch()` function and
 
 (Function or Object): An object mimicking the original object, but with each function immediately dispatching the action returned by the corresponding action creator. If you passed a function as actionCreators, the return value will also be a single function.
 
-*Example:*
+**Example:**
 
 ```js
 // TodoActionCreators.js
@@ -14322,7 +14324,7 @@ In a simple term,
 **mapStateToProps**: It connects redux state to props of react component.  
 **mapDispatchToProps**: It connects redux actions to react props.
 
-*Example:*
+**Example:**
 
 ```js
 const {createStore} = Redux
@@ -14423,7 +14425,7 @@ Where `getActiveData()` will be a function which returns all the records from `s
 
 When we use `Reselect` it caches the input arguments to the memoized function. So only when the arguments of the function changes from the previous call, the selector recalculates.
 
-*Example:*
+**Example:**
 
 ```js
 // todo.reducer.js
