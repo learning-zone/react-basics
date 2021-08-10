@@ -8868,17 +8868,26 @@ Here, even though the component got unmounted and the request resolves eventuall
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why is isMounted() an anti-pattern and what is the proper solution?***
+## Q. ***How do you update render elements?***
 
-*ToDo*
+React Elements are immutable i.e. once an element is created it is impossible to update its children or attribute. Thus, in order to update an element, we must use the `render()` method several times to update the value over time.
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
+**Example:**
 
-## Q. ***How do you update rendered elements?***
+```js
+function showTime() {
+  const element = (
+    <div>
+      <h2>Current Time is: {new Date().toLocaleTimeString()}</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById("root"));
+}
 
-*ToDo*
+setInterval(showTime, 1000);
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
