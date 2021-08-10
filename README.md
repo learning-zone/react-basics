@@ -8565,7 +8565,13 @@ function Users() {
 
 ## Q. ***What is the benefit of component stack trace from error boundary?***
 
-*ToDo*
+Component Stack Trace prints all errors that occurred during rendering to the console in development, even if the application accidentally swallows them. It also display the filenames and line numbers in the component stack trace.
+
+**Example:**
+
+<p align="center">
+  <img src="assets/stack-trace.png" alt="Component Stack Trace" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
