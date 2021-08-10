@@ -8344,7 +8344,7 @@ ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is
 ```js
 import ReactCSSTransitionGroup from 'react-transition-group'
 
-class TodoList extends React.Component {
+class AnimationComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {items: ['hello', 'world', 'click', 'me']}
@@ -8529,7 +8529,35 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
 
 ## Q. ***What is the difference between try catch block and error boundaries?***
 
-*ToDo*
+**Try…catch** is used in specific code blocks where you program the functionality of the application.
+
+```js
+try {
+  // Some Calculation
+} catch (error) {
+  console.log(`Error: ${error}`);
+}
+```
+
+**Try…catch** deals with imperative code while **error boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
+
+With error boundary, if there is an error, you can trigger a fallback UI; whereas, with try…catch, you can catch errors in your code.
+
+```js
+import ErrorBoundary from "error-boundary";
+
+function Users() {
+  return (
+    <div>
+      <ErrorBoundary>
+        <Users />
+      </ErrorBoundary>
+    </div>
+  )
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
