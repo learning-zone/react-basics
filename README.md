@@ -8169,14 +8169,6 @@ In React, the Router looks at the **History** of each Component and when there i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is a switching component?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***How many ways can we style the React Component?***
 
 **1. CSS Stylesheet**
