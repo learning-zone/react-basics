@@ -8579,7 +8579,12 @@ Component Stack Trace prints all errors that occurred during rendering to the co
 
 ## Q. ***What are the methods invoked during error handling?***
 
-*ToDo*
+A class component becomes an error boundary if it defines either (or both) of the lifecycle methods 
+
+* **static getDerivedStateFromError()**  
+* **componentDidCatch()** 
+
+Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
