@@ -224,7 +224,7 @@
  |208. |[What is the purpose of displayName class property?](#q-what-is-the-purpose-of-displayname-class-property)|
  |209. |[What is difference between componentDidMount() and componentWillMount()?](#q-what-is-difference-between-componentdidmount-and-componentwillmount)|
  |210. |[Is it good to use setState() in componentWillMount() method?](#q-is-it-good-to-use-setstate-in-componentwillmount-method)|
- |211. |[How to make AJAX call and In which component lifecycle methods should I make an AJAX call?](#q-how-to-make-ajax-call-and-in-which-component-lifecycle-methods-should-i-make-an-ajax-call)|
+ |211. |[How to make AJAX requests in React?](#q-how-to-make-ajax-requests-in-react)|
  |212. |[Explain the use of Webpack and Babel in React?](#q-explain-the-use-of-webpack-and-babel-in-react)|
  |213. |[Why to avoid using setState() after a component has been unmounted?](#q-why-to-avoid-using-setstate-after-a-component-has-been-unmounted)|
  |214. |[Why is isMounted() an anti-pattern and what is the proper solution?](#q-why-is-ismounted-an-anti-pattern-and-what-is-the-proper-solution)|
@@ -8734,9 +8734,54 @@ function componentDidMount() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to make AJAX call and In which component lifecycle methods should I make an AJAX call?***
+## Q. ***How to make AJAX requests in React?***
 
-*ToDo*
+You can use any AJAX library you like with React. Some popular ones are **Axios**, **jQuery AJAX**, and the browser built-in **window.fetch**.
+
+**Example:** Using Hooks
+
+```js
+function MyComponent() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.name} {item.price}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
