@@ -11150,7 +11150,17 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
 
 ## Q. ***Why React uses className over class attribute?***
 
-*ToDo*
+`class` is a keyword in javascript and JSX is an extension of javascript. That is the principal reason why React uses `className` instead of `class`.
+
+**Example:**
+
+```js
+import "./App.css";
+
+export default function App() {
+  return <h1 className="header">This is an example code</h1>
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
