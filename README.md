@@ -9837,7 +9837,113 @@ export default function App() {
 
 ## Q. ***What is the difference between HashRouter and BrowserRouter in React?***
 
-*ToDo*
+### **BrowserRouter**
+
+* The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
+* It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
+* It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
+* It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
+
+**Syntax:**
+
+```js
+/*
+  https://example.com/
+  https://example.com/about
+*/
+
+<BrowserRouter
+  basename={optionalString}
+  forceRefresh={optionalBool}
+  getUserConfirmation={optionalFunc}
+  keyLength={optionalNumber}
+>
+  <App />
+</BrowserRouter>
+```
+
+**Example:**
+
+```js
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h3>Home Page</h3>;
+};
+
+const AboutPage = () => {
+  return <h3>About Page</h3>;
+};
+
+function App() {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Route exact path="/" component={IndexPage} />
+        <Route exact path="/about" component={AboutPage} />
+      </Router>
+    </section>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
+
+### **HashRouter**
+
+* A router which uses client side hash routing.
+* Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
+* Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
+* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
+
+
+**Syntax:**
+
+```js
+/*
+  https://example.com/#/
+  https://example.com/#/about
+*/
+
+<HashRouter
+  basename={optionalString}
+  getUserConfirmation={optionalFunc}
+  hashType={optionalString}
+>
+  <App />
+</HashRouter>
+```
+
+**Example:**
+
+```js
+import { Link, HashRouter as Router, Route } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h3>Home Page</h3>;
+};
+
+const AboutPage = () => {
+  return <h3>About Page</h3>;
+};
+
+function App() {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Route exact path="/" component={IndexPage} />
+        <Route exact path="/about" component={AboutPage} />
+      </Router>
+    </section>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
