@@ -10643,9 +10643,47 @@ export default withTranslation()(HighOrderComponent)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Is it possible to use async/await in plain React?***
+## Q. ***How to use async await in React?***
 
-*ToDo*
+**Example:**
+
+```js
+
+class App extends Component {
+  // ...
+  async componentDidMount() {
+    try {
+      const response = await fetch(`https://api.github.com/users`);
+
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        const json = await response.json();
+        this.setState({ data: json });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.data.map((el) => (
+            <li key={el.id}>
+              <img src={el.avatar_url} alt={el.avatar_url} />
+              <span className="UserLogin">{el.login}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
