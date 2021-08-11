@@ -11293,7 +11293,21 @@ render () {
 
 ## Q. ***What are the features of create react app?***
 
-*ToDo*
+**Create React App** is a command-line program that lets us create a new React project easily and build the project into artifacts that we can deploy. It is created by the React team and creates a scaffold to the app.
+
+Below are the list of some of the features provided by create react app.
+
+* React, JSX, ES6, Typescript and Flow syntax support.
+* Autoprefixed CSS
+* CSS Reset/Normalize
+* Live-editing CSS and JS in local development server.
+* A fast interactive unit test runner with built-in support for coverage reporting
+* A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
+* An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
+
+**Read More:**
+
+* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
