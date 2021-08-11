@@ -11088,14 +11088,6 @@ export default App
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to listen to state changes?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is the alternative of binding `this` in the constructor?***
 
 **Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
