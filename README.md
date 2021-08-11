@@ -11742,7 +11742,61 @@ function useFriendStatus(friendID) {
 
 ## Q. ***How to Memoize Components in React?***
 
-*ToDo*
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a `useState`, `useReducer` or `useContext` Hook in its implementation, it will still rerender when state or context change.
+
+**Example:** Let\'s take an example of search functionality. In the example below, the App component contains:
+
+* Search input for the fruit name 
+* A button and a child component where the user search will be displayed 
+* A count of the number of times a user has clicked the button
+
+```js
+export default function App() {
+   const fruits = ["apple", "orange", "banana"];
+   const [fruitName, setFruitName] = useState("");
+   const [searchedFruit, setSearchedFruit] = useState(
+     "Search your favorite fruit"
+   );
+   const [count, setCount] = useState(0);
+   const searchFruitName = () => {
+     if (fruits.includes(fruitName)) {
+       setSearchedFruit(fruitName);
+     } else {
+       setSearchedFruit("No results Found");
+     }
+     setCount(count+1);
+   };
+    const showAllFruits = () => {
+     return fruits.map((fruit, index) => {
+       return (
+         <span key={index} className="fruitname">
+           {fruit}
+         </span>
+       );
+     });
+   };
+   return (
+     <div className="App">
+       <h3>Count: {count}</h3>
+       <div className="fruits">{showAllFruits()}</div>
+       <div>
+         <input
+           type="text"
+           placeholder="Search.."
+           onChange={event => setFruitName(event.target.value)}
+           value={fruitName}
+         />
+         <button onClick={searchFruitName}>Search</button>
+       </div>
+       <SearchComponent searchedFruitName={searchedFruit} />
+     </div>
+   );
+ }
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
