@@ -9777,7 +9777,7 @@ function Child() {
 
 ## Q. ***Why you get "Router may have only one child element" warning?***
 
-React router dom throws the error that a router may have only one child element if more than 1 routes are defined without enclosing them in `<div>` or `<switch>`.
+React router dom throws the error that a router may have only one child element if more than one routes are defined without enclosing them in `<div>` or `<switch>`.
 
 Generally, navigation is used over the whole application. That\'s why component like **BrowserRouter** or **Router** expects that the top level component like App, should be enclosed in them. They do not expect multiple routes to be listed in them as children. 
 
@@ -9805,7 +9805,7 @@ export default function App() {
 }
 ```
 
-**Solution:**
+**Solution:** Enclosing route with `<switch>`.
 
 ```js
 import React from 'react';
