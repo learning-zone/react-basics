@@ -12000,7 +12000,43 @@ const App = () => {
 
 ## Q. ***What is Shallow Renderer in React testing?***
 
-*ToDo*
+When shallow rendering is used, Jest will not render child components but return them as defined.
+
+**Example:** 
+
+```js
+// App.js
+
+function MyComponent() {
+  return (
+    <div>
+      <span className="heading">Title</span>
+      <Subcomponent msg="Sub Component" />
+    </div>
+  );
+}
+```
+
+Test case
+
+```js
+// App.test.js
+
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+
+const renderer = new ShallowRenderer();
+renderer.render(<MyComponent />);
+const result = renderer.getRenderOutput();
+
+expect(result.type).toBe('div');
+expect(result.props.children).toEqual([
+  <span className="heading">Title</span>,
+  <Subcomponent msg="Sub Component" />
+]);
+```
+
+*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
