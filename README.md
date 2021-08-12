@@ -12549,7 +12549,21 @@ With the service worker registered, the first time a user hits your PWA, the ins
 
 ## Q. ***What is the purpose of registerServiceWorker in React?***
 
-*ToDo*
+React creates a service worker for you without any configuration by default. The service worker is a web API that helps you cache your assets and other files so that when the user is offline or on slow network, user can still see results on the screen.
+
+**Example:** Enable service worker in react
+
+```js
+// index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
