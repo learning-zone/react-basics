@@ -12044,7 +12044,28 @@ expect(result.props.children).toEqual([
 
 ## Q. ***What is TestRenderer package in React?***
 
-*ToDo*
+This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or jsdom.
+
+**Example:**
+
+```js
+import TestRenderer from 'react-test-renderer';
+
+function Link(props) {
+  return <a href={props.page}>{props.children}</a>;
+}
+
+const testRenderer = TestRenderer.create(
+  <Link page="https://www.facebook.com/">Facebook</Link>
+);
+
+console.log(testRenderer.toJSON());
+// { type: 'a',
+//   props: { href: 'https://www.facebook.com/' },
+//   children: [ 'Facebook' ] }
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
