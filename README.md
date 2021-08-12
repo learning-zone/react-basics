@@ -11996,6 +11996,8 @@ const App = () => {
 ### React Unit Testing
 -----------------------
 
+<br/>
+
 ## Q. ***What is Shallow Renderer in React testing?***
 
 *ToDo*
@@ -12462,6 +12464,8 @@ describe('APP Component', () => {
 --------------------
 ### Redux Questions
 --------------------
+
+<br/>
 
 ## Q. ***What is Redux?***
 
