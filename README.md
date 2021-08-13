@@ -12758,7 +12758,49 @@ const store = createStore(reducers, initialState, middleware);
 
 ## Q. ***How to structure Redux top level directories?***
 
-*ToDo*
+The most of the applications has several top-level directories as below:
+
+* **Components** - Contains all 'dumb' or presentational components, consisting only of HTML and styling.
+* **Containers** - Contains all corresponding components with logic in them. Each container will have one or more component depending on the view represented by the container.
+* **Actions** - All Redux actions
+* **Reducers** - All Redux reducers
+* **API** - API connectivity related code. Handler usually involves setting up an API connector centrally with authentication and other necessary headers.
+* **Utils** - Other logical codes that are not React specific. For example, authUtils would have functions to process the JWT token from the API to determine the user scopes.
+* **Store** - Used for redux store initialization.
+
+**Example:**
+
+```js
+└── src
+    ├── actions
+    │   ├── articleActions.js
+    │   ├── categoryActions.js
+    │   └── userActions.js
+    ├── api
+    │   ├── apiHandler.js
+    │   ├── articleApi.js
+    │   ├── categoryApi.js
+    │   └── userApi.js
+    ├── components
+    │   ├── ArticleComponent.jsx
+    │   ├── ArticleListComponent.jsx
+    │   ├── CategoryComponent.jsx
+    │   ├── CategoryPageComponent.jsx
+    │   └── HomePageComponent.jsx
+    ├── containers
+    │   ├── ArticleContainer.js
+    │   ├── CategoryPageContainer.js
+    │   └── HomePageContainer.js
+    ├── index.js
+    ├── reducers
+    │   ├── articleReducer.js
+    │   ├── categoryReducer.js
+    │   └── userReducer.js
+    ├── routes.js
+    ├── store.js
+    └── utils
+        └── authUtils.js
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
