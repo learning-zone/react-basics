@@ -12813,7 +12813,7 @@ The most of the applications has several top-level directories as below:
 **Example:**
 
 ```js
-const doAddToDoItem = payload => ({ 
+const getUserDetails = payload => ({ 
   type: 'GET_USER', 
   payload 
 })
