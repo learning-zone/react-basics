@@ -426,6 +426,48 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is the difference between Component and Container in React?***
+
+The **presentational** components are concerned with the look, **container** components are concerned with making things work.
+
+For example, this is a presentational component. It gets data from its props, and just focuses on showing an element
+
+```js
+const Users = props => (
+  <ul>
+    {props.users.map(user => (
+      <li>{user}</li>
+    ))}
+  </ul>
+)
+```
+
+On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.
+
+```js
+class UsersContainer extends React.Component {
+  constructor() {
+    this.state = {
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/users').then(users =>
+      this.setState({ users: users }))
+    )
+  }
+
+  render() {
+    return <Users users={this.state.users} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to import and export components using React.js?***
 
 ```js
@@ -12871,48 +12913,6 @@ The following are details of how Redux works:
 <p align="center">
   <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
 </p>
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is the difference between Component and Container in React?***
-
-The **presentational** components are concerned with the look, **container** components are concerned with making things work.
-
-For example, this is a presentational component. It gets data from its props, and just focuses on showing an element
-
-```js
-const Users = props => (
-  <ul>
-    {props.users.map(user => (
-      <li>{user}</li>
-    ))}
-  </ul>
-)
-```
-
-On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.
-
-```js
-class UsersContainer extends React.Component {
-  constructor() {
-    this.state = {
-      users: []
-    }
-  }
-
-  componentDidMount() {
-    axios.get('/users').then(users =>
-      this.setState({ users: users }))
-    )
-  }
-
-  render() {
-    return <Users users={this.state.users} />
-  }
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
