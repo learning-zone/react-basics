@@ -12806,17 +12806,18 @@ The most of the applications has several top-level directories as below:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the typical flow of data like in a React + Redux app?***
+## Q. ***What is an action in Redux?***
 
-*ToDo*
+**Actions** are plain JavaScript objects or **payloads** of information that send data from your application to your store. They are the only source of information for the store. Actions must have a type property that indicates the type of action being performed.
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
+**Example:**
 
-## Q. ***What is an action?***
-
-*ToDo*
+```js
+const doAddToDoItem = payload => ({ 
+  type: 'GET_USER', 
+  payload 
+})
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
