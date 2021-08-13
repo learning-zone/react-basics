@@ -13100,7 +13100,9 @@ ReactDOM.render(
 
 ## Q. ***What are typical middleware choices for handling asynchronous calls in Redux?***
 
-*ToDo*
+By default, Redux\'s actions are dispatched synchronously, which is a problem for any non-trivial app that needs to communicate with an external API or perform side effects. Redux also allows for middleware that sits between an action being dispatched and the action reaching the reducers.
+
+There are three very popular middleware libraries that allow for side effects and asynchronous actions: `Redux Thunk` `Redux Saga` and `Redux Promise`.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
