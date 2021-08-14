@@ -14202,7 +14202,7 @@ Context API prompts a re-render on each update of the state and re-renders all c
 
 ## Q. ***What are the differences between redux-saga and redux-thunk?***
 
-**1. Redux Thunk**
+### **Redux Thunk**
 
 Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
 
@@ -14252,7 +14252,7 @@ const getList = (payload) => {
 export { fetchList }
 ```
 
-**2. Redux Saga**
+### **Redux Saga**
 
 Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
 
