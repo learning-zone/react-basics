@@ -14139,7 +14139,31 @@ It allows to easily find all usages of that constant across the project. It also
 
 ## Q. ***How to use connect from React Redux?***
 
-*ToDo*
+The `connect()` function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
+
+It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
+
+* **Use `mapStateToProps()`**: It maps the state variables from your store to the props that you specify.
+* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container. 
+
+**Example:**
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+
+class App extends React.Component {
+  render() {
+    return <div>{this.props.containerData}</div>
+  }
+}
+
+function mapStateToProps(state) {
+  return { containerData: state.data }
+}
+
+export default connect(mapStateToProps)(App)
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
