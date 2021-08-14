@@ -13311,28 +13311,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are Pure Functions and why should the reducer be a "pure" function?***
-
-**Pure Functions**
-
-Any function that doesn\'t alter input data and that doesn\'t depend on external state (like a database, DOM, or global variable) and consistently provides the same output for the same input is a "pure" function.
-
-A  pure function adheres to the following rules:
-
-* A function returns the same result for same arguments.
-* Its evaluation has no side effects, i.e., it does not alter input data.
-* No mutation of local & global variables.
-* It does not depend on the external state like a global variable.
-
-**Example:**
-
-The below `add()` function doesn\'t alter “a” or “b”, doesn\'t depending on external state, and always returns the same output for the same input.
-
-```js
-const add = (a, b) => a + b //pure function
-```
-
-**Why Reducer must be pure function**
+## Q. ***Why should the reducer be a "pure" function?***
 
 Redux takes a given state (object) and passes it to each reducer in a loop. And it expects a brand new object from the reducer if there are any changes. And it also expects to get the old object back if there are no changes.
 
