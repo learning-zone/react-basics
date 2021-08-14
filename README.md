@@ -14171,7 +14171,30 @@ export default connect(mapStateToProps)(App)
 
 ## Q. ***What is the difference between React context and React Redux?***
 
-*ToDo*
+### **React Context:**
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
+### **Redux:**
+
+Redux is a pattern and library for managing and updating application state, using events called "actions". It serves as a centralized store for state that needs to be used across your entire application, with rules ensuring that the state can only be updated in a predictable fashion.
+
+Redux helps you manage "global" state - state that is needed across many parts of your application.
+
+The patterns and tools provided by Redux make it easier to understand when, where, why, and how the state in your application is being updated, and how your application logic will behave when those changes occur.
+
+### **Redux vs Context API**
+
+**1.) Implementation**
+
+Context API is easy to is use as it has a short learning curve. It requires less code, and because there\'s no need of extra libraries, bundle sizes are reduced. Redux on the other hand requires adding more libraries to the application bundle. The syntax is complex and extensive creating unnecessary work and complexity. However, it\'s still a great alternative regarding prop drilling.
+
+**2.) Rendering**
+
+Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components. 
+
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
