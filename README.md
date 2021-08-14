@@ -14382,7 +14382,16 @@ export default reduxForm({
 
 ## Q. ***How Redux Form initialValues get updated from state?***
 
-*ToDo*
+Add `enableReinitialize : true` When set to true, the **form** will reinitialize every time the initialValues prop changes
+
+```js
+...
+
+export default connect(mapStateToProps)(reduxForm({ 
+  form: 'contactForm', 
+  enableReinitialize: true
+})(ContactForm))
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
