@@ -12625,11 +12625,17 @@ Redux is a predictable state container for JavaScript applications. It helps you
 
 Simply put, Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
 
-**How Redux works**
+**Architecture**
 
-There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another. There are three building parts: actions, store, and reducers.
+In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
 
-**Benefits and limitations of Redux**
+<p align="center">
+  <img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
+</p>
+
+There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another. There are three building parts: `actions`, `store`, and `reducers`.
+
+## Q. ***What are the benefits of using Redux?***
 
 **1. State transfer**
 
@@ -12646,26 +12652,6 @@ Redux provides a strict structure for how the code and state should be managed, 
 **4. Ease of testing and debugging**
 
 Redux makes it easy to test and debug your code since it offers powerful tools such as Redux DevTools in which you can time travel to debug, track your changes, and much more to streamline your development process.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Explain pros and cons of Redux?***
-
-**Pros using redux**
-
-* Central store, any component can access any state from the store, there is no need of passing props back and forth.
-* Another way to look at centralised store, it persists the state of a component even after the component has  unmounted.
-* Prevents unnecessary re-renders, as when the state changes it returns new state which uses shallow copy.
-* Testing will be easy as UI and data management are separated.
-* History of state is maintained which helps in implementing features like undo very easily.
-
-**Cons using redux**
-
-* No encapsulation. Any component can access the data which can cause security issues.
-* Boilerplate code. Restricted design.
-* As state is immutable in redux, the reducer updates the state by returning a new state every time which can cause excessive use of memory.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -13756,21 +13742,9 @@ Some common rules for determining what kind of data should be put into Redux:
 
 ## Q. ***What is Flux?***
 
-*ToDo*
+Flux is an application design paradigm used as a replacement for the more traditional MVC pattern. Flux is a Javascript architecture or pattern for UI which runs on a unidirectional data flow and has a centralized dispatcher. It is useful when your project has dynamic data and you need to keep the data updated in an effective manner. It was created by Facebook, and complements React as view. 
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What are the drawbacks of Redux contrasted with Flux?***
-
-<p align="center">
-  <img src="assets/flux-structure.png" alt="Flux" width="500px" />
-</p>
-
-Flux is application architecture or pattern designed, developed and used by Facebook for building user interface or client-side web application. Flux follows unidirectional data flow which supports or empowers composable view of React\'s components.
-
-**Flux Architecture**
+**Architecture**
 
 The Flux architecture is based on the following components:
 
@@ -13785,18 +13759,11 @@ The Flux architecture is based on the following components:
 
 In the Flux architecture, when a user clicks on something, the view creates actions. Action can create new data and send it to the dispatcher. The dispatcher then dispatches the action result to the appropriate store. The store updates the state based on the result and sends an update to the view.
 
-**Redux Architecture**
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
-Redux is a library, which implements the idea of Flux but in quite a different way. Redux architecture introduces new components like:
-
-* **Reducer**: Logic that decides how your data changes exist in pure functions
-* **Centralized store**: Holds a state object that denotes the state of the entire app
-
-<p align="center">
-  <img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
-</p>
-
-In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
+## Q. ***What are the drawbacks of Redux contrasted with Flux?***
 
 **Flux vs Redux**
 
