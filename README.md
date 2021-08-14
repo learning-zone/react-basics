@@ -13660,14 +13660,6 @@ When using Redux, state is stored globally in the Redux store. Any component tha
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the proper way to access Redux store?***
-
-*ToDo*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is the best way to access redux store outside a react component?***
 
 To access redux store outside a react component, Redux `connect` function works great for regular React components.
@@ -13749,7 +13741,14 @@ export connect(mapStateToProps)(ItemList)
 
 ## Q. ***Should all component states be kept in Redux Store***
 
-*ToDo*
+There is no "right" answer for this. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as "is this dropdown currently open", inside a component\'s internal state.
+
+Some common rules for determining what kind of data should be put into Redux:
+
+* Do other parts of the application needs data to be shared.
+* Is the same data being used to drive multiple components.
+* Do you want to cache the data.
+* Do you want to keep this data consistent while hot-reloading UI components.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
