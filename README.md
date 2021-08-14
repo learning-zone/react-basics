@@ -14657,7 +14657,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 ## Q. ***What is Relay?***
 
-*ToDo*
+Relay is a JavaScript framework for fetching and managing GraphQL data in React applications that emphasizes maintainability, type safety and runtime performance.
+
+Relay achieves this by combining declarative data fetching and a static build step. With declarative data fetching, components declare what data they need, and Relay figures out how to efficiently fetch it. During the static build step, Relay validates and optimizes queries, and pre-computes artifacts to achieve faster runtime performance.
+
+**Read More:**
+
+* *[https://relay.dev/docs/](https://relay.dev/docs/)*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
