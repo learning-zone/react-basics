@@ -14919,9 +14919,9 @@ ReactDOM.render(
 
 ## Q. ***What are the different ways to write mapDispatchToProps()?***
 
-**mapDispatchToProps** is the second argument that connect expects to receive. In the context of a react-redux application, the `mapDispatchToProps` argument is responsible for enabling a component to dispatch actions. In practical terms, `mapDispatchToProps` is where react events (and lifecycle events) are mapped to redux actions.
+**mapDispatchToProps** is the second argument that connect expects to receive. In the context of a react-redux application, the `mapDispatchToProps` argument is responsible for enabling a component to dispatch actions. 
 
-There are a few ways of binding action creators to `dispatch()` in `mapDispatchToProps()`.
+In practical terms, `mapDispatchToProps` is where react events (and lifecycle events) are mapped to redux actions. There are a few ways of binding action creators to `dispatch()` in `mapDispatchToProps()`.
 
 ```js
 const mapDispatchToProps = (dispatch) => ({
