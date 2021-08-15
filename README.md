@@ -15159,7 +15159,7 @@ function selectItemIds(state) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Can I dispatch an action in reducer?***
+## Q. ***Can I dispatch an action in reducer?***
 
 Dispatching an action within a reducer is an **anti-pattern**. Your reducer should be without side effects, simply digesting the action payload and returning a new state object. Adding listeners and dispatching actions within the reducer can lead to chained actions and other side effects.
 
@@ -15167,9 +15167,28 @@ Dispatching an action within a reducer is an **anti-pattern**. Your reducer shou
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is Redux DevTools?***
+
+Redux-Devtools provide us debugging platform for Redux apps. It allows us to perform time-travel debugging and live editing with hot reloading, action replay, and customizable UI.
+
+Some of the features in official documentation are as follows −
+
+* It allows you inspect every state and action payload.
+* It allows you go back in time by "cancelling" actions.
+* If you change the reducer code, each "staged" action will be re-evaluated.
+* If the reducers throw, we can identify the error and also during which action this happened.
+* With `persistState()` store enhancer, you can persist debug sessions across page reloads.
+
+<p align="center">
+  <img src="assets/redux-devtool.png" alt="Redux DevTool" width="400px" />
+</p>
+
+**Read More**
+
+*[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
+
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to set conditional payload in Reducer React Typescript***
-#### Q. ***What is Redux DevTools?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***What is MobX?***
 #### Q. ***What are the differences between Redux and MobX?***
