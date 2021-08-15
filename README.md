@@ -15137,7 +15137,28 @@ export default connect()(MsgSenderPage);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are Redux selectors and Why to use them?***
+## Q. ***What are Redux selectors and Why to use them?***
+
+A **selector** is simply a function that accepts Redux state as an argument and returns data that is derived from that state.
+
+Selectors help to keep your Redux store state minimal and derive data from the state as needed. They can compute derived data, allowing Redux to store the minimal possible state. Selectors are also very efficient. A selector is not recomputed unless one of its arguments changes.
+
+**Example:** 
+
+```js
+// Arrow function, direct lookup
+const selectEntities = state => state.entities
+
+// Function declaration, mapping over an array to derive values
+function selectItemIds(state) {
+  return state.items.map(item => item.id)
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to set conditional payload in Reducer React Typescript***
 #### Q. ***Can I dispatch an action in reducer?***
