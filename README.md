@@ -15056,7 +15056,7 @@ We can use the `filteredTodos` selectors to get all the todos if there\'s no sea
 
 **Redux** is a state container for Javascript apps, mostly used with React. It\'s based on actions that are dispatched and listened by reducers which modify the state properly.
 
-**1. Passing dispatch method to our component**
+**1. Passing dispatch method to component**
 
 The dispatch method is a method of the store object. An action is dispatched to trigger an update to the store.
 
@@ -15159,9 +15159,16 @@ function selectItemIds(state) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+#### Q. ***Can I dispatch an action in reducer?***
+
+Dispatching an action within a reducer is an **anti-pattern**. Your reducer should be without side effects, simply digesting the action payload and returning a new state object. Adding listeners and dispatching actions within the reducer can lead to chained actions and other side effects.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to set conditional payload in Reducer React Typescript***
-#### Q. ***Can I dispatch an action in reducer?***
 #### Q. ***What is Redux DevTools?***
 #### Q. ***What is reselect and how it works?***
 #### Q. ***What is MobX?***
