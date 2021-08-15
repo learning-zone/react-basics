@@ -15159,6 +15159,33 @@ function selectItemIds(state) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is reselect and how it works?***
+
+**Reselect** is a selector library (for Redux) for building memoized selectors. Using memoization, we can prevent unnecessary rerenders and recalculations of derived data which in turn will speed up our application.
+
+Reselect keeps a copy of the last inputs/outputs of the last call, and recomputes the result only if one of the inputs changes. If the the same inputs are provided twice in a row, Reselect returns the cached output. It\'s memoization and cache are fully customizable.
+
+**Example:** Let\'s look at a simple selector using Reselect
+
+```js
+import { createselectetor } from 'reselect'
+
+export const getItems = (state) => state.cart.get('items');
+
+export const getItemsWithTotals = createSelector(
+  [getItems],
+  (items) => {
+    return items.map(i => {
+      return i.set('total', i.get('price', 0) * i.get('quantity'));
+    });
+  }
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***Can I dispatch an action in reducer?***
 
 Dispatching an action within a reducer is an **anti-pattern**. Your reducer should be without side effects, simply digesting the action payload and returning a new state object. Adding listeners and dispatching actions within the reducer can lead to chained actions and other side effects.
@@ -15189,7 +15216,6 @@ Some of the features in official documentation are as follows −
 
 #### Q. ***How to use Redux for Error Handling?***
 #### Q. ***How to set conditional payload in Reducer React Typescript***
-#### Q. ***What is reselect and how it works?***
 #### Q. ***What is MobX?***
 #### Q. ***What are the differences between Redux and MobX?***
 #### Q. ***How do you get redux scaffolding using create-react-app?***
