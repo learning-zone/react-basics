@@ -12089,7 +12089,43 @@ components/
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the popular React-specific linter?***
+## Q. ***What are the popular React-specific linter?***
+
+**ESLint:**
+
+ESLint is a popular JavaScript linter. There are plugins available that analyse specific code styles. One of the most common for React is an npm package called `eslint-plugin-react`.
+
+```js
+npm install -g eslint-plugin-react
+```
+
+This will install the plugin we need, and in our ESLint config file, we just need a few extra lines.
+
+```js
+"extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+]
+```
+
+```js
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+}
+```
+
+**eslint-plugin-jsx-a11y:**
+
+It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Does the static object work with ES6 classes in React?***
 #### Q. ***What is the browser support for react applications?***
 #### Q. ***What is code-splitting?***
