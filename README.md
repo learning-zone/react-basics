@@ -15212,7 +15212,7 @@ Some of the features in official documentation are as follows −
 
 **Read More**
 
-*[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
+* *[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
 
 ## Q. ***How to set conditional action on state in React-redux***
 
