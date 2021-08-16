@@ -119,7 +119,7 @@
 | 103. |[Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?](#q-explain-the-standard-javascript-toolchain-transpilation-via-babel-or-other-compilers-jsx-and-these-items-significance-in-recent-development)|
 | 104. |[How React handle or restrict Props to certain types?](#q-how-react-handle-or-restrict-props-to-certain-types)|
 | 105. |[What is prop drilling and how can you avoid it?](#q-what-is-prop-drilling-and-how-can-you-avoid-it)|
-| 106. |[If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?](#q-if-you-wanted-a-component-to-perform-an-action-only-once-when-the-component-initially-rendered-how-would-you-achieve-this-in-react)|
+| 106. |[How to make component to perform an action only once when the component initially rendered?](#q-how-to-make-component-to-perform-an-action-only-once-when-the-component-initially-rendered?)|
 | 107. |[How can automated tooling be used to improve the accessibility of a React application?](#q-how-can-automated-tooling-be-used-to-improve-the-accessibility-of-a-react-application)|
 | 108. |[What is the purpose of using super constructor with props argument?](#q-what-is-the-purpose-of-using-super-constructor-with-props-argument)|
 | 109. |[What do these three dots (...) in React do?](#q-what-do-these-three-dots-in-react-do)|
@@ -4620,9 +4620,10 @@ function Display() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***If you wanted a component to perform an action only once when the component initially rendered - how would you achieve this in react?***
+## Q. ***How to make component to perform an action only once when the component initially rendered?***
 
 The `componentDidMount()` lifecycle hook can be used with class components.
+
 ```js
 class Homepage extends React.Component {
   componentDidMount() {
@@ -4633,9 +4634,11 @@ class Homepage extends React.Component {
   }
 }
 ```
+
 Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
 
 The `useEffect()` hook can be used with function components.
+
 ```js
 const Homepage = () => {
   useEffect(() => {
@@ -4645,6 +4648,7 @@ const Homepage = () => {
   return <div>Homepage</div>
 }
 ```
+
 The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
 
 * The first parameter it takes is a callback function to be executed.
@@ -4664,11 +4668,11 @@ The value passed as the second argument controls when the callback is executed:
 
 There are two main categories of automated tools that can be used to identify accessibility issues:
 
-**Static Analysis Tools**
+**Static Analysis Tools:**
 
 Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
 
-**Browser Tools**  
+**Browser Tools:**  
 
 Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
 
