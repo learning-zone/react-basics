@@ -12091,7 +12091,7 @@ components/
 
 ## Q. ***What are the popular React-specific linter?***
 
-**ESLint:**
+**1. ESLint:**
 
 ESLint is a popular JavaScript linter. There are plugins available that analyse specific code styles. One of the most common for React is an npm package called `eslint-plugin-react`.
 
@@ -12118,7 +12118,7 @@ This will install the plugin we need, and in our ESLint config file, we just nee
 }
 ```
 
-**eslint-plugin-jsx-a11y:**
+**2. eslint-plugin-jsx-a11y:**
 
 It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
 
