@@ -122,7 +122,7 @@
 | 106. |[How to make component to perform an action only once when the component initially rendered?](#q-how-to-make-component-to-perform-an-action-only-once-when-the-component-initially-rendered)|
 | 107. |[How can automated tooling be used to improve the accessibility of a React application?](#q-how-can-automated-tooling-be-used-to-improve-the-accessibility-of-a-react-application)|
 | 108. |[What is the purpose of using super constructor with props argument?](#q-what-is-the-purpose-of-using-super-constructor-with-props-argument)|
-| 109. |[What do these three dots (...) in React do?](#q-what-do-these-three-dots-in-react-do)|
+| 109. |[What do these three dots in React do?](#q-what-do-these-three-dots-in-react-do)|
 | 110. |[Why we need to be careful when spreading props on DOM elements?](#q-why-we-need-to-be-careful-when-spreading-props-on-dom-elements)|
 | 111. |[What are React Hooks?](#q-what-are-react-hooks)|
 | 112. |[What are advantages of using React Hooks?](#q-what-are-advantages-of-using-react-hooks)|
@@ -4705,7 +4705,7 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What do these three dots (...) in React do?***
+## Q. ***What do these three dots in React do?***
 
 The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
 
