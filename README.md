@@ -11992,9 +11992,7 @@ const App = () => {
 
 ## Q. ***How to put React in production mode?***
 
-**Creating a React App**
-
-Create a simple `hello-world-app` using Create-React-App.
+Create a simple `hello-world-app` using [Create-React-App](https://create-react-app.dev/docs/getting-started).
 
 ```js
 npx create-react-app hello-world-app
