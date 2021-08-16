@@ -15214,13 +15214,47 @@ Some of the features in official documentation are as follows −
 
 *[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
 
-#### Q. ***How to use Redux for Error Handling?***
-#### Q. ***How to set conditional payload in Reducer React Typescript***
-#### Q. ***What is MobX?***
-#### Q. ***What are the differences between Redux and MobX?***
-#### Q. ***How do you get redux scaffolding using create-react-app?***
+## Q. ***How to set conditional action on state in React-redux***
 
-*ToDO*
+Actions are plain objects that send data or payloads of information from your component to the global store object. 
+
+Consider that the authentication is already in progress, in which case you do not want to dispatch the `AUTHENTICATE` action. So here, you need to connect the component to the global store and retrieve the authentication status. You can do that by passing the `mapStateToProps` argument to the `connect()` method. The condition will ensure that the `AUTHENTICATE` action is dispatched only when the `isAuthentication` state is set to `false`.
+
+```js
+import React from "react";
+import { connect } from "react-redux";
+
+class LoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  handleFormSubmit(values) {
+    if (!this.props.isAuthenticating)
+      this.props.dispatch({
+        type: AUTHENTICATE,
+        payload: values,
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <LoginForm onSubmit={this.handleFormSubmit} />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (globalState) => {
+  const { isAuthenticating } = globalState;
+  return { isAuthenticating };
+};
+
+export default connect(mapStateToProps)(LoginPage);
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
