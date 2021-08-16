@@ -261,7 +261,7 @@
 | 245. |[What is React Fiber?](#q-what-is-react-fiber)|
 | 246. |[Explain Composition vs Inheritance in React?](#q-explain-composition-vs-inheritance-in-react)|
 | 247. |[What is a Webhook in React?](#q-what-is-a-webhook-in-react)|
-| 248. |[Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?](#q-exlain-is-usecallback-usememo-useimperativehandle-uselayouteffect-usedebugvalue-in-react)|
+| 248. |[Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?](#q-exlain-is-usecallback-usememo-useimperativehandle-uselayouteffect-usedebugvalue-in-react)|
 | 240. |[How to Memoize Components in React?](#q-how-to-memoize-components-in-react)|
 | 250. |[How to use useSpring() for animation?](#q-how-to-use-usespring-for-animation)|
 | 251. |[How to put React in production mode?](#q-how-to-put-react-in-production-mode)|
@@ -11583,7 +11583,7 @@ Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-s
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue()  in React?***
+## Q. ***Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?***
 
 **1. useCallback()**
 
