@@ -307,7 +307,7 @@
 | 291. |[How to set the dataflow using react with redux?](#q-how-to-set-the-dataflow-using-react-with-redux)|
 | 292. |[What are the three principles that Redux follows?](#q-what-are-the-three-principles-that-redux-follows)|
 | 293. |[How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?](#q-how-can-i-represent-side-effects-such-as-ajax-calls-why-do-we-need-things-like-action-creators-thunks-and-middleware-to-do-async-behavior)|
-| 294. |[What is the '@' (at symbol) in the Redux @connect decorator?](#q-what-is-the-at-symbol-in-the-redux-connect-decorator)|
+| 294. |[What is the at symbol in the Redux connect decorator?](#q-what-is-the-at-symbol-in-the-redux-connect-decorator)|
 | 295. |[What is the difference between React State vs Redux State?](#q-what-is-the-difference-between-react-state-vs-redux-state)|
 | 296. |[What is the best way to access redux store outside a react component?](#q-what-is-the-best-way-to-access-redux-store-outside-a-react-component)|
 | 297. |[Should all component states be kept in Redux Store](#q-should-all-component-states-be-kept-in-redux-store)|
@@ -13533,7 +13533,7 @@ Redux is inspired by functional programming, and out of the box, has no place fo
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the '@' (at symbol) in the Redux @connect decorator?***
+## Q. ***What is the at symbol in the Redux connect decorator?***
 
 Decorators make it possible to annotate and modify classes and properties at design time.
 
