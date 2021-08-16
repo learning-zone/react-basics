@@ -12034,7 +12034,61 @@ This creates a build directory inside the root directory, which bundles your Rea
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What are the common folder structures for React?***
+## Q. ***What are the common folder structures for React?***
+
+React doesn\'t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
+
+**1. Grouping by features or routes**
+
+One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
+
+```js
+common/
+  Avatar.js
+  Avatar.css
+  APIUtils.js
+  APIUtils.test.js
+feed/
+  index.js
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  FeedAPI.js
+profile/
+  index.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+  ProfileAPI.js
+```
+
+**2. Grouping by file type**
+
+Another popular way to structure projects is to group similar files together, for example:
+
+```js
+api/
+  APIUtils.js
+  APIUtils.test.js
+  ProfileAPI.js
+  UserAPI.js
+components/
+  Avatar.js
+  Avatar.css
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is useHooks() in React?***
 #### Q. ***What are the popular React-specific linter?***
 #### Q. ***Does the static object work with ES6 classes in React?***
