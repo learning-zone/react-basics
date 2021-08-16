@@ -12126,7 +12126,25 @@ It will help fix common issues with accessibility. As JSX offers slightly differ
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Does the static object work with ES6 classes in React?***
+## Q. ***Does the static object work with ES6 classes in React?***
+
+Although statics only works for `React.createClass()`, you can still write static methods in ES6 notation. If you are using ES7, then you can also write static properties.
+
+```js
+class Component extends React.Component {
+    static propTypes = {
+    ...
+    }
+
+    static someMethod(){
+    }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the browser support for react applications?***
 #### Q. ***What is code-splitting?***
 #### Q. ***What is route based code splitting?***
@@ -12136,6 +12154,8 @@ It will help fix common issues with accessibility. As JSX offers slightly differ
 #### Q. ***What is Concurrent Rendering?***
 #### Q. ***What is the difference between async mode and concurrent mode?***
 #### Q. ***What is the purpose of eslint plugin for hooks?***
+
+*ToDo*
 
 <br/>
 
