@@ -11990,7 +11990,52 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to put React in production mode?***
+## Q. ***How to put React in production mode?***
+
+**Creating a React App**
+
+Create a simple `hello-world-app` using Create-React-App.
+
+```js
+npx create-react-app hello-world-app
+```
+
+Modify the `App.js` file as shown below.
+
+```js
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Hello world app</h1>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Run the app local server by running the following command
+
+```js
+npm start
+```
+
+On the local server (http://localhost:3000) you can see a simple React app displaying a "hello world" message. The next step is to make this app production-ready for deployment. Inside the root directory run the following command:
+
+```js
+npm run build
+```
+
+This creates a build directory inside the root directory, which bundles your React app and minifies it into simple HTML, CSS, and JavaScript files. This build folder serves your app via a simple entry point, `index.html`, where your entire React app resides. Running your app via a remote server means running this `index.html` file on the server.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are the common folder structures for React?***
 #### Q. ***What is useHooks() in React?***
 #### Q. ***What are the popular React-specific linter?***
