@@ -119,7 +119,7 @@
 | 103. |[Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?](#q-explain-the-standard-javascript-toolchain-transpilation-via-babel-or-other-compilers-jsx-and-these-items-significance-in-recent-development)|
 | 104. |[How React handle or restrict Props to certain types?](#q-how-react-handle-or-restrict-props-to-certain-types)|
 | 105. |[What is prop drilling and how can you avoid it?](#q-what-is-prop-drilling-and-how-can-you-avoid-it)|
-| 106. |[How to make component to perform an action only once when the component initially rendered?](#q-how-to-make-component-to-perform-an-action-only-once-when-the-component-initially-rendered?)|
+| 106. |[How to make component to perform an action only once when the component initially rendered?](#q-how-to-make-component-to-perform-an-action-only-once-when-the-component-initially-rendered)|
 | 107. |[How can automated tooling be used to improve the accessibility of a React application?](#q-how-can-automated-tooling-be-used-to-improve-the-accessibility-of-a-react-application)|
 | 108. |[What is the purpose of using super constructor with props argument?](#q-what-is-the-purpose-of-using-super-constructor-with-props-argument)|
 | 109. |[What do these three dots (...) in React do?](#q-what-do-these-three-dots-in-react-do)|
