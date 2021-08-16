@@ -12089,7 +12089,6 @@ components/
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is useHooks() in React?***
 #### Q. ***What are the popular React-specific linter?***
 #### Q. ***Does the static object work with ES6 classes in React?***
 #### Q. ***What is the browser support for react applications?***
