@@ -226,7 +226,7 @@
 | 210.  |[What is difference between Pure Component vs Component?](#q-what-is-difference-between-pure-component-vs-component)|
 | 211.  |[How to programmatically redirect to another page using React router?](#q-how-to-programmatically-redirect-to-another-page-using-react-router)|
 | 212. |[How to pass additional data while redirecting to a route in React?](#q-how-to-pass-additional-data-while-redirecting-to-a-route-in-react)|
-| 213. |[What is the use of this.props?](#q-what-is-the-use-of-this.props)|
+| 213. |[What is the use of this.props?](#q-what-is-the-use-of-this-props)|
 | 214. |[How to pass props in React router?](#q-how-to-pass-props-in-react-router)|
 | 215. |[How to get query parameters in react routing?](#q-how-to-get-query-parameters-in-react-routing)|
 | 216. |[Why you get "Router may have only one child element" warning?](#q-why-you-get-router-may-have-only-one-child-element-warning)|
@@ -9614,7 +9614,7 @@ props.history.push({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is the use of this.props ?***
+## Q. ***What is the use of this.props?***
 
 It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
 
