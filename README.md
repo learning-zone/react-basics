@@ -12206,7 +12206,11 @@ function MyComponent() {
 }
 ```
 
-### **Route-based code splitting**
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is route based code splitting?***
 
 Route based code splitting is essential during the page transitions on the web, which takes some amount of time to load. Here is an example of how to setup route-based code splitting into the app using React Router with `React.lazy`.
 
@@ -12235,20 +12239,130 @@ const App = () => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is route based code splitting?***
-#### Q. ***What is dynamic import in react***
-#### Q. ***What are loadable components?***
-#### Q. ***How do you access imperative API of web components?***
-#### Q. ***What is Concurrent Rendering?***
-#### Q. ***What is the difference between async mode and concurrent mode?***
-#### Q. ***What is the purpose of eslint plugin for hooks?***
+## Q. ***What is dynamic import in react***
 
-*ToDo*
+`React.lazy` takes a function that must call a dynamic import(). This must return a Promise which resolves to a module with a default export containing a React component.
+
+The lazy component should then be rendered inside a Suspense component, which allows us to show some fallback content (such as a loading indicator) while we\'re waiting for the lazy component to load.
+
+**Example:**
+
+```js
+import React, { Suspense } from 'react';
+
+const UsersComponent = React.lazy(() => import('./UsersComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <UsersComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are loadable components?***
+
+If you want to do code-splitting in a server rendered app, it is recommend to use Loadable Components because `React.lazy` and `Suspense` is not available for server-side rendering. Loadable lets you render a dynamic import as a regular component.
+
+**Installation:**
+
+```js
+npm install @loadable/component
+```
+
+**Example:**
+
+```js
+import loadable from '@loadable/component'
+
+const UsersComponent = loadable(() => import('./UsersComponent'))
+
+function MyComponent() {
+  return (
+    <div>
+      <UsersComponent />
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How do you access imperative API of web components?***
+
+Web Components often expose an imperative API to implement its functions. To access the imperative APIs of a web component, you will need to attach a **ref** to the component and interact with the DOM node directly. If you are using third-party web components, the recommended solution is to write a React component that behaves as a **wrapper** for your web component.
+
+**Example:** Using React in your Web Components
+
+```js
+var proto = Object.create(HTMLElement.prototype, {
+  createdCallback: {
+    value: function() {
+      var mountPoint = document.createElement('span');
+      this.createShadowRoot().appendChild(mountPoint);
+
+      var name = this.getAttribute('name');
+      var url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+      ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
+    }
+  }
+});
+document.registerElement('x-search', {prototype: proto});
+```
+
+```js
+class SearchComponent extends React.Component {
+  render() {
+    return <div>Results: <x-search>{this.props.name}</x-search>!</div>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is the purpose of eslint plugin for hooks?***
+
+The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to avoid bugs. It assumes that any function starting with "use" and a capital letter right after it is a Hook. In particular, the rule enforces that,
+
+* Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
+* Hooks are called in the same order on every render.
+
+```js
+// ESLint configuration
+{
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
+  "rules": {
+    // ...
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+  }
+}
+```
+
+*Note: This plugin is included by default in Create React App.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 <br/>
 
 -----------------------
-### React Unit Testing
+### REACT UNIT TESTING
 -----------------------
 
 <br/>
@@ -12827,7 +12941,7 @@ registerServiceWorker();
 <br/>
 
 --------------------
-### Redux Questions
+### REDUX QUESTIONS
 --------------------
 
 <br/>
