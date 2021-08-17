@@ -12146,6 +12146,34 @@ class Component extends React.Component {
 </div>
 
 #### Q. ***What is the browser support for react applications?***
+
+By default, **Create React App** generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use **react-app-polyfill**.
+
+The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified.
+
+**Example:**
+
+```js
+// package.json
+
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is code-splitting?***
 #### Q. ***What is route based code splitting?***
 #### Q. ***What is dynamic import in react***
