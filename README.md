@@ -12184,7 +12184,7 @@ Code splitting uses `React.lazy` and `Suspense` library, which helps to load a d
 * The impact on memory
 * The downloaded Kilobytes (or Megabytes) size
 
-**React.lazy and Suspense**
+### **React.lazy and Suspense**
 
 The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
 
@@ -12206,7 +12206,7 @@ function MyComponent() {
 }
 ```
 
-**Route-based code splitting**
+### **Route-based code splitting**
 
 Route based code splitting is essential during the page transitions on the web, which takes some amount of time to load. Here is an example of how to setup route-based code splitting into the app using React Router with `React.lazy`.
 
