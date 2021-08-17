@@ -12145,7 +12145,7 @@ class Component extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the browser support for react applications?***
+## Q. ***What is the browser support for react applications?***
 
 By default, **Create React App** generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use **react-app-polyfill**.
 
@@ -12174,7 +12174,67 @@ The `browserslist` configuration controls the outputted JavaScript so that the e
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is code-splitting?***
+## Q. ***What is code-splitting?***
+
+Code-Splitting is a feature supported by bundlers like Webpack, Rollup and Browserify ( via factor-bundle ) which can create multiple bundles that can be dynamically loaded at runtime.
+
+Code splitting uses `React.lazy` and `Suspense` library, which helps to load a dependency lazily and only load it when needed by the user. The code splitting improves:
+
+* The performance of the app
+* The impact on memory
+* The downloaded Kilobytes (or Megabytes) size
+
+**React.lazy and Suspense**
+
+The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
+
+**Example:**
+
+```js
+import React, { Suspense } from 'react';
+
+const UsersComponent = React.lazy(() => import('./UsersComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <UsersComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Route-based code splitting**
+
+Route based code splitting is essential during the page transitions on the web, which takes some amount of time to load. Here is an example of how to setup route-based code splitting into the app using React Router with `React.lazy`.
+
+**Example:**
+
+```js
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const Home = lazy(() => import('./routes/Home'));
+const About = lazy(() => import('./routes/About'));
+
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+      </Switch>
+    </Suspense>
+  </Router>
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is route based code splitting?***
 #### Q. ***What is dynamic import in react***
 #### Q. ***What are loadable components?***
