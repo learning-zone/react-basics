@@ -56,7 +56,55 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Use React State to Update the DOM
+## Q. Use React State to Update the DOM
+
+```js
+
+function App() {
+  const [name, setName] = useState("Prabhat Sinha");
+  const [age, setAge] = useState("28");
+
+  return (
+    <div className="App">
+      <h2>Update Data from an input</h2>
+
+      <div className="input-display">
+        <h3>Display Name: {name}</h3>
+        <h3>Display Age: {age}</h3>
+      </div>
+
+      <div className="inputs">
+        <div className="field">
+          <label className="label">Name: </label>
+          <input
+            className="input"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div className="field">
+          <label className="label">Age: </label>
+          <input
+            type="number"
+            className="input"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-update-dom-vu4il?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Show an Alert Based on an Input
 #### Q. Add Two Numbers
 #### Q. Fetch and Display from an API
