@@ -1,6 +1,27 @@
 # React Coding Practice
 
-#### Q. Display Simple Data with JSX
+## Q. Display Simple Data with JSX
+
+```js
+/**
+* JSX Example using Functional Component
+*
+**/
+export default function App() {
+  return (
+    <div className="App">
+      <h1>JSX Example!</h1>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/jsx-example-b1hpp?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Loop Over and Display Data with JSX
 #### Q. Use React State to Update the DOM
 #### Q. Show an Alert Based on an Input
