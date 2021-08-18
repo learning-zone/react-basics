@@ -22,7 +22,40 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Loop Over and Display Data with JSX
+## Q. Loop Over and Display Data with JSX
+
+```js
+// App.js
+
+import users from "./users-data";
+
+function App() {
+  return (
+    <div className="App">
+      <div className="page-deets">
+        <h2>Loop Over and Display Data with JSX</h2>
+      </div>
+      {/* Iterate over imported array in userData */}
+      <div className="users">
+        {users.map((user, index) => (
+          <div key={index}>
+            <h3>{user.name}</h3>
+            <p>{user.location}</p>
+            <p>{user.car}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-iterate-array-ej0wm?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Use React State to Update the DOM
 #### Q. Show an Alert Based on an Input
 #### Q. Add Two Numbers
