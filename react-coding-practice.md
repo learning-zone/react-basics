@@ -59,40 +59,25 @@ function App() {
 ## Q. Use React State to Update the DOM
 
 ```js
-
 function App() {
-  const [name, setName] = useState("Prabhat Sinha");
-  const [age, setAge] = useState("28");
+  const [search, setSearch] = useState("");
 
   return (
     <div className="App">
       <h2>Update Data from an input</h2>
 
       <div className="input-display">
-        <h3>Display Name: {name}</h3>
-        <h3>Display Age: {age}</h3>
+        Seached Keyword: <b>{search}</b>
       </div>
 
       <div className="inputs">
-        <div className="field">
-          <label className="label">Name: </label>
-          <input
-            className="input"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        <div className="field">
-          <label className="label">Age: </label>
-          <input
-            type="number"
-            className="input"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
+        <input
+          className="input"
+          type="text"
+          value={search}
+          placeholder="Seach Here"
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
     </div>
   );
