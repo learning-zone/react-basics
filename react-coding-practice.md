@@ -105,7 +105,41 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Show an Alert Based on an Input
+## Q. Show an Alert Based on an Input
+
+```js
+function App() {
+  const [phrase, setPhrase] = useState("");
+
+  if (phrase === "Hello React") {
+    alert("You may pass!");
+  }
+
+  return (
+    <div className="App">
+      <h2>What's the secret phrase?</h2>
+
+      <input
+        type="text"
+        value={phrase}
+        onChange={(e) => setPhrase(e.target.value)}
+        placeholder="Enter a secret"
+      />
+
+      <p>
+        Hint: It's <strong>Hello React</strong>
+      </p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-alert-based-on-input-hk2ip?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Add Two Numbers
 #### Q. Fetch and Display from an API
 #### Q. Use Context to Pass Data
