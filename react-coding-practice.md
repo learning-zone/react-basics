@@ -125,7 +125,47 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Add Two Numbers
+## Q. Add Two Numbers
+
+```js
+function App() {
+  const [number1, setNumber1] = useState();
+  const [number2, setNumber2] = useState();
+  const [total, setTotal] = useState(number1 + number2);
+
+  function calculateTotal() {
+    setTotal(number1 + number2);
+  }
+
+  return (
+    <div className="App">
+      <h1>Adding Two Numbers</h1>
+      <div>
+        <input
+          type="number"
+          value={number1}
+          onChange={(e) => setNumber1(+e.target.value)}
+        />
+        <input
+          type="number"
+          value={number2}
+          onChange={(e) => setNumber2(+e.target.value)}
+        />
+      </div>
+
+      <button onClick={calculateTotal}>Add Them!</button>
+      <h2>Total: {total}</h2>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-calculator-8ud1d?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Fetch and Display from an API
 #### Q. Use Context to Pass Data
 #### Q. React Simple Counter
