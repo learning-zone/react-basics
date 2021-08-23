@@ -206,6 +206,34 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. React Simple Counter
+
+```js
+const App = () => {
+  const [counter, setCounter] = useState(0);
+
+  const handleClick = (type) => {
+    type === "increment" ? setCounter(counter + 1) : setCounter(counter - 1);
+  };
+
+  return (
+    <div>
+      <h2>Counter: {counter}</h2>
+      <div className="buttons">
+        <button onClick={() => handleClick("increment")}>Increment</button>
+        <button onClick={() => handleClick("decrement")}>Decrement</button>
+      </div>
+    </div>
+  );
+};
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-counter-bhp4q?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. Use Context to Pass Data
 
 ```js
@@ -252,7 +280,10 @@ const App = () => {
 
 **&#9885; [Run this Code](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
-#### Q. React Simple Counter
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Todo List
 #### Q. Search text based on list
 #### Q. Fizz Buzz
