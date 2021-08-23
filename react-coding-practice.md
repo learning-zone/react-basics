@@ -206,7 +206,52 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Use Context to Pass Data
+## Q. Use Context to Pass Data
+
+```js
+// Counter.js
+
+const { useState, useContext } = React;
+
+const CountContext = React.createContext();
+
+const Counter = () => {
+  const { count, increase, decrease } = useContext(CountContext);
+  return (
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count">{count}</span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+};
+```
+
+```js
+// App.js
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <CountContext.Provider value={{ count, increase, decrease }}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+};
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+
 #### Q. React Simple Counter
 #### Q. Todo List
 #### Q. Search text based on list
