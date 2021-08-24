@@ -284,7 +284,7 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to Create ToDo App using React?
+## Q. Create ToDo App using React?
 
 ```js
 class App extends React.Component {
@@ -376,7 +376,53 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Search text based on list
+## Q. Search text based on list
+
+```js
+const people = [
+  "Shashi Koshy",
+  "Dhriti Taneja",
+  "Dipa Mishra"
+];
+
+function App() {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  React.useEffect(() => {
+    const results = people.filter((person) =>
+      person.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+  return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+      <ul>
+        {searchResults.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-search-list-u1s8b?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Fizz Buzz
 #### Q. Create a chat application
 #### Q. Call child method from parent
