@@ -472,7 +472,6 @@ class FrizzBuzz extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Create a chat application
 #### Q. Call child method from parent
 #### Q. Show or hide element in React
 #### Q. How can I update the parent state in React?
@@ -494,7 +493,6 @@ class FrizzBuzz extends React.Component {
 #### Q. Instance v state variables in react.js
 #### Q. How to create dynamic href in react render function?
 #### Q. How to toggle boolean state of react component?
-#### Q. How to repeat an element n times using JSX
 #### Q. Dynamically add child components in React
 #### Q. Disable back button in react navigation
 #### Q. How can I set a cookie in react?
@@ -506,6 +504,8 @@ class FrizzBuzz extends React.Component {
 #### Q. Give a simple example of Jest test case?
 #### Q. How to use font-awesome icons in React?
 #### Q. How to use SVGs in React?
+#### Q. How to repeat an element n times using JSX
+#### Q. Create a chat application
 
 *ToDo*
 
