@@ -423,7 +423,55 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Fizz Buzz
+## Q. Fizz Buzz program in React
+
+```js
+class FrizzBuzz extends React.Component {
+  state = {
+    count: 1
+  };
+
+  handleDecrement = () => {
+    if (this.state.count > 1) {
+      this.setState((prevState) => ({ count: prevState.count - 1 }));
+    }
+  };
+
+  handleIncrement = () => {
+    this.setState((prevState) => ({ count: prevState.count + 1 }));
+  };
+
+  render() {
+    return (
+      <div>
+        <h1> React Fizz Buzz </h1>
+        <p> Counting incrementally, replacing any number divisible by three with
+          the word "fizz", and any number divisible by five with the word
+          "buzz". </p>
+
+        <h2>
+          {this.state.count % 15 === 0
+            ? "FizzBuzz"
+            : this.state.count % 3 === 0
+            ? "Fizz"
+            : this.state.count % 5 === 0
+            ? "Buzz"
+            : this.state.count}
+        </h2>
+        <button onClick={this.handleDecrement}> - </button>
+        <button onClick={this.handleIncrement}> + </button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-fizz-buzz-qtk36?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Create a chat application
 #### Q. Call child method from parent
 #### Q. Show or hide element in React
