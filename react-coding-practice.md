@@ -573,7 +573,57 @@ class Child extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Show or hide element in React
+## Q. Show or hide element in React
+
+**Using React Class:**
+
+```js
+class Toggle extends React.Component {
+  state = {
+    show: true
+  };
+
+  toggle = () =>
+    this.setState((currentState) => ({ show: !currentState.show }));
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.toggle}>
+          Toggle: {this.state.show ? "Show" : "Hide"}
+        </button>
+        {this.state.show && <h2>Hello World!</h2>}
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-toggle-9h4ui?file=/src/App.js)**
+
+**Using React hooks:**
+
+```js
+export default function App() {
+  const [show, toggleShow] = React.useState(true);
+
+  return (
+    <div>
+      <button onClick={() => toggleShow(!show)}>
+        Toggle: {show ? "Show" : "Hide"}
+      </button>
+      {show && <h2>Hello World!</h2>}
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-toggle-gipub?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How can I update the parent state in React?
 #### Q. How to pass data from child component to its parent in ReactJS?
 #### Q. How do I reference a local image in React?
