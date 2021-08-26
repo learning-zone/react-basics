@@ -672,7 +672,6 @@ class Child extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to pass data from child component to its parent in ReactJS?
 #### Q. How do I reference a local image in React?
 #### Q. How to access a child state in React?
 #### Q. React prop validation for date objects
