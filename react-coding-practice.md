@@ -472,7 +472,107 @@ class FrizzBuzz extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Call child method from parent
+## Q. Call child method from parent in React
+
+**React.forwardRef():**
+
+```js
+import { forwardRef, useRef, useImperativeHandle } from "react";
+
+const Child = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    getMessage() {
+      alert("Message from Child");
+    }
+  }));
+
+  return <h1>Child Component</h1>;
+});
+
+const Parent = () => {
+  const childRef = useRef();
+
+  return (
+    <div>
+      <Child ref={childRef} />
+      <button onClick={() => childRef.current.getMessage()}>Click</button>
+    </div>
+  );
+};
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-forwardref-3serh?file=/src/index.js)**
+
+**Class Component:**
+
+```js
+
+class Parent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
+  }
+
+  onClick = () => {
+    this.child.current.getMessage();
+  };
+
+  render() {
+    return (
+      <div>
+        <Child ref={this.child} />
+        <button onClick={this.onClick}>Click</button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  getMessage() {
+    alert("Message from Child");
+  }
+
+  render() {
+    return <h1>Child Component</h1>;
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-createref-t0gud?file=/src/index.js)**
+
+**Callback Ref API:**
+
+```js
+class Parent extends React.Component {
+  render() {
+    return (
+      <div>
+        <Child ref={(instance) => { this.child = instance; }} />
+        <button onClick={() => { this.child.getMessage(); }} >
+          Click
+        </button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  getMessage() {
+    alert("Message from Child");
+  }
+
+  render() {
+    return <h2>Child Component</h2>;
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-callback-ref-api-kp30y?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Show or hide element in React
 #### Q. How can I update the parent state in React?
 #### Q. How to pass data from child component to its parent in ReactJS?
