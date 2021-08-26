@@ -624,7 +624,54 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How can I update the parent state in React?
+## Q. How can I update the parent state in React?
+
+**Using function as a Prop:**
+
+```js
+class Parent extends Component {
+  state = {
+    text: "Click Me !"
+  };
+
+  // Function to update state
+  handleUpdate = (newState) => {
+    this.setState({ text: newState });
+  };
+
+  render() {
+    return (
+      <div>
+        <Child
+          text={this.state.text}
+          // Passing a function to child
+          updateState={this.handleUpdate}
+        ></Child>
+      </div>
+    );
+  }
+}
+
+class Child extends Component {
+  render() {
+    return (
+      <button
+        // Using parent props to update parent state
+        onClick={() => this.props.updateState("Parent State Changed")}
+      >
+        {this.props.text}
+      </button>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-function-as-a-prop-2unfh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to pass data from child component to its parent in ReactJS?
 #### Q. How do I reference a local image in React?
 #### Q. How to access a child state in React?
