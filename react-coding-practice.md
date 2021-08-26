@@ -672,7 +672,31 @@ class Child extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How do I reference a local image in React?
+## Q. How do I reference a local image in React?
+
+```js
+import React, { Component } from "react";
+import logo from "./react_photo-goose.jpg";
+
+export default class Header extends Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="logo">
+          <img src={logo} width="100%" alt="Googe Pic" />
+        </div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/image-in-react-ud0ry?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to access a child state in React?
 #### Q. React prop validation for date objects
 #### Q. How to access custom attributes from event object in React?
