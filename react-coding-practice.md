@@ -697,7 +697,47 @@ export default class Header extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to access a child state in React?
+## Q. How to access a child state in React?
+
+```js
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ChildElement = React.createRef();
+  }
+
+  handleClick = () => {
+    const childelement = this.ChildElement.current;
+    alert("Current state of child is: " + childelement.state.name);
+  };
+  render() {
+    return (
+      <div>
+        <Child ref={this.ChildElement} />
+        <h2>Access child state from parent component</h2>
+        <button onClick={this.handleClick}> CLICK ME </button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  state = {
+    name: "Hello React"
+  };
+
+  render() {
+    return <></>;
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/access-child-state-p2iip?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. React prop validation for date objects
 #### Q. How to access custom attributes from event object in React?
 #### Q. Updating state on props change in React Form
