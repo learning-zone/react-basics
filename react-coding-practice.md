@@ -769,7 +769,30 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to access custom attributes from event object in React?
+## Q. How to access custom attributes from event object in React?
+
+```js
+export default class Header extends React.Component {
+  handleClick(event) {
+    console.log(event.target.getAttribute("name"));
+  }
+
+  render() {
+    return (
+      <h2 name="Header" onClick={this.handleClick}>
+        CLICK ME !
+      </h2>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-custom-attributes-i3mu0?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Updating state on props change in React Form
 #### Q. Delete item from state array in react
 #### Q. Sending the bearer token with axios
