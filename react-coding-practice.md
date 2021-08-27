@@ -699,6 +699,8 @@ export default class Header extends Component {
 
 ## Q. How to access a child state in React?
 
+**Using createRef():**
+
 ```js
 export default class App extends React.Component {
   constructor(props) {
@@ -738,7 +740,35 @@ class Child extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. React prop validation for date objects
+## Q. React prop validation for date objects
+
+**PropTypes.instanceOf(Date):**
+
+```js
+import React from "react";
+import PropTypes from "prop-types";
+
+const DateDisplay = ({ date }) => <p>{date.toString()}</p>;
+
+DateDisplay.propTypes = {
+  date: PropTypes.instanceOf(Date)
+};
+
+export default function App() {
+  return (
+    <h3>
+      <DateDisplay date={new Date()} />
+    </h3>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-date-validation-z7g6g?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to access custom attributes from event object in React?
 #### Q. Updating state on props change in React Form
 #### Q. Delete item from state array in react
