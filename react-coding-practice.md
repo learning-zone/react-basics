@@ -771,6 +771,8 @@ export default function App() {
 
 ## Q. How to access custom attributes from event object in React?
 
+**event.target.getAttribute:**
+
 ```js
 export default class Header extends React.Component {
   handleClick(event) {
@@ -793,7 +795,54 @@ export default class Header extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Updating state on props change in React Form
+## Q. Updating state on props change in React
+
+```js
+// Counter.js
+
+const Counter = (props) => {
+  return (
+    <div>
+      <button onClick={props.handleClick}>CLICK ME</button>
+      <h1>{props.text}</h1>
+    </div>
+  );
+};
+```
+
+```js
+// App.js
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 1
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Counter handleClick={this.handleClick} text={this.state.count} />
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-change-state-by-props-phjde?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Delete item from state array in react
 #### Q. Sending the bearer token with axios
 #### Q. Pass props in Link react-router
