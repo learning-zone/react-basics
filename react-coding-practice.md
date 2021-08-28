@@ -1180,8 +1180,8 @@ export default class Test extends React.Component {
 
   constructor() {
     super();
-    this.value = 10;
-    this.state = { value: 20 };
+    this.value = 10;  // class variable
+    this.state = { value: 20 };  // state variable
   }
 
   render() {
