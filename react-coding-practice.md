@@ -1038,7 +1038,59 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to generate unique IDs for form labels in React?
+## Q. How to generate unique IDs for form labels in React?
+
+**Hooks:**
+
+```js
+import React, { useState } from "react";
+import _uniqueId from "lodash/uniqueId";
+
+export default function App() {
+  // id will be set once when the component initially renders, but never again
+  // (unless you assigned and called the second argument of the tuple)
+  const [id] = useState(_uniqueId("prefix-"));
+  return (
+    <div>
+      <input id={id} type="checkbox" />
+      <label htmlFor={id}>label</label>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/generate-unique-id-for-form-e7iqz?file=/src/App.js)**
+
+**Class Component:**
+
+```js
+import React from "react";
+import _uniqueId from "lodash/uniqueId";
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.id = _uniqueId("prefix-");
+  }
+
+  render() {
+    const id = this.id;
+    return (
+      <div>
+        <input id={id} type="checkbox" />
+        <label htmlFor={id}>label</label>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/generate-unique-id-for-form-c86pt?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How can one tell the version of React running at runtime in the browser?
 #### Q. Update React component every second
 #### Q. How to declare a global variable in React?
