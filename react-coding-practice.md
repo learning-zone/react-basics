@@ -963,7 +963,41 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to disable a button when an input is empty?
+## Q. How to disable a button when an input is empty?
+
+```js
+export default class App extends React.Component {
+  state = {
+    email: ""
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      email: e.target.value
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          placeholder="Email"
+          value={this.state.email}
+          onChange={this.handleChange}
+        />
+        <button disabled={this.state.email.length < 1}>Submit</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-disable-a-button-yb8gm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Update style of a component onScroll in React.js
 #### Q. How to generate unique IDs for form labels in React?
 #### Q. How can one tell the version of React running at runtime in the browser?
