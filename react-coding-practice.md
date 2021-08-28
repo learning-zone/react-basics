@@ -1142,7 +1142,31 @@ class TimeComponent extends Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to declare a global variable in React?
+## Q. How to declare a global variable in React?
+
+```js
+
+window.$name = "Hello React"; // global variable
+
+export default function App() {
+  // access global variable
+  const name = window.$name;
+
+  return (
+    <div className="App">
+      <h2>Global variable using window property</h2>
+      <h3>{name}</h3>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/global-variable-using-window-property-862oe?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Instance v state variables in react.js
 #### Q. How to create dynamic href in react render function?
 #### Q. How to toggle boolean state of react component?
