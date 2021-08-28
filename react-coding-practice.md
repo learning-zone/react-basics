@@ -843,7 +843,56 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Delete item from state array in react
+## Q. Delete an item from state array in react
+
+```js
+const userData = [
+  { id: "100", name: "Chanda Mittal" },
+  { id: "101", name: "Sumati Pau" }
+];
+
+export default class ListComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: userData
+    };
+  }
+
+  onDeleteByIndex(index) {
+    this.setState({
+      users: this.state.users.filter((item, i) => i !== index)
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h2> Delete an item from state array </h2>
+        <ul>
+          {this.state.users.map((item, index) => (
+            <li key={item.id}>
+              <input
+                type="button"
+                value="Delete"
+                onClick={() => this.onDeleteByIndex(index)}
+              />
+              <span>{item.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-delete-an-item-3d9t2?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Sending the bearer token with axios
 #### Q. Pass props in Link react-router
 #### Q. How to disable a button when an input is empty?
