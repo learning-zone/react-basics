@@ -1091,7 +1091,30 @@ export default class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How can one tell the version of React running at runtime in the browser?
+## Q. How can one tell the version of React running at runtime in the browser?
+
+**React.version:**
+
+```js
+import React from "react";
+
+const REACT_VERSION = React.version;
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>React version: {REACT_VERSION}</h1>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-version-hpuy8?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Update React component every second
 #### Q. How to declare a global variable in React?
 #### Q. Instance v state variables in react.js
