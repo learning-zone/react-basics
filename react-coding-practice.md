@@ -893,7 +893,27 @@ export default class ListComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Sending the bearer token with axios
+## Q. Sending the bearer token with axios
+
+**Autherization token in axios:**
+
+```js
+const api = 'your api'; 
+const user = JSON.parse(sessionStorage.getItem('data'));
+const token = user.data.id; /*take only token and save in token variable*/
+
+axios.get(api , { headers: {"Authorization" : `Bearer ${token}`} })
+.then(res => {
+  console.log(res.data);
+.catch((error) => {
+  console.log(error)
+});
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Pass props in Link react-router
 #### Q. How to disable a button when an input is empty?
 #### Q. Update style of a component onScroll in React.js
