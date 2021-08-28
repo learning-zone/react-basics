@@ -1115,7 +1115,33 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Update React component every second
+## Q. Update React component every second
+
+```js
+class TimeComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { time: Date() };
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date() }), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return <h3>Current Time: {this.state.time} </h3>;
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/update-component-every-second-i0gk5?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to declare a global variable in React?
 #### Q. Instance v state variables in react.js
 #### Q. How to create dynamic href in react render function?
