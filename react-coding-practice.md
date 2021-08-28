@@ -1144,8 +1144,9 @@ class TimeComponent extends Component {
 
 ## Q. How to declare a global variable in React?
 
-```js
+**Window Object:**
 
+```js
 window.$name = "Hello React"; // global variable
 
 export default function App() {
@@ -1154,7 +1155,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h2>Global variable using window property</h2>
+      <h2>Global variable using window object</h2>
       <h3>{name}</h3>
     </div>
   );
@@ -1167,7 +1168,39 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Instance v state variables in react.js
+## Q. Instance vs state variables in React
+
+```js
+/**
+* If you use class variable, React will be unaware 
+* of it and won't re-render your component.
+*
+**/
+export default class Test extends React.Component {
+
+  constructor() {
+    super();
+    this.value = 10;
+    this.state = { value: 20 };
+  }
+
+  render() {
+    return (
+      <>
+        <h3>Class Variable: {this.value}</h3>
+        <h3>State Variable: {this.state.value}</h3>
+      </>
+    );
+  }
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/class-variable-vs-state-variable-gy9bj?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to create dynamic href in react render function?
 #### Q. How to toggle boolean state of react component?
 #### Q. Dynamically add child components in React
