@@ -914,7 +914,55 @@ axios.get(api , { headers: {"Authorization" : `Bearer ${token}`} })
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Pass props in Link react-router
+## Q. Pass props in Link react-router
+
+**render props:**
+
+```js
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h2>Home Page</h2>;
+};
+
+const PropsPage = ({ title }) => {
+  return <h2>{title}</h2>;
+};
+
+const App = () => {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/">Home</Link> |
+        <Link to="/props-through-component">Props through component</Link> |
+        <Link to="/props-through-render">Props through render</Link> |
+        <Switch>
+          <Route exact path="/" component={IndexPage} />
+          <Route
+            exact
+            path="/props-through-component"
+            component={() => <PropsPage title={`Props through component`} />}
+          />
+          <Route
+            exact
+            path="/props-through-render"
+            render={(props) => (
+              <PropsPage {...props} title={`Props through render`} />
+            )}
+          />
+        </Switch>
+      </Router>
+    </section>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/pass-props-in-react-router-xs34i?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to disable a button when an input is empty?
 #### Q. Update style of a component onScroll in React.js
 #### Q. How to generate unique IDs for form labels in React?
