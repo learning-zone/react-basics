@@ -998,7 +998,46 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Update style of a component onScroll in React.js
+## Q. Update style of a component onScroll in React.js
+
+```js
+import React, { useState, useRef } from "react";
+
+export default function App() {
+
+  const prevScrollY = useRef(0);
+  const [goingUp, setGoingUp] = useState(false);
+
+  const onScroll = (e) => {
+    const currentScrollY = e.target.scrollTop;
+    if (prevScrollY.current < currentScrollY && goingUp) {
+      setGoingUp(false);
+    }
+    if (prevScrollY.current > currentScrollY && !goingUp) {
+      setGoingUp(true);
+    }
+    prevScrollY.current = currentScrollY;
+    console.log(goingUp, currentScrollY);
+  };
+
+  return (
+    <div onScroll={onScroll} style={{ height: 300, overflowY: "scroll" }}>
+      {Array(50)
+        .fill("Get the scroll position on scroll in react.")
+        .map((f, i) => {
+          return <p key={i}>{f}</p>;
+        })}
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/react-onscroll-event-dst5o?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to generate unique IDs for form labels in React?
 #### Q. How can one tell the version of React running at runtime in the browser?
 #### Q. Update React component every second
