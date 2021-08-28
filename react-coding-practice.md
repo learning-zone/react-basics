@@ -966,7 +966,7 @@ const App = () => {
 ## Q. How to disable a button when an input is empty?
 
 ```js
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     email: ""
   };
