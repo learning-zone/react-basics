@@ -16,7 +16,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/jsx-example-b1hpp?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/jsx-example-b1hpp?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -50,7 +50,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-iterate-array-ej0wm?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-iterate-array-ej0wm?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -84,7 +84,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-update-dom-vu4il?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-update-dom-vu4il?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -119,7 +119,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-alert-based-on-input-hk2ip?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-alert-based-on-input-hk2ip?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -160,7 +160,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-calculator-8ud1d?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-calculator-8ud1d?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -200,7 +200,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-api-4wrts?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-api-4wrts?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -228,7 +228,7 @@ const App = () => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-counter-bhp4q?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-counter-bhp4q?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -278,7 +278,7 @@ const App = () => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -370,7 +370,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-todo-list-hw45y?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-todo-list-hw45y?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -417,7 +417,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-search-list-u1s8b?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-search-list-u1s8b?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -466,7 +466,7 @@ class FrizzBuzz extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-fizz-buzz-qtk36?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fizz-buzz-qtk36?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -501,7 +501,7 @@ const Parent = () => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-forwardref-3serh?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-3serh?file=/src/index.js)**
 
 **Class Component:**
 
@@ -538,7 +538,7 @@ class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-createref-t0gud?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-t0gud?file=/src/index.js)**
 
 **Callback Ref API:**
 
@@ -567,7 +567,7 @@ class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-callback-ref-api-kp30y?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-ref-api-kp30y?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -599,7 +599,7 @@ class Toggle extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-toggle-9h4ui?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-toggle-9h4ui?file=/src/App.js)**
 
 **Using React hooks:**
 
@@ -618,7 +618,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-toggle-gipub?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-toggle-gipub?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -666,7 +666,7 @@ class Child extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-function-as-a-prop-2unfh?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-function-as-a-prop-2unfh?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -691,7 +691,7 @@ export default class Header extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/image-in-react-ud0ry?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/image-in-react-ud0ry?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -734,7 +734,7 @@ class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/access-child-state-p2iip?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/access-child-state-p2iip?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -763,7 +763,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-date-validation-z7g6g?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-date-validation-z7g6g?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -789,7 +789,7 @@ export default class Header extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-custom-attributes-i3mu0?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-attributes-i3mu0?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -837,7 +837,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-change-state-by-props-phjde?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-change-state-by-props-phjde?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -887,7 +887,7 @@ export default class ListComponent extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-delete-an-item-3d9t2?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-delete-an-item-3d9t2?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -957,7 +957,7 @@ const App = () => {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/pass-props-in-react-router-xs34i?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/pass-props-in-react-router-xs34i?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -992,7 +992,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-disable-a-button-yb8gm?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-disable-a-button-yb8gm?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1032,7 +1032,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-onscroll-event-dst5o?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-onscroll-event-dst5o?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1059,7 +1059,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/generate-unique-id-for-form-e7iqz?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/generate-unique-id-for-form-e7iqz?file=/src/App.js)**
 
 **Class Component:**
 
@@ -1085,7 +1085,7 @@ export default class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/generate-unique-id-for-form-c86pt?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/generate-unique-id-for-form-c86pt?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1109,7 +1109,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-version-hpuy8?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-version-hpuy8?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1136,7 +1136,7 @@ class TimeComponent extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/update-component-every-second-i0gk5?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/update-component-every-second-i0gk5?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1162,7 +1162,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/global-variable-using-window-property-862oe?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/global-variable-using-window-property-862oe?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1195,7 +1195,7 @@ export default class Test extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/class-variable-vs-state-variable-gy9bj?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/class-variable-vs-state-variable-gy9bj?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1225,7 +1225,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/dynamic-href-in-react-63ewq?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/dynamic-href-in-react-63ewq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1262,7 +1262,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/toggle-boolean-state-in-react-kguly?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/toggle-boolean-state-in-react-kguly?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1316,7 +1316,7 @@ ReactDOM.render(
 );
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/dynamically-add-child-components-nryzl?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/dynamically-add-child-components-nryzl?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
