@@ -1225,7 +1225,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/modest-albattani-63ewq?file=/src/App.js)**
+**&#9885; [Run this Code](https://codesandbox.io/s/dynamic-href-in-react-63ewq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
