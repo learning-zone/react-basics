@@ -1231,7 +1231,35 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to toggle boolean state of react component?
+## Q. How to toggle boolean state of react component?
+
+```js
+function App() {
+  const [state, setState] = useState(true);
+
+  function toggle() {
+    setState(!state);
+  }
+
+  return (
+    <div className="App">
+      <h2 onClick={toggle}>
+        <p>Do you feel good today?</p>
+        <div className="toggle">
+          {state ? <span>Yes! 👍</span> : <span>No! 👎</span>}
+        </div>
+      </h2>
+    </div>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/toggle-boolean-state-in-react-kguly?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Dynamically add child components in React
 #### Q. Disable back button in react navigation
 #### Q. How can I set a cookie in react?
