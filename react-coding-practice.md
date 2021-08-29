@@ -1246,7 +1246,15 @@ function App() {
       <h2 onClick={toggle}>
         <p>Do you feel good today?</p>
         <div className="toggle">
-          {state ? <span>Yes! 👍</span> : <span>No! 👎</span>}
+          {state ? (
+            <span role="img" aria-label="Thums Up">
+              Yes! 👍
+            </span>
+          ) : (
+            <span role="img" aria-label="Thums Down">
+              No! 👎
+            </span>
+          )}
         </div>
       </h2>
     </div>
@@ -1260,7 +1268,60 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Dynamically add child components in React
+## Q. Dynamically add child components in React
+
+```js
+// Parent.js
+
+export default class Parent extends React.Component {
+  render() {
+    return (
+      <>
+        <h1> Parent Component! </h1>
+        {this.props.children}
+      </>
+    );
+  }
+}
+```
+
+```js
+// Child.js
+
+export default class Child extends React.Component {
+  render() {
+    return (
+      <>
+        <h2> Child Component! </h2>
+      </>
+    );
+  }
+}
+```
+
+```js
+// index.js
+
+import Parent from "./Parent";
+import Child from "./Child";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <StrictMode>
+    <Parent>
+      <Child name="Child Component Props" />
+    </Parent>
+  </StrictMode>,
+  rootElement
+);
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/dynamically-add-child-components-nryzl?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Disable back button in react navigation
 #### Q. How can I set a cookie in react?
 #### Q. How to restrict access to routes in react-router?
