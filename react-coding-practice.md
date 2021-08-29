@@ -1322,7 +1322,164 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Disable back button in react navigation
+## Q. Disable back button in react navigation
+
+```js
+// App.js
+
+import React from "react";
+import { Redirect, Switch, Route, withRouter } from "react-router";
+
+import Page1 from "./Page1";
+import Page2 from "./Page2";
+import Page3 from "./Page3";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // Store the previous pathname
+    this.currentPathname = null;
+  }
+
+  componentDidMount() {
+    const { history } = this.props;
+
+    history.listen((newLocation, action) => {
+      if (action === "PUSH") {
+        if (newLocation.pathname !== this.currentPathname) {
+          // Save new location
+          this.currentPathname = newLocation.pathname;
+
+          // Clone location object and push it to history
+          history.push({
+            pathname: newLocation.pathname
+          });
+        }
+      } else {
+        // Send user back if they try to navigate back
+        history.go(1);
+      }
+    });
+  }
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/page1" />} />
+        <Route path="/page1" component={Page1} />
+        <Route path="/page2" component={Page2} />
+        <Route path="/page3" component={Page3} />
+      </Switch>
+    );
+  }
+}
+
+export default withRouter(App);
+```
+
+```js
+// Page1.js
+
+import React from "react";
+import { withRouter } from "react-router";
+
+class Page1 extends React.Component {
+  render() {
+    const { history } = this.props;
+
+    return (
+      <div>
+        <h2>This is the first page.</h2>
+        <br />
+        <button
+          onClick={() => {
+            history.push("/page2");
+          }}
+        >
+          Go to Page 2 &#x2192;
+        </button>
+      </div>
+    );
+  }
+}
+
+export default withRouter(Page1);
+```
+
+```js
+// Page2.js
+
+import React from "react";
+import { withRouter } from "react-router";
+
+class Page2 extends React.Component {
+  render() {
+    const { history } = this.props;
+
+    return (
+      <div>
+        <h2>This is the second page.</h2>
+        <br />
+        <button
+          onClick={() => {
+            history.push("/page3");
+          }}
+        >
+          Go to Page 3 &#x2192;
+        </button>
+      </div>
+    );
+  }
+}
+
+export default withRouter(Page2);
+```
+
+```js
+// Page3.js
+
+import React from "react";
+import { withRouter } from "react-router";
+
+class Page3 extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>This is the last page.</h2>
+      </div>
+    );
+  }
+}
+
+export default withRouter(Page3);
+```
+
+```js
+// index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import App from "./components/App";
+import "./styles.css";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <BrowserRouter>
+    <Route path="/" component={App} />
+  </BrowserRouter>,
+  rootElement
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-disable-back-button-1651v?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How can I set a cookie in react?
 #### Q. How to restrict access to routes in react-router?
 #### Q. How do I set multipart in axios with react?
