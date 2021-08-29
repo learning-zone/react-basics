@@ -1201,7 +1201,36 @@ export default class Test extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to create dynamic href in react render function?
+## Q. How to create dynamic href in react render function?
+
+```js
+const posts = [
+  { id: 10, title: "Link One" },
+  { id: 20, title: "Link Two" },
+  { id: 30, title: "Link Three" }
+];
+
+export default function App() {
+  return (
+    <ul>
+      {posts.map(function (post) {
+        return (
+          <li key={post.id}>
+            <a href={"/posts/" + post.id}>{post.title}</a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+```
+
+**&#9885; [Run this Code](https://codesandbox.io/s/modest-albattani-63ewq?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to toggle boolean state of react component?
 #### Q. Dynamically add child components in React
 #### Q. Disable back button in react navigation
