@@ -389,7 +389,7 @@ class Welcome extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/eYWvXaY)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/eYWvXaY)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -741,7 +741,7 @@ class App extends React.Component {
 export default App
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
 
 **JSX is a JavaScript Expression:**
 
@@ -1619,7 +1619,7 @@ class App extends Component {
 export default App
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1639,7 +1639,7 @@ onDeleteByIndex(index) {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1697,7 +1697,7 @@ class Greeting extends Component {
 export default Greeting
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
 
 ### **2. Using forceUpdate()**
 
@@ -1751,7 +1751,7 @@ this.setState({count: this.state.count + 1});
 // this.state.count === 1, not 3
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
 
 **Solution:**
 
@@ -1768,7 +1768,7 @@ this.setState((prevState) => ({
 // this.state.count === 3 as expected
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1797,7 +1797,7 @@ handleUpdate = () => {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1833,7 +1833,7 @@ inputChangeHandler : function (event) {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1880,7 +1880,7 @@ handleClick() {
 <button onClick={this.handleClick.bind(this)}>Click</button> 
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
 
 ### **Event Handler using Arrow Function:**
 
@@ -1894,7 +1894,7 @@ handleClick() {
 <button onClick={() => this.handleClick()}>Click</button> 
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
 
 ### **Event Handler in Constructor:**
 
@@ -1914,7 +1914,7 @@ handleClick() {
 <button onClick={this.handleClick}>Click</button>
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1961,7 +1961,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
 
 ### **JavaScript Object:**
 
@@ -1986,7 +1986,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
 
 ### **CSS Stylesheet:**
 
@@ -2072,7 +2072,7 @@ class App extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2102,7 +2102,7 @@ export default function App(){
 }
 ```
 
-**&#9885; [Run this Code](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2305,7 +2305,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2486,7 +2486,7 @@ const App = () => (
 
 *Note: Decorators are an experimental feature in React that may change in future releases.*
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2663,7 +2663,7 @@ const Hooks = () => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
 
 The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
 
@@ -2813,7 +2813,7 @@ render() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2920,7 +2920,7 @@ class MyButton extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2958,7 +2958,7 @@ ReactDOM.render(
 );
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3115,7 +3115,7 @@ class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3168,7 +3168,7 @@ const App = () => {
 
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3298,7 +3298,7 @@ const App = () => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3352,7 +3352,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3519,7 +3519,7 @@ export default function App() {
 Here, We create the **usePrevious** hook with the value parameter which is state we want to get the previous value from,
 In the hook, we create a ref with the **useRef** hook to create a non-reactive property. Then we add the **useEffect** hook with a callback that sets the **ref.current** to value to set the previous value.
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3611,7 +3611,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3655,7 +3655,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
 
 ### **createRef():**
 
@@ -3685,7 +3685,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3713,7 +3713,7 @@ class ExampleComponent extends Component {
 
 Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -3835,7 +3835,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
 
 **Solution:**
 
@@ -3895,7 +3895,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4248,7 +4248,7 @@ function App() {
   }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4314,7 +4314,7 @@ function Greetings(props) {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4336,7 +4336,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4380,7 +4380,7 @@ const NumberList = (props) => (
 );
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4475,7 +4475,7 @@ function HomeButton() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4526,7 +4526,7 @@ class App extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4884,7 +4884,7 @@ function Users() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5115,7 +5115,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5167,7 +5167,7 @@ export default function VirtualizedList() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-window-rz5hf?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-window-rz5hf?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5505,7 +5505,7 @@ export default function App() {
   <img src='assets/react-form.png' alt='React Form' width='500px' />
 </p>
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-form-p9z2y)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-p9z2y)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5605,7 +5605,7 @@ const Form = ({ handleClose }) => {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-hook-form-dc8m7)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5921,7 +5921,7 @@ export default class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5965,7 +5965,7 @@ const CustomButton = ({onCustomClick}) => {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6043,7 +6043,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6075,7 +6075,7 @@ If you want a value like `false`, `true`, `null`, or `undefined` to show in the 
 
 In the output, this will render `true`, `false`, `undefined`, and `null` respectively.
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6388,7 +6388,7 @@ export default function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7453,7 +7453,7 @@ const type = queryParams.get('type');
 console.log(id, name, type); // 10 test null
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7596,7 +7596,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7718,7 +7718,7 @@ export default class Child extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7760,7 +7760,7 @@ class App extends React.Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8068,7 +8068,7 @@ function App() {
   <img src="assets/forwardRef.png" alt="forwardRef()" width="500px" />
 </p>
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8162,7 +8162,7 @@ const App = () => (
 )
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8327,7 +8327,7 @@ const divStyle = {
 };
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8572,7 +8572,7 @@ function Users() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8904,7 +8904,7 @@ function showTime() {
 setInterval(showTime, 1000);
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -9174,7 +9174,7 @@ OutsideAlerter.propTypes = {
 
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -9591,7 +9591,7 @@ So when we click on the Register link, it will redirect to the /register route, 
 
 Here, at the place of `some_data`, we can pass a string or object, array etc. and in the `/register` route we will get that data in `props.location.state`.
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
 
 ### **Using history.push:**
 
@@ -9904,7 +9904,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
 
 ### **HashRouter**
 
@@ -9958,7 +9958,7 @@ function App() {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -10698,7 +10698,7 @@ class App extends Component {
 }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -11811,7 +11811,7 @@ export default function App() {
  }
 ```
 
-**&#9885; [Run this Code](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
