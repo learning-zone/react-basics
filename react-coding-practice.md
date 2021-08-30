@@ -1593,7 +1593,66 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How do I set multipart in axios with react?
+## Q. How do I set multipart in axios with react?
+
+```js
+class App extends Component {
+  state = {
+    file: null
+  };
+
+  handleFile(e) {
+    let file = e.target.files[0];
+    this.setState({ file });
+  }
+  async handleUpload(e) {
+    console.log(this.state.file);
+    await uploadImage(this.state.file);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1> File Upload in React </h1>
+        <input type="file" name="file" onChange={(e) => this.handleFile(e)} />
+        <button onClick={(e) => this.handleUpload(e)}>Upload</button>
+      </div>
+    );
+  }
+}
+
+const uploadImage = async (file) => {
+  try {
+    console.log("Upload Image", file);
+    const formData = new FormData();
+    formData.append("filename", file);
+    formData.append("destination", "images");
+    formData.append("create_thumbnail", true);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+
+    const url = "FILE_DIRECTORY";
+
+    const result = await axios.post(url, formData, config);
+    console.log("REsult: ", result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/file-upload-in-react-ubjei?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to start search only when user stops typing?
 #### Q. How to implement default or NotFound page?
 #### Q. How to focus an input element on page load?
