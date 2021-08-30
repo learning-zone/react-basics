@@ -1480,8 +1480,119 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How can I set a cookie in react?
-#### Q. How to restrict access to routes in react-router?
+## Q. How to restrict access to routes in react-router?
+
+```js
+import * as React from "react";
+import { BrowserRouter as Router, Route, Link, Redirect, useLocation, useHistory } from "react-router-dom";
+
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 100); // fake async
+  }
+};
+
+const Public = () => <h3>Public Page</h3>;
+const Protected = () => <h3>Protected Page</h3>;
+
+function Login() {
+  const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
+
+  const { state } = useLocation();
+
+  const login = () =>
+    fakeAuth.authenticate(() => {
+      setRedirectToReferrer(true);
+    });
+
+  if (redirectToReferrer === true) {
+    return <Redirect to={state?.from || "/"} />;
+  }
+
+  return (
+    <div>
+      <p>You must log in to view the page</p>
+      <button onClick={login}>Log in</button>
+    </div>
+  );
+}
+
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        return fakeAuth.isAuthenticated === true ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        );
+      }}
+    />
+  );
+}
+
+function AuthButton() {
+  const history = useHistory();
+
+  return fakeAuth.isAuthenticated === true ? (
+    <p>
+      Welcome! {" "}
+      <button
+        onClick={() => {
+          fakeAuth.signout(() => history.push("/"));
+        }}
+      >
+        Sign out
+      </button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <AuthButton />
+        <ul>
+          <li><Link to="/public">Public Page</Link></li>
+          <li><Link to="/protected">Protected Page</Link></li>
+        </ul>
+
+        <Route path="/public">
+          <Public />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <PrivateRoute path="/protected">
+          <Protected />
+        </PrivateRoute>
+      </div>
+    </Router>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-restrict-routes-gtpip?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How do I set multipart in axios with react?
 #### Q. How to start search only when user stops typing?
 #### Q. How to implement default or NotFound page?
@@ -1491,6 +1602,7 @@ ReactDOM.render(
 #### Q. How to use SVGs in React?
 #### Q. How to repeat an element n times using JSX
 #### Q. Create a chat application
+#### Q. How can I set a cookie in react?
 
 *ToDo*
 
