@@ -1653,7 +1653,40 @@ ReactDOM.render(<App />, rootElement);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to start search only when user stops typing?
+## Q. How to start search only when user stops typing?
+
+```js
+function App() {
+
+  const [value, setValue] = React.useState("");
+
+  const handleOnChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  React.useEffect(() => {
+    const timeoutId = setTimeout(
+      () => console.log(`Search function called: "${value}"`),
+      300
+    );
+    return () => clearTimeout(timeoutId);
+  }, [value]);
+
+  return (
+    <>
+      <input onChange={handleOnChange} value={value} placeholder="Search" />
+      <h1>{value}</h1>
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-search-using-settimeout-9d8vd?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to implement default or NotFound page?
 #### Q. How to focus an input element on page load?
 #### Q. Give a simple example of Jest test case?
