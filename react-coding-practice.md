@@ -1623,7 +1623,29 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to focus an input element on page load?
+## Q. How to focus an input element on page load?
+
+**autoFocus:**
+
+```js
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <input placeholder="It Won't focus" />
+        <input autoFocus placeholder="It will focus" />
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/focus-an-input-element-on-page-load-z1dx6?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Give a simple example of Jest test case?
 #### Q. How to use font-awesome icons in React?
 #### Q. How to use SVGs in React?
