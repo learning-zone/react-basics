@@ -1646,7 +1646,60 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Give a simple example of Jest test case?
+## Q. Give a simple example of Jest test case?
+
+```js
+// App.js
+
+function App() {
+  let [count, setCount] = useState(0);
+
+  const decrement = () => setCount((count -= 1));
+  const increment = () => setCount((count += 1));
+
+  return (
+    <div className="App">
+      <h1>Testing React Hooks</h1>
+      <p>{count}</p>
+      <button onClick={decrement}>-</button>
+
+      <button onClick={increment}>+</button>
+    </div>
+  );
+}
+```
+
+```js
+// App.test.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "../index";
+
+import Enzyme, { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+Enzyme.configure({ adapter: new Adapter() });
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+it("App loads with initial state of 0", () => {
+  const wrapper = shallow(<App />);
+  const text = wrapper.find("p").text();
+  expect(text).toEqual("0");
+});
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jest-test-case-5jsf2)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to use font-awesome icons in React?
 #### Q. How to use SVGs in React?
 #### Q. How to repeat an element n times using JSX
