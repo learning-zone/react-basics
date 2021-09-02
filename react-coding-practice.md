@@ -1727,7 +1727,31 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to use SVGs in React?
+## Q. How to use SVGs in React?
+
+```js
+function App() {
+  return (
+    <div className="App">
+      <h1> SVG in React </h1>
+      <div>
+        <img
+          src={"http://s.cdpn.io/3/kiwi.svg"}
+          alt="Kiwi Bird"
+          width="200px"
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/svg-in-react-d1mq4?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to repeat an element n times using JSX
 #### Q. Create a chat application
 #### Q. How can I set a cookie in react?
