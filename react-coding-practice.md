@@ -1700,7 +1700,33 @@ it("App loads with initial state of 0", () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to use font-awesome icons in React?
+## Q. How to use font-awesome icons in React?
+
+```js
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAddressBook, faHome } from "@fortawesome/free-solid-svg-icons";
+
+function App() {
+  return (
+    <div className="App">
+      <h2> React Font Awesome Icons </h2>
+      <nav>
+        <ul>
+          <li><FontAwesomeIcon icon={faHome} /> Home </li>
+          <li><FontAwesomeIcon icon={faAddressBook} /> Contact Us </li>
+        </ul>
+      </nav>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-font-awesome-x2oq0?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. How to use SVGs in React?
 #### Q. How to repeat an element n times using JSX
 #### Q. Create a chat application
