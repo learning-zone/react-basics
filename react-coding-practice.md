@@ -1752,7 +1752,33 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How to repeat an element n times using JSX
+## Q. How to repeat an element n times using JSX?
+
+```js
+export default function App() {
+
+  let inputFields = [];
+  for (let i = 0; i < 5; ++i) {
+    inputFields.push(
+      <div> Field {i}: <input type="text" placeholder="Search" /> </div>
+    );
+  }
+
+  return (
+    <>
+      <h2> Repeat an element n times using JSX </h2>
+      <div>{inputFields}</div>
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/repeat-an-element-n-times-using-jsx-ze1yh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Create a chat application
 #### Q. How can I set a cookie in react?
 
