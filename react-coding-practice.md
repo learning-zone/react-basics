@@ -1779,8 +1779,62 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How can I set a cookie in react?
+
+```js
+import { CookiesProvider } from "react-cookie";
+import ReactDOM from "react-dom";
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <CookiesProvider>
+    <App />
+  </CookiesProvider>,
+  rootElement
+);
+```
+
+```js
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
+
+const App = () => {
+
+  const [name, setName] = useState("");
+  const [cookies, setCookie] = useCookies(["user"]);
+
+  const handle = () => {
+    setCookie("name", name, { path: "/" });
+  };
+  return (
+    <div className="App">
+      <h1> Cookies in React </h1>
+      <input
+        placeholder="Cookie value"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button onClick={handle}>Set Cookie</button>
+      
+      {cookies.name && (
+        <div>Name: {cookies.name}</div>
+      )}
+    </div>
+  );
+};
+export default App;
+
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/repeat-an-element-n-times-using-jsx-ze1yh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. Create a chat application
-#### Q. How can I set a cookie in react?
 
 *ToDo*
 
