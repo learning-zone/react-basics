@@ -628,7 +628,7 @@ renderTableHeader() {
 
 `Object.Keys()` gives us all the keys of employees in the form of array and we stored it in a variable header. So we can iterate the header (array) using map method.
 
-**&#9885; [React Dynamic Table](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -645,7 +645,7 @@ const element = <h1>React Element Example!</h1>;
 ReactDOM.render(element, document.getElementById('app'));
 ```
 
-**&#9885; [React Element](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
 
 ### **React Component**
 
@@ -658,7 +658,7 @@ function Message() {
 ReactDOM.render(<Message />, document.getElementById('app'));
 ```
 
-**&#9885; [React Component](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -793,7 +793,7 @@ class JSXInjectionExample extends React.Component {
 ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
 ```
 
-**&#9885; [JSX Injection Example](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -941,7 +941,7 @@ render() {
 }
 ```
 
-**&#9885; [Custom Dom Attributes](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1014,7 +1014,7 @@ ReactDOM.render(
 );
 ```
 
-**&#9885; [Functional Component](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
 
 ### **Class Components**  
 
@@ -1042,7 +1042,7 @@ ReactDOM.render(
 );
 ```
 
-**&#9885; [Class Component](https://codepen.io/learning-zone/pen/BaRwZyB)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1109,7 +1109,7 @@ render() {
 }
 ```
 
-**&#9885; [Conditional Render](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1168,7 +1168,7 @@ ReactDOM.render(
 );
 ```
 
-**&#9885; [prevent component from rendering](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1188,7 +1188,7 @@ function Welcome(props) {
 const element = <Welcome name="World!" />;
 ```
 
-**&#9885; [Props in function](https://codepen.io/learning-zone/pen/mdmWgxz)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmWgxz)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1210,7 +1210,7 @@ Such functions are called **pure** because they do not attempt to change their i
 
 In fact, props of a component is concretely "the state of the another component (parent component)". So props must be managed by their component owner. That\'s why all React components must act like pure functions with respect to their props (not to mutate directly their props).
 
-**&#9885; [Props in Class](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1245,7 +1245,7 @@ ReactDOM.render(
 )
 ```
 
-**&#9885; [Default Props](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1288,7 +1288,7 @@ class App extends Component {
 export default App;
 ```
 
-**&#9885; [React JSX](https://codepen.io/learning-zone/pen/VwbrYwo)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrYwo)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1319,7 +1319,7 @@ function App() {
 }
 ```
 
-**&#9885; [Boolean Props](https://codepen.io/learning-zone/pen/abWVzJx)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVzJx)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1353,7 +1353,7 @@ const App = () => (
 );
 ```
 
-**&#9885; [PropTypes.shape()](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1408,7 +1408,7 @@ const App = () => (
 );
 ```
 
-**&#9885; [PropTypes.oneOfType()](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1443,7 +1443,7 @@ class Employee extends React.Component {
 export default Employee
 ```
 
-**&#9885; [React State](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1513,7 +1513,7 @@ this.setState(prevState => ({
 }))
 ```
 
-**&#9885; [React setState](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1551,7 +1551,7 @@ class Food extends Component {
 }
 ```
 
-**&#9885; [React State()](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1727,7 +1727,7 @@ class App extends React.Component {
 export default App;
 ```
 
-**&#9885; [React forceUpdate()](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
 
 *Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
 
@@ -6629,7 +6629,7 @@ ReactDOM.render(element, container, callback)
 
 Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
 
-**&#9885; [ReactDOM.render() Example](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
 
 ### **hydrate()**
 
@@ -6639,7 +6639,7 @@ ReactDOM.hydrate(element, container, callback)
 
 This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
 
-**&#9885; [ReactDOM.hydrate() Example](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
 
 ### **unmountComponentAtNode()**
 
@@ -6649,7 +6649,7 @@ ReactDOM.unmountComponentAtNode(container)
 
 This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
 
-**&#9885; [ReactDOM.unmountComponentAtNode() Example](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
 
 ### **findDOMNode()**
 
@@ -6659,7 +6659,7 @@ ReactDOM.findDOMNode(component)
 
 If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
 
-**&#9885; [ReactDOM.findDOMNode() Example](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
 
 ### **createPortal()**
 
@@ -6669,7 +6669,7 @@ ReactDOM.createPortal(child, container)
 
 createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
 
-**&#9885; [ReactDOM.createPortal() Example](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
