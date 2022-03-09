@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-* *[50+ React Coding Practice Questions](react-coding-practice.md)*
+* *[React Coding Practice Questions](react-coding-practice.md)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
