@@ -402,6 +402,10 @@ The **presentational** components are concerned with the look, **container** com
 For example, this is a presentational component. It gets data from its props, and just focuses on showing an element
 
 ```js
+/**
+ * Presentational Component
+ * 
+ **/
 const Users = props => (
   <ul>
     {props.users.map(user => (
@@ -414,6 +418,10 @@ const Users = props => (
 On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.
 
 ```js
+/**
+ * Container Component
+ * 
+ **/
 class UsersContainer extends React.Component {
   constructor() {
     this.state = {
