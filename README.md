@@ -371,11 +371,11 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 
 ## Q. ***What are Components in React?***
 
+Components are the building blocks of any React application and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
+
 <p align="center">
   <img src="assets/component-tree.png" alt="Components Tree" />
 </p>
-
-Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
 A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
 
