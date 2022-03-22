@@ -2,6 +2,16 @@
 
 > *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Your contributions are heartily ♡ welcome.*
 
+<br/>
+
+## Related Interview Questions
+
+* [HTML5 Interview Questions](https://github.com/learning-zone/html-interview-questions/blob/master/README.md)
+* [CSS Interview Questions](https://github.com/learning-zone/css-interview-questions/blob/master/README.md)
+* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions/blob/master/README.md)
+
+<br/>
+
 ## Table of Contents
 
 * *[React Coding Practice Questions](react-coding-practice.md)*
