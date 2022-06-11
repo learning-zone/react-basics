@@ -9,16 +9,34 @@
 * [HTML5 Interview Questions](https://github.com/learning-zone/html-interview-questions/blob/master/README.md)
 * [CSS Interview Questions](https://github.com/learning-zone/css-interview-questions/blob/master/README.md)
 * [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions/blob/master/README.md)
+* [React Coding Practice Questions](react-coding-practice.md)
+* [React Quick Reference](react-quick-reference.md)
+* [Redux Quick Reference](redux-quick-reference.md)
+* [Jest Quick Reference](jest-quick-reference.md)
+* [React Best Practices](best-practices.md)
 
 <br/>
 
 ## Table of Contents
 
-* *[React Coding Practice Questions](react-coding-practice.md)*
-* *[React Quick Reference](react-quick-reference.md)*
-* *[Redux Quick Reference](redux-quick-reference.md)*
-* *[Jest Quick Reference](jest-quick-reference.md)*
-* *[React Best Practices](best-practices.md)*
+* [Introduction](#-1-introduction)
+* [React JSX](#-2-react-jsx)
+* [React Components](#-3-react-components)
+* [React Props](#-4-react-props)
+* [React State](#-5-react-state)
+* [React Events](#-6-react-events)
+* [React Lists](#-7-react-lists)
+* [React APIs](#-8-react-apis)
+* [React Forms](#-9-react-forms)
+* [React Hooks](#-10-react-hooks)
+* [React Refs](#-11-react-refs)
+* [React Router](#-12-react-router)
+* [React Error Boundaries](#-13-react-error-boundaries)
+* [React Inheritance](#-14-react-inheritance)
+* [React CSS Styling](#-15-react-css-styling)
+* [React Animation](#-16-react-animation)
+* [React Testing](#-17-react-testing)
+* [React Redux](#-18-react-redux)
 
 <br/>
 
