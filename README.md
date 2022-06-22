@@ -1,4 +1,4 @@
-# React Interview Questions ( v17.0.x )
+# React Interview Questions ( v18.0.0 )
 
 > *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Your contributions are heartily ♡ welcome.*
 
