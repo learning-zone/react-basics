@@ -23,9 +23,10 @@
   * [Introduction](#-1-introduction)
   * [React Setup](#-2-react-setup)
   * [React JSX](#-3-react-jsx)
-  * React Components
+  * [React Components](#-4-react-components)
     * [Functional Components](#-41-functional-components)
     * [Class Components](#-42-class-components)
+      * [React Lifecycle](#-421-react-lifecycle)
     * [Pure Components](#-43-pure-components)
     * [Higher Order Components](#-44-higher-order-components)
     * [Lazy Loading](#-45-lazy-loading)
