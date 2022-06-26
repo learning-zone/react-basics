@@ -28,6 +28,7 @@
     * [Class Components](#-42-class-components)
     * [Pure Components](#-43-pure-components)
     * [Higher Order Components](#-44-higher-order-components)
+    * [Lazy Loading](#-45-lazy-loading)
   * [React Props](#-5-react-props)
   * [React State](#-6-react-state)
   * [React Events](#-7-react-events)
@@ -222,6 +223,19 @@ Below are the list of some of the features provided by create react app.
 The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
 
 After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use https instead of http in create-react-app?
+
+set the HTTPS environment variable to `true`, then start the dev server as usual with `npm start`:
+
+```bash
+# Windows
+set HTTPS=true&&npm start
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -599,6 +613,30 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 <label htmlFor={'user'}>{'User'}</label>
 <input type={'text'} id={'user'} />
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use InnerHtml in React?
+
+The `innerHTML` is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides `dangerouslySetInnerHTML` as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
+
+**Example:**
+
+```js
+function App() {
+    return (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: "<h2>This text is set using dangerouslySetInnerHTML</h2>"
+        }}
+      ></div>
+    );
+  }
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1865,6 +1903,419 @@ ReactDOM.render(<Container />, document.getElementById('root'))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How to make component to perform an action only once when the component initially rendered?
+
+The `componentDidMount()` lifecycle hook can be used with class components.
+
+```js
+class Homepage extends React.Component {
+  componentDidMount() {
+    trackPageView('Homepage')
+  }
+  render() {
+    return <div>Homepage</div>
+  }
+}
+```
+
+Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+
+The `useEffect()` hook can be used with function components.
+
+```js
+const Homepage = () => {
+  useEffect(() => {
+    trackPageView('Homepage')
+  }, [])
+  
+  return <div>Homepage</div>
+}
+```
+
+The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
+
+* The first parameter it takes is a callback function to be executed.
+* The optional second parameter it takes is an array containing any variables that are to be tracked.
+
+The value passed as the second argument controls when the callback is executed:
+
+* If the second parameter is undefined, the callback is executed every time that the component is rendered.
+* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle. The  example above shows how passing an empty array can result in similar behaviour to the `componentDidMount()` hook within a function component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of using super constructor with props argument?
+
+The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+
+```js
+class App extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {}
+   }
+
+  // React says we have to define render()
+  render() {
+    return <div>Hello world</div>
+  }
+}
+
+export default App
+```
+
+Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Element, Component and Component instance in React?
+
+A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
+
+A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
+
+**Example:**
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log('This is a component instance:', this)
+  }
+
+  render() {
+    const another_element = <div>Hello, World!</div>
+    console.log('This is also an element:', another_element)
+    return another_element
+  }
+}
+
+console.log('This is a component:', MyComponent)
+
+const element = <MyComponent/>
+
+console.log('This is an element:', element)
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+)
+```
+
+**React Elements:**
+
+A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
+
+* `type`, a String representing an HTML tag or a reference referring to a React Component
+* `key`, a String to uniquely identify an React Element
+* `ref`, a reference to access either the underlying DOM node or React Component Instance)
+* `props` (properties Object)
+
+A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
+
+A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
+
+React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
+
+**React Components and React Component Instances:**
+
+A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
+
+A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. In which lifecycle event do you make AJAX requests in React?
+
+According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
+
+**Example:**
+
+```js
+import React from 'react'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: []
+    }
+  }
+
+  componentDidMount() {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result.items
+          })
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, items } = this.state
+    if (error) {
+      return <div>Error: {error.message}</div>
+    } else if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item.name}>
+              {item.name} {item.price}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What does shouldComponentUpdate do and why is it important?
+
+The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
+
+The default implementation of this function returns true so to stop the re-render you need to return false here:
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  console.log(nextProps, nextState)
+  console.log(this.props, this.state)
+  return false  
+}
+```
+
+**Preventing unnecessary renders**
+
+The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of render() function in React?
+
+All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
+
+Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
+
+```js
+// App.js
+import React from 'react'
+import './App.css'
+
+function App() {
+  return (
+    <div className="App">
+      Hello World !
+    </div>
+  )
+}
+
+export default App
+```
+
+```js
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App/App'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are React components?
+
+Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
+
+A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
+
+**Stateless Component:**
+
+```js
+import React from 'react'
+
+const ExampleComponent = (props) => {
+    return (<h1>Welcome to React!</h1>)
+}
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <ExampleComponent/>
+      </div>
+    )
+  }
+}
+```
+
+The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
+
+**Stateful Component:**
+
+```js
+import React from 'react'
+
+class ExampleComponent extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      heading: "This is an Example Component!"
+    }
+  }
+  render() {
+    return (
+        <div>
+            <h1>{ this.props.welcomeMsg }</h1>
+            <h2>{ this.state.heading }</h2>
+        </div>
+    )
+  }
+}
+
+export default class App extends React.Component {
+  render() {
+    const welcomeMsg = "Welcome to React!"
+    return (
+      <div>
+        <ExampleComponent welcomeMsg={welcomeMsg}/>
+      </div>
+    )
+  }
+}
+```
+
+The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
+
+**Props:**
+
+Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
+
+**State:**
+
+A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
+
+**LifeCycle:**
+
+Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to set up lazy loading components in React?
+
+Lazy loading is the technique used in optimizing your web and mobile apps, this works by rendering only needed or critical user interface items first, then quietly rendering the non-critical items later.
+
+**REACT.LAZY():**
+
+In **React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
+
+React.lazy() takes a function that returns a promise as it’s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
+
+```js
+// without lazy
+import MyComponent from './MyComponent';
+ 
+// with lazy
+const MyComponent = React.lazy(() => import('./MyComponent'));
+```
+
+**SUSPENSE:**
+
+**React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
+
+```js
+//using suspense
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+const App = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading ... </div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Example:** The following code snippet shows lazy loading routes
+
+```js
+import React, { Suspense, lazy } from "react";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+
+const Home = lazy(() => import("./Home"));
+const ContactUs = lazy(() => import("./ContactUs"));
+const HelpPage = lazy(() => import("./Help"));
+
+export default function App() {
+  return (
+    <Router>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Switch>
+          <Route exact component={Home} path="/" />
+          <Route component={ContactUs} path="/contact-us" />
+          <Route component={HelpPage} path="/help" />
+        </Switch>
+      </Suspense>
+    </Router>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 5. REACT PROPS
 
 <br/>
@@ -2401,6 +2852,251 @@ B
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How React handle or restrict Props to certain types?
+
+React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
+
+**Example:**
+
+```js
+import React from 'react'
+import PropTypes from 'prop-types'
+
+const Person = (props) => <div>
+  <h1>{props.firstName} {props.lastName}</h1>
+  {props.country ? <p>Country: {props.country}</p> : null}
+</div>
+
+Person.propTypes = {
+  firstName:PropTypes.string,
+  lastName:PropTypes.string,
+  country:PropTypes.string
+}
+
+export default Person
+```
+
+`PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is prop drilling and how can you avoid it?
+
+React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
+
+**Context API**  
+
+The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
+
+**Example:**
+
+```js
+import React from "react"
+import ReactDOM from "react-dom"
+
+// Create a Context
+const NumberContext = React.createContext()
+// It returns an object with 2 values:
+// { Provider, Consumer }
+
+function App() {
+  // Use the Provider to make a value available to all
+  // children and grandchildren
+  return (
+    <NumberContext.Provider value={10}>
+      <div>
+        <Display />
+      </div>
+    </NumberContext.Provider>
+  )
+}
+
+function Display() {
+  const value = useContext(NumberContext)
+  return <div>The answer is {value}.</div>
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What do these three dots in React do?
+
+The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
+
+```js
+function App() {
+  return <Hello firstName="Alex" lastName="K" />
+}
+```
+Using the Spread operator, it become like this
+
+```js
+function App() {
+  const props = {firstName: 'Alex', lastName: 'K'}
+  return <Hello {...props} />
+}
+```
+
+When we use the `...props` syntax, actaully it expand the props object from the parent component, which means all its attributes are passed down the child component that may not need them all. This will make things like debugging harder.
+
+**Using the Spread Operator with setState() for Setting the Nested State**
+
+let us suppose we have a state with a nested object in our component:
+
+```js
+this.state = {
+  stateObj: {
+    attr1: '',
+    attr2: '',
+  },
+}
+```
+We can use the Spread syntax to update the nested state object.
+
+```js
+this.setState(state => ({
+  person: {
+    ...state.stateObj,
+    attr1: 'value1',
+    attr2: 'value2',
+  },
+}))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why we need to be careful when spreading props on DOM elements?
+
+When we spread props we run into the risk of adding unknown HTML attributes, which is a bad practice.
+
+**Problem:** This will try to add the unknown HTML attribute `flag` to the DOM element.
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = (props) => (<div {...props}>Test</div>);
+```
+
+**Solution:** By creating props specifically for DOM attribute, we can safely spread.
+
+```js
+const Sample = () => (<Spread flag={true} domProps={{className: "content"}}/>);
+const Spread = (props) => (<div {...props.domProps}>Test</div>);
+```
+
+Or alternatively we can use prop destructuring with `...rest`:
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
+```
+
+**Note:**
+
+*In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to change the state of a child component from its parent in React?
+
+**Using Props:**
+
+We will take two components, Parent and Child. And our Parent component will set the value depends on the Child Component. Child component holds the Input field and we are going to send the input field value to the Parent component.
+
+```js
+function Parent() {
+    const [value, setValue] = React.useState("")
+
+    function handleChange(newValue) {
+      setValue(newValue)
+    }
+
+    // We pass a callback to Child
+    return <Child value={value} onChange={handleChange} />
+}
+```
+
+As you see that we set the onChange property to the Child component. Next step is to create the Child component.
+
+```js
+function Child(props) {
+    function handleChange(event) {
+        // Here, we invoke the callback with the new value
+        props.onChange(event.target.value)
+    }
+  
+    return <input value={props.value} onChange={handleChange} />
+}
+```
+
+On the above codes, we have created function handleChange that will pass the value through props.onChange to our Parent component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What will happen if you use props in initial state?
+
+Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
+
+The danger is that if the `props` on the component are changed without the component being *'refreshed'*, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
+
+**Bad:**
+
+The below component won\'t display the updated input value
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: [],
+      inputValue: this.props.inputValue
+    }
+  }
+
+  render() {
+    return <div>{this.state.inputValue}</div>
+  }
+}
+```
+
+**Good:**
+
+Using props inside render method will update the value:
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: []
+    }
+  }
+
+  render() {
+    return <div>{this.props.inputValue}</div>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 6. REACT STATE
 
 <br/>
@@ -2908,6 +3604,75 @@ class Child extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How does the state differ from props in React?
+
+**State:**
+
+This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
+
+**Example:**
+
+```js
+class AppComponent extends React.component {
+  state = {
+      msg : 'Hello World!'
+  }
+
+  render() {
+      return <div>Message {this.state.msg}</div>
+  }
+}
+```
+
+**Props:**
+
+Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+**Example:** The parent can pass a props by using this
+
+```js
+<ChildComponent color='red' />
+```
+
+Inside the ChildComponent constructor we could access the props
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props.color)
+  }
+}
+```
+
+Props can be used to set the internal state based on a prop value in the constructor, like this
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state.colorName = props.color
+  }
+}
+```
+
+Props should never be changed in a child component. Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.
+
+**Difference between State and Props:**
+
+|  Props                                          | State                            |
+|-------------------------------------------------|----------------------------------|
+|Props are read-only.                             |State changes can be asynchronous.|
+|Props allow to pass data from one component to other components as an argument.| State holds information about the components.|
+|Props can be accessed by the child component.    |State cannot be accessed by child components.|
+|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.              |Stateless components cannot have State.|
+|Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 7. REACT EVENTS
 
 <br/>
@@ -3147,6 +3912,221 @@ Arrow functions are exempt from this behavior because they use **lexical** `this
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How do I pass a parameter to an event handler or callback?
+
+You can use an arrow function to wrap around an event handler and pass parameters:
+
+```js
+<button onClick={() => this.handleClick(id)} />
+```
+
+This is equivalent to calling `.bind`
+
+```js
+<button onClick={this.handleClick.bind(this, id)} />
+```
+
+**Example:** Passing params using arrow functions
+
+```js
+const A = 65 // ASCII character code
+
+class Alphabet extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.state = {
+      justClicked: null,
+      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
+    }
+  }
+  handleClick(letter) {
+    this.setState({ justClicked: letter })
+  }
+  render() {
+    return (
+      <div>
+        Just clicked: {this.state.justClicked}
+        <ul>
+          {this.state.letters.map(letter =>
+            <li key={letter} onClick={() => this.handleClick(letter)}>
+              {letter}
+            </li>
+          )}
+        </ul>
+      </div>
+    )
+  }
+}
+```
+
+**Example:** Passing params using data-attributes
+
+Alternately, you can use DOM APIs to store data needed for event handlers. Consider this approach if you need to optimize a large number of elements or have a render tree that relies on React.PureComponent equality checks.
+
+```js
+const A = 65 // ASCII character code
+
+class Alphabet extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.state = {
+      justClicked: null,
+      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
+    }
+  }
+
+  handleClick(e) {
+    this.setState({
+      justClicked: e.target.dataset.letter
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        Just clicked: {this.state.justClicked}
+        <ul>
+          {this.state.letters.map(letter =>
+            <li key={letter} data-letter={letter} onClick={this.handleClick}>
+              {letter}
+            </li>
+          )}
+        </ul>
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can I prevent a function from being called too quickly?
+
+**1. Throttle:**
+
+Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
+
+```js
+import throttle from 'lodash.throttle'
+
+class LoadMoreButton extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleClickThrottled = throttle(this.handleClick, 1000)
+  }
+
+  componentWillUnmount() {
+    this.handleClickThrottled.cancel()
+  }
+
+  render() {
+    return <button onClick={this.handleClickThrottled}>Load More</button>
+  }
+
+  handleClick() {
+    this.props.loadMore()
+  }
+}
+```
+
+**2. Debounce:**
+
+Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
+
+The example below debounces text input with a 250ms delay.
+
+```js
+import debounce from 'lodash.debounce'
+
+class Searchbox extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.emitChangeDebounced = debounce(this.emitChange, 250)
+  }
+
+  componentWillUnmount() {
+    this.emitChangeDebounced.cancel()
+  }
+
+  render() {
+    return (
+      <input
+        type="text"
+        onChange={this.handleChange}
+        placeholder="Search..."
+        defaultValue={this.props.value}
+      />
+    )
+  }
+
+  handleChange(e) {
+    // React pools events, so we read the value before debounce.
+    // Alternately we could call `event.persist()` and pass the entire event.
+    // For more info see reactjs.org/docs/events.html#event-pooling
+    this.emitChangeDebounced(e.target.value)
+  }
+
+  emitChange(value) {
+    this.props.onChange(value)
+  }
+}
+```
+
+**3. RequestAnimationFrame Throttling:**
+
+`requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
+
+For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second. Using requestAnimationFrame for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second. If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.
+
+```js
+import rafSchedule from 'raf-schd'
+
+class ScrollListener extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleScroll = this.handleScroll.bind(this)
+
+    // Create a new function to schedule updates.
+    this.scheduleUpdate = rafSchedule(
+      point => this.props.onScroll(point)
+    )
+  }
+
+  handleScroll(e) {
+    // When we receive a scroll event, schedule an update.
+    // If we receive many updates within a frame, we'll only publish the latest value.
+    this.scheduleUpdate({ x: e.clientX, y: e.clientY })
+  }
+
+  componentWillUnmount() {
+    // Cancel any pending updates since we're unmounting.
+    this.scheduleUpdate.cancel()
+  }
+
+  render() {
+    return (
+      <div
+        style={{ overflow: 'scroll' }}
+        onScroll={this.handleScroll}
+      >
+        <img src="/my-huge-image.jpg" />
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 8. REACT LISTS
 
 <br/>
@@ -3222,6 +4202,138 @@ const listItems = numbers.map((number) =>
 ```
 
 React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the significance of keys in React?
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
+
+```js
+function NumberList(props) {
+
+  const numbers = props.numbers
+  const listItems = numbers.map((number) =>
+    <li key={number.toString()}>
+      {number}
+    </li>
+  )
+  return (
+    <ul>{listItems}</ul>
+  )
+}
+
+const numbers = [1, 2, 3, 4, 5]
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+)
+```
+
+**Exceptions where it is safe to use index as key**
+
+* If your list is static and will not change.
+* The list will never be re-ordered.
+* The list will not be filtered (adding/removing items from the list).
+* There are no ids for the items in the list.
+
+*Note: Using `index` as a key can lead to potential unexpected behaviour within the component.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to pass numbers to React component?
+
+In react, numbers can be passed via curly braces(`{}`) where as strings in quotes (`""`);
+
+**Example:**
+
+```js
+function App() {
+  return <Greetings name="Nathan" age={27} occupation="Software Developer" />;
+}
+
+// Greetings Component
+function Greetings(props) {
+  return (
+    <h2>
+      Hello! I'm {props.name}, a {props.age} years old {props.occupation}.
+      Pleased to meet you!
+    </h2>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to display an array of strings in react component?
+
+```js
+const data = ["this is line #1", "this is line #2", "this is line #3"];
+
+export default function App() {
+  return (
+    <div>
+      {data.map((item, index) => (
+        <div key={index}>{item}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you render Array, Strings and Numbers in React?
+
+```js
+// Array Component
+const items = [
+  { name: "AngularJS", description: "" },
+  { name: "React", description: "" },
+  { name: "Vue.js", description: "" }
+];
+const ArrayList = (props) => (
+  <div>
+    <h2>Render Array List</h2>
+    {items.map((item, index) => (
+      <div key={index}>{item.name}</div>
+    ))}
+  </div>
+);
+
+// String Component
+const StringList = (props) => (
+  <div>
+    <h2>Render String List</h2>
+    {["test", "render", "array", "list"]}
+  </div>
+);
+
+// Number Component
+const numbers = [10, 20, 30];
+const NumberList = (props) => (
+  <div>
+    <h2>Render Number List</h2>
+    {numbers.map((item, index) => (
+      <div key={index}>{item}</div>
+    ))}
+  </div>
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4347,162 +5459,6 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to use InnerHtml in React?
-
-The `innerHTML` is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides `dangerouslySetInnerHTML` as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
-
-**Example:**
-
-```js
-function App() {
-    return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: "<h2>This text is set using dangerouslySetInnerHTML</h2>"
-        }}
-      ></div>
-    );
-  }
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the significance of keys in React?
-
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.
-
-```js
-function NumberList(props) {
-
-  const numbers = props.numbers
-  const listItems = numbers.map((number) =>
-    <li key={number.toString()}>
-      {number}
-    </li>
-  )
-  return (
-    <ul>{listItems}</ul>
-  )
-}
-
-const numbers = [1, 2, 3, 4, 5]
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-)
-```
-
-**Exceptions where it is safe to use index as key**
-
-* If your list is static and will not change.
-* The list will never be re-ordered.
-* The list will not be filtered (adding/removing items from the list).
-* There are no ids for the items in the list.
-
-*Note: Using `index` as a key can lead to potential unexpected behaviour within the component.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to pass numbers to React component?
-
-In react, numbers can be passed via curly braces(`{}`) where as strings in quotes (`""`);
-
-**Example:**
-
-```js
-function App() {
-  return <Greetings name="Nathan" age={27} occupation="Software Developer" />;
-}
-
-// Greetings Component
-function Greetings(props) {
-  return (
-    <h2>
-      Hello! I'm {props.name}, a {props.age} years old {props.occupation}.
-      Pleased to meet you!
-    </h2>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to display an array of strings in react component?
-
-```js
-const data = ["this is line #1", "this is line #2", "this is line #3"];
-
-export default function App() {
-  return (
-    <div>
-      {data.map((item, index) => (
-        <div key={index}>{item}</div>
-      ))}
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you render Array, Strings and Numbers in React?
-
-```js
-// Array Component
-const items = [
-  { name: "AngularJS", description: "" },
-  { name: "React", description: "" },
-  { name: "Vue.js", description: "" }
-];
-const ArrayList = (props) => (
-  <div>
-    <h2>Render Array List</h2>
-    {items.map((item, index) => (
-      <div key={index}>{item.name}</div>
-    ))}
-  </div>
-);
-
-// String Component
-const StringList = (props) => (
-  <div>
-    <h2>Render String List</h2>
-    {["test", "render", "array", "list"]}
-  </div>
-);
-
-// Number Component
-const numbers = [10, 20, 30];
-const NumberList = (props) => (
-  <div>
-    <h2>Render Number List</h2>
-    {numbers.map((item, index) => (
-      <div key={index}>{item}</div>
-    ))}
-  </div>
-);
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is React Router?
 
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
@@ -4661,243 +5617,6 @@ The rest of the tools belong in that group of sequential or parallel tasks:
 * *Compilation* - specifically separate from transpiling ES6 and JSX to ES5, is the act of including assets, processing CSS files as JSON, or other mechanisms that can load and inject external assets and code into a file. In addition, there are all sorts of build steps that can analyze your code and even optimize it for you.
 * *Minification and Compression* - typically part of – but not exclusively controlled by – compilation, is the act of minifying and compressing a JS file into fewer and/or smaller files
 * *Source-Mapping* - another optional part of compilation is building source maps, which help identify the line in the original source code that corresponds with the line in the output code (i.e. where an error occurred)
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How React handle or restrict Props to certain types?
-
-React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
-
-**Example:**
-
-```js
-import React from 'react'
-import PropTypes from 'prop-types'
-
-const Person = (props) => <div>
-  <h1>{props.firstName} {props.lastName}</h1>
-  {props.country ? <p>Country: {props.country}</p> : null}
-</div>
-
-Person.propTypes = {
-  firstName:PropTypes.string,
-  lastName:PropTypes.string,
-  country:PropTypes.string
-}
-
-export default Person
-```
-
-`PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is prop drilling and how can you avoid it?
-
-React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
-
-**Context API**  
-
-The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
-
-**Example:**
-
-```js
-import React from "react"
-import ReactDOM from "react-dom"
-
-// Create a Context
-const NumberContext = React.createContext()
-// It returns an object with 2 values:
-// { Provider, Consumer }
-
-function App() {
-  // Use the Provider to make a value available to all
-  // children and grandchildren
-  return (
-    <NumberContext.Provider value={10}>
-      <div>
-        <Display />
-      </div>
-    </NumberContext.Provider>
-  )
-}
-
-function Display() {
-  const value = useContext(NumberContext)
-  return <div>The answer is {value}.</div>
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to make component to perform an action only once when the component initially rendered?
-
-The `componentDidMount()` lifecycle hook can be used with class components.
-
-```js
-class Homepage extends React.Component {
-  componentDidMount() {
-    trackPageView('Homepage')
-  }
-  render() {
-    return <div>Homepage</div>
-  }
-}
-```
-
-Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
-
-The `useEffect()` hook can be used with function components.
-
-```js
-const Homepage = () => {
-  useEffect(() => {
-    trackPageView('Homepage')
-  }, [])
-  
-  return <div>Homepage</div>
-}
-```
-
-The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
-
-* The first parameter it takes is a callback function to be executed.
-* The optional second parameter it takes is an array containing any variables that are to be tracked.
-
-The value passed as the second argument controls when the callback is executed:
-
-* If the second parameter is undefined, the callback is executed every time that the component is rendered.
-* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
-* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle. The  example above shows how passing an empty array can result in similar behaviour to the `componentDidMount()` hook within a function component.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can automated tooling be used to improve the accessibility of a React application?
-
-There are two main categories of automated tools that can be used to identify accessibility issues:
-
-**Static Analysis Tools:**
-
-Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
-
-**Browser Tools:**  
-
-Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of using super constructor with props argument?
-
-The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
-
-```js
-class App extends React.Component {
-  constructor(props) {
-      super(props)
-      this.state = {}
-   }
-
-  // React says we have to define render()
-  render() {
-    return <div>Hello world</div>
-  }
-}
-
-export default App
-```
-Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What do these three dots in React do?
-
-The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
-
-```js
-function App() {
-  return <Hello firstName="Alex" lastName="K" />
-}
-```
-Using the Spread operator, it become like this
-
-```js
-function App() {
-  const props = {firstName: 'Alex', lastName: 'K'}
-  return <Hello {...props} />
-}
-```
-
-When we use the `...props` syntax, actaully it expand the props object from the parent component, which means all its attributes are passed down the child component that may not need them all. This will make things like debugging harder.
-
-**Using the Spread Operator with setState() for Setting the Nested State**
-
-let us suppose we have a state with a nested object in our component:
-
-```js
-this.state = {
-  stateObj: {
-    attr1: '',
-    attr2: '',
-  },
-}
-```
-We can use the Spread syntax to update the nested state object.
-
-```js
-this.setState(state => ({
-  person: {
-    ...state.stateObj,
-    attr1: 'value1',
-    attr2: 'value2',
-  },
-}))
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why we need to be careful when spreading props on DOM elements?
-
-When we spread props we run into the risk of adding unknown HTML attributes, which is a bad practice.
-
-**Problem:** This will try to add the unknown HTML attribute `flag` to the DOM element.
-
-```js
-const Sample = () => (<Spread flag={true} className="content"/>);
-const Spread = (props) => (<div {...props}>Test</div>);
-```
-
-**Solution:** By creating props specifically for DOM attribute, we can safely spread.
-
-```js
-const Sample = () => (<Spread flag={true} domProps={{className: "content"}}/>);
-const Spread = (props) => (<div {...props.domProps}>Test</div>);
-```
-
-Or alternatively we can use prop destructuring with `...rest`:
-
-```js
-const Sample = () => (<Spread flag={true} className="content"/>);
-const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
-```
-
-**Note:**
-
-*In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5429,75 +6148,6 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How does the state differ from props in React?
-
-**State:**
-
-This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
-
-**Example:**
-
-```js
-class AppComponent extends React.component {
-  state = {
-      msg : 'Hello World!'
-  }
-
-  render() {
-      return <div>Message {this.state.msg}</div>
-  }
-}
-```
-
-**Props:**
-
-Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
-
-**Example:** The parent can pass a props by using this
-
-```js
-<ChildComponent color='red' />
-```
-
-Inside the ChildComponent constructor we could access the props
-
-```js
-class ChildComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log(props.color)
-  }
-}
-```
-
-Props can be used to set the internal state based on a prop value in the constructor, like this
-
-```js
-class ChildComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state.colorName = props.color
-  }
-}
-```
-
-Props should never be changed in a child component. Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.
-
-**Difference between State and Props:**
-
-|  Props                                          | State                            |
-|-------------------------------------------------|----------------------------------|
-|Props are read-only.                             |State changes can be asynchronous.|
-|Props allow to pass data from one component to other components as an argument.| State holds information about the components.|
-|Props can be accessed by the child component.    |State cannot be accessed by child components.|
-|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
-|Stateless component can have Props.              |Stateless components cannot have State.|
-|Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How would you create a form in React?
 
 **Example:**
@@ -5711,44 +6361,6 @@ The React Hook Form provides a hook called `useForm()`, consisting of methods an
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to change the state of a child component from its parent in React?
-
-**Using Props:**
-
-We will take two components, Parent and Child. And our Parent component will set the value depends on the Child Component. Child component holds the Input field and we are going to send the input field value to the Parent component.
-
-```js
-function Parent() {
-    const [value, setValue] = React.useState("")
-
-    function handleChange(newValue) {
-      setValue(newValue)
-    }
-
-    // We pass a callback to Child
-    return <Child value={value} onChange={handleChange} />
-}
-```
-
-As you see that we set the onChange property to the Child component. Next step is to create the Child component.
-
-```js
-function Child(props) {
-    function handleChange(event) {
-        // Here, we invoke the callback with the new value
-        props.onChange(event.target.value)
-    }
-  
-    return <input value={props.value} onChange={handleChange} />
-}
-```
-
-On the above codes, we have created function handleChange that will pass the value through props.onChange to our Parent component.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What do you understand with the term polling in React?
 
 Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals.
@@ -5794,309 +6406,6 @@ export default IntervalExample
 ```
 
 The example above shows a React component, IntervalExample, scheduling a new interval once it mounts to the DOM. The interval increments the seconds state value by one, every second.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between Element, Component and Component instance in React?
-
-A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
-
-A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
-
-**Example:**
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log('This is a component instance:', this)
-  }
-
-  render() {
-    const another_element = <div>Hello, World!</div>
-    console.log('This is also an element:', another_element)
-    return another_element
-  }
-}
-
-console.log('This is a component:', MyComponent)
-
-const element = <MyComponent/>
-
-console.log('This is an element:', element)
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-)
-```
-
-**React Elements:**
-
-A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
-
-* `type`, a String representing an HTML tag or a reference referring to a React Component
-* `key`, a String to uniquely identify an React Element
-* `ref`, a reference to access either the underlying DOM node or React Component Instance)
-* `props` (properties Object)
-
-A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
-
-A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
-
-React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
-
-**React Components and React Component Instances:**
-
-A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
-
-A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. In which lifecycle event do you make AJAX requests in React?
-
-According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
-
-**Example:**
-
-```js
-import React from 'react'
-
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    }
-  }
-
-  componentDidMount() {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          })
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
-        }
-      )
-  }
-
-  render() {
-    const { error, isLoaded, items } = this.state
-    if (error) {
-      return <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading...</div>
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.price}
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain DOM diffing?
-
-**Document Object Model:**
-
-The DOM (Document Object Model) is an interface that represents an HTML document in a tree-like structure with nodes. This structure allows the document to be traversed and modified by programmers with each node being represented as an object. The DOM is created by the browser when
-a web page is loaded.
-
-**React\'s "Virtual DOM":**
-
-The "Virtual DOM" is very similar to the real DOM, in that it is a tree-like structure kept in-memory, where React elements are represented as objects. This tree has many of the same properties as the real DOM without the power to change what is on the screen. It is a javascript object representing components in your application which can be updated quickly and efficiently by React.
-
-When a JSX element is rendered or the state of an element changes, a new Virtual DOM tree is created. The function responsible for the creation of this tree is React\'s render() function. This is a fast process because the virtual DOM tree is just a javascript object and the UI will not be re-painted based on this new tree.
-
-**DOM Diffing:**
-
-Once the Virtual DOM is created, React compares this new representation with a snapshot of the previous version of the virtual DOM to see exactly which elements have changed.
-
-Once the difference is known, React updates only those objects that differ on the actual DOM and the browser re-paints the screen. The next time state or props changes for a component in the application, a new virtual DOM tree of React elements will be created and the process will repeat.
-
-The process of checking the difference between the new Virtual DOM tree and the old Virtual DOM tree is called **diffing**. Diffing is accomplished by a **heuristic O(n)** algorithm. During this process, React will deduce the minimum number of steps needed to update the real DOM, eliminating unnecessary costly changes. This process is also referred to as **reconciliation**.
-
-React implements a heuristic O(n) algorithm based on two assumptions:
-
-1. Two elements of different types will produce different trees.
-1. The developer can hint at which child elements may be stable across different renders with a key prop."
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What does shouldComponentUpdate do and why is it important?
-
-The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
-
-The default implementation of this function returns true so to stop the re-render you need to return false here:
-
-```js
-shouldComponentUpdate(nextProps, nextState) {
-  console.log(nextProps, nextState)
-  console.log(this.props, this.state)
-  return false  
-}
-```
-
-**Preventing unnecessary renders**
-
-The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of render() function in React?
-
-All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
-
-Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
-
-```js
-// App.js
-import React from 'react'
-import './App.css'
-
-function App() {
-  return (
-    <div className="App">
-      Hello World !
-    </div>
-  )
-}
-
-export default App
-```
-
-```js
-// index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App/App'
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are React components?
-
-Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
-
-A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
-
-**Stateless Component**
-
-```js
-import React from 'react'
-
-const ExampleComponent = (props) => {
-    return (<h1>Welcome to React!</h1>)
-}
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ExampleComponent/>
-      </div>
-    )
-  }
-}
-```
-
-The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
-
-**Stateful Component**
-
-```js
-import React from 'react'
-
-class ExampleComponent extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      heading: "This is an Example Component!"
-    }
-  }
-  render() {
-    return (
-        <div>
-            <h1>{ this.props.welcomeMsg }</h1>
-            <h2>{ this.state.heading }</h2>
-        </div>
-    )
-  }
-}
-
-export default class App extends React.Component {
-  render() {
-    const welcomeMsg = "Welcome to React!"
-    return (
-      <div>
-        <ExampleComponent welcomeMsg={welcomeMsg}/>
-      </div>
-    )
-  }
-}
-```
-
-The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
-
-**Props**
-
-Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
-
-**State**
-
-A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
-
-**LifeCycle**
-
-Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6166,805 +6475,6 @@ class App extends Component {
 ```
 
 *Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to set up lazy loading components in React?
-
-Lazy loading is the technique used in optimizing your web and mobile apps, this works by rendering only needed or critical user interface items first, then quietly rendering the non-critical items later.
-
-**REACT.LAZY():**
-
-In **React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
-
-React.lazy() takes a function that returns a promise as it’s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
-
-```js
-// without lazy
-import MyComponent from './MyComponent';
- 
-// with lazy
-const MyComponent = React.lazy(() => import('./MyComponent'));
-```
-
-**SUSPENSE:**
-
-**React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
-
-```js
-//using suspense
-import React, { Suspense } from 'react';
-
-const MyComponent = React.lazy(() => import('./MyComponent'));
-
-const App = () => {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading ... </div>}>
-        <MyComponent />
-      </Suspense>
-    </div>
-  );
-}
-```
-
-**Example:** The following code snippet shows lazy loading routes
-
-```js
-import React, { Suspense, lazy } from "react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-
-const Home = lazy(() => import("./Home"));
-const ContactUs = lazy(() => import("./ContactUs"));
-const HelpPage = lazy(() => import("./Help"));
-
-export default function App() {
-  return (
-    <Router>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <Route exact component={Home} path="/" />
-          <Route component={ContactUs} path="/contact-us" />
-          <Route component={HelpPage} path="/help" />
-        </Switch>
-      </Suspense>
-    </Router>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do I pass a parameter to an event handler or callback?
-
-You can use an arrow function to wrap around an event handler and pass parameters:
-
-```js
-<button onClick={() => this.handleClick(id)} />
-```
-
-This is equivalent to calling `.bind`
-
-```js
-<button onClick={this.handleClick.bind(this, id)} />
-```
-
-**Example:** Passing params using arrow functions
-
-```js
-const A = 65 // ASCII character code
-
-class Alphabet extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.state = {
-      justClicked: null,
-      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    }
-  }
-  handleClick(letter) {
-    this.setState({ justClicked: letter })
-  }
-  render() {
-    return (
-      <div>
-        Just clicked: {this.state.justClicked}
-        <ul>
-          {this.state.letters.map(letter =>
-            <li key={letter} onClick={() => this.handleClick(letter)}>
-              {letter}
-            </li>
-          )}
-        </ul>
-      </div>
-    )
-  }
-}
-```
-
-**Example:** Passing params using data-attributes
-
-Alternately, you can use DOM APIs to store data needed for event handlers. Consider this approach if you need to optimize a large number of elements or have a render tree that relies on React.PureComponent equality checks.
-
-```js
-const A = 65 // ASCII character code
-
-class Alphabet extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.state = {
-      justClicked: null,
-      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    }
-  }
-
-  handleClick(e) {
-    this.setState({
-      justClicked: e.target.dataset.letter
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        Just clicked: {this.state.justClicked}
-        <ul>
-          {this.state.letters.map(letter =>
-            <li key={letter} data-letter={letter} onClick={this.handleClick}>
-              {letter}
-            </li>
-          )}
-        </ul>
-      </div>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can I prevent a function from being called too quickly?
-
-**Throttle**
-
-Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
-
-```js
-import throttle from 'lodash.throttle'
-
-class LoadMoreButton extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleClickThrottled = throttle(this.handleClick, 1000)
-  }
-
-  componentWillUnmount() {
-    this.handleClickThrottled.cancel()
-  }
-
-  render() {
-    return <button onClick={this.handleClickThrottled}>Load More</button>
-  }
-
-  handleClick() {
-    this.props.loadMore()
-  }
-}
-```
-
-**Debounce**
-
-Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
-
-The example below debounces text input with a 250ms delay.
-
-```js
-import debounce from 'lodash.debounce'
-
-class Searchbox extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.emitChangeDebounced = debounce(this.emitChange, 250)
-  }
-
-  componentWillUnmount() {
-    this.emitChangeDebounced.cancel()
-  }
-
-  render() {
-    return (
-      <input
-        type="text"
-        onChange={this.handleChange}
-        placeholder="Search..."
-        defaultValue={this.props.value}
-      />
-    )
-  }
-
-  handleChange(e) {
-    // React pools events, so we read the value before debounce.
-    // Alternately we could call `event.persist()` and pass the entire event.
-    // For more info see reactjs.org/docs/events.html#event-pooling
-    this.emitChangeDebounced(e.target.value)
-  }
-
-  emitChange(value) {
-    this.props.onChange(value)
-  }
-}
-```
-
-**RequestAnimationFrame Throttling**
-
-`requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
-
-For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second. Using requestAnimationFrame for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second. If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.
-
-```js
-import rafSchedule from 'raf-schd'
-
-class ScrollListener extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.handleScroll = this.handleScroll.bind(this)
-
-    // Create a new function to schedule updates.
-    this.scheduleUpdate = rafSchedule(
-      point => this.props.onScroll(point)
-    )
-  }
-
-  handleScroll(e) {
-    // When we receive a scroll event, schedule an update.
-    // If we receive many updates within a frame, we'll only publish the latest value.
-    this.scheduleUpdate({ x: e.clientX, y: e.clientY })
-  }
-
-  componentWillUnmount() {
-    // Cancel any pending updates since we're unmounting.
-    this.scheduleUpdate.cancel()
-  }
-
-  render() {
-    return (
-      <div
-        style={{ overflow: 'scroll' }}
-        onScroll={this.handleScroll}
-      >
-        <img src="/my-huge-image.jpg" />
-      </div>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is ReactDOM?
-
-ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
-
-ReactDOM provides the developers with an API containing the following methods
-
-* render()
-* findDOMNode()
-* unmountComponentAtNode()
-* hydrate()
-* createPortal()
-
-**render()**
-
-```js
-ReactDOM.render(element, container, callback)
-```
-
-Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
-
-**hydrate()**
-
-```js
-ReactDOM.hydrate(element, container, callback)
-```
-
-This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
-
-**unmountComponentAtNode()**
-
-```js
-ReactDOM.unmountComponentAtNode(container)
-```
-
-This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
-
-**findDOMNode()**
-
-```js
-ReactDOM.findDOMNode(component)
-```
-
-If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
-
-**createPortal()**
-
-```js
-ReactDOM.createPortal(child, container)
-```
-
-createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How Diff Algorithm is implemented in Reactjs?
-
-The main work of a **diff algorithm** is to find a heuristic to change anything from a state to another. When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
-
-**Elements Of Different Types**
-
-Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
-When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
-
-When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
-
-**DOM Elements Of The Same Type**
-
-When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
-
-**Example:** By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
-
-```js
-<div className="before" title="React JS" />
-
-<div className="after" title="React JS" />
-```
-
-**Component Elements Of The Same Type**
-
-When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
-
-**Recursing On Children**
-
-By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there\'s a difference.
-
-For example, when adding an element at the end of the children, converting between these two trees works well:
-
-```js
-<ul>
-  <li>first</li>
-  <li>second</li>
-</ul>
-
-<ul>
-  <li>first</li>
-  <li>second</li>
-  <li>third</li>
-</ul>
-```
-
-React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
-
-**Keys**
-
-When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
-
-```js
-<ul>
-  <li key="2015">Duke</li>
-  <li key="2016">Villanova</li>
-</ul>
-
-<ul>
-  <li key="2014">Connecticut</li>
-  <li key="2015">Duke</li>
-  <li key="2016">Villanova</li>
-</ul>
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between ReactDOM and React?
-
-```js
-import React from 'react' /* importing react */
-import ReactDOM from 'react-dom' /* importing react-dom */
-
-class MyComponent extends React.Component {
-
-  render() {
-    return <div>Hello World</div>
-  }
-})
-
-ReactDOM.render(<MyComponent />, node)
-
-```
-**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
-
-**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
-
-The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is reconciliation in React?
-
-Reconciliation is the process through which React updates the DOM.
-
-As a developer we are creating tree of components, react then takes this tree, process it and we get a Virtual DOM that it\'s kept in memory. When there is an update in our application (e.g. change in `state` or `props`) react will take the updated Virtual DOM and compares it with the old one Virtual DOM, then decides what and how should be changed. This procedure is repeated all over again.
-
-<p align="center">
-  <img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
-</p>
-
-Also synced versions between Virtual DOM and "real" DOM are served by libraries such as **ReactDOM**. React needs to be very fast at comparing those trees, so it uses **heuristic algorithm** with complexity of **O(n)**, so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of **O(n\^3)** => for 1000 nodes we need 1 bilion comparasions.
-
-*Example:* Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
-
-```js
-class App extends React.Component {
-  
-  state = {
-    result: '',
-    entry1: '',
-    entry2: ''
-  }
-
-  handleEntry1 = (event) => {
-    this.setState({entry1: event.target.value})
-  }
-  
-  handleEntry2 = (event) => {
-    this.setState({entry2: event.target.value})
-  }
-
-  handleAddition = (event) => {
-    const firstInt = parseInt(this.state.entry1)
-    const secondInt = parseInt(this.state.entry2)
-    this.setState({result: firstInt + secondInt })
-  }
-  
-  render() {
-    const { entry1, entry2, result } = this.state
-    return(
-      <div>  
-        <div>
-          Result: { result }
-        </div>
-        <span><input type='text' onChange={this.handleEntry1} /></span>
-        <br />
-        <br />
-        <span><input type='text' onChange={this.handleEntry2} /></span>
-        <div>
-          <button onClick={this.handleAddition} type='submit'>Add</button>
-        </div>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById("root"))
-```
-
-When an entry is made in the first input field, React creates a new tree. The new tree which is the virtual DOM will contain the new state for **entry1**. Then, React compares the virtual DOM with the old DOM and, from the comparison, it figures out the difference between both DOMs and makes an update to only the part that is different. A new tree is created each time the state of App component changes — when a value is entered in either of the inputs field, or when the button is clicked.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are portals in React?
-
-Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
-
-Normally, a functional or a class component renders a tree of React elements (usually generated from JSX). The React element defines how the DOM of the parent component should look.
-
-```js
-ReactDOM.createPortal(child, container)
-```
-
-**Features**
-
-* It transports its children component into a new React portal which is appended by default to `document.body`.
-* It can also target user specified DOM element.
-* It supports server-side rendering
-* It supports returning arrays (no wrapper div\'s needed)
-* It uses `<Portal />` and `<PortalWithState />` so there is no compromise between flexibility and convenience.
-
-**When to use**
-
-The common use-cases of React portal include:
-
-* Modals
-* Tooltips
-* Floating menus
-* Widgets
-
-**Installation**
-
-```bash
-npm install react-portal --save
-```
-
-*Example:* React Portal
-
-```js
-// App.js
-
-import React, {Component} from 'react'
-import './App.css'  
-import PortalDemo from './PortalDemo.js'  
-  
-class App extends Component {
-    render () {
-      return (
-        <div className='App'>  
-          <PortalDemo />  
-        </div>
-        )
-    }
-}
-
-export default App
-```
-
-The next step is to create a portal component and import it in the App.js file.
-
-```js
-// PortalDemo.js
-
-import React from 'react'  
-import ReactDOM from 'react-dom'  
-  
-function PortalDemo(){  
-    return ReactDOM.createPortal(  
-      <h1>Portals Demo</h1>,  
-      document.getElementById('portal-root')  
-    )  
-}  
-export default PortalDemo
-```
-
-Now, open the Index.html file and add a <div id="portal-root"></div> element to access the child component outside the root node.
-
-```html
-<!-- index.html -->
-
-<!DOCTYPE html>  
-<html lang="en">  
-  <head>  
-    <meta charset="utf-8" />  
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />  
-    <meta name="viewport" content="width=device-width, initial-scale=1" />  
-    <meta name="theme-color" content="#000000" />  
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />  
-    <title>React App using Portal</title>  
-  </head>  
-  <body>  
-    <noscript>It is required to enable JavaScript to run this app.</noscript>  
-    <div id="root"></div>  
-    <div id="portal-root"></div>  
-  </body>  
-</html>  
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is ReactDOMServer?
-
-The `ReactDOMServer` object enables you to render components to static markup. Typically, it\'s used on a Node server:
-
-```js
-// ES modules
-import ReactDOMServer from 'react-dom/server'
-// CommonJS
-var ReactDOMServer = require('react-dom/server')
-```
-
-The **Server-side rendering (SSR)** is a popular technique for rendering a client-side single page application (SPA) on the server and then sending a fully rendered page to the client. This allows for dynamic components to be served as static HTML markup.
-
-* It allows your site to have a faster first page load time, which is the key to a good user experience
-* This approach can be useful for search engine optimization (SEO) when indexing does not handle JavaScript properly.
-* It is great when people share a page of your site on social media, as they can easily gather the metadata needed to nicely share the link (images, title, description..)
-
-*Example:*
-
-**Creating an Express Server**
-
-```bash
-npm install express
-```
-
-All the content inside the build folder is going to be served as-is, statically by Express.
-
-```js
-// server/server.js
-
-import path from 'path'
-import fs from 'fs'
-
-import express from 'express'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-
-import App from '../src/App'
-
-const PORT = 8080
-const app = express()
-
-const router = express.Router()
-
-const serverRenderer = (req, res, next) => {
-  fs.readFile(path.resolve('./build/index.html'), 'utf8', (err, data) => {
-    if (err) {
-      console.error(err)
-      return res.status(500).send('An error occurred')
-    }
-    return res.send(
-      data.replace(
-        '<div id="root"></div>',
-        `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
-      )
-    )
-  })
-}
-router.use('^/$', serverRenderer)
-
-router.use(
-  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
-)
-
-// tell the app to use the above rules
-app.use(router)
-
-// app.use(express.static('./build'))
-app.listen(PORT, () => {
-  console.log(`SSR running on port ${PORT}`)
-})
-```
-
-Now, in the client application, in your src/index.js, instead of calling `ReactDOM.render()`:
-
-```js
-ReactDOM.render(<App />, document.getElementById('root'))
-```
-
-call ReactDOM.hydrate(), which is the same but has the additional ability to attach event listeners to existing markup once React loads:
-
-```js
-ReactDOM.hydrate(<App />, document.getElementById('root'))
-```
-
-All the Node.js code needs to be transpiled by Babel, as server-side Node.js code does not know anything about JSX, nor ES Modules (which we use for the include statements).
-
-**Babel Package**
-
-```bash
-npm install @babel/register @babel/preset-env @babel/preset-react ignore-styles
-```
-
-Let\'s create an entry point in `server/index.js`:
-
-```js
-require('ignore-styles')
-
-require('@babel/register')({
-  ignore: [/(node_modules)/],
-  presets: ['@babel/preset-env', '@babel/preset-react']
-})
-
-require('./server')
-```
-
-Build the React application, so that the build/ folder is populated and run this:
-
-```bash
-# Build App
-npm run build
-
-# Run App on Express
-node server/index.js
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of renderToNodeStream method?
-
-```js
-ReactDOMServer.renderToNodeStream(element)
-```
-
-This method is used to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
-
-*Note: This method is not available in the browser but only server.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What will happen if you use props in initial state?
-
-Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
-
-The danger is that if the `props` on the component are changed without the component being *'refreshed'*, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
-
-**Bad**
-
-The below component won\'t display the updated input value
-
-```js
-class App extends React.Component {
-
-  // constructor function (or getInitialState)
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      records: [],
-      inputValue: this.props.inputValue
-    }
-  }
-
-  render() {
-    return <div>{this.state.inputValue}</div>
-  }
-}
-```
-
-**Good**
-
-Using props inside render method will update the value:
-
-```js
-class App extends React.Component {
-
-  // constructor function (or getInitialState)
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      records: []
-    }
-  }
-
-  render() {
-    return <div>{this.props.inputValue}</div>
-  }
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7043,19 +6553,6 @@ class ShowWindowDimensions extends React.Component {
 
 ```bash
 window.React.version
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to use https instead of http in create-react-app?
-
-set the HTTPS environment variable to `true`, then start the dev server as usual with `npm start`:
-
-```bash
-# Windows
-set HTTPS=true&&npm start
 ```
 
 <div align="right">
@@ -12738,6 +12235,512 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 <p align="center">
   <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
 </p>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Explain DOM diffing?
+
+**Document Object Model:**
+
+The DOM (Document Object Model) is an interface that represents an HTML document in a tree-like structure with nodes. This structure allows the document to be traversed and modified by programmers with each node being represented as an object. The DOM is created by the browser when
+a web page is loaded.
+
+**React\'s "Virtual DOM":**
+
+The "Virtual DOM" is very similar to the real DOM, in that it is a tree-like structure kept in-memory, where React elements are represented as objects. This tree has many of the same properties as the real DOM without the power to change what is on the screen. It is a javascript object representing components in your application which can be updated quickly and efficiently by React.
+
+When a JSX element is rendered or the state of an element changes, a new Virtual DOM tree is created. The function responsible for the creation of this tree is React\'s render() function. This is a fast process because the virtual DOM tree is just a javascript object and the UI will not be re-painted based on this new tree.
+
+**DOM Diffing:**
+
+Once the Virtual DOM is created, React compares this new representation with a snapshot of the previous version of the virtual DOM to see exactly which elements have changed.
+
+Once the difference is known, React updates only those objects that differ on the actual DOM and the browser re-paints the screen. The next time state or props changes for a component in the application, a new virtual DOM tree of React elements will be created and the process will repeat.
+
+The process of checking the difference between the new Virtual DOM tree and the old Virtual DOM tree is called **diffing**. Diffing is accomplished by a **heuristic O(n)** algorithm. During this process, React will deduce the minimum number of steps needed to update the real DOM, eliminating unnecessary costly changes. This process is also referred to as **reconciliation**.
+
+React implements a heuristic O(n) algorithm based on two assumptions:
+
+1. Two elements of different types will produce different trees.
+1. The developer can hint at which child elements may be stable across different renders with a key prop."
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is ReactDOM?
+
+ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
+
+ReactDOM provides the developers with an API containing the following methods
+
+* render()
+* findDOMNode()
+* unmountComponentAtNode()
+* hydrate()
+* createPortal()
+
+**render()**
+
+```js
+ReactDOM.render(element, container, callback)
+```
+
+Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
+
+**hydrate()**
+
+```js
+ReactDOM.hydrate(element, container, callback)
+```
+
+This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
+
+**unmountComponentAtNode()**
+
+```js
+ReactDOM.unmountComponentAtNode(container)
+```
+
+This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
+
+**findDOMNode()**
+
+```js
+ReactDOM.findDOMNode(component)
+```
+
+If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
+
+**createPortal()**
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How Diff Algorithm is implemented in Reactjs?
+
+The main work of a **diff algorithm** is to find a heuristic to change anything from a state to another. When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
+
+**Elements Of Different Types**
+
+Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
+When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
+
+When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+
+**DOM Elements Of The Same Type**
+
+When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
+
+**Example:** By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
+
+```js
+<div className="before" title="React JS" />
+
+<div className="after" title="React JS" />
+```
+
+**Component Elements Of The Same Type**
+
+When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
+
+**Recursing On Children**
+
+By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there\'s a difference.
+
+For example, when adding an element at the end of the children, converting between these two trees works well:
+
+```js
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+```
+
+React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
+
+**Keys**
+
+When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
+
+```js
+<ul>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+
+<ul>
+  <li key="2014">Connecticut</li>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between ReactDOM and React?
+
+```js
+import React from 'react' /* importing react */
+import ReactDOM from 'react-dom' /* importing react-dom */
+
+class MyComponent extends React.Component {
+
+  render() {
+    return <div>Hello World</div>
+  }
+})
+
+ReactDOM.render(<MyComponent />, node)
+
+```
+**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
+
+**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
+
+The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is reconciliation in React?
+
+Reconciliation is the process through which React updates the DOM.
+
+As a developer we are creating tree of components, react then takes this tree, process it and we get a Virtual DOM that it\'s kept in memory. When there is an update in our application (e.g. change in `state` or `props`) react will take the updated Virtual DOM and compares it with the old one Virtual DOM, then decides what and how should be changed. This procedure is repeated all over again.
+
+<p align="center">
+  <img src="assets/reconciliation.jpg" alt="reconciliation" width="500px" />
+</p>
+
+Also synced versions between Virtual DOM and "real" DOM are served by libraries such as **ReactDOM**. React needs to be very fast at comparing those trees, so it uses **heuristic algorithm** with complexity of **O(n)**, so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of **O(n\^3)** => for 1000 nodes we need 1 bilion comparasions.
+
+*Example:* Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
+
+```js
+class App extends React.Component {
+  
+  state = {
+    result: '',
+    entry1: '',
+    entry2: ''
+  }
+
+  handleEntry1 = (event) => {
+    this.setState({entry1: event.target.value})
+  }
+  
+  handleEntry2 = (event) => {
+    this.setState({entry2: event.target.value})
+  }
+
+  handleAddition = (event) => {
+    const firstInt = parseInt(this.state.entry1)
+    const secondInt = parseInt(this.state.entry2)
+    this.setState({result: firstInt + secondInt })
+  }
+  
+  render() {
+    const { entry1, entry2, result } = this.state
+    return(
+      <div>  
+        <div>
+          Result: { result }
+        </div>
+        <span><input type='text' onChange={this.handleEntry1} /></span>
+        <br />
+        <br />
+        <span><input type='text' onChange={this.handleEntry2} /></span>
+        <div>
+          <button onClick={this.handleAddition} type='submit'>Add</button>
+        </div>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"))
+```
+
+When an entry is made in the first input field, React creates a new tree. The new tree which is the virtual DOM will contain the new state for **entry1**. Then, React compares the virtual DOM with the old DOM and, from the comparison, it figures out the difference between both DOMs and makes an update to only the part that is different. A new tree is created each time the state of App component changes — when a value is entered in either of the inputs field, or when the button is clicked.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+
+## Q. What are portals in React?
+
+Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+Normally, a functional or a class component renders a tree of React elements (usually generated from JSX). The React element defines how the DOM of the parent component should look.
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+**Features**
+
+* It transports its children component into a new React portal which is appended by default to `document.body`.
+* It can also target user specified DOM element.
+* It supports server-side rendering
+* It supports returning arrays (no wrapper div\'s needed)
+* It uses `<Portal />` and `<PortalWithState />` so there is no compromise between flexibility and convenience.
+
+**When to use**
+
+The common use-cases of React portal include:
+
+* Modals
+* Tooltips
+* Floating menus
+* Widgets
+
+**Installation**
+
+```bash
+npm install react-portal --save
+```
+
+*Example:* React Portal
+
+```js
+// App.js
+
+import React, {Component} from 'react'
+import './App.css'  
+import PortalDemo from './PortalDemo.js'  
+  
+class App extends Component {
+    render () {
+      return (
+        <div className='App'>  
+          <PortalDemo />  
+        </div>
+        )
+    }
+}
+
+export default App
+```
+
+The next step is to create a portal component and import it in the App.js file.
+
+```js
+// PortalDemo.js
+
+import React from 'react'  
+import ReactDOM from 'react-dom'  
+  
+function PortalDemo(){  
+    return ReactDOM.createPortal(  
+      <h1>Portals Demo</h1>,  
+      document.getElementById('portal-root')  
+    )  
+}  
+export default PortalDemo
+```
+
+Now, open the Index.html file and add a <div id="portal-root"></div> element to access the child component outside the root node.
+
+```html
+<!-- index.html -->
+
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+    <meta charset="utf-8" />  
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <meta name="theme-color" content="#000000" />  
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />  
+    <title>React App using Portal</title>  
+  </head>  
+  <body>  
+    <noscript>It is required to enable JavaScript to run this app.</noscript>  
+    <div id="root"></div>  
+    <div id="portal-root"></div>  
+  </body>  
+</html>  
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is ReactDOMServer?
+
+The `ReactDOMServer` object enables you to render components to static markup. Typically, it\'s used on a Node server:
+
+```js
+// ES modules
+import ReactDOMServer from 'react-dom/server'
+// CommonJS
+var ReactDOMServer = require('react-dom/server')
+```
+
+The **Server-side rendering (SSR)** is a popular technique for rendering a client-side single page application (SPA) on the server and then sending a fully rendered page to the client. This allows for dynamic components to be served as static HTML markup.
+
+* It allows your site to have a faster first page load time, which is the key to a good user experience
+* This approach can be useful for search engine optimization (SEO) when indexing does not handle JavaScript properly.
+* It is great when people share a page of your site on social media, as they can easily gather the metadata needed to nicely share the link (images, title, description..)
+
+*Example:*
+
+**Creating an Express Server**
+
+```bash
+npm install express
+```
+
+All the content inside the build folder is going to be served as-is, statically by Express.
+
+```js
+// server/server.js
+
+import path from 'path'
+import fs from 'fs'
+
+import express from 'express'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
+import App from '../src/App'
+
+const PORT = 8080
+const app = express()
+
+const router = express.Router()
+
+const serverRenderer = (req, res, next) => {
+  fs.readFile(path.resolve('./build/index.html'), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err)
+      return res.status(500).send('An error occurred')
+    }
+    return res.send(
+      data.replace(
+        '<div id="root"></div>',
+        `<div id="root">${ReactDOMServer.renderToString(<App />)}</div>`
+      )
+    )
+  })
+}
+router.use('^/$', serverRenderer)
+
+router.use(
+  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
+)
+
+// tell the app to use the above rules
+app.use(router)
+
+// app.use(express.static('./build'))
+app.listen(PORT, () => {
+  console.log(`SSR running on port ${PORT}`)
+})
+```
+
+Now, in the client application, in your src/index.js, instead of calling `ReactDOM.render()`:
+
+```js
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+call ReactDOM.hydrate(), which is the same but has the additional ability to attach event listeners to existing markup once React loads:
+
+```js
+ReactDOM.hydrate(<App />, document.getElementById('root'))
+```
+
+All the Node.js code needs to be transpiled by Babel, as server-side Node.js code does not know anything about JSX, nor ES Modules (which we use for the include statements).
+
+**Babel Package**
+
+```bash
+npm install @babel/register @babel/preset-env @babel/preset-react ignore-styles
+```
+
+Let\'s create an entry point in `server/index.js`:
+
+```js
+require('ignore-styles')
+
+require('@babel/register')({
+  ignore: [/(node_modules)/],
+  presets: ['@babel/preset-env', '@babel/preset-react']
+})
+
+require('./server')
+```
+
+Build the React application, so that the build/ folder is populated and run this:
+
+```bash
+# Build App
+npm run build
+
+# Run App on Express
+node server/index.js
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of renderToNodeStream method?
+
+```js
+ReactDOMServer.renderToNodeStream(element)
+```
+
+This method is used to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+
+*Note: This method is not available in the browser but only server.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can automated tooling be used to improve the accessibility of a React application?
+
+There are two main categories of automated tools that can be used to identify accessibility issues:
+
+**Static Analysis Tools:**
+
+Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
+
+**Browser Tools:**  
+
+Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
