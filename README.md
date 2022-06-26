@@ -80,6 +80,57 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. List some of the major advantages and limitations of React?
+
+<p align="center">
+  <img src="assets/react-features.png" alt="React-Features" width="500px" />
+</p>
+
+**Advantages:**  
+
+* It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
+* JSX makes components/blocks code readable. It displays how components are plugged or combined with.
+* React data binding establishes conditions for creation dynamic applications.
+* Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
+Testable. React native tools are offered for testing, debugging code.
+* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
+    * React.renderComponentToString is called on the server. 
+    * React.renderComponent() is called on the client side. 
+    * React preserves markup rendered on the server side, attaches event handlers.  
+
+**Limitations:**  
+
+* Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
+* View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
+* Not using isomorphic approach to exploit application leads to search engines indexing problems.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why does React emphasize on unidirectional data flow?
+
+It is also known as one-way data flow, which means the data has one, and only one way to be transferred to other parts of the application. In essence, this means child components are not able to update the data that is coming from the parent component. In React, data coming from a parent is called **props**.
+
+In React this means that:
+
+* state is passed to the view and to child components
+* actions are triggered by the view
+* actions can update the state
+* the state change is passed to the view and to child components
+
+The view is a result of the application state. State can only change when actions happen. When actions happen, the state is updated. One-way data binding provides us with some key advantages
+
+* Easier to debug, as we know what data is coming from where.
+* Less prone to errors, as we have more control over our data.
+* More efficient, as the library knows what the boundaries are of each part of the system.
+
+In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 2. REACT SETUP
 
 <br/>
@@ -277,7 +328,7 @@ Browsers don\'t understand JSX, so most React users rely on a compiler like **Ba
 
 Let\'s take an example to look at the main differences between the old and the new transform,
 
-### **Old Transform**
+**Old Transform**
 
 ```js
 import React from 'react';
@@ -299,7 +350,7 @@ function App() {
 
 Because JSX was compiled into `React.createElement()`, React needed to be in scope if you used JSX. Hence, the reason react is being imported everywhere you use JSX. Also, there are some performance improvements and simplifications that that are not allowed by `React.createElement()`.
 
-### **New Transform:**
+**New Transform:**
 
 The new JSX transform doesn\'t require any React imports
 
@@ -528,6 +579,10 @@ In the output, this will render `true`, `false`, `undefined`, and `null` respect
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 4. REACT COMPONENTS
+
+<br/>
+
 ## Q. What are Components in React?
 
 Components are the building blocks of any React application and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
@@ -636,7 +691,7 @@ By using default you express that\'s going to be member in that module which wou
 
 ## Q. What is difference between declarative and imperative in React.js?
 
-### **Imperative programming**
+**1. Imperative programming:**
 
 It is a programming paradigm that uses statements that change a program\'s state.
 
@@ -652,7 +707,7 @@ console.log(removeSpace);
 
 In this example, we loop through every character in the string, replacing spaces as they occur. Just looking at the code, it doesn\'t say much. Imperative requires lots of comments in order to understand code. Whereas in the declarative program, the syntax itself describes what should happen and the details of how things happen are abstracted way.
 
-### **Declarative programming**
+**2. Declarative programming:**
 
 It is a programming paradigm that expresses the logic of a computation without describing its control flow.
 
@@ -732,7 +787,7 @@ class Table extends React.Component {
 export default Table; // Exporting a component make it reusable
 ```
 
-### **Table Data**
+**1. Table Data:**
 
 Now we want to print out employees data in the Dom. We often use `map function` in react to itearate over array.
 Lets write a separate function for table data and calling it in our render method. This approach will make our code cleaner and easier to read.
@@ -766,7 +821,7 @@ renderTableData() {
    }
 ```
 
-### **Table Header**
+**2. Table Header:**
 
 Now we will write another method for table header.
 
@@ -803,7 +858,7 @@ renderTableHeader() {
 
 ## Q. What is the difference between Element and Component?
 
-### **React Element**
+**1. React Element:**
 
 It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
 
@@ -814,7 +869,7 @@ ReactDOM.render(element, document.getElementById('app'));
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
 
-### **React Component**
+**2. React Component:**
 
 It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
 
@@ -831,60 +886,9 @@ ReactDOM.render(<Message />, document.getElementById('app'));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. List some of the major advantages and limitations of React?
-
-<p align="center">
-  <img src="assets/react-features.png" alt="React-Features" width="500px" />
-</p>
-
-**Advantages:**  
-
-* It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
-* JSX makes components/blocks code readable. It displays how components are plugged or combined with.
-* React data binding establishes conditions for creation dynamic applications.
-* Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
-Testable. React native tools are offered for testing, debugging code.
-* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
-    * React.renderComponentToString is called on the server. 
-    * React.renderComponent() is called on the client side. 
-    * React preserves markup rendered on the server side, attaches event handlers.  
-
-**Limitations:**  
-
-* Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
-* View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
-* Not using isomorphic approach to exploit application leads to search engines indexing problems.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why does React emphasize on unidirectional data flow?
-
-It is also known as one-way data flow, which means the data has one, and only one way to be transferred to other parts of the application. In essence, this means child components are not able to update the data that is coming from the parent component. In React, data coming from a parent is called **props**.
-
-In React this means that:
-
-* state is passed to the view and to child components
-* actions are triggered by the view
-* actions can update the state
-* the state change is passed to the view and to child components
-
-The view is a result of the application state. State can only change when actions happen. When actions happen, the state is updated. One-way data binding provides us with some key advantages
-
-* Easier to debug, as we know what data is coming from where.
-* Less prone to errors, as we have more control over our data.
-* More efficient, as the library knows what the boundaries are of each part of the system.
-
-In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What are the differences between a class component and functional component?
 
-### **Functional Components**  
+**1. Functional Components:**  
 
 * Functional components are basic JavaScript functions. These are typically arrow functions but can also be created with the regular  function keyword.
 * Sometimes referred to as `stateless` components as they simply accept data and display them in some form; that is they are mainly responsible for rendering UI.
@@ -911,7 +915,7 @@ ReactDOM.render(
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
 
-### **Class Components**  
+**2. Class Components:**  
 
 * Class components make use of ES6 class and extend the Component class in React.
 * Sometimes called `stateful` components as they tend to implement logic and state.
@@ -1556,7 +1560,7 @@ React components automatically re-render whenever there is a change in their sta
 
 However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
 
-### **1. Using setState()**
+**1. Using setState():**
 
 In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
 
@@ -1594,7 +1598,7 @@ export default Greeting
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
 
-### **2. Using forceUpdate()**
+**2. Using forceUpdate():**
 
 The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
 
@@ -1763,7 +1767,7 @@ export function MyComponent(props) {
 
 There are 3 possible ways to achieve this
 
-### **Event Handler in Render Method:**
+**1. Event Handler in Render Method:**
 
 We can bind the handler when it is called in the render method using `bind()` method.
 
@@ -1777,7 +1781,7 @@ handleClick() {
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
 
-### **Event Handler using Arrow Function:**
+**2. Event Handler using Arrow Function:**
 
 In this approach we are binding the event handler implicitly. This approach is the best if you want to pass parameters to your event.
 
@@ -1791,7 +1795,7 @@ handleClick() {
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
 
-### **Event Handler in Constructor:**
+**3. Event Handler in Constructor:**
 
 This has performance benefits as the events aren\'t binding every time the method is called, as opposed to the previous two approaches.
 
@@ -1839,7 +1843,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
 React Components can add styling in the following ways:
 
-### **Inline Styling:**
+**1. Inline Styling:**
 
 In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces `{{}}`. Since the inline CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax:
 
@@ -1858,7 +1862,7 @@ class HeaderComponent extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
 
-### **JavaScript Object:**
+**2. JavaScript Object:**
 
 We can also create an object with styling information, and refer to it in the style attribute:
 
@@ -1883,7 +1887,7 @@ class HeaderComponent extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
 
-### **CSS Stylesheet:**
+**3. CSS Stylesheet:**
 
 You can write your CSS styling in a separate file, just save the file with the .css file extension, and import it in your application.
 
@@ -1914,7 +1918,7 @@ class HeaderComponent extends React.Component {
 }
 ```
 
-### **CSS Modules:**
+**4. CSS Modules:**
 
 CSS Modules are convenient for components that are placed in separate files
 
@@ -2253,7 +2257,7 @@ function withMouse(Component) {
 
 The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
 
-### **Higher-order components**
+**1. Higher-order components:**
 
 Essentially HOC are similar to the decorator pattern, a function that takes a component as the first parameter and returns a new component. This is where you apply your crosscutting functionality.
 
@@ -2268,7 +2272,7 @@ function withExample(Component) {
 }
 ```
 
-### **Render Props**
+**2. Render Props:**
 
 A render prop is where a component’s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
 
@@ -2297,7 +2301,7 @@ Creating a higher order component basically involves manipulating WrappedCompone
 
 Both enable different ways of manipulating the WrappedComponent.
 
-### **Props Proxy**
+**1. Props Proxy:**
 
 In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
 
@@ -2320,7 +2324,7 @@ Props Proxy can be implemented via a number of ways
 * Abstracting State
 * Wrapping the WrappedComponent with other elements
 
-### **Inheritance Inversion**
+**2. Inheritance Inversion:**
 
 Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
 
@@ -3522,7 +3526,7 @@ A ref is defined as any value that does not trigger a component re-render when i
 
 ## Q. What is the difference between useRef() and createRef()?
 
-### **useRef():**
+**1. useRef():**
 
 The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
 
@@ -3552,7 +3556,7 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
 
-### **createRef():**
+**2. createRef():**
 
 The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
 
@@ -6142,7 +6146,7 @@ class App extends Component {
 
 Lazy loading is the technique used in optimizing your web and mobile apps, this works by rendering only needed or critical user interface items first, then quietly rendering the non-critical items later.
 
-### **REACT.LAZY():**
+**REACT.LAZY():**
 
 In **React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
 
@@ -6156,7 +6160,7 @@ import MyComponent from './MyComponent';
 const MyComponent = React.lazy(() => import('./MyComponent'));
 ```
 
-### **SUSPENSE:**
+**SUSPENSE:**
 
 **React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
 
@@ -6302,7 +6306,7 @@ class Alphabet extends React.Component {
 
 ## Q. How can I prevent a function from being called too quickly?
 
-### **Throttle**
+**Throttle**
 
 Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
 
@@ -6330,7 +6334,7 @@ class LoadMoreButton extends React.Component {
 }
 ```
 
-### **Debounce**
+**Debounce**
 
 Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
 
@@ -6374,7 +6378,7 @@ class Searchbox extends React.Component {
 }
 ```
 
-### **RequestAnimationFrame Throttling**
+**RequestAnimationFrame Throttling**
 
 `requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
 
@@ -6435,7 +6439,7 @@ ReactDOM provides the developers with an API containing the following methods
 * hydrate()
 * createPortal()
 
-### **render()**
+**render()**
 
 ```js
 ReactDOM.render(element, container, callback)
@@ -6445,7 +6449,7 @@ Render a React element into the DOM in the supplied container and return a refer
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
 
-### **hydrate()**
+**hydrate()**
 
 ```js
 ReactDOM.hydrate(element, container, callback)
@@ -6455,7 +6459,7 @@ This method is equivalent to the `render()` method but is implemented while usin
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
 
-### **unmountComponentAtNode()**
+**unmountComponentAtNode()**
 
 ```js
 ReactDOM.unmountComponentAtNode(container)
@@ -6465,7 +6469,7 @@ This function is used to unmount or remove the React Component that was rendered
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
 
-### **findDOMNode()**
+**findDOMNode()**
 
 ```js
 ReactDOM.findDOMNode(component)
@@ -6475,7 +6479,7 @@ If this component has been mounted into the DOM, this returns the corresponding 
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
 
-### **createPortal()**
+**createPortal()**
 
 ```js
 ReactDOM.createPortal(child, container)
@@ -6493,14 +6497,14 @@ createPortal allow us to render a component into a DOM node that resides outside
 
 The main work of a **diff algorithm** is to find a heuristic to change anything from a state to another. When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
 
-### **Elements Of Different Types**
+**Elements Of Different Types**
 
 Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
 When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
 
 When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
 
-### **DOM Elements Of The Same Type**
+**DOM Elements Of The Same Type**
 
 When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
 
@@ -6512,11 +6516,11 @@ When comparing two React DOM elements of the same type, React looks at the attri
 <div className="after" title="React JS" />
 ```
 
-### **Component Elements Of The Same Type**
+**Component Elements Of The Same Type**
 
 When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
 
-### **Recursing On Children**
+**Recursing On Children**
 
 By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there\'s a difference.
 
@@ -6537,7 +6541,7 @@ For example, when adding an element at the end of the children, converting betwe
 
 React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
 
-### **Keys**
+**Keys**
 
 When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
 
@@ -9374,7 +9378,7 @@ const Button = withRouter(({ history }) => (
 
 ## Q. How to pass additional data while redirecting to a route in React?
 
-### **Using Link:**
+**Using Link:**
 
 Normally we use the Link component from react-router-dom as shown below:
 
@@ -9397,7 +9401,7 @@ Here, at the place of `some_data`, we can pass a string or object, array etc. an
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
 
-### **Using history.push:**
+**Using history.push:**
 
 Normally, to redirect using the push method, we use it like this:
 
@@ -9656,7 +9660,7 @@ export default function App() {
 
 ## Q. What is the difference between HashRouter and BrowserRouter in React?
 
-### **BrowserRouter**
+**BrowserRouter**
 
 * The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
 * It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
@@ -9710,7 +9714,7 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
 
-### **HashRouter**
+**HashRouter**
 
 * A router which uses client side hash routing.
 * Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
@@ -11956,7 +11960,7 @@ Code splitting uses `React.lazy` and `Suspense` library, which helps to load a d
 * The impact on memory
 * The downloaded Kilobytes (or Megabytes) size
 
-### **React.lazy and Suspense**
+**React.lazy and Suspense**
 
 The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
 
@@ -12214,13 +12218,13 @@ console.log(testRenderer.toJSON());
 
 ## Q. Explain react unit testing using Jest and Enzyme?
 
-### **Jest**  
+**Jest**  
 
 Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
 
 Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
 
-### **Enzyme**
+**Enzyme**
 
 Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
 
@@ -12647,7 +12651,7 @@ A service worker is a background worker that acts as a programmable proxy, allow
 
 Service workers depend on two APIs to work effectively: `Fetch` (a standard way to retrieve content from the network) and `Cache` (content storage for application data. This cache is independent from the browser cache or network status).
 
-### **Service Worker Lifecycle:**
+**Service Worker Lifecycle:**
 
 Each service worker goes through three steps in its lifecycle: registration, installation and activation.
 
@@ -14270,13 +14274,13 @@ export default connect(mapStateToProps)(App)
 
 ## Q. What is the difference between React context and React Redux?
 
-### **React Context:**
+**React Context:**
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
 In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
 
-### **Redux:**
+**Redux:**
 
 Redux is a pattern and library for managing and updating application state, using events called "actions". It serves as a centralized store for state that needs to be used across your entire application, with rules ensuring that the state can only be updated in a predictable fashion.
 
@@ -14284,7 +14288,7 @@ Redux helps you manage "global" state - state that is needed across many parts o
 
 The patterns and tools provided by Redux make it easier to understand when, where, why, and how the state in your application is being updated, and how your application logic will behave when those changes occur.
 
-### **Redux vs Context API**
+**Redux vs Context API**
 
 **1.) Implementation**
 
@@ -14301,7 +14305,7 @@ Context API prompts a re-render on each update of the state and re-renders all c
 
 ## Q. What are the differences between redux-saga and redux-thunk?
 
-### **Redux Thunk**
+**Redux Thunk**
 
 Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
 
@@ -14351,7 +14355,7 @@ const getList = (payload) => {
 export { fetchList }
 ```
 
-### **Redux Saga**
+**Redux Saga**
 
 Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
 
