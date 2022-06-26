@@ -3872,42 +3872,6 @@ Here, When the `<input>` element is rendered, React calls the function defined i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the difference between DOM and virtual DOM?
-
-**DOM:**
-
-DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
-
-The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
-
-**Virtual DOM:**  
-
-The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
-
-The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
-
-**Why Virtual DOM is faster:**
-
-When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
-
-Once this is done, the virtual DOM calculates the best possible method to make these changes to the real DOM. This ensures that there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
-
-**Pros of Virtual DOM:**  
-
-* Updates process is optimized and accelerated.
-* JSX makes components/blocks code readable.
-* React data binding establishes conditions for creation dynamic applications.
-* Virtual DOM is ideal for mobile first applications.
-* Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
-
-<p align="center">
-  <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
-</p>
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. When should we use arrow functions with React?
 
 **Arrows prevent `this` bugs**
@@ -12738,6 +12702,42 @@ In brief, here is what happens when we update the DOM in React:
 1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between DOM and virtual DOM?
+
+**DOM:**
+
+DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
+
+The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
+
+**Virtual DOM:**  
+
+The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
+
+The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
+
+**Why Virtual DOM is faster:**
+
+When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
+
+Once this is done, the virtual DOM calculates the best possible method to make these changes to the real DOM. This ensures that there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
+
+**Pros of Virtual DOM:**  
+
+* Updates process is optimized and accelerated.
+* JSX makes components/blocks code readable.
+* React data binding establishes conditions for creation dynamic applications.
+* Virtual DOM is ideal for mobile first applications.
+* Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
+
+<p align="center">
+  <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
