@@ -37,14 +37,15 @@
   * [React APIs](#-9-react-apis)
   * [React Forms](#-10-react-forms)
   * [React Hooks](#-11-react-hooks)
-  * [React Router](#-12-react-router)
-  * [React Error Boundaries](#-13-react-error-boundaries)
-  * [React Inheritance](#-14-react-inheritance)
-  * [React CSS Styling](#-15-react-css-styling)
-  * [React Animation](#-16-react-animation)
-  * [React Internationalization](#-17-react-internationalization)
-  * [React Testing](#-18-react-testing)
-  * [Miscellaneous](#-19-miscellaneous)
+  * [React Context](#-12-react-context)
+  * [React Router](#-13-react-router)
+  * [React Error Boundaries](#-14-react-error-boundaries)
+  * [React Inheritance](#-15-react-inheritance)
+  * [React CSS Styling](#-16-react-css-styling)
+  * [React Animation](#-17-react-animation)
+  * [React Internationalization](#-18-react-internationalization)
+  * [React Testing](#-19-react-testing)
+  * [Miscellaneous](#-20-miscellaneous)
 
 * Redux
   * [Redux Overview](#-1-redux-overview)
@@ -12165,7 +12166,7 @@ registerServiceWorker();
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 19. MISCELLANEOUS
+## # 20. MISCELLANEOUS
 
 <br/>
 
