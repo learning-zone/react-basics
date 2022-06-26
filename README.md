@@ -13541,7 +13541,7 @@ export const mapDispatchToProps = dispatch => ({
 ## Q. How to set the dataflow using react with redux?
 
 <p align="center">
-  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="500px" />
+  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="400px" />
 </p>
 
 Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
