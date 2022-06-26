@@ -38,6 +38,7 @@
   * [React Animation](#-16-react-animation)
   * [React Internationalization](#-17-react-internationalization)
   * [React Testing](#-18-react-testing)
+  * [Miscellaneous](#-19-miscellaneous)
 
 * Redux
   * [Redux Overview](#-1-redux-overview)
@@ -579,6 +580,26 @@ In the output, this will render `true`, `false`, `undefined`, and `null` respect
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How to use React label element?
+
+If you try to render a `<label>` element bound to a text input using the standard `for` attribute, then it produces HTML missing that attribute and prints a warning to the console.
+
+```js
+<label for={'user'}>{'User'}</label>
+<input type={'text'} id={'user'} />
+```
+
+Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
+
+```js
+<label htmlFor={'user'}>{'User'}</label>
+<input type={'text'} id={'user'} />
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 4. REACT COMPONENTS
 
 <br/>
@@ -1073,6 +1094,146 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. What is Higher Order Components in React.js?
+
+A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
+
+<p align="center">
+  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
+</p>
+
+Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
+
+```js
+// HOC.js
+
+import React, {Component} from 'react'
+
+export default function Hoc(HocComponent){
+    return class extends Component{
+        render(){
+            return (
+                <div>
+                    <HocComponent></HocComponent>
+                </div>
+
+            )
+        }
+    }
+}
+```
+
+```js
+// App.js
+
+import React, { Component } from 'react'
+import Hoc from './HOC'
+
+class App extends Component {
+  
+  render() {
+    return (
+      <div>
+        Higher-Order Component Example!
+      </div>
+    )
+  }
+}
+App = Hoc(App)
+export default App
+```
+
+*Notes*
+
+* We do not modify or mutate components. We create new ones.
+* A HOC is used to compose components for code reuse.
+* A HOC is a pure function. It has no side effects, returning only a new component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using HOC?
+
+**Benefits:**
+
+* Importantly they provided a way to reuse code when using ES6 classes.
+* No longer have method name clashing if two HOC implement the same one.
+* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
+* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
+
+**Problems:**
+
+* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
+* Ensure all relevant props are passed through to the component.
+* Hoist static methods from the wrapped component.
+* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are Higher Order Component factory implementations?
+
+Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
+
+* Props Proxy
+* Inheritance Inversion
+
+Both enable different ways of manipulating the WrappedComponent.
+
+**1. Props Proxy:**
+
+In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
+
+**Example:**
+
+```js
+function ppHOC(WrappedComponent) {
+   return class PP extends React.Component {
+     render() {
+       return <WrappedComponent {...this.props}/>
+     }
+   }
+}
+```
+
+Props Proxy can be implemented via a number of ways
+
+* Manipulating props
+* Accessing the instance via Refs
+* Abstracting State
+* Wrapping the WrappedComponent with other elements
+
+**2. Inheritance Inversion:**
+
+Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
+
+**Example:**
+
+```js
+function iiHOC(WrappedComponent) {
+   return class Enhancer extends WrappedComponent {
+     render() {
+       return super.render()
+     }
+   }
+}
+```
+
+Inheritance Inversion can be used in:
+
+* Conditional Rendering (Render Highjacking)
+* State Manipulation
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 5. REACT PROPS
+
+<br/>
+
 ## Q. What is props in React?
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
@@ -1312,6 +1473,201 @@ const App = () => (
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. How to apply validation on Props in React?
+
+Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
+
+```bash
+npm install prop-types --save-dev
+```
+
+**Example:**
+
+```js
+import React from 'react'
+import PropTypes from 'prop-types'
+
+App.defaultProps = {
+   propBool: true,
+   propArray: [1, 2, 3, 4, 5],
+   propNumber: 100,
+   propString: "Hello React!"
+}
+
+class App extends React.Component {
+
+   render() {
+      return (
+         <fragment>
+            <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
+            <h3>Array: {this.props.propArray}</h3>
+            <h3>Number: {this.props.propNumber}</h3>
+            <h3>String: {this.props.propString}</h3>
+         </fragment>
+      )
+   }
+}
+
+App.propTypes = {
+   propBool: PropTypes.bool.isRequired,
+   propArray: PropTypes.array.isRequired,
+   propNumber: PropTypes.number,
+   propString: PropTypes.string,
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are render props?
+
+The term **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
+
+In simple words, render props are simply props of a component where you can pass functions. These functions need to return elements, which will be used in rendering the components.
+
+**Example:**
+
+```js
+// Wrapper.js
+
+class Wrapper extends React.Component {
+  state = {
+    count: 0
+  };
+
+  // Increase count
+  increment = () => {
+    const { count } = this.state;
+    return this.setState({ count: count + 1 });
+  };
+
+  render() {
+    const { count } = this.state;
+
+    return (
+      <div>
+        {this.props.render({ increment: this.increment, count: count })}
+      </div>
+    );
+  }
+}
+```
+
+```js
+// App.js
+
+class App extends React.Component {
+  render() {
+    return (
+      <Wrapper
+        render={({ increment, count }) => (
+          <div>
+            <h3>Render Props Counter</h3>
+            <p>{count}</p>
+            <button onClick={() => increment()}>Increment</button> 
+          </div>
+        )}
+      />
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using Render Props?
+
+**Benefits:**
+
+* Reuse code across components when using ES6 classes.
+* The lowest level of indirection - it’s clear which component is called and the state is isolated.
+* No naming collision issues for props, state and class methods.
+* No need to deal with boiler code and hoisting static methods.
+
+**Problems:**
+
+* Caution using **`shouldComponentUpdate()`** as the render prop might close over data it is unaware of.
+* There could also be minor memory issues when defining a closure for every render. But be sure to measure first before  making performance changes as it might not be an issue for your app.
+* Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression.  Rendering the result of an HOC does look cleaner.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you create Higher Order Component using render props?
+
+It is possible to implement most higher-order components (HOC) using a regular component with a render prop. This way render props gives the flexibility of using either pattern.
+
+**Example:**
+
+```js
+function withMouse(Component) {
+  return class extends React.Component {
+    render() {
+      return (
+        <Mouse render={mouse => (
+          <Component {...this.props} mouse={mouse} />
+        )}/>
+      );
+    }
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Explain HOC vs render props in react.js?
+
+The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
+
+**1. Higher-order components:**
+
+Essentially HOC are similar to the decorator pattern, a function that takes a component as the first parameter and returns a new component. This is where you apply your crosscutting functionality.
+
+**Example:**
+
+```js
+function withExample(Component) {
+  return function(props) {
+    // cross cutting logic added here
+    return <Component {...props} />;
+  };
+}
+```
+
+**2. Render Props:**
+
+A render prop is where a component’s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
+
+**Example:**
+
+```js
+render(){
+  <FetchData render={(data) => {
+    return <p>{data}</p>
+  }} />
+}
+```
+
+The React community is moving away from HOC (higher order components) in favor of render prop components (RPC). For the most part, HOC and render prop components solve the same problem. However, render prop components provide are gaining popularity because they are more declarative and flexible than an HOC.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 6. REACT STATE
+
+<br/>
 
 ## Q. What is State in React?
 
@@ -1763,6 +2119,150 @@ export function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 7. REACT EVENTS
+
+<br/>
+
+## Q. What is meant by event handling in React?
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+
+* React events are named using camelCase, rather than lowercase.
+* With JSX you pass a function as the event handler, rather than a string.
+
+```js
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {isToggleOn: true}
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }))
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    )
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to pass a parameter to event handlers in React?
+
+**Example:**
+
+```js
+const message = "Hey there!";
+export default class App extends React.Component {
+  displayMessage(message) {
+    alert(message);
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.displayMessage(message)}>CLICK ME</button>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you pass an event handler to a component?
+
+**Example:**
+
+```js
+import React, {useState} from "react";
+import "./styles.css";
+
+export default function App() {
+  return (
+    <Container/>
+  );
+}
+
+const Container = () => {
+  const [counter, setCounter] = useState(0);
+  
+  const handleCustomClick = () => {
+    setCounter(counter + 1)
+  }
+
+  return (
+    <div>
+      <div>Counter: {counter}</div>
+      <CustomButton onCustomClick={handleCustomClick}/>
+    </div>
+  );
+}
+
+const CustomButton = ({onCustomClick}) => {
+  return (
+    <button onClick={onCustomClick}>
+      My Custom Button
+    </button>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between HTML and React event handling?
+
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
+
+```js
+<button onclick="handleClick()"></button>
+```
+
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
+```
+
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault()` has to be called explicitly.
+
+```js
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
+
+function handleClick(e) {
+  e.preventDefault()
+  console.log("The link was clicked.")
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. How to bind methods or event handlers in JSX callbacks?
 
 There are 3 possible ways to achieve this
@@ -1819,21 +2319,120 @@ handleClick() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to use React label element?
+## Q. Why do we need to bind methods inside class component constructor?
 
-If you try to render a `<label>` element bound to a text input using the standard `for` attribute, then it produces HTML missing that attribute and prints a warning to the console.
-
-```js
-<label for={'user'}>{'User'}</label>
-<input type={'text'} id={'user'} />
-```
-
-Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
+In Class Components, when we pass the event handler function reference as a callback like this
 
 ```js
-<label htmlFor={'user'}>{'User'}</label>
-<input type={'text'} id={'user'} />
+<button type="button" onClick={this.handleClick}>Click Me</button>
 ```
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor( props ){
+    super( props );
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick(event){
+    // event handling logic
+  }
+  
+  render() {
+    return (
+      <button type="button" onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+```
+
+the event handler method loses its **implicitly bound** context. When the event occurs and the handler is invoked, the `this` value falls back to **default binding** and is set to `undefined`, as class declarations and prototype methods run in strict mode.
+
+When we bind the `this` of the event handler to the component instance in the constructor, we can pass it as a callback without worrying about it losing its context.
+
+Arrow functions are exempt from this behavior because they use **lexical** `this` binding which automatically binds them to the scope they are defined in.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 8. REACT LISTS
+
+<br/>
+
+## Q. Explain the Lists in React?
+
+Using JSX we can show lists using JavaScript\'s built-in `Array.map()` method. The `.map()` method is often used to take one piece of data and convert it to another.
+
+Keys are unique identifiers that must be attached to the top-level element inside a map. Keys are used by React to know how to update a list whether adding, updating, or deleting items. This is part of how React is so fast with large lists.
+
+*Example:* Rendering an Array of Objects as a List
+
+```js
+import React, { Component } from "react"
+
+class Item extends Component {
+  state = {
+    lists: [
+      {
+        id: 0,
+        context: "Success",
+        modifier: "list-group-item list-group-item-success"
+      },
+      {
+        id: 1,
+        context: "Warning",
+        modifier: "list-group-item list-group-item-warning"
+      },
+      {
+        id: 2,
+        context: "Danger",
+        modifier: "list-group-item list-group-item-danger"
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <ul className = "list-group">
+          {this.state.lists.map(list => (
+            <li key = {list.id} className = {list.modifier}>
+              {list.context}
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  }
+}
+
+export default Item
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why do I need Keys in React Lists?
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+
+**Example:**
+
+```js
+const numbers = [10, 20, 30, 40, 50];
+
+const listItems = numbers.map((number) =>
+  <li key={number.toString()}>
+    {number}
+  </li>
+);
+```
+
+React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2066,284 +2665,6 @@ render(
   </div>
 )
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is Higher Order Components in React.js?
-
-A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
-
-<p align="center">
-  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
-</p>
-
-Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
-
-```js
-// HOC.js
-
-import React, {Component} from 'react'
-
-export default function Hoc(HocComponent){
-    return class extends Component{
-        render(){
-            return (
-                <div>
-                    <HocComponent></HocComponent>
-                </div>
-
-            )
-        }
-    }
-}
-```
-
-```js
-// App.js
-
-import React, { Component } from 'react'
-import Hoc from './HOC'
-
-class App extends Component {
-  
-  render() {
-    return (
-      <div>
-        Higher-Order Component Example!
-      </div>
-    )
-  }
-}
-App = Hoc(App)
-export default App
-```
-
-*Notes*
-
-* We do not modify or mutate components. We create new ones.
-* A HOC is used to compose components for code reuse.
-* A HOC is a pure function. It has no side effects, returning only a new component.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of using HOC?
-
-**Benefits:**
-
-* Importantly they provided a way to reuse code when using ES6 classes.
-* No longer have method name clashing if two HOC implement the same one.
-* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
-* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
-
-**Problems:**
-
-* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
-* Ensure all relevant props are passed through to the component.
-* Hoist static methods from the wrapped component.
-* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are render props?
-
-The term **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
-
-In simple words, render props are simply props of a component where you can pass functions. These functions need to return elements, which will be used in rendering the components.
-
-**Example:**
-
-```js
-// Wrapper.js
-
-class Wrapper extends React.Component {
-  state = {
-    count: 0
-  };
-
-  // Increase count
-  increment = () => {
-    const { count } = this.state;
-    return this.setState({ count: count + 1 });
-  };
-
-  render() {
-    const { count } = this.state;
-
-    return (
-      <div>
-        {this.props.render({ increment: this.increment, count: count })}
-      </div>
-    );
-  }
-}
-```
-
-```js
-// App.js
-
-class App extends React.Component {
-  render() {
-    return (
-      <Wrapper
-        render={({ increment, count }) => (
-          <div>
-            <h3>Render Props Counter</h3>
-            <p>{count}</p>
-            <button onClick={() => increment()}>Increment</button> 
-          </div>
-        )}
-      />
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of using Render Props?
-
-**Benefits:**
-
-* Reuse code across components when using ES6 classes.
-* The lowest level of indirection - it’s clear which component is called and the state is isolated.
-* No naming collision issues for props, state and class methods.
-* No need to deal with boiler code and hoisting static methods.
-
-**Problems:**
-
-* Caution using **`shouldComponentUpdate()`** as the render prop might close over data it is unaware of.
-* There could also be minor memory issues when defining a closure for every render. But be sure to measure first before  making performance changes as it might not be an issue for your app.
-* Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression.  Rendering the result of an HOC does look cleaner.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you create Higher Order Component using render props?
-
-It is possible to implement most higher-order components (HOC) using a regular component with a render prop. This way render props gives the flexibility of using either pattern.
-
-**Example:**
-
-```js
-function withMouse(Component) {
-  return class extends React.Component {
-    render() {
-      return (
-        <Mouse render={mouse => (
-          <Component {...this.props} mouse={mouse} />
-        )}/>
-      );
-    }
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain HOC vs render props in react.js?
-
-The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
-
-**1. Higher-order components:**
-
-Essentially HOC are similar to the decorator pattern, a function that takes a component as the first parameter and returns a new component. This is where you apply your crosscutting functionality.
-
-**Example:**
-
-```js
-function withExample(Component) {
-  return function(props) {
-    // cross cutting logic added here
-    return <Component {...props} />;
-  };
-}
-```
-
-**2. Render Props:**
-
-A render prop is where a component’s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
-
-**Example:**
-
-```js
-render(){
-  <FetchData render={(data) => {
-    return <p>{data}</p>
-  }} />
-}
-```
-
-The React community is moving away from HOC (higher order components) in favor of render prop components (RPC). For the most part, HOC and render prop components solve the same problem. However, render prop components provide are gaining popularity because they are more declarative and flexible than an HOC.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are Higher Order Component factory implementations?
-
-Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
-
-* Props Proxy
-* Inheritance Inversion
-
-Both enable different ways of manipulating the WrappedComponent.
-
-**1. Props Proxy:**
-
-In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
-
-**Example:**
-
-```js
-function ppHOC(WrappedComponent) {
-   return class PP extends React.Component {
-     render() {
-       return <WrappedComponent {...this.props}/>
-     }
-   }
-}
-```
-
-Props Proxy can be implemented via a number of ways
-
-* Manipulating props
-* Accessing the instance via Refs
-* Abstracting State
-* Wrapping the WrappedComponent with other elements
-
-**2. Inheritance Inversion:**
-
-Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
-
-**Example:**
-
-```js
-function iiHOC(WrappedComponent) {
-   return class Enhancer extends WrappedComponent {
-     render() {
-       return super.render()
-     }
-   }
-}
-```
-
-Inheritance Inversion can be used in:
-
-* Conditional Rendering (Render Highjacking)
-* State Manipulation
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -2713,45 +3034,6 @@ render() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why do we need to bind methods inside class component constructor?
-
-In Class Components, when we pass the event handler function reference as a callback like this
-
-```js
-<button type="button" onClick={this.handleClick}>Click Me</button>
-```
-
-**Example:**
-
-```js
-class App extends React.Component {
-  constructor( props ){
-    super( props );
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
-  handleClick(event){
-    // event handling logic
-  }
-  
-  render() {
-    return (
-      <button type="button" onClick={this.handleClick}>Click Me</button>
-    );
-  }
-}
-```
-
-the event handler method loses its **implicitly bound** context. When the event occurs and the handler is invoked, the `this` value falls back to **default binding** and is set to `undefined`, as class declarations and prototype methods run in strict mode.
-
-When we bind the `this` of the event handler to the component instance in the constructor, we can pass it as a callback without worrying about it losing its context.
-
-Arrow functions are exempt from this behavior because they use **lexical** `this` binding which automatically binds them to the scope they are defined in.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4813,7 +5095,7 @@ import {
 } from 'react'
 ```
 
-**Higher Order Components**
+**Higher Order Components:**
 
 A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
 
@@ -4855,55 +5137,6 @@ import page from '../hocs/page.js'
 import MyPageComponent from './my-page-component.js'
 
 export default page(MyPageComponent)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to apply validation on Props in React?
-
-Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
-
-```bash
-npm install prop-types --save-dev
-```
-
-**Example:**
-
-```js
-import React from 'react'
-import PropTypes from 'prop-types'
-
-App.defaultProps = {
-   propBool: true,
-   propArray: [1, 2, 3, 4, 5],
-   propNumber: 100,
-   propString: "Hello React!"
-}
-
-class App extends React.Component {
-
-   render() {
-      return (
-         <fragment>
-            <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
-            <h3>Array: {this.props.propArray}</h3>
-            <h3>Number: {this.props.propNumber}</h3>
-            <h3>String: {this.props.propString}</h3>
-         </fragment>
-      )
-   }
-}
-
-App.propTypes = {
-   propBool: PropTypes.bool.isRequired,
-   propArray: PropTypes.array.isRequired,
-   propNumber: PropTypes.number,
-   propString: PropTypes.string,
-}
-
-export default App
 ```
 
 <div align="right">
@@ -5752,146 +5985,6 @@ class MyComponent extends React.Component {
       )
     }
   }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is meant by event handling in React?
-
-Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
-
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
-
-```js
-class Toggle extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {isToggleOn: true}
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }))
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
-      </button>
-    )
-  }
-}
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to pass a parameter to event handlers in React?
-
-**Example:**
-
-```js
-const message = "Hey there!";
-export default class App extends React.Component {
-  displayMessage(message) {
-    alert(message);
-  }
-
-  render() {
-    return (
-      <button onClick={() => this.displayMessage(message)}>CLICK ME</button>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you pass an event handler to a component?
-
-**Example:**
-
-```js
-import React, {useState} from "react";
-import "./styles.css";
-
-export default function App() {
-  return (
-    <Container/>
-  );
-}
-
-const Container = () => {
-  const [counter, setCounter] = useState(0);
-  
-  const handleCustomClick = () => {
-    setCounter(counter + 1)
-  }
-
-  return (
-    <div>
-      <div>Counter: {counter}</div>
-      <CustomButton onCustomClick={handleCustomClick}/>
-    </div>
-  );
-}
-
-const CustomButton = ({onCustomClick}) => {
-  return (
-    <button onClick={onCustomClick}>
-      My Custom Button
-    </button>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between HTML and React event handling?
-
-In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
-
-```js
-<button onclick="handleClick()"></button>
-```
-
-In React, the attribute name is camelCase and are passed the function reference inside curly braces:
-
-```js
-<button onClick={handleClick} />
-```
-
-In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault()` has to be called explicitly.
-
-```js
-<a href="#" onclick="console.log('The link was clicked.'); return false" />
-
-function handleClick(e) {
-  e.preventDefault()
-  console.log("The link was clicked.")
 }
 ```
 
@@ -7579,82 +7672,6 @@ class App extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain the Lists in React?
-
-Using JSX we can show lists using JavaScript\'s built-in `Array.map()` method. The `.map()` method is often used to take one piece of data and convert it to another.
-
-Keys are unique identifiers that must be attached to the top-level element inside a map. Keys are used by React to know how to update a list whether adding, updating, or deleting items. This is part of how React is so fast with large lists.
-
-*Example:* Rendering an Array of Objects as a List
-
-```js
-import React, { Component } from "react"
-
-class Item extends Component {
-  state = {
-    lists: [
-      {
-        id: 0,
-        context: "Success",
-        modifier: "list-group-item list-group-item-success"
-      },
-      {
-        id: 1,
-        context: "Warning",
-        modifier: "list-group-item list-group-item-warning"
-      },
-      {
-        id: 2,
-        context: "Danger",
-        modifier: "list-group-item list-group-item-danger"
-      }
-    ]
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <ul className = "list-group">
-          {this.state.lists.map(list => (
-            <li key = {list.id} className = {list.modifier}>
-              {list.context}
-            </li>
-          ))}
-        </ul>
-      </React.Fragment>
-    )
-  }
-}
-
-export default Item
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why do I need Keys in React Lists?
-
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
-
-**Example:**
-
-```js
-const numbers = [10, 20, 30, 40, 50];
-
-const listItems = numbers.map((number) =>
-  <li key={number.toString()}>
-    {number}
-  </li>
-);
-```
-
-React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
