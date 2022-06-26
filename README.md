@@ -62,7 +62,7 @@ React is a JavaScript library created for building fast and interactive user int
 
 The main objective of ReactJS is to develop User Interfaces (UI) that improves the speed of the apps. It uses virtual DOM (JavaScript object), which improves the performance of the app. The JavaScript virtual DOM is faster than the regular DOM. We can use ReactJS on the client and server-side as well as with other frameworks. It uses component and data patterns that improve readability and helps to maintain larger apps.
 
-**Read More:**
+**Reference:**
 
 * *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
 
@@ -75,6 +75,65 @@ The main objective of ReactJS is to develop User Interfaces (UI) that improves t
 React implements a virtual DOM that is basically a DOM tree representation in Javascript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the browsers DOM.
 
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 2. REACT SETUP
+
+<br/>
+
+## Q. ***How to set up a react project with create react app?***
+
+Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration. This tool is wrapping all of the required dependencies like **Webpack**, **Babel** for React project itself.
+
+**Requirements:**
+
+The Create React App is maintained by Facebook and can works on any platform, for example, macOS, Windows, Linux, etc. To create a React Project using create-react-app, you need to have installed the following things in your system.
+
+* [Node version >= 14](https://nodejs.org/en/download/)
+* [Visual Studio Code Editor](https://code.visualstudio.com/download)
+
+**Installation:**
+
+```js
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+**Output:**
+
+Running any of these commands will create a directory called **my-app** inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+
+```js
+my-app
+├── README.md
+├── node_modules
+├── package.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── serviceWorker.js
+    └── setupTests.js
+```
+
+**Reference:**
+
+* *[https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
