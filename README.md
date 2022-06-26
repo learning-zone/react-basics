@@ -23,7 +23,11 @@
   * [Introduction](#-1-introduction)
   * [React Setup](#-2-react-setup)
   * [React JSX](#-3-react-jsx)
-  * [React Components](#-4-react-components)
+  * React Components
+    * [Functional Components](#-4-1-functional-components)
+    * [Class Components](#-4-2-class-components)
+    * [Pure Components](#-4-3-pure-components)
+    * [Higher Order Components](#-4-4-higher-order-components)
   * [React Props](#-5-react-props)
   * [React State](#-6-react-state)
   * [React Events](#-7-react-events)
@@ -600,7 +604,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 4. REACT COMPONENTS
+## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
 
@@ -2720,7 +2724,7 @@ const App = () => (
 
 **Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
-**Features of React Pure Components**
+**Features of React Pure Components:**
 
 * Prevents re-rendering of Component if props or state is the same
 * Takes care of `shouldComponentUpdate()` implicitly
@@ -2739,7 +2743,7 @@ React Components re-renders in the following scenarios:
 
 In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
 
-**Stateless Component**
+**1. Stateless Component:**
 
 ```js
 import { pure } from 'recompose'
@@ -2749,7 +2753,7 @@ export default pure ( (props) => {
 })
 ```
 
-**Stateful Component**
+**2. Stateful Component:**
 
 ```js
 import React, { PureComponent } from 'react'
@@ -2938,7 +2942,7 @@ In brief, here is what happens when we update the DOM in React:
 
 In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
 
-**Controlled Components**  
+**Controlled Components:**  
 
 In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
 
@@ -2976,7 +2980,7 @@ class App extends Component {
 export default App
 ```
 
-**Uncontrolled Components**  
+**Uncontrolled Components:**  
 
 Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
 
