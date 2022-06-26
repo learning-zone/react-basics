@@ -1343,6 +1343,199 @@ Inheritance Inversion can be used in:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How to use decorators in React?
+
+Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
+
+**Example:**
+
+```js
+export const withUniqueId = (Target) => {
+  return class WithUniqueId extends React.Component {
+    uid = uuid();
+
+    render() {
+      return <Target {...this.props} uuid={this.uid} />;
+    }
+  };
+}
+```
+
+```js
+@withUniqueId
+class UniqueIdComponent extends React.Component {
+  render() {
+    return <div>Generated Unique ID is: {this.props.uuid}</div>;
+  }
+}
+
+const App = () => (
+  <div>
+    <h2>Decorators in React!</h2>
+    <UniqueIdComponent />
+  </div>
+);
+```
+
+*Note: Decorators are an experimental feature in React that may change in future releases.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are Pure Components in React?
+
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
+
+**Features of React Pure Components:**
+
+* Prevents re-rendering of Component if props or state is the same
+* Takes care of `shouldComponentUpdate()` implicitly
+* `State()` and `Props` are Shallow Compared
+* Pure Components are more performant in certain cases
+
+Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
+
+It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
+
+React Components re-renders in the following scenarios:
+
+1. `setState()` is called in Component
+1. `props` values are updated
+1. `this.forceUpdate()` is called
+
+In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
+
+**1. Stateless Component:**
+
+```js
+import { pure } from 'recompose'
+
+export default pure ( (props) => {
+   return 'Stateless Component Example'
+})
+```
+
+**2. Stateful Component:**
+
+```js
+import React, { PureComponent } from 'react'
+
+export default class Test extends PureComponent{
+   render() {
+      return 'Stateful Component Example'
+   }
+}
+```
+
+**Example:**
+
+```js
+class Test extends React.PureComponent {
+   constructor(props) {
+      super(props)
+      this.state = {
+         taskList: [
+            { title: 'Excercise'},
+            { title: 'Cooking'},
+            { title: 'Reacting'},
+         ]
+      }
+   }
+   componentDidMount() {
+      setInterval(() => {
+         this.setState((oldState) => {
+            return { taskList: [...oldState.taskList] }
+         })
+      }, 1000)
+   }
+   render() {
+      console.log("TaskList render() called")
+      return (<div>
+         {this.state.taskList.map((task, i) => {
+            return (<Task
+               key={i}
+               title={task.title}
+            />)
+         })}
+      </div>)
+   }
+}
+class Task extends React.Component {
+   render() {
+      console.log("task added")
+      return (<div>
+         {this.props.title}
+      </div>)
+   }
+}
+ReactDOM.render(<Test />, document.getElementById('app'))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the problems of using render props with PureComponent?
+
+If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
+
+**Example:**
+
+```js
+class MouseTracker extends React.Component {
+  // Defined as an instance method, `this.renderTheCat` always
+  // refers to *same* function when we use it in render
+  renderTheCat(mouse) {
+    return <Cat mouse={mouse} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={this.renderTheCat} />
+      </div>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is PureComponent?
+
+Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
+
+Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
+
+That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
+
+That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When to use PureComponent over Component?
+
+* We want to avoid re-rendering cycles of component when its props and state are not changed, and
+* The state and props of component are immutable, and
+* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+On the other hand, we should not use `PureComponent()` as a base component if:
+
+* props or state are not immutable, or
+* Plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 5. REACT PROPS
 
 <br/>
@@ -2787,199 +2980,6 @@ render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to use decorators in React?
-
-Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
-
-**Example:**
-
-```js
-export const withUniqueId = (Target) => {
-  return class WithUniqueId extends React.Component {
-    uid = uuid();
-
-    render() {
-      return <Target {...this.props} uuid={this.uid} />;
-    }
-  };
-}
-```
-
-```js
-@withUniqueId
-class UniqueIdComponent extends React.Component {
-  render() {
-    return <div>Generated Unique ID is: {this.props.uuid}</div>;
-  }
-}
-
-const App = () => (
-  <div>
-    <h2>Decorators in React!</h2>
-    <UniqueIdComponent />
-  </div>
-);
-```
-
-*Note: Decorators are an experimental feature in React that may change in future releases.*
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are Pure Components in React?
-
-**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
-
-**Features of React Pure Components:**
-
-* Prevents re-rendering of Component if props or state is the same
-* Takes care of `shouldComponentUpdate()` implicitly
-* `State()` and `Props` are Shallow Compared
-* Pure Components are more performant in certain cases
-
-Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
-
-It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
-
-React Components re-renders in the following scenarios:
-
-1. `setState()` is called in Component
-1. `props` values are updated
-1. `this.forceUpdate()` is called
-
-In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
-
-**1. Stateless Component:**
-
-```js
-import { pure } from 'recompose'
-
-export default pure ( (props) => {
-   return 'Stateless Component Example'
-})
-```
-
-**2. Stateful Component:**
-
-```js
-import React, { PureComponent } from 'react'
-
-export default class Test extends PureComponent{
-   render() {
-      return 'Stateful Component Example'
-   }
-}
-```
-
-**Example:**
-
-```js
-class Test extends React.PureComponent {
-   constructor(props) {
-      super(props)
-      this.state = {
-         taskList: [
-            { title: 'Excercise'},
-            { title: 'Cooking'},
-            { title: 'Reacting'},
-         ]
-      }
-   }
-   componentDidMount() {
-      setInterval(() => {
-         this.setState((oldState) => {
-            return { taskList: [...oldState.taskList] }
-         })
-      }, 1000)
-   }
-   render() {
-      console.log("TaskList render() called")
-      return (<div>
-         {this.state.taskList.map((task, i) => {
-            return (<Task
-               key={i}
-               title={task.title}
-            />)
-         })}
-      </div>)
-   }
-}
-class Task extends React.Component {
-   render() {
-      console.log("task added")
-      return (<div>
-         {this.props.title}
-      </div>)
-   }
-}
-ReactDOM.render(<Test />, document.getElementById('app'))
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the problems of using render props with PureComponent?
-
-If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
-
-**Example:**
-
-```js
-class MouseTracker extends React.Component {
-  // Defined as an instance method, `this.renderTheCat` always
-  // refers to *same* function when we use it in render
-  renderTheCat(mouse) {
-    return <Cat mouse={mouse} />;
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Move the mouse around!</h1>
-        <Mouse render={this.renderTheCat} />
-      </div>
-    );
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is PureComponent?
-
-Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
-
-Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
-
-That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
-
-That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. When to use PureComponent over Component?
-
-* We want to avoid re-rendering cycles of component when its props and state are not changed, and
-* The state and props of component are immutable, and
-* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
-
-On the other hand, we should not use `PureComponent()` as a base component if:
-
-* props or state are not immutable, or
-* Plan to implement own `shouldComponentUpdate()` lifecycle method.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How can I force a component to re-render with hooks in React?
 
 You can force re-renders of your components in React with a custom hook that uses the built-in `useState()` hook:
@@ -3006,42 +3006,6 @@ The example above is equivalent to the functionality of the `forceUpdate()` meth
 
 * The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
 * In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How Virtual-DOM is more efficient than Dirty checking?
-
-<p align="center">
-  <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
-</p>
-
-**React Virtual DOM:**  
-
-In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
-
-Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that. 
-
-Updating virtual DOM in ReactJS is faster because ReactJS uses
-
-1. It is efficient diff algorithm.
-1. It batched update operations
-1. It efficient update of sub tree only
-1. It uses observable instead of dirty checking to detect change
-
-**How Virtual DOM works in React:**  
-
-When we render a JSX element, each virtual DOM updates. This approach updates everything very quickly. Once the Virtual DOM updates, React matches the virtual DOM with a virtual DOM copy that was taken just before the update. By Matching the new virtual DOM with pre-updated version, React calculates exactly which virtual DOM has changed. This entire process is called **diffing**.
-
-When React knows which virtual DOM has changed, then React updated those objects. and only those object, in the real DOM. React only updates the necessary parts of the DOM. React\'s reputation for performance comes largely from this innovation.
-
-In brief, here is what happens when we update the DOM in React:
-
-1. The entire virtual DOM gets updated.
-1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
-1. The changed objects and the changed objects only get updated on the real DOM.
-1. Changes on the real DOM cause the screen to change finally.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -12739,7 +12703,45 @@ registerServiceWorker();
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 19. MISCELLANEOUS
+
 <br/>
+
+## Q. How Virtual-DOM is more efficient than Dirty checking?
+
+<p align="center">
+  <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
+</p>
+
+**React Virtual DOM:**  
+
+In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
+
+Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that. 
+
+Updating virtual DOM in ReactJS is faster because ReactJS uses
+
+1. It is efficient diff algorithm.
+1. It batched update operations
+1. It efficient update of sub tree only
+1. It uses observable instead of dirty checking to detect change
+
+**How Virtual DOM works in React:**  
+
+When we render a JSX element, each virtual DOM updates. This approach updates everything very quickly. Once the Virtual DOM updates, React matches the virtual DOM with a virtual DOM copy that was taken just before the update. By Matching the new virtual DOM with pre-updated version, React calculates exactly which virtual DOM has changed. This entire process is called **diffing**.
+
+When React knows which virtual DOM has changed, then React updated those objects. and only those object, in the real DOM. React only updates the necessary parts of the DOM. React\'s reputation for performance comes largely from this innovation.
+
+In brief, here is what happens when we update the DOM in React:
+
+1. The entire virtual DOM gets updated.
+1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
+1. The changed objects and the changed objects only get updated on the real DOM.
+1. Changes on the real DOM cause the screen to change finally.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 --------------------
 ### REDUX QUESTIONS
