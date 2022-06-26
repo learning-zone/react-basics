@@ -4789,6 +4789,223 @@ class MyComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 10. REACT FORMS
+
+<br/>
+
+## Q. How would you create a form in React?
+
+**Example:**
+
+```js
+import React from "react";
+import "./styles.css";
+
+const countries = ["Austria", "India", "Italy", "Russia", "United States"];
+
+export default function App() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [country, setCountry] = React.useState("");
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+
+  const handleSubmit = (event) => {
+    console.log(`
+      Email: ${email}
+      Password: ${password}
+      Country: ${country}
+      Accepted Terms: ${acceptedTerms}
+    `);
+    event.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h1>Create Account</h1>
+
+      <label>Email:
+        <input name="email" type="email" value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>Password:
+        <input name="password" type="password" value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>Country:
+        <select name="country" value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          required
+        >
+          <option key=""></option>
+          {countries.map((country) => (
+            <option key={country}>{country}</option>
+          ))}
+        </select>
+      </label>
+
+      <label><input name="acceptedTerms" type="checkbox"
+          onChange={(e) => setAcceptedTerms(e.target.value)}
+          required
+        />
+        I accept the terms of service
+      </label>
+
+      <button>Submit</button>
+    </form>
+  );
+}
+```
+
+**Output:**
+
+<p align="center">
+  <img src='assets/react-form.png' alt='React Form' width='500px' />
+</p>
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-p9z2y)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use react hook form with material-ui?
+
+**Installation:**
+
+```js
+npm install react-hook-form
+npm install material-ui
+```
+
+**Example:**
+
+```js
+import React from "react";
+import { makeStyles } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { useForm, Controller } from "react-hook-form";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: theme.spacing(2),
+
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "300px"
+    },
+    "& .MuiButtonBase-root": {
+      margin: theme.spacing(2)
+    }
+  }
+}));
+
+const Form = ({ handleClose }) => {
+  const classes = useStyles();
+  const { handleSubmit, control } = useForm();
+
+  const onSubmit = (data) => {
+    console.clear();
+    console.log(data);
+  };
+
+  return (
+    <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="email"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="Email"
+            variant="filled"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="email"
+          />
+        )}
+        rules={{ required: "Email required" }}
+      />
+      <Controller
+        name="password"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="Password"
+            variant="filled"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="password"
+          />
+        )}
+        rules={{ required: "Password required" }}
+      />
+      <div>
+        <Button variant="contained" onClick={handleClose}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="contained" color="primary">
+          Signup
+        </Button>
+      </div>
+    </form>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why You Should Choose React Hook Form Over Formik and Redux-Form?
+
+Below are the main reasons to recommend React Hook Form Over Formik and Redux-Form,
+
+**1. Isolate Component Re-Rendering:**
+
+React Hook Form isolates the component and avoids the other components from re-rending. This feature will improve the performance by avoiding unwanted rendering in other child components. However, libraries like Formik and Redux-Form re-render the other child components along with the form component.
+
+**2. Reduce Rendering:**
+
+Besides isolating the component, it also limits its own (form components) form re-rendering on particular events such as onChange, onBlur, etc.
+
+**3. Faster Mounting:**
+
+Mounting time is about 13% faster than Formik and 25% faster than Redux-Form. In other words, the form\'s DOM elements will be inserted into the DOM tree quicker, leading to fast rendering compared with other libraries.
+
+**4. Input Change Subscriptions:**
+
+React Hook Form allows you to subscribe to each input element without going through the re-rendering of each element inside the form component.
+
+**5. Typescript Support:**
+
+React Hook Form is built with TypeScript and can define a FormData type to support form values.
+
+**6. Less Code to Maintain:**
+
+The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. How to use styles in React.js?
 
 React Components can add styling in the following ways:
@@ -6589,219 +6806,6 @@ constructor(props) {
 ```
 
 This is the approach currently recommended in the React docs for "better performance in your application".
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How would you create a form in React?
-
-**Example:**
-
-```js
-import React from "react";
-import "./styles.css";
-
-const countries = ["Austria", "India", "Italy", "Russia", "United States"];
-
-export default function App() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
-
-  const handleSubmit = (event) => {
-    console.log(`
-      Email: ${email}
-      Password: ${password}
-      Country: ${country}
-      Accepted Terms: ${acceptedTerms}
-    `);
-    event.preventDefault();
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>Create Account</h1>
-
-      <label>Email:
-        <input name="email" type="email" value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-
-      <label>Password:
-        <input name="password" type="password" value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-
-      <label>Country:
-        <select name="country" value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
-        >
-          <option key=""></option>
-          {countries.map((country) => (
-            <option key={country}>{country}</option>
-          ))}
-        </select>
-      </label>
-
-      <label><input name="acceptedTerms" type="checkbox"
-          onChange={(e) => setAcceptedTerms(e.target.value)}
-          required
-        />
-        I accept the terms of service
-      </label>
-
-      <button>Submit</button>
-    </form>
-  );
-}
-```
-
-**Output:**
-
-<p align="center">
-  <img src='assets/react-form.png' alt='React Form' width='500px' />
-</p>
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-p9z2y)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to use react hook form with material-ui?
-
-**Installation:**
-
-```js
-npm install react-hook-form
-npm install material-ui
-```
-
-**Example:**
-
-```js
-import React from "react";
-import { makeStyles } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { useForm, Controller } from "react-hook-form";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: theme.spacing(2),
-
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "300px"
-    },
-    "& .MuiButtonBase-root": {
-      margin: theme.spacing(2)
-    }
-  }
-}));
-
-const Form = ({ handleClose }) => {
-  const classes = useStyles();
-  const { handleSubmit, control } = useForm();
-
-  const onSubmit = (data) => {
-    console.clear();
-    console.log(data);
-  };
-
-  return (
-    <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="email"
-        control={control}
-        defaultValue=""
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <TextField
-            label="Email"
-            variant="filled"
-            value={value}
-            onChange={onChange}
-            error={!!error}
-            helperText={error ? error.message : null}
-            type="email"
-          />
-        )}
-        rules={{ required: "Email required" }}
-      />
-      <Controller
-        name="password"
-        control={control}
-        defaultValue=""
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <TextField
-            label="Password"
-            variant="filled"
-            value={value}
-            onChange={onChange}
-            error={!!error}
-            helperText={error ? error.message : null}
-            type="password"
-          />
-        )}
-        rules={{ required: "Password required" }}
-      />
-      <div>
-        <Button variant="contained" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button type="submit" variant="contained" color="primary">
-          Signup
-        </Button>
-      </div>
-    </form>
-  );
-};
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why You Should Choose React Hook Form Over Formik and Redux-Form?
-
-Below are the main reasons to recommend React Hook Form Over Formik and Redux-Form,
-
-**1. Isolate Component Re-Rendering:**
-
-React Hook Form isolates the component and avoids the other components from re-rending. This feature will improve the performance by avoiding unwanted rendering in other child components. However, libraries like Formik and Redux-Form re-render the other child components along with the form component.
-
-**2. Reduce Rendering:**
-
-Besides isolating the component, it also limits its own (form components) form re-rendering on particular events such as onChange, onBlur, etc.
-
-**3. Faster Mounting:**
-
-Mounting time is about 13% faster than Formik and 25% faster than Redux-Form. In other words, the form\'s DOM elements will be inserted into the DOM tree quicker, leading to fast rendering compared with other libraries.
-
-**4. Input Change Subscriptions:**
-
-React Hook Form allows you to subscribe to each input element without going through the re-rendering of each element inside the form component.
-
-**5. Typescript Support:**
-
-React Hook Form is built with TypeScript and can define a FormData type to support form values.
-
-**6. Less Code to Maintain:**
-
-The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
