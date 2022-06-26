@@ -34,7 +34,7 @@
   * [React State](#-6-react-state)
   * [React Events](#-7-react-events)
   * [React Lists](#-8-react-lists)
-  * [React APIs](#-9-react-apis)
+  * [React RESTful API](#-9-react-restful-api)
   * [React Forms](#-10-react-forms)
   * [React Hooks](#-11-react-hooks)
   * [React Context](#-12-react-context)
@@ -2033,72 +2033,6 @@ React Elements may contain child elements and thus are capable of forming elemen
 A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
 
 A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. In which lifecycle event do you make AJAX requests in React?
-
-According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
-
-**Example:**
-
-```js
-import React from 'react'
-
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    }
-  }
-
-  componentDidMount() {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          })
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
-        }
-      )
-  }
-
-  render() {
-    const { error, isLoaded, items } = this.state
-    if (error) {
-      return <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading...</div>
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.price}
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  }
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -4341,9 +4275,519 @@ const NumberList = (props) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 9. REACT APIs
+## # 9. React RESTful API
 
 <br/>
+
+## Q. How to make AJAX requests in React?
+
+You can use any AJAX library you like with React. Some popular ones are **Axios**, **jQuery AJAX**, and the browser built-in **window.fetch**.
+
+**Example:** Using Hooks
+
+```js
+function MyComponent() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.name} {item.price}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to display API data using Axios in React?
+
+Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
+
+**Features:**
+
+* **Interceptors**: Access the request or response configuration (headers, data, etc) as they are outgoing or incoming. These functions can act as gateways to check configuration or add data.
+* **Instances**: Create reusable instances with baseUrl, headers, and other configuration already set up.
+* **Defaults**: Set default values for common headers (like Authorization) on outgoing requests. This can be useful if you are authenticating to a server on every request.
+
+**Installation:**
+
+```bash
+npm install axios -- save
+```
+
+**Shorthand Methods:**
+
+* `axios.request(config)`
+* `axios.get(url[, config])`
+* `axios.delete(url[, config])`
+* `axios.head(url[, config])`
+* `axios.options(url[, config])`
+* `axios.post(url[, data[, config]])`
+* `axios.put(url[, data[, config]])`
+* `axios.patch(url[, data[, config]])`
+
+**POST Request Example:**
+
+```js
+
+axios.post('/url',{data: 'data'})
+  .then((res)=>{
+    //on success
+  })
+  .catch((error)=>{
+    //on error
+  })
+```
+
+**GET Request Example:**
+
+```js
+axios.get('/url')
+  .then((res)=>{
+    //on success
+  })
+  .catch((error)=>{
+    //on error
+  })
+```
+
+**Performing Multiple Concurrent Requests Example:**
+
+```js
+function getUserAccount() {
+  return axios.get('/user/12345')
+}
+
+function getUserPermissions() {
+  return axios.get('/user/12345/permissions')
+}
+
+axios.all([getUserAccount(), getUserPermissions()])
+  .then(axios.spread(function (acct, perms) {
+    // Both requests are now complete
+  }))
+
+```
+
+**Example:** Making a POST Request
+
+```js
+import React from 'react'
+import axios from 'axios'
+
+export default class PersonList extends React.Component {
+  state = {
+    name: '',
+  }
+
+  handleChange = event => {
+    this.setState({ name: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+
+    const user = {
+      name: this.state.name
+    }
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then(res => {
+        console.log(res)
+        console.log(res.data)
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Person Name:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using Axios() over Fetch() for making http requests?
+
+**Fetch**: The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
+
+**Example:**
+
+```js
+fetch('path-to-the-resource-to-be-fetched')
+  .then((response) => {
+    // Code for handling the response
+  })
+  .catch((error) => {
+    // Error Handling
+  });
+```
+
+**Axios**: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+
+*Example:*
+
+```js
+axios.get('url')
+  .then((response) => {
+    // Code for handling the response
+  })
+  .catch((error) => {
+    // Error Handling
+  });
+```
+
+**Differences between Axios and Fetch**
+
+| Axios()                         | Fetch()                            |
+|---------------------------------|------------------------------------|
+|Axios has **url** in request object. | Fetch has no url in request object.|
+|Axios is a stand-alone third party package that can be easily installed.|Fetch is built into most modern browsers|
+|Axios has built-in XSRF protection.|Fetch does not.|
+|Axios uses the **data** property.    |Fetch uses the **body** property.|
+|Axios data contains the object.  |Fetch\'s body has to be stringified.|
+|Axios request is ok when status is 200 and statusText is 'OK'.|Fetch request is ok when response object contains the ok property.|
+|Axios performs automatic transforms of JSON data.|Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response.|
+|Axios allows cancelling request and request timeout.|Fetch does not.|
+|Axios has the ability to intercept HTTP requests.|Fetch, by default, doesn\'t provide a way to intercept requests.|
+|Axios has built-in support for download progress.|Fetch does not support upload progress.|
+|Axios has wide browser support.  |Fetch only supports Chrome 42+, Firefox 39+, Edge 14+, and Safari 10.1+.|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How does Axios Interceptors work in react?
+
+Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
+
+There are two types of interceptors:
+
+* **request interceptor**: This is called before the actual call to the endpoint is made.
+* **response interceptor**: This is called before the promise is completed and the data is received by the then callback.
+
+**1. Request interceptor**
+
+One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
+
+**Example:**
+
+```js
+// Add request handler
+const requestHandler = (request) => {
+  if (isHandlerEnabled(request)) {
+    // Modify request here
+    request.headers['X-Auth'] = 'https://example.com/vPvKWe'
+  }
+  return request
+}
+
+// Enable request interceptor
+axiosInstance.interceptors.request.use(
+  request => requestHandler(request)
+)
+```
+
+**2. Response and error interceptors**
+
+**Example:**
+
+```js
+// Add response handlers
+const errorHandler = (error) => {
+  if (isHandlerEnabled(error.config)) {
+    // Handle errors
+  }
+  return Promise.reject({ ...error })
+}
+
+const successHandler = (response) => {
+  if (isHandlerEnabled(response.config)) {
+    // Handle responses
+  }
+  return response
+}
+
+// Enable interceptors
+axiosInstance.interceptors.response.use(
+  response => successHandler(response),
+  error => errorHandler(error)
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to do caching in React?
+
+In React, caching data can be achieved in multiple ways
+
+* Local Storage
+* Redux Store
+* Keep data between mouting and unmounting
+
+**1. Memoizing Fetched Data**
+
+Memoization is a technique we would use to make sure that we don\'t hit the API if we have made some kind of request to fetch it at some initial phase. Storing the result of expensive fetch calls will save the users some load time, therefore, increasing overall performance.
+
+**Example:**
+
+```js
+const cache = {}
+
+const useFetch = (url) => {
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+
+    const fetchData = async () => {
+      setStatus('fetching')
+
+      if (cache[url]) {
+        const data = cache[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
+      }
+    }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
+
+**2. Memoizing Data With `useRef()`**
+
+With `useRef()`, we can set and retrieve mutable values at ease and its value persists throughout the component\'s lifecycle.
+
+```js
+const useFetch = (url) => {
+  const cache = useRef({})
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+
+    const fetchData = async () => {
+      setStatus('fetching')
+
+      if (cache.current[url]) {
+        const data = cache.current[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache.current[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
+      }
+    }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+**3. Using `localStorage()`**
+
+```js
+const InitialState = {
+   someState: 'a'
+}
+class App extends Component {
+
+ constructor(props) {
+  super(props)
+
+  // Retrieve the last state
+  this.state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState
+
+}
+
+componentWillUnmount() {
+  // Remember state for the next mount
+  localStorage.setItem('appState', JSON.stringify(this.state))
+}
+
+render() {
+  ...
+ }
+}
+
+export default App
+```
+
+**4. Keep data between mouting and unmounting**
+
+```js
+import React, { Component } from 'react'
+
+// Set initial state
+let state = { counter: 5 }
+
+class Counter extends Component {
+
+ constructor(props) {
+  super(props)
+
+  // Retrieve the last state
+  this.state = state
+
+  this.onClick = this.onClick.bind(this)
+}
+
+componentWillUnmount() {
+  // Remember state for the next mount
+  state = this.state
+}
+
+onClick(e) {
+  e.preventDefault()
+  this.setState(prev => ({ counter: prev.counter + 1 }))
+}
+
+render() {
+  return (
+    <div>
+      <span>{ this.state.counter }</span>
+      <button onClick={this.onClick}>Increase</button>
+    </div>
+  )
+ }
+}
+
+export default Counter
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. In which lifecycle event do you make AJAX requests in React?
+
+According to official React docs, the recommended place to do Ajax requests is in `componentDidMount()` which is a lifecycle method that runs after the React component has been mounted to the DOM. This is so you can use `setState()` to update your component when the data is retrieved.
+
+**Example:**
+
+```js
+import React from 'react'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: []
+    }
+  }
+
+  componentDidMount() {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result.items
+          })
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, items } = this.state
+    if (error) {
+      return <div>Error: {error.message}</div>
+    } else if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item.name}>
+              {item.name} {item.price}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 ## Q. How to use styles in React.js?
 
@@ -8009,59 +8453,6 @@ function componentDidMount() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to make AJAX requests in React?
-
-You can use any AJAX library you like with React. Some popular ones are **Axios**, **jQuery AJAX**, and the browser built-in **window.fetch**.
-
-**Example:** Using Hooks
-
-```js
-function MyComponent() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
-
-
-  useEffect(() => {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [])
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.name} {item.price}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. Explain the use of Webpack and Babel in React?
 
 **Babel**
@@ -9425,397 +9816,6 @@ class ShowTheLocation extends React.Component {
 }
 
 const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to display API data using Axios in React?
-
-Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
-
-**Features**
-
-* **Interceptors**: Access the request or response configuration (headers, data, etc) as they are outgoing or incoming. These functions can act as gateways to check configuration or add data.
-* **Instances**: Create reusable instances with baseUrl, headers, and other configuration already set up.
-* **Defaults**: Set default values for common headers (like Authorization) on outgoing requests. This can be useful if you are authenticating to a server on every request.
-
-**Installation**
-
-```bash
-npm install axios -- save
-```
-
-**Shorthand Methods**
-
-* `axios.request(config)`
-* `axios.get(url[, config])`
-* `axios.delete(url[, config])`
-* `axios.head(url[, config])`
-* `axios.options(url[, config])`
-* `axios.post(url[, data[, config]])`
-* `axios.put(url[, data[, config]])`
-* `axios.patch(url[, data[, config]])`
-
-**POST Request Example**
-
-```js
-
-axios.post('/url',{data: 'data'})
-  .then((res)=>{
-    //on success
-  })
-  .catch((error)=>{
-    //on error
-  })
-```
-
-**GET Request Example**
-
-```js
-axios.get('/url')
-  .then((res)=>{
-    //on success
-  })
-  .catch((error)=>{
-    //on error
-  })
-```
-
-**Performing Multiple Concurrent Requests Example**
-
-```js
-function getUserAccount() {
-  return axios.get('/user/12345')
-}
-
-function getUserPermissions() {
-  return axios.get('/user/12345/permissions')
-}
-
-axios.all([getUserAccount(), getUserPermissions()])
-  .then(axios.spread(function (acct, perms) {
-    // Both requests are now complete
-  }))
-
-```
-
-**Example:** Making a POST Request
-
-```js
-import React from 'react'
-import axios from 'axios'
-
-export default class PersonList extends React.Component {
-  state = {
-    name: '',
-  }
-
-  handleChange = event => {
-    this.setState({ name: event.target.value })
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-
-    const user = {
-      name: this.state.name
-    }
-
-    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-      .then(res => {
-        console.log(res)
-        console.log(res.data)
-      })
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Person Name:
-            <input type="text" name="name" onChange={this.handleChange} />
-          </label>
-          <button type="submit">Add</button>
-        </form>
-      </div>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of using Axios() over Fetch() for making http requests?
-
-**Fetch**: The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
-
-**Example:**
-
-```js
-fetch('path-to-the-resource-to-be-fetched')
-  .then((response) => {
-    // Code for handling the response
-  })
-  .catch((error) => {
-    // Error Handling
-  });
-```
-
-**Axios**: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
-
-*Example:*
-
-```js
-axios.get('url')
-  .then((response) => {
-    // Code for handling the response
-  })
-  .catch((error) => {
-    // Error Handling
-  });
-```
-
-**Differences between Axios and Fetch**
-
-| Axios()                         | Fetch()                            |
-|---------------------------------|------------------------------------|
-|Axios has **url** in request object. | Fetch has no url in request object.|
-|Axios is a stand-alone third party package that can be easily installed.|Fetch is built into most modern browsers|
-|Axios has built-in XSRF protection.|Fetch does not.|
-|Axios uses the **data** property.    |Fetch uses the **body** property.|
-|Axios data contains the object.  |Fetch\'s body has to be stringified.|
-|Axios request is ok when status is 200 and statusText is 'OK'.|Fetch request is ok when response object contains the ok property.|
-|Axios performs automatic transforms of JSON data.|Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response.|
-|Axios allows cancelling request and request timeout.|Fetch does not.|
-|Axios has the ability to intercept HTTP requests.|Fetch, by default, doesn\'t provide a way to intercept requests.|
-|Axios has built-in support for download progress.|Fetch does not support upload progress.|
-|Axios has wide browser support.  |Fetch only supports Chrome 42+, Firefox 39+, Edge 14+, and Safari 10.1+.|
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How does Axios Interceptors work in react?
-
-Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
-
-There are two types of interceptors:
-
-* **request interceptor**: This is called before the actual call to the endpoint is made.
-* **response interceptor**: This is called before the promise is completed and the data is received by the then callback.
-
-**1. Request interceptor**
-
-One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
-
-**Example:**
-
-```js
-// Add request handler
-const requestHandler = (request) => {
-  if (isHandlerEnabled(request)) {
-    // Modify request here
-    request.headers['X-Auth'] = 'https://example.com/vPvKWe'
-  }
-  return request
-}
-
-// Enable request interceptor
-axiosInstance.interceptors.request.use(
-  request => requestHandler(request)
-)
-```
-
-**2. Response and error interceptors**
-
-**Example:**
-
-```js
-// Add response handlers
-const errorHandler = (error) => {
-  if (isHandlerEnabled(error.config)) {
-    // Handle errors
-  }
-  return Promise.reject({ ...error })
-}
-
-const successHandler = (response) => {
-  if (isHandlerEnabled(response.config)) {
-    // Handle responses
-  }
-  return response
-}
-
-// Enable interceptors
-axiosInstance.interceptors.response.use(
-  response => successHandler(response),
-  error => errorHandler(error)
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to do caching in React?
-
-In React, caching data can be achieved in multiple ways
-
-* Local Storage
-* Redux Store
-* Keep data between mouting and unmounting
-
-**1. Memoizing Fetched Data**
-
-Memoization is a technique we would use to make sure that we don\'t hit the API if we have made some kind of request to fetch it at some initial phase. Storing the result of expensive fetch calls will save the users some load time, therefore, increasing overall performance.
-
-**Example:**
-
-```js
-const cache = {}
-
-const useFetch = (url) => {
-  const [status, setStatus] = useState('idle')
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    if (!url) return
-
-    const fetchData = async () => {
-      setStatus('fetching')
-
-      if (cache[url]) {
-        const data = cache[url]
-        setData(data)
-        setStatus('fetched')
-      } else {
-        const response = await fetch(url)
-        const data = await response.json()
-        cache[url] = data // set response in cache
-        setData(data)
-        setStatus('fetched')
-      }
-    }
-
-    fetchData()
-  }, [url])
-
-  return { status, data }
-}
-```
-
-Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
-
-**2. Memoizing Data With `useRef()`**
-
-With `useRef()`, we can set and retrieve mutable values at ease and its value persists throughout the component\'s lifecycle.
-
-```js
-const useFetch = (url) => {
-  const cache = useRef({})
-  const [status, setStatus] = useState('idle')
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    if (!url) return
-
-    const fetchData = async () => {
-      setStatus('fetching')
-
-      if (cache.current[url]) {
-        const data = cache.current[url]
-        setData(data)
-        setStatus('fetched')
-      } else {
-        const response = await fetch(url)
-        const data = await response.json()
-        cache.current[url] = data // set response in cache
-        setData(data)
-        setStatus('fetched')
-      }
-    }
-
-    fetchData()
-  }, [url])
-
-  return { status, data }
-}
-```
-
-**3. Using `localStorage()`**
-
-```js
-const InitialState = {
-   someState: 'a'
-}
-class App extends Component {
-
- constructor(props) {
-  super(props)
-
-  // Retrieve the last state
-  this.state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState
-
-}
-
-componentWillUnmount() {
-  // Remember state for the next mount
-  localStorage.setItem('appState', JSON.stringify(this.state))
-}
-
-render() {
-  ...
- }
-}
-
-export default App
-```
-
-**4. Keep data between mouting and unmounting**
-
-```js
-import React, { Component } from 'react'
-
-// Set initial state
-let state = { counter: 5 }
-
-class Counter extends Component {
-
- constructor(props) {
-  super(props)
-
-  // Retrieve the last state
-  this.state = state
-
-  this.onClick = this.onClick.bind(this)
-}
-
-componentWillUnmount() {
-  // Remember state for the next mount
-  state = this.state
-}
-
-onClick(e) {
-  e.preventDefault()
-  this.setState(prev => ({ counter: prev.counter + 1 }))
-}
-
-render() {
-  return (
-    <div>
-      <span>{ this.state.counter }</span>
-      <button onClick={this.onClick}>Increase</button>
-    </div>
-  )
- }
-}
-
-export default Counter
 ```
 
 <div align="right">
