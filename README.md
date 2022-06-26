@@ -634,6 +634,115 @@ class Welcome extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. What are controlled and uncontrolled components in React?
+
+In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+**Controlled Components:**  
+
+In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+    state = {
+        message: ''
+    }
+    updateMessage = (newText) => {
+        console.log(newText)
+        this.setState(() => ({
+            message: newText
+        }))
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        value={this.state.message}
+                        onChange={(event) => this.updateMessage(event.target.value)}
+                    />
+                    <p>the message is: {this.state.message}</p>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default App
+```
+
+**Uncontrolled Components:**  
+
+Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+    constructor(props){
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.input = React.createRef()
+    }
+    handleChange = (newText) => {
+        console.log(newText)
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        ref={this.input}
+                        onChange={(event) => this.handleChange(event.target.value)}
+                    />
+                </div>
+            </div>
+        )
+    }
+}
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you set default value for uncontrolled components?
+
+In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
+
+**Example:**
+
+```js
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input
+          defaultValue="Samir Chahal"
+          type="text"
+          ref={this.input} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. What is the difference between Component and Container in React?
 
 The **presentational** components are concerned with the look, **container** components are concerned with making things work.
@@ -2908,7 +3017,7 @@ The example above is equivalent to the functionality of the `forceUpdate()` meth
   <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
 </p>
 
-**React Virtual DOM**  
+**React Virtual DOM:**  
 
 In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
 
@@ -2921,7 +3030,7 @@ Updating virtual DOM in ReactJS is faster because ReactJS uses
 1. It efficient update of sub tree only
 1. It uses observable instead of dirty checking to detect change
 
-**How Virtual DOM works in React**  
+**How Virtual DOM works in React:**  
 
 When we render a JSX element, each virtual DOM updates. This approach updates everything very quickly. Once the Virtual DOM updates, React matches the virtual DOM with a virtual DOM copy that was taken just before the update. By Matching the new virtual DOM with pre-updated version, React calculates exactly which virtual DOM has changed. This entire process is called **diffing**.
 
@@ -2933,115 +3042,6 @@ In brief, here is what happens when we update the DOM in React:
 1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
 1. The changed objects and the changed objects only get updated on the real DOM.
 1. Changes on the real DOM cause the screen to change finally.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are controlled and uncontrolled components in React?
-
-In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
-
-**Controlled Components:**  
-
-In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
-
-**Example:**
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-    state = {
-        message: ''
-    }
-    updateMessage = (newText) => {
-        console.log(newText)
-        this.setState(() => ({
-            message: newText
-        }))
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        value={this.state.message}
-                        onChange={(event) => this.updateMessage(event.target.value)}
-                    />
-                    <p>the message is: {this.state.message}</p>
-                </div>
-            </div>
-        )
-    }
-}
-
-export default App
-```
-
-**Uncontrolled Components:**  
-
-Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-
-    constructor(props){
-        super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.input = React.createRef()
-    }
-    handleChange = (newText) => {
-        console.log(newText)
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        ref={this.input}
-                        onChange={(event) => this.handleChange(event.target.value)}
-                    />
-                </div>
-            </div>
-        )
-    }
-}
-export default App
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you set default value for uncontrolled components?
-
-In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
-
-**Example:**
-
-```js
-render() {
-  return (
-    <form onSubmit={this.handleSubmit}>
-      <label>
-        Name:
-        <input
-          defaultValue="Samir Chahal"
-          type="text"
-          ref={this.input} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
