@@ -5006,6 +5006,501 @@ The React Hook Form provides a hook called `useForm()`, consisting of methods an
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 11. REACT HOOKS
+
+<br/>
+
+## Q. What are React Hooks?
+
+React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
+
+**Rules of Hooks**
+
+* Make sure to not use Hooks inside loops, conditions, or nested functions
+* Only use Hooks from inside React Functions
+
+**Built-in Hooks**
+
+*Basic Hooks*
+
+* useState()
+* useEffect()
+* useContext()
+
+*Additional Hooks*
+
+* useReducer()
+* useCallback()
+* useMemo()
+* useRef()
+* useImperativeHandle()
+* useLayoutEffect()
+* useDebugValue()
+
+**Example:**
+
+```js
+import React, { useState } from 'react'
+
+const App = () => {
+  const [isButtonClicked, setIsButtonClickedStatus] = useState(false)
+  
+  return (
+    <button
+      onClick={() => setIsButtonClickedStatus(!isButtonClicked)}
+    >
+      {isButtonClicked ? 'Clicked' : 'Click me, please'}
+    </button>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are advantages of using React Hooks?
+
+* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
+* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
+* Improved code reuse
+* Better code composition
+* Better defaults
+* Sharing non-visual logic with the use of custom hooks
+* Flexibility in moving up and down the components tree.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to fetch data with React Hooks?
+
+`useState` is a hook used to maintain local states in function components. `useEffect` is used to execute functions after a component gets rendered (to "perform side effects").
+
+**Example:**
+
+```js
+import React, { useState, useEffect } from "react";
+
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      {users.map((user) => (
+        <div key={user.id}>
+          <span>
+            <img src={user.avatar_url} width={"30px"} alt={user.avatar_url} />
+          </span>
+          <span> {user.login.toUpperCase()}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Do Hooks replace render props and higher-order components?
+
+**React Hooks**
+
+Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
+
+```js
+const [active, setActive] = useState(defaultActive)
+```
+
+There are few build-in Hooks
+
+```js
+import {
+  useState,
+  useReducer,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+  ...
+} from 'react'
+```
+
+**Higher Order Components:**
+
+A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
+
+**Example:** logger API
+
+```js
+import React, { useEffect } from 'react'
+
+const withLogging = Component => props => {
+  useEffect(() => {
+    fetch(`/logger?location=${ window.location}`)
+  }, [])
+  return <Component {...props } />
+}
+export default withLogging
+```
+
+To use it, you can mix it into an HOC that you\’ll wrap around every page:
+
+```js
+import React from 'react'
+import withAuth from './with-auth.js'
+import withLogging from './with-logging.js'
+import withLayout from './with-layout.js'
+
+const page = compose(
+  withRedux,
+  withAuth,
+  withLogging,
+  withLayout('default'),
+)
+export default page
+```
+
+To use this for a page
+
+```js
+import page from '../hocs/page.js'
+import MyPageComponent from './my-page-component.js'
+
+export default page(MyPageComponent)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to compare oldValues and newValues on React Hooks useEffect?
+
+We can store old values in a ref since assigning values to them won’t trigger a re-rendering of the component but the value will persist after each render cycle.
+
+**Example:**
+
+```js
+// To store old values
+const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count);
+
+  useEffect(() => {
+    console.log("prevCount: ", prevCount, "count: ", count);
+  }, [prevCount, count]);
+
+  return (
+    <div>
+      <button onClick={() => setCount((c) => c + 10)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+Here, We create the **usePrevious** hook with the value parameter which is state we want to get the previous value from,
+In the hook, we create a ref with the **useRef** hook to create a non-reactive property. Then we add the **useEffect** hook with a callback that sets the **ref.current** to value to set the previous value.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What do you understand by refs in React?
+
+`Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
+
+Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of ref forwarding.
+
+**Example:**
+
+```javascript
+class App extends React.Component {
+    constructor(props) {
+      super(props)
+      // create a ref to store the textInput DOM element
+      this.textInput = React.createRef()
+      this.state = {
+        value: ''
+      }
+    }
+  
+  // Set the state for the ref
+  handleSubmit = e => {
+    e.preventDefault()
+    this.setState({ value: this.textInput.current.value})
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>React Ref - createRef</h1>
+         {/** This is what will update **/}
+        <h3>Value: {this.state.value}</h3>
+        <form onSubmit={this.handleSubmit}>
+          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
+          <input type="text" ref={this.textInput} />
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+**When to Use Refs:**  
+
+* Managing focus, text selection, or media playback.
+* Triggering imperative animations.
+* Integrating with third-party DOM libraries.
+
+**When not to use refs:**  
+
+* Should not be used with functional components because they dont have instances.
+* Not to be used on things that can be done declaritvely.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can I use multiple refs for an array of elements with hooks?
+
+**Example:**
+
+```js
+function App() {
+  const arr = [1, 2, 3];
+  // for multiple refs
+  const refs = useRef([]);
+
+  return (
+    <div className="App">
+      {arr.map((item, index) => {
+        return (
+          <div
+            key={index}
+            ref={(element) => {
+              refs.current[index] = element;
+            }}
+          >
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is ref in React?
+
+A ref is defined as any value that does not trigger a component re-render when it is changed. This behavior is contrary to the function of states and props. A ref can be created in two ways- by the **useRef** hook or by the **createRef** function.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between useRef() and createRef()?
+
+**1. useRef():**
+
+The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
+
+**Example:**
+
+```js
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
+
+**2. createRef():**
+
+The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
+
+**Example:**
+
+```js
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = createRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why are inline ref callback or function not recommended?
+
+If the **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the ref callback as a bound method on the class, but note that it shouldn\'t matter in most cases.
+
+**Example:** Here\'s an example of a very simple React Component class that uses the ref callback feature.
+
+```js
+class ExampleComponent extends Component {
+  setFocus() {
+    this.textInput.focus();
+  }
+  render() {
+    return (
+      <input type="text"
+             ref={(input) => { this.textInput = input; }} />
+    );
+  }
+}
+```
+
+Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to re-render the view when the browser is resized?
+
+**Using React Hooks**
+
+```js
+import React, { useLayoutEffect, useState } from 'react'
+
+function useWindowSize() {
+
+  const [size, setSize] = useState([0, 0])
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight])
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize()
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+
+  return size
+}
+
+function ShowWindowDimensions(props) {
+
+  const [width, height] = useWindowSize()
+  return <span>Window size: {width} x {height}</span>
+}
+```
+
+**Using React classes**
+
+```js
+import React from 'react'
+
+class ShowWindowDimensions extends React.Component {
+  
+  state = { width: 0, height: 0 }
+  
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  }
+  /**
+   * Add event listener
+   */
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions)
+  }
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions)
+  }
+
+  render() {
+    return (
+      <span>Window size: {this.state.width} x {this.state.height}</span>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can find the version of React at runtime in the browser?
+
+**Chrome Dev Tools**
+
+```bash
+window.React.version
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. How to use styles in React.js?
 
 React Components can add styling in the following ways:
@@ -5740,242 +6235,6 @@ When useEffect() is used to get data from server.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to compare oldValues and newValues on React Hooks useEffect?
-
-We can store old values in a ref since assigning values to them won’t trigger a re-rendering of the component but the value will persist after each render cycle.
-
-**Example:**
-
-```js
-// To store old values
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
-
-export default function App() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-
-  useEffect(() => {
-    console.log("prevCount: ", prevCount, "count: ", count);
-  }, [prevCount, count]);
-
-  return (
-    <div>
-      <button onClick={() => setCount((c) => c + 10)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}
-```
-
-Here, We create the **usePrevious** hook with the value parameter which is state we want to get the previous value from,
-In the hook, we create a ref with the **useRef** hook to create a non-reactive property. Then we add the **useEffect** hook with a callback that sets the **ref.current** to value to set the previous value.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What do you understand by refs in React?
-
-`Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
-
-Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of ref forwarding.
-
-**Example:**
-
-```javascript
-class App extends React.Component {
-    constructor(props) {
-      super(props)
-      // create a ref to store the textInput DOM element
-      this.textInput = React.createRef()
-      this.state = {
-        value: ''
-      }
-    }
-  
-  // Set the state for the ref
-  handleSubmit = e => {
-    e.preventDefault()
-    this.setState({ value: this.textInput.current.value})
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>React Ref - createRef</h1>
-         {/** This is what will update **/}
-        <h3>Value: {this.state.value}</h3>
-        <form onSubmit={this.handleSubmit}>
-          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
-          <input type="text" ref={this.textInput} />
-          <button>Submit</button>
-        </form>
-      </div>
-    )
-  }
-}
-```
-
-**When to Use Refs:**  
-
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
-
-**When not to use refs:**  
-
-* Should not be used with functional components because they dont have instances.
-* Not to be used on things that can be done declaritvely.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can I use multiple refs for an array of elements with hooks?
-
-**Example:**
-
-```js
-function App() {
-  const arr = [1, 2, 3];
-  // for multiple refs
-  const refs = useRef([]);
-
-  return (
-    <div className="App">
-      {arr.map((item, index) => {
-        return (
-          <div
-            key={index}
-            ref={(element) => {
-              refs.current[index] = element;
-            }}
-          >
-            {item}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is ref in React?
-
-A ref is defined as any value that does not trigger a component re-render when it is changed. This behavior is contrary to the function of states and props. A ref can be created in two ways- by the **useRef** hook or by the **createRef** function.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between useRef() and createRef()?
-
-**1. useRef():**
-
-The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
-
-**Example:**
-
-```js
-export default function App() {
-  const [count, setCount] = useState(0);
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = "SomeInitialValue";
-  }, []);
-
-  useEffect(() => {
-    console.log(count, ref.current);
-  }, [count]);
-
-  return (
-    <div className="App">
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
-
-**2. createRef():**
-
-The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
-
-**Example:**
-
-```js
-export default function App() {
-  const [count, setCount] = useState(0);
-  const ref = createRef();
-
-  useEffect(() => {
-    ref.current = "SomeInitialValue";
-  }, []);
-
-  useEffect(() => {
-    console.log(count, ref.current);
-  }, [count]);
-
-  return (
-    <div className="App">
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why are inline ref callback or function not recommended?
-
-If the **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the ref callback as a bound method on the class, but note that it shouldn\'t matter in most cases.
-
-**Example:** Here\'s an example of a very simple React Component class that uses the ref callback feature.
-
-```js
-class ExampleComponent extends Component {
-  setFocus() {
-    this.textInput.focus();
-  }
-  render() {
-    return (
-      <input type="text"
-             ref={(input) => { this.textInput = input; }} />
-    );
-  }
-}
-```
-
-Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. When should we use arrow functions with React?
 
 **Arrows prevent `this` bugs**
@@ -6280,182 +6539,6 @@ The rest of the tools belong in that group of sequential or parallel tasks:
 * *Compilation* - specifically separate from transpiling ES6 and JSX to ES5, is the act of including assets, processing CSS files as JSON, or other mechanisms that can load and inject external assets and code into a file. In addition, there are all sorts of build steps that can analyze your code and even optimize it for you.
 * *Minification and Compression* - typically part of – but not exclusively controlled by – compilation, is the act of minifying and compressing a JS file into fewer and/or smaller files
 * *Source-Mapping* - another optional part of compilation is building source maps, which help identify the line in the original source code that corresponds with the line in the output code (i.e. where an error occurred)
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are React Hooks?
-
-React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
-
-**Rules of Hooks**
-
-* Make sure to not use Hooks inside loops, conditions, or nested functions
-* Only use Hooks from inside React Functions
-
-**Built-in Hooks**
-
-*Basic Hooks*
-
-* useState()
-* useEffect()
-* useContext()
-
-*Additional Hooks*
-
-* useReducer()
-* useCallback()
-* useMemo()
-* useRef()
-* useImperativeHandle()
-* useLayoutEffect()
-* useDebugValue()
-
-**Example:**
-
-```js
-import React, { useState } from 'react'
-
-const App = () => {
-  const [isButtonClicked, setIsButtonClickedStatus] = useState(false)
-  
-  return (
-    <button
-      onClick={() => setIsButtonClickedStatus(!isButtonClicked)}
-    >
-      {isButtonClicked ? 'Clicked' : 'Click me, please'}
-    </button>
-  )
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are advantages of using React Hooks?
-
-* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
-* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
-* Improved code reuse
-* Better code composition
-* Better defaults
-* Sharing non-visual logic with the use of custom hooks
-* Flexibility in moving up and down the components tree.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to fetch data with React Hooks?
-
-`useState` is a hook used to maintain local states in function components. `useEffect` is used to execute functions after a component gets rendered (to "perform side effects").
-
-**Example:**
-
-```js
-import React, { useState, useEffect } from "react";
-
-function Users() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.github.com/users")
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data);
-      });
-  }, []);
-
-  return (
-    <div>
-      {users.map((user) => (
-        <div key={user.id}>
-          <span>
-            <img src={user.avatar_url} width={"30px"} alt={user.avatar_url} />
-          </span>
-          <span> {user.login.toUpperCase()}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Do Hooks replace render props and higher-order components?
-
-**React Hooks**
-
-Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
-
-```js
-const [active, setActive] = useState(defaultActive)
-```
-
-There are few build-in Hooks
-
-```js
-import {
-  useState,
-  useReducer,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-  ...
-} from 'react'
-```
-
-**Higher Order Components:**
-
-A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
-
-**Example:** logger API
-
-```js
-import React, { useEffect } from 'react'
-
-const withLogging = Component => props => {
-  useEffect(() => {
-    fetch(`/logger?location=${ window.location}`)
-  }, [])
-  return <Component {...props } />
-}
-export default withLogging
-```
-
-To use it, you can mix it into an HOC that you\’ll wrap around every page:
-
-```js
-import React from 'react'
-import withAuth from './with-auth.js'
-import withLogging from './with-logging.js'
-import withLayout from './with-layout.js'
-
-const page = compose(
-  withRedux,
-  withAuth,
-  withLogging,
-  withLayout('default'),
-)
-export default page
-```
-
-To use this for a page
-
-```js
-import page from '../hocs/page.js'
-import MyPageComponent from './my-page-component.js'
-
-export default page(MyPageComponent)
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -6925,85 +7008,6 @@ class App extends Component {
 ```
 
 *Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to re-render the view when the browser is resized?
-
-**Using React Hooks**
-
-```js
-import React, { useLayoutEffect, useState } from 'react'
-
-function useWindowSize() {
-
-  const [size, setSize] = useState([0, 0])
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight])
-    }
-    window.addEventListener('resize', updateSize)
-    updateSize()
-    return () => window.removeEventListener('resize', updateSize)
-  }, [])
-
-  return size
-}
-
-function ShowWindowDimensions(props) {
-
-  const [width, height] = useWindowSize()
-  return <span>Window size: {width} x {height}</span>
-}
-```
-
-**Using React classes**
-
-```js
-import React from 'react'
-
-class ShowWindowDimensions extends React.Component {
-  
-  state = { width: 0, height: 0 }
-  
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
-  }
-  /**
-   * Add event listener
-   */
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions)
-  }
-  /**
-   * Remove event listener
-   */
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions)
-  }
-
-  render() {
-    return (
-      <span>Window size: {this.state.width} x {this.state.height}</span>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can find the version of React at runtime in the browser?
-
-**Chrome Dev Tools**
-
-```bash
-window.React.version
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
