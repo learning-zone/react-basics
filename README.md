@@ -213,7 +213,7 @@ Below are the list of some of the features provided by create react app.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What does Eject do in Create React App?
+## Q. What does eject do in create react app?
 
 The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
 
@@ -2437,6 +2437,10 @@ React recommends that you do not use indexes as keys, if the order of items may 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## # 9. REACT APIs
+
+<br/>
 
 ## Q. How to use styles in React.js?
 
