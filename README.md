@@ -139,6 +139,405 @@ my-app
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. What are the features of create react app?
+
+**Create React App** is a command-line program that lets us create a new React project easily and build the project into artifacts that we can deploy. It is created by the React team and creates a scaffold to the app.
+
+Below are the list of some of the features provided by create react app.
+
+* React, JSX, ES6, Typescript and Flow syntax support.
+* Autoprefixed CSS
+* CSS Reset/Normalize
+* Live-editing CSS and JS in local development server.
+* A fast interactive unit test runner with built-in support for coverage reporting
+* A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
+* An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
+
+**Read More:**
+
+* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What does Eject do in Create React App?
+
+The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
+
+After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 3. REACT JSX
+
+<br/>
+
+## Q. What is JSX?
+
+JSX ( **JavaScript Expression** ) allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
+
+* It is faster because it performs optimization while compiling code to JavaScript.
+* It is also type-safe and most of the errors can be caught during compilation.
+* It makes it easier and faster to write templates.
+
+**Example:**
+
+```js
+import React from 'react'
+
+class App extends React.Component {
+
+   render() {
+      return (
+         <div>
+            Hello World!
+         </div>
+      )
+   }
+}
+export default App
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
+
+**JSX is a JavaScript Expression:**
+
+JSX expressions are JavaScript expressions too. When compiled, they actually become regular JavaScript objects. For instance, the code below:
+
+```js
+const hello = <h1 className = "greet"> Hello World </h1>
+```
+
+will be compiled to
+
+```js
+const hello = React.createElement {
+    type: "h1",
+    props: {
+      className: "greet",  
+      children: "Hello World"
+    }
+}
+```
+
+Since they are compiled to objects, JSX can be used wherever a regular JavaScript expression can be used.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the advantages of using jsx?
+
+JSX is an optional syntax extension to JavaScript that makes writing your own components much easier. It accepts HTML quoting and makes a subcomponent rendering easier. In fact, it is a set of shortcuts for writing `React.createElement` with a few rules to make your source cleaner and simpler.
+
+While JSX is often a matter of dispute, it can prove useful in building high-volume apps or custom components, excluding typos in large tree structures, and making it easier to convert from HTML mockups to ReactElement trees. Besides that, it provides React developers with informative warning and error messages and also helps to prevent code injections.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How JSX prevents Injection Attacks?
+
+React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that\'s not explicitly written in your application. Everything is converted to a string before being rendered.
+
+For example, you can embed user input as below,
+
+```js
+class JSXInjectionExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userContent: `JSX prevents Injection Attacks Example 
+            <script src="http://example.com/malicious-script.js><\/script>`
+        };
+    }
+    
+    render() {
+        return <div>User content: {this.state.userContent}</div>;
+    }
+}
+
+ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of new JSX transform?
+
+The React 17 release provides support for a new version of the JSX transform. There are three major benefits of new JSX transform,
+
+* It enables you to use JSX without having to import React.
+* The compiled output relatively improves the bundle size.
+* The future improvements provides the flexibility to reduce the number of concepts to learn React.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How does new JSX transform different from old transform?
+
+Browsers don\'t understand JSX, so most React users rely on a compiler like **Babel** or **TypeScript** to transform JSX code into regular JavaScript. Normally when we us JSX, the compiler transforms it into React function calls that the browser can understand.
+
+Let\'s take an example to look at the main differences between the old and the new transform,
+
+### **Old Transform**
+
+```js
+import React from 'react';
+
+function App() {
+  return <h1>Hello World</h1>;
+}
+```
+
+Under the hood, the old JSX transform would turn the JSX into regular JavaScript:
+
+```js
+import React from 'react';
+
+function App() {
+  return React.createElement('h1', null, 'Hello world');
+}
+```
+
+Because JSX was compiled into `React.createElement()`, React needed to be in scope if you used JSX. Hence, the reason react is being imported everywhere you use JSX. Also, there are some performance improvements and simplifications that that are not allowed by `React.createElement()`.
+
+### **New Transform:**
+
+The new JSX transform doesn\'t require any React imports
+
+```js
+import React from 'react';
+
+function App() {
+  return <h1>Hello World</h1>;
+}
+```
+
+The new Jsx transform would compile it to:
+
+```js
+// The import would be Inserted by the compiler (don't import it yourself)
+import {jsx as _jsx} from 'react/jsx-runtime';
+
+function App() {
+  return _jsx('h1', { children: 'Hello world' });
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Is it possible to use React without rendering HTML?
+
+It is possible with latest version (>=16.2). Below are the possible options:
+
+```js
+render() {
+  return false
+}
+```
+
+```js
+render() {
+  return null
+}
+```
+
+```js
+render() {
+  return []
+}
+```
+
+```js
+render() {
+  return <React.Fragment></React.Fragment>
+}
+```
+
+```js
+render() {
+  return <></>
+}
+```
+
+Note that React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
+
+*Note: Returning `undefined` does not work.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to write comments in React and JSX?
+
+Writing comments in React components can be done just like comment in regular JavaScript classes and functions.
+
+**React comments:**
+
+```js
+function App() {
+
+  // Single line Comment
+
+  /*
+  * multi
+  * line
+  * comment
+  **/
+
+  return (
+    <h1>My Application</h1>
+  );
+}
+```
+
+**JSX comments:**
+
+```js
+export default function App() {
+  return (
+    <div>
+      {/* A JSX comment */}
+      <h1>My Application</h1>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to add custom DOM attributes in JSX?
+
+Often we need to store information associated with a DOM element. This data might not be useful for displaying data to the DOM, but it is helpful for developers to access additional data. Custom attributes allow you to attach other values onto an HTML element.
+
+Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
+
+**Example:**
+
+```js
+// Custom DOM Attribute
+render() {
+  return (
+    <div custom-attribute="some-value" />
+  );
+}
+
+
+// Data Attribute ( starts with "data-" )
+render() {
+  return (
+    <div data-id="10" />
+  );
+}
+
+
+// ARIA Attribute ( starts with "aria-" )
+render() {
+  return (
+    <button aria-label="Close" onClick={onClose} />
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How many outermost elements can be there in a JSX expression?
+
+A JSX expression must have only one outer element. For Example:
+
+```js
+const headings = (
+    <div id = "outermost-element">
+       <h1>I am a heading </h1>
+       <h2>I am also a heading</h1>
+    </div>
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to loop inside JSX?
+
+You can simply use `Array.prototype.map` with ES6 arrow function syntax.
+
+**Example:**
+
+```js
+const animals = [
+  { id: 1, animal: "Dog" },
+  { id: 2, animal: "Bird" },
+  { id: 3, animal: "Cat" },
+  { id: 4, animal: "Mouse" },
+  { id: 5, animal: "Horse" }
+];
+
+export default function App() {
+  return (
+    <ul>
+      {animals.map((item) => (
+        <li key={item.id}>{item.animal}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you print false values in JSX?
+
+In React, boolean values (`true` and `false`), `null`, and `undefined` are valid children, but these values will not be rendered in UI if you put them directly inside {} in JSX.
+
+For example, all these JSX expressions will result in the same empty div:
+
+```js
+<div />
+<div></div>
+<div>{false}</div>
+<div>{null}</div>
+<div>{undefined}</div>
+<div>{true}</div>
+```
+
+If you want a value like `false`, `true`, `null`, or `undefined` to show in the output, you have to convert it to a string first.
+
+```js
+<div>{String(true)}</div>
+<div>{String(false)}</div>
+<div>{String(undefined)}</div>
+<div>{String(null)}</div>
+```
+
+In the output, this will render `true`, `false`, `undefined`, and `null` respectively.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. What are Components in React?
 
 Components are the building blocks of any React application and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
@@ -488,278 +887,6 @@ The view is a result of the application state. State can only change when action
 * More efficient, as the library knows what the boundaries are of each part of the system.
 
 In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is JSX?
-
-JSX allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
-
-* It is faster because it performs optimization while compiling code to JavaScript.
-* It is also type-safe and most of the errors can be caught during compilation.
-* It makes it easier and faster to write templates.
-
-**Example:**
-
-```js
-import React from 'react'
-
-class App extends React.Component {
-
-   render() {
-      return (
-         <div>
-            Hello World!
-         </div>
-      )
-   }
-}
-export default App
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
-
-**JSX is a JavaScript Expression:**
-
-JSX expressions are JavaScript expressions too. When compiled, they actually become regular JavaScript objects. For instance, the code below:
-
-```js
-const hello = <h1 className = "greet"> Hello World </h1>
-```
-
-will be compiled to
-
-```js
-const hello = React.createElement {
-    type: "h1",
-    props: {
-      className: "greet",  
-      children: "Hello World"
-    }
-}
-```
-
-Since they are compiled to objects, JSX can be used wherever a regular JavaScript expression can be used.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How JSX prevents Injection Attacks?
-
-React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that\'s not explicitly written in your application. Everything is converted to a string before being rendered.
-
-For example, you can embed user input as below,
-
-```js
-class JSXInjectionExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userContent: `JSX prevents Injection Attacks Example 
-            <script src="http://example.com/malicious-script.js><\/script>`
-        };
-    }
-    
-    render() {
-        return <div>User content: {this.state.userContent}</div>;
-    }
-}
-
-ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of new JSX transform?
-
-The React 17 release provides support for a new version of the JSX transform. There are three major benefits of new JSX transform,
-
-* It enables you to use JSX without having to import React.
-* The compiled output relatively improves the bundle size.
-* The future improvements provides the flexibility to reduce the number of concepts to learn React.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How does new JSX transform different from old transform?
-
-Browsers don\'t understand JSX, so most React users rely on a compiler like **Babel** or **TypeScript** to transform JSX code into regular JavaScript. Normally when we us JSX, the compiler transforms it into React function calls that the browser can understand.
-
-Let\'s take an example to look at the main differences between the old and the new transform,
-
-### **Old Transform**
-
-```js
-import React from 'react';
-
-function App() {
-  return <h1>Hello World</h1>;
-}
-```
-
-Under the hood, the old JSX transform would turn the JSX into regular JavaScript:
-
-```js
-import React from 'react';
-
-function App() {
-  return React.createElement('h1', null, 'Hello world');
-}
-```
-
-Because JSX was compiled into `React.createElement()`, React needed to be in scope if you used JSX. Hence, the reason react is being imported everywhere you use JSX. Also, there are some performance improvements and simplifications that that are not allowed by `React.createElement()`.
-
-### **New Transform:**
-
-The new JSX transform doesn\'t require any React imports
-
-```js
-import React from 'react';
-
-function App() {
-  return <h1>Hello World</h1>;
-}
-```
-
-The new Jsx transform would compile it to:
-
-```js
-// The import would be Inserted by the compiler (don't import it yourself)
-import {jsx as _jsx} from 'react/jsx-runtime';
-
-function App() {
-  return _jsx('h1', { children: 'Hello world' });
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Is it possible to use React without rendering HTML?
-
-It is possible with latest version (>=16.2). Below are the possible options:
-
-```js
-render() {
-  return false
-}
-```
-
-```js
-render() {
-  return null
-}
-```
-
-```js
-render() {
-  return []
-}
-```
-
-```js
-render() {
-  return <React.Fragment></React.Fragment>
-}
-```
-
-```js
-render() {
-  return <></>
-}
-```
-
-Note that React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
-
-*Note: Returning `undefined` does not work.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to add custom DOM attributes in JSX?
-
-Often we need to store information associated with a DOM element. This data might not be useful for displaying data to the DOM, but it is helpful for developers to access additional data. Custom attributes allow you to attach other values onto an HTML element.
-
-Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
-
-**Example:**
-
-```js
-// Custom DOM Attribute
-render() {
-  return (
-    <div custom-attribute="some-value" />
-  );
-}
-
-
-// Data Attribute ( starts with "data-" )
-render() {
-  return (
-    <div data-id="10" />
-  );
-}
-
-
-// ARIA Attribute ( starts with "aria-" )
-render() {
-  return (
-    <button aria-label="Close" onClick={onClose} />
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to write comments in React and JSX?
-
-Writing comments in React components can be done just like comment in regular JavaScript classes and functions.
-
-**React comments:**
-
-```js
-function App() {
-
-  // Single line Comment
-
-  /*
-  * multi
-  * line
-  * comment
-  **/
-
-  return (
-    <h1>My Application</h1>
-  );
-}
-```
-
-**JSX comments:**
-
-```js
-export default function App() {
-  return (
-    <div>
-      {/* A JSX comment */}
-      <h1>My Application</h1>
-    </div>
-  );
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5778,87 +5905,6 @@ function handleClick(e) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How many outermost elements can be there in a JSX expression?
-
-A JSX expression must have only one outer element. For Example:
-
-```js
-const headings = (
-    <div id = "outermost-element">
-       <h1>I am a heading </h1>
-       <h2>I am also a heading</h1>
-    </div>
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to loop inside JSX?
-
-You can simply use `Array.prototype.map` with ES6 arrow function syntax.
-
-**Example:**
-
-```js
-const animals = [
-  { id: 1, animal: "Dog" },
-  { id: 2, animal: "Bird" },
-  { id: 3, animal: "Cat" },
-  { id: 4, animal: "Mouse" },
-  { id: 5, animal: "Horse" }
-];
-
-export default function App() {
-  return (
-    <ul>
-      {animals.map((item) => (
-        <li key={item.id}>{item.animal}</li>
-      ))}
-    </ul>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you print false values in JSX?
-
-In React, boolean values (`true` and `false`), `null`, and `undefined` are valid children, but these values will not be rendered in UI if you put them directly inside {} in JSX.
-
-For example, all these JSX expressions will result in the same empty div:
-
-```js
-<div />
-<div></div>
-<div>{false}</div>
-<div>{null}</div>
-<div>{undefined}</div>
-<div>{true}</div>
-```
-
-If you want a value like `false`, `true`, `null`, or `undefined` to show in the output, you have to convert it to a string first.
-
-```js
-<div>{String(true)}</div>
-<div>{String(false)}</div>
-<div>{String(undefined)}</div>
-<div>{String(null)}</div>
-```
-
-In the output, this will render `true`, `false`, `undefined`, and `null` respectively.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. Explain DOM diffing?
 
 **Document Object Model:**
@@ -8106,16 +8152,6 @@ const divStyle = {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the advantages of using jsx?
-
-JSX is an optional syntax extension to JavaScript that makes writing your own components much easier. It accepts HTML quoting and makes a subcomponent rendering easier. In fact, it is a set of shortcuts for writing `React.createElement` with a few rules to make your source cleaner and simpler.
-
-While JSX is often a matter of dispute, it can prove useful in building high-volume apps or custom components, excluding typos in large tree structures, and making it easier to convert from HTML mockups to ReactElement trees. Besides that, it provides React developers with informative warning and error messages and also helps to prevent code injections.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -11079,38 +11115,6 @@ render () {
   )
 }
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the features of create react app?
-
-**Create React App** is a command-line program that lets us create a new React project easily and build the project into artifacts that we can deploy. It is created by the React team and creates a scaffold to the app.
-
-Below are the list of some of the features provided by create react app.
-
-* React, JSX, ES6, Typescript and Flow syntax support.
-* Autoprefixed CSS
-* CSS Reset/Normalize
-* Live-editing CSS and JS in local development server.
-* A fast interactive unit test runner with built-in support for coverage reporting
-* A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
-* An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
-
-**Read More:**
-
-* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What does Eject do in Create React App?
-
-The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
-
-After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
