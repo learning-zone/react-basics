@@ -244,10 +244,175 @@ set HTTPS=true&&npm start
 
 ## Q. How can find the version of React at runtime in the browser?
 
-**Chrome Dev Tools**
+**Chrome Dev Tools:**
 
 ```bash
 window.React.version
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to put React in production mode?
+
+Create a simple `hello-world-app` using [Create-React-App](https://create-react-app.dev/docs/getting-started).
+
+```js
+npx create-react-app hello-world-app
+```
+
+Modify the `App.js` file as shown below.
+
+```js
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Hello world app</h1>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Run the app local server by running the following command
+
+```js
+npm start
+```
+
+On the local server (http://localhost:3000) you can see a simple React app displaying a "hello world" message. The next step is to make this app production-ready for deployment. Inside the root directory run the following command:
+
+```js
+npm run build
+```
+
+This creates a build directory inside the root directory, which bundles your React app and minifies it into simple HTML, CSS, and JavaScript files. This build folder serves your app via a simple entry point, `index.html`, where your entire React app resides. Running your app via a remote server means running this `index.html` file on the server.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the common folder structures for React?
+
+React doesn\'t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
+
+**1. Grouping by features or routes:**
+
+One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
+
+```js
+common/
+  Avatar.js
+  Avatar.css
+  APIUtils.js
+  APIUtils.test.js
+feed/
+  index.js
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  FeedAPI.js
+profile/
+  index.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+  ProfileAPI.js
+```
+
+**2. Grouping by file type:**
+
+Another popular way to structure projects is to group similar files together, for example:
+
+```js
+api/
+  APIUtils.js
+  APIUtils.test.js
+  ProfileAPI.js
+  UserAPI.js
+components/
+  Avatar.js
+  Avatar.css
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the popular React-specific linter?
+
+**1. ESLint:**
+
+ESLint is a popular JavaScript linter. There are plugins available that analyse specific code styles. One of the most common for React is an npm package called `eslint-plugin-react`.
+
+```js
+npm install -g eslint-plugin-react
+```
+
+This will install the plugin we need, and in our ESLint config file, we just need a few extra lines.
+
+```js
+"extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+]
+```
+
+```js
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+}
+```
+
+**2. eslint-plugin-jsx-a11y:**
+
+It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the browser support for react applications?
+
+By default, **Create React App** generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use **react-app-polyfill**.
+
+The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified.
+
+**Example:**
+
+```js
+// package.json
+
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
 ```
 
 <div align="right">
@@ -11784,142 +11949,6 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to put React in production mode?
-
-Create a simple `hello-world-app` using [Create-React-App](https://create-react-app.dev/docs/getting-started).
-
-```js
-npx create-react-app hello-world-app
-```
-
-Modify the `App.js` file as shown below.
-
-```js
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello world app</h1>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-```
-
-Run the app local server by running the following command
-
-```js
-npm start
-```
-
-On the local server (http://localhost:3000) you can see a simple React app displaying a "hello world" message. The next step is to make this app production-ready for deployment. Inside the root directory run the following command:
-
-```js
-npm run build
-```
-
-This creates a build directory inside the root directory, which bundles your React app and minifies it into simple HTML, CSS, and JavaScript files. This build folder serves your app via a simple entry point, `index.html`, where your entire React app resides. Running your app via a remote server means running this `index.html` file on the server.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the common folder structures for React?
-
-React doesn\'t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
-
-**1. Grouping by features or routes**
-
-One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
-
-```js
-common/
-  Avatar.js
-  Avatar.css
-  APIUtils.js
-  APIUtils.test.js
-feed/
-  index.js
-  Feed.js
-  Feed.css
-  FeedStory.js
-  FeedStory.test.js
-  FeedAPI.js
-profile/
-  index.js
-  Profile.js
-  ProfileHeader.js
-  ProfileHeader.css
-  ProfileAPI.js
-```
-
-**2. Grouping by file type**
-
-Another popular way to structure projects is to group similar files together, for example:
-
-```js
-api/
-  APIUtils.js
-  APIUtils.test.js
-  ProfileAPI.js
-  UserAPI.js
-components/
-  Avatar.js
-  Avatar.css
-  Feed.js
-  Feed.css
-  FeedStory.js
-  FeedStory.test.js
-  Profile.js
-  ProfileHeader.js
-  ProfileHeader.css
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the popular React-specific linter?
-
-**1. ESLint:**
-
-ESLint is a popular JavaScript linter. There are plugins available that analyse specific code styles. One of the most common for React is an npm package called `eslint-plugin-react`.
-
-```js
-npm install -g eslint-plugin-react
-```
-
-This will install the plugin we need, and in our ESLint config file, we just need a few extra lines.
-
-```js
-"extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-]
-```
-
-```js
-"scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
-}
-```
-
-**2. eslint-plugin-jsx-a11y:**
-
-It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. Does the static object work with ES6 classes in React?
 
 Although statics only works for `React.createClass()`, you can still write static methods in ES6 notation. If you are using ES7, then you can also write static properties.
@@ -11932,35 +11961,6 @@ class Component extends React.Component {
 
     static someMethod(){
     }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the browser support for react applications?
-
-By default, **Create React App** generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use **react-app-polyfill**.
-
-The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified.
-
-**Example:**
-
-```js
-// package.json
-
-"browserslist": {
-  "production": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
-  "development": [
-    "last 1 chrome version",
-    "last 1 firefox version",
-    "last 1 safari version"
-  ]
 }
 ```
 
