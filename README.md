@@ -42,10 +42,9 @@
   * [React Error Boundaries](#-14-react-error-boundaries)
   * [React Composition](#-15-react-composition)
   * [React CSS Styling](#-16-react-css-styling)
-  * [React Animation](#-17-react-animation)
-  * [React Internationalization](#-18-react-internationalization)
-  * [React Testing](#-19-react-testing)
-  * [Miscellaneous](#-20-miscellaneous)
+  * [React Internationalization](#-17-react-internationalization)
+  * [React Testing](#-18-react-testing)
+  * [Miscellaneous](#-19-miscellaneous)
 
 * Redux
   * [Redux Overview](#-1-redux-overview)
@@ -7062,6 +7061,612 @@ render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 17. REACT INTERNATIONALIZATION
+
+<br/>
+
+## Q. How to translate your React app with react-i18next?
+
+**Installing dependencies**
+
+```bash
+npm install react-i18next i18next --save
+```
+
+**Configure i18next**
+
+Create a new file `i18n.js` beside your `index.js` containing following content:
+
+```js
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
+
+// Translations
+const resources = {
+  en: {
+    translation: {
+      "welcome.title": "Welcome to React and react-i18next"
+    }
+  }
+}
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng: "en",
+    keySeparator: false, // we do not use keys in form messages.welcome
+    interpolation: {
+      escapeValue: false // react already safes from xss
+    }
+  })
+
+export default i18n
+```
+
+we pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
+
+```js
+import React, { Component } from "react"
+import ReactDOM from "react-dom"
+import './i18n'
+import App from './App'
+
+// append app to dom
+ReactDOM.render(
+  <App />,
+  document.getElementById("root")
+)
+```
+
+**Using the Hook**
+
+The `t` function is the main function in i18next to translate content.
+
+```js
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+
+function MyComponent () {
+  const { t, i18n } = useTranslation()
+  return <h1>{t('welcome.title')}</h1>
+}
+```
+
+**Using the Higher Order Component**
+
+Using higher order components is one of the most used method to extend existing components by passing additional props to them. The `t` function is in `i18next` the main function to translate content.
+
+```js
+import React from 'react'
+import { withTranslation } from 'react-i18next'
+
+class HighOrderComponent extends React.Component {
+    render() {
+
+      return (
+        <h1>{this.props.t('welcome.title')}</h1>
+      )
+    }
+}
+
+export default withTranslation()(HighOrderComponent)
+```
+
+**Read More:**
+
+* *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 18. REACT TESTING
+
+<br/>
+
+## Q. What is Shallow Renderer in React testing?
+
+When shallow rendering is used, Jest will not render child components but return them as defined.
+
+**Example:** 
+
+```js
+// App.js
+
+function MyComponent() {
+  return (
+    <div>
+      <span className="heading">Title</span>
+      <Subcomponent msg="Sub Component" />
+    </div>
+  );
+}
+```
+
+Test case
+
+```js
+// App.test.js
+
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+
+const renderer = new ShallowRenderer();
+renderer.render(<MyComponent />);
+const result = renderer.getRenderOutput();
+
+expect(result.type).toBe('div');
+expect(result.props.children).toEqual([
+  <span className="heading">Title</span>,
+  <Subcomponent msg="Sub Component" />
+]);
+```
+
+*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is TestRenderer package in React?
+
+This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or jsdom.
+
+**Example:**
+
+```js
+import TestRenderer from 'react-test-renderer';
+
+function Link(props) {
+  return <a href={props.page}>{props.children}</a>;
+}
+
+const testRenderer = TestRenderer.create(
+  <Link page="https://www.facebook.com/">Facebook</Link>
+);
+
+console.log(testRenderer.toJSON());
+// { type: 'a',
+//   props: { href: 'https://www.facebook.com/' },
+//   children: [ 'Facebook' ] }
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Explain react unit testing using Jest and Enzyme?
+
+**Jest**  
+
+Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
+
+Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
+
+**Enzyme**
+
+Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
+
+**Setup with Create React App**
+
+```bash
+# for rendering snapshots
+npm install  react-test-renderer --save-dev
+
+# for dom testing
+npm install enzyme --save-dev
+```
+
+```json
+{
+  "react": "^16.13.1",
+  "@testing-library/jest-dom": "^4.2.4",
+  "@testing-library/react": "^9.5.0",
+  "@testing-library/user-event": "^7.2.1",
+  "enzyme": "3.9",
+  "jest": "24.5.0",
+  "jest-cli": "24.5.0",
+  "babel-jest": "24.5.0"
+}
+```
+
+**Set up a React application**
+
+```bash
+npx create-react-app counter-app
+```
+
+```js
+// src/App.js
+
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      count: 0,
+    }
+  }
+  makeIncrementer = amount => () =>
+    this.setState(prevState => ({
+      count: prevState.count + amount,
+    }))
+  increment = this.makeIncrementer(1)
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button className="increment" onClick={this.increment}>Increment count</button>
+      </div>
+    )
+  }
+}
+export default App
+```
+
+**Using Enzyme**
+
+```js
+ // src/App.test.js
+
+import React from 'react'
+import { shallow } from 'enzyme'
+import App from './App'
+
+describe('App component', () => {
+  it('starts with a count of 0', () => {
+    const wrapper = shallow(<App />)
+    const text = wrapper.find('p').text()
+    expect(text).toEqual('Count: 0')
+  })
+})
+```
+
+**Testing User Interaction**
+
+```js
+// src/App.test.js
+
+describe('App component', () => {
+
+  it('increments count by 1 when the increment button is clicked', () => {
+    const wrapper = shallow(<App />)
+    const incrementBtn = wrapper.find('button.increment')
+    incrementBtn.simulate('click')
+    const text = wrapper.find('p').text()
+    expect(text).toEqual('Count: 1')
+  })
+})
+```
+
+**Read More:**
+
+* *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
+* *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Explain about shallow() method in enzyme?
+
+The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
+
+**Example:**
+
+```js
+import React from "react"
+import { shallow } from "enzyme"
+import Enzyme from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
+
+Enzyme.configure({ adapter: new Adapter() })
+
+function Name(props) {
+  return <span>Welcome {props.name}</span>
+}
+
+function Welcome(props) {
+  return (
+    <h1>
+      <Name name={props.name} />
+    </h1>
+  )
+}
+
+const wrapper = shallow(<Welcome name="Alex" />)
+console.log(wrapper.debug())
+```
+
+**When not to use Shallow Rendering**
+
+* Shallow rendering is not useful for testing the end-user experience.
+* Shallow rendering is not useful for testing DOM rendering or interactions.
+* Shallow rendering is not useful for integration testing.
+* Shallow rendering is not useful for browser testing.
+* Shallow rendering is not useful for end to end testing.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is mount() method in Enzyme?
+
+**Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
+
+This is more suitable when there are components which directly interfere with DOM API or lifecycle methods of React. Simple mount calls the `constructor()`, `render()`, `componentDidMount()` methods.
+
+**Example:**
+
+```js
+...
+import ListItem from './ListItem'
+...
+
+return (
+    <ul className="list-items">
+      {items.map(item => <ListItem key={item} item={item} />)}
+    </ul>
+)
+```
+
+```js
+import React from 'react'
+import { mount } from '../enzyme'
+import List from './List'
+
+describe('List tests', () => {
+
+  it('renders list-items', () => {
+    const items = ['one', 'two', 'three']
+
+    const wrapper = mount(<List items={items} />)
+
+    // Let's check what wrong in our instance
+    console.log(wrapper.debug())
+
+    // Expect the wrapper object to be defined
+    expect(wrapper.find('.list-items')).toBeDefined()
+    expect(wrapper.find('.item')).toHaveLength(items.length)
+  })
+
+  ...
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is render() method in Enzyme?
+
+**Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
+
+For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
+
+**Example:**
+
+```js
+import React from 'react'
+import { render } from '../enzyme'
+
+import List from './List'
+import { wrap } from 'module'
+
+describe('List tests', () => {
+
+  it('renders list-items', () => {
+    const items = ['one', 'two', 'three']
+    const wrapper = render(<List items={items} />)
+
+    wrapper.addClass('foo')
+    // Expect the wrapper object to be defined
+    expect(wrapper.find('.list-items')).toBeDefined()
+    expect(wrapper.find('.item')).toHaveLength(items.length)
+  })
+
+  ...
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of the ReactTestUtils package?
+
+**ReactTestUtils** is used to test React-based components. It can simulate all the JavaScript-based events, which ReactJS supports. Some of its frequently methods are
+
+* `act()`
+* `mockComponent()`
+* `isElement()`
+* `isElementOfType()`
+* `isDOMComponent()`
+* `renderIntoDocument()`
+* `Simulate()`
+
+**act()**
+
+To prepare a component for assertions, wrap the code rendering it and performing updates inside an act() call. This makes your test run closer to how React works in the browser.
+
+```js
+class Counter extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {count: 0}
+    this.handleClick = this.handleClick.bind(this)
+  }
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`
+  }
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`
+  }
+  handleClick() {
+    this.setState(state => ({
+      count: state.count + 1,
+    }))
+  }
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={this.handleClick}>
+          Click me
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { act } from 'react-dom/test-utils'
+import Counter from './Counter'
+
+let container
+
+beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
+
+afterEach(() => {
+  document.body.removeChild(container)
+  container = null
+})
+
+it('can render and update a counter', () => {
+  // Test first render and componentDidMount
+  act(() => {
+    ReactDOM.render(<Counter />, container)
+  })
+  const button = container.querySelector('button')
+  const label = container.querySelector('p')
+  expect(label.textContent).toBe('You clicked 0 times')
+  expect(document.title).toBe('You clicked 0 times')
+
+  // Test second render and componentDidUpdate
+  act(() => {
+    button.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+  })
+  expect(label.textContent).toBe('You clicked 1 times')
+  expect(document.title).toBe('You clicked 1 times')
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is react-test-renderer package in React?
+
+This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or `jsdom`.
+
+**Example:**
+
+```js
+import React from 'react'
+import renderer from 'react-test-renderer'
+import App from './app.js' // The component being tested
+
+/**
+ * Snapshot tests are a useful when UI does not change frequently.
+ *
+ * A typical snapshot test case for a mobile app renders a UI component, takes a snapshot,
+ * then compares it to a reference snapshot file stored alongside the test.
+ */
+describe('APP Component', () => {
+
+    test('Matches the snapshot', () => {
+      const tree = renderer.create(<App />).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
+
+Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
+
+**Process:**
+
+1. Add a test
+1. Run all tests and see if the new test fails (red)
+1. Write the code to pass the test (green)
+1. Run all tests
+1. Refactor
+1. Repeat
+
+**Pros:**
+
+1. Design before implementation
+1. Helps prevent future regressions and bugs
+1. Increases confidence that the code works as expected
+
+**Cons:**
+
+1. Takes longer to develop (but it can save time in the long run)
+1. Testing edge cases is hard
+1. Mocking, faking, and stubbing are all even harder
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using data-test selector over className or Id selector in Jest?
+
+HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
+
+```js
+// APP Component
+import React from 'react'
+import './App.scss'
+
+function App() {
+  return (
+    <div data-test='app-header'>
+      Hello React
+    </div>
+  )
+}
+export default App
+```
+
+```js
+import React from 'react'
+import { shallow } from 'enzyme'
+import App from './App'
+
+
+describe('APP Component', () => {
+
+  test('title', () => {
+    let wrapper = shallow(<APP />)
+    let title = wrapper.find(`[data-test='app-header']`).text()
+
+    expect(title).toMatch('Hello React')
+  })
+
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. What is React.cloneElement?
 
 The **React.cloneElement()** function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
@@ -9985,102 +10590,6 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to translate your React app with react-i18next?
-
-**Installing dependencies**
-
-```bash
-npm install react-i18next i18next --save
-```
-
-**Configure i18next**
-
-Create a new file `i18n.js` beside your `index.js` containing following content:
-
-```js
-import i18n from "i18next"
-import { initReactI18next } from "react-i18next"
-
-// Translations
-const resources = {
-  en: {
-    translation: {
-      "welcome.title": "Welcome to React and react-i18next"
-    }
-  }
-}
-
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    resources,
-    lng: "en",
-    keySeparator: false, // we do not use keys in form messages.welcome
-    interpolation: {
-      escapeValue: false // react already safes from xss
-    }
-  })
-
-export default i18n
-```
-
-we pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
-
-```js
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
-import './i18n'
-import App from './App'
-
-// append app to dom
-ReactDOM.render(
-  <App />,
-  document.getElementById("root")
-)
-```
-
-**Using the Hook**
-
-The `t` function is the main function in i18next to translate content.
-
-```js
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-
-function MyComponent () {
-  const { t, i18n } = useTranslation()
-  return <h1>{t('welcome.title')}</h1>
-}
-```
-
-**Using the Higher Order Component**
-
-Using higher order components is one of the most used method to extend existing components by passing additional props to them. The `t` function is in `i18next` the main function to translate content.
-
-```js
-import React from 'react'
-import { withTranslation } from 'react-i18next'
-
-class HighOrderComponent extends React.Component {
-    render() {
-
-      return (
-        <h1>{this.props.t('welcome.title')}</h1>
-      )
-    }
-}
-
-export default withTranslation()(HighOrderComponent)
-```
-
-**Read More:**
-
-* *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How to use async await in React?
 
 **Example:**
@@ -11610,516 +12119,6 @@ The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to a
 ```
 
 *Note: This plugin is included by default in Create React App.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-<br/>
-
------------------------
-### REACT UNIT TESTING
------------------------
-
-<br/>
-
-## Q. What is Shallow Renderer in React testing?
-
-When shallow rendering is used, Jest will not render child components but return them as defined.
-
-**Example:** 
-
-```js
-// App.js
-
-function MyComponent() {
-  return (
-    <div>
-      <span className="heading">Title</span>
-      <Subcomponent msg="Sub Component" />
-    </div>
-  );
-}
-```
-
-Test case
-
-```js
-// App.test.js
-
-import ShallowRenderer from 'react-test-renderer/shallow';
-
-
-const renderer = new ShallowRenderer();
-renderer.render(<MyComponent />);
-const result = renderer.getRenderOutput();
-
-expect(result.type).toBe('div');
-expect(result.props.children).toEqual([
-  <span className="heading">Title</span>,
-  <Subcomponent msg="Sub Component" />
-]);
-```
-
-*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is TestRenderer package in React?
-
-This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
-
-This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or jsdom.
-
-**Example:**
-
-```js
-import TestRenderer from 'react-test-renderer';
-
-function Link(props) {
-  return <a href={props.page}>{props.children}</a>;
-}
-
-const testRenderer = TestRenderer.create(
-  <Link page="https://www.facebook.com/">Facebook</Link>
-);
-
-console.log(testRenderer.toJSON());
-// { type: 'a',
-//   props: { href: 'https://www.facebook.com/' },
-//   children: [ 'Facebook' ] }
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain react unit testing using Jest and Enzyme?
-
-**Jest**  
-
-Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
-
-Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
-
-**Enzyme**
-
-Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
-
-**Setup with Create React App**
-
-```bash
-# for rendering snapshots
-npm install  react-test-renderer --save-dev
-
-# for dom testing
-npm install enzyme --save-dev
-```
-
-```json
-{
-  "react": "^16.13.1",
-  "@testing-library/jest-dom": "^4.2.4",
-  "@testing-library/react": "^9.5.0",
-  "@testing-library/user-event": "^7.2.1",
-  "enzyme": "3.9",
-  "jest": "24.5.0",
-  "jest-cli": "24.5.0",
-  "babel-jest": "24.5.0"
-}
-```
-
-**Set up a React application**
-
-```bash
-npx create-react-app counter-app
-```
-
-```js
-// src/App.js
-
-import React, { Component } from 'react'
-
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 0,
-    }
-  }
-  makeIncrementer = amount => () =>
-    this.setState(prevState => ({
-      count: prevState.count + amount,
-    }))
-  increment = this.makeIncrementer(1)
-  render() {
-    return (
-      <div>
-        <p>Count: {this.state.count}</p>
-        <button className="increment" onClick={this.increment}>Increment count</button>
-      </div>
-    )
-  }
-}
-export default App
-```
-
-**Using Enzyme**
-
-```js
- // src/App.test.js
-
-import React from 'react'
-import { shallow } from 'enzyme'
-import App from './App'
-
-describe('App component', () => {
-  it('starts with a count of 0', () => {
-    const wrapper = shallow(<App />)
-    const text = wrapper.find('p').text()
-    expect(text).toEqual('Count: 0')
-  })
-})
-```
-
-**Testing User Interaction**
-
-```js
-// src/App.test.js
-
-describe('App component', () => {
-
-  it('increments count by 1 when the increment button is clicked', () => {
-    const wrapper = shallow(<App />)
-    const incrementBtn = wrapper.find('button.increment')
-    incrementBtn.simulate('click')
-    const text = wrapper.find('p').text()
-    expect(text).toEqual('Count: 1')
-  })
-})
-```
-
-**Read More:**
-
-* *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
-* *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain about shallow() method in enzyme?
-
-The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
-
-**Example:**
-
-```js
-import React from "react"
-import { shallow } from "enzyme"
-import Enzyme from "enzyme"
-import Adapter from "enzyme-adapter-react-16"
-
-Enzyme.configure({ adapter: new Adapter() })
-
-function Name(props) {
-  return <span>Welcome {props.name}</span>
-}
-
-function Welcome(props) {
-  return (
-    <h1>
-      <Name name={props.name} />
-    </h1>
-  )
-}
-
-const wrapper = shallow(<Welcome name="Alex" />)
-console.log(wrapper.debug())
-```
-
-**When not to use Shallow Rendering**
-
-* Shallow rendering is not useful for testing the end-user experience.
-* Shallow rendering is not useful for testing DOM rendering or interactions.
-* Shallow rendering is not useful for integration testing.
-* Shallow rendering is not useful for browser testing.
-* Shallow rendering is not useful for end to end testing.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is mount() method in Enzyme?
-
-**Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
-
-This is more suitable when there are components which directly interfere with DOM API or lifecycle methods of React. Simple mount calls the `constructor()`, `render()`, `componentDidMount()` methods.
-
-**Example:**
-
-```js
-...
-import ListItem from './ListItem'
-...
-
-return (
-    <ul className="list-items">
-      {items.map(item => <ListItem key={item} item={item} />)}
-    </ul>
-)
-```
-
-```js
-import React from 'react'
-import { mount } from '../enzyme'
-import List from './List'
-
-describe('List tests', () => {
-
-  it('renders list-items', () => {
-    const items = ['one', 'two', 'three']
-
-    const wrapper = mount(<List items={items} />)
-
-    // Let's check what wrong in our instance
-    console.log(wrapper.debug())
-
-    // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined()
-    expect(wrapper.find('.item')).toHaveLength(items.length)
-  })
-
-  ...
-})
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is render() method in Enzyme?
-
-**Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
-
-For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
-
-**Example:**
-
-```js
-import React from 'react'
-import { render } from '../enzyme'
-
-import List from './List'
-import { wrap } from 'module'
-
-describe('List tests', () => {
-
-  it('renders list-items', () => {
-    const items = ['one', 'two', 'three']
-    const wrapper = render(<List items={items} />)
-
-    wrapper.addClass('foo')
-    // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined()
-    expect(wrapper.find('.item')).toHaveLength(items.length)
-  })
-
-  ...
-})
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of the ReactTestUtils package?
-
-**ReactTestUtils** is used to test React-based components. It can simulate all the JavaScript-based events, which ReactJS supports. Some of its frequently methods are
-
-* `act()`
-* `mockComponent()`
-* `isElement()`
-* `isElementOfType()`
-* `isDOMComponent()`
-* `renderIntoDocument()`
-* `Simulate()`
-
-**act()**
-
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an act() call. This makes your test run closer to how React works in the browser.
-
-```js
-class Counter extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {count: 0}
-    this.handleClick = this.handleClick.bind(this)
-  }
-  componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`
-  }
-  componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`
-  }
-  handleClick() {
-    this.setState(state => ({
-      count: state.count + 1,
-    }))
-  }
-  render() {
-    return (
-      <div>
-        <p>You clicked {this.state.count} times</p>
-        <button onClick={this.handleClick}>
-          Click me
-        </button>
-      </div>
-    )
-  }
-}
-```
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import Counter from './Counter'
-
-let container
-
-beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
-
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
-
-it('can render and update a counter', () => {
-  // Test first render and componentDidMount
-  act(() => {
-    ReactDOM.render(<Counter />, container)
-  })
-  const button = container.querySelector('button')
-  const label = container.querySelector('p')
-  expect(label.textContent).toBe('You clicked 0 times')
-  expect(document.title).toBe('You clicked 0 times')
-
-  // Test second render and componentDidUpdate
-  act(() => {
-    button.dispatchEvent(new MouseEvent('click', {bubbles: true}))
-  })
-  expect(label.textContent).toBe('You clicked 1 times')
-  expect(document.title).toBe('You clicked 1 times')
-})
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is react-test-renderer package in React?
-
-This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
-
-Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or `jsdom`.
-
-**Example:**
-
-```js
-import React from 'react'
-import renderer from 'react-test-renderer'
-import App from './app.js' // The component being tested
-
-/**
- * Snapshot tests are a useful when UI does not change frequently.
- *
- * A typical snapshot test case for a mobile app renders a UI component, takes a snapshot,
- * then compares it to a reference snapshot file stored alongside the test.
- */
-describe('APP Component', () => {
-
-    test('Matches the snapshot', () => {
-      const tree = renderer.create(<App />).toJSON()
-      expect(tree).toMatchSnapshot()
-    })
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
-
-Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
-
-**Process:**
-
-1. Add a test
-1. Run all tests and see if the new test fails (red)
-1. Write the code to pass the test (green)
-1. Run all tests
-1. Refactor
-1. Repeat
-
-**Pros:**
-
-1. Design before implementation
-1. Helps prevent future regressions and bugs
-1. Increases confidence that the code works as expected
-
-**Cons:**
-
-1. Takes longer to develop (but it can save time in the long run)
-1. Testing edge cases is hard
-1. Mocking, faking, and stubbing are all even harder
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of using data-test selector over className or Id selector in Jest?
-
-HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
-
-```js
-// APP Component
-import React from 'react'
-import './App.scss'
-
-function App() {
-  return (
-    <div data-test='app-header'>
-      Hello React
-    </div>
-  )
-}
-export default App
-```
-
-```js
-import React from 'react'
-import { shallow } from 'enzyme'
-import App from './App'
-
-
-describe('APP Component', () => {
-
-  test('title', () => {
-    let wrapper = shallow(<APP />)
-    let title = wrapper.find(`[data-test='app-header']`).text()
-
-    expect(title).toMatch('Hello React')
-  })
-
-})
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
