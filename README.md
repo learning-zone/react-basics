@@ -7061,6 +7061,179 @@ render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How to use useSpring() for animation?
+
+React Spring is a spring-physics based animation library that powers most UI related animation in React. It is a bridge on the two existing React animation libraries; `React Motion` and `Animated`. It inherits animated powerful interpolations and performance while maintaining react-motion\'s ease of use.
+
+There are 5 hooks in react-spring currently:
+
+* `useSpring` a single spring, moves data from a -> b
+* `useSprings` multiple springs, for lists, where each spring moves data from a -> b
+* `useTrail` multiple springs with a single dataset, one spring follows or trails behind the other
+* `useTransition` for mount/unmount transitions (lists where items are added/removed/updated)
+* `useChain` to queue or chain multiple animations together
+
+**1. useSpring()**
+
+It turns defined values into animated values. It does this in two ways, either by overwriting the existing props with a different set of props on component re-render or by passing an updater function that returns a different set of props that is then used to update the props using set.
+
+**Example:**
+
+```js
+import {useSpring, animated} from 'react-spring'
+
+function App() {
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
+  return <animated.div style={props}>I will fade in</animated.div>
+}
+```
+
+**2. useSpring()**
+
+It works kind of like a mix between useSpring and useTransition in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
+
+**Example:**
+
+```js
+import React, { useState } from 'react'
+import { animated, useSprings } from 'react-spring'
+
+
+const App = () => {
+  const [on, toggle] = useState(false)
+
+  const items = [
+    { color: 'red', opacity: .5 },
+    { color: 'blue', opacity: 1 },
+    { color: 'green', opacity: .2 },
+    { color: 'orange', opacity: .8 },
+  ]
+
+  const springs = useSprings(items.length, items.map(item => ({
+    from: { color: '#fff', opacity: 0 },
+    to: {
+      color: on ? item.color : '#fff',
+      opacity: on ? item.opacity : 0
+    }
+  })))
+
+  return (
+    <div>
+      {springs.map(animation => (
+        <animated.div style={animation}>Hello World</animated.div>
+      ))}
+
+      <button onClick={() => toggle(!on)}>Change</button>
+    </div>
+  )
+}
+```
+
+**3. useTrail()**
+
+`useTrail` allows to create an effect similar to both useSpring and useSprings, it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
+
+**Example:**
+
+```js
+import { animated, useTrail, config } from 'react-spring'
+
+const App = () => {
+  const [on, toggle] = useState(false)
+
+  const springs = useTrail(5, {
+    to: { opacity: on ? 1 : 0 },
+    config: { tension: 250 }
+  })
+
+  return (
+    <div>
+      {springs.map((animation, index) => (
+        <animated.div style={animation} key={index}>Hello World</animated.div>
+      ))}
+
+      <button onClick={() => toggle(!on)}>Change</button>
+    </div>
+  )
+}
+```
+
+**4. useTransition()**
+
+`useTransition` allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
+
+**Example:**
+
+```js
+import React, { useState } from 'react'
+import { animated, useTransition } from 'react-spring'
+
+const [on, toggle] = useState(false)
+
+const transition = useTransition(on, null, {
+  from: { opacity: 0 },
+  enter: { opacity: 1 },
+  leave: { opacity: 0 }
+})
+
+return (
+<div>
+  {transition.map(({ item, key, props }) => (
+  item && <animated.div style={props} >Hello world</animated.div>
+  ))}
+
+  <button onClick={() => toggle(!on)}>Change</button>
+</div>
+)
+```
+
+**5. useChain()**
+
+`useChain` allows to set the execution sequence of previously defined animation hooks. To do this, you need to use `refs`, which will subsequently prevent the independent execution of the animation.
+
+**Example:**
+
+```js
+import React, { useState, useRef } from 'react'
+import { animated, useSpring, useTrail, useChain} from 'react-spring'
+
+
+const App = () => {
+  const [on, toggle] = useState(false)
+
+  const springRef = useRef()
+  const spring = useSpring({
+    ref: springRef,
+    from: { opacity: .5 },
+    to: { opacity: on ? 1 : .5 },
+    config: { tension: 250 }
+  })
+
+  const trailRef = useRef()
+  const trail = useTrail(5, {
+    ref: trailRef,
+    from: { fontSize: '10px' },
+    to: { fontSize: on ? '45px' : '10px' }
+  })
+
+  useChain(on ? [springRef, trailRef] : [trailRef, springRef])
+
+  return (
+    <div>
+      {trail.map((animation, index) => (
+        <animated.h1 style={{ ...animation, ...spring }} key={index}>Hello World</animated.h1>
+      ))}
+
+      <button onClick={() => toggle(!on)}>Change</button>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 17. REACT INTERNATIONALIZATION
 
 <br/>
@@ -11606,179 +11779,6 @@ export default function App() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to use useSpring() for animation?
-
-React Spring is a spring-physics based animation library that powers most UI related animation in React. It is a bridge on the two existing React animation libraries; `React Motion` and `Animated`. It inherits animated powerful interpolations and performance while maintaining react-motion\'s ease of use.
-
-There are 5 hooks in react-spring currently:
-
-* `useSpring` a single spring, moves data from a -> b
-* `useSprings` multiple springs, for lists, where each spring moves data from a -> b
-* `useTrail` multiple springs with a single dataset, one spring follows or trails behind the other
-* `useTransition` for mount/unmount transitions (lists where items are added/removed/updated)
-* `useChain` to queue or chain multiple animations together
-
-**1. useSpring()**
-
-It turns defined values into animated values. It does this in two ways, either by overwriting the existing props with a different set of props on component re-render or by passing an updater function that returns a different set of props that is then used to update the props using set.
-
-**Example:**
-
-```js
-import {useSpring, animated} from 'react-spring'
-
-function App() {
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
-  return <animated.div style={props}>I will fade in</animated.div>
-}
-```
-
-**2. useSpring()**
-
-It works kind of like a mix between useSpring and useTransition in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
-
-**Example:**
-
-```js
-import React, { useState } from 'react'
-import { animated, useSprings } from 'react-spring'
-
-
-const App = () => {
-  const [on, toggle] = useState(false)
-
-  const items = [
-    { color: 'red', opacity: .5 },
-    { color: 'blue', opacity: 1 },
-    { color: 'green', opacity: .2 },
-    { color: 'orange', opacity: .8 },
-  ]
-
-  const springs = useSprings(items.length, items.map(item => ({
-    from: { color: '#fff', opacity: 0 },
-    to: {
-      color: on ? item.color : '#fff',
-      opacity: on ? item.opacity : 0
-    }
-  })))
-
-  return (
-    <div>
-      {springs.map(animation => (
-        <animated.div style={animation}>Hello World</animated.div>
-      ))}
-
-      <button onClick={() => toggle(!on)}>Change</button>
-    </div>
-  )
-}
-```
-
-**3. useTrail()**
-
-`useTrail` allows to create an effect similar to both useSpring and useSprings, it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
-
-**Example:**
-
-```js
-import { animated, useTrail, config } from 'react-spring'
-
-const App = () => {
-  const [on, toggle] = useState(false)
-
-  const springs = useTrail(5, {
-    to: { opacity: on ? 1 : 0 },
-    config: { tension: 250 }
-  })
-
-  return (
-    <div>
-      {springs.map((animation, index) => (
-        <animated.div style={animation} key={index}>Hello World</animated.div>
-      ))}
-
-      <button onClick={() => toggle(!on)}>Change</button>
-    </div>
-  )
-}
-```
-
-**4. useTransition()**
-
-`useTransition` allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
-
-**Example:**
-
-```js
-import React, { useState } from 'react'
-import { animated, useTransition } from 'react-spring'
-
-const [on, toggle] = useState(false)
-
-const transition = useTransition(on, null, {
-  from: { opacity: 0 },
-  enter: { opacity: 1 },
-  leave: { opacity: 0 }
-})
-
-return (
-<div>
-  {transition.map(({ item, key, props }) => (
-  item && <animated.div style={props} >Hello world</animated.div>
-  ))}
-
-  <button onClick={() => toggle(!on)}>Change</button>
-</div>
-)
-```
-
-**5. useChain()**
-
-`useChain` allows to set the execution sequence of previously defined animation hooks. To do this, you need to use `refs`, which will subsequently prevent the independent execution of the animation.
-
-**Example:**
-
-```js
-import React, { useState, useRef } from 'react'
-import { animated, useSpring, useTrail, useChain} from 'react-spring'
-
-
-const App = () => {
-  const [on, toggle] = useState(false)
-
-  const springRef = useRef()
-  const spring = useSpring({
-    ref: springRef,
-    from: { opacity: .5 },
-    to: { opacity: on ? 1 : .5 },
-    config: { tension: 250 }
-  })
-
-  const trailRef = useRef()
-  const trail = useTrail(5, {
-    ref: trailRef,
-    from: { fontSize: '10px' },
-    to: { fontSize: on ? '45px' : '10px' }
-  })
-
-  useChain(on ? [springRef, trailRef] : [trailRef, springRef])
-
-  return (
-    <div>
-      {trail.map((animation, index) => (
-        <animated.h1 style={{ ...animation, ...spring }} key={index}>Hello World</animated.h1>
-      ))}
-
-      <button onClick={() => toggle(!on)}>Change</button>
-    </div>
-  )
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
