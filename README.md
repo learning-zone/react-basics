@@ -1971,6 +1971,107 @@ The React community is moving away from HOC (higher order components) in favor o
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. What is children props?
+
+The `{this.props.children}` is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
+
+**Example:**
+
+```js
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>React Children Props Example</h1>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class OtherComponent extends React.Component {
+  render() {
+    return <div>Other Component Props</div>;
+  }
+}
+
+ReactDOM.render(
+  <MyComponent>
+    <OtherComponent />
+  </MyComponent>,
+  document.getElementById("root")
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When we should use React.cloneElement vs this.props.children?
+
+The `React.cloneElement()` works if child is a single React element.
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+**React.Children:**  
+
+Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
+
+**Example:**
+
+```js
+class Example extends React.Component {
+
+  render() {
+    return <div>
+      <div>Children ({this.props.children.length}):</div>
+      {this.props.children}
+    </div>
+  }
+}
+
+class Widget extends React.Component {
+
+  render() {
+    return <div>
+      <div>First <code>Example</code>:</div>
+      <Example>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </Example>
+      <div>Second <code>Example</code> with different children:</div>
+      <Example>
+        <div>A</div>
+        <div>B</div>
+      </Example>
+    </div>
+  }
+}
+```
+
+Output
+
+```js
+First Example:
+Children (3):
+1
+2
+3
+Second Example with different children:
+Children (2):
+A
+B
+```
+
+`children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 6. REACT STATE
 
 <br/>
@@ -3074,107 +3175,6 @@ class MyButton extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is children props?
-
-The `{this.props.children}` is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
-
-**Example:**
-
-```js
-class MyComponent extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>React Children Props Example</h1>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-class OtherComponent extends React.Component {
-  render() {
-    return <div>Other Component Props</div>;
-  }
-}
-
-ReactDOM.render(
-  <MyComponent>
-    <OtherComponent />
-  </MyComponent>,
-  document.getElementById("root")
-);
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. When we should use React.cloneElement vs this.props.children?
-
-The `React.cloneElement()` works if child is a single React element.
-
-For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
-
-**React.Children:**  
-
-Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
-
-**Example:**
-
-```js
-class Example extends React.Component {
-
-  render() {
-    return <div>
-      <div>Children ({this.props.children.length}):</div>
-      {this.props.children}
-    </div>
-  }
-}
-
-class Widget extends React.Component {
-
-  render() {
-    return <div>
-      <div>First <code>Example</code>:</div>
-      <Example>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </Example>
-      <div>Second <code>Example</code> with different children:</div>
-      <Example>
-        <div>A</div>
-        <div>B</div>
-      </Example>
-    </div>
-  }
-}
-```
-
-Output
-
-```js
-First Example:
-Children (3):
-1
-2
-3
-Second Example with different children:
-Children (2):
-A
-B
-```
-
-`children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
