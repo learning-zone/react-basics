@@ -2526,6 +2526,59 @@ export function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. How to access child\'s state in React?
+
+**Using Refs:**
+
+In React we can access the child\'s state using `React.createRef()`. We will assign a Refs for the child component in the parent component, then using Refs we can access the child\'s state.
+
+```js
+// App.js
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ChildElement = React.createRef();
+  }
+  handleClick = () => {
+    const childelement = this.ChildElement.current;
+    childelement.getMsg("Message from Parent Component!");
+  };
+  render() {
+    return (
+      <div>
+        <Child ref={this.ChildElement} />
+        <button onClick={this.handleClick}>CLICK ME</button>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// Child.js
+
+class Child extends React.Component {
+  state = {
+    name: "Message from Child Component!"
+  };
+  getMsg = (msg) => {
+    this.setState({
+      name: msg
+    });
+  };
+  render() {
+    return <h2>{this.state.name}</h2>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 7. REACT EVENTS
 
 <br/>
@@ -3216,59 +3269,6 @@ const App = () => {
 ```
 
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to access child\'s state in React?
-
-**Using Refs:**
-
-In React we can access the child\'s state using `React.createRef()`. We will assign a Refs for the child component in the parent component, then using Refs we can access the child\'s state.
-
-```js
-// App.js
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.ChildElement = React.createRef();
-  }
-  handleClick = () => {
-    const childelement = this.ChildElement.current;
-    childelement.getMsg("Message from Parent Component!");
-  };
-  render() {
-    return (
-      <div>
-        <Child ref={this.ChildElement} />
-        <button onClick={this.handleClick}>CLICK ME</button>
-      </div>
-    );
-  }
-}
-```
-
-```js
-// Child.js
-
-class Child extends React.Component {
-  state = {
-    name: "Message from Child Component!"
-  };
-  getMsg = (msg) => {
-    this.setState({
-      name: msg
-    });
-  };
-  render() {
-    return <h2>{this.state.name}</h2>;
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
