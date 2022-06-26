@@ -40,7 +40,7 @@
   * [React Context](#-12-react-context)
   * [React Router](#-13-react-router)
   * [React Error Boundaries](#-14-react-error-boundaries)
-  * [React Inheritance](#-15-react-inheritance)
+  * [React Composition](#-15-react-composition)
   * [React CSS Styling](#-16-react-css-styling)
   * [React Animation](#-17-react-animation)
   * [React Internationalization](#-18-react-internationalization)
@@ -237,6 +237,18 @@ set the HTTPS environment variable to `true`, then start the dev server as usual
 ```bash
 # Windows
 set HTTPS=true&&npm start
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can find the version of React at runtime in the browser?
+
+**Chrome Dev Tools**
+
+```bash
+window.React.version
 ```
 
 <div align="right">
@@ -2252,6 +2264,72 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. Explain Inheritance Inversion (iiHOC) in react?
+
+Inverted Inheritance HOCs are elementarily expressed like this
+
+```js
+const inheritanceInversionHOC = (WrappedComponent) => {
+  return class extens WrappedComponent {
+    render() {
+      return super.render()
+    }
+  }
+}
+```
+
+Here, the returned class **extends** the WrappedComponent. It is called Inheritance Inversion, because instead of the WrappedComponent extending some Enhancer class, it is passively extended. In this way the relationship between them seems **inverse**.
+
+Inheritance Inversion gives the HOC access to the WrappedComponent instance via this, which means we can use the `state`, `props`, component lifecycle and even the `render` method.
+
+**Inversion Inheritance HOCs are useful for the following situations**
+
+* Render Highjacking
+* Manipulating state
+
+**Example:**
+
+```js
+class Welcome extends React.Component {
+  render() {
+    return (
+      <div> Welcome {his.props.user}</div>
+    )
+  }
+}
+
+const withUser = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      if(this.props.user) {
+        return  (
+          <WrappedComponent {...this.props} />
+        )
+      }
+      return <div>Welcome Guest!</div>
+    }
+  }
+}
+
+const withLoader = (WrappedComponent) => {
+  return class extends WrappedComponent {
+    render() {
+      const { isLoader } = this.props
+      if(!isLoaded) {
+        return <div>Loading...</div>
+      }
+      return super.render()
+    }
+  }
+}
+
+export default withLoader(withUser(Welcome))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 5. REACT PROPS
 
 <br/>
@@ -2813,47 +2891,6 @@ export default Person
 ```
 
 `PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is prop drilling and how can you avoid it?
-
-React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
-
-**Context API**  
-
-The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
-
-**Example:**
-
-```js
-import React from "react"
-import ReactDOM from "react-dom"
-
-// Create a Context
-const NumberContext = React.createContext()
-// It returns an object with 2 values:
-// { Provider, Consumer }
-
-function App() {
-  // Use the Provider to make a value available to all
-  // children and grandchildren
-  return (
-    <NumberContext.Provider value={10}>
-      <div>
-        <Display />
-      </div>
-    </NumberContext.Provider>
-  )
-}
-
-function Display() {
-  const value = useContext(NumberContext)
-  return <div>The answer is {value}.</div>
-}
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5489,17 +5526,1309 @@ class ShowWindowDimensions extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How can find the version of React at runtime in the browser?
+## Q. How can I force a component to re-render with hooks in React?
 
-**Chrome Dev Tools**
+You can force re-renders of your components in React with a custom hook that uses the built-in `useState()` hook:
 
-```bash
-window.React.version
+```js
+// Create a custom useForceUpdate hook with useState
+const useForceUpdate = () => useState()[1];
+
+// Call it inside your component
+const Hooks = () => {
+  const forceUpdate = useForceUpdate();
+
+  return (
+    <button onClick={forceUpdate}>
+      Update me
+    </button>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
+
+The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
+
+* The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
+* In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 12. React CONTEXT
+
+<br/>
+
+## Q. What is Context API in React?
+
+The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
+
+<p align="center">
+  <img src="assets/context-api.jpg" alt="Context API" width="800px" />
+</p>
+
+**Example:**
+
+```js
+// Counter.js
+
+const { useState, useContext } = React;
+
+const CountContext = React.createContext();
+
+const Counter = () => {
+  const { count, increase, decrease } = useContext(CountContext);
+  return (
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count">{count}</span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+};
+```
+
+```js
+// App.js
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <CountContext.Provider value={{ count, increase, decrease }}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you solve performance corner cases while using context?
+
+Context provides a way to pass data or state through the component tree without having to pass props down manually through each nested component. It is designed to share data that can be considered as global data for a tree of React components, such as the current authenticated user or theme (e.g. color, paddings, margins, font-sizes).
+
+Context API uses Context. Provider and Context. Consumer Components pass down the data but it is very cumbersome to write the long functional code to use this Context API. So useContext hook helps to make the code more readable, less verbose and removes the need to introduce Consumer Component. The useContext hook is the new addition in React 16.8.
+
+**Syntax:**
+
+```js
+const authContext = useContext(initialValue);
+```
+
+The useContext accepts the value provided by React.createContext and then re-render the component whenever its value changes but you can still optimize its performance by using memorization.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of default value in context?
+
+The **defaultValue** argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Passing **undefined** as a Provider value does not cause consuming components to use **defaultValue**.
+
+```js
+const Context = createContext( "Default Value" );
+
+function Child() {
+  const context = useContext(Context);
+  return <h2>Child1: {context}</h2>;
+}
+
+function Child2() {
+  const context = useContext(Context);
+  return <h2>Child2: {context}</h2>;
+}
+
+function App() {
+
+  return (
+    <>
+      <Context.Provider value={ "Initial Value" }>
+        <Child /> {/* Child inside Provider will get "Initial Value" */}
+      </Context.Provider>
+        <Child2 /> {/* Child outside Provider will get "Default Value" */}
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use contextType react?
+
+The **ContextType** property on a class component can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions also.
+
+**Example:**
+
+```js
+class ContextConsumingInLifeCycle extends React.Component {
+
+  static contextType = UserContext;
+ 
+  componentDidMount() {
+    const user = this.context;
+    console.log(user); // { name: "Vipin Tak", address: "INDIA", mobile: ""0123456789"" }
+  }
+ 
+  componentDidUpdate() {
+    const user = this.context;
+    /* ... */
+  }
+ 
+  componentWillUnmount() {
+    const user = this.context;
+    /* ... */
+  }
+ 
+  render() {
+    const user = this.context;
+    /* render something based on the value of user */
+    return null;
+  }
+}
 ```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. How to update React Context from inside a child component?
+
+The Context API allows data storage and makes it accessible to any child component who want to use it. This is valid whatever level of component graph the children is in.
+
+**Example:**
+
+```js
+const MyContext = React.createContext()
+
+const MyComponent = () => {
+  const { count, increment } = useContext(MyContext)
+
+  return (
+    <div onClick={increment}>price: {count}</div>
+  )
+}
+
+const App = () => {
+  const [count, updateCount] = useState(0)
+  function increment() {
+    updateCount(count + 1)
+  }
+
+  return (
+    <MyContext.Provider value={{ count, increment }}>
+      <div>
+        <MyComponent />
+        <MyComponent />
+      </div>
+    </MyContext.Provider>
+  )
+}
+```
+
+Here, we are storing data in the state of the component in which we want to use context and we create a function that can modify this state. We pass the state and the function as context values. It then become possible from the child to get the modification function and to use it to update your context.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is prop drilling and how can you avoid it?
+
+React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
+
+**Context API:**  
+
+The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
+
+**Example:**
+
+```js
+import React from "react"
+import ReactDOM from "react-dom"
+
+// Create a Context
+const NumberContext = React.createContext()
+// It returns an object with 2 values:
+// { Provider, Consumer }
+
+function App() {
+  // Use the Provider to make a value available to all
+  // children and grandchildren
+  return (
+    <NumberContext.Provider value={10}>
+      <div>
+        <Display />
+      </div>
+    </NumberContext.Provider>
+  )
+}
+
+function Display() {
+  const value = useContext(NumberContext)
+  return <div>The answer is {value}.</div>
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 13. REACT ROUTER
+
+<br/>
+
+## Q. Explain React Router 5 features?
+
+React Router 5 embraces the power of hooks and has introduced four different hooks to help with routing.
+
+```js
+<Route path="/">
+  <Home />
+</Route>
+```
+
+**1. useHistory:**
+
+* Provides access to the `history` prop in React Router
+* Refers to the history package dependency that the router uses
+* A primary use case would be for programmatic routing with functions, like `push`, `replace`, etc.
+
+```js
+import { useHistory } from 'react-router-dom'
+
+function Home() {
+  const history = useHistory()
+  return <button onClick={() => history.push('/profile')}>Profile</button>
+}
+```
+
+**2. useLocation:**
+
+* Provides access to the location prop in React Router
+* It is similar to window.location in the browser itself, but this is accessible everywhere as it represents the * Router state and location.
+* A primary use case for this would be to access the query params or the complete route string.
+
+```js
+import { useLocation } from 'react-router-dom'
+
+function Profile() {
+  const location = useLocation()
+  useEffect(() => {
+    const currentPath = location.pathname
+    const searchParams = new URLSearchParams(location.search)
+  }, [location])
+  return <p>Profile</p>
+}
+```
+
+**3. useParams:**
+
+* Provides access to search parameters in the URL
+* This was possible earlier only using match.params.
+
+```js
+import { useParams, Route } from 'react-router-dom'
+
+function Profile() {
+  const { name } = useParams()
+  return <p>{name}'s Profile</p>
+}
+
+function Dashboard() {
+  return (
+    <>
+      <nav>
+        <Link to={`/profile/alex`}>Alex Profile</Link>
+      </nav>
+      <main>
+        <Route path="/profile/:name">
+          <Profile />
+        </Route>
+      </main>
+    </>
+  )
+}
+```
+
+**4. useRouteMatch:**
+
+* Provides access to the match object
+* If it is provided with no arguments, it returns the closest match in the component or its parents.
+* A primary use case would be to construct nested paths.
+
+```js
+import { useRouteMatch, Route } from 'react-router-dom'
+
+function Auth() {
+  const match = useRouteMatch()
+  return (
+    <>
+      <Route path={`${match.url}/login`}>
+        <Login />
+      </Route>
+      <Route path={`${match.url}/register`}>
+        <Register />
+      </Route>
+    </>
+  )
+}
+```
+
+We can also use `useRouteMatch` to access a match without rendering a Route. This is done by passing it the location argument.
+
+**5. Redirect Component:**
+
+The easiest way to use this method is by maintaining a redirect property inside the state of the component.
+
+```js
+import { Redirect } from "react-router-dom"
+...
+
+state = { redirect: null }
+render() {
+  if (this.state.redirect) {
+    return <Redirect to={this.state.redirect} />
+  }
+  return(
+  // Your Code goes here
+  )
+}
+```
+
+**History prop**
+
+Every component that is an immediate child of the `<Route>` component receives history object as a prop. This is the same history (library) which keeps history of the session of React Router. We can thus use its properties to navigate to the required paths.
+
+```js
+this.props.history.push("/first")
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How React Router is different from history library?
+
+React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
+
+* BrowserRouter
+* HashRouter
+
+```js
+// <BrowserRouter>
+http://example.com/about
+
+// <HashRouter>
+http://example.com/#/about
+```
+
+The `<BrowserRouter>` is the more popular of the two because it uses the HTML5 History API to keep your UI in sync with the URL, whereas the `<HashRouter>` uses the hash portion of the URL (`window.location.hash`). If you need to support legacy browsers that don\'t support the History API, you should use `<HashRouter>`. Otherwise `<BrowserRouter>` is the better choice for most use cases.
+
+**Example:**
+
+```js
+// src/index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+The above code creates a history instance for our entire `<App>` component. Each `<Router>` component creates a history object that keeps track of the current location (`history.location`) and also the previous locations in a stack. The history object has methods such as `history.push`, `history.replace`, `history.goBack`, `history.goForward` etc.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of push and replace methods of history?
+
+The **history.push()** method is invoked when you click on a `<Link>` component, and **history.replace()** is called when you use a `<Redirect>`.
+
+```js
+import { useHistory } from "react-router-dom"
+
+function HomeButton() {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/home");
+  }
+  return (
+    <button type="button" onClick={handleClick}>
+      Go home
+    </button>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to get parameter value from query string?
+
+In order to get query parameters from the URL, we can use **URLSearchParams**. In simple words, URLSearchParams is a defined interface, implemented by modern browsers, that allows us to work with the query string. It does not require React Router or even React itself.
+
+**Example:**
+
+```js
+// http://localhost:3000/?id=10&name=test
+
+const queryParams = new URLSearchParams(window.location.search);
+
+const id = queryParams.get('id');
+const name = queryParams.get('name');
+const type = queryParams.get('type');
+
+console.log(id, name, type); // 10 test null
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is React Router?
+
+React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
+
+```js
+import { Router, Route, Redirect, Switch } from 'react-router-dom'
+
+class Router extends Component {
+    constructor(props) {
+      super(props)
+    }
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/news/new' component={ NewsComponent } />
+                    <Route path='/user/:id' component={ UserComponent } />
+                    <Route exact path='/' component={ HomeComponent } />
+                    <Redirect from='*' to='/' />
+                </Switch>
+            </Router>
+        )
+    }
+}
+```
+
+**`< Router />`**  
+
+The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
+
+**`<Switch />`**
+
+The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
+
+**exact:**
+
+The `exact` returns any number of routes that match exactly.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to access history object in React Router v5?
+
+React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
+
+**Example:**
+
+```js
+function App() {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/user/ABC/male">User Profile</Link></li>
+      </ul>
+    </nav>
+    ...
+  );
+}
+
+function HomeButton() {
+  let history = useHistory();
+
+  function handleClick() {
+    console.log(history);
+    history.push("/home");
+  }
+
+  function handleBack() {
+    history.goBack();
+    // history.go(-1);
+  }
+
+  function handleForward() {
+    history.goForward();
+    // history.go(1)
+  }
+  return (
+    <>
+      <button type="button" onClick={handleClick}>Go Home</button>
+      <button type="button" onClick={handleBack}> Go Back </button>
+      <button type="button" onClick={handleForward}> Go Forward </button>
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to perform automatic redirect in React.js?
+
+The `react-router-dom` package provides `<Redirect>` component in React Router. Rendering a `<Redirect>` will navigate to a new location and the new location will override the current location in the history stack.
+
+**Example:**
+
+```js
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "React",
+      isUserAuthenticated: true
+    };
+  }
+
+  render() {
+    return (
+        <Router>
+            <ul>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/user">User Profile</Link></li>
+            </ul>
+            <Switch>
+            {/** Automatic Redirect to User Page **/}
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  return this.state.isUserAuthenticated ? (
+                    <Redirect to="/home" />
+                  ) : (
+                    <Redirect to="/user" />
+                  );
+                }}
+              />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/user" component={User} />
+            </Switch>
+        </Router>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How is React Router different from Conventional Routing?
+
+<p align="center">
+  <img src="assets/react-routing.png" alt="React Router" width="600px" />
+</p>
+
+In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
+
+**How does React achieve this?**
+
+In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to programmatically redirect to another page using React router?
+
+**1. Using useHistory()**
+
+```js
+import { useHistory } from "react-router-dom"
+
+function HomeButton() {
+  const history = useHistory()
+
+  function handleClick() {
+    history.push('/home')
+  }
+
+  return (
+    <button type="button" onClick={handleClick}>
+      Navigate to Home Page
+    </button>
+  )
+}
+```
+
+**2. Using withRouter()**
+
+```js
+import { withRouter } from 'react-router-dom'
+
+const Button = withRouter(({ history }) => (
+  <button type='button' onClick={() => { history.push('/home') }}>
+    Navigate to Home Page
+  </button>
+))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to pass additional data while redirecting to a route in React?
+
+**Using Link:**
+
+Normally we use the Link component from react-router-dom as shown below:
+
+```js
+<Link to="/register">Register</Link>
+```
+
+So when we click on the Register link, it will redirect to the /register route, but Link also allows us to pass additional data while redirecting.
+
+```js
+<Link to={{ 
+ pathname: "/register", 
+ state: some_data 
+}}>
+ Register
+</Link>
+```
+
+Here, at the place of `some_data`, we can pass a string or object, array etc. and in the `/register` route we will get that data in `props.location.state`.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
+
+**Using history.push:**
+
+Normally, to redirect using the push method, we use it like this:
+
+```js
+props.history.push('/register');
+```
+
+If you need to do some processing before sending the data like removing some values or to trim the values, we can call a handler on submit button click and pass data as shown below
+
+```js
+props.history.push({ 
+  pathname: '/register',
+  state: some_data
+});
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to pass props in React router?
+
+A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
+
+**Example:**
+
+```js
+import React from "react"
+import { render } from "react-dom"
+import { Greeting } from "./components"
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+
+const styles = {
+  fontFamily: "sans-serif",
+  textAlign: "center"
+}
+
+const App = () => (
+  <div style={styles}>
+    <h2>Click below to go to other page. Also, open source code</h2>
+    <Link to="/greeting/World">Go to /greeting/World</Link>
+  </div>
+)
+
+const RouterExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route exact path="/" component={App} />
+      <Route
+        path="/greeting/:name"
+        render={props => <Greeting text="Hello, " {...props} />}
+      />
+    </div>
+  </Router>
+)
+
+render(<RouterExample />, document.getElementById("root"))
+```
+
+```js
+import React from "react"
+
+export class Greeting extends React.Component {
+  render() {
+    const { text, match: { params } } = this.props
+
+    const { name } = params
+
+    return (
+      <React.Fragment>
+        <h1>Greeting page</h1>
+        <p>
+          {text} {name}
+        </p>
+      </React.Fragment>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to get query parameters in react routing?
+
+**Using `useParams()`**
+
+**Example:**
+
+```js
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"
+
+export default function ParamsExample() {
+
+  return (
+    <Router>
+      <div>
+        <h2>Accounts</h2>
+        <ul>
+          <li>
+            <Link to="/netflix">Netflix</Link>
+          </li>
+          <li>
+            <Link to="/zillow-group">Zillow Group</Link>
+          </li>
+          <li>
+            <Link to="/yahoo">Yahoo</Link>
+          </li>
+          <li>
+            <Link to="/modus-create">Modus Create</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+        </Switch>
+      </div>
+    </Router>
+  )
+}
+
+function Child() {
+  // We can use the `useParams` hook here to access
+  // the dynamic pieces of the URL.
+  let { id } = useParams()
+
+  return (
+    <div>
+      <h3>ID: {id}</h3>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why you get "Router may have only one child element" warning?
+
+React router dom throws the error that a router may have only one child element if more than one routes are defined without enclosing them in `<div>` or `<switch>`.
+
+Generally, navigation is used over the whole application. That\'s why component like **BrowserRouter** or **Router** expects that the top level component like App, should be enclosed in them. They do not expect multiple routes to be listed in them as children. 
+
+**Problem:** This code will throw the router error
+
+```js
+import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+
+export default function App() {
+    return (
+       <BrowserRouter>
+           <Route exact={true} path='/route1' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 2</p>
+               </div>
+            )}/>
+       </BrowserRouter>
+    );
+}
+```
+
+**Solution:** Enclosing route with `<switch>`.
+
+```js
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+export default function App() {
+    return (
+       <BrowserRouter>
+         <Switch>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+           <Route exact={true} path='/route2' render={() => (
+               <div>
+                  <p>Route 1</p>
+               </div>
+            )}/>
+         </Switch>
+       </BrowserRouter>
+    );
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between HashRouter and BrowserRouter in React?
+
+**BrowserRouter**
+
+* The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
+* It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
+* It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
+* It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
+
+**Syntax:**
+
+```js
+/*
+  https://example.com/
+  https://example.com/about
+*/
+
+<BrowserRouter
+  basename={optionalString}
+  forceRefresh={optionalBool}
+  getUserConfirmation={optionalFunc}
+  keyLength={optionalNumber}
+>
+  <App />
+</BrowserRouter>
+```
+
+**Example:**
+
+```js
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h3>Home Page</h3>;
+};
+
+const AboutPage = () => {
+  return <h3>About Page</h3>;
+};
+
+function App() {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Route exact path="/" component={IndexPage} />
+        <Route exact path="/about" component={AboutPage} />
+      </Router>
+    </section>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
+
+**HashRouter**
+
+* A router which uses client side hash routing.
+* Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
+* Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
+* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
+
+
+**Syntax:**
+
+```js
+/*
+  https://example.com/#/
+  https://example.com/#/about
+*/
+
+<HashRouter
+  basename={optionalString}
+  getUserConfirmation={optionalFunc}
+  hashType={optionalString}
+>
+  <App />
+</HashRouter>
+```
+
+**Example:**
+
+```js
+import { Link, HashRouter as Router, Route } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h3>Home Page</h3>;
+};
+
+const AboutPage = () => {
+  return <h3>About Page</h3>;
+};
+
+function App() {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Route exact path="/" component={IndexPage} />
+        <Route exact path="/about" component={AboutPage} />
+      </Router>
+    </section>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is route based code splitting?
+
+Route based code splitting is essential during the page transitions on the web, which takes some amount of time to load. Here is an example of how to setup route-based code splitting into the app using React Router with `React.lazy`.
+
+**Example:**
+
+```js
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const Home = lazy(() => import('./routes/Home'));
+const About = lazy(() => import('./routes/About'));
+
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+      </Switch>
+    </Suspense>
+  </Router>
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 14. REACT ERROR BOUNDARIES
+
+<br/>
+
+## Q. What are error boundaries in React?
+
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+
+A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`. Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+
+*Example:*
+
+```js
+import React, {Component} from 'react'
+
+class ErrorBoundary extends Component {
+   state = {
+      isErrorOccured: false,
+      errorMessage: ''
+   }
+   componentDidCatch = (error,info) => {
+      this.setState({
+        isErrorOccured: true,
+        errorMessage: error
+      })
+   }
+   render() {
+      if(this.state.isErrorOccured) {
+         return <p>Something went wrong</p>
+      } else {
+         return <div>{this.props.children}</div>
+      }
+   }
+}
+
+export default ErrorBoundary
+```
+
+Here, We have a state object having two variables isErrorOccured and errorMessage which will be updated to true if any error occurs. We have used a React life cycle method componentDidCatch which receives two arguments error and info related to it.
+
+**How to use error boundary**
+
+```js
+<ErrorBoundary>
+   <User/>
+</ErrorBoundary>
+```
+
+**Error boundaries do not catch errors for:**
+
+* Event handlers
+* Asynchronous code (e.g. setTimeout() )
+* Server side rendering
+* Errors thrown in the error boundary itself
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between try catch block and error boundaries?
+
+**Try…catch** is used in specific code blocks where you program the functionality of the application.
+
+```js
+try {
+  // Some Calculation
+} catch (error) {
+  console.log(`Error: ${error}`);
+}
+```
+
+**Try…catch** deals with imperative code while **error boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
+
+With error boundary, if there is an error, you can trigger a fallback UI; whereas, with try…catch, you can catch errors in your code.
+
+```js
+import ErrorBoundary from "error-boundary";
+
+function Users() {
+  return (
+    <div>
+      <ErrorBoundary>
+        <Users />
+      </ErrorBoundary>
+    </div>
+  )
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the benefit of component stack trace from error boundary?
+
+Component Stack Trace prints all errors that occurred during rendering to the console in development, even if the application accidentally swallows them. It also display the filenames and line numbers in the component stack trace.
+
+**Example:**
+
+<p align="center">
+  <img src="assets/stack-trace.png" alt="Component Stack Trace" />
+</p>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the methods invoked during error handling?
+
+A class component becomes an error boundary if it defines either (or both) of the lifecycle methods 
+
+* **static getDerivedStateFromError()**  
+* **componentDidCatch()** 
+
+Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 15. REACT COMPOSITION
+
+<br/>
+
+## Q. Explain Composition vs Inheritance in React?
+
+**Inheritance**
+
+Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
+
+**Example:**
+
+```js
+class UserNameForm extends React.Component {
+   render() {
+      return (
+         <div>
+            <input type="text" />
+         </div>
+      )
+   }
+}
+class CreateUserName extends UserNameForm {
+   render() {
+      const parent = super.render();
+      return (
+         <div>
+            {parent}
+            <button>Create</button>
+         </div>
+      )
+   }
+}
+class UpdateUserName extends UserNameForm {
+   render() {
+      const parent = super.render();
+      return (
+         <div>
+            {parent}
+            <button>Update</button>
+         </div>
+      )
+   }
+}
+ReactDOM.render(
+   (<div>
+      < CreateUserName />
+      < UpdateUserName />
+   </div>), document.getElementById('root')
+)
+```
+
+Here, We extended the `UserNameForm` component and extracted its method in child component using `super.render()`
+
+**Composition**
+
+Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
+
+**Example:**
+
+```js
+class UserNameForm extends React.Component {
+   render() {
+      return (
+         <div>
+            <input type="text" />
+         </div>
+      );
+   }
+}
+class CreateUserName extends React.Component {
+   render() {
+      return (
+         <div>
+            < UserNameForm />
+            <button>Create</button>
+         </div>
+      )
+   }
+}
+class UpdateUserName extends React.Component {
+   render() {
+      return (
+         <div>
+            < UserNameForm />
+            <button>Update</button>
+         </div>
+      )
+   }
+}
+ReactDOM.render(
+   (<div>
+      <CreateUserName />
+      <UpdateUserName />
+   </div>), document.getElementById('root')
+)
+```
+
+**Inheritance vs Composition**
+
+Inheritance used the `is-a` relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component.
+
+Composition does not inherit properties, only the behavior. In inheritance, it was difficult to add new behavior because the derived component was inheriting all the properties of parent class and it was quite difficult to add new behavior. But in composition, we only inherit behavior and adding new behavior is fairly simple and easy.
+
+React recommends use of Composition over Inheritance, here is why. Everything in React is a component, and it follows a strong component based model. This is one of the primary reasons that composition is a better approach than inheritance for code reuse.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 16. REACT CSS STYLING
+
+<br/>
 
 ## Q. How to use styles in React.js?
 
@@ -5728,37 +7057,6 @@ render(
   </div>
 )
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can I force a component to re-render with hooks in React?
-
-You can force re-renders of your components in React with a custom hook that uses the built-in `useState()` hook:
-
-```js
-// Create a custom useForceUpdate hook with useState
-const useForceUpdate = () => useState()[1];
-
-// Call it inside your component
-const Hooks = () => {
-  const forceUpdate = useForceUpdate();
-
-  return (
-    <button onClick={forceUpdate}>
-      Update me
-    </button>
-  );
-};
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
-
-The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
-
-* The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
-* In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -5998,196 +7296,6 @@ Here, we first define an initialState and a reducer. When a user clicks a button
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is Context API in React?
-
-The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
-
-<p align="center">
-  <img src="assets/context-api.jpg" alt="Context API" width="800px" />
-</p>
-
-**Example:**
-
-```js
-// Counter.js
-
-const { useState, useContext } = React;
-
-const CountContext = React.createContext();
-
-const Counter = () => {
-  const { count, increase, decrease } = useContext(CountContext);
-  return (
-    <h2>
-      <button onClick={decrease}>Decrement</button>
-      <span className="count">{count}</span>
-      <button onClick={increase}>Increment</button>
-    </h2>
-  );
-};
-```
-
-```js
-// App.js
-
-const App = () => {
-  const [count, setCount] = useState(0);
-
-  const increase = () => {
-    setCount(count + 1);
-  };
-  const decrease = () => {
-    setCount(count - 1);
-  };
-
-  return (
-    <div>
-      <CountContext.Provider value={{ count, increase, decrease }}>
-        <Counter />
-      </CountContext.Provider>
-    </div>
-  );
-};
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you solve performance corner cases while using context?
-
-Context provides a way to pass data or state through the component tree without having to pass props down manually through each nested component. It is designed to share data that can be considered as global data for a tree of React components, such as the current authenticated user or theme (e.g. color, paddings, margins, font-sizes).
-
-Context API uses Context. Provider and Context. Consumer Components pass down the data but it is very cumbersome to write the long functional code to use this Context API. So useContext hook helps to make the code more readable, less verbose and removes the need to introduce Consumer Component. The useContext hook is the new addition in React 16.8.
-
-**Syntax:**
-
-```js
-const authContext = useContext(initialValue);
-```
-
-The useContext accepts the value provided by React.createContext and then re-render the component whenever its value changes but you can still optimize its performance by using memorization.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of default value in context?
-
-The **defaultValue** argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Passing **undefined** as a Provider value does not cause consuming components to use **defaultValue**.
-
-```js
-const Context = createContext( "Default Value" );
-
-function Child() {
-  const context = useContext(Context);
-  return <h2>Child1: {context}</h2>;
-}
-
-function Child2() {
-  const context = useContext(Context);
-  return <h2>Child2: {context}</h2>;
-}
-
-function App() {
-
-  return (
-    <>
-      <Context.Provider value={ "Initial Value" }>
-        <Child /> {/* Child inside Provider will get "Initial Value" */}
-      </Context.Provider>
-        <Child2 /> {/* Child outside Provider will get "Default Value" */}
-    </>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to use contextType react?
-
-The **ContextType** property on a class component can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions also.
-
-**Example:**
-
-```js
-class ContextConsumingInLifeCycle extends React.Component {
-
-  static contextType = UserContext;
- 
-  componentDidMount() {
-    const user = this.context;
-    console.log(user); // { name: "Vipin Tak", address: "INDIA", mobile: ""0123456789"" }
-  }
- 
-  componentDidUpdate() {
-    const user = this.context;
-    /* ... */
-  }
- 
-  componentWillUnmount() {
-    const user = this.context;
-    /* ... */
-  }
- 
-  render() {
-    const user = this.context;
-    /* render something based on the value of user */
-    return null;
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to update React Context from inside a child component?
-
-The Context API allows data storage and makes it accessible to any child component who want to use it. This is valid whatever level of component graph the children is in.
-
-**Example:**
-
-```js
-const MyContext = React.createContext()
-
-const MyComponent = () => {
-  const { count, increment } = useContext(MyContext)
-
-  return (
-    <div onClick={increment}>price: {count}</div>
-  )
-}
-
-const App = () => {
-  const [count, updateCount] = useState(0)
-  function increment() {
-    updateCount(count + 1)
-  }
-
-  return (
-    <MyContext.Provider value={{ count, increment }}>
-      <div>
-        <MyComponent />
-        <MyComponent />
-      </div>
-    </MyContext.Provider>
-  )
-}
-```
-
-Here, we are storing data in the state of the component in which we want to use context and we create a function that can modify this state. We pass the state and the function as context values. It then become possible from the child to get the modification function and to use it to update your context.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is difference between useEffect() vs componentDidMount()?
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
@@ -6376,152 +7484,6 @@ class App extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is React Router?
-
-React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
-
-```js
-import { Router, Route, Redirect, Switch } from 'react-router-dom'
-
-class Router extends Component {
-    constructor(props) {
-      super(props)
-    }
-
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route path='/news/new' component={ NewsComponent } />
-                    <Route path='/user/:id' component={ UserComponent } />
-                    <Route exact path='/' component={ HomeComponent } />
-                    <Redirect from='*' to='/' />
-                </Switch>
-            </Router>
-        )
-    }
-}
-```
-
-**`< Router />`**  
-
-The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
-
-**`<Switch />`**
-
-The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
-
-**exact:**
-
-The `exact` returns any number of routes that match exactly.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to access history object in React Router v5?
-
-React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
-
-**Example:**
-
-```js
-function App() {
-  return (
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/user/ABC/male">User Profile</Link></li>
-      </ul>
-    </nav>
-    ...
-  );
-}
-
-function HomeButton() {
-  let history = useHistory();
-
-  function handleClick() {
-    console.log(history);
-    history.push("/home");
-  }
-
-  function handleBack() {
-    history.goBack();
-    // history.go(-1);
-  }
-
-  function handleForward() {
-    history.goForward();
-    // history.go(1)
-  }
-  return (
-    <>
-      <button type="button" onClick={handleClick}>Go Home</button>
-      <button type="button" onClick={handleBack}> Go Back </button>
-      <button type="button" onClick={handleForward}> Go Forward </button>
-    </>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to perform automatic redirect in React.js?
-
-The `react-router-dom` package provides `<Redirect>` component in React Router. Rendering a `<Redirect>` will navigate to a new location and the new location will override the current location in the history stack.
-
-**Example:**
-
-```js
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "React",
-      isUserAuthenticated: true
-    };
-  }
-
-  render() {
-    return (
-        <Router>
-            <ul>
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/user">User Profile</Link></li>
-            </ul>
-            <Switch>
-            {/** Automatic Redirect to User Page **/}
-              <Route
-                exact
-                path="/"
-                render={() => {
-                  return this.state.isUserAuthenticated ? (
-                    <Redirect to="/home" />
-                  ) : (
-                    <Redirect to="/user" />
-                  );
-                }}
-              />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/user" component={User} />
-            </Switch>
-        </Router>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7032,226 +7994,6 @@ renderContent() {
   }
 }
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain React Router 5 features?
-
-React Router 5 embraces the power of hooks and has introduced four different hooks to help with routing.
-
-```js
-<Route path="/">
-  <Home />
-</Route>
-```
-
-**useHistory**
-
-* Provides access to the `history` prop in React Router
-* Refers to the history package dependency that the router uses
-* A primary use case would be for programmatic routing with functions, like `push`, `replace`, etc.
-
-```js
-import { useHistory } from 'react-router-dom'
-
-function Home() {
-  const history = useHistory()
-  return <button onClick={() => history.push('/profile')}>Profile</button>
-}
-```
-
-**useLocation**
-
-* Provides access to the location prop in React Router
-* It is similar to window.location in the browser itself, but this is accessible everywhere as it represents the * Router state and location.
-* A primary use case for this would be to access the query params or the complete route string.
-
-```js
-import { useLocation } from 'react-router-dom'
-
-function Profile() {
-  const location = useLocation()
-  useEffect(() => {
-    const currentPath = location.pathname
-    const searchParams = new URLSearchParams(location.search)
-  }, [location])
-  return <p>Profile</p>
-}
-```
-
-**useParams**
-
-* Provides access to search parameters in the URL
-* This was possible earlier only using match.params.
-
-```js
-import { useParams, Route } from 'react-router-dom'
-
-function Profile() {
-  const { name } = useParams()
-  return <p>{name}'s Profile</p>
-}
-
-function Dashboard() {
-  return (
-    <>
-      <nav>
-        <Link to={`/profile/alex`}>Alex Profile</Link>
-      </nav>
-      <main>
-        <Route path="/profile/:name">
-          <Profile />
-        </Route>
-      </main>
-    </>
-  )
-}
-```
-
-**useRouteMatch**
-
-* Provides access to the match object
-* If it is provided with no arguments, it returns the closest match in the component or its parents.
-* A primary use case would be to construct nested paths.
-
-```js
-import { useRouteMatch, Route } from 'react-router-dom'
-
-function Auth() {
-  const match = useRouteMatch()
-  return (
-    <>
-      <Route path={`${match.url}/login`}>
-        <Login />
-      </Route>
-      <Route path={`${match.url}/register`}>
-        <Register />
-      </Route>
-    </>
-  )
-}
-```
-
-We can also use `useRouteMatch` to access a match without rendering a Route. This is done by passing it the location argument.
-
-**Redirect Component**
-
-The easiest way to use this method is by maintaining a redirect property inside the state of the component.
-
-```js
-import { Redirect } from "react-router-dom"
-...
-
-state = { redirect: null }
-render() {
-  if (this.state.redirect) {
-    return <Redirect to={this.state.redirect} />
-  }
-  return(
-  // Your Code goes here
-  )
-}
-```
-
-**History prop**
-
-Every component that is an immediate child of the `<Route>` component receives history object as a prop. This is the same history (library) which keeps history of the session of React Router. We can thus use its properties to navigate to the required paths.
-
-```js
-this.props.history.push("/first")
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How React Router is different from history library?
-
-React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
-
-* BrowserRouter
-* HashRouter
-
-```js
-// <BrowserRouter>
-http://example.com/about
-
-// <HashRouter>
-http://example.com/#/about
-```
-
-The `<BrowserRouter>` is the more popular of the two because it uses the HTML5 History API to keep your UI in sync with the URL, whereas the `<HashRouter>` uses the hash portion of the URL (`window.location.hash`). If you need to support legacy browsers that don\'t support the History API, you should use `<HashRouter>`. Otherwise `<BrowserRouter>` is the better choice for most use cases.
-
-**Example:**
-
-```js
-// src/index.js
-
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
-```
-
-The above code creates a history instance for our entire `<App>` component. Each `<Router>` component creates a history object that keeps track of the current location (`history.location`) and also the previous locations in a stack. The history object has methods such as `history.push`, `history.replace`, `history.goBack`, `history.goForward` etc.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of push and replace methods of history?
-
-The **history.push()** method is invoked when you click on a `<Link>` component, and **history.replace()** is called when you use a `<Redirect>`.
-
-```js
-import { useHistory } from "react-router-dom"
-
-function HomeButton() {
-  const history = useHistory();
-
-  function handleClick() {
-    history.push("/home");
-  }
-  return (
-    <button type="button" onClick={handleClick}>
-      Go home
-    </button>
-  );
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to get parameter value from query string?
-
-In order to get query parameters from the URL, we can use **URLSearchParams**. In simple words, URLSearchParams is a defined interface, implemented by modern browsers, that allows us to work with the query string. It does not require React Router or even React itself.
-
-**Example:**
-
-```js
-// http://localhost:3000/?id=10&name=test
-
-const queryParams = new URLSearchParams(window.location.search);
-
-const id = queryParams.get('id');
-const name = queryParams.get('name');
-const type = queryParams.get('type');
-
-console.log(id, name, type); // 10 test null
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -7890,22 +8632,6 @@ const App = () => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How is React Router different from Conventional Routing?
-
-<p align="center">
-  <img src="assets/react-routing.png" alt="React Router" width="600px" />
-</p>
-
-In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
-
-**How does React achieve this?**
-
-In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How many ways can we style the React Component?
 
 **1. CSS Stylesheet**
@@ -8194,124 +8920,6 @@ function onClick(event) {
 ```
 
 If we want to access the event properties in an asynchronous way, we should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are error boundaries in React?
-
-Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
-
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`. Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
-
-*Example:*
-
-```js
-import React, {Component} from 'react'
-
-class ErrorBoundary extends Component {
-   state = {
-      isErrorOccured: false,
-      errorMessage: ''
-   }
-   componentDidCatch = (error,info) => {
-      this.setState({
-        isErrorOccured: true,
-        errorMessage: error
-      })
-   }
-   render() {
-      if(this.state.isErrorOccured) {
-         return <p>Something went wrong</p>
-      } else {
-         return <div>{this.props.children}</div>
-      }
-   }
-}
-
-export default ErrorBoundary
-```
-
-Here, We have a state object having two variables isErrorOccured and errorMessage which will be updated to true if any error occurs. We have used a React life cycle method componentDidCatch which receives two arguments error and info related to it.
-
-**How to use error boundary**
-
-```js
-<ErrorBoundary>
-   <User/>
-</ErrorBoundary>
-```
-
-**Error boundaries do not catch errors for:**
-
-* Event handlers
-* Asynchronous code (e.g. setTimeout() )
-* Server side rendering
-* Errors thrown in the error boundary itself
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between try catch block and error boundaries?
-
-**Try…catch** is used in specific code blocks where you program the functionality of the application.
-
-```js
-try {
-  // Some Calculation
-} catch (error) {
-  console.log(`Error: ${error}`);
-}
-```
-
-**Try…catch** deals with imperative code while **error boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
-
-With error boundary, if there is an error, you can trigger a fallback UI; whereas, with try…catch, you can catch errors in your code.
-
-```js
-import ErrorBoundary from "error-boundary";
-
-function Users() {
-  return (
-    <div>
-      <ErrorBoundary>
-        <Users />
-      </ErrorBoundary>
-    </div>
-  )
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the benefit of component stack trace from error boundary?
-
-Component Stack Trace prints all errors that occurred during rendering to the console in development, even if the application accidentally swallows them. It also display the filenames and line numbers in the component stack trace.
-
-**Example:**
-
-<p align="center">
-  <img src="assets/stack-trace.png" alt="Component Stack Trace" />
-</p>
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the methods invoked during error handling?
-
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods 
-
-* **static getDerivedStateFromError()**  
-* **componentDidCatch()** 
-
-Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -8926,72 +9534,6 @@ const propsProxyHOC = (WrappedComponent) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Explain Inheritance Inversion (iiHOC) in react?
-
-Inverted Inheritance HOCs are elementarily expressed like this
-
-```js
-const inheritanceInversionHOC = (WrappedComponent) => {
-  return class extens WrappedComponent {
-    render() {
-      return super.render()
-    }
-  }
-}
-```
-
-Here, the returned class **extends** the WrappedComponent. It is called Inheritance Inversion, because instead of the WrappedComponent extending some Enhancer class, it is passively extended. In this way the relationship between them seems **inverse**.
-
-Inheritance Inversion gives the HOC access to the WrappedComponent instance via this, which means we can use the `state`, `props`, component lifecycle and even the `render` method.
-
-**Inversion Inheritance HOCs are useful for the following situations**
-
-* Render Highjacking
-* Manipulating state
-
-**Example:**
-
-```js
-class Welcome extends React.Component {
-  render() {
-    return (
-      <div> Welcome {his.props.user}</div>
-    )
-  }
-}
-
-const withUser = (WrappedComponent) => {
-  return class extends React.Component {
-    render() {
-      if(this.props.user) {
-        return  (
-          <WrappedComponent {...this.props} />
-        )
-      }
-      return <div>Welcome Guest!</div>
-    }
-  }
-}
-
-const withLoader = (WrappedComponent) => {
-  return class extends WrappedComponent {
-    render() {
-      const { isLoader } = this.props
-      if(!isLoaded) {
-        return <div>Loading...</div>
-      }
-      return super.render()
-    }
-  }
-}
-
-export default withLoader(withUser(Welcome))
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How to set a dynamic key for state?
 
 **Dynamic Key**
@@ -9189,90 +9731,6 @@ class Message extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to programmatically redirect to another page using React router?
-
-**1. Using useHistory()**
-
-```js
-import { useHistory } from "react-router-dom"
-
-function HomeButton() {
-  const history = useHistory()
-
-  function handleClick() {
-    history.push('/home')
-  }
-
-  return (
-    <button type="button" onClick={handleClick}>
-      Navigate to Home Page
-    </button>
-  )
-}
-```
-
-**2. Using withRouter()**
-
-```js
-import { withRouter } from 'react-router-dom'
-
-const Button = withRouter(({ history }) => (
-  <button type='button' onClick={() => { history.push('/home') }}>
-    Navigate to Home Page
-  </button>
-))
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to pass additional data while redirecting to a route in React?
-
-**Using Link:**
-
-Normally we use the Link component from react-router-dom as shown below:
-
-```js
-<Link to="/register">Register</Link>
-```
-
-So when we click on the Register link, it will redirect to the /register route, but Link also allows us to pass additional data while redirecting.
-
-```js
-<Link to={{ 
- pathname: "/register", 
- state: some_data 
-}}>
- Register
-</Link>
-```
-
-Here, at the place of `some_data`, we can pass a string or object, array etc. and in the `/register` route we will get that data in `props.location.state`.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
-
-**Using history.push:**
-
-Normally, to redirect using the push method, we use it like this:
-
-```js
-props.history.push('/register');
-```
-
-If you need to do some processing before sending the data like removing some values or to trim the values, we can call a handler on submit button click and pass data as shown below
-
-```js
-props.history.push({ 
-  pathname: '/register',
-  state: some_data
-});
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is the use of this props?
 
 It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
@@ -9315,309 +9773,6 @@ ReactDOM.render(
     , mountNode
 )
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to pass props in React router?
-
-A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
-
-**Example:**
-
-```js
-import React from "react"
-import { render } from "react-dom"
-import { Greeting } from "./components"
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
-}
-
-const App = () => (
-  <div style={styles}>
-    <h2>Click below to go to other page. Also, open source code</h2>
-    <Link to="/greeting/World">Go to /greeting/World</Link>
-  </div>
-)
-
-const RouterExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul>
-
-      <hr />
-
-      <Route exact path="/" component={App} />
-      <Route
-        path="/greeting/:name"
-        render={props => <Greeting text="Hello, " {...props} />}
-      />
-    </div>
-  </Router>
-)
-
-render(<RouterExample />, document.getElementById("root"))
-```
-
-```js
-import React from "react"
-
-export class Greeting extends React.Component {
-  render() {
-    const { text, match: { params } } = this.props
-
-    const { name } = params
-
-    return (
-      <React.Fragment>
-        <h1>Greeting page</h1>
-        <p>
-          {text} {name}
-        </p>
-      </React.Fragment>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to get query parameters in react routing?
-
-**Using `useParams()`**
-
-**Example:**
-
-```js
-import React from "react"
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"
-
-export default function ParamsExample() {
-
-  return (
-    <Router>
-      <div>
-        <h2>Accounts</h2>
-        <ul>
-          <li>
-            <Link to="/netflix">Netflix</Link>
-          </li>
-          <li>
-            <Link to="/zillow-group">Zillow Group</Link>
-          </li>
-          <li>
-            <Link to="/yahoo">Yahoo</Link>
-          </li>
-          <li>
-            <Link to="/modus-create">Modus Create</Link>
-          </li>
-        </ul>
-
-        <Switch>
-          <Route path="/:id" children={<Child />} />
-        </Switch>
-      </div>
-    </Router>
-  )
-}
-
-function Child() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams()
-
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
-  )
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Why you get "Router may have only one child element" warning?
-
-React router dom throws the error that a router may have only one child element if more than one routes are defined without enclosing them in `<div>` or `<switch>`.
-
-Generally, navigation is used over the whole application. That\'s why component like **BrowserRouter** or **Router** expects that the top level component like App, should be enclosed in them. They do not expect multiple routes to be listed in them as children. 
-
-**Problem:** This code will throw the router error
-
-```js
-import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-
-export default function App() {
-    return (
-       <BrowserRouter>
-           <Route exact={true} path='/route1' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 2</p>
-               </div>
-            )}/>
-       </BrowserRouter>
-    );
-}
-```
-
-**Solution:** Enclosing route with `<switch>`.
-
-```js
-import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
-export default function App() {
-    return (
-       <BrowserRouter>
-         <Switch>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-         </Switch>
-       </BrowserRouter>
-    );
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between HashRouter and BrowserRouter in React?
-
-**BrowserRouter**
-
-* The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
-* It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
-* It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
-* It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
-
-**Syntax:**
-
-```js
-/*
-  https://example.com/
-  https://example.com/about
-*/
-
-<BrowserRouter
-  basename={optionalString}
-  forceRefresh={optionalBool}
-  getUserConfirmation={optionalFunc}
-  keyLength={optionalNumber}
->
-  <App />
-</BrowserRouter>
-```
-
-**Example:**
-
-```js
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-
-const IndexPage = () => {
-  return <h3>Home Page</h3>;
-};
-
-const AboutPage = () => {
-  return <h3>About Page</h3>;
-};
-
-function App() {
-  return (
-    <section className="App">
-      <Router>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Route exact path="/" component={IndexPage} />
-        <Route exact path="/about" component={AboutPage} />
-      </Router>
-    </section>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
-
-**HashRouter**
-
-* A router which uses client side hash routing.
-* Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
-* Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
-* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
-
-
-**Syntax:**
-
-```js
-/*
-  https://example.com/#/
-  https://example.com/#/about
-*/
-
-<HashRouter
-  basename={optionalString}
-  getUserConfirmation={optionalFunc}
-  hashType={optionalString}
->
-  <App />
-</HashRouter>
-```
-
-**Example:**
-
-```js
-import { Link, HashRouter as Router, Route } from "react-router-dom";
-
-const IndexPage = () => {
-  return <h3>Home Page</h3>;
-};
-
-const AboutPage = () => {
-  return <h3>About Page</h3>;
-};
-
-function App() {
-  return (
-    <section className="App">
-      <Router>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Route exact path="/" component={IndexPage} />
-        <Route exact path="/about" component={AboutPage} />
-      </Router>
-    </section>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -10707,112 +10862,6 @@ Fiber is currently available for use but it runs in compatibility mode with the 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Explain Composition vs Inheritance in React?
-
-**Inheritance**
-
-Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
-
-**Example:**
-
-```js
-class UserNameForm extends React.Component {
-   render() {
-      return (
-         <div>
-            <input type="text" />
-         </div>
-      )
-   }
-}
-class CreateUserName extends UserNameForm {
-   render() {
-      const parent = super.render();
-      return (
-         <div>
-            {parent}
-            <button>Create</button>
-         </div>
-      )
-   }
-}
-class UpdateUserName extends UserNameForm {
-   render() {
-      const parent = super.render();
-      return (
-         <div>
-            {parent}
-            <button>Update</button>
-         </div>
-      )
-   }
-}
-ReactDOM.render(
-   (<div>
-      < CreateUserName />
-      < UpdateUserName />
-   </div>), document.getElementById('root')
-)
-```
-
-Here, We extended the `UserNameForm` component and extracted its method in child component using `super.render()`
-
-**Composition**
-
-Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
-
-**Example:**
-
-```js
-class UserNameForm extends React.Component {
-   render() {
-      return (
-         <div>
-            <input type="text" />
-         </div>
-      );
-   }
-}
-class CreateUserName extends React.Component {
-   render() {
-      return (
-         <div>
-            < UserNameForm />
-            <button>Create</button>
-         </div>
-      )
-   }
-}
-class UpdateUserName extends React.Component {
-   render() {
-      return (
-         <div>
-            < UserNameForm />
-            <button>Update</button>
-         </div>
-      )
-   }
-}
-ReactDOM.render(
-   (<div>
-      <CreateUserName />
-      <UpdateUserName />
-   </div>), document.getElementById('root')
-)
-```
-
-**Inheritance vs Composition**
-
-Inheritance used the `is-a` relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component.
-
-Composition does not inherit properties, only the behavior. In inheritance, it was difficult to add new behavior because the derived component was inheriting all the properties of parent class and it was quite difficult to add new behavior. But in composition, we only inherit behavior and adding new behavior is fairly simple and easy.
-
-React recommends use of Composition over Inheritance, here is why. Everything in React is a component, and it follows a strong component based model. This is one of the primary reasons that composition is a better approach than inheritance for code reuse.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is a Webhook in React?
 
 Web hooks provide a mechanism where by a server-side application can notify a client-side application when a new event (that the client-side application might be interested in) has occurred on the server.
@@ -11440,35 +11489,6 @@ function MyComponent() {
     </div>
   );
 }
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is route based code splitting?
-
-Route based code splitting is essential during the page transitions on the web, which takes some amount of time to load. Here is an example of how to setup route-based code splitting into the app using React Router with `React.lazy`.
-
-**Example:**
-
-```js
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-const Home = lazy(() => import('./routes/Home'));
-const About = lazy(() => import('./routes/About'));
-
-const App = () => (
-  <Router>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
-    </Suspense>
-  </Router>
-);
 ```
 
 <div align="right">
