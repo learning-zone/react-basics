@@ -820,140 +820,86 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 4.1. FUNCTIONAL COMPONENTS
+## # 4. REACT COMPONENTS
 
 <br/>
 
-## Q. What are Components in React?
+## Q. What are React components?
 
-Components are the building blocks of any React application and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(props) and returns a React element that describes how a section of the UI (User Interface) should appear.
+Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
-<p align="center">
-  <img src="assets/component-tree.png" alt="Components Tree" />
-</p>
+A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
 
-A react application is made of multiple components, each responsible for rendering a small, reusable piece of HTML. Components can be nested within other components to allow complex applications to be built out of simple building blocks. A component may also maintain internal state – for example, a TabList component may store a variable corresponding to the currently open tab.
-
-**Example:** Class Component
+**Stateless Component:**
 
 ```js
-class Welcome extends React.Component {
+import React from 'react'
+
+const ExampleComponent = (props) => {
+    return (<h1>Welcome to React!</h1>)
+}
+
+export default class App extends React.Component {
   render() {
-    return <h1>Hello, World!</h1>
+    return (
+      <div>
+        <ExampleComponent/>
+      </div>
+    )
   }
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/eYWvXaY)**
+The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are controlled and uncontrolled components in React?
-
-In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
-
-**Controlled Components:**  
-
-In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
-
-**Example:**
+**Stateful Component:**
 
 ```js
-import React, { Component } from 'react'
+import React from 'react'
 
-class App extends Component {
-    state = {
-        message: ''
+class ExampleComponent extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      heading: "This is an Example Component!"
     }
-    updateMessage = (newText) => {
-        console.log(newText)
-        this.setState(() => ({
-            message: newText
-        }))
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        value={this.state.message}
-                        onChange={(event) => this.updateMessage(event.target.value)}
-                    />
-                    <p>the message is: {this.state.message}</p>
-                </div>
-            </div>
-        )
-    }
+  }
+  render() {
+    return (
+        <div>
+            <h1>{ this.props.welcomeMsg }</h1>
+            <h2>{ this.state.heading }</h2>
+        </div>
+    )
+  }
 }
 
-export default App
-```
-
-**Uncontrolled Components:**  
-
-Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-
-    constructor(props){
-        super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.input = React.createRef()
-    }
-    handleChange = (newText) => {
-        console.log(newText)
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        ref={this.input}
-                        onChange={(event) => this.handleChange(event.target.value)}
-                    />
-                </div>
-            </div>
-        )
-    }
-}
-export default App
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How do you set default value for uncontrolled components?
-
-In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
-
-**Example:**
-
-```js
-render() {
-  return (
-    <form onSubmit={this.handleSubmit}>
-      <label>
-        Name:
-        <input
-          defaultValue="Samir Chahal"
-          type="text"
-          ref={this.input} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
+export default class App extends React.Component {
+  render() {
+    const welcomeMsg = "Welcome to React!"
+    return (
+      <div>
+        <ExampleComponent welcomeMsg={welcomeMsg}/>
+      </div>
+    )
+  }
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
+The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
+
+**Props:**
+
+Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
+
+**State:**
+
+A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
+
+**LifeCycle:**
+
+Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1083,21 +1029,169 @@ React is declarative. Here, the **Welcome component** describes the DOM that sho
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the typical pattern for rendering a list of components from an array of data?  
+## Q. What is the difference between Element and Component?
 
-The usual pattern for rendering lists of components often ends with delegating all of the responsibilities of each child component to the entire list container component. But with a few optimizations, we can make a change in a child component not cause the parent component to re-render.
+**1. React Element:**
 
-**Example:** using custom `shouldComponentUpdate()`
+It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
 
 ```js
-class AnimalTable extends React.Component<Props, never> {
-  shouldComponentUpdate(nextProps: Props) {
-    return !nextProps.animalIds.equals(this.props.animalIds);
-  }
-  ...
+const element = <h1>React Element Example!</h1>;
+ReactDOM.render(element, document.getElementById('app'));
 ```
 
-Here, `shouldComponentUpdate()` will return false if the props its receiving are equal to the props it already has. And because the AnimalTable is receiving just a List of string IDs, a change in the adoption status won\'t cause AnimalTable to receive a different set of IDs.
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
+
+**2. React Component:**
+
+It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
+
+```js
+function Message() {
+  return <h2>React Component Example!</h2>;
+}
+ReactDOM.render(<Message />, document.getElementById('app'));
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to conditionally render components in react?
+
+Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false. In React, it allows us to render different elements or components based on a condition.
+
+**Element Variables:**
+
+You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
+
+```js
+function LogInComponent(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserComponent />;
+  }
+  return <GuestComponent />;
+}
+
+ReactDOM.render(
+  // Try changing to isLoggedIn={true}:
+  <LogInComponent isLoggedIn={false} />,
+  document.getElementById('root')
+);
+```
+
+**Inline If-Else with Conditional Operator:**
+
+```js
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 4.1. FUNCTIONAL COMPONENTS
+
+<br/>
+
+## Q. What are functional components in react?
+
+* Functional components are basic JavaScript functions. These are typically arrow functions but can also be created with the regular  function keyword.
+* Sometimes referred to as `stateless` components as they simply accept data and display them in some form; that is they are mainly responsible for rendering UI.
+* React lifecycle methods (for example, `componentDidMount()`) cannot be used in functional components.
+* There is no render method used in functional components.
+* These are mainly responsible for UI and are typically presentational only (For example, a Button component).
+* Functional components can accept and use props.
+* Functional components should be favored if you do not need to make use of React state.
+
+**Example:**
+
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 4.2. CLASS COMPONENTS
+
+<br/>
+
+## Q. What are class components in react?
+
+* Class components make use of ES6 class and extend the Component class in React.
+* Sometimes called `stateful` components as they tend to implement logic and state.
+* React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
+* We pass `props` down to class components and access them with `this.props`.
+* Class-based components can have `refs` to underlying DOM nodes.
+* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimisation techniques.
+
+**Example:**
+
+```js
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the recommended ordering of methods in class component?
+
+* `static` methods
+* `constructor()`
+* `getChildContext()`
+* `componentWillMount()`
+* `componentDidMount()`
+* `componentWillReceiveProps()`
+* `shouldComponentUpdate()`
+* `componentWillUpdate()`
+* `componentDidUpdate()`
+* `componentWillUnmount()`
+* click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
+* getter methods for render like `getSelectReason()` or `getFooterContent()`
+* optional render methods like `renderNavigation()` or `renderProfilePicture()`
+* `render()`
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1206,164 +1300,6 @@ renderTableHeader() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the difference between Element and Component?
-
-**1. React Element:**
-
-It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
-
-```js
-const element = <h1>React Element Example!</h1>;
-ReactDOM.render(element, document.getElementById('app'));
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
-
-**2. React Component:**
-
-It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
-
-```js
-function Message() {
-  return <h2>React Component Example!</h2>;
-}
-ReactDOM.render(<Message />, document.getElementById('app'));
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the differences between a class component and functional component?
-
-**1. Functional Components:**  
-
-* Functional components are basic JavaScript functions. These are typically arrow functions but can also be created with the regular  function keyword.
-* Sometimes referred to as `stateless` components as they simply accept data and display them in some form; that is they are mainly responsible for rendering UI.
-* React lifecycle methods (for example, `componentDidMount()`) cannot be used in functional components.
-* There is no render method used in functional components.
-* These are mainly responsible for UI and are typically presentational only (For example, a Button component).
-* Functional components can accept and use props.
-* Functional components should be favored if you do not need to make use of React state.
-
-**Example:**
-
-```js
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}
-
-const element = <Welcome name="World!" />;
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
-
-**2. Class Components:**  
-
-* Class components make use of ES6 class and extend the Component class in React.
-* Sometimes called `stateful` components as they tend to implement logic and state.
-* React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
-* We pass `props` down to class components and access them with `this.props`.
-* Class-based components can have `refs` to underlying DOM nodes.
-* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimisation techniques.
-
-**Example:**
-
-```js
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
-
-const element = <Welcome name="World!" />;
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the recommended ordering of methods in class component?
-
-* `static` methods
-* `constructor()`
-* `getChildContext()`
-* `componentWillMount()`
-* `componentDidMount()`
-* `componentWillReceiveProps()`
-* `shouldComponentUpdate()`
-* `componentWillUpdate()`
-* `componentDidUpdate()`
-* `componentWillUnmount()`
-* click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
-* getter methods for render like `getSelectReason()` or `getFooterContent()`
-* optional render methods like `renderNavigation()` or `renderProfilePicture()`
-* `render()`
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to conditionally render components in react?
-
-Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false. In React, it allows us to render different elements or components based on a condition.
-
-**Element Variables:**
-
-You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
-
-```js
-function LogInComponent(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserComponent />;
-  }
-  return <GuestComponent />;
-}
-
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <LogInComponent isLoggedIn={false} />,
-  document.getElementById('root')
-);
-```
-
-**Inline If-Else with Conditional Operator:**
-
-```js
-render() {
-  const isLoggedIn = this.state.isLoggedIn;
-  return (
-    <div>
-      {isLoggedIn
-        ? <LogoutButton onClick={this.handleLogoutClick} />
-        : <LoginButton onClick={this.handleLoginClick} />
-      }
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How to prevent component from rendering in React?
 
 You can prevent component from rendering by returning `null` based on specific condition. This way it can conditionally render component.
@@ -1418,335 +1354,6 @@ ReactDOM.render(
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is Higher Order Components in React.js?
-
-A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
-
-<p align="center">
-  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
-</p>
-
-Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
-
-```js
-// HOC.js
-
-import React, {Component} from 'react'
-
-export default function Hoc(HocComponent){
-    return class extends Component{
-        render(){
-            return (
-                <div>
-                    <HocComponent></HocComponent>
-                </div>
-
-            )
-        }
-    }
-}
-```
-
-```js
-// App.js
-
-import React, { Component } from 'react'
-import Hoc from './HOC'
-
-class App extends Component {
-  
-  render() {
-    return (
-      <div>
-        Higher-Order Component Example!
-      </div>
-    )
-  }
-}
-App = Hoc(App)
-export default App
-```
-
-*Notes*
-
-* We do not modify or mutate components. We create new ones.
-* A HOC is used to compose components for code reuse.
-* A HOC is a pure function. It has no side effects, returning only a new component.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the benefits of using HOC?
-
-**Benefits:**
-
-* Importantly they provided a way to reuse code when using ES6 classes.
-* No longer have method name clashing if two HOC implement the same one.
-* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
-* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
-
-**Problems:**
-
-* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
-* Ensure all relevant props are passed through to the component.
-* Hoist static methods from the wrapped component.
-* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are Higher Order Component factory implementations?
-
-Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
-
-* Props Proxy
-* Inheritance Inversion
-
-Both enable different ways of manipulating the WrappedComponent.
-
-**1. Props Proxy:**
-
-In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
-
-**Example:**
-
-```js
-function ppHOC(WrappedComponent) {
-   return class PP extends React.Component {
-     render() {
-       return <WrappedComponent {...this.props}/>
-     }
-   }
-}
-```
-
-Props Proxy can be implemented via a number of ways
-
-* Manipulating props
-* Accessing the instance via Refs
-* Abstracting State
-* Wrapping the WrappedComponent with other elements
-
-**2. Inheritance Inversion:**
-
-Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
-
-**Example:**
-
-```js
-function iiHOC(WrappedComponent) {
-   return class Enhancer extends WrappedComponent {
-     render() {
-       return super.render()
-     }
-   }
-}
-```
-
-Inheritance Inversion can be used in:
-
-* Conditional Rendering (Render Highjacking)
-* State Manipulation
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to use decorators in React?
-
-Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
-
-**Example:**
-
-```js
-export const withUniqueId = (Target) => {
-  return class WithUniqueId extends React.Component {
-    uid = uuid();
-
-    render() {
-      return <Target {...this.props} uuid={this.uid} />;
-    }
-  };
-}
-```
-
-```js
-@withUniqueId
-class UniqueIdComponent extends React.Component {
-  render() {
-    return <div>Generated Unique ID is: {this.props.uuid}</div>;
-  }
-}
-
-const App = () => (
-  <div>
-    <h2>Decorators in React!</h2>
-    <UniqueIdComponent />
-  </div>
-);
-```
-
-*Note: Decorators are an experimental feature in React that may change in future releases.*
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are Pure Components in React?
-
-**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
-
-**Features of React Pure Components:**
-
-* Prevents re-rendering of Component if props or state is the same
-* Takes care of `shouldComponentUpdate()` implicitly
-* `State()` and `Props` are Shallow Compared
-* Pure Components are more performant in certain cases
-
-Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
-
-It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
-
-React Components re-renders in the following scenarios:
-
-1. `setState()` is called in Component
-1. `props` values are updated
-1. `this.forceUpdate()` is called
-
-In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
-
-**1. Stateless Component:**
-
-```js
-import { pure } from 'recompose'
-
-export default pure ( (props) => {
-   return 'Stateless Component Example'
-})
-```
-
-**2. Stateful Component:**
-
-```js
-import React, { PureComponent } from 'react'
-
-export default class Test extends PureComponent{
-   render() {
-      return 'Stateful Component Example'
-   }
-}
-```
-
-**Example:**
-
-```js
-class Test extends React.PureComponent {
-   constructor(props) {
-      super(props)
-      this.state = {
-         taskList: [
-            { title: 'Excercise'},
-            { title: 'Cooking'},
-            { title: 'Reacting'},
-         ]
-      }
-   }
-   componentDidMount() {
-      setInterval(() => {
-         this.setState((oldState) => {
-            return { taskList: [...oldState.taskList] }
-         })
-      }, 1000)
-   }
-   render() {
-      console.log("TaskList render() called")
-      return (<div>
-         {this.state.taskList.map((task, i) => {
-            return (<Task
-               key={i}
-               title={task.title}
-            />)
-         })}
-      </div>)
-   }
-}
-class Task extends React.Component {
-   render() {
-      console.log("task added")
-      return (<div>
-         {this.props.title}
-      </div>)
-   }
-}
-ReactDOM.render(<Test />, document.getElementById('app'))
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the problems of using render props with PureComponent?
-
-If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
-
-**Example:**
-
-```js
-class MouseTracker extends React.Component {
-  // Defined as an instance method, `this.renderTheCat` always
-  // refers to *same* function when we use it in render
-  renderTheCat(mouse) {
-    return <Cat mouse={mouse} />;
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Move the mouse around!</h1>
-        <Mouse render={this.renderTheCat} />
-      </div>
-    );
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is PureComponent?
-
-Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
-
-Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
-
-That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
-
-That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. When to use PureComponent over Component?
-
-* We want to avoid re-rendering cycles of component when its props and state are not changed, and
-* The state and props of component are immutable, and
-* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
-
-On the other hand, we should not use `PureComponent()` as a base component if:
-
-* props or state are not immutable, or
-* Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1820,6 +1427,162 @@ const BooksList = ({books}) => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. What is the purpose of using super constructor with props argument?
+
+The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+
+```js
+class App extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {}
+   }
+
+  // React says we have to define render()
+  render() {
+    return <div>Hello world</div>
+  }
+}
+
+export default App
+```
+
+Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Element, Component and Component instance in React?
+
+A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
+
+A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
+
+**Example:**
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log('This is a component instance:', this)
+  }
+
+  render() {
+    const another_element = <div>Hello, World!</div>
+    console.log('This is also an element:', another_element)
+    return another_element
+  }
+}
+
+console.log('This is a component:', MyComponent)
+
+const element = <MyComponent/>
+
+console.log('This is an element:', element)
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+)
+```
+
+**React Elements:**
+
+A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
+
+* `type`, a String representing an HTML tag or a reference referring to a React Component
+* `key`, a String to uniquely identify an React Element
+* `ref`, a reference to access either the underlying DOM node or React Component Instance)
+* `props` (properties Object)
+
+A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
+
+A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
+
+React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
+
+**React Components and React Component Instances:**
+
+A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
+
+A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What does shouldComponentUpdate do and why is it important?
+
+The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
+
+The default implementation of this function returns true so to stop the re-render you need to return false here:
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  console.log(nextProps, nextState)
+  console.log(this.props, this.state)
+  return false  
+}
+```
+
+**Preventing unnecessary renders**
+
+The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of render() function in React?
+
+All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
+
+Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
+
+```js
+// App.js
+import React from 'react'
+import './App.css'
+
+function App() {
+  return (
+    <div className="App">
+      Hello World !
+    </div>
+  )
+}
+
+export default App
+```
+
+```js
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App/App'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 4.2.1. REACT LIFECYCLE
+
+<br/>
 
 ## Q. What are the different phases of React component lifecycle?
 
@@ -2125,238 +1888,366 @@ The value passed as the second argument controls when the callback is executed:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the purpose of using super constructor with props argument?
+## Q. What is the typical pattern for rendering a list of components from an array of data?  
 
-The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+The usual pattern for rendering lists of components often ends with delegating all of the responsibilities of each child component to the entire list container component. But with a few optimizations, we can make a change in a child component not cause the parent component to re-render.
+
+**Example:** using custom `shouldComponentUpdate()`
 
 ```js
-class App extends React.Component {
-  constructor(props) {
-      super(props)
-      this.state = {}
-   }
-
-  // React says we have to define render()
-  render() {
-    return <div>Hello world</div>
+class AnimalTable extends React.Component<Props, never> {
+  shouldComponentUpdate(nextProps: Props) {
+    return !nextProps.animalIds.equals(this.props.animalIds);
   }
-}
-
-export default App
+  ...
 ```
 
-Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+Here, `shouldComponentUpdate()` will return false if the props its receiving are equal to the props it already has. And because the AnimalTable is receiving just a List of string IDs, a change in the adoption status won\'t cause AnimalTable to receive a different set of IDs.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the difference between Element, Component and Component instance in React?
+## # 4.3. PURE COMPONENTS
 
-A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
+<br/>
 
-A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
+## Q. What are Pure Components in React?
+
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
+
+**Features of React Pure Components:**
+
+* Prevents re-rendering of Component if props or state is the same
+* Takes care of `shouldComponentUpdate()` implicitly
+* `State()` and `Props` are Shallow Compared
+* Pure Components are more performant in certain cases
+
+Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
+
+It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
+
+React Components re-renders in the following scenarios:
+
+1. `setState()` is called in Component
+1. `props` values are updated
+1. `this.forceUpdate()` is called
+
+In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
+
+**1. Stateless Component:**
+
+```js
+import { pure } from 'recompose'
+
+export default pure ( (props) => {
+   return 'Stateless Component Example'
+})
+```
+
+**2. Stateful Component:**
+
+```js
+import React, { PureComponent } from 'react'
+
+export default class Test extends PureComponent{
+   render() {
+      return 'Stateful Component Example'
+   }
+}
+```
 
 **Example:**
 
 ```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
+class Test extends React.PureComponent {
+   constructor(props) {
+      super(props)
+      this.state = {
+         taskList: [
+            { title: 'Excercise'},
+            { title: 'Cooking'},
+            { title: 'Reacting'},
+         ]
+      }
+   }
+   componentDidMount() {
+      setInterval(() => {
+         this.setState((oldState) => {
+            return { taskList: [...oldState.taskList] }
+         })
+      }, 1000)
+   }
+   render() {
+      console.log("TaskList render() called")
+      return (<div>
+         {this.state.taskList.map((task, i) => {
+            return (<Task
+               key={i}
+               title={task.title}
+            />)
+         })}
+      </div>)
+   }
+}
+class Task extends React.Component {
+   render() {
+      console.log("task added")
+      return (<div>
+         {this.props.title}
+      </div>)
+   }
+}
+ReactDOM.render(<Test />, document.getElementById('app'))
+```
 
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log('This is a component instance:', this)
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the problems of using render props with PureComponent?
+
+If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
+
+**Example:**
+
+```js
+class MouseTracker extends React.Component {
+  // Defined as an instance method, `this.renderTheCat` always
+  // refers to *same* function when we use it in render
+  renderTheCat(mouse) {
+    return <Cat mouse={mouse} />;
   }
 
   render() {
-    const another_element = <div>Hello, World!</div>
-    console.log('This is also an element:', another_element)
-    return another_element
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={this.renderTheCat} />
+      </div>
+    );
   }
 }
-
-console.log('This is a component:', MyComponent)
-
-const element = <MyComponent/>
-
-console.log('This is an element:', element)
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-)
 ```
-
-**React Elements:**
-
-A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
-
-* `type`, a String representing an HTML tag or a reference referring to a React Component
-* `key`, a String to uniquely identify an React Element
-* `ref`, a reference to access either the underlying DOM node or React Component Instance)
-* `props` (properties Object)
-
-A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
-
-A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
-
-React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
-
-**React Components and React Component Instances:**
-
-A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
-
-A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What does shouldComponentUpdate do and why is it important?
+## Q. What is PureComponent?
 
-The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
+Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
 
-The default implementation of this function returns true so to stop the re-render you need to return false here:
+Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
+
+That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
+
+That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When to use PureComponent over Component?
+
+* We want to avoid re-rendering cycles of component when its props and state are not changed, and
+* The state and props of component are immutable, and
+* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+On the other hand, we should not use `PureComponent()` as a base component if:
+
+* props or state are not immutable, or
+* Plan to implement own `shouldComponentUpdate()` lifecycle method.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 4.4. HIGHER ORDER COMPONENTS
+
+<br/>
+
+## Q. What is Higher Order Components in React.js?
+
+A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
+
+<p align="center">
+  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
+</p>
+
+Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
 
 ```js
-shouldComponentUpdate(nextProps, nextState) {
-  console.log(nextProps, nextState)
-  console.log(this.props, this.state)
-  return false  
+// HOC.js
+
+import React, {Component} from 'react'
+
+export default function Hoc(HocComponent){
+    return class extends Component{
+        render(){
+            return (
+                <div>
+                    <HocComponent></HocComponent>
+                </div>
+
+            )
+        }
+    }
 }
 ```
-
-**Preventing unnecessary renders**
-
-The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of render() function in React?
-
-All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
-
-Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
 
 ```js
 // App.js
-import React from 'react'
-import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      Hello World !
-    </div>
-  )
+import React, { Component } from 'react'
+import Hoc from './HOC'
+
+class App extends Component {
+  
+  render() {
+    return (
+      <div>
+        Higher-Order Component Example!
+      </div>
+    )
+  }
 }
-
+App = Hoc(App)
 export default App
 ```
 
-```js
-// index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App/App'
+*Notes*
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-```
+* We do not modify or mutate components. We create new ones.
+* A HOC is used to compose components for code reuse.
+* A HOC is a pure function. It has no side effects, returning only a new component.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What are React components?
+## Q. What are the benefits of using HOC?
 
-Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
+**Benefits:**
 
-A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
+* Importantly they provided a way to reuse code when using ES6 classes.
+* No longer have method name clashing if two HOC implement the same one.
+* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
+* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
 
-**Stateless Component:**
+**Problems:**
+
+* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
+* Ensure all relevant props are passed through to the component.
+* Hoist static methods from the wrapped component.
+* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are Higher Order Component factory implementations?
+
+Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
+
+* Props Proxy
+* Inheritance Inversion
+
+Both enable different ways of manipulating the WrappedComponent.
+
+**1. Props Proxy:**
+
+In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
+
+**Example:**
 
 ```js
-import React from 'react'
-
-const ExampleComponent = (props) => {
-    return (<h1>Welcome to React!</h1>)
-}
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ExampleComponent/>
-      </div>
-    )
-  }
+function ppHOC(WrappedComponent) {
+   return class PP extends React.Component {
+     render() {
+       return <WrappedComponent {...this.props}/>
+     }
+   }
 }
 ```
 
-The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
+Props Proxy can be implemented via a number of ways
 
-**Stateful Component:**
+* Manipulating props
+* Accessing the instance via Refs
+* Abstracting State
+* Wrapping the WrappedComponent with other elements
+
+**2. Inheritance Inversion:**
+
+Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
+
+**Example:**
 
 ```js
-import React from 'react'
+function iiHOC(WrappedComponent) {
+   return class Enhancer extends WrappedComponent {
+     render() {
+       return super.render()
+     }
+   }
+}
+```
 
-class ExampleComponent extends React.Component {
+Inheritance Inversion can be used in:
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      heading: "This is an Example Component!"
+* Conditional Rendering (Render Highjacking)
+* State Manipulation
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use decorators in React?
+
+Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
+
+**Example:**
+
+```js
+export const withUniqueId = (Target) => {
+  return class WithUniqueId extends React.Component {
+    uid = uuid();
+
+    render() {
+      return <Target {...this.props} uuid={this.uid} />;
     }
-  }
-  render() {
-    return (
-        <div>
-            <h1>{ this.props.welcomeMsg }</h1>
-            <h2>{ this.state.heading }</h2>
-        </div>
-    )
-  }
-}
-
-export default class App extends React.Component {
-  render() {
-    const welcomeMsg = "Welcome to React!"
-    return (
-      <div>
-        <ExampleComponent welcomeMsg={welcomeMsg}/>
-      </div>
-    )
-  }
+  };
 }
 ```
 
-The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
+```js
+@withUniqueId
+class UniqueIdComponent extends React.Component {
+  render() {
+    return <div>Generated Unique ID is: {this.props.uuid}</div>;
+  }
+}
 
-**Props:**
+const App = () => (
+  <div>
+    <h2>Decorators in React!</h2>
+    <UniqueIdComponent />
+  </div>
+);
+```
 
-Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
+*Note: Decorators are an experimental feature in React that may change in future releases.*
 
-**State:**
-
-A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
-
-**LifeCycle:**
-
-Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## # 4.5. LAZY LOADING
+
+<br/>
 
 ## Q. How to set up lazy loading components in React?
 
@@ -5202,6 +5093,115 @@ React Hook Form is built with TypeScript and can define a FormData type to suppo
 **6. Less Code to Maintain:**
 
 The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are controlled and uncontrolled components in React?
+
+In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+**Controlled Components:**  
+
+In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+    state = {
+        message: ''
+    }
+    updateMessage = (newText) => {
+        console.log(newText)
+        this.setState(() => ({
+            message: newText
+        }))
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        value={this.state.message}
+                        onChange={(event) => this.updateMessage(event.target.value)}
+                    />
+                    <p>the message is: {this.state.message}</p>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default App
+```
+
+**Uncontrolled Components:**  
+
+Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+    constructor(props){
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.input = React.createRef()
+    }
+    handleChange = (newText) => {
+        console.log(newText)
+    }
+    render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <input type="text"
+                        placeholder="Your message here.."
+                        ref={this.input}
+                        onChange={(event) => this.handleChange(event.target.value)}
+                    />
+                </div>
+            </div>
+        )
+    }
+}
+export default App
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you set default value for uncontrolled components?
+
+In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
+
+**Example:**
+
+```js
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input
+          defaultValue="Samir Chahal"
+          type="text"
+          ref={this.input} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
