@@ -13048,7 +13048,7 @@ yarn add redux react-redux redux-thunk --save
 **Folder structure:**
 
 <p align="center">
-  <img src="assets/redux-setup.png" alt="React Redux Folder structure" width="100px" />
+  <img src="assets/redux-setup.png" alt="React Redux Folder structure" width="150px" />
 </p>
 
 <div align="right">
