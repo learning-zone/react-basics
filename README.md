@@ -12775,9 +12775,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
     <b><a href="#">↥ back to top</a></b>
 </div>
 
---------------------
-### REDUX QUESTIONS
---------------------
+## # 1. REDUX OVERVIEW
 
 <br/>
 
