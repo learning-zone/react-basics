@@ -13015,6 +13015,8 @@ export default Image
 
 ## # 2. REDUX SETUP
 
+<br/>
+
 ## Q. How to add redux into create react app?
 
 Redux is the most popular State container library for frontend apps. It helps you manage your state in a predictable and easy way.
@@ -13098,6 +13100,8 @@ The most of the applications has several top-level directories as below:
 </div>
 
 ## # 3. REDUX DATA FLOW
+
+<br/>
 
 ## Q. How to set the dataflow using react with redux?
 
@@ -13275,6 +13279,8 @@ The following are details of how Redux works:
 
 ## # 4. REDUX STORE
 
+<br/>
+
 ## Q. What is a store in Redux?
 
 A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
@@ -13432,6 +13438,8 @@ export default connect(mapStateToProps)(App)
 
 ## # 5. REDUX ACTIONS
 
+<br/>
+
 ## Q. What is an action in Redux?
 
 **Actions** are plain JavaScript objects or **payloads** of information that send data from your application to your store. They are the only source of information for the store. Actions must have a type property that indicates the type of action being performed.
@@ -13517,6 +13525,36 @@ Although, realistically, you\'ll be doing this via dispatch properties that are 
 export const mapDispatchToProps = dispatch => ({
   onClick: () => dispatch(getUserDetailsRequest('Alex'))
 })
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to dispatch an action on load?
+
+You can dispatch an action in `componentDidMount()` method and in `render()` method you can verify the data.
+
+```js
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchData()
+  }
+
+  render() {
+    return this.props.isLoaded
+      ? <div>{'Loaded'}</div>
+      : <div>{'Not Loaded'}</div>
+  }
+}
+
+const mapStateToProps = (state) => ({
+  isLoaded: state.isLoaded
+})
+
+const mapDispatchToProps = { fetchData }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 
 <div align="right">
