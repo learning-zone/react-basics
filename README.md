@@ -13045,6 +13045,12 @@ npm install redux react-redux redux-thunk --save
 yarn add redux react-redux redux-thunk --save
 ```
 
+**Folder structure:**
+
+<p align="center">
+  <img src="assets/redux-setup.png" alt="React Redux Folder structure" width="200px" />
+</p>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
