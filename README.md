@@ -55,7 +55,7 @@
   * [Redux Reducers](#-6-redux-reducers)
   * [Redux Middleware](#-7-redux-middleware)
   * [Redux Forms](#-8-redux-forms)
-  * [Redux Testing](#-9-redux-testing)
+  * [Miscellaneous](#-9-miscellaneous)
 
 <br/>
 
@@ -14439,6 +14439,122 @@ sagaMiddleware.run(mySaga)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 8. REDUX FORMS
+
+<br/>
+
+## Q. Explain Redux form with an example?
+
+This is a simple demonstration of how to connect all the standard HTML form elements to redux-form.
+
+For the most part, it is a matter of wrapping each form control in a `<Field>` component, specifying which type of `React.DOM` component you wish to be rendered.
+
+The Field component will provide your input with `onChange`, `onBlur`, `onFocus`, `onDrag`, and `onDrop` props to listen to the events, as well as a **value** prop to make each input a **controlled component**. Notice that the SimpleForm component has no state; in fact, it uses the functional stateless component syntax.
+
+```js
+// SimpleForm.js
+
+import React from 'react'
+import { Field, reduxForm } from 'redux-form'
+
+const SimpleForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>First Name</label>
+        <div>
+          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
+        </div>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <div>
+          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
+        </div>
+      </div>
+      <div>
+        <label>Email</label>
+        <div>
+          <Field name="email" component="input" type="email" placeholder="Email"/>
+        </div>
+      </div>
+      <div>
+        <label>Sex</label>
+        <div>
+          <label><Field name="sex" component="input" type="radio" value="male"/> Male</label>
+          <label><Field name="sex" component="input" type="radio" value="female"/> Female</label>
+        </div>
+      </div>
+      <div>
+        <label>Favorite Color</label>
+        <div>
+          <Field name="favoriteColor" component="select">
+            <option></option>
+            <option value="ff0000">Red</option>
+            <option value="00ff00">Green</option>
+            <option value="0000ff">Blue</option>
+          </Field>
+        </div>
+      </div>
+      <div>
+        <label htmlFor="employed">Employed</label>
+        <div>
+          <Field name="employed" id="employed" component="input" type="checkbox"/>
+        </div>
+      </div>
+      <div>
+        <label>Notes</label>
+        <div>
+          <Field name="notes" component="textarea"/>
+        </div>
+      </div>
+      <div>
+        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
+      </div>
+    </form>
+  )
+}
+
+export default reduxForm({
+  form: 'simple'  // a unique identifier for this form
+})(SimpleForm)
+```
+
+<p align="center">
+  <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
+</p>
+
+**Read More:**
+
+* *[https://redux-form.com/6.5.0/examples/syncvalidation/](https://redux-form.com/6.5.0/examples/syncvalidation/)*
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How Redux Form initialValues get updated from state?
+
+Add `enableReinitialize : true` When set to true, the **form** will reinitialize every time the initialValues prop changes
+
+```js
+...
+
+export default connect(mapStateToProps)(reduxForm({ 
+  form: 'contactForm', 
+  enableReinitialize: true
+})(ContactForm))
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 9. MISCELLANEOUS
+
+<br/>
+
 ## Q. What is the at symbol in the Redux connect decorator?
 
 Decorators make it possible to annotate and modify classes and properties at design time.
@@ -14802,114 +14918,6 @@ Context API is easy to is use as it has a short learning curve. It requires less
 **2.) Rendering**
 
 Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components. 
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Explain Redux form with an example?
-
-This is a simple demonstration of how to connect all the standard HTML form elements to redux-form.
-
-For the most part, it is a matter of wrapping each form control in a `<Field>` component, specifying which type of `React.DOM` component you wish to be rendered.
-
-The Field component will provide your input with `onChange`, `onBlur`, `onFocus`, `onDrag`, and `onDrop` props to listen to the events, as well as a **value** prop to make each input a **controlled component**. Notice that the SimpleForm component has no state; in fact, it uses the functional stateless component syntax.
-
-```js
-// SimpleForm.js
-
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-
-const SimpleForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Email</label>
-        <div>
-          <Field name="email" component="input" type="email" placeholder="Email"/>
-        </div>
-      </div>
-      <div>
-        <label>Sex</label>
-        <div>
-          <label><Field name="sex" component="input" type="radio" value="male"/> Male</label>
-          <label><Field name="sex" component="input" type="radio" value="female"/> Female</label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field name="employed" id="employed" component="input" type="checkbox"/>
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
-      </div>
-    </form>
-  )
-}
-
-export default reduxForm({
-  form: 'simple'  // a unique identifier for this form
-})(SimpleForm)
-```
-
-<p align="center">
-  <img src="assets/react-redux-form.png" alt="React Redux Form" width="500px" />
-</p>
-
-**Read More:**
-
-* *[https://redux-form.com/6.5.0/examples/syncvalidation/](https://redux-form.com/6.5.0/examples/syncvalidation/)*
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How Redux Form initialValues get updated from state?
-
-Add `enableReinitialize : true` When set to true, the **form** will reinitialize every time the initialValues prop changes
-
-```js
-...
-
-export default connect(mapStateToProps)(reduxForm({ 
-  form: 'contactForm', 
-  enableReinitialize: true
-})(ContactForm))
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
