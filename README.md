@@ -12944,316 +12944,6 @@ const store = createStore(reducers, initialState, middleware);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to structure Redux top level directories?
-
-The most of the applications has several top-level directories as below:
-
-* **Components** - Contains all 'dumb' or presentational components, consisting only of HTML and styling.
-* **Containers** - Contains all corresponding components with logic in them. Each container will have one or more component depending on the view represented by the container.
-* **Actions** - All Redux actions
-* **Reducers** - All Redux reducers
-* **API** - API connectivity related code. Handler usually involves setting up an API connector centrally with authentication and other necessary headers.
-* **Utils** - Other logical codes that are not React specific. For example, authUtils would have functions to process the JWT token from the API to determine the user scopes.
-* **Store** - Used for redux store initialization.
-
-**Example:**
-
-```js
-└── src
-    ├── actions
-    │   ├── articleActions.js
-    │   ├── categoryActions.js
-    │   └── userActions.js
-    ├── api
-    │   ├── apiHandler.js
-    │   ├── articleApi.js
-    │   ├── categoryApi.js
-    │   └── userApi.js
-    ├── components
-    │   ├── ArticleComponent.jsx
-    │   ├── ArticleListComponent.jsx
-    │   ├── CategoryComponent.jsx
-    │   ├── CategoryPageComponent.jsx
-    │   └── HomePageComponent.jsx
-    ├── containers
-    │   ├── ArticleContainer.js
-    │   ├── CategoryPageContainer.js
-    │   └── HomePageContainer.js
-    ├── index.js
-    ├── reducers
-    │   ├── articleReducer.js
-    │   ├── categoryReducer.js
-    │   └── userReducer.js
-    ├── routes.js
-    ├── store.js
-    └── utils
-        └── authUtils.js
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is an action in Redux?
-
-**Actions** are plain JavaScript objects or **payloads** of information that send data from your application to your store. They are the only source of information for the store. Actions must have a type property that indicates the type of action being performed.
-
-**Example:**
-
-```js
-const getUserDetails = payload => ({ 
-  type: 'GET_USER', 
-  payload 
-})
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What do you understand by "Single source of truth" in Redux?
-
-The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
-
-In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
-
-<p align="center">
-  <img src="assets/redux-state.png" alt="Redux State" width="600px" />
-</p>
-
-A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the features of Workflow in Redux?
-
-When using Redux with React, states will no longer need to be lifted up. Everything is handled by Redux. Redux simplifies the app and makes it easier to maintain.
-
-* Redux offers a solution for storing all your application state in one place, called a **store**.
-* Components then **dispatch** state changes to the store, not directly to other components.
-* The components that need to be aware of state changes can subscribe to the store.
-* The **store** can be thought of as a "middleman" for all state changes in the application.
-* With Redux involved, components don\'t communicate directly with each other. Rather, all state changes must go  through the single source of truth, the **store**.
-
-**Core Principal**
-
-Redux has three core principals:
-
-**1. Single Source of Truth**: The state of your whole application is stored in an object tree within a single **store**.  
-**2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.  
-**3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.  
-
-**Redux Workflow**
-
-Redux allows you to manage the state of the application using Store. A child component can directly access the state from the Store.
-
-The following are details of how Redux works:
-
-* When UI Event triggers (OnClick, OnChange, etc) it can dispatch Actions based on the event.
-* Reducers process Actions and return a new state as an Object.
-* The new state of the whole application goes into a single Store.
-* Components can easily subscribe to the Store.
-
-<p align="center">
-  <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
-</p>
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is Redux Thunk used for?
-
-Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
-
-**Setup**
-
-```bash
-# install create react app
-npm install -g create-react-app
-
-# Create a React App
-create-react-app my-simple-async-app
-
-# Switch directory
-cd my-simple-app
-
-# install Redux-Thunk
-npm install --save redux react-redux redux-thunk
-```
-
-**Example:**
-
-We are going to use Redux Thunk to asynchronously fetch the most recently updated repos by username from Github using this REST URL:
-
-https://api.github.com/users/learning-zone/repos?sort=updated
-
-```js
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-
-import thunk from 'redux-thunk'
-
-// actions.js
-export const addRepos = repos => ({
-  type: 'ADD_REPOS',
-  repos,
-})
-
-export const clearRepos = () => ({ type: 'CLEAR_REPOS' })
-
-export const getRepos = username => async dispatch => {
-  try {
-    const url = `https://api.github.com/users/${username}/repos?sort=updated`
-    const response = await fetch(url)
-    const responseBody = await response.json()
-    dispatch(addRepos(responseBody))
-  } catch (error) {
-    console.error(error)
-    dispatch(clearRepos())
-  }
-}
-
-// reducers.js
-export const repos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_REPOS':
-      return action.repos
-    case 'CLEAR_REPOS':
-      return []
-    default:
-      return state
-  }
-}
-
-export const reducers = combineReducers({ repos })
-
-// store.js
-export function configureStore(initialState = {}) {
-  const store = createStore(reducers, initialState, applyMiddleware(thunk))
-  return store
-}
-
-export const store = configureStore()
-```
-
-`applyMiddleware(thunk)`: This tells redux to accept and execute functions as return values. Redux usually only accepts objects like { type: 'ADD_THINGS', things: ['list', 'of', 'things'] }.
-
-The middleware checks if the action\'s return value is a function and if it is it will execute the function and inject a callback function named dispatch. This way you can start an asynchronous task and then use the dispatch callback to return a regular redux object action some time in the future.
-
-```js
-// This is your typical redux sync action
-function syncAction(listOfThings) {
-  return { type: 'ADD_THINGS', things: listOfThings  }
-}
-
-// This would be the async version
-// where we may need to go fetch the
-// list of things from a server before
-// adding them via the sync action
-function asyncAction() {
-  return function(dispatch) {
-    setTimeout(function() {
-      dispatch(syncAction(['list', 'of', 'things']))
-    }, 1000)
-  }
-}
-```
-
-**App.js**
-
-```js
-import React, { Component } from 'react'
-
-import { connect } from 'react-redux'
-
-import { getRepos } from './redux'
-
-// App.js
-export class App extends Component {
-  state = { username: 'learning-zone' }
-
-  componentDidMount() {
-    this.updateRepoList(this.state.username)
-  }
-
-  updateRepoList = username => this.props.getRepos(username)
-
-  render() {
-    return (
-      <div>
-        <h1>I AM AN ASYNC APP!!!</h1>
-
-        <strong>Github username: </strong>
-        <input
-          type="text"
-          value={this.state.username}
-          onChange={ev => this.setState({ username: ev.target.value })}
-          placeholder="Github username..."
-        />
-        <button onClick={() => this.updateRepoList(this.state.username)}>
-          Get Lastest Repos
-        </button>
-
-        <ul>
-          {this.props.repos.map((repo, index) => (
-            <li key={index}>
-              <a href={repo.html_url} target="_blank">
-                {repo.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-      </div>
-    )
-  }
-}
-
-// AppContainer.js
-const mapStateToProps = (state, ownProps) => ({ repos: state.repos })
-const mapDispatchToProps = { getRepos }
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
-
-export default AppContainer
-```
-
-**index.js**
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import AppContainer from './App'
-import './index.css'
-
-// Add these imports - Step 1
-import { Provider } from 'react-redux'
-import { store } from './redux'
-
-// Wrap existing app in Provider - Step 2
-ReactDOM.render(
-  <Provider store={store}>
-    <AppContainer />
-  </Provider>,
-  document.getElementById('root')
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are typical middleware choices for handling asynchronous calls in Redux?
-
-By default, Redux\'s actions are dispatched synchronously, which is a problem for any non-trivial app that needs to communicate with an external API or perform side effects. Redux also allows for middleware that sits between an action being dispatched and the action reaching the reducers.
-
-There are three very popular middleware libraries that allow for side effects and asynchronous actions: `Redux Thunk` `Redux Saga` and `Redux Promise`.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is difference between presentational component and container component in react redux?
 
 **1. Container Components**
@@ -13317,6 +13007,554 @@ const Image = props => (
    <img src={props.image} />
 )
 export default Image
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 2. REDUX SETUP
+
+## Q. How to add redux into create react app?
+
+Redux is the most popular State container library for frontend apps. It helps you manage your state in a predictable and easy way.
+
+**Installation:**
+
+React Redux 8.x requires React 16.8.3 or later / React Native 0.59 or later, in order to make use of React Hooks.
+
+```js
+# Redux + Plain JS template
+npx create-react-app my-app --template redux
+
+# Redux + TypeScript template
+npx create-react-app my-app --template redux-typescript
+```
+
+**An Existing React App:**
+
+To use React Redux with your React app, install it as a dependency:
+
+```js
+# If you use npm:
+npm install redux react-redux redux-thunk --save
+
+# Or if you use Yarn:
+yarn add redux react-redux redux-thunk --save
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to structure Redux top level directories?
+
+The most of the applications has several top-level directories as below:
+
+* **Components** - Contains all 'dumb' or presentational components, consisting only of HTML and styling.
+* **Containers** - Contains all corresponding components with logic in them. Each container will have one or more component depending on the view represented by the container.
+* **Actions** - All Redux actions
+* **Reducers** - All Redux reducers
+* **API** - API connectivity related code. Handler usually involves setting up an API connector centrally with authentication and other necessary headers.
+* **Utils** - Other logical codes that are not React specific. For example, authUtils would have functions to process the JWT token from the API to determine the user scopes.
+* **Store** - Used for redux store initialization.
+
+**Example:**
+
+```js
+└── src
+    ├── actions
+    │   ├── articleActions.js
+    │   ├── categoryActions.js
+    │   └── userActions.js
+    ├── api
+    │   ├── apiHandler.js
+    │   ├── articleApi.js
+    │   ├── categoryApi.js
+    │   └── userApi.js
+    ├── components
+    │   ├── ArticleComponent.jsx
+    │   ├── ArticleListComponent.jsx
+    │   ├── CategoryComponent.jsx
+    │   ├── CategoryPageComponent.jsx
+    │   └── HomePageComponent.jsx
+    ├── containers
+    │   ├── ArticleContainer.js
+    │   ├── CategoryPageContainer.js
+    │   └── HomePageContainer.js
+    ├── index.js
+    ├── reducers
+    │   ├── articleReducer.js
+    │   ├── categoryReducer.js
+    │   └── userReducer.js
+    ├── routes.js
+    ├── store.js
+    └── utils
+        └── authUtils.js
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 3. REDUX DATA FLOW
+
+## Q. How to set the dataflow using react with redux?
+
+<p align="center">
+  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="400px" />
+</p>
+
+Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
+
+Redux has five main entities. Action Creators, Dispatching Function, Reducers, State and Store.
+
+* An action is dispatched when a user interacts with the application.
+* The root reducer function is called with the current state and the dispatched action. The root reducer may divide the task among smaller reducer functions, which ultimately returns a new state.
+* The store notifies the view by executing their callback functions.
+* The view can retrieve updated state and re-render again.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the three principles that Redux follows?
+
+Redux can be described in three fundamental principles:
+
+**1. Single source of truth**
+
+> The state of your whole application is stored in an object tree inside a single store.
+
+This makes it easy to create universal apps, as the state from your server can be serialized and hydrated into the client with no extra coding effort. A single state tree also makes it easier to debug or inspect an application; it also enables you to persist your app\'s state in development, for a faster development cycle.
+
+**Example:**
+
+```js
+console.log(store.getState())
+
+/* Prints
+{
+  visibilityFilter: 'SHOW_ALL',
+  todos: [
+    {
+      text: 'Consider using Redux',
+      completed: true,
+    },
+    {
+      text: 'Keep all state in a single tree',
+      completed: false
+    }
+  ]
+}
+*/
+```
+
+**2. State is read-only**
+
+> The only way to change the state is to emit an action, an object describing what happened.
+
+This ensures that neither the views nor the network callbacks will ever write directly to the state. Instead, they express an intent to transform the state. Because all changes are centralized and happen one by one in a strict order, there are no subtle race conditions to watch out for.
+
+**Example:**
+
+```js
+store.dispatch({
+  type: 'COMPLETE_TODO',
+  index: 1
+})
+
+store.dispatch({
+  type: 'SET_VISIBILITY_FILTER',
+  filter: 'SHOW_COMPLETED'
+})
+```
+
+**3. Changes are made with pure functions**
+
+> To specify how the state tree is transformed by actions, you write pure reducers.
+
+Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state. You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree.
+
+```js
+import { combineReducers, createStore } from 'redux'
+
+function visibilityFilter(state = 'SHOW_ALL', action) {
+  switch (action.type) {
+    case 'SET_VISIBILITY_FILTER':
+      return action.filter
+    default:
+      return state
+  }
+}
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {
+          text: action.text,
+          completed: false
+        }
+      ]
+    case 'COMPLETE_TODO':
+      return state.map((todo, index) => {
+        if (index === action.index) {
+          return Object.assign({}, todo, {
+            completed: true
+          })
+        }
+        return todo
+      })
+    default:
+      return state
+  }
+}
+
+const reducer = combineReducers({ visibilityFilter, todos })
+const store = createStore(reducer)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What do you understand by "Single source of truth" in Redux?
+
+The single source of truth is our state tree, that is not rewritten or reshaped. It gives us the availability to easily retrieve information in constant time and maintain a clean structure for the state of our application.
+
+In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
+
+<p align="center">
+  <img src="assets/redux-state.png" alt="Redux State" width="600px" />
+</p>
+
+A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the features of Workflow in Redux?
+
+When using Redux with React, states will no longer need to be lifted up. Everything is handled by Redux. Redux simplifies the app and makes it easier to maintain.
+
+* Redux offers a solution for storing all your application state in one place, called a **store**.
+* Components then **dispatch** state changes to the store, not directly to other components.
+* The components that need to be aware of state changes can subscribe to the store.
+* The **store** can be thought of as a "middleman" for all state changes in the application.
+* With Redux involved, components don\'t communicate directly with each other. Rather, all state changes must go  through the single source of truth, the **store**.
+
+**Core Principal**
+
+Redux has three core principals:
+
+**1. Single Source of Truth**: The state of your whole application is stored in an object tree within a single **store**.  
+**2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.  
+**3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.  
+
+**Redux Workflow**
+
+Redux allows you to manage the state of the application using Store. A child component can directly access the state from the Store.
+
+The following are details of how Redux works:
+
+* When UI Event triggers (OnClick, OnChange, etc) it can dispatch Actions based on the event.
+* Reducers process Actions and return a new state as an Object.
+* The new state of the whole application goes into a single Store.
+* Components can easily subscribe to the Store.
+
+<p align="center">
+  <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
+</p>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 4. REDUX STORE
+
+## Q. What is a store in Redux?
+
+A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+
+**Example:**
+
+```js
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './reducers'
+import App from './components/App'
+
+const store = createStore(rootReducer)
+ render (
+   <provider store="{store}">
+     <app>
+   </app></provider>,
+   document.getElementById('root')
+ )
+```
+
+When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the best way to access redux store outside a react component?
+
+To access redux store outside a react component, Redux `connect` function works great for regular React components.
+
+In the examples below shows how to access a JWT token from the Redux store.
+
+**Option 1: Export the Store**
+
+```js
+import { createStore } from 'redux'
+import reducer from './reducer'
+
+const store = createStore(reducer)
+
+export default store
+```
+
+Here, we are creating the store and exporting it. This will make it available to other files. Here we\'ll see an `api` file making a call where we need to pass a JWT token to the server:
+
+```js
+import store from './store'
+
+export function getProtectedThing() {
+  // grab current state
+  const state = store.getState()
+
+  // get the JWT token out of it
+  // (obviously depends on how your store is structured)
+  const authToken = state.currentUser.token
+
+  // Pass the token to the server
+  return fetch('/user/thing', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  }).then(res => res.json())
+}
+```
+
+**Option 2: Pass the Value From a React Component**
+
+It\'s simple to get access to the store inside a React component – no need to pass the store as a prop or import it, just use the `connect()` function from React Redux, and supply a `mapStateToProps()` function that pulls out the data.
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+import * as api from 'api'
+
+const ItemList = ({ authToken, items }) => {
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          {item.name}
+          <button
+            onClick={
+              () => api.deleteItem(item, authToken)
+            }>
+            DELETE THIS ITEM
+          </button>
+        </li>
+      )}
+    </ul>
+  )
+}
+
+const mapStateToProps = state => ({
+  authToken: state.currentUser && state.currentUser.authToken,
+  items: state.items
+})
+
+export connect(mapStateToProps)(ItemList)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Should all component states be kept in Redux Store
+
+There is no "right" answer for this. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as "is this dropdown currently open", inside a component\'s internal state.
+
+Some common rules for determining what kind of data should be put into Redux:
+
+* Do other parts of the application needs data to be shared.
+* Is the same data being used to drive multiple components.
+* Do you want to cache the data.
+* Do you want to keep this data consistent while hot-reloading UI components.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to use connect from React Redux?
+
+The `connect()` function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
+
+It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
+
+* **Use `mapStateToProps()`**: It maps the state variables from your store to the props that you specify.
+* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container. 
+
+**Example:**
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+
+class App extends React.Component {
+  render() {
+    return <div>{this.props.containerData}</div>
+  }
+}
+
+function mapStateToProps(state) {
+  return { containerData: state.data }
+}
+
+export default connect(mapStateToProps)(App)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 5. REDUX ACTIONS
+
+## Q. What is an action in Redux?
+
+**Actions** are plain JavaScript objects or **payloads** of information that send data from your application to your store. They are the only source of information for the store. Actions must have a type property that indicates the type of action being performed.
+
+An action is an object that contains two keys and their values. The state update that happens in the reducer is always dependent on the value of action.type.
+
+**Example:**
+
+```js
+const action = {
+  type: 'NEW_CONTACT',
+  name: 'Alex K',
+  location: 'Lagos Nigeria',
+  email: 'alex@example.com'
+}
+```
+
+There is typically a payload value that contains what the user is sending and would be used to update the state of the application. It is important to note that action.type is required, but action.payload is optional. Making use of payload brings a level of structure to how the action object looks like.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to create action creators react with redux?
+
+**Action Type**
+
+An action type is a string that simply describes the type of an action. They\'re commonly stored as constants or collected in enumerations to help reduce typos.
+
+**Example:**
+
+```js
+export const Actions = {
+  GET_USER_DETAILS_REQUEST: 'GET_USER_DETAILS_REQUEST',
+  GET_USER_DETAILS_SUCCESS: 'GET_USER_DETAILS_SUCCESS',
+  GET_USER_DETAILS_FAILURE: 'GET_USER_DETAILS_FAILURE',
+  ...
+}
+```
+
+**Action**
+
+An action is like a message that we send (i.e. dispatch) to our central Redux store. It can literally be anything. But ideally we want to stick to an agreed-upon pattern. And the standard pattern is as follows (this is a TypeScript type declaration):
+
+```ts
+type Action = {
+    type: string;    // Actions MUST have a type
+    payload?: any;   // Actions MAY have a payload
+    meta?: any;      // Actions MAY have meta information
+    error?: boolean; // Actions MAY have an error field
+                     // when true, payload SHOULD contain an Error
+}
+```
+
+An action to fetch the user named "Alex" might look something like this
+
+```js
+{
+    type: 'GET_USER_DETAILS_REQUEST',
+    payload: 'Alex'
+}
+```
+
+**Action Creator**
+
+```js
+export const getUserDetailsRequest = id => ({
+  type: Actions.GET_USER_DETAILS_REQUEST,
+  payload: id,
+})
+```
+
+When writing basic Redux, an action creator simply returns an action. You would typically dispatch the action to your store immediately.
+
+```js
+store.dispatch(getUserDetailsRequest('Alex'))
+```
+
+Although, realistically, you\'ll be doing this via dispatch properties that are passed into a React component like this:
+
+```js
+// ES6
+export const mapDispatchToProps = dispatch => ({
+  onClick: () => dispatch(getUserDetailsRequest('Alex'))
+})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 6. REDUX REDUCERS
+
+<br/>
+
+## Q. What is reducers in redux?
+
+Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
+
+It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
+
+```js
+const LoginComponent = (state = initialState, action) => {
+    switch (action.type) {
+
+      // This reducer handles any action with type "LOGIN"
+      case "LOGIN":
+          return state.map(user => {
+              if (user.username !== action.username) {
+                  return user
+              }
+
+              if (user.password == action.password) {
+                  return {
+                      ...user,
+                      login_status: "LOGGED IN"
+                  }
+              }
+          });
+      default:
+          return state;
+      }
+}
 ```
 
 <div align="right">
@@ -13521,190 +13759,195 @@ With reducer level code-splitting, reducers can be code split on a split compone
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to create action creators react with redux?
+## # 7. REDUX MIDDLEWARE
 
-**Action Type**
+<br/>
 
-An action type is a string that simply describes the type of an action. They\'re commonly stored as constants or collected in enumerations to help reduce typos.
+## Q. What is Redux Thunk used for?
+
+Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
+
+**Setup**
+
+```bash
+# install create react app
+npm install -g create-react-app
+
+# Create a React App
+create-react-app my-simple-async-app
+
+# Switch directory
+cd my-simple-app
+
+# install Redux-Thunk
+npm install --save redux react-redux redux-thunk
+```
 
 **Example:**
 
-```js
-export const Actions = {
-  GET_USER_DETAILS_REQUEST: 'GET_USER_DETAILS_REQUEST',
-  GET_USER_DETAILS_SUCCESS: 'GET_USER_DETAILS_SUCCESS',
-  GET_USER_DETAILS_FAILURE: 'GET_USER_DETAILS_FAILURE',
-  ...
-}
-```
+We are going to use Redux Thunk to asynchronously fetch the most recently updated repos by username from Github using this REST URL:
 
-**Action**
-
-An action is like a message that we send (i.e. dispatch) to our central Redux store. It can literally be anything. But ideally we want to stick to an agreed-upon pattern. And the standard pattern is as follows (this is a TypeScript type declaration):
-
-```ts
-type Action = {
-    type: string;    // Actions MUST have a type
-    payload?: any;   // Actions MAY have a payload
-    meta?: any;      // Actions MAY have meta information
-    error?: boolean; // Actions MAY have an error field
-                     // when true, payload SHOULD contain an Error
-}
-```
-
-An action to fetch the user named "Alex" might look something like this
+https://api.github.com/users/learning-zone/repos?sort=updated
 
 ```js
-{
-    type: 'GET_USER_DETAILS_REQUEST',
-    payload: 'Alex'
-}
-```
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 
-**Action Creator**
+import thunk from 'redux-thunk'
 
-```js
-export const getUserDetailsRequest = id => ({
-  type: Actions.GET_USER_DETAILS_REQUEST,
-  payload: id,
+// actions.js
+export const addRepos = repos => ({
+  type: 'ADD_REPOS',
+  repos,
 })
+
+export const clearRepos = () => ({ type: 'CLEAR_REPOS' })
+
+export const getRepos = username => async dispatch => {
+  try {
+    const url = `https://api.github.com/users/${username}/repos?sort=updated`
+    const response = await fetch(url)
+    const responseBody = await response.json()
+    dispatch(addRepos(responseBody))
+  } catch (error) {
+    console.error(error)
+    dispatch(clearRepos())
+  }
+}
+
+// reducers.js
+export const repos = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_REPOS':
+      return action.repos
+    case 'CLEAR_REPOS':
+      return []
+    default:
+      return state
+  }
+}
+
+export const reducers = combineReducers({ repos })
+
+// store.js
+export function configureStore(initialState = {}) {
+  const store = createStore(reducers, initialState, applyMiddleware(thunk))
+  return store
+}
+
+export const store = configureStore()
 ```
 
-When writing basic Redux, an action creator simply returns an action. You would typically dispatch the action to your store immediately.
+`applyMiddleware(thunk)`: This tells redux to accept and execute functions as return values. Redux usually only accepts objects like { type: 'ADD_THINGS', things: ['list', 'of', 'things'] }.
+
+The middleware checks if the action\'s return value is a function and if it is it will execute the function and inject a callback function named dispatch. This way you can start an asynchronous task and then use the dispatch callback to return a regular redux object action some time in the future.
 
 ```js
-store.dispatch(getUserDetailsRequest('Alex'))
+// This is your typical redux sync action
+function syncAction(listOfThings) {
+  return { type: 'ADD_THINGS', things: listOfThings  }
+}
+
+// This would be the async version
+// where we may need to go fetch the
+// list of things from a server before
+// adding them via the sync action
+function asyncAction() {
+  return function(dispatch) {
+    setTimeout(function() {
+      dispatch(syncAction(['list', 'of', 'things']))
+    }, 1000)
+  }
+}
 ```
 
-Although, realistically, you\'ll be doing this via dispatch properties that are passed into a React component like this:
+**App.js**
 
 ```js
-// ES6
-export const mapDispatchToProps = dispatch => ({
-  onClick: () => dispatch(getUserDetailsRequest('Alex'))
-})
+import React, { Component } from 'react'
+
+import { connect } from 'react-redux'
+
+import { getRepos } from './redux'
+
+// App.js
+export class App extends Component {
+  state = { username: 'learning-zone' }
+
+  componentDidMount() {
+    this.updateRepoList(this.state.username)
+  }
+
+  updateRepoList = username => this.props.getRepos(username)
+
+  render() {
+    return (
+      <div>
+        <h1>I AM AN ASYNC APP!!!</h1>
+
+        <strong>Github username: </strong>
+        <input
+          type="text"
+          value={this.state.username}
+          onChange={ev => this.setState({ username: ev.target.value })}
+          placeholder="Github username..."
+        />
+        <button onClick={() => this.updateRepoList(this.state.username)}>
+          Get Lastest Repos
+        </button>
+
+        <ul>
+          {this.props.repos.map((repo, index) => (
+            <li key={index}>
+              <a href={repo.html_url} target="_blank">
+                {repo.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    )
+  }
+}
+
+// AppContainer.js
+const mapStateToProps = (state, ownProps) => ({ repos: state.repos })
+const mapDispatchToProps = { getRepos }
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default AppContainer
+```
+
+**index.js**
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppContainer from './App'
+import './index.css'
+
+// Add these imports - Step 1
+import { Provider } from 'react-redux'
+import { store } from './redux'
+
+// Wrap existing app in Provider - Step 2
+ReactDOM.render(
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
+  document.getElementById('root')
+)
 ```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to set the dataflow using react with redux?
+## Q. What are typical middleware choices for handling asynchronous calls in Redux?
 
-<p align="center">
-  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="400px" />
-</p>
+By default, Redux\'s actions are dispatched synchronously, which is a problem for any non-trivial app that needs to communicate with an external API or perform side effects. Redux also allows for middleware that sits between an action being dispatched and the action reaching the reducers.
 
-Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
-
-Redux has five main entities. Action Creators, Dispatching Function, Reducers, State and Store.
-
-* An action is dispatched when a user interacts with the application.
-* The root reducer function is called with the current state and the dispatched action. The root reducer may divide the task among smaller reducer functions, which ultimately returns a new state.
-* The store notifies the view by executing their callback functions.
-* The view can retrieve updated state and re-render again.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the three principles that Redux follows?
-
-Redux can be described in three fundamental principles:
-
-**1. Single source of truth**
-
-> The state of your whole application is stored in an object tree inside a single store.
-
-This makes it easy to create universal apps, as the state from your server can be serialized and hydrated into the client with no extra coding effort. A single state tree also makes it easier to debug or inspect an application; it also enables you to persist your app\'s state in development, for a faster development cycle.
-
-**Example:**
-
-```js
-console.log(store.getState())
-
-/* Prints
-{
-  visibilityFilter: 'SHOW_ALL',
-  todos: [
-    {
-      text: 'Consider using Redux',
-      completed: true,
-    },
-    {
-      text: 'Keep all state in a single tree',
-      completed: false
-    }
-  ]
-}
-*/
-```
-
-**2. State is read-only**
-
-> The only way to change the state is to emit an action, an object describing what happened.
-
-This ensures that neither the views nor the network callbacks will ever write directly to the state. Instead, they express an intent to transform the state. Because all changes are centralized and happen one by one in a strict order, there are no subtle race conditions to watch out for.
-
-**Example:**
-
-```js
-store.dispatch({
-  type: 'COMPLETE_TODO',
-  index: 1
-})
-
-store.dispatch({
-  type: 'SET_VISIBILITY_FILTER',
-  filter: 'SHOW_COMPLETED'
-})
-```
-
-**3. Changes are made with pure functions**
-
-> To specify how the state tree is transformed by actions, you write pure reducers.
-
-Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state. You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree.
-
-```js
-import { combineReducers, createStore } from 'redux'
-
-function visibilityFilter(state = 'SHOW_ALL', action) {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter
-    default:
-      return state
-  }
-}
-
-function todos(state = [], action) {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          text: action.text,
-          completed: false
-        }
-      ]
-    case 'COMPLETE_TODO':
-      return state.map((todo, index) => {
-        if (index === action.index) {
-          return Object.assign({}, todo, {
-            completed: true
-          })
-        }
-        return todo
-      })
-    default:
-      return state
-  }
-}
-
-const reducer = combineReducers({ visibilityFilter, todos })
-const store = createStore(reducer)
-```
+There are three very popular middleware libraries that allow for side effects and asynchronous actions: `Redux Thunk` `Redux Saga` and `Redux Promise`.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -13715,6 +13958,444 @@ const store = createStore(reducer)
 Any meaningful web app needs to execute complex logic, usually including asynchronous work such as making AJAX requests. That code is no longer purely a function of its inputs, and the interactions with the outside world are known as "side effects".
 
 Redux is inspired by functional programming, and out of the box, has no place for side effects to be executed. In particular, reducer functions must always be pure functions of `(state, action) => newState`. However, Redux\'s middleware (eg. **Redux Thunk**, **Redux Saga**) makes it possible to intercept dispatched actions and add additional complex behavior around them, including side effects.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Are there any similarities between Redux and RxJS?
+
+**Redux**:
+
+Predictable state container for JavaScript apps. Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger. However, Redux has one, but very significant problem - it doesn\'t handle asynchronous operations very well by itself.
+
+**RxJS**
+
+The Reactive Extensions for JavaScript. RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
+
+Redux belongs to "State Management Library" category of the tech stack, while RxJS can be primarily classified under "Concurrency Frameworks".
+
+| Redux                         | RxJS                               |
+|-------------------------------|------------------------------------|
+|Redux is a tool for managing state throughout the application.| RxJS is a reactive programming library|
+|It is usually used as an architecture for UIs. |It is usually used as a tool to accomplish asynchronous tasks in JavaScript.|
+|Redux uses the Reactive paradigm because the Store is reactive. The Store observes actions from a distance, and changes itself.|RxJS also uses the Reactive paradigm, but instead of being an architecture, it gives you basic building blocks, Observables, to accomplish this pattern.|
+
+**Example:** React, Redux and RxJS
+
+```js
+import React from 'react';  
+import ReactDOM from 'react-dom';  
+import { Subject } from 'rxjs/Subject';
+
+// create our stream as a subject so arbitrary data can be sent on the stream
+const action$ = new Subject();
+
+// Initial State
+const initState = { name: 'Alex' };
+
+// Redux reducer
+const reducer = (state, action) => {  
+  switch(action.type) {
+    case 'NAME_CHANGED':
+      return {
+        ...state,
+        name: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
+// Reduxification
+const store$ = action$  
+    .startWith(initState)
+    .scan(reducer);
+
+// Higher order function to send actions to the stream
+const actionDispatcher = (func) => (...args) =>  
+  action$.next(func(...args));
+
+// Example action function
+const changeName = actionDispatcher((payload) => ({  
+  type: 'NAME_CHANGED',
+  payload
+}));
+
+// React view component
+const App = (props) => {  
+  const { name } = props;
+  return (
+    <div>
+      <h1>{ name }</h1>
+      <button onClick={() => changeName('Alex')} >Alex</button>
+      <button onClick={() => changeName('John')} >John</button>
+    </div>
+  );
+}
+
+// subscribe and render the view
+const dom =  document.getElementById('app');  
+store$.subscribe((state) =>  
+    ReactDOM.render(<App {...state} />, dom));
+```
+
+**Async actions**
+
+Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, `flatMap()` to squash the results of the asynchronous operation back onto the `action$` stream.
+
+```js
+import { isObservable } from './utils';
+
+// Action creator
+const actionCreator = (func) => (...args) => {  
+  const action = func.call(null, ...args);
+  action$.next(action);
+  if (isObservable(action.payload))
+    action$.next(action.payload);
+  return action;
+};
+
+// method called from button click
+const loadUsers = actionCreator(() => {  
+  return {
+    type: 'USERS_LOADING',
+    payload: Observable.ajax('/api/users')
+      .map(({response}) => map(response, 'username'))
+      .map((users) => ({
+        type: 'USERS_LOADED',
+        payload: users
+      }))
+  };
+});
+
+// Reducer
+export default function reducer(state, action) {  
+  switch (action.type) {
+    case 'USERS_LOADING':
+      return {
+        ...state,
+        isLoading: true
+      };
+    case 'USERS_LOADED':
+      return {
+        ...state,
+        isLoading: false,
+        users: action.payload,
+      };
+    //...
+  }
+}
+
+// rest of code...
+
+// Wrap input to ensure we only have a stream of observables
+const ensureObservable = (action) =>  
+  isObservable(action)
+    ? action
+    : Observable.from([action]);
+
+// Using flatMap to squash async streams
+const action$  
+    .flatMap(wrapActionToObservable)
+    .startWith(initState)
+    .scan(reducer);
+```
+
+The advantage of swapping the action payload for a stream is so we can send data updates at the start and the end of the async operation
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the differences between redux-saga and redux-thunk?
+
+**Redux Thunk**
+
+Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
+
+<p align="center">
+  <img src="assets/redux-thunk.jpeg" alt="Redux Thunk" width="500px" />
+</p>
+
+```bash
+npm i --save react-redux redux redux-logger redux-saga redux-thunk
+```
+
+Thunk is a function which optionaly takes some parameters and returns another function, it takes dispatch and getState functions and both of these are supplied by Redux Thunk middleware.
+
+Here is the basic structure of Redux-thunk
+
+```js
+export const thunkName = parameters => (dispatch, getState) => {
+// You can write your application logic here
+}
+```
+
+**Example:**
+
+```js
+import axios from "axios"
+import GET_LIST_API_URL from "../config"
+
+const fetchList = () => {
+  return (dispatch) => {
+    axios.get(GET_LIST_API_URL)
+    .then((responseData) => {
+      dispatch(getList(responseData.list))
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+  }
+}
+
+const getList = (payload) => {
+  return {
+    type: "GET_LIST",
+    payload
+  }
+}
+
+export { fetchList }
+```
+
+**Redux Saga**
+
+Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
+
+<p align="center">
+  <img src="assets/redux-saga.png" alt="Redux Saga" width="500px" />
+</p>
+
+**Example:**
+
+```js
+import axios from "axios"
+import GET_LIST_API_URL from "../config"
+import {call, put} from "redux-saga/effects"
+
+const fetchList = () => {
+  return axios.get(GET_LIST_API_URL)
+}
+
+function *fetchList () {
+  try {
+    const responseData = yield call(getCharacters)
+    yield put({type: "GET_LIST", payload: responseData.list})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export { fetchList }
+```
+
+Both Redux Thunk and Redux Saga take care of dealing with side effects. In very simple terms, applied to the most common scenario (async functions, specifically AJAX calls) Thunk allows Promises" to deal with them, Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers, Saga/Generators are more powerful but you will need to learn them. When Promises are just good enough, so is Thunk, when you deal with more complex cases on a regular basis, Saga gives you better tools.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to make Ajax request in Redux?
+
+There are three most widely used and stable Redux Ajax middleware are:
+
+* Redux Promise Middleware
+* Redux Thunk Middleware
+* Redux Saga Middleware
+
+**1. Redux Promise Middleware**
+
+This is the most simple way of doing Ajax calls with Redux. When using Redux Promise, your action creator can return a Promise inside the Action.
+
+```js
+function getUserName(userId) {
+    return {
+        type: "SET_USERNAME",
+        payload: fetch(`/api/personalDetails/${userId}`)
+                .then(response => response.json())
+                .then(json =>  json.userName)
+    }
+}
+```
+
+This middleware automatically dispatches two events when the Ajax call succeeds: `SETUSERNAMEPENDING`  and `SETUSERNAMEFULFILLED`. If something fails it dispatches `SETUSERNAMEREJECTED`.
+
+**When to use**
+
+* You want the simplest thing with minimum overhead
+* You prefer convention over configuration
+* You have simple Ajax requirements
+
+**2. Redux Thunk Middleware**
+
+This is the standard way of doing Ajax with Redux. When using Redux Thunk, your action creators returns a function that takes one argument dispatch:
+
+```js
+function getUserName(userId) {
+    return dispatch => {
+        return fetch(`/api/personalDetails/${userId}`)
+        .then(response => response.json())
+        .then(json => dispatch({ type: "SET_USERNAME", userName: json.userName })
+    }
+}
+```
+
+The action creator can call dispatch inside `.then` to execute it asynchronously. The action creator can call dispatch as many time as it wants.
+
+**When to use**
+
+* You make many Ajax calls in one action, and need to dispatch many actions
+* You require full control of the format of your actions
+
+**3. Redux Saga Middleware**
+
+This is the most advanced way of doing Ajax with Redux. It uses an ES6 feature called `generators`. When using Redux Saga you do your Ajax calls in a saga instead of an action creator. This is how a saga looks like:
+
+```js
+import { call, put, takeEvery } from 'redux-saga/effects'
+
+// call getUserName when action SET_USERNAME is dispatched
+function* mySaga() {
+  yield takeEvery("SET_USERNAME", getUserName);
+}
+
+function* getUserName(action) {
+   try {
+      const user = yield call(fetch, `/api/personalDetails/${userId}`);
+      yield put({type: "SET_USERNAME_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put({type: "SET_USERNAME_FAILED", message: e.message});
+   }
+}
+
+export default mySaga
+```
+
+Here, sagas listen to actions which you dispatch as regular synchronous actions. In this case, the saga `getUserName` is executed when the action `SET_USERNAME` is dispatched. The `*` next to the function means it\'s a generator and yield is a generator keyword.
+
+**When to use**
+
+* You need to be able to test the asynchronous flow easily
+* You are comfortable working with ES6 Generators
+* You value pure functions
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What are the differences between call and put in redux-saga?
+
+Both `call()` and `put()` are effect creator functions. `call()` function is used to create effect description, which instructs middleware to call the promise. `put()` function creates an effect, which instructs middleware to dispatch an action to the store.
+
+Let\'s take example of how these effects work for fetching particular user data.
+
+```js
+function* fetchUserSaga(action) {
+  // `call` function accepts rest arguments, which will be passed to `api.fetchUser` function.
+  // Instructing middleware to call promise, it resolved value will be assigned to `userData` variable
+  const userData = yield call(api.fetchUser, action.userId)
+ 
+  // Instructing middleware to dispatch corresponding action.
+  yield put({
+    type: 'FETCH_USER_SUCCESS',
+    userData
+  })
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the mental model of redux-saga?
+
+Saga is like a separate thread in your application, that is solely responsible for side effects. `redux-saga` is a redux middleware, which means this thread can be **started**, **paused** and **cancelled** from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
+
+**Example:**
+
+```bash
+npm install --save redux-saga
+```
+
+Suppose we have a UI to fetch some user data from a remote server when a button is clicked.
+
+```js
+class UserComponent extends React.Component {
+  ...
+  onSomeButtonClicked() {
+    const { userId, dispatch } = this.props
+    dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId}})
+  }
+  ...
+}
+```
+
+The Component dispatches a plain Object action to the Store. We\'ll create a Saga that watches for all `USER_FETCH_REQUESTED` actions and triggers an API call to fetch the user data.
+
+```js
+// sagas.js
+
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import Api from '...'
+
+// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+function* fetchUser(action) {
+   try {
+      const user = yield call(Api.fetchUser, action.payload.userId);
+      yield put({type: "USER_FETCH_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put({type: "USER_FETCH_FAILED", message: e.message});
+   }
+}
+
+/*
+  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
+  Allows concurrent fetches of user.
+*/
+function* mySaga() {
+  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+}
+
+/*
+  Alternatively you may use takeLatest.
+
+  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
+  dispatched while a fetch is already pending, that pending fetch is cancelled
+  and only the latest one will be run.
+*/
+function* mySaga() {
+  yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+}
+
+export default mySaga;
+```
+
+To run our Saga, we\'ll have to connect it to the Redux Store using the `redux-saga` middleware.
+
+```js
+// main.js
+
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+
+import reducer from './reducers'
+import mySaga from './sagas'
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// mount it on the Store
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware)
+)
+
+// then run the saga
+sagaMiddleware.run(mySaga)
+
+// render the application
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -13780,100 +14461,6 @@ export default class MyApp extends React.Component {
 React state is stored locally within a component. When it needs to be shared with other components, it is passed down through props. In practice, this means that the top-most component in your app needing access to a mutable value will hold that value in its state. If it can be mutated by subcomponents, you must pass a callback to handle the change into subcomponents.
 
 When using Redux, state is stored globally in the Redux store. Any component that needs access to a value may subscribe to the store and gain access to that value. Typically, this is done using container components. This centralizes all data but makes it very easy for a component to get the state it needs, without surrounding components knowing of its needs.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the best way to access redux store outside a react component?
-
-To access redux store outside a react component, Redux `connect` function works great for regular React components.
-
-In the examples below shows how to access a JWT token from the Redux store.
-
-**Option 1: Export the Store**
-
-```js
-import { createStore } from 'redux'
-import reducer from './reducer'
-
-const store = createStore(reducer)
-
-export default store
-```
-
-Here, we are creating the store and exporting it. This will make it available to other files. Here we\'ll see an `api` file making a call where we need to pass a JWT token to the server:
-
-```js
-import store from './store'
-
-export function getProtectedThing() {
-  // grab current state
-  const state = store.getState()
-
-  // get the JWT token out of it
-  // (obviously depends on how your store is structured)
-  const authToken = state.currentUser.token
-
-  // Pass the token to the server
-  return fetch('/user/thing', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${authToken}`
-    }
-  }).then(res => res.json())
-}
-```
-
-**Option 2: Pass the Value From a React Component**
-
-It\'s simple to get access to the store inside a React component – no need to pass the store as a prop or import it, just use the `connect()` function from React Redux, and supply a `mapStateToProps()` function that pulls out the data.
-
-```js
-import React from 'react'
-import { connect } from 'react-redux'
-import * as api from 'api'
-
-const ItemList = ({ authToken, items }) => {
-  return (
-    <ul>
-      {items.map(item => (
-        <li key={item.id}>
-          {item.name}
-          <button
-            onClick={
-              () => api.deleteItem(item, authToken)
-            }>
-            DELETE THIS ITEM
-          </button>
-        </li>
-      )}
-    </ul>
-  )
-}
-
-const mapStateToProps = state => ({
-  authToken: state.currentUser && state.currentUser.authToken,
-  items: state.items
-})
-
-export connect(mapStateToProps)(ItemList)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Should all component states be kept in Redux Store
-
-There is no "right" answer for this. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as "is this dropdown currently open", inside a component\'s internal state.
-
-Some common rules for determining what kind of data should be put into Redux:
-
-* Do other parts of the application needs data to be shared.
-* Is the same data being used to drive multiple components.
-* Do you want to cache the data.
-* Do you want to keep this data consistent while hot-reloading UI components.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -14093,151 +14680,6 @@ In general, `preloadedState` wins over the state specified by the `reducer`. Thi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Are there any similarities between Redux and RxJS?
-
-**Redux**:
-
-Predictable state container for JavaScript apps. Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger. However, Redux has one, but very significant problem - it doesn\'t handle asynchronous operations very well by itself.
-
-**RxJS**
-
-The Reactive Extensions for JavaScript. RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
-
-Redux belongs to "State Management Library" category of the tech stack, while RxJS can be primarily classified under "Concurrency Frameworks".
-
-| Redux                         | RxJS                               |
-|-------------------------------|------------------------------------|
-|Redux is a tool for managing state throughout the application.| RxJS is a reactive programming library|
-|It is usually used as an architecture for UIs. |It is usually used as a tool to accomplish asynchronous tasks in JavaScript.|
-|Redux uses the Reactive paradigm because the Store is reactive. The Store observes actions from a distance, and changes itself.|RxJS also uses the Reactive paradigm, but instead of being an architecture, it gives you basic building blocks, Observables, to accomplish this pattern.|
-
-**Example:** React, Redux and RxJS
-
-```js
-import React from 'react';  
-import ReactDOM from 'react-dom';  
-import { Subject } from 'rxjs/Subject';
-
-// create our stream as a subject so arbitrary data can be sent on the stream
-const action$ = new Subject();
-
-// Initial State
-const initState = { name: 'Alex' };
-
-// Redux reducer
-const reducer = (state, action) => {  
-  switch(action.type) {
-    case 'NAME_CHANGED':
-      return {
-        ...state,
-        name: action.payload
-      };
-    default:
-      return state;
-  }
-}
-
-// Reduxification
-const store$ = action$  
-    .startWith(initState)
-    .scan(reducer);
-
-// Higher order function to send actions to the stream
-const actionDispatcher = (func) => (...args) =>  
-  action$.next(func(...args));
-
-// Example action function
-const changeName = actionDispatcher((payload) => ({  
-  type: 'NAME_CHANGED',
-  payload
-}));
-
-// React view component
-const App = (props) => {  
-  const { name } = props;
-  return (
-    <div>
-      <h1>{ name }</h1>
-      <button onClick={() => changeName('Alex')} >Alex</button>
-      <button onClick={() => changeName('John')} >John</button>
-    </div>
-  );
-}
-
-// subscribe and render the view
-const dom =  document.getElementById('app');  
-store$.subscribe((state) =>  
-    ReactDOM.render(<App {...state} />, dom));
-```
-
-**Async actions**
-
-Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, `flatMap()` to squash the results of the asynchronous operation back onto the `action$` stream.
-
-```js
-import { isObservable } from './utils';
-
-// Action creator
-const actionCreator = (func) => (...args) => {  
-  const action = func.call(null, ...args);
-  action$.next(action);
-  if (isObservable(action.payload))
-    action$.next(action.payload);
-  return action;
-};
-
-// method called from button click
-const loadUsers = actionCreator(() => {  
-  return {
-    type: 'USERS_LOADING',
-    payload: Observable.ajax('/api/users')
-      .map(({response}) => map(response, 'username'))
-      .map((users) => ({
-        type: 'USERS_LOADED',
-        payload: users
-      }))
-  };
-});
-
-// Reducer
-export default function reducer(state, action) {  
-  switch (action.type) {
-    case 'USERS_LOADING':
-      return {
-        ...state,
-        isLoading: true
-      };
-    case 'USERS_LOADED':
-      return {
-        ...state,
-        isLoading: false,
-        users: action.payload,
-      };
-    //...
-  }
-}
-
-// rest of code...
-
-// Wrap input to ensure we only have a stream of observables
-const ensureObservable = (action) =>  
-  isObservable(action)
-    ? action
-    : Observable.from([action]);
-
-// Using flatMap to squash async streams
-const action$  
-    .flatMap(wrapActionToObservable)
-    .startWith(initState)
-    .scan(reducer);
-```
-
-The advantage of swapping the action payload for a stream is so we can send data updates at the start and the end of the async operation
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is the purpose of the constants in Redux?
 
 * It helps keep the naming consistent because all action types are gathered in a single place.
@@ -14297,38 +14739,6 @@ It allows to easily find all usages of that constant across the project. It also
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to use connect from React Redux?
-
-The `connect()` function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
-
-It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
-
-* **Use `mapStateToProps()`**: It maps the state variables from your store to the props that you specify.
-* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container. 
-
-**Example:**
-
-```js
-import React from 'react'
-import { connect } from 'react-redux'
-
-class App extends React.Component {
-  render() {
-    return <div>{this.props.containerData}</div>
-  }
-}
-
-function mapStateToProps(state) {
-  return { containerData: state.data }
-}
-
-export default connect(mapStateToProps)(App)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. What is the difference between React context and React Redux?
 
 **React Context:**
@@ -14354,96 +14764,6 @@ Context API is easy to is use as it has a short learning curve. It requires less
 **2.) Rendering**
 
 Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components. 
-
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the differences between redux-saga and redux-thunk?
-
-**Redux Thunk**
-
-Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed.
-
-<p align="center">
-  <img src="assets/redux-thunk.jpeg" alt="Redux Thunk" width="500px" />
-</p>
-
-```bash
-npm i --save react-redux redux redux-logger redux-saga redux-thunk
-```
-
-Thunk is a function which optionaly takes some parameters and returns another function, it takes dispatch and getState functions and both of these are supplied by Redux Thunk middleware.
-
-Here is the basic structure of Redux-thunk
-
-```js
-export const thunkName = parameters => (dispatch, getState) => {
-// You can write your application logic here
-}
-```
-
-**Example:**
-
-```js
-import axios from "axios"
-import GET_LIST_API_URL from "../config"
-
-const fetchList = () => {
-  return (dispatch) => {
-    axios.get(GET_LIST_API_URL)
-    .then((responseData) => {
-      dispatch(getList(responseData.list))
-    })
-    .catch((error) => {
-      console.log(error.message)
-    })
-  }
-}
-
-const getList = (payload) => {
-  return {
-    type: "GET_LIST",
-    payload
-  }
-}
-
-export { fetchList }
-```
-
-**Redux Saga**
-
-Redux Saga leverages an `ES6` feature called `Generators`, allowing us to write asynchronous code that looks synchronous, and is very easy to test. In the saga, we can test our asynchronous flows easily and our actions stay pure. It organized complicated asynchronous actions easily and make then very readable and the saga has many useful tools to deal with asynchronous actions.
-
-<p align="center">
-  <img src="assets/redux-saga.png" alt="Redux Saga" width="500px" />
-</p>
-
-**Example:**
-
-```js
-import axios from "axios"
-import GET_LIST_API_URL from "../config"
-import {call, put} from "redux-saga/effects"
-
-const fetchList = () => {
-  return axios.get(GET_LIST_API_URL)
-}
-
-function *fetchList () {
-  try {
-    const responseData = yield call(getCharacters)
-    yield put({type: "GET_LIST", payload: responseData.list})
-  } catch (error) {
-    console.log(error.message)
-  }
-}
-
-export { fetchList }
-```
-
-Both Redux Thunk and Redux Saga take care of dealing with side effects. In very simple terms, applied to the most common scenario (async functions, specifically AJAX calls) Thunk allows Promises" to deal with them, Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers, Saga/Generators are more powerful but you will need to learn them. When Promises are just good enough, so is Thunk, when you deal with more complex cases on a regular basis, Saga gives you better tools.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -14611,240 +14931,6 @@ export default rootReducer
 Redux state functions called a reducer because it\'s the type of function we pass to `Array.prototype.reduce(reducer, ?initialValue)`. Reducers do not just return default values. They always return the accumulation of the state (based on all previous and current actions).
 
 Therefore, they act as a reducer of state. Each time a redux reducer is called, the state is passed in with the action `(state, action)`. This state is then reduced (or accumulated) based on the action, and then the next state is returned. This is one cycle of the classic `fold` or `reduce` function.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to make Ajax request in Redux?
-
-There are three most widely used and stable Redux Ajax middleware are:
-
-* Redux Promise Middleware
-* Redux Thunk Middleware
-* Redux Saga Middleware
-
-**1. Redux Promise Middleware**
-
-This is the most simple way of doing Ajax calls with Redux. When using Redux Promise, your action creator can return a Promise inside the Action.
-
-```js
-function getUserName(userId) {
-    return {
-        type: "SET_USERNAME",
-        payload: fetch(`/api/personalDetails/${userId}`)
-                .then(response => response.json())
-                .then(json =>  json.userName)
-    }
-}
-```
-
-This middleware automatically dispatches two events when the Ajax call succeeds: `SETUSERNAMEPENDING`  and `SETUSERNAMEFULFILLED`. If something fails it dispatches `SETUSERNAMEREJECTED`.
-
-**When to use**
-
-* You want the simplest thing with minimum overhead
-* You prefer convention over configuration
-* You have simple Ajax requirements
-
-**2. Redux Thunk Middleware**
-
-This is the standard way of doing Ajax with Redux. When using Redux Thunk, your action creators returns a function that takes one argument dispatch:
-
-```js
-function getUserName(userId) {
-    return dispatch => {
-        return fetch(`/api/personalDetails/${userId}`)
-        .then(response => response.json())
-        .then(json => dispatch({ type: "SET_USERNAME", userName: json.userName })
-    }
-}
-```
-
-The action creator can call dispatch inside `.then` to execute it asynchronously. The action creator can call dispatch as many time as it wants.
-
-**When to use**
-
-* You make many Ajax calls in one action, and need to dispatch many actions
-* You require full control of the format of your actions
-
-**3. Redux Saga Middleware**
-
-This is the most advanced way of doing Ajax with Redux. It uses an ES6 feature called `generators`. When using Redux Saga you do your Ajax calls in a saga instead of an action creator. This is how a saga looks like:
-
-```js
-import { call, put, takeEvery } from 'redux-saga/effects'
-
-// call getUserName when action SET_USERNAME is dispatched
-function* mySaga() {
-  yield takeEvery("SET_USERNAME", getUserName);
-}
-
-function* getUserName(action) {
-   try {
-      const user = yield call(fetch, `/api/personalDetails/${userId}`);
-      yield put({type: "SET_USERNAME_SUCCEEDED", user: user});
-   } catch (e) {
-      yield put({type: "SET_USERNAME_FAILED", message: e.message});
-   }
-}
-
-export default mySaga
-```
-
-Here, sagas listen to actions which you dispatch as regular synchronous actions. In this case, the saga `getUserName` is executed when the action `SET_USERNAME` is dispatched. The `*` next to the function means it\'s a generator and yield is a generator keyword.
-
-**When to use**
-
-* You need to be able to test the asynchronous flow easily
-* You are comfortable working with ES6 Generators
-* You value pure functions
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What are the differences between call and put in redux-saga?
-
-Both `call()` and `put()` are effect creator functions. `call()` function is used to create effect description, which instructs middleware to call the promise. `put()` function creates an effect, which instructs middleware to dispatch an action to the store.
-
-Let\'s take example of how these effects work for fetching particular user data.
-
-```js
-function* fetchUserSaga(action) {
-  // `call` function accepts rest arguments, which will be passed to `api.fetchUser` function.
-  // Instructing middleware to call promise, it resolved value will be assigned to `userData` variable
-  const userData = yield call(api.fetchUser, action.userId)
- 
-  // Instructing middleware to dispatch corresponding action.
-  yield put({
-    type: 'FETCH_USER_SUCCESS',
-    userData
-  })
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. What is the mental model of redux-saga?
-
-Saga is like a separate thread in your application, that is solely responsible for side effects. `redux-saga` is a redux middleware, which means this thread can be **started**, **paused** and **cancelled** from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
-
-**Example:**
-
-```bash
-npm install --save redux-saga
-```
-
-Suppose we have a UI to fetch some user data from a remote server when a button is clicked.
-
-```js
-class UserComponent extends React.Component {
-  ...
-  onSomeButtonClicked() {
-    const { userId, dispatch } = this.props
-    dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId}})
-  }
-  ...
-}
-```
-
-The Component dispatches a plain Object action to the Store. We\'ll create a Saga that watches for all `USER_FETCH_REQUESTED` actions and triggers an API call to fetch the user data.
-
-```js
-// sagas.js
-
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import Api from '...'
-
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchUser(action) {
-   try {
-      const user = yield call(Api.fetchUser, action.payload.userId);
-      yield put({type: "USER_FETCH_SUCCEEDED", user: user});
-   } catch (e) {
-      yield put({type: "USER_FETCH_FAILED", message: e.message});
-   }
-}
-
-/*
-  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-  Allows concurrent fetches of user.
-*/
-function* mySaga() {
-  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
-}
-
-/*
-  Alternatively you may use takeLatest.
-
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
-function* mySaga() {
-  yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
-}
-
-export default mySaga;
-```
-
-To run our Saga, we\'ll have to connect it to the Redux Store using the `redux-saga` middleware.
-
-```js
-// main.js
-
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-
-import reducer from './reducers'
-import mySaga from './sagas'
-
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware()
-// mount it on the Store
-const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware)
-)
-
-// then run the saga
-sagaMiddleware.run(mySaga)
-
-// render the application
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How to dispatch an action on load?
-
-You can dispatch an action in `componentDidMount()` method and in `render()` method you can verify the data.
-
-```js
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchData()
-  }
-
-  render() {
-    return this.props.isLoaded
-      ? <div>{'Loaded'}</div>
-      : <div>{'Not Loaded'}</div>
-  }
-}
-
-const mapStateToProps = (state) => ({
-  isLoaded: state.isLoaded
-})
-
-const mapDispatchToProps = { fetchData }
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
