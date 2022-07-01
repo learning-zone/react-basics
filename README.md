@@ -445,24 +445,30 @@ React DOM escapes any values embedded in JSX before rendering them. Thus it ensu
 For example, you can embed user input as below,
 
 ```js
-class JSXInjectionExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userContent: `JSX prevents Injection Attacks Example 
-            <script src="http://example.com/malicious-script.js><\/script>`
-        };
-    }
-    
-    render() {
-        return <div>User content: {this.state.userContent}</div>;
-    }
+export default class JSXInjectionExample extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      userContent: `JSX prevents Injection Attacks Example 
+          <script src="http://example.com/malicious-script.js></script>`
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        User content: <b>{this.state.userContent}</b>
+      </div>
+    );
+  }
 }
 
-ReactDOM.render(<JSXInjectionExample/>, document.getElementById("root"));
+// Output
+User content: JSX prevents Injection Attacks Example <script src="http://example.com/malicious-script.js></script>
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrOOY?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsxinjection-ckmu8z?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
