@@ -708,7 +708,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
 ## Q. How to use InnerHtml in React?
 
-The **innerHTML** is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides **dangerouslySetInnerHTML** as a replacement for innerHTML. It allows to set HTML directly from React by using dangerouslySetInnerHTML and passing an object with a **__html** key that holds HTML.
+The **innerHTML** is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides **dangerouslySetInnerHTML** as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
 
 **Example:**
 
