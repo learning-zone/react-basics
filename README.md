@@ -423,22 +423,16 @@ const hello = React.createElement {
 **Example:**
 
 ```js
-import React from 'react'
-
-class App extends React.Component {
-
-   render() {
-      return (
-         <div>
-            Hello World!
-         </div>
-      )
-   }
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Hello World!</h1>
+    </div>
+  );
 }
-export default App
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-zjmxvb?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
