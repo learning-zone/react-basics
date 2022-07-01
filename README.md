@@ -938,8 +938,6 @@ const element = <h1>React Element Example!</h1>;
 ReactDOM.render(element, document.getElementById('app'));
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/poPrJLb?editors=1010)**
-
 **2. React Component:**
 
 It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
@@ -950,8 +948,6 @@ function Message() {
 }
 ReactDOM.render(<Message />, document.getElementById('app'));
 ```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/dyWzoqg?editors=0010)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
