@@ -486,61 +486,6 @@ The React 17 release provides support for a new version of the JSX transform. Th
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How does new JSX transform different from old transform?
-
-Browsers don\'t understand JSX, so most React users rely on a compiler like **Babel** or **TypeScript** to transform JSX code into regular JavaScript. Normally when we us JSX, the compiler transforms it into React function calls that the browser can understand.
-
-Let\'s take an example to look at the main differences between the old and the new transform,
-
-**Old Transform**
-
-```js
-import React from 'react';
-
-function App() {
-  return <h1>Hello World</h1>;
-}
-```
-
-Under the hood, the old JSX transform would turn the JSX into regular JavaScript:
-
-```js
-import React from 'react';
-
-function App() {
-  return React.createElement('h1', null, 'Hello world');
-}
-```
-
-Because JSX was compiled into `React.createElement()`, React needed to be in scope if you used JSX. Hence, the reason react is being imported everywhere you use JSX. Also, there are some performance improvements and simplifications that that are not allowed by `React.createElement()`.
-
-**New Transform:**
-
-The new JSX transform doesn\'t require any React imports
-
-```js
-import React from 'react';
-
-function App() {
-  return <h1>Hello World</h1>;
-}
-```
-
-The new Jsx transform would compile it to:
-
-```js
-// The import would be Inserted by the compiler (don't import it yourself)
-import {jsx as _jsx} from 'react/jsx-runtime';
-
-function App() {
-  return _jsx('h1', { children: 'Hello world' });
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. Is it possible to use React without rendering HTML?
 
 It is possible with latest version (>=16.2). Below are the possible options:
