@@ -402,6 +402,24 @@ JSX ( **JavaScript Expression** ) allows us to write HTML elements in JavaScript
 * It is also type-safe and most of the errors can be caught during compilation.
 * It makes it easier and faster to write templates.
 
+When JSX compiled, they actually become regular JavaScript objects. For instance, the code below:
+
+```js
+const hello = <h1 className = "greet"> Hello World </h1>
+```
+
+will be compiled to
+
+```js
+const hello = React.createElement {
+    type: "h1",
+    props: {
+      className: "greet",  
+      children: "Hello World"
+    }
+}
+```
+
 **Example:**
 
 ```js
@@ -421,28 +439,6 @@ export default App
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyZJy?editors=0010)**
-
-**JSX is a JavaScript Expression:**
-
-JSX expressions are JavaScript expressions too. When compiled, they actually become regular JavaScript objects. For instance, the code below:
-
-```js
-const hello = <h1 className = "greet"> Hello World </h1>
-```
-
-will be compiled to
-
-```js
-const hello = React.createElement {
-    type: "h1",
-    props: {
-      className: "greet",  
-      children: "Hello World"
-    }
-}
-```
-
-Since they are compiled to objects, JSX can be used wherever a regular JavaScript expression can be used.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
