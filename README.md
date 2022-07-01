@@ -1068,20 +1068,20 @@ ReactDOM.render(
 
 ## Q. What is the recommended ordering of methods in class component?
 
-* `static` methods
-* `constructor()`
-* `getChildContext()`
-* `componentWillMount()`
-* `componentDidMount()`
-* `componentWillReceiveProps()`
-* `shouldComponentUpdate()`
-* `componentWillUpdate()`
-* `componentDidUpdate()`
-* `componentWillUnmount()`
+* static methods
+* constructor()
+* getChildContext()
+* componentWillMount()
+* componentDidMount()
+* componentWillReceiveProps()
+* shouldComponentUpdate()
+* componentWillUpdate()
+* componentDidUpdate()
+* componentWillUnmount()
 * click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
 * getter methods for render like `getSelectReason()` or `getFooterContent()`
 * optional render methods like `renderNavigation()` or `renderProfilePicture()`
-* `render()`
+* render()
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
