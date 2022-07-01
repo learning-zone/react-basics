@@ -890,9 +890,9 @@ By using default you express that\'s going to be member in that module which wou
 It is a programming paradigm that uses statements that change a program\'s state.
 
 ```js
-var string = "Hi there , I'm a web developer";
-var removeSpace = "";
-for (var i = 0; i < i.string.length; i++) {
+const string = "Hi there , I'm a web developer";
+let removeSpace = "";
+for (let i = 0; i < i.string.length; i++) {
   if (string[i] === " ") removeSpace += "-";
   else removeSpace += string[i]; 
 }
