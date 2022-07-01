@@ -613,7 +613,7 @@ A JSX expression must have only one outer element. For Example:
 const headings = (
     <div id = "outermost-element">
        <h1>I am a heading </h1>
-       <h2>I am also a heading</h1>
+       <h2>I am also a heading</h2>
     </div>
 )
 ```
