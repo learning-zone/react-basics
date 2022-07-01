@@ -957,7 +957,7 @@ ReactDOM.render(<Message />, document.getElementById('app'));
 
 Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false. In React, it allows us to render different elements or components based on a condition.
 
-**Element Variables:**
+**1. Element Variables:**
 
 You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
 
@@ -977,7 +977,7 @@ ReactDOM.render(
 );
 ```
 
-**Inline If-Else with Conditional Operator:**
+**2. Inline If-Else with Conditional Operator:**
 
 ```js
 render() {
@@ -993,7 +993,7 @@ render() {
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/KKmXqEX?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-conditional-render-xjvr10?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
