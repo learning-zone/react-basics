@@ -211,10 +211,6 @@ Below are the list of some of the features provided by create react app.
 * A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
 * An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
 
-**Read More:**
-
-* *[https://create-react-app.dev/docs/getting-started](https://create-react-app.dev/docs/getting-started)*
-
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
