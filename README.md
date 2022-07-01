@@ -921,7 +921,7 @@ document.getElementById('root')
 )
 ```
 
-React is declarative. Here, the **Welcome component** describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome component** into the element with the ID of 'target'.
+React is declarative. Here, the **Welcome** component describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome** component into the element with the ID of 'target'.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
