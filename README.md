@@ -227,7 +227,7 @@ After running the `eject`, commands like `npm start` and `npm run build` will st
 
 ## Q. How to put React in production mode?
 
-Create a simple `hello-world-app` using [Create-React-App](https://create-react-app.dev/docs/getting-started).
+Create a simple `hello-world-app` using [create-react-app](https://create-react-app.dev/docs/getting-started).
 
 ```js
 npx create-react-app hello-world-app
