@@ -584,14 +584,12 @@ render() {
   );
 }
 
-
 // Data Attribute ( starts with "data-" )
 render() {
   return (
     <div data-id="10" />
   );
 }
-
 
 // ARIA Attribute ( starts with "aria-" )
 render() {
@@ -601,7 +599,7 @@ render() {
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMRYp?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-attribute-8enl34?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
