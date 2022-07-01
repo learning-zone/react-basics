@@ -708,7 +708,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
 ## Q. How to use InnerHtml in React?
 
-The `innerHTML` is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides `dangerouslySetInnerHTML` as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
+The **innerHTML** is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides **dangerouslySetInnerHTML** as a replacement for innerHTML. It allows to set HTML directly from React by using dangerouslySetInnerHTML and passing an object with a **__html** key that holds HTML.
 
 **Example:**
 
@@ -798,18 +798,6 @@ export default class App extends React.Component {
 ```
 
 The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
-
-**Props:**
-
-Props are an optional input, and can be used to send data to the component. They are immutable properties, which makes them read-only. This also makes them come in handy when you want to display fixed values.
-
-**State:**
-
-A React component of class type maintains an internal state which acts as a data store for it. This state can be updated and whenever it is changed, React re-renders that component.
-
-**LifeCycle:**
-
-Every component has **lifecycle methods**. They specify the behavior of the component when it undergoes a phase of its lifecycle.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
