@@ -225,31 +225,6 @@ After running the `eject`, commands like `npm start` and `npm run build` will st
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How to use https instead of http in create-react-app?
-
-set the HTTPS environment variable to `true`, then start the dev server as usual with `npm start`:
-
-```bash
-# Windows
-set HTTPS=true&&npm start
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. How can find the version of React at runtime in the browser?
-
-**Chrome Dev Tools:**
-
-```bash
-window.React.version
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. How to put React in production mode?
 
 Create a simple `hello-world-app` using [Create-React-App](https://create-react-app.dev/docs/getting-started).
