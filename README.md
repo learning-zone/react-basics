@@ -1842,19 +1842,17 @@ const App = () => (
 
 ## Q. How to set up lazy loading components in React?
 
-Lazy loading is the technique used in optimizing your web and mobile apps, this works by rendering only needed or critical user interface items first, then quietly rendering the non-critical items later.
-
 **REACT.LAZY():**
 
-In **React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
+**React.lazy()** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. React.lazy() makes it possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
 
-React.lazy() takes a function that returns a promise as it’s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
+React.lazy() takes a function that returns a promise as it\'s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
 
 ```js
-// without lazy
+// Without Lazy
 import MyComponent from './MyComponent';
  
-// with lazy
+// With Lazy
 const MyComponent = React.lazy(() => import('./MyComponent'));
 ```
 
@@ -1863,7 +1861,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));
 **React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
 
 ```js
-//using suspense
+// Using Suspense
 import React, { Suspense } from 'react';
 
 const MyComponent = React.lazy(() => import('./MyComponent'));
@@ -1879,11 +1877,14 @@ const App = () => {
 }
 ```
 
-**Example:** The following code snippet shows lazy loading routes
+**Example:** Lazy Loading Routes
 
 ```js
+/**
+ * React Lazy Loading Routes
+ */
 import React, { Suspense, lazy } from "react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Home = lazy(() => import("./Home"));
 const ContactUs = lazy(() => import("./ContactUs"));
@@ -1891,15 +1892,21 @@ const HelpPage = lazy(() => import("./Help"));
 
 export default function App() {
   return (
-    <Router>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <Route exact component={Home} path="/" />
-          <Route component={ContactUs} path="/contact-us" />
-          <Route component={HelpPage} path="/help" />
-        </Switch>
-      </Suspense>
-    </Router>
+      <Router>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/contact-us">ContactUs</Link></li>
+          <li><Link to="/help">HelpPage</Link></li>
+        </ul>
+        <hr />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <Route exact component={Home} path="/" />
+            <Route component={ContactUs} path="/contact-us" />
+            <Route component={HelpPage} path="/help" />
+          </Switch>
+        </Suspense>
+      </Router>
   );
 }
 ```
@@ -2334,7 +2341,7 @@ class App extends React.Component {
 **Benefits:**
 
 * Reuse code across components when using ES6 classes.
-* The lowest level of indirection - it’s clear which component is called and the state is isolated.
+* The lowest level of indirection - it\'s clear which component is called and the state is isolated.
 * No naming collision issues for props, state and class methods.
 * No need to deal with boiler code and hoisting static methods.
 
@@ -2393,7 +2400,7 @@ function withExample(Component) {
 
 **2. Render Props:**
 
-A render prop is where a component’s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
+A render prop is where a component\'s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
 
 **Example:**
 
