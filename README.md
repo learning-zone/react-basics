@@ -74,7 +74,7 @@ The main objective of ReactJS is to develop User Interfaces (UI) that improves t
 * *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How React works?
@@ -84,7 +84,7 @@ React implements a virtual DOM that is basically a DOM tree representation in Ja
 Unlike browser DOM elements, React elements are plain objects and are cheap to create. React DOM takes care of updating the DOM to match the React elements. The reason for this is that JavaScript is very fast and it is worth keeping a DOM tree in it to speedup its manipulation.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. List some of the major advantages and limitations of React?
@@ -112,7 +112,7 @@ Testable. React native tools are offered for testing, debugging code.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why does React emphasize on unidirectional data flow?
@@ -135,7 +135,7 @@ The view is a result of the application state. State can only change when action
 In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2. REACT SETUP
@@ -194,7 +194,7 @@ my-app
 * *[https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the features of create react app?
@@ -212,7 +212,7 @@ Below are the list of some of the features provided by create react app.
 * An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What does eject do in create react app?
@@ -222,7 +222,7 @@ The `create-react-app` commands generate **React App** with an excellent configu
 After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to put React in production mode?
@@ -266,7 +266,7 @@ npm run build
 This creates a build directory inside the root directory, which bundles your React app and minifies it into simple HTML, CSS, and JavaScript files. This build folder serves your app via a simple entry point, `index.html`, where your entire React app resides. Running your app via a remote server means running this `index.html` file on the server.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the common folder structures for React?
@@ -321,7 +321,7 @@ components/
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the popular React-specific linter?
@@ -358,7 +358,7 @@ This will install the plugin we need, and in our ESLint config file, we just nee
 It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the browser support for react applications?
@@ -387,7 +387,7 @@ The `browserslist` configuration controls the outputted JavaScript so that the e
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 3. REACT JSX
@@ -435,7 +435,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-zjmxvb?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How JSX prevents Injection Attacks?
@@ -471,7 +471,7 @@ User content: JSX prevents Injection Attacks Example <script src="http://example
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsxinjection-ckmu8z?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the benefits of new JSX transform?
@@ -483,7 +483,7 @@ The React 17 release provides support for a new version of the JSX transform. Th
 * The future improvements provides the flexibility to reduce the number of concepts to learn React.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Is it possible to use React without rendering HTML?
@@ -525,7 +525,7 @@ Note that React can also run on the server side so, it will be possible to use i
 *Note: Returning `undefined` does not work.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to write comments in React and JSX?
@@ -565,7 +565,7 @@ export default function App() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to add custom DOM attributes in JSX?
@@ -602,7 +602,7 @@ render() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-attribute-8enl34?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How many outermost elements can be there in a JSX expression?
@@ -619,7 +619,7 @@ const headings = (
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to loop inside JSX?
@@ -651,7 +651,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you print false values in JSX?
@@ -683,7 +683,7 @@ In the output, this will render `true`, `false`, `undefined`, and `null` respect
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use React label element?
@@ -703,7 +703,7 @@ Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use InnerHtml in React?
@@ -727,7 +727,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4. REACT COMPONENTS
@@ -800,7 +800,7 @@ export default class App extends React.Component {
 The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between Component and Container in React?
@@ -850,7 +850,7 @@ class UsersContainer extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to import and export components using React.js?
@@ -880,7 +880,7 @@ export default DangerButton;
 By using default you express that\'s going to be member in that module which would be imported if no specific member name is provided. You could also express you want to import the specific member called DangerButton by doing so: `import { DangerButton } from './comp/danger-button';` in this case, no default is needed
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is difference between declarative and imperative in React.js?
@@ -924,7 +924,7 @@ document.getElementById('root')
 React is declarative. Here, the **Welcome** component describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome** component into the element with the ID of 'target'.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between Element and Component?
@@ -950,7 +950,7 @@ ReactDOM.render(<Message />, document.getElementById('app'));
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to conditionally render components in react?
@@ -996,7 +996,7 @@ render() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-conditional-render-xjvr10?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.1. FUNCTIONAL COMPONENTS
@@ -1027,7 +1027,7 @@ ReactDOM.render(
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.2. CLASS COMPONENTS
@@ -1058,7 +1058,7 @@ ReactDOM.render(
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the recommended ordering of methods in class component?
@@ -1079,7 +1079,7 @@ ReactDOM.render(
 * render()
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to create a dynamic table in react?
@@ -1182,7 +1182,7 @@ renderTableHeader() {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to prevent component from rendering in React?
@@ -1241,7 +1241,7 @@ ReactDOM.render(
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Differentiate between stateful and stateless components?
@@ -1281,7 +1281,7 @@ function welcome(props) {
 |It has to have a "render()" method inside that. |It does not require a render method.|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of using super constructor with props argument?
@@ -1310,7 +1310,7 @@ export default App
 Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between Element, Component and Component instance in React?
@@ -1363,7 +1363,7 @@ ReactDOM.render(element, document.getElementById('root'));
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What does shouldComponentUpdate do and why is it important?
@@ -1385,7 +1385,7 @@ shouldComponentUpdate(nextProps, nextState) {
 The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of render() function in React?
@@ -1422,7 +1422,7 @@ root.render(<App />);
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-l2q7qk?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.2.1. REACT LIFECYCLE
@@ -1465,7 +1465,7 @@ The next phase in the lifecycle is when a component is removed from the DOM, or 
 * `componentWillUnmount()`
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to make component to perform an action only once when the component initially rendered?
@@ -1513,7 +1513,7 @@ const Homepage = () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the typical pattern for rendering a list of components from an array of data?  
@@ -1536,7 +1536,7 @@ class AnimalTable extends React.Component<Props, never> {
 Here, `shouldComponentUpdate()` will return false if the props its receiving are equal to the props it already has. And because the AnimalTable is receiving just a List of string IDs, a change in the adoption status won\'t cause AnimalTable to receive a different set of IDs.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.3. PURE COMPONENTS
@@ -1607,7 +1607,7 @@ export default class App extends React.PureComponent {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-purecomponent-gpegf8?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the problems of using render props with PureComponent?
@@ -1636,7 +1636,7 @@ class MouseTracker extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is PureComponent?
@@ -1650,7 +1650,7 @@ That behaviour may mean a lot of wasted re-renderings. Indeed, if our component 
 That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When to use PureComponent over Component?
@@ -1665,7 +1665,7 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.4. HIGHER ORDER COMPONENTS
@@ -1728,7 +1728,7 @@ export default App
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the benefits of using HOC?
@@ -1748,7 +1748,7 @@ export default App
 * It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are Higher Order Component factory implementations?
@@ -1805,7 +1805,7 @@ Inheritance Inversion can be used in:
 * State Manipulation
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use decorators in React?
@@ -1847,7 +1847,7 @@ const App = () => (
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4.5. LAZY LOADING
@@ -1921,7 +1921,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain Inheritance Inversion (iiHOC) in react?
@@ -1987,7 +1987,7 @@ export default withLoader(withUser(Welcome))
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5. REACT PROPS
@@ -2011,7 +2011,7 @@ const element = <Welcome name="World!" />;
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmWgxz)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why props in React are read only?
@@ -2033,7 +2033,7 @@ In fact, props of a component is concretely "the state of the another component 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are default props?
@@ -2068,7 +2068,7 @@ ReactDOM.render(
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to access props inside quotes in React JSX?
@@ -2111,7 +2111,7 @@ export default App;
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrYwo)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How are boolean props used in React?
@@ -2142,7 +2142,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVzJx)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to specify the shape of an object with PropTypes
@@ -2176,7 +2176,7 @@ const App = () => (
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How PropTypes.objectOf is different from PropTypes.shape?
@@ -2202,7 +2202,7 @@ MyComponent.propTypes = {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How React PropTypes allow different types for one prop?
@@ -2231,7 +2231,7 @@ const App = () => (
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to apply validation on Props in React?
@@ -2280,7 +2280,7 @@ export default App
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are render props?
@@ -2340,7 +2340,7 @@ class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-props-c80gs?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the benefits of using Render Props?
@@ -2359,7 +2359,7 @@ class App extends React.Component {
 * Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression.  Rendering the result of an HOC does look cleaner.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you create Higher Order Component using render props?
@@ -2383,7 +2383,7 @@ function withMouse(Component) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain HOC vs render props in react.js?
@@ -2422,7 +2422,7 @@ render(){
 The React community is moving away from HOC (higher order components) in favor of render prop components (RPC). For the most part, HOC and render prop components solve the same problem. However, render prop components provide are gaining popularity because they are more declarative and flexible than an HOC.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is children props?
@@ -2460,7 +2460,7 @@ ReactDOM.render(
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When we should use React.cloneElement vs this.props.children?
@@ -2523,7 +2523,7 @@ B
 `children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How React handle or restrict Props to certain types?
@@ -2553,7 +2553,7 @@ export default Person
 `PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What do these three dots in React do?
@@ -2601,7 +2601,7 @@ this.setState(state => ({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why we need to be careful when spreading props on DOM elements?
@@ -2634,7 +2634,7 @@ const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
 *In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to change the state of a child component from its parent in React?
@@ -2672,7 +2672,7 @@ function Child(props) {
 On the above codes, we have created function handleChange that will pass the value through props.onChange to our Parent component.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What will happen if you use props in initial state?
@@ -2727,7 +2727,7 @@ class App extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 6. REACT STATE
@@ -2766,7 +2766,7 @@ export default Employee
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why is setState() in React async instead of sync?
@@ -2778,7 +2778,7 @@ Even if state is updated synchronously, props are not, it means we do not know p
 This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the second argument that can optionally be passed to setState and what is its purpose?
@@ -2797,7 +2797,7 @@ this.setState(
 The `setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the possible ways of updating objects in state?
@@ -2836,7 +2836,7 @@ this.setState(prevState => ({
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What will happen if you use setState() in constructor?
@@ -2874,7 +2874,7 @@ class Food extends Component {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why should not we update the state directly?
@@ -2942,7 +2942,7 @@ export default App
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to delete an item from state array?
@@ -2962,7 +2962,7 @@ onDeleteByIndex(index) {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why should not call setState in componentWillUnmount?
@@ -2972,7 +2972,7 @@ We should not call `setState()` in `componentWillUnmount()` because the componen
 The `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. This method can be used to perform any necessary cleanup method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can you re-render a component without using setState() function?
@@ -3052,7 +3052,7 @@ export default App;
 *Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why we need to pass a function to setState()?
@@ -3091,7 +3091,7 @@ this.setState((prevState) => ({
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to update nested state properties in React.js?
@@ -3120,7 +3120,7 @@ handleUpdate = () => {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between state and props?
@@ -3137,7 +3137,7 @@ handleUpdate = () => {
 |Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to set state with a dynamic key name?
@@ -3156,7 +3156,7 @@ inputChangeHandler : function (event) {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to listen state change in React.js?
@@ -3181,7 +3181,7 @@ export function MyComponent(props) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to access child\'s state in React?
@@ -3234,7 +3234,7 @@ class Child extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How does the state differ from props in React?
@@ -3303,7 +3303,7 @@ Props should never be changed in a child component. Props are also used to allow
 |Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7. REACT EVENTS
@@ -3349,7 +3349,7 @@ ReactDOM.render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to pass a parameter to event handlers in React?
@@ -3374,7 +3374,7 @@ export default class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you pass an event handler to a component?
@@ -3418,7 +3418,7 @@ const CustomButton = ({onCustomClick}) => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between HTML and React event handling?
@@ -3447,7 +3447,7 @@ function handleClick(e) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to bind methods or event handlers in JSX callbacks?
@@ -3503,7 +3503,7 @@ handleClick() {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why do we need to bind methods inside class component constructor?
@@ -3542,7 +3542,7 @@ When we bind the `this` of the event handler to the component instance in the co
 Arrow functions are exempt from this behavior because they use **lexical** `this` binding which automatically binds them to the scope they are defined in.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do I pass a parameter to an event handler or callback?
@@ -3634,7 +3634,7 @@ class Alphabet extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can I prevent a function from being called too quickly?
@@ -3757,7 +3757,7 @@ class ScrollListener extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8. REACT LISTS
@@ -3815,7 +3815,7 @@ export default Item
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why do I need Keys in React Lists?
@@ -3837,7 +3837,7 @@ const listItems = numbers.map((number) =>
 React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the significance of keys in React?
@@ -3875,7 +3875,7 @@ ReactDOM.render(
 *Note: Using `index` as a key can lead to potential unexpected behaviour within the component.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to pass numbers to React component?
@@ -3903,7 +3903,7 @@ function Greetings(props) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to display an array of strings in react component?
@@ -3925,7 +3925,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you render Array, Strings and Numbers in React?
@@ -3969,7 +3969,7 @@ const NumberList = (props) => (
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9. React RESTful API
@@ -4026,7 +4026,7 @@ function MyComponent() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to display API data using Axios in React?
@@ -4145,7 +4145,7 @@ export default class PersonList extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the benefits of using Axios() over Fetch() for making http requests?
@@ -4195,7 +4195,7 @@ axios.get('url')
 |Axios has wide browser support.  |Fetch only supports Chrome 42+, Firefox 39+, Edge 14+, and Safari 10.1+.|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How does Axios Interceptors work in react?
@@ -4257,7 +4257,7 @@ axiosInstance.interceptors.response.use(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to do caching in React?
@@ -4417,7 +4417,7 @@ export default Counter
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. In which lifecycle event do you make AJAX requests in React?
@@ -4483,7 +4483,7 @@ class MyComponent extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10. REACT FORMS
@@ -4568,7 +4568,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-p9z2y)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use react hook form with material-ui?
@@ -4668,7 +4668,7 @@ const Form = ({ handleClose }) => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why You Should Choose React Hook Form Over Formik and Redux-Form?
@@ -4700,7 +4700,7 @@ React Hook Form is built with TypeScript and can define a FormData type to suppo
 The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are controlled and uncontrolled components in React?
@@ -4780,7 +4780,7 @@ export default App
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you set default value for uncontrolled components?
@@ -4809,7 +4809,7 @@ render() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11. REACT HOOKS
@@ -4862,7 +4862,7 @@ const App = () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are advantages of using React Hooks?
@@ -4876,7 +4876,7 @@ const App = () => {
 * Flexibility in moving up and down the components tree.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to fetch data with React Hooks?
@@ -4917,7 +4917,7 @@ function Users() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Do Hooks replace render props and higher-order components?
@@ -4989,7 +4989,7 @@ export default page(MyPageComponent)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to compare oldValues and newValues on React Hooks useEffect?
@@ -5031,7 +5031,7 @@ In the hook, we create a ref with the **useRef** hook to create a non-reactive p
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What do you understand by refs in React?
@@ -5088,7 +5088,7 @@ class App extends React.Component {
 * Not to be used on things that can be done declaritvely.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can I use multiple refs for an array of elements with hooks?
@@ -5123,7 +5123,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is ref in React?
@@ -5131,7 +5131,7 @@ function App() {
 A ref is defined as any value that does not trigger a component re-render when it is changed. This behavior is contrary to the function of states and props. A ref can be created in two ways- by the **useRef** hook or by the **createRef** function.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between useRef() and createRef()?
@@ -5197,7 +5197,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why are inline ref callback or function not recommended?
@@ -5225,7 +5225,7 @@ Here, When the `<input>` element is rendered, React calls the function defined i
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to re-render the view when the browser is resized?
@@ -5292,7 +5292,7 @@ class ShowWindowDimensions extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can I force a component to re-render with hooks in React?
@@ -5323,7 +5323,7 @@ The example above is equivalent to the functionality of the `forceUpdate()` meth
 * In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 12. React CONTEXT
@@ -5385,7 +5385,7 @@ const App = () => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you solve performance corner cases while using context?
@@ -5403,7 +5403,7 @@ const authContext = useContext(initialValue);
 The useContext accepts the value provided by React.createContext and then re-render the component whenever its value changes but you can still optimize its performance by using memorization.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of default value in context?
@@ -5439,7 +5439,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use contextType react?
@@ -5477,7 +5477,7 @@ class ContextConsumingInLifeCycle extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to update React Context from inside a child component?
@@ -5517,7 +5517,7 @@ const App = () => {
 Here, we are storing data in the state of the component in which we want to use context and we create a function that can modify this state. We pass the state and the function as context values. It then become possible from the child to get the modification function and to use it to update your context.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is prop drilling and how can you avoid it?
@@ -5558,7 +5558,7 @@ function Display() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 13. REACT ROUTER
@@ -5692,7 +5692,7 @@ this.props.history.push("/first")
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How React Router is different from history library?
@@ -5733,7 +5733,7 @@ ReactDOM.render(
 The above code creates a history instance for our entire `<App>` component. Each `<Router>` component creates a history object that keeps track of the current location (`history.location`) and also the previous locations in a stack. The history object has methods such as `history.push`, `history.replace`, `history.goBack`, `history.goForward` etc.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of push and replace methods of history?
@@ -5758,7 +5758,7 @@ function HomeButton() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to get parameter value from query string?
@@ -5782,7 +5782,7 @@ console.log(id, name, type); // 10 test null
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is React Router?
@@ -5825,7 +5825,7 @@ The Switch component helps us to render the components only when path matches ot
 The `exact` returns any number of routes that match exactly.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to access history object in React Router v5?
@@ -5877,7 +5877,7 @@ function HomeButton() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to perform automatic redirect in React.js?
@@ -5928,7 +5928,7 @@ class App extends Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How is React Router different from Conventional Routing?
@@ -5944,7 +5944,7 @@ In React, there is only a single 'Html' file involved. Whenever a user types in 
 In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to programmatically redirect to another page using React router?
@@ -5982,7 +5982,7 @@ const Button = withRouter(({ history }) => (
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to pass additional data while redirecting to a route in React?
@@ -6028,7 +6028,7 @@ props.history.push({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to pass props in React router?
@@ -6101,7 +6101,7 @@ export class Greeting extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to get query parameters in react routing?
@@ -6157,7 +6157,7 @@ function Child() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why you get "Router may have only one child element" warning?
@@ -6217,7 +6217,7 @@ export default function App() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between HashRouter and BrowserRouter in React?
@@ -6331,7 +6331,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is route based code splitting?
@@ -6360,7 +6360,7 @@ const App = () => (
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 14. REACT ERROR BOUNDARIES
@@ -6419,7 +6419,7 @@ Here, We have a state object having two variables isErrorOccured and errorMessag
 * Errors thrown in the error boundary itself
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between try catch block and error boundaries?
@@ -6455,7 +6455,7 @@ function Users() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the benefit of component stack trace from error boundary?
@@ -6469,7 +6469,7 @@ Component Stack Trace prints all errors that occurred during rendering to the co
 </p>
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the methods invoked during error handling?
@@ -6482,7 +6482,7 @@ A class component becomes an error boundary if it defines either (or both) of th
 Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 15. REACT COMPOSITION
@@ -6592,7 +6592,7 @@ Composition does not inherit properties, only the behavior. In inheritance, it w
 React recommends use of Composition over Inheritance, here is why. Everything in React is a component, and it follows a strong component based model. This is one of the primary reasons that composition is a better approach than inheritance for code reuse.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 16. REACT CSS STYLING
@@ -6709,7 +6709,7 @@ class HeaderComponent extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to conditionally apply CSS classes in React JS?
@@ -6734,7 +6734,7 @@ class App extends Component {
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to combine multiple inline style objects?
@@ -6764,7 +6764,7 @@ export default function App(){
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the popular package for animation in React JS?
@@ -6778,7 +6778,7 @@ export default function App(){
 * [React Reveal](https://www.react-reveal.com/)
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the benefit of styles modules?
@@ -6795,7 +6795,7 @@ But using CSS modules helps to create separate CSS files for each component and 
 * Using CSS Modules generates random CSS classes when displayed in the browser
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are styled components?
@@ -6828,7 +6828,7 @@ render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use useSpring() for animation?
@@ -7001,7 +7001,7 @@ const App = () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 17. REACT INTERNATIONALIZATION
@@ -7101,7 +7101,7 @@ export default withTranslation()(HighOrderComponent)
 * *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 18. REACT TESTING
@@ -7149,7 +7149,7 @@ expect(result.props.children).toEqual([
 *Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is TestRenderer package in React?
@@ -7178,7 +7178,7 @@ console.log(testRenderer.toJSON());
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain react unit testing using Jest and Enzyme?
@@ -7292,7 +7292,7 @@ describe('App component', () => {
 * *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain about shallow() method in enzyme?
@@ -7334,7 +7334,7 @@ console.log(wrapper.debug())
 * Shallow rendering is not useful for end to end testing.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is mount() method in Enzyme?
@@ -7382,7 +7382,7 @@ describe('List tests', () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is render() method in Enzyme?
@@ -7417,7 +7417,7 @@ describe('List tests', () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of the ReactTestUtils package?
@@ -7505,7 +7505,7 @@ it('can render and update a counter', () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is react-test-renderer package in React?
@@ -7537,7 +7537,7 @@ describe('APP Component', () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
@@ -7566,7 +7566,7 @@ Test-driven development is an approach when developers create a product backward
 1. Mocking, faking, and stubbing are all even harder
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the benefits of using data-test selector over className or Id selector in Jest?
@@ -7607,7 +7607,7 @@ describe('APP Component', () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is React.cloneElement?
@@ -7675,7 +7675,7 @@ class MyButton extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is useState() in React?
@@ -7716,7 +7716,7 @@ const App = () => {
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to prevent unnecessary updates using React.memo()?
@@ -7769,7 +7769,7 @@ const App = () => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why do we use array destructuring in useState?
@@ -7799,7 +7799,7 @@ const [user, setUser] = useState({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is useReducer() in React?
@@ -7841,7 +7841,7 @@ export default ReducerExample
 Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is difference between useEffect() vs componentDidMount()?
@@ -7888,7 +7888,7 @@ When useEffect() is used to get data from server.
 * When it is an empty list, the callback will only be fired once, similar to componentDidMount.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When should we use arrow functions with React?
@@ -7927,7 +7927,7 @@ ReactDOM.render(
 2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Is it good to use arrow functions in render methods?
@@ -8034,7 +8034,7 @@ class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain the standard JavaScript toolchain, transpilation (via Babel or other compilers), JSX, and these items significance in recent development?
@@ -8051,7 +8051,7 @@ The rest of the tools belong in that group of sequential or parallel tasks:
 * *Source-Mapping* - another optional part of compilation is building source maps, which help identify the line in the original source code that corresponds with the line in the output code (i.e. where an error occurred)
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between using constructor vs getInitialState in React?
@@ -8083,7 +8083,7 @@ var MyComponent = React.createClass({
 The `getInitialState()` is used with `React.createClass` and `constructor()` is used with `React.Component`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to conditionally add attributes to React components?
@@ -8108,7 +8108,7 @@ function App() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How would you prevent a component from rendering?
@@ -8161,7 +8161,7 @@ class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is render hijacking in React?
@@ -8176,7 +8176,7 @@ In Render Highjacking we can:
 * Wrapping the element\'s tree for styling purposes.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is windowing technique in react?
@@ -8213,7 +8213,7 @@ export default function VirtualizedList() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-window-rz5hf?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to optimize React Performance?
@@ -8275,7 +8275,7 @@ In order to address the issue with our long chat feed, the React team recommends
 * *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When would you use StrictMode component in React?
@@ -8320,7 +8320,7 @@ In the above example, strict mode checks will not be run against the `<Header>` 
 * Detecting legacy context API
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How does React renderer work exactly when we call setState?
@@ -8356,7 +8356,7 @@ Here, we are passing an object to setState(). The object contains the part of th
 When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to avoid the need for binding in React?
@@ -8401,7 +8401,7 @@ constructor(props) {
 This is the approach currently recommended in the React docs for "better performance in your application".
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What do you understand with the term polling in React?
@@ -8451,7 +8451,7 @@ export default IntervalExample
 The example above shows a React component, IntervalExample, scheduling a new interval once it mounts to the DOM. The interval increments the seconds state value by one, every second.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do I bind a function to a component instance?
@@ -8520,7 +8520,7 @@ class App extends Component {
 *Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why is a component constructor called only once?
@@ -8544,7 +8544,7 @@ renderContent() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the kinds of information that control a segment in React?
@@ -8555,7 +8555,7 @@ There are mainly two sorts of information that control a segment
 * `Props`: Props are set by the parent and which are settled all through the lifetime of a part.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the drawbacks of MVW pattern?
@@ -8579,7 +8579,7 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 5. No way to do undo (travel back in time) easily without adding so much extra code.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between createElement and cloneElement?
@@ -8632,7 +8632,7 @@ class MyButton extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How dynamically generate menu options for `<select>` from an array?
@@ -8687,7 +8687,7 @@ class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When should I be using React.cloneElement vs this.props.children?
@@ -8727,7 +8727,7 @@ class Users extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to pass JSON Objects from Child to Parent Component?
@@ -8809,7 +8809,7 @@ export default class Child extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to declare constant in react?
@@ -8851,7 +8851,7 @@ class App extends React.Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Destructuring in React?
@@ -8936,7 +8936,7 @@ export default function Events() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why is it necessary to start component names with a capital letter?
@@ -8950,7 +8950,7 @@ When an element type starts with a lowercase letter, it refers to a built-in com
 * `<obj.component />` compiles to `React.createElement(obj.component)`
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are fragments? Why are fragments better than container divs?
@@ -8980,7 +8980,7 @@ class App extends React.Component {
 * The DOM inspector is less cluttered.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is `forwardRef()` in React?
@@ -9027,7 +9027,7 @@ const inputRef = React.createRef()
 We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to debug forwardRefs() in DevTools?
@@ -9083,7 +9083,7 @@ function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Which is the preferred option callback refs or findDOMNode()?
@@ -9119,7 +9119,7 @@ class MyComponent extends Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why are string refs considered legacy in React?
@@ -9177,7 +9177,7 @@ const App = () => (
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How many ways can we style the React Component?
@@ -9305,7 +9305,7 @@ export default OutsetBox
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you apply vendor prefixes to inline styles in React?
@@ -9326,7 +9326,7 @@ const divStyle = {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the popular animation package in React?
@@ -9390,7 +9390,7 @@ class AnimationComponent extends React.Component {
 In this component, when a new item is added to ReactCSSTransitionGroup it will get the `example-enter` CSS class and the `example-enter-active` CSS class added in the next tick. This is a convention based on the `transitionName` prop.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain synthetic event in React js?
@@ -9439,7 +9439,7 @@ string type
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Event Pooling in React?
@@ -9470,7 +9470,7 @@ function onClick(event) {
 If we want to access the event properties in an asynchronous way, we should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of displayName class property?
@@ -9494,7 +9494,7 @@ function getDisplayName(WrappedComponent) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is difference between componentDidMount() and componentWillMount()?
@@ -9589,7 +9589,7 @@ export default App
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Is it good to use setState() in componentWillMount() method?
@@ -9614,7 +9614,7 @@ function componentDidMount() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain the use of Webpack and Babel in React?
@@ -9640,7 +9640,7 @@ npm start
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why to avoid using setState() after a component has been unmounted?
@@ -9697,7 +9697,7 @@ class News extends Component {
 Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you update render elements?
@@ -9722,7 +9722,7 @@ setInterval(showTime, 1000);
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to set focus on an input field after rendering?
@@ -9746,7 +9746,7 @@ class AutoFocusTextInput extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you set a timer to update every second?
@@ -9788,7 +9788,7 @@ class Clock extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to implement two way data binding in React js?
@@ -9858,7 +9858,7 @@ export default App
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to show and hide elements in React
@@ -9915,7 +9915,7 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to trigger click event programmatically?
@@ -9944,7 +9944,7 @@ class MyComponent extends React.Component {
 *Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to listen for click events that are outside of a component?
@@ -9992,7 +9992,7 @@ OutsideAlerter.propTypes = {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to display style based on props value?
@@ -10016,7 +10016,7 @@ function MyPureComponent(props) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to convert text to uppercase on user input entered?
@@ -10045,7 +10045,7 @@ ReactDOM.render(<App />, document.getElementById("root"))
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to create props proxy for Higher Order Component component?
@@ -10079,7 +10079,7 @@ const propsProxyHOC = (WrappedComponent) => {
 * Wrapping/Composing the WrappedComponent with other elements
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to set a dynamic key for state?
@@ -10105,7 +10105,7 @@ handleSetState(cat, key, val) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the pointer events in React?
@@ -10241,7 +10241,7 @@ export default class DragItem extends React.Component {
 *Note: It work only in browsers that support the Pointer Events specification*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is difference between Pure Component vs Component?
@@ -10276,7 +10276,7 @@ class Message extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the use of this props?
@@ -10323,7 +10323,7 @@ ReactDOM.render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you remove an element in the react state?
@@ -10422,7 +10422,7 @@ export default Items
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between NavLink and Link?
@@ -10497,7 +10497,7 @@ ReactDOM.render(Routes, document.getElementById('root'))
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is withRouter for in react-router-dom?
@@ -10530,7 +10530,7 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use async await in React?
@@ -10576,7 +10576,7 @@ class App extends Component {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How RxJS is used in React for state management?
@@ -10720,7 +10720,7 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
 * *[https://www.learnrxjs.io/](https://www.learnrxjs.io/)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is lazy function in React?
@@ -10744,7 +10744,7 @@ const App = () => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between rendering and mounting in ReactJS?
@@ -10784,7 +10784,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 Internally, React will create an instance of `App` and will eventually call the `render()` method to get the first set of instructions for what it needs to build in the DOM. Anytime React calls the render method of a class-based component, we call that a **render**.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Flow in react?
@@ -10834,7 +10834,7 @@ npm run flow init
 This will help to create a Flow configuration file that should be committed. The Flow config file helps to determine the files that Flow should work with and what should be ignored.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is an alternative way to avoid having to bind to this in event callback methods?
@@ -10888,7 +10888,7 @@ class App extends Component {
 Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why is it advised to pass a callback function to setState as opposed to an object?
@@ -10975,7 +10975,7 @@ export default App
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the alternative of binding `this` in the constructor?
@@ -10997,7 +10997,7 @@ class Button extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Virtual DOM?
@@ -11009,7 +11009,7 @@ Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets d
 **&#9885; [Virtual DOM Example](https://codesandbox.io/s/react-virtual-dom-2w52y?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between ShadowDOM and VirtualDOM?
@@ -11035,7 +11035,7 @@ Shadow DOM is mostly about encapsulation of the implementation. A single custom 
 The virtual DOM creates an additional DOM. The shadow DOM simply hides implementation details and provides isolated scope for web components.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why React uses className over class attribute?
@@ -11053,7 +11053,7 @@ export default function App() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Lifting State Up in ReactJS?
@@ -11140,7 +11140,7 @@ export default PlayerDetails
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is "Children" in React?
@@ -11178,7 +11178,7 @@ render () {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why are string refs considered legacy in React?
@@ -11212,7 +11212,7 @@ render() {
 This callback is called when the component `mounts` with a reference to the dom element as an argument. Importantly, when the component `unmounts` the callback is called again but this time with `null` as an argument.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the recommended way for static type checking?
@@ -11220,7 +11220,7 @@ This callback is called when the component `mounts` with a reference to the dom 
 Static type checkers like `Flow` and `TypeScript` identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we should use `Flow` or `TypeScript` instead of `PropTypes` for larger code bases.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between Flow and PropTypes?
@@ -11230,7 +11230,7 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
 `PropTypes` is a basic type checker which has been patched onto React. It can't check anything other than the types of the props being passed to a given component.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Compound Components in React?
@@ -11261,7 +11261,7 @@ function App() {
 In this example, the `<Menu>` establishes some shared implicit state. The `<MenuButton>`, `<MenuList>`, and `<MenuItem>` components each access and/or manipulate that state, and it\'s all done implicitly. This allows you to have the expressive API you're looking for.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is React Fiber?
@@ -11311,7 +11311,7 @@ React Fiber uses `requestIdleCallback()` to schedule the low priority work and `
 Fiber is currently available for use but it runs in compatibility mode with the current implementation.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is a Webhook in React?
@@ -11321,7 +11321,7 @@ Web hooks provide a mechanism where by a server-side application can notify a cl
 Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-side application calls (consumes) the server-side application. Whereas, in case of web hooks it is the server-side that calls (consumes) the web hook (the end-point URL provided by the client-side application), i.e. it is the server-side application that calls the client-side application.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?
@@ -11489,7 +11489,7 @@ function useFriendStatus(friendID) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to Memoize Components in React?
@@ -11551,7 +11551,7 @@ export default function App() {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Does the static object work with ES6 classes in React?
@@ -11570,7 +11570,7 @@ class Component extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is code-splitting?
@@ -11606,7 +11606,7 @@ function MyComponent() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is dynamic import in react
@@ -11634,7 +11634,7 @@ function MyComponent() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are loadable components?
@@ -11664,7 +11664,7 @@ function MyComponent() {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How do you access imperative API of web components?
@@ -11698,7 +11698,7 @@ class SearchComponent extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of eslint plugin for hooks?
@@ -11726,7 +11726,7 @@ The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to a
 *Note: This plugin is included by default in Create React App.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is service worker in React.js?
@@ -11773,7 +11773,7 @@ Service workers are event driven. The installation and activation processes fire
 With the service worker registered, the first time a user hits your PWA, the install event will be triggered and this is where you\'ll want to cache the static assets for the page. 
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of registerServiceWorker in React?
@@ -11795,7 +11795,7 @@ registerServiceWorker();
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 20. MISCELLANEOUS
@@ -11835,7 +11835,7 @@ In brief, here is what happens when we update the DOM in React:
 1. Changes on the real DOM cause the screen to change finally.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between DOM and virtual DOM?
@@ -11871,7 +11871,7 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 </p>
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain DOM diffing?
@@ -11901,7 +11901,7 @@ React implements a heuristic O(n) algorithm based on two assumptions:
 1. The developer can hint at which child elements may be stable across different renders with a key prop."
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is ReactDOM?
@@ -11967,7 +11967,7 @@ createPortal allow us to render a component into a DOM node that resides outside
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How Diff Algorithm is implemented in Reactjs?
@@ -12036,7 +12036,7 @@ When children have keys, React uses the key to match children in the original tr
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between ReactDOM and React?
@@ -12062,7 +12062,7 @@ ReactDOM.render(<MyComponent />, node)
 The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is reconciliation in React?
@@ -12127,7 +12127,7 @@ ReactDOM.render(<App />, document.getElementById("root"))
 When an entry is made in the first input field, React creates a new tree. The new tree which is the virtual DOM will contain the new state for **entry1**. Then, React compares the virtual DOM with the old DOM and, from the comparison, it figures out the difference between both DOMs and makes an update to only the part that is different. A new tree is created each time the state of App component changes — when a value is entered in either of the inputs field, or when the button is clicked.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 
@@ -12227,7 +12227,7 @@ Now, open the Index.html file and add a <div id="portal-root"></div> element to 
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is ReactDOMServer?
@@ -12347,7 +12347,7 @@ node server/index.js
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of renderToNodeStream method?
@@ -12361,7 +12361,7 @@ This method is used to generate HTML on the server and send the markup down on t
 *Note: This method is not available in the browser but only server.*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can automated tooling be used to improve the accessibility of a React application?
@@ -12377,7 +12377,7 @@ Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-
 Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 1. REDUX OVERVIEW
@@ -12419,7 +12419,7 @@ Redux provides a strict structure for how the code and state should be managed, 
 Redux makes it easy to test and debug your code since it offers powerful tools such as Redux DevTools in which you can time travel to debug, track your changes, and much more to streamline your development process.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are redux core concepts?
@@ -12546,7 +12546,7 @@ const store = createStore(reducers, initialState, middleware);
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is difference between presentational component and container component in react redux?
@@ -12615,7 +12615,7 @@ export default Image
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2. REDUX SETUP
@@ -12657,7 +12657,7 @@ yarn add redux react-redux redux-thunk --save
 </p>
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to structure Redux top level directories?
@@ -12707,7 +12707,7 @@ The most of the applications has several top-level directories as below:
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 3. REDUX DATA FLOW
@@ -12730,7 +12730,7 @@ Redux has five main entities. Action Creators, Dispatching Function, Reducers, S
 * The view can retrieve updated state and re-render again.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the three principles that Redux follows?
@@ -12832,7 +12832,7 @@ const store = createStore(reducer)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What do you understand by "Single source of truth" in Redux?
@@ -12848,7 +12848,7 @@ In React-Redux applications, when your Redux is a single source of truth, it mea
 A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the features of Workflow in Redux?
@@ -12885,7 +12885,7 @@ The following are details of how Redux works:
 </p>
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4. REDUX STORE
@@ -12918,7 +12918,7 @@ const store = createStore(rootReducer)
 When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the best way to access redux store outside a react component?
@@ -12997,7 +12997,7 @@ export connect(mapStateToProps)(ItemList)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Should all component states be kept in Redux Store
@@ -13012,7 +13012,7 @@ Some common rules for determining what kind of data should be put into Redux:
 * Do you want to keep this data consistent while hot-reloading UI components.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to use connect from React Redux?
@@ -13044,7 +13044,7 @@ export default connect(mapStateToProps)(App)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5. REDUX ACTIONS
@@ -13071,7 +13071,7 @@ const action = {
 There is typically a payload value that contains what the user is sending and would be used to update the state of the application. It is important to note that action.type is required, but action.payload is optional. Making use of payload brings a level of structure to how the action object looks like.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to create action creators react with redux?
@@ -13139,7 +13139,7 @@ export const mapDispatchToProps = dispatch => ({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to dispatch an action on load?
@@ -13169,7 +13169,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 6. REDUX REDUCERS
@@ -13207,7 +13207,7 @@ const LoginComponent = (state = initialState, action) => {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Explain the role of Reducer?
@@ -13355,7 +13355,7 @@ ReactDOM.render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why should the reducer be a "pure" function?
@@ -13365,7 +13365,7 @@ Redux takes a given state (object) and passes it to each reducer in a loop. And 
 Redux simply checks whether the old object is the same as the new object by comparing the memory locations of the two objects. So if you mutate the old object\'s property inside a reducer, the "new state" and the "old state" will both point to the same object. Hence Redux thinks nothing has changed! So this won\'t work.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to split the reducers?
@@ -13405,7 +13405,7 @@ One reducer design pattern. Things are better written, read and understood when 
 With reducer level code-splitting, reducers can be code split on a split component level which will reduce the loading time of website thereby increasing SEO rankings.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7. REDUX MIDDLEWARE
@@ -13589,7 +13589,7 @@ ReactDOM.render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are typical middleware choices for handling asynchronous calls in Redux?
@@ -13599,7 +13599,7 @@ By default, Redux\'s actions are dispatched synchronously, which is a problem fo
 There are three very popular middleware libraries that allow for side effects and asynchronous actions: `Redux Thunk` `Redux Saga` and `Redux Promise`.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?
@@ -13609,7 +13609,7 @@ Any meaningful web app needs to execute complex logic, usually including asynchr
 Redux is inspired by functional programming, and out of the box, has no place for side effects to be executed. In particular, reducer functions must always be pure functions of `(state, action) => newState`. However, Redux\'s middleware (eg. **Redux Thunk**, **Redux Saga**) makes it possible to intercept dispatched actions and add additional complex behavior around them, including side effects.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Are there any similarities between Redux and RxJS?
@@ -13754,7 +13754,7 @@ const action$
 The advantage of swapping the action payload for a stream is so we can send data updates at the start and the end of the async operation
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the differences between redux-saga and redux-thunk?
@@ -13843,7 +13843,7 @@ export { fetchList }
 Both Redux Thunk and Redux Saga take care of dealing with side effects. In very simple terms, applied to the most common scenario (async functions, specifically AJAX calls) Thunk allows Promises" to deal with them, Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers, Saga/Generators are more powerful but you will need to learn them. When Promises are just good enough, so is Thunk, when you deal with more complex cases on a regular basis, Saga gives you better tools.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to make Ajax request in Redux?
@@ -13931,7 +13931,7 @@ Here, sagas listen to actions which you dispatch as regular synchronous actions.
 * You value pure functions
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the differences between call and put in redux-saga?
@@ -13955,7 +13955,7 @@ function* fetchUserSaga(action) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the mental model of redux-saga?
@@ -14047,7 +14047,7 @@ sagaMiddleware.run(mySaga)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8. REDUX FORMS
@@ -14142,7 +14142,7 @@ export default reduxForm({
 * *[https://redux-form.com/6.5.0/examples/syncvalidation/](https://redux-form.com/6.5.0/examples/syncvalidation/)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How Redux Form initialValues get updated from state?
@@ -14159,7 +14159,7 @@ export default connect(mapStateToProps)(reduxForm({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9. MISCELLANEOUS
@@ -14218,7 +14218,7 @@ export default class MyApp extends React.Component {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between React State vs Redux State?
@@ -14228,7 +14228,7 @@ React state is stored locally within a component. When it needs to be shared wit
 When using Redux, state is stored globally in the Redux store. Any component that needs access to a value may subscribe to the store and gain access to that value. Typically, this is done using container components. This centralizes all data but makes it very easy for a component to get the state it needs, without surrounding components knowing of its needs.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Flux?
@@ -14251,7 +14251,7 @@ The Flux architecture is based on the following components:
 In the Flux architecture, when a user clicks on something, the view creates actions. Action can create new data and send it to the dispatcher. The dispatcher then dispatches the action result to the appropriate store. The store updates the state based on the result and sends an update to the view.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the drawbacks of Redux contrasted with Flux?
@@ -14266,7 +14266,7 @@ In the Flux architecture, when a user clicks on something, the view creates acti
 |Ensures simple debugging with the dispatcher|Single store makes debugging lot easier|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Describe Flux vs MVC?
@@ -14321,7 +14321,7 @@ Flux places unidirectional data flow front and center, by making it a requiremen
 |Its maintainability is difficult as the project scope goes huge. | Its maintainability is easy and reduces runtime errors.|
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to add multiple middleware to redux?
@@ -14367,7 +14367,7 @@ store.dispatch({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to set initial state in Redux?
@@ -14442,7 +14442,7 @@ function todosReducer(state = [], action) {
 In general, `preloadedState` wins over the state specified by the `reducer`. This lets reducers specify initial data that makes sense to them as default arguments, but also allows loading existing data (fully or partially) when you\'re hydrating the store from some persistent storage or the server.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of the constants in Redux?
@@ -14501,7 +14501,7 @@ export default (state = [], action) => {
 It allows to easily find all usages of that constant across the project. It also prevents from introducing silly bugs caused by typos -- in which case, you will get a `ReferenceError` immediately.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between React context and React Redux?
@@ -14531,7 +14531,7 @@ Context API is easy to is use as it has a short learning curve. It requires less
 Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components. 
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How to reset state in redux?
@@ -14580,7 +14580,7 @@ export default rootReducer
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Why are Redux state functions called as reducers?
@@ -14590,7 +14590,7 @@ Redux state functions called a reducer because it\'s the type of function we pas
 Therefore, they act as a reducer of state. Each time a redux reducer is called, the state is passed in with the action `(state, action)`. This state is then reduced (or accumulated) based on the action, and then the next state is returned. This is one cycle of the classic `fold` or `reduce` function.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Relay?
@@ -14604,7 +14604,7 @@ Relay achieves this by combining declarative data fetching and a static build st
 * *[https://relay.dev/docs/](https://relay.dev/docs/)*
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. How Relay is different from Redux?
@@ -14632,7 +14632,7 @@ Relay provides the following key features:
 **GraphQL** is a web service framework and protocol using declarative and composable queries, and solves problem like over fetching and under fetching, it is believed to be a valid candidate to replace REST.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. When would bindActionCreators be used in react/redux?
@@ -14737,7 +14737,7 @@ export default connect(state => ({ todos: state.todos }))(TodoListContainer)
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is mapStateToProps and mapDispatchToProps?
@@ -14817,7 +14817,7 @@ ReactDOM.render(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the different ways to write mapDispatchToProps()?
@@ -14842,7 +14842,7 @@ const mapDispatchToProps = (dispatch) => ({
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the use of the ownProps parameter in mapStateToProps() and mapDispatchToProps()?
@@ -14904,7 +14904,7 @@ function mapStateToProps(state, ownProps) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is reselect and how it works?
@@ -14952,7 +14952,7 @@ export const filteredTodos = createSelector(
 We can use the `filteredTodos` selectors to get all the todos if there\'s no searchTerm set in the state, or a filtered list otherwise.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are the different ways to dispatch actions in Redux?
@@ -15037,7 +15037,7 @@ export default connect()(MsgSenderPage);
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What are Redux selectors and Why to use them?
@@ -15059,7 +15059,7 @@ function selectItemIds(state) {
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is reselect and how it works?
@@ -15086,7 +15086,7 @@ export const getItemsWithTotals = createSelector(
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Can I dispatch an action in reducer?
@@ -15094,7 +15094,7 @@ export const getItemsWithTotals = createSelector(
 Dispatching an action within a reducer is an **anti-pattern**. Your reducer should be without side effects, simply digesting the action payload and returning a new state object. Adding listeners and dispatching actions within the reducer can lead to chained actions and other side effects.
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is Redux DevTools?
@@ -15160,5 +15160,5 @@ export default connect(mapStateToProps)(LoginPage);
 ```
 
 <div align="right">
-    <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
