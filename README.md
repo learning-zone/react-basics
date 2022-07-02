@@ -2434,6 +2434,9 @@ The `{this.props.children}` is a special prop, automatically passed to every com
 **Example:**
 
 ```js
+/**
+ * React Children Props
+ */
 class MyComponent extends React.Component {
   render() {
     return (
@@ -2453,6 +2456,7 @@ class OtherComponent extends React.Component {
 
 ReactDOM.render(
   <MyComponent>
+    <p>React DOM Props</p> {/* Children Props*/}
     <OtherComponent />
   </MyComponent>,
   document.getElementById("root")
