@@ -2538,59 +2538,30 @@ B
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How React handle or restrict Props to certain types?
-
-React `PropTypes` are a good way to help you catching bugs by validating data types of values passed through `props`. They also offer possibilities to flag props as mandatory or set default values.
-
-**Example:**
-
-```js
-import React from 'react'
-import PropTypes from 'prop-types'
-
-const Person = (props) => <div>
-  <h1>{props.firstName} {props.lastName}</h1>
-  {props.country ? <p>Country: {props.country}</p> : null}
-</div>
-
-Person.propTypes = {
-  firstName:PropTypes.string,
-  lastName:PropTypes.string,
-  country:PropTypes.string
-}
-
-export default Person
-```
-
-`PropTypes` define the type of a prop. So each time, a value is passed through a prop, it gets validated for it\'s type. If you pass a value through a prop with a different data type than it is specified in the PropTypes, an error message will be printed in the console of your browser.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What do these three dots in React do?
 
 The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
 
 ```js
 function App() {
-  return <Hello firstName="Alex" lastName="K" />
+  return <Hello firstName="Pallav" lastName="Hegde" />
 }
 ```
+
 Using the Spread operator, it become like this
 
 ```js
 function App() {
-  const props = {firstName: 'Alex', lastName: 'K'}
+  const props = {firstName: 'Pallav', lastName: 'Hegde'}
   return <Hello {...props} />
 }
 ```
 
 When we use the `...props` syntax, actaully it expand the props object from the parent component, which means all its attributes are passed down the child component that may not need them all. This will make things like debugging harder.
 
-**Using the Spread Operator with setState() for Setting the Nested State**
+**Using the Spread Operator with setState() for Setting the Nested State:**
 
-let us suppose we have a state with a nested object in our component:
+Let us suppose we have a state with a nested object in our component:
 
 ```js
 this.state = {
@@ -2600,6 +2571,7 @@ this.state = {
   },
 }
 ```
+
 We can use the Spread syntax to update the nested state object.
 
 ```js
