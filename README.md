@@ -1384,40 +1384,32 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
 
 ## Q. What is the purpose of render() function in React?
 
-All React applications start at a root DOM node that marks the portion of the DOM that will be managed by React. When React is called to render the component tree it will first need the JSX in code to be converted into pure JavaScript. `render` function is part of the react component lifecyle where `ReactDOM` is the class object which exposes a method called `render` which is used to render the React JSX content into DOM.
+The React class components uses render() function. It is used to update the UI.
 
-Generally you would use `ReactDOM.render()` once in your App to render the top level component, all other components will be children to the top level component. A react component goes though a number of mounting and updating lifecycle method and decides to render the data in the render function. Any JSX code that you write in `render()` method is converted to `React.createElement(tag, props, children)` before it is rendered into the DOM.
+**Purpose of render():**
+
+* React renders HTML to the web page by using a function called render().
+* The purpose of the function is to display the specified HTML code inside the specified HTML element.
+* In the render() method, we can read props and state and return our JSX code to the root component of our app.
+* In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
 
 ```js
-// App.js
-import React from 'react'
-import './App.css'
+// React v18
+import React from "react";
+import { createRoot } from "react-dom/client";
 
-function App() {
-  return (
-    <div className="App">
-      Hello World !
-    </div>
-  )
+class App extends React.Component {
+  render() {
+    return <h1>Render() Method Example</h1>;
+  }
 }
 
-export default App
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
 ```
 
-```js
-// index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App/App'
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-```
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-l2q7qk?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
