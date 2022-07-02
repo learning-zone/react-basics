@@ -1460,7 +1460,11 @@ The next phase in the lifecycle is when a component is removed from the DOM, or 
 
 ## Q. How to make component to perform an action only once when the component initially rendered?
 
-The `componentDidMount()` lifecycle hook can be used with class components.
+**1. Using Class Component:**
+
+The `componentDidMount()` lifecycle hook can be used with class components. Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+
+**Example:**
 
 ```js
 class Homepage extends React.Component {
@@ -1473,9 +1477,20 @@ class Homepage extends React.Component {
 }
 ```
 
-Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+**2. Using Function Component:**
 
-The `useEffect()` hook can be used with function components.
+The `useEffect()` hook can be used with function components. The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
+
+* The first parameter it takes is a callback function to be executed.
+* The optional second parameter it takes is an array containing any variables that are to be tracked.
+
+The value passed as the second argument controls when the callback is executed:
+
+* If the second parameter is **undefined**, the callback is executed every time that the component is rendered.
+* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle.
+
+**Example:**
 
 ```js
 const Homepage = () => {
@@ -1486,17 +1501,6 @@ const Homepage = () => {
   return <div>Homepage</div>
 }
 ```
-
-The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
-
-* The first parameter it takes is a callback function to be executed.
-* The optional second parameter it takes is an array containing any variables that are to be tracked.
-
-The value passed as the second argument controls when the callback is executed:
-
-* If the second parameter is undefined, the callback is executed every time that the component is rendered.
-* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
-* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle. The  example above shows how passing an empty array can result in similar behaviour to the `componentDidMount()` hook within a function component.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
