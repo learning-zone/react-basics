@@ -1041,7 +1041,7 @@ ReactDOM.render(
 * React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
 * We pass `props` down to class components and access them with `this.props`.
 * Class-based components can have `refs` to underlying DOM nodes.
-* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimisation techniques.
+* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimization techniques.
 
 **Example:**
 
@@ -1288,27 +1288,29 @@ const BooksList = ({books}) => {
 }
 ```
 
-**Functional Component or Stateless component:**  
+|Class Components                               |   Function Components                                 |
+|-----------------------------------------------|-------------------------------------------------------|
+|Class components need to extend the component from "React.Component" and create a render function that returns the required element. | Functional components are like normal functions which take "props" as the argument and return the required element.|
+|They are also known as stateful components.    |They are also known as stateless components.|
+|They implement logic and the state of the component.|They accept some kind of data and display it in the UI.|
+|Lifecycle methods can be used inside them.     |Lifecycle methods cannot be used inside them.|
+|It needs to store state therefore constructors are used.|Constructors are not used in it.|
+|It has to have a "render()" method inside that. |It does not require a render method.|
 
-* Functional component is like pure function in JavaScript.
-* Functional component is also called as a stateless component.
-* The functional component only receives props from parent component and return you JSX elements.
-* The functional component doesn’t play with any lifecycle methods of React and doesn’t play with the component state.
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
-**Class component or statefull component:**  
+## Q. When to use a Class Component over a Function Component?
 
-* React class component is called as a stateful component.
-* Stateful component plays with all life cycle methods of React.
-* This component will modify state.
-
-**When would you use a stateless component:**
+**Function Component:**
 
 * When you just need to present the props
 * When you do not need a state, or any internal variables
 * When creating element does not need to be interactive
 * When you want reusable code
 
-**When would you use a stateful component?**  
+**Class Component:**  
 
 * When building element that accepts user input or element that is interactive on page
 * When dependent on state for rendering, such as, fetching data before rendering
