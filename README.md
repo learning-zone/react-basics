@@ -1532,7 +1532,7 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
 
 ## Q. What are Pure Components in React?
 
-**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
 
 **Features of React Pure Components:**
 
@@ -1540,18 +1540,6 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
 * Takes care of `shouldComponentUpdate()` implicitly
 * `State()` and `Props` are Shallow Compared
 * Pure Components are more performant in certain cases
-
-Similar to Pure Functions in JavaScript, a React component is considered a Pure Component if it renders the same output for the same state and props value. React provides the `PureComponent` base class for these class components. Class components that extend the `React.PureComponent` class are treated as pure components.
-
-It is the same as Component except that Pure Components take care of `shouldComponentUpdate()` by itself, it does the *shallow comparison* on the state and props data. If the previous state and props data is the same as the next props or state, the component is not Re-rendered.
-
-React Components re-renders in the following scenarios:
-
-1. `setState()` is called in Component
-1. `props` values are updated
-1. `this.forceUpdate()` is called
-
-In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React `props` and `state`. If updated values are the same as previous values, render is not triggered.
 
 **1. Stateless Component:**
 
@@ -1578,46 +1566,32 @@ export default class Test extends PureComponent{
 **Example:**
 
 ```js
-class Test extends React.PureComponent {
-   constructor(props) {
-      super(props)
-      this.state = {
-         taskList: [
-            { title: 'Excercise'},
-            { title: 'Cooking'},
-            { title: 'Reacting'},
-         ]
-      }
-   }
-   componentDidMount() {
-      setInterval(() => {
-         this.setState((oldState) => {
-            return { taskList: [...oldState.taskList] }
-         })
-      }, 1000)
-   }
-   render() {
-      console.log("TaskList render() called")
-      return (<div>
-         {this.state.taskList.map((task, i) => {
-            return (<Task
-               key={i}
-               title={task.title}
-            />)
-         })}
-      </div>)
-   }
+/**
+ * React Pure Component
+ */
+import React from "react";
+
+export default class App extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      userArray: [1, 2, 3, 4, 5]
+    };
+    // Here we are creating the new Array Object during setState using "Spread" Operator
+    setInterval(() => {
+      this.setState({
+        userArray: [...this.state.userArray, 6]
+      });
+    }, 1000);
+  }
+
+  render() {
+    return <b>Array Length is: {this.state.userArray.length}</b>;
+  }
 }
-class Task extends React.Component {
-   render() {
-      console.log("task added")
-      return (<div>
-         {this.props.title}
-      </div>)
-   }
-}
-ReactDOM.render(<Test />, document.getElementById('app'))
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-purecomponent-gpegf8?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
