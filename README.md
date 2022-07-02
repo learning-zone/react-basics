@@ -1036,12 +1036,7 @@ ReactDOM.render(
 
 ## Q. What are class components in react?
 
-* Class components make use of ES6 class and extend the Component class in React.
-* Sometimes called `stateful` components as they tend to implement logic and state.
-* React lifecycle methods can be used inside class components (for example, `componentDidMount()`).
-* We pass `props` down to class components and access them with `this.props`.
-* Class-based components can have `refs` to underlying DOM nodes.
-* Class-based components can use `shouldComponentUpdate()` and `PureComponent()` performance optimization techniques.
+The class component, a stateful/container component, is a regular ES6 class that extends the component class of the React library. It is called a stateful component because it controls how the state changes and the implementation of the component logic. Aside from that, they have access to all the different phases of a React lifecycle method.
 
 **Example:**
 
@@ -1261,34 +1256,22 @@ The literal difference is that one has state, and the other does not. That means
 **Example:** Stateful/Container/Smart component
 
 ```js
-class Main extends Component {
- constructor() {
-   super()
-   this.state = {
-     books: []
-   }
- }
- render() {
-   <BooksList books={this.state.books} />
- }
+class Welcome extends React.Component {
+  render() {
+    return <h1>This is a React Class Component</h1>;
+  }
 }
 ```
 
 **Example:** Stateless/Presentational/Dumb component
 
 ```js
-const BooksList = ({books}) => {
- return (
-   <ul>
-     {books.map(book => {
-       return <li>book</li>
-     })}
-   </ul>
- )
+function welcome(props) {
+  return <h1>This is a React Functional Component</h1>;
 }
 ```
 
-|Class Components                               |   Function Components                                 |
+|Class Components                               |Functional Components                                 |
 |-----------------------------------------------|-------------------------------------------------------|
 |Class components need to extend the component from "React.Component" and create a render function that returns the required element. | Functional components are like normal functions which take "props" as the argument and return the required element.|
 |They are also known as stateful components.    |They are also known as stateless components.|
@@ -1296,25 +1279,6 @@ const BooksList = ({books}) => {
 |Lifecycle methods can be used inside them.     |Lifecycle methods cannot be used inside them.|
 |It needs to store state therefore constructors are used.|Constructors are not used in it.|
 |It has to have a "render()" method inside that. |It does not require a render method.|
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. When to use a Class Component over a Function Component?
-
-**Function Component:**
-
-* When you just need to present the props
-* When you do not need a state, or any internal variables
-* When creating element does not need to be interactive
-* When you want reusable code
-
-**Class Component:**  
-
-* When building element that accepts user input or element that is interactive on page
-* When dependent on state for rendering, such as, fetching data before rendering
-* When dependent on any data that cannot be passed down as props
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1348,62 +1312,49 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
 
 ## Q. What is the difference between Element, Component and Component instance in React?
 
-A React Component is a template. A blueprint. A global definition. This can be either a function or a class (with a render function).
+**1. React Elements:**
 
-A React Element is what gets returned from components. It is an object that virtually describes the DOM nodes that a component represents. With a function component, this element is the object that the function returns. With a class component, the element is the object that the component\'s render function returns. React elements are not what we see in the browser. They are just objects in memory and we can not change anything about them.
+A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
+
+* **type**: a String representing an HTML tag or a reference referring to a React Component
+* **key**: a String to uniquely identify an React Element
+* **ref**: a reference to access either the underlying DOM node or React Component Instance)
+* **props**: (properties Object)
+
+A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance to be created should look like.
+
+**2. React Components and React Component Instances:**
+
+A React Component is used by extending `React.Component`. If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
+
+A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked.
 
 **Example:**
 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 
 class MyComponent extends React.Component {
   constructor(props) {
     super(props)
-    console.log('This is a component instance:', this)
+    console.log('This is a component instance:' + this)
   }
 
   render() {
     const another_element = <div>Hello, World!</div>
-    console.log('This is also an element:', another_element)
+    console.log('This is also an element:' + another_element)
     return another_element
   }
 }
 
-console.log('This is a component:', MyComponent)
+console.log('This is a component:' + MyComponent)
 
 const element = <MyComponent/>
+console.log('This is an element:' + element)
 
-console.log('This is an element:', element)
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-)
+ReactDOM.render(element, document.getElementById('root'));
 ```
-
-**React Elements:**
-
-A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
-
-* `type`, a String representing an HTML tag or a reference referring to a React Component
-* `key`, a String to uniquely identify an React Element
-* `ref`, a reference to access either the underlying DOM node or React Component Instance)
-* `props` (properties Object)
-
-A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance (or depending on the type an HTML tag) to be created should look like.
-
-A React Element that describes a React Component doesn't know to which DOM node it is eventually rendered - this association is abstracted and will be resolved while rendering.
-
-React Elements may contain child elements and thus are capable of forming element trees, which represent the Virtual DOM tree.
-
-**React Components and React Component Instances:**
-
-A custom React Component is either created by `React.createClass` or by extending `React.Component` (ES2015). If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
-
-A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked. Please note that you never construct React Component Instances yourself but let React create it for you.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
