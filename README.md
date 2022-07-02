@@ -2137,6 +2137,53 @@ function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to apply validation on Props in React?
+
+Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
+
+**Example:**
+
+```js
+/**
+ * Props Validation
+ */
+import React from "react";
+import PropTypes from "prop-types";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <>
+        <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
+        <h3>Array: {this.props.propArray}</h3>
+        <h3>Number: {this.props.propNumber}</h3>
+        <h3>String: {this.props.propString}</h3>
+      </>
+    );
+  }
+}
+
+App.defaultProps = {
+  propBool: true,
+  propArray: [10, 20, 30],
+  propNumber: 100,
+  propString: "Hello React!"
+};
+
+App.propTypes = {
+  propBool: PropTypes.bool.isRequired,
+  propArray: PropTypes.array.isRequired,
+  propNumber: PropTypes.number,
+  propString: PropTypes.string
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-41qmyz?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How to specify the shape of an object with PropTypes
 
 The `PropTypes.shape()` validator can be used when describing an object whose keys are known ahead of time, and may represent different types.
@@ -2229,57 +2276,6 @@ const App = () => (
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/LYyOmdP?editors=0011)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to apply validation on Props in React?
-
-Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
-
-```js
-npm install prop-types --save-dev
-```
-
-**Example:**
-
-```js
-/**
- * Props Validation
- */
-import React from "react";
-import PropTypes from "prop-types";
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <>
-        <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
-        <h3>Array: {this.props.propArray}</h3>
-        <h3>Number: {this.props.propNumber}</h3>
-        <h3>String: {this.props.propString}</h3>
-      </>
-    );
-  }
-}
-
-App.defaultProps = {
-  propBool: true,
-  propArray: [10, 20, 30],
-  propNumber: 100,
-  propString: "Hello React!"
-};
-
-App.propTypes = {
-  propBool: PropTypes.bool.isRequired,
-  propArray: PropTypes.array.isRequired,
-  propNumber: PropTypes.number,
-  propString: PropTypes.string
-};
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-41qmyz?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
