@@ -2192,7 +2192,8 @@ The `PropTypes.shape()` validator can be used when describing an object whose ke
 
 ```js
 /**
- * PropTypes
+ * PropTypes.shape()
+ * @param {*} props
  */
 import PropTypes from "prop-types";
 
