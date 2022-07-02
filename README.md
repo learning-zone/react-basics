@@ -1975,7 +1975,9 @@ export default function App() {
 
 ## Q. What is props in React?
 
-Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+**Props** is a special keyword in React, which stands for properties and is being used for passing data from one component to another. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+Props are **immutable** so we cannot modify the props from inside the component. These attributes are available in the class component as **this.props** and can be used to render dynamic data in our render method.
 
 **Example:**
 
@@ -1987,7 +1989,7 @@ function Welcome(props) {
 const element = <Welcome name="World!" />;
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmWgxz)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-props-2k0081?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
