@@ -1617,6 +1617,10 @@ If you create a function inside a **render** method, it negates the purpose of p
 **Example:**
 
 ```js
+class Mouse extends React.PureComponent {
+  // Mouse Component...
+}
+
 class MouseTracker extends React.Component {
   // Defined as an instance method, `this.renderTheCat` always
   // refers to *same* function when we use it in render
@@ -1628,7 +1632,8 @@ class MouseTracker extends React.Component {
     return (
       <div>
         <h1>Move the mouse around!</h1>
-        <Mouse render={this.renderTheCat} />
+        {/* define the render function as instance method */}
+        <Mouse render={this.renderTheCat} /> 
       </div>
     );
   }
@@ -1639,29 +1644,15 @@ class MouseTracker extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is PureComponent?
-
-Both functional-based and class-based components have the same downside: they always re-render when their parent component re-renders even if the props do not change.
-
-Also, class-based components always re-render when its state is updated (`this.setState()` is called) even if the new state is equal to the old state. Moreover, when a parent component re-renders, all of its children are also re-rendered, and their children too, and so on.
-
-That behaviour may mean a lot of wasted re-renderings. Indeed, if our component only depends on its props and state, then it shouldn\'t re-render if neither of them changed, no matter what happened to its parent component.
-
-That is precisely what PureComponent does - it stops the vicious re-rendering cycle. PureComponent does not re-render unless its props and state change.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. When to use PureComponent over Component?
 
-* We want to avoid re-rendering cycles of component when its props and state are not changed, and
-* The state and props of component are immutable, and
+* We want to avoid re-rendering cycles of component when its props and state are not changed
+* The state and props of component are immutable
 * We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 On the other hand, we should not use `PureComponent()` as a base component if:
 
-* props or state are not immutable, or
+* props or state are not immutable
 * Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 <div align="right">
