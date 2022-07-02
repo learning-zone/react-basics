@@ -2194,28 +2194,41 @@ The `PropTypes.shape()` validator can be used when describing an object whose ke
 /**
  * PropTypes
  */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const Component = (props) => <div>Component badge: {props.badge ? JSON.stringify(props.badge) : 'none'}</div>
+const Component = (props) => (
+  <div>
+    Component badge: {props.badge ? JSON.stringify(props.badge) : "none"}
+  </div>
+);
 
 // PropTypes validation for the prop object
 Component.propTypes = {
   badge: PropTypes.shape({
     src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }),
-}
+    alt: PropTypes.string.isRequired
+  })
+};
 
 const App = () => (
   <div>
-    <Component badge={{ src: 'horse.png', alt: 'Running Horse' }}/>
+    <Component badge={{ src: "horse.png", alt: "Running Horse" }} />
     {/*<Component badge={{src:null, alt: 'this one gives an error'}}/>*/}
-    <Component/>
+    <Component />
   </div>
 );
+
+export default App;
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrXqR?editors=0011)**
+Output:
+
+```js
+Component badge: {"src":"horse.png","alt":"Running Horse"}
+Component badge: none
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-khi20j?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
