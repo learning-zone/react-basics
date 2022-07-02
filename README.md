@@ -1801,6 +1801,9 @@ Inheritance Inversion gives the HOC access to the WrappedComponent instance via 
 **Example:**
 
 ```js
+/**
+ * Inheritance Inversion
+ */
 class Welcome extends React.Component {
   render() {
     return (
