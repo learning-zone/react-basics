@@ -1289,6 +1289,9 @@ function welcome(props) {
 The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
 
 ```js
+/**
+ * super constructor
+ */
 class App extends React.Component {
   constructor(props) {
       super(props)
@@ -1332,6 +1335,9 @@ A React Component can contain state and has access to the React Lifecycle method
 **Example:**
 
 ```js
+/**
+ * React Component Instances
+ */
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -1394,7 +1400,11 @@ The React class components uses render() function. It is used to update the UI.
 * In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
 
 ```js
-// React v18
+/**
+ * render() function
+ * 
+ * React v18.0.0
+ */
 import React from "react";
 import { createRoot } from "react-dom/client";
 
@@ -1513,6 +1523,9 @@ The usual pattern for rendering lists of components often ends with delegating a
 **Example:** using custom `shouldComponentUpdate()`
 
 ```js
+/**
+ * shouldComponentUpdate()
+ */
 class AnimalTable extends React.Component<Props, never> {
   shouldComponentUpdate(nextProps: Props) {
     return !nextProps.animalIds.equals(this.props.animalIds);
