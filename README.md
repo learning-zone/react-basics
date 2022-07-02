@@ -2697,29 +2697,30 @@ This is data maintained inside a component. It is local or owned by that specifi
 **Example:**
 
 ```js
-class Employee extends React.Component {
-    constructor() {
-      super()
-      this.state = {
-          id: 100,
-          name: "Alex K"
-      }  
-    }
+/**
+ * React State
+ */
+export default class Employee extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      id: 100,
+      name: "Sarita Mangat"
+    };
+  }
 
-    render() {
-        return (
-            <div>
-              <p>{this.state.id}</p>
-              <p>{this.state.name}</p>
-            </div>
-        )  
-    }
+  render() {
+    return (
+      <div>
+        <div>ID: {this.state.id}</div>
+        <div>Name: {this.state.name}</div>
+      </div>
+    );
+  }
 }
-
-export default Employee
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPjbQ?editors=0010)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-state-8d815y?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
