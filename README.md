@@ -1861,7 +1861,9 @@ const MyComponent = React.lazy(() => import('./MyComponent'));
 **React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
 
 ```js
-// Using Suspense
+/**
+ * Suspense
+ */
 import React, { Suspense } from 'react';
 
 const MyComponent = React.lazy(() => import('./MyComponent'));
