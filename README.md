@@ -2482,32 +2482,37 @@ Since `{this.props.children}` can have one element, multiple elements, or none a
 **Example:**
 
 ```js
-class Example extends React.Component {
-
+/**
+ * React Children Props
+ */
+export default class App extends React.Component {
   render() {
-    return <div>
-      <div>Children ({this.props.children.length}):</div>
-      {this.props.children}
-    </div>
+    return (
+      <div>
+        <b>Children ({this.props.children.length}):</b>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
 class Widget extends React.Component {
 
   render() {
-    return <div>
-      <div>First <code>Example</code>:</div>
-      <Example>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </Example>
-      <div>Second <code>Example</code> with different children:</div>
-      <Example>
-        <div>A</div>
-        <div>B</div>
-      </Example>
-    </div>
+    return 
+      <div>
+        <h2>First Example:</h2>
+        <App>
+          <div>10</div>
+          <div>20</div>
+          <div>30</div>
+        </App>
+        <h2>Second Example:</h2>
+        <App>
+          <div>A</div>
+          <div>B</div>
+        </App>
+      </div>
   }
 }
 ```
@@ -2517,16 +2522,17 @@ Output
 ```js
 First Example:
 Children (3):
-1
-2
-3
-Second Example with different children:
+10
+20
+30
+
+Second Example:
 Children (2):
 A
 B
 ```
 
-`children` is a special property of React components which contains any child elements defined within the component, e.g. the `<div>` inside Example above. `{this.props.children}` includes those children in the rendered result.
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-7ry7cc?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
