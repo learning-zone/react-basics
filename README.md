@@ -2076,6 +2076,9 @@ React JSX doesn\'t support variable interpolation inside an attribute value, but
 **Example:**
 
 ```js
+/**
+ * Access Props
+ */
 class App extends Component {
   render() {
     return (
@@ -2107,6 +2110,9 @@ React JSX has exactly two ways of passing true, `<MyComponent prop />` and `<MyC
 **Example:**
 
 ```js
+/**
+ * Boolean Props
+ */
 const MyComponent = ({ prop1, prop2 }) => (
   <div>
     <div>Prop1: {String(prop1)}</div>
@@ -2138,6 +2144,9 @@ The `PropTypes.shape()` validator can be used when describing an object whose ke
 **Example:**
 
 ```js
+/**
+ * PropTypes
+ */
 import PropTypes from 'prop-types';
 
 const Component = (props) => <div>Component badge: {props.badge ? JSON.stringify(props.badge) : 'none'}</div>
@@ -2172,6 +2181,9 @@ The `PropTypes.objectOf()` validator is used when describing an object whose key
 **Example:**
 
 ```js
+/**
+ * PropTypes
+ */
 import PropTypes from 'prop-types';
 
 // Expected prop object - dynamic keys (i.e. user ids)
@@ -2196,7 +2208,9 @@ MyComponent.propTypes = {
 Using `PropTypes.oneOfType()` says that a prop can be one of any number of types. For instance, a phone number may either be passed to a component as a string or an integer:
 
 ```js
-
+/**
+ * PropTypes.oneOfType()
+ */
 const Component = (props) => <div>Phone Number: {props.phoneNumber}</div>
 
 Component.propTypes = {
@@ -2224,46 +2238,48 @@ const App = () => (
 
 Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
 
-```bash
+```js
 npm install prop-types --save-dev
 ```
 
 **Example:**
 
 ```js
-import React from 'react'
-import PropTypes from 'prop-types'
+/**
+ * Props Validation
+ */
+import React from "react";
+import PropTypes from "prop-types";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <>
+        <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
+        <h3>Array: {this.props.propArray}</h3>
+        <h3>Number: {this.props.propNumber}</h3>
+        <h3>String: {this.props.propString}</h3>
+      </>
+    );
+  }
+}
 
 App.defaultProps = {
-   propBool: true,
-   propArray: [1, 2, 3, 4, 5],
-   propNumber: 100,
-   propString: "Hello React!"
-}
-
-class App extends React.Component {
-
-   render() {
-      return (
-         <fragment>
-            <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
-            <h3>Array: {this.props.propArray}</h3>
-            <h3>Number: {this.props.propNumber}</h3>
-            <h3>String: {this.props.propString}</h3>
-         </fragment>
-      )
-   }
-}
+  propBool: true,
+  propArray: [10, 20, 30],
+  propNumber: 100,
+  propString: "Hello React!"
+};
 
 App.propTypes = {
-   propBool: PropTypes.bool.isRequired,
-   propArray: PropTypes.array.isRequired,
-   propNumber: PropTypes.number,
-   propString: PropTypes.string,
-}
-
-export default App
+  propBool: PropTypes.bool.isRequired,
+  propArray: PropTypes.array.isRequired,
+  propNumber: PropTypes.number,
+  propString: PropTypes.string
+};
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-41qmyz?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
