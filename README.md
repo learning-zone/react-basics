@@ -1676,47 +1676,42 @@ Higher-Order Components are not part of the React API. They are the pattern that
 ```js
 // HOC.js
 
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
-export default function Hoc(HocComponent){
-    return class extends Component{
-        render(){
-            return (
-                <div>
-                    <HocComponent></HocComponent>
-                </div>
-
-            )
-        }
+export default function Hoc(HocComponent) {
+  return class extends Component {
+    render() {
+      return (
+        <div>
+          <HocComponent></HocComponent>
+        </div>
+      );
     }
+  };
 }
 ```
 
 ```js
 // App.js
 
-import React, { Component } from 'react'
-import Hoc from './HOC'
+import React, { Component } from "react";
+import Hoc from "./HOC";
 
-class App extends Component {
-  
+export default class App extends Component {
   render() {
-    return (
-      <div>
-        Higher-Order Component Example!
-      </div>
-    )
+    return <h2>Higher Order Component!</h2>;
   }
 }
-App = Hoc(App)
-export default App
+App = Hoc(App);
 ```
 
-*Notes*
+*Notes:*
 
 * We do not modify or mutate components. We create new ones.
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hoc-3qrt5b?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
