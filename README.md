@@ -2787,6 +2787,8 @@ This is because setState() alters the state and causes rerendering. This can be 
 
 A **callback function** which will be invoked when `setState()` has finished and the component is re-rendered. The setState() is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
 
+**Example:**
+
 ```js
 this.setState(
   { username: 'Lila' },
