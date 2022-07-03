@@ -2783,7 +2783,7 @@ This is because setState() alters the state and causes rerendering. This can be 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the second argument that can optionally be passed to setState and what is its purpose?
+## Q. What is the second argument that can optionally be passed to setState() and what is its purpose?
 
 A **callback function** which will be invoked when `setState()` has finished and the component is re-rendered. The setState() is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
 
@@ -2963,7 +2963,7 @@ onDeleteByIndex(index) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. Why should not call setState in componentWillUnmount?
+## Q. Why should not call setState() in componentWillUnmount()?
 
 We should not call `setState()` in `componentWillUnmount()` because the component will never be re-rendered. Once a component instance is unmounted, it will never be mounted again.
 
@@ -3268,6 +3268,93 @@ function Child(props) {
 ```
 
 On the above codes, we have created function handleChange that will pass the value through props.onChange to our Parent component.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why is it advised to pass a callback function to setState() as opposed to an object?
+
+Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
+
+**Example**: setState Callback in a Class Component
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      age: 0,
+    }
+  }
+  
+  // this.checkAge is passed as the callback to setState
+  updateAge = (value) => {
+    this.setState({ age: value}, this.checkAge)
+  }
+
+  checkAge = () => {
+    const { age } = this.state
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }
+
+  render() {
+    const { age } = this.state
+    return (
+      <div>
+        <p>Drinking Age Checker</p>
+        <input
+          type="number"
+          value={age}
+          onChange={e => this.updateAge(e.target.value)}
+        />
+      </div>
+    )
+  }
+}
+export default App
+```
+
+**Example:** setState Callback in a Functional Component
+
+```js
+import React, { useEffect, useState } from 'react'
+
+function App() {
+  const [age, setAge] = useState(0)
+  
+  updateAge(value) {
+    setAge(value)
+  }
+
+  useEffect(() => {
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }, [age])
+
+  return (
+    <div>
+      <p>Drinking Age Checker</p>
+      <input
+        type="number"
+        value={age} 
+        onChange={e => setAge(e.target.value)}
+      />
+    </div>
+  )
+}
+
+export default App
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10922,93 +11009,6 @@ class App extends Component {
 ```
 
 Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why is it advised to pass a callback function to setState as opposed to an object?
-
-Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
-
-*Example: setState Callback in a Class Component*
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      age: 0,
-    }
-  }
-  
-  // this.checkAge is passed as the callback to setState
-  updateAge = (value) => {
-    this.setState({ age: value}, this.checkAge)
-  }
-
-  checkAge = () => {
-    const { age } = this.state
-    if (age !== 0 && age >= 21) {
-      // Make API call to /beer
-    } else {
-      // Throw error 404, beer not found
-    }
-  }
-
-  render() {
-    const { age } = this.state
-    return (
-      <div>
-        <p>Drinking Age Checker</p>
-        <input
-          type="number"
-          value={age}
-          onChange={e => this.updateAge(e.target.value)}
-        />
-      </div>
-    )
-  }
-}
-export default App
-```
-
-*Example: setState Callback in a Functional Component*
-
-```js
-import React, { useEffect, useState } from 'react'
-
-function App() {
-  const [age, setAge] = useState(0)
-  
-  updateAge(value) {
-    setAge(value)
-  }
-
-  useEffect(() => {
-    if (age !== 0 && age >= 21) {
-      // Make API call to /beer
-    } else {
-      // Throw error 404, beer not found
-    }
-  }, [age])
-
-  return (
-    <div>
-      <p>Drinking Age Checker</p>
-      <input
-        type="number"
-        value={age} 
-        onChange={e => setAge(e.target.value)}
-      />
-    </div>
-  )
-}
-
-export default App
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
