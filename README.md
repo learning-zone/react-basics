@@ -3640,7 +3640,7 @@ export default class App extends React.Component {
 
 ## Q. How do I pass a parameter to an event handler or callback?
 
-You can use an arrow function to wrap around an event handler and pass parameters:
+You can use an **arrow function** to wrap around an event handler and pass parameters:
 
 ```js
 <button onClick={() => this.handleClick(id)} />
@@ -3652,79 +3652,45 @@ This is equivalent to calling `.bind`
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-**Example:** Passing params using arrow functions
+**Example:**
 
 ```js
-const A = 65 // ASCII character code
+/**
+ * Pass parameter to an event handler
+ */
+const A = 65; // ASCII character code
 
-class Alphabet extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
     this.state = {
       justClicked: null,
-      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    }
+      letters: Array.from({ length: 26 }, (_, i) => String.fromCharCode(A + i))
+    };
   }
+
   handleClick(letter) {
-    this.setState({ justClicked: letter })
+    this.setState({ justClicked: letter });
   }
+  
   render() {
     return (
-      <div>
+      <>
         Just clicked: {this.state.justClicked}
         <ul>
-          {this.state.letters.map(letter =>
+          {this.state.letters.map((letter) => (
             <li key={letter} onClick={() => this.handleClick(letter)}>
               {letter}
             </li>
-          )}
+          ))}
         </ul>
-      </div>
-    )
+      </>
+    );
   }
 }
 ```
 
-**Example:** Passing params using data-attributes
-
-Alternately, you can use DOM APIs to store data needed for event handlers. Consider this approach if you need to optimize a large number of elements or have a render tree that relies on React.PureComponent equality checks.
-
-```js
-const A = 65 // ASCII character code
-
-class Alphabet extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.state = {
-      justClicked: null,
-      letters: Array.from({length: 26}, (_, i) => String.fromCharCode(A + i))
-    }
-  }
-
-  handleClick(e) {
-    this.setState({
-      justClicked: e.target.dataset.letter
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        Just clicked: {this.state.justClicked}
-        <ul>
-          {this.state.letters.map(letter =>
-            <li key={letter} data-letter={letter} onClick={this.handleClick}>
-              {letter}
-            </li>
-          )}
-        </ul>
-      </div>
-    )
-  }
-}
-```
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-parameter-br87ji?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
