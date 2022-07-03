@@ -2726,6 +2726,53 @@ export default class Employee extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What does setState() do?
+
+The component state can be updated in response to event handlers, server responses, or prop changes. This is done using the **setState()** method. The setState() method enqueues all of the updates made to the component state and instructs React to re-render the component and its children with the updated state.
+
+Always use the setState() method to change the state object, since it will ensure that the component knows it\'s been updated and calls the `render()` method.
+
+**Example:**
+
+```js
+/**
+ * React setState()
+ */
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "blue"
+    };
+  }
+
+  handleColor = () => {
+    this.setState({ color: "red" });
+  };
+
+  render() {
+    return (
+      <div>
+        <h3 style={{ color: `${this.state.color}` }}>
+          Color: {this.state.color}
+        </h3>
+
+        <button type="button" onClick={this.handleColor}>
+          Change color
+        </button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-setstate-d58xff?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. Why is setState() in React async instead of sync?
 
 Even if state is updated synchronously, props are not, it means we do not know props until it re-renders the parent component. The objects provided by React (`state`, `props`, `refs`) are consistent with each other and if you introduce a synchronous setState you could introduce some bugs.
