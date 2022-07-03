@@ -3403,36 +3403,35 @@ Handling events with React elements is very similar to handling events on DOM el
 * React events are named using camelCase, rather than lowercase.
 * With JSX you pass a function as the event handler, rather than a string.
 
-```js
-class Toggle extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {isToggleOn: true}
+**Example:**
 
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this)
+```js
+/**
+ * Event Handling in React
+ */
+export default class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: true };
   }
 
   handleClick() {
-    this.setState(state => ({
+    this.setState((state) => ({
       isToggleOn: !state.isToggleOn
-    }))
+    }));
   }
 
   render() {
     return (
-      <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      <button onClick={() => this.handleClick()}>
+        {this.state.isToggleOn ? "ON" : "OFF"}
       </button>
-    )
+    );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-)
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handling-coshzh?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
