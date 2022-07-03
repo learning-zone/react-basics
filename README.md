@@ -2881,13 +2881,9 @@ class Food extends Component {
 
 ## Q. Why should not we update the state directly?
 
-The `setState()` does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state` after calling this method can potentially return the existing value.
+The **setState()** does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value.
 
-There is no guarantee of synchronous operation of calls to `setState()` and calls may be batched for performance gains.
-
-The `setState()` will always trigger a re-render unless conditional rendering logic is implemented in `shouldComponentUpdate()`. If mutable objects are being used and the logic cannot be implemented in `shouldComponentUpdate()`, calling `setState()` only when the new state differs from the previous state will avoid unnecessary re-renders.
-
-Basically, if we modify `this.state()` directly, we create a situation where those modifications might get overwritten.
+The setState() will always trigger a re-render unless conditional rendering logic is implemented in **shouldComponentUpdate()**. If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
 
 **Example:**
 
