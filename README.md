@@ -2979,50 +2979,15 @@ React components automatically re-render whenever there is a change in their sta
 
 However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
 
-**1. Using setState():**
-
-In the following example, the `setState()` method is called each time a character is entered into the text box. This causes re-rendering, ​which updates the text on the screen.
-
-```js
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
-
-class Greeting extends Component {
-  state = {
-    fullname: '',
-  }
-
-  stateChange = (f) => {
-    const {name, value} = f.target
-    this.setState({
-      [name]: value,
-    })
-  }
-
-  render() {
-    return (
-      <div className="text-center">
-        <label htmlFor="fullname"> Full Name: </label>
-        <input type="text" name="fullname" onChange={this.stateChange} />
-        <div className="border border-primary py-3">
-            <h4> Greetings, {this.state.fullname}!</h4>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Greeting
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWpNdM?editors=0010)**
-
-**2. Using forceUpdate():**
+**Using forceUpdate():**
 
 The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
 
 ```js
-class App extends React.Component {
+/**
+ * forceUpdate()
+ */
+export default class App extends React.Component {
   constructor(){
     super();
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
@@ -3041,8 +3006,6 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
