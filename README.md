@@ -3325,7 +3325,7 @@ export default App
 
 ## Q. How does the state differ from props in React?
 
-**State:**
+**1. State:**
 
 This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
 
@@ -3343,7 +3343,7 @@ class AppComponent extends React.component {
 }
 ```
 
-**Props:**
+**2. Props:**
 
 Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
 
