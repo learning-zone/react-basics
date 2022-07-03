@@ -3200,37 +3200,37 @@ class Child extends React.Component {
 
 ## Q. How to change the state of a child component from its parent in React?
 
-**Using Props:**
-
-We will take two components, Parent and Child. And our Parent component will set the value depends on the Child Component. Child component holds the Input field and we are going to send the input field value to the Parent component.
+To change child component\'s state from parent component with React, we can pass props.
 
 ```js
-function Parent() {
-    const [value, setValue] = React.useState("")
+/**
+ * Change Child state from its Parent
+ * @param {*} param0
+ */
+const Child = ({ open }) => {
+  return <h2>Child State: {open.toString()}</h2>;
+};
 
-    function handleChange(newValue) {
-      setValue(newValue)
-    }
+const Parent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-    // We pass a callback to Child
-    return <Child value={value} onChange={handleChange} />
-}
+  const toggleChild = () => {
+    setIsOpen((prevValue) => !prevValue);
+  };
+
+  return (
+    <div>
+      <button onClick={toggleChild}>Click Me</button>
+      {/* Pass a callback to Child */}
+      <Child open={isOpen} />
+    </div>
+  );
+};
+
+export default Parent;
 ```
 
-As you see that we set the onChange property to the Child component. Next step is to create the Child component.
-
-```js
-function Child(props) {
-    function handleChange(event) {
-        // Here, we invoke the callback with the new value
-        props.onChange(event.target.value)
-    }
-  
-    return <input value={props.value} onChange={handleChange} />
-}
-```
-
-On the above codes, we have created function handleChange that will pass the value through props.onChange to our Parent component.
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/agitated-aryabhata-26wdz5?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
