@@ -2785,18 +2785,16 @@ This is because setState() alters the state and causes rerendering. This can be 
 
 ## Q. What is the second argument that can optionally be passed to setState and what is its purpose?
 
-A callback function which will be invoked when `setState()` has finished and the component is re-rendered.
-
-The `setState()` is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
+A **callback function** which will be invoked when `setState()` has finished and the component is re-rendered. The setState() is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
 
 ```js
 this.setState(
-  { username: 'Alex' },
+  { username: 'Lila' },
   () => console.log('setState has finished and the component has re-rendered.')
 )
 ```
 
-The `setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns false. To avoid unnecessary renders, calling `setState()` only when the new state differs from the previous state makes sense and can avoid calling `setState()` in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
+The setState() will always lead to a re-render unless `shouldComponentUpdate()` returns **false**. To avoid unnecessary renders, calling setState() only when the new state differs from the previous state makes sense and can avoid calling setState() in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2810,7 +2808,7 @@ Instead of directly modifying the state using `this.state()`, we use `this.setSt
 
 ```js
 this.state = {
-  user: { name: 'Alex K', age: 28 }
+  user: { name: 'Vasuda Handa', age: 22 }
 }
 ```
 
@@ -2819,7 +2817,7 @@ this.state = {
 ```js
 this.setState(prevState => {
   let user = Object.assign({}, prevState.user);  // creating copy of state variable user
-  user.name = 'New-Name';                            // update the name property, assign a new value
+  user.name = 'Sai Gupta';                            // update the name property, assign a new value
   return { user };                                 // return new object user object
 })
 ```
@@ -2830,7 +2828,7 @@ this.setState(prevState => {
 this.setState(prevState => ({
     user: {                   // object that we want to update
         ...prevState.user,    // keep all other key-value pairs
-        name: 'New-Name'       // update the value of specific key
+        name: 'Niraj Gara'       // update the value of specific key
     }
 }))
 ```
