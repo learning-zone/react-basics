@@ -2692,7 +2692,7 @@ class App extends React.Component {
 
 ## Q. What is State in React?
 
-This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
+The state is a built-in object that is used to contain data about the component. A component\'s state can change over time; whenever it changes, the component re-renders.
 
 **Example:**
 
