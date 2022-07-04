@@ -3700,79 +3700,54 @@ export default class App extends React.Component {
 
 **1. Throttle:**
 
-Throttling prevents a function from being called more than once in a given window of time. The example below throttles a "click" handler to prevent calling it more than once per second.
-
-```js
-import throttle from 'lodash.throttle'
-
-class LoadMoreButton extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleClickThrottled = throttle(this.handleClick, 1000)
-  }
-
-  componentWillUnmount() {
-    this.handleClickThrottled.cancel()
-  }
-
-  render() {
-    return <button onClick={this.handleClickThrottled}>Load More</button>
-  }
-
-  handleClick() {
-    this.props.loadMore()
-  }
-}
-```
+Throttling prevents a function from being called more than once in a given window of time.
 
 **2. Debounce:**
 
 Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called. This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).
 
-The example below debounces text input with a 250ms delay.
+**Example:**
 
 ```js
-import debounce from 'lodash.debounce'
+/**
+ * Throttle and Debounce in React
+ */
+import * as React from "react";
+import * as _ from "lodash";
 
-class Searchbox extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.emitChangeDebounced = debounce(this.emitChange, 250)
+export default class App extends React.Component {
+  state = { count: 0 };
+
+  handleCount() {
+    this.setState((state) => ({
+      count: state.count + 1
+    }));
   }
 
-  componentWillUnmount() {
-    this.emitChangeDebounced.cancel()
-  }
+  // You will run count() only once after 100ms
+  handleDebounce = _.debounce(() => this.handleCount(), 100);
+
+  // You will run count() every 200ms
+  handleThrottle = _.throttle(() => this.handleCount(), 200);
 
   render() {
     return (
-      <input
-        type="text"
-        onChange={this.handleChange}
-        placeholder="Search..."
-        defaultValue={this.props.value}
-      />
-    )
-  }
-
-  handleChange(e) {
-    // React pools events, so we read the value before debounce.
-    // Alternately we could call `event.persist()` and pass the entire event.
-    // For more info see reactjs.org/docs/events.html#event-pooling
-    this.emitChangeDebounced(e.target.value)
-  }
-
-  emitChange(value) {
-    this.props.onChange(value)
+      <div>
+        {this.state.count}
+        <hr />
+        <button onClick={this.handleThrottle}>Click Me - Throttle </button>
+        <button onClick={this.handleDebounce}>Click Me - Debounce </button>
+      </div>
+    );
   }
 }
 ```
 
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-throttle-debounce-doch91?file=/src/App.js)**
+
 **3. RequestAnimationFrame Throttling:**
 
-`requestAnimationFrame` is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
+The **requestAnimationFrame** is a way of queuing a function to be executed in the browser at the optimal time for rendering performance. A function that is queued with requestAnimationFrame will fire in the next frame. The browser will work hard to ensure that there are 60 frames per second (60 fps). However, if the browser is unable to it will naturally limit the amount of frames in a second.
 
 For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second. Using requestAnimationFrame for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second. If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.
 
