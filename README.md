@@ -3916,7 +3916,9 @@ export default function App() {
 ## Q. How do you render Array, Strings and Numbers in React?
 
 ```js
-// Array Component
+/**
+ * Array Component
+ */
 const items = [
   { name: "AngularJS", description: "" },
   { name: "React", description: "" },
@@ -3931,7 +3933,10 @@ const ArrayList = (props) => (
   </div>
 );
 
-// String Component
+
+/**
+ * String Component
+ */
 const StringList = (props) => (
   <div>
     <h2>Render String List</h2>
@@ -3939,7 +3944,10 @@ const StringList = (props) => (
   </div>
 );
 
-// Number Component
+
+/**
+ * Number Component
+ */
 const numbers = [10, 20, 30];
 const NumberList = (props) => (
   <div>
