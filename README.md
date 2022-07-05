@@ -3969,38 +3969,48 @@ const NumberList = (props) => (
 
 <br/>
 
-## Q. How to fetch data with React Hooks?
+## Q. How to make api calls in react js?
 
-The `useEffect()` is used to fetch the data with axios from the API and to set the data in the local state of the component with the state hook\'s update function.
+Consuming REST APIs in a React Application can be done in various ways. Some popular are Axios, fetch etc.
 
 **Example:**
 
 ```js
 /**
- * API call using Hooks
+ * API calls in React
  */
-export default function App() {
-  const [items, setItems] = React.useState([]);
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: []
+    };
+  }
 
-  React.useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+  componentDidMount() {
+    fetch("https://api.github.com/users")
       .then((res) => res.json())
       .then((result) => {
-        setItems(result);
+        this.setState({ users: result });
       });
-  }, []);
+  }
 
-  return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
-  );
+  render() {
+    const { users } = this.state;
+    return (
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <img src={user.avatar_url} alt={user.login} width="100px" />
+          </li>
+        ))}
+      </ul>
+    );
+  }
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useeffect-llvlbj?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-api-call-llvlbj?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
