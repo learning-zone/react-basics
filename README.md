@@ -3969,54 +3969,38 @@ const NumberList = (props) => (
 
 <br/>
 
-## Q. How to make AJAX requests in React?
+## Q. How to fetch data with React Hooks?
 
-You can use any AJAX library you like with React. Some popular ones are **Axios**, **jQuery AJAX**, and the browser built-in **window.fetch**.
+The `useEffect()` is used to fetch the data with axios from the API and to set the data in the local state of the component with the state hook\'s update function.
 
-**Example:** Using Hooks
+**Example:**
 
 ```js
-function MyComponent() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+/**
+ * API call using Hooks
+ */
+export default function App() {
+  const [items, setItems] = React.useState([]);
 
+  React.useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((result) => {
+        setItems(result);
+      });
+  }, []);
 
-  useEffect(() => {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [])
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.name} {item.price}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>{item.title}</li>
+      ))}
+    </ul>
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useeffect-llvlbj?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
