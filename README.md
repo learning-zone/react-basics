@@ -4020,75 +4020,52 @@ export default class App extends React.Component {
 
 Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
 
-**Features:**
-
-* **Interceptors**: Access the request or response configuration (headers, data, etc) as they are outgoing or incoming. These functions can act as gateways to check configuration or add data.
-* **Instances**: Create reusable instances with baseUrl, headers, and other configuration already set up.
-* **Defaults**: Set default values for common headers (like Authorization) on outgoing requests. This can be useful if you are authenticating to a server on every request.
-
-**Installation:**
-
-```bash
-npm install axios -- save
-```
-
-**Shorthand Methods:**
-
-* `axios.request(config)`
-* `axios.get(url[, config])`
-* `axios.delete(url[, config])`
-* `axios.head(url[, config])`
-* `axios.options(url[, config])`
-* `axios.post(url[, data[, config]])`
-* `axios.put(url[, data[, config]])`
-* `axios.patch(url[, data[, config]])`
-
-**POST Request Example:**
+**Example:**
 
 ```js
+/**
+ * GET Request using Axios
+ */
+import axios from "axios";
+import React from "react";
 
-axios.post('/url',{data: 'data'})
-  .then((res)=>{
-    //on success
-  })
-  .catch((error)=>{
-    //on error
-  })
-```
+const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
 
-**GET Request Example:**
+export default function App() {
+  const [post, setPost] = React.useState(null);
 
-```js
-axios.get('/url')
-  .then((res)=>{
-    //on success
-  })
-  .catch((error)=>{
-    //on error
-  })
-```
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
 
-**Performing Multiple Concurrent Requests Example:**
+  if (!post) return null;
 
-```js
-function getUserAccount() {
-  return axios.get('/user/12345')
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </div>
+  );
 }
-
-function getUserPermissions() {
-  return axios.get('/user/12345/permissions')
-}
-
-axios.all([getUserAccount(), getUserPermissions()])
-  .then(axios.spread(function (acct, perms) {
-    // Both requests are now complete
-  }))
-
 ```
 
-**Example:** Making a POST Request
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-axios-7bhnjt?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to make a post call using Axios in React?
+
+**Example:**
 
 ```js
+/**
+ * POST Call using Axios
+ */
+
 import React from 'react'
 import axios from 'axios'
 
