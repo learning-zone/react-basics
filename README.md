@@ -4127,7 +4127,9 @@ export default class PersonList extends React.Component {
 
 ## Q. What are the benefits of using Axios() over Fetch() for making http requests?
 
-**Fetch**: The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
+**1. Fetch()**:
+
+The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
 
 **Example:**
 
@@ -4141,9 +4143,11 @@ fetch('path-to-the-resource-to-be-fetched')
   });
 ```
 
-**Axios**: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+**2. Axios()**:
 
-*Example:*
+Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+
+**Example:**
 
 ```js
 axios.get('url')
@@ -4155,15 +4159,15 @@ axios.get('url')
   });
 ```
 
-**Differences between Axios and Fetch**
+**Differences:**
 
 | Axios()                         | Fetch()                            |
 |---------------------------------|------------------------------------|
 |Axios has **url** in request object. | Fetch has no url in request object.|
 |Axios is a stand-alone third party package that can be easily installed.|Fetch is built into most modern browsers|
 |Axios has built-in XSRF protection.|Fetch does not.|
-|Axios uses the **data** property.    |Fetch uses the **body** property.|
-|Axios data contains the object.  |Fetch\'s body has to be stringified.|
+|Axios uses the **data** property.  |Fetch uses the **body** property.|
+|Axios data contains the object.    |Fetch\'s body has to be stringified.|
 |Axios request is ok when status is 200 and statusText is 'OK'.|Fetch request is ok when response object contains the ok property.|
 |Axios performs automatic transforms of JSON data.|Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response.|
 |Axios allows cancelling request and request timeout.|Fetch does not.|
