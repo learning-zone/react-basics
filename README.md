@@ -4173,7 +4173,6 @@ axios.get('url')
 |Axios allows cancelling request and request timeout.|Fetch does not.|
 |Axios has the ability to intercept HTTP requests.|Fetch, by default, doesn\'t provide a way to intercept requests.|
 |Axios has built-in support for download progress.|Fetch does not support upload progress.|
-|Axios has wide browser support.  |Fetch only supports Chrome 42+, Firefox 39+, Edge 14+, and Safari 10.1+.|
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
