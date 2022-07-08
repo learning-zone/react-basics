@@ -4087,7 +4087,6 @@ export default class PersonList extends React.Component {
 
     axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
       .then(res => {
-        console.log(res)
         console.log(res.data)
       })
   }
@@ -4107,6 +4106,8 @@ export default class PersonList extends React.Component {
   }
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-post-request-qp77q5?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
