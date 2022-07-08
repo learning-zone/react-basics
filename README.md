@@ -4178,43 +4178,42 @@ axios.get('url')
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How does Axios Interceptors work in react?
+## Q. How does Axios Interceptors work in React?
 
-Axios interceptors are functions that Axios calls for every request. We can use interceptors to transform the request before Axios sends it, or transform the response before Axios returns the response to our code.
+Axios interceptors are the default configurations that are added automatically to every request or response that a user receives. It is useful to check response status code for every response that is being received.
 
-There are two types of interceptors:
+Interceptors are methods which are triggered before or after the main method. There are two types of interceptors:
 
-* **request interceptor**: This is called before the actual call to the endpoint is made.
-* **response interceptor**: This is called before the promise is completed and the data is received by the then callback.
+**1. Request Interceptor:**
 
-**1. Request interceptor**
-
-One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
+This is called before the actual call to the endpoint is made. One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
 
 **Example:**
 
 ```js
-// Add request handler
+// Request Handler
 const requestHandler = (request) => {
-  if (isHandlerEnabled(request)) {
-    // Modify request here
-    request.headers['X-Auth'] = 'https://example.com/vPvKWe'
+  const token = localStorageService.getAccessToken()
+  if (token) {
+    request.headers['Authorization'] = 'Bearer ' + token
   }
   return request
 }
 
-// Enable request interceptor
-axiosInstance.interceptors.request.use(
+// Request Interceptor
+axios.interceptors.request.use(
   request => requestHandler(request)
 )
 ```
 
-**2. Response and error interceptors**
+**2. Response and error Interceptor:**
+
+This is called before the promise is completed and the data is received by the then callback.
 
 **Example:**
 
 ```js
-// Add response handlers
+// Response Handlers
 const errorHandler = (error) => {
   if (isHandlerEnabled(error.config)) {
     // Handle errors
@@ -4229,8 +4228,8 @@ const successHandler = (response) => {
   return response
 }
 
-// Enable interceptors
-axiosInstance.interceptors.response.use(
+// Response Interceptors
+axios.interceptors.response.use(
   response => successHandler(response),
   error => errorHandler(error)
 )
