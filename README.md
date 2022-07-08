@@ -3969,7 +3969,7 @@ const NumberList = (props) => (
 
 <br/>
 
-## Q. How to make api calls in react js?
+## Q. How to make a API calls in React?
 
 Consuming REST APIs in a React Application can be done in various ways. Some popular are Axios, fetch etc.
 
