@@ -3977,7 +3977,7 @@ Consuming REST APIs in a React Application can be done in various ways. Some pop
 
 ```js
 /**
- * API calls in React
+ * API call using fetch()
  */
 export default class App extends React.Component {
   constructor(props) {
