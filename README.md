@@ -4063,33 +4063,35 @@ export default function App() {
 
 ```js
 /**
- * POST Call using Axios
+ * POST Request using Axios
  */
 
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
 export default class PersonList extends React.Component {
   state = {
-    name: '',
-  }
+    name: "",
+    result: []
+  };
 
-  handleChange = event => {
-    this.setState({ name: event.target.value })
-  }
+  handleChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit = (event) => {
+    event.preventDefault();
 
     const user = {
       name: this.state.name
-    }
+    };
 
-    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-      .then(res => {
-        console.log(res.data)
-      })
-  }
+    axios
+      .post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then((res) => {
+        this.setState({ result: res.data.user.name });
+      });
+  };
 
   render() {
     return (
@@ -4101,8 +4103,9 @@ export default class PersonList extends React.Component {
           </label>
           <button type="submit">Add</button>
         </form>
+        <h4>Result: {this.state.result}</h4>
       </div>
-    )
+    );
   }
 }
 ```
