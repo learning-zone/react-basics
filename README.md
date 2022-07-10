@@ -4289,7 +4289,7 @@ const useFetch = (url) => {
 
 Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
 
-**2. Memoizing Data With `useRef()`:**
+**2. Memoizing Data With useRef():**
 
 With `useRef()`, we can set and retrieve mutable values at ease and its value persists throughout the component\'s lifecycle.
 
@@ -4325,7 +4325,7 @@ const useFetch = (url) => {
 }
 ```
 
-**3. Using `localStorage()`:**
+**3. Using localStorage():**
 
 ```js
 const InitialState = {
@@ -4354,7 +4354,7 @@ render() {
 export default App
 ```
 
-**4. Keep data between mouting and unmounting:**
+**4. Keep data between Mouting and Unmounting:**
 
 ```js
 import React, { Component } from 'react'
