@@ -5421,26 +5421,39 @@ The useContext accepts the value provided by React.createContext and then re-ren
 The **defaultValue** argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Passing **undefined** as a Provider value does not cause consuming components to use **defaultValue**.
 
 ```js
-const Context = createContext( "Default Value" );
+/**
+ * Default value in Context API
+ */
+import { createContext, useContext } from "react";
 
-function Child() {
+const Context = createContext("Default Value");
+
+/**
+ * Child1 Component
+ */
+function Child1() {
   const context = useContext(Context);
   return <h2>Child1: {context}</h2>;
 }
 
+/**
+ * Child2 Component
+ */
 function Child2() {
   const context = useContext(Context);
   return <h2>Child2: {context}</h2>;
 }
 
-function App() {
-
+/**
+ * App Component
+ */
+export default function App() {
   return (
     <>
-      <Context.Provider value={ "Initial Value" }>
-        <Child /> {/* Child inside Provider will get "Initial Value" */}
+      <Context.Provider value={"Initial Value"}>
+        <Child1 /> {/* Child inside Provider will get "Initial Value" */}
       </Context.Provider>
-        <Child2 /> {/* Child outside Provider will get "Default Value" */}
+      <Child2 /> {/* Child outside Provider will get "Default Value" */}
     </>
   );
 }
