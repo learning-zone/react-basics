@@ -4914,7 +4914,7 @@ export default function App() {
 
 ## Q. Do Hooks replace render props and higher-order components?
 
-**React Hooks**
+**1. React Hooks:**
 
 Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
 
@@ -4936,7 +4936,7 @@ import {
 } from 'react'
 ```
 
-**Higher Order Components:**
+**2. Higher Order Components:**
 
 A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
 
