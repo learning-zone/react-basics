@@ -5091,13 +5091,18 @@ class App extends React.Component {
 **Example:**
 
 ```js
-function App() {
-  const arr = [1, 2, 3];
-  // for multiple refs
-  const refs = useRef([]);
+/**
+ * Multiple Refs
+ */
+import React, { useRef } from "react";
+
+export default function App() {
+  const arr = [10, 20, 30];
+  // multiple refs
+  const refs = useRef([]); 
 
   return (
-    <div className="App">
+    <div>
       {arr.map((item, index) => {
         return (
           <div
@@ -5121,14 +5126,6 @@ function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is ref in React?
-
-A ref is defined as any value that does not trigger a component re-render when it is changed. This behavior is contrary to the function of states and props. A ref can be created in two ways- by the **useRef** hook or by the **createRef** function.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What is the difference between useRef() and createRef()?
 
 **1. useRef():**
@@ -5138,6 +5135,9 @@ The useRef is a hook that uses the same ref throughout. It saves its value betwe
 **Example:**
 
 ```js
+/**
+ * useRef()
+ */
 export default function App() {
   const [count, setCount] = useState(0);
   const ref = useRef();
@@ -5168,6 +5168,9 @@ The createRef is a function that creates a new ref every time. Unlike the useRef
 **Example:**
 
 ```js
+/**
+ * createRef()
+ */
 export default function App() {
   const [count, setCount] = useState(0);
   const ref = createRef();
