@@ -4809,28 +4809,25 @@ render() {
 
 React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
 
-**Rules of Hooks**
+**Rules of Hooks:**
 
-* Make sure to not use Hooks inside loops, conditions, or nested functions
-* Only use Hooks from inside React Functions
+* Hooks should not be called inside loops, conditions, or nested functions.
+* Hooks should be used inside React function components
 
-**Built-in Hooks**
+**Built-in Hooks:**
 
-*Basic Hooks*
-
-* useState()
-* useEffect()
-* useContext()
-
-*Additional Hooks*
-
-* useReducer()
-* useCallback()
-* useMemo()
-* useRef()
-* useImperativeHandle()
-* useLayoutEffect()
-* useDebugValue()
+| Hooks               | Description                                                                     |
+|---------------------|---------------------------------------------------------------------------------|
+|useState()           |To manage states. Returns a stateful value and an updater function to update it. |
+|useEffect()          |To manage side-effects like API calls, subscriptions, timers, mutations, and more.|
+|useContext()         |To return the current value for a context.|
+|useReducer()         |A useState alternative to help with complex state management.|
+|useCallback()        |It returns a memorized version of a callback to help a child component not re-render unnecessarily.|
+|useMemo()            |It returns a memoized value that helps in performance optimizations.|
+|useRef()             |It returns a ref object with a `.current` property. The ref object is mutable. It is mainly used to access a child component imperatively.|
+|useImperativeHandle()|It customizes the instance value that is exposed to parent components when using ref.|
+|useLayoutEffect()    |It fires at the end of all DOM mutations. It\'s best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously.|
+|useDebugValue()      |Helps to display a label in React DevTools for custom hooks.
 
 **Example:**
 
