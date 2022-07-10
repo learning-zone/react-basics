@@ -4870,14 +4870,17 @@ export default function App() {
 
 ## Q. How to fetch data with React Hooks?
 
-`useState` is a hook used to maintain local states in function components. `useEffect` is used to execute functions after a component gets rendered (to "perform side effects").
+The **useState()** is a hook used to maintain local states in function components and **useEffect()** hook is used to execute functions after a component gets rendered (to "perform side effects").
 
 **Example:**
 
 ```js
+/**
+ * useState() and useEffect() Hooks
+ */
 import React, { useState, useEffect } from "react";
 
-function Users() {
+export default function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -4903,7 +4906,7 @@ function Users() {
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fetch-data-using-hooks-v6ypp?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-siuu6t?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
