@@ -4832,20 +4832,23 @@ React Hooks are in-built functions that allow to use **state** and **lifecycle**
 **Example:**
 
 ```js
-import React, { useState } from 'react'
+/**
+ * useState() Hooks
+ */
+import React, { useState } from "react";
 
-const App = () => {
-  const [isButtonClicked, setIsButtonClickedStatus] = useState(false)
-  
+export default function App() {
+  const [isButtonClicked, setIsButtonClickedStatus] = useState(false);
+
   return (
-    <button
-      onClick={() => setIsButtonClickedStatus(!isButtonClicked)}
-    >
-      {isButtonClicked ? 'Clicked' : 'Click me, please'}
+    <button onClick={() => setIsButtonClickedStatus(!isButtonClicked)}>
+      {isButtonClicked ? "Clicked" : "Click Me, Please"}
     </button>
-  )
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usestate-mqb4jb?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
