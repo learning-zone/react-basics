@@ -4914,7 +4914,7 @@ export default function App() {
 
 ## Q. Do Hooks replace render props and higher-order components?
 
-**1. React Hooks:**
+**1. Using React Hooks:**
 
 Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
 
@@ -4936,7 +4936,7 @@ import {
 } from 'react'
 ```
 
-**2. Higher Order Components:**
+**2. Using Higher Order Components:**
 
 A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
 
@@ -5236,7 +5236,7 @@ Here, When the `<input>` element is rendered, React calls the function defined i
 
 ## Q. How to re-render the view when the browser is resized?
 
-**Using React Hooks**
+**1. Using React Hooks:**
 
 ```js
 import React, { useLayoutEffect, useState } from 'react'
@@ -5264,7 +5264,7 @@ function ShowWindowDimensions(props) {
 }
 ```
 
-**Using React classes**
+**2. Using React Class:**
 
 ```js
 import React from 'react'
