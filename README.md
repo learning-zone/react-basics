@@ -4771,7 +4771,7 @@ export default class App extends Component {
 
 ## Q. How do you set default value for uncontrolled components?
 
-In React, the **value** (`<input type="text" value="{value here}" />`) attribute inside the input element will override any values that are typed in so in order to work around that, React provides another attribute called **defaultValue** (`<input type="text" defaultValue="{value here}" />`) that will pre-populate the input field with the defaultValue without overriding any value input by the user.
+React provides **defaultValue** attribute that pre-populate the input field with the default Value without overriding any value input by the user.
 
 **Example:**
 
