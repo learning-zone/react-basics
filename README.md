@@ -4407,60 +4407,58 @@ According to official React docs, the recommended place to do Ajax requests is i
 **Example:**
 
 ```js
-import React from 'react'
+/**
+ * API call in componentDidMount()
+ */
+import React from "react";
 
-class MyComponent extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
-    }
+      users: []
+    };
   }
 
   componentDidMount() {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          })
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
-        }
-      )
+    fetch("https://dummy.restapiexample.com/api/v1/employees")
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({
+          isLoaded: true,
+          users: result.data
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          isLoaded: false,
+          error
+        });
+      });
   }
 
   render() {
-    const { error, isLoaded, items } = this.state
+    const { error, isLoaded, users } = this.state;
+
     if (error) {
-      return <div>Error: {error.message}</div>
+      return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     } else {
       return (
         <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.price}
-            </li>
-          ))}
+          {users.length > 0 &&
+            users.map((user) => <li key={user.id}>{user.employee_name}</li>)}
         </ul>
-      )
+      );
     }
   }
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-componentdidmount-96ys6r?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
