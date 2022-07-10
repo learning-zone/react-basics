@@ -5303,30 +5303,32 @@ class ShowWindowDimensions extends React.Component {
 
 ## Q. How can I force a component to re-render with hooks in React?
 
-You can force re-renders of your components in React with a custom hook that uses the built-in `useState()` hook:
+The **useState()** or **useReducer()** hooks can be used to force a React component to rerender.
+
+The example below is equivalent to **forceUpdate()** method in class-based components. This hook works in the following way:
+
+* The `useState()` hook returns an array with two elements, a value and an updater function.
+* Here, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
+
+**Example:**
 
 ```js
-// Create a custom useForceUpdate hook with useState
+/**
+ * Rerender Component with useState()
+ */
+import React, { useState } from "react";
+
 const useForceUpdate = () => useState()[1];
 
-// Call it inside your component
-const Hooks = () => {
+export default function App() {
   const forceUpdate = useForceUpdate();
+  console.log("Rendered");
 
-  return (
-    <button onClick={forceUpdate}>
-      Update me
-    </button>
-  );
-};
+  return <button onClick={forceUpdate}>Update Me</button>;
+}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
-
-The example above is equivalent to the functionality of the `forceUpdate()` method in class-based components. This hook works in the following way:
-
-* The `useState()` hook — and any other hook for that matter — returns an array with two elements, a value (with the initial value being the one you pass to the hook function) and an updater function.
-* In the above example, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
