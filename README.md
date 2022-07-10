@@ -5349,13 +5349,14 @@ The React Context API allows to easily access data at different levels of the co
 **Example:**
 
 ```js
-// Counter.js
-
+/**
+ * Counter Component
+ */
 const { useState, useContext } = React;
 
 const CountContext = React.createContext();
 
-const Counter = () => {
+function Counter() {
   const { count, increase, decrease } = useContext(CountContext);
   return (
     <h2>
@@ -5364,13 +5365,14 @@ const Counter = () => {
       <button onClick={increase}>Increment</button>
     </h2>
   );
-};
+}
 ```
 
 ```js
-// App.js
-
-const App = () => {
+/**
+ * App Component
+ */
+export default function App() {
   const [count, setCount] = useState(0);
 
   const increase = () => {
@@ -5387,7 +5389,7 @@ const App = () => {
       </CountContext.Provider>
     </div>
   );
-};
+}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
