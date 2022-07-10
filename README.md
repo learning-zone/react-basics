@@ -4692,70 +4692,78 @@ In a controlled component, the form data is handled by the state within the comp
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+/**
+ * Controlled Components
+ */
+import React, { Component } from "react";
 
-class App extends Component {
-    state = {
-        message: ''
-    }
-    updateMessage = (newText) => {
-        console.log(newText)
-        this.setState(() => ({
-            message: newText
-        }))
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        value={this.state.message}
-                        onChange={(event) => this.updateMessage(event.target.value)}
-                    />
-                    <p>the message is: {this.state.message}</p>
-                </div>
-            </div>
-        )
-    }
+export default class App extends Component {
+  state = {
+    message: ""
+  };
+  updateMessage = (newText) => {
+    console.log(newText);
+    this.setState(() => ({
+      message: newText
+    }));
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <input
+            type="text"
+            placeholder="Your message here.."
+            value={this.state.message}
+            onChange={(event) => this.updateMessage(event.target.value)}
+          />
+          <h3>Message: {this.state.message}</h3>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default App
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-controlled-components-1ilt72?file=/src/App.js)**
 
 **2. Uncontrolled Components:**  
 
 Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
 
 ```js
-import React, { Component } from 'react'
+/**
+ * Uncontrolled Component
+ */
+import React, { Component } from "react";
 
-class App extends Component {
-
-    constructor(props){
-        super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.input = React.createRef()
-    }
-    handleChange = (newText) => {
-        console.log(newText)
-    }
-    render() {
-        return (
-            <div className="App">
-                <div className="container">
-                    <input type="text"
-                        placeholder="Your message here.."
-                        ref={this.input}
-                        onChange={(event) => this.handleChange(event.target.value)}
-                    />
-                </div>
-            </div>
-        )
-    }
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.input = React.createRef();
+  }
+  handleChange = (newText) => {
+    console.log(newText);
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <input
+            type="text"
+            placeholder="Your message here.."
+            ref={this.input}
+            onChange={(event) => this.handleChange(event.target.value)}
+          />
+        </div>
+      </div>
+    );
+  }
 }
-export default App
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-uncontrolled-component-4o7lw7?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
