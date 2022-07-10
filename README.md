@@ -4986,7 +4986,7 @@ export default page(MyPageComponent)
 
 ## Q. How to compare oldValues and newValues on React Hooks useEffect?
 
-We can store old values in a ref since assigning values to them won’t trigger a re-rendering of the component but the value will persist after each render cycle.
+We can store old values in a **ref** since assigning values to them won\'t trigger a re-rendering of the component but the value will persist after each render cycle.
 
 **Example:**
 
