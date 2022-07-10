@@ -5334,7 +5334,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 12. React CONTEXT
+## # 12. REACT CONTEXT
 
 <br/>
 
