@@ -4776,6 +4776,9 @@ React provides **defaultValue** attribute that pre-populate the input field with
 **Example:**
 
 ```js
+/**
+ * React defaultValue
+ */
 render() {
   return (
     <form onSubmit={this.handleSubmit}>
