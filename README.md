@@ -5028,13 +5028,16 @@ In the hook, we create a ref with the **useRef** hook to create a non-reactive p
 
 ## Q. What do you understand by refs in React?
 
-`Refs` provide a way to access DOM nodes or React elements created in the render method. React Refs are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
+The **Refs** provide a way to access DOM nodes or React elements created in the render method. React `Refs` are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
 
-Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of ref forwarding.
+Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of **ref forwarding**.
 
 **Example:**
 
 ```javascript
+/**
+ * Refs
+ */
 class App extends React.Component {
     constructor(props) {
       super(props)
@@ -5048,7 +5051,7 @@ class App extends React.Component {
   // Set the state for the ref
   handleSubmit = e => {
     e.preventDefault()
-    this.setState({ value: this.textInput.current.value})
+    this.setState({ value: this.textInput.current.value })
   }
 
   render() {
