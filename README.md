@@ -5467,37 +5467,78 @@ export default function App() {
 
 ## Q. How to use contextType react?
 
-The **ContextType** property on a class component can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions also.
+The **ContextType** property on a **class component** can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions.
 
 **Example:**
 
 ```js
-class ContextConsumingInLifeCycle extends React.Component {
+/**
+ * ContextType()
+ */
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-  static contextType = UserContext;
- 
-  componentDidMount() {
-    const user = this.context;
-    console.log(user); // { name: "Vipin Tak", address: "INDIA", mobile: ""0123456789"" }
-  }
- 
-  componentDidUpdate() {
-    const user = this.context;
-    /* ... */
-  }
- 
-  componentWillUnmount() {
-    const user = this.context;
-    /* ... */
-  }
- 
+const MyContext = React.createContext({
+  name: "Context Type"
+});
+
+const { Provider, Consumer } = MyContext;
+
+/**
+ * StoreProvider Component
+ */
+class StoreProvider extends Component {
+  state = {
+    count: 0
+  };
+
+  incrementCount = () => {
+    console.log("Increment");
+    const { count } = this.state;
+    this.setState({ count: count + 1 });
+  };
+
   render() {
-    const user = this.context;
-    /* render something based on the value of user */
-    return null;
+    return (
+      <Provider
+        value={{
+          state: this.state,
+          incrementCount: this.incrementCount
+        }}
+      >
+        {this.props.children}
+      </Provider>
+    );
   }
 }
+
+/**
+ * VoteCount Component
+ */
+class VoteCount extends Component {
+  static contextType = MyContext;
+
+  render() {
+    const { state, incrementCount } = this.context;
+
+    return (
+      <div>
+        <button onClick={incrementCount}>Click Me</button> {state.count}
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <StoreProvider>
+    <VoteCount />
+  </StoreProvider>,
+  rootElement
+);
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-contexttype-q4l4pg?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
