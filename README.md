@@ -5672,17 +5672,7 @@ class Router extends Component {
 }
 ```
 
-**`< Router />`**  
-
-The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
-
-**`<Switch />`**
-
-The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
-
-**exact:**
-
-The `exact` returns any number of routes that match exactly.
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v6-xuycsq?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
