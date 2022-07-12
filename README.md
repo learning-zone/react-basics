@@ -5551,34 +5551,47 @@ The Context API allows data storage and makes it accessible to any child compone
 **Example:**
 
 ```js
-const MyContext = React.createContext()
+/**
+ * React Context API
+ */
+import React, { useState, useContext } from "react";
+const MyContext = React.createContext();
 
+/**
+ * Child Component
+ */
 const MyComponent = () => {
-  const { count, increment } = useContext(MyContext)
+  const { count, increment } = useContext(MyContext);
 
   return (
-    <div onClick={increment}>price: {count}</div>
-  )
-}
+    <div>
+      <button onClick={increment}>Click Me</button> {count}
+    </div>
+  );
+};
 
-const App = () => {
-  const [count, updateCount] = useState(0)
+/**
+ * App Component
+ */
+export default function App() {
+  const [count, updateCount] = useState(0);
   function increment() {
-    updateCount(count + 1)
+    updateCount(count + 1);
   }
 
   return (
     <MyContext.Provider value={{ count, increment }}>
       <div>
         <MyComponent />
-        <MyComponent />
       </div>
     </MyContext.Provider>
-  )
+  );
 }
 ```
 
-Here, we are storing data in the state of the component in which we want to use context and we create a function that can modify this state. We pass the state and the function as context values. It then become possible from the child to get the modification function and to use it to update your context.
+Here, We are storing data in component state in which we want to use context and we created a function that modify this state. We pass the state and function as context values. It then become possible from the child to get the function and to use it to update your context.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-kdd2v0?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
