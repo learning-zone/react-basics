@@ -5645,131 +5645,44 @@ export default function App() {
 
 <br/>
 
-## Q. Explain React Router 5 features?
+## Q. What is React Router?
 
-React Router 5 embraces the power of hooks and has introduced four different hooks to help with routing.
-
-```js
-<Route path="/">
-  <Home />
-</Route>
-```
-
-**1. useHistory:**
-
-* Provides access to the `history` prop in React Router
-* Refers to the history package dependency that the router uses
-* A primary use case would be for programmatic routing with functions, like `push`, `replace`, etc.
+React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
 ```js
-import { useHistory } from 'react-router-dom'
+import { Router, Route, Redirect, Switch } from 'react-router-dom'
 
-function Home() {
-  const history = useHistory()
-  return <button onClick={() => history.push('/profile')}>Profile</button>
+class Router extends Component {
+    constructor(props) {
+      super(props)
+    }
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/news/new' component={ NewsComponent } />
+                    <Route path='/user/:id' component={ UserComponent } />
+                    <Route exact path='/' component={ HomeComponent } />
+                    <Redirect from='*' to='/' />
+                </Switch>
+            </Router>
+        )
+    }
 }
 ```
 
-**2. useLocation:**
+**`< Router />`**  
 
-* Provides access to the location prop in React Router
-* It is similar to window.location in the browser itself, but this is accessible everywhere as it represents the * Router state and location.
-* A primary use case for this would be to access the query params or the complete route string.
+The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
 
-```js
-import { useLocation } from 'react-router-dom'
+**`<Switch />`**
 
-function Profile() {
-  const location = useLocation()
-  useEffect(() => {
-    const currentPath = location.pathname
-    const searchParams = new URLSearchParams(location.search)
-  }, [location])
-  return <p>Profile</p>
-}
-```
+The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
 
-**3. useParams:**
+**exact:**
 
-* Provides access to search parameters in the URL
-* This was possible earlier only using match.params.
-
-```js
-import { useParams, Route } from 'react-router-dom'
-
-function Profile() {
-  const { name } = useParams()
-  return <p>{name}'s Profile</p>
-}
-
-function Dashboard() {
-  return (
-    <>
-      <nav>
-        <Link to={`/profile/alex`}>Alex Profile</Link>
-      </nav>
-      <main>
-        <Route path="/profile/:name">
-          <Profile />
-        </Route>
-      </main>
-    </>
-  )
-}
-```
-
-**4. useRouteMatch:**
-
-* Provides access to the match object
-* If it is provided with no arguments, it returns the closest match in the component or its parents.
-* A primary use case would be to construct nested paths.
-
-```js
-import { useRouteMatch, Route } from 'react-router-dom'
-
-function Auth() {
-  const match = useRouteMatch()
-  return (
-    <>
-      <Route path={`${match.url}/login`}>
-        <Login />
-      </Route>
-      <Route path={`${match.url}/register`}>
-        <Register />
-      </Route>
-    </>
-  )
-}
-```
-
-We can also use `useRouteMatch` to access a match without rendering a Route. This is done by passing it the location argument.
-
-**5. Redirect Component:**
-
-The easiest way to use this method is by maintaining a redirect property inside the state of the component.
-
-```js
-import { Redirect } from "react-router-dom"
-...
-
-state = { redirect: null }
-render() {
-  if (this.state.redirect) {
-    return <Redirect to={this.state.redirect} />
-  }
-  return(
-  // Your Code goes here
-  )
-}
-```
-
-**History prop**
-
-Every component that is an immediate child of the `<Route>` component receives history object as a prop. This is the same history (library) which keeps history of the session of React Router. We can thus use its properties to navigate to the required paths.
-
-```js
-this.props.history.push("/first")
-```
+The `exact` returns any number of routes that match exactly.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5860,49 +5773,6 @@ console.log(id, name, type); // 10 test null
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is React Router?
-
-React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
-
-```js
-import { Router, Route, Redirect, Switch } from 'react-router-dom'
-
-class Router extends Component {
-    constructor(props) {
-      super(props)
-    }
-
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route path='/news/new' component={ NewsComponent } />
-                    <Route path='/user/:id' component={ UserComponent } />
-                    <Route exact path='/' component={ HomeComponent } />
-                    <Redirect from='*' to='/' />
-                </Switch>
-            </Router>
-        )
-    }
-}
-```
-
-**`< Router />`**  
-
-The `< Router />` component wraps our main application routing. Nested within Router will be all of our `< Route />` components, which will point to all other URLs.
-
-**`<Switch />`**
-
-The Switch component helps us to render the components only when path matches otherwise it fallbacks to the not found component. The `<Switch>` returns only one first matching route.
-
-**exact:**
-
-The `exact` returns any number of routes that match exactly.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
