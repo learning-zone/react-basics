@@ -5601,38 +5601,41 @@ Here, We are storing data in component state in which we want to use context and
 
 React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
 
-**Context API:**  
+**Using Context API:**  
 
 The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
 
 **Example:**
 
 ```js
-import React from "react"
-import ReactDOM from "react-dom"
+/**
+ * Prop Drilling
+ */
+import React, { useContext, createContext } from "react";
 
-// Create a Context
-const NumberContext = React.createContext()
 // It returns an object with 2 values:
 // { Provider, Consumer }
+const NumberContext = createContext();
 
-function App() {
+function Display() {
+  const value = useContext(NumberContext);
+  return <h3>Contex Value: {value}</h3>;
+}
+
+export default function App() {
   // Use the Provider to make a value available to all
   // children and grandchildren
   return (
-    <NumberContext.Provider value={10}>
+    <NumberContext.Provider value={100}>
       <div>
         <Display />
       </div>
     </NumberContext.Provider>
-  )
-}
-
-function Display() {
-  const value = useContext(NumberContext)
-  return <div>The answer is {value}.</div>
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-prop-drilling-knowbp?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
