@@ -5650,25 +5650,50 @@ export default function App() {
 React router implements a component-based approach to routing. It provides different routing components according to the needs of the application and platform. React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling built right in.
 
 ```js
-import { Router, Route, Redirect, Switch } from 'react-router-dom'
+/**
+ * React Router v6
+ */
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink
+} from "react-router-dom";
+import "./styles.css";
 
-class Router extends Component {
-    constructor(props) {
-      super(props)
-    }
+/**
+ * Home Component
+ */
+const Home = () => {
+  return <h1>Home Page</h1>;
+};
 
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route path='/news/new' component={ NewsComponent } />
-                    <Route path='/user/:id' component={ UserComponent } />
-                    <Route exact path='/' component={ HomeComponent } />
-                    <Redirect from='*' to='/' />
-                </Switch>
-            </Router>
-        )
-    }
+/**
+ * Contacts Component
+ */
+const Contacts = () => {
+  return <h1>Contact Page</h1>;
+};
+
+/**
+ * App Component
+ */
+export default function App() {
+  return (
+    <div className="App">
+      <Router>
+        <div className="navbar">
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/contact"}>Contact Us</NavLink>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contacts />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 ```
 
