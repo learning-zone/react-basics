@@ -5800,15 +5800,14 @@ In order to get query parameters from the URL, we can use **URLSearchParams**. I
 **Example:**
 
 ```js
-// http://localhost:3000/?id=10&name=test
+// http://localhost:3000/?id=100&name=react
 
 const queryParams = new URLSearchParams(window.location.search);
 
 const id = queryParams.get('id');
 const name = queryParams.get('name');
-const type = queryParams.get('type');
 
-console.log(id, name, type); // 10 test null
+console.log(id, name); // 100 react
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
