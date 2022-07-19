@@ -5932,45 +5932,38 @@ The `react-router-dom` package provides `<Redirect>` component in React Router. 
 **Example:**
 
 ```js
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "React",
-      isUserAuthenticated: true
-    };
-  }
+/**
+ * Automatic Redirect in router-v6
+ */
+import {
+  NavLink,
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import "./styles.css";
 
-  render() {
-    return (
-        <Router>
-            <ul>
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/user">User Profile</Link></li>
-            </ul>
-            <Switch>
-            {/** Automatic Redirect to User Page **/}
-              <Route
-                exact
-                path="/"
-                render={() => {
-                  return this.state.isUserAuthenticated ? (
-                    <Redirect to="/home" />
-                  ) : (
-                    <Redirect to="/user" />
-                  );
-                }}
-              />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/user" component={User} />
-            </Switch>
-        </Router>
-    );
-  }
+export default function App() {
+  return (
+    <BrowserRouter>
+      <nav style={{ display: "flex", flexDirection: "row", gap: "1em" }}>
+        <NavLink to="/" children="Home" />
+        <NavLink to="/about" children="About" />
+        <NavLink to="/help" children="Help" />
+      </nav>
+      <Routes>
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<h1>Home Page</h1>} />
+        <Route path="about" element={<h1>About Page</h1>} />
+        <Route path="help" element={<h1>Help Page</h1>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redirect-vs62v?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-automatic-redirect-odw0yn?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
