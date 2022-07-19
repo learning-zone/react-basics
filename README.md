@@ -5863,53 +5863,63 @@ console.log(id, name); // 100 react
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to access history object in React Router v5?
+## Q. How to access history object in React Router v6?
 
-React Router v5.2, we can get access to `history` via the `useHistory` custom Hook.
+The **useNavigate()** hook has been added to React Router v6 to replace the `useHistory()` hook.
 
 **Example:**
 
 ```js
-function App() {
+/**
+ * React Router
+ */
+import { BrowserRouter, Routes, NavLink, Route, useParams, useNavigate } from "react-router-dom";
+
+export default function App() {
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/user/ABC/male">User Profile</Link></li>
-      </ul>
-    </nav>
-    ...
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/user/Bhavya/bhavyasingh@email.com">User Profile</NavLink></li>
+        </ul>
+        <Routes>
+          <Route path="/user/:name/:email" element={<User />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <HomeButton />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+function Home() {
+  return <h2>Welcome Home</h2>;
+}
+
+function User() {
+  let { name, email } = useParams();
+  return (
+    <h2>Name: {name} <br /> Email: {email}</h2>
   );
 }
 
 function HomeButton() {
-  let history = useHistory();
+  const history = useNavigate();
 
   function handleClick() {
-    console.log(history);
-    history.push("/home");
+    history("/");
   }
 
-  function handleBack() {
-    history.goBack();
-    // history.go(-1);
-  }
-
-  function handleForward() {
-    history.goForward();
-    // history.go(1)
-  }
   return (
     <>
       <button type="button" onClick={handleClick}>Go Home</button>
-      <button type="button" onClick={handleBack}> Go Back </button>
-      <button type="button" onClick={handleForward}> Go Forward </button>
     </>
   );
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v5-bi8wh?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usenavigate-j5fkzn?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
