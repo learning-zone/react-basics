@@ -5768,26 +5768,73 @@ The above code creates a history instance for our entire `<App>` component. Each
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the purpose of push and replace methods of history?
+## Q. How to use usenavigate() in React router dom v6?
 
-The **history.push()** method is invoked when you click on a `<Link>` component, and **history.replace()** is called when you use a `<Redirect>`.
+The **useNavigate()** hook is introduced in React Router v6 to replace the `useHistory()` hook. In the earlier version, the `useHistory()` hook accesses the React Router history object and navigates to the other routers using the push() or replace() methods.
+
+The `useNavigate()` hook returns a function that lets you navigate programmatically, for example after a form is submitted. If using `replace: true`, the navigation will replace the current entry in the history stack instead of adding a new one.
 
 ```js
-import { useHistory } from "react-router-dom"
+/**
+ * useNavigate()
+ */
+import React from "react";
+import { NavLink, Link, Routes, Route,  useParams, useNavigate } from "react-router-dom";
+import "./styles.css";
 
-function HomeButton() {
-  const history = useHistory();
+function Home() {
+  return <h1>Home Page</h1>;
+}
+
+function Users() {
+  return (
+    <ul>
+      <li><Link to={"/users/1"}>User 1</Link></li>
+    </ul>
+  );
+}
+
+function UserDetail() {
+  let { id } = useParams();
+  let navigate = useNavigate();
 
   function handleClick() {
-    history.push("/home");
+    navigate("/users");
   }
   return (
-    <button type="button" onClick={handleClick}>
-      Go home
-    </button>
+    <>
+      <h1>User Details Page: {id}</h1>
+      <button onClick={handleClick}>Back</button>
+    </>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="users" element={<Users />} />
+      <Route path="users/:id" element={<UserDetail />} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <nav>
+        <ul>
+          <li><NavLink to="/" end>Home Page</NavLink></li>
+          <li><NavLink to="/users">Users Page</NavLink></li>
+        </ul>
+      </nav>
+      <AppRoutes />
+    </div>
   );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/cool-paper-vxgn15?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
