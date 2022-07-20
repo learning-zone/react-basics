@@ -5961,26 +5961,65 @@ export default function App() {
 
 **Using Link:**
 
-Normally we use the Link component from react-router-dom as shown below:
+**Example:**
 
 ```js
-<Link to="/register">Register</Link>
+/**
+ * Pass additional data while redirecting
+ */
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
+
+/**
+ * View User Component
+ */
+function ViewUser() {
+  const location = useLocation();
+  return (
+    <>
+      <h2>User Details</h2>
+      <div>Name:{location.state.name}</div>
+      <div>Email:{location.state.email}</div>
+    </>
+  );
+}
+
+/**
+ * User Component
+ */
+function User() {
+  return (
+    <div>
+      <h2>Pass additional data while redirecting</h2>
+      <Link
+        to="/view-user"
+        state={{
+          name: "Kalini Khalsa",
+          email: "kalini.khalsa@email.com"
+        }}
+      >
+        <button>View User</button>
+      </Link>
+    </div>
+  );
+}
+
+/**
+ * App Component
+ */
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<User />} />
+        <Route exact path="/user" element={<User />} />
+        <Route exact path="/view-user" element={<ViewUser />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 ```
 
-So when we click on the Register link, it will redirect to the /register route, but Link also allows us to pass additional data while redirecting.
-
-```js
-<Link to={{ 
- pathname: "/register", 
- state: some_data 
-}}>
- Register
-</Link>
-```
-
-Here, at the place of `some_data`, we can pass a string or object, array etc. and in the `/register` route we will get that data in `props.location.state`.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-pass-data-using-router-br5kdb?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
