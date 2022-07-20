@@ -5989,23 +5989,6 @@ Here, at the place of `some_data`, we can pass a string or object, array etc. an
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-routing-tzocw?file=/src/router/AppRouter.js)**
 
-**Using history.push:**
-
-Normally, to redirect using the push method, we use it like this:
-
-```js
-props.history.push('/register');
-```
-
-If you need to do some processing before sending the data like removing some values or to trim the values, we can call a handler on submit button click and pass data as shown below
-
-```js
-props.history.push({ 
-  pathname: '/register',
-  state: some_data
-});
-```
-
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
