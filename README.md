@@ -5653,14 +5653,7 @@ React router enables the navigation among views of various components in a React
 /**
  * React Router v6
  */
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink
-} from "react-router-dom";
-import "./styles.css";
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
 /**
  * Home Component
@@ -5682,7 +5675,7 @@ const Contacts = () => {
 export default function App() {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <div className="navbar">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/contact"}>Contact Us</NavLink>
@@ -5691,7 +5684,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contacts />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
