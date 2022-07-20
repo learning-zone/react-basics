@@ -5768,7 +5768,7 @@ The above code creates a history instance for our entire `<App>` component. Each
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to use usenavigate() in React router dom v6?
+## Q. How to use useNavigate() in React Router v6?
 
 The **useNavigate()** hook is introduced in React Router v6 to replace the `useHistory()` hook. In the earlier version, the `useHistory()` hook accesses the React Router history object and navigates to the other routers using the push() or replace() methods.
 
