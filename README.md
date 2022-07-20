@@ -5927,7 +5927,7 @@ function HomeButton() {
 
 ## Q. How to perform automatic redirect in React.js?
 
-The `react-router-dom` package provides `<Redirect>` component in React Router. Rendering a `<Redirect>` will navigate to a new location and the new location will override the current location in the history stack.
+In contrast to the Navigate component and its declarative redirect, we can perform a programmatic redirect by using React Router\'s **useNavigate()** Hook:
 
 **Example:**
 
@@ -5935,14 +5935,7 @@ The `react-router-dom` package provides `<Redirect>` component in React Router. 
 /**
  * Automatic Redirect in router-v6
  */
-import {
-  NavLink,
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
-import "./styles.css";
+import { NavLink, BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export default function App() {
   return (
@@ -5962,6 +5955,8 @@ export default function App() {
   );
 }
 ```
+
+*Note: To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-automatic-redirect-odw0yn?file=/src/App.js)**
 
