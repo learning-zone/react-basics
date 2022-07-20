@@ -5964,60 +5964,6 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How is React Router different from Conventional Routing?
-
-<p align="center">
-  <img src="assets/react-routing.png" alt="React Router" width="600px" />
-</p>
-
-In React, there is only a single 'Html' file involved. Whenever a user types in a new URL request, instead of fetching data from the server, the Router swaps in a different Component for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate Component re-renders achieving multiple views as per our needs.
-
-**How does React achieve this?**
-
-In React, the Router looks at the **History** of each Component and when there is any change in the History, that Component re-renders. Until Router version 4 we had to manually set the `History` value. However, from Router v4 the base path is bypassed by the `<BrowserRouter>` saving us a lot of work.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to programmatically redirect to another page using React router?
-
-**1. Using useHistory()**
-
-```js
-import { useHistory } from "react-router-dom"
-
-function HomeButton() {
-  const history = useHistory()
-
-  function handleClick() {
-    history.push('/home')
-  }
-
-  return (
-    <button type="button" onClick={handleClick}>
-      Navigate to Home Page
-    </button>
-  )
-}
-```
-
-**2. Using withRouter()**
-
-```js
-import { withRouter } from 'react-router-dom'
-
-const Button = withRouter(({ history }) => (
-  <button type='button' onClick={() => { history.push('/home') }}>
-    Navigate to Home Page
-  </button>
-))
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. How to pass additional data while redirecting to a route in React?
 
 **Using Link:**
