@@ -465,7 +465,8 @@ export default class JSXInjectionExample extends React.Component {
 }
 
 // Output
-User content: JSX prevents Injection Attacks Example <script src="http://example.com/malicious-script.js></script>
+User content: JSX prevents Injection Attacks Example 
+<script src="http://example.com/malicious-script.js></script>
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsxinjection-ckmu8z?file=/src/App.js)**
