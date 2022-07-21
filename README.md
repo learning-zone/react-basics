@@ -572,21 +572,21 @@ Custom attributes are supported natively in React 16. This means that adding a c
 **Example:**
 
 ```js
-// Custom DOM Attribute
+// 1. Custom DOM Attribute
 render() {
   return (
     <div custom-attribute="some-value" />
   );
 }
 
-// Data Attribute ( starts with "data-" )
+// 2. Data Attribute ( starts with "data-" )
 render() {
   return (
     <div data-id="10" />
   );
 }
 
-// ARIA Attribute ( starts with "aria-" )
+// 3. ARIA Attribute ( starts with "aria-" )
 render() {
   return (
     <button aria-label="Close" onClick={onClose} />
