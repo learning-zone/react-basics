@@ -457,9 +457,7 @@ export default class JSXInjectionExample extends React.Component {
 
   render() {
     return (
-      <div>
-        User content: <b>{this.state.userContent}</b>
-      </div>
+      <div>User content: {this.state.userContent}</div>
     );
   }
 }
