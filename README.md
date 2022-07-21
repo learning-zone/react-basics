@@ -6089,6 +6089,8 @@ export class Greeting extends React.Component {
 }
 ```
 
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/strange-sunset-g9zjg4?file=/src/App.js)**
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
