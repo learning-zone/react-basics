@@ -521,8 +521,6 @@ render() {
 
 Note that React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
 
-*Note: Returning `undefined` does not work.*
-
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
