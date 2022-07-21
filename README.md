@@ -567,8 +567,6 @@ export default function App() {
 
 ## Q. How to add custom DOM attributes in JSX?
 
-Often we need to store information associated with a DOM element. This data might not be useful for displaying data to the DOM, but it is helpful for developers to access additional data. Custom attributes allow you to attach other values onto an HTML element.
-
 Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
 
 **Example:**
