@@ -6020,76 +6020,49 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to pass props in React router?
+## Q. How to pass props in React router v6?
 
-A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic. The **render prop** refers to a technique for sharing code between React components using a prop whose value is a function.
+React Router uses a declarative, component-based approach to routing. `Route` allows you to map URL paths to different React components.
 
 **Example:**
 
 ```js
-import React from "react"
-import { render } from "react-dom"
-import { Greeting } from "./components"
+/**
+ * Pass props in React Router-v6
+ */
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
+export function Greeting(props) {
+  const { text } = props;
+  return (
+    <>
+      <h2>Greetings Page</h2>
+      <p>{text}</p>
+    </>
+  );
 }
+
+const RouterExample = () => <h2>Home Page</h2>;
 
 const App = () => (
-  <div style={styles}>
-    <h2>Click below to go to other page. Also, open source code</h2>
-    <Link to="/greeting/World">Go to /greeting/World</Link>
-  </div>
-)
+  <BrowserRouter>
+    <ul>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/greeting/pradeep">Greeting</NavLink></li>
+    </ul>
+    <hr />
+    <Routes>
+      <Route exact path="/" element={<RouterExample />} />
+      <Route path="/greeting/:name" element={<Greeting text="Hello World" />} />
+    </Routes>
+  </BrowserRouter>
+);
 
-const RouterExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul>
-
-      <hr />
-
-      <Route exact path="/" component={App} />
-      <Route
-        path="/greeting/:name"
-        render={props => <Greeting text="Hello, " {...props} />}
-      />
-    </div>
-  </Router>
-)
-
-render(<RouterExample />, document.getElementById("root"))
+export default App;
 ```
 
-```js
-import React from "react"
-
-export class Greeting extends React.Component {
-  render() {
-    const { text, match: { params } } = this.props
-
-    const { name } = params
-
-    return (
-      <React.Fragment>
-        <h1>Greeting page</h1>
-        <p>
-          {text} {name}
-        </p>
-      </React.Fragment>
-    )
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/strange-sunset-g9zjg4?file=/src/App.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-pass-props-in-router-g9zjg4?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
