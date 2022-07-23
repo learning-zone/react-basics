@@ -6257,16 +6257,14 @@ const About = lazy(() => import("./About"));
 
 export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 ```
