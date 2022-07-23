@@ -6125,7 +6125,7 @@ function Child() {
 
 ```js
 /**
- * https://example.com/
+ * https://example.com/home
  * https://example.com/about
  */
 
@@ -6186,7 +6186,7 @@ export default function App() {
 
 ```js
 /**
- * https://example.com/#/
+ * https://example.com/#/home
  * https://example.com/#/about
  */
 
@@ -6246,23 +6246,32 @@ Route based code splitting is essential during the page transitions on the web, 
 **Example:**
 
 ```js
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+/**
+ * Lazy Loading
+ */
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Home = lazy(() => import('./routes/Home'));
-const About = lazy(() => import('./routes/About'));
+const Home = lazy(() => import("./Home"));
+const About = lazy(() => import("./About"));
 
-const App = () => (
-  <Router>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
-    </Suspense>
-  </Router>
-);
+export default function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </>
+  );
+}
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-route-based-code-splitting-s2uq6n?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
