@@ -6124,10 +6124,10 @@ function Child() {
 **Syntax:**
 
 ```js
-/*
-  https://example.com/
-  https://example.com/about
-*/
+/**
+ * https://example.com/
+ * https://example.com/about
+ */
 
 <BrowserRouter
   basename={optionalString}
@@ -6142,31 +6142,38 @@ function Child() {
 **Example:**
 
 ```js
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+/**
+ * BrowserRouter()
+ */
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
-const IndexPage = () => {
-  return <h3>Home Page</h3>;
+const HomePage = () => {
+  return <h2>Home Page</h2>;
 };
 
 const AboutPage = () => {
-  return <h3>About Page</h3>;
+  return <h2>About Page</h2>;
 };
 
-function App() {
+export default function App() {
   return (
     <section className="App">
-      <Router>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Route exact path="/" component={IndexPage} />
-        <Route exact path="/about" component={AboutPage} />
-      </Router>
+      <BrowserRouter>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        <Routes>
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+        </Routes>
+      </BrowserRouter>
     </section>
   );
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-53zjvx?file=/src/App.js)**
 
 **2. HashRouter:**
 
@@ -6178,10 +6185,10 @@ function App() {
 **Syntax:**
 
 ```js
-/*
-  https://example.com/#/
-  https://example.com/#/about
-*/
+/**
+ * https://example.com/#/
+ * https://example.com/#/about
+ */
 
 <HashRouter
   basename={optionalString}
@@ -6195,31 +6202,38 @@ function App() {
 **Example:**
 
 ```js
-import { Link, HashRouter as Router, Route } from "react-router-dom";
+/**
+ * HashRouter()
+ */
+import { Link, HashRouter, Routes, Route } from "react-router-dom";
 
-const IndexPage = () => {
-  return <h3>Home Page</h3>;
+const HomePage = () => {
+  return <h2>Home Page</h2>;
 };
 
 const AboutPage = () => {
-  return <h3>About Page</h3>;
+  return <h2>About Page</h2>;
 };
 
-function App() {
+export default function App() {
   return (
     <section className="App">
-      <Router>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Route exact path="/" component={IndexPage} />
-        <Route exact path="/about" component={AboutPage} />
-      </Router>
+      <HashRouter>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        <Routes>
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+        </Routes>
+      </HashRouter>
     </section>
   );
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-5puuc?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-pcn4dj?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
