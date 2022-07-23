@@ -6283,14 +6283,22 @@ export default function App() {
 
 Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
 
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`. Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+Use **static getDerivedStateFromError()** to render a fallback UI after an error has been thrown. Use **componentDidCatch()** to log error information.
 
-*Example:*
+**Syntax:**
+
+```js
+<ErrorBoundary>
+   <User/>
+</ErrorBoundary>
+```
+
+**Example:**
 
 ```js
 import React, {Component} from 'react'
 
-class ErrorBoundary extends Component {
+export default class ErrorBoundary extends Component {
    state = {
       isErrorOccured: false,
       errorMessage: ''
@@ -6309,26 +6317,11 @@ class ErrorBoundary extends Component {
       }
    }
 }
-
-export default ErrorBoundary
 ```
 
-Here, We have a state object having two variables isErrorOccured and errorMessage which will be updated to true if any error occurs. We have used a React life cycle method componentDidCatch which receives two arguments error and info related to it.
+Here, We have a state object having two variables `isErrorOccured` and `errorMessage` which will be updated to true if any error occurs.
 
-**How to use error boundary**
-
-```js
-<ErrorBoundary>
-   <User/>
-</ErrorBoundary>
-```
-
-**Error boundaries do not catch errors for:**
-
-* Event handlers
-* Asynchronous code (e.g. setTimeout() )
-* Server side rendering
-* Errors thrown in the error boundary itself
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-error-boundary-pfj9vt?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
