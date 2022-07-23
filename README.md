@@ -6296,6 +6296,9 @@ Use **static getDerivedStateFromError()** to render a fallback UI after an error
 **Example:**
 
 ```js
+/**
+ * ErrorBoundary Component
+ */
 import React, {Component} from 'react'
 
 export default class ErrorBoundary extends Component {
