@@ -6112,69 +6112,9 @@ function Child() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. Why you get "Router may have only one child element" warning?
-
-React router dom throws the error that a router may have only one child element if more than one routes are defined without enclosing them in `<div>` or `<switch>`.
-
-Generally, navigation is used over the whole application. That\'s why component like **BrowserRouter** or **Router** expects that the top level component like App, should be enclosed in them. They do not expect multiple routes to be listed in them as children. 
-
-**Problem:** This code will throw the router error
-
-```js
-import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-
-export default function App() {
-    return (
-       <BrowserRouter>
-           <Route exact={true} path='/route1' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 2</p>
-               </div>
-            )}/>
-       </BrowserRouter>
-    );
-}
-```
-
-**Solution:** Enclosing route with `<switch>`.
-
-```js
-import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
-export default function App() {
-    return (
-       <BrowserRouter>
-         <Switch>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-           <Route exact={true} path='/route2' render={() => (
-               <div>
-                  <p>Route 1</p>
-               </div>
-            )}/>
-         </Switch>
-       </BrowserRouter>
-    );
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What is the difference between HashRouter and BrowserRouter in React?
 
-**BrowserRouter**
+**1. BrowserRouter:**
 
 * The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
 * It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
@@ -6228,13 +6168,12 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-pd2fs?file=/src/index.js)**
 
-**HashRouter**
+**2. HashRouter:**
 
 * A router which uses client side hash routing.
 * Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
 * Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
 * It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
-
 
 **Syntax:**
 
