@@ -6075,50 +6075,38 @@ export default App;
 **Example:**
 
 ```js
-import React from "react"
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"
+/**
+ * useParams()
+ */
+import React from "react";
+import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
 
-export default function ParamsExample() {
-
+export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
-        <h2>Accounts</h2>
         <ul>
-          <li>
-            <Link to="/netflix">Netflix</Link>
-          </li>
-          <li>
-            <Link to="/zillow-group">Zillow Group</Link>
-          </li>
-          <li>
-            <Link to="/yahoo">Yahoo</Link>
-          </li>
-          <li>
-            <Link to="/modus-create">Modus Create</Link>
-          </li>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/contact-us">Contact Us</Link></li>
+          <li><Link to="/help">Help</Link></li>
         </ul>
-
-        <Switch>
-          <Route path="/:id" children={<Child />} />
-        </Switch>
+        <Routes>
+          <Route path="/:id" element={<Child />} />
+        </Routes>
       </div>
-    </Router>
-  )
+    </BrowserRouter>
+  );
 }
 
 function Child() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams()
+  // `useParams` hook used here to access parameters
+  let { id } = useParams();
 
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
-  )
+  return <h2>Parameter: {id}</h2>;
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-get-query-parameters-ngsm3l?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
