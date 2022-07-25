@@ -6332,7 +6332,7 @@ Here, We have a state object having two variables `isErrorOccured` and `errorMes
 
 ## Q. What is the difference between try catch block and error boundaries?
 
-**Try…catch** is used in specific code blocks where you program the functionality of the application.
+**1. Try…catch** is used in specific code blocks where you program the functionality of the application.
 
 ```js
 try {
@@ -6342,9 +6342,9 @@ try {
 }
 ```
 
-**Try…catch** deals with imperative code while **error boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
+**2. Error Boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
 
-With error boundary, if there is an error, you can trigger a fallback UI; whereas, with try…catch, you can catch errors in your code.
+With error boundary, if there is an error, you can trigger a fallback UI; whereas, with `try…catch`, you can catch errors in your code.
 
 ```js
 import ErrorBoundary from "error-boundary";
