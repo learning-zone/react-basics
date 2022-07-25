@@ -6382,12 +6382,44 @@ Component Stack Trace prints all errors that occurred during rendering to the co
 
 ## Q. What are the methods invoked during error handling?
 
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods 
+To create an error boundary, we simply have to create a class component and define a state variable for determining whether the error boundary has caught an error. Our class component should also have at least three methods:
 
-* **static getDerivedStateFromError()**  
-* **componentDidCatch()** 
+* A static method called **getDerivedStateFromError()**, which is used to update the error boundary\'s state
+* A **componentDidCatch()** lifecycle method for performing operations when our error boundaries catch an error, such as logging to an error logging service
+* A **render()** method for rendering our error boundary\'s child or the fallback UI in case of an error
 
-Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+**Example:**
+
+```js
+/**
+ * Error Boundary in React
+ */
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
