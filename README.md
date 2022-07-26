@@ -6362,8 +6362,6 @@ function Users() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
-[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
-
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
