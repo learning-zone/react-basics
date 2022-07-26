@@ -6429,9 +6429,7 @@ class ErrorBoundary extends React.Component {
 
 <br/>
 
-## Q. Explain Composition vs Inheritance in React?
-
-**1. Inheritance:**
+## Q. Explain Inheritance in React?
 
 Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
 
@@ -6479,7 +6477,11 @@ ReactDOM.render(
 
 Here, We extended the `UserNameForm` component and extracted its method in child component using `super.render()`
 
-**2. Composition:**
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain Composition in React?
 
 Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
 
@@ -6523,7 +6525,11 @@ ReactDOM.render(
 )
 ```
 
-**Difference:**
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How Composition is different from Inheritance in React?
 
 Inheritance used the `is-a` relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component.
 
