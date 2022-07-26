@@ -6431,51 +6431,47 @@ class ErrorBoundary extends React.Component {
 
 ## Q. Explain Inheritance in React?
 
-Inheritance is a concept in object-oriented programming in which one class inherits properties and methods of another class. This is useful in code reusability.
+Inheritance uses the keyword **extends** to allow any component to use the properties and methods of another component connected with the parent. A class that is used as the basis for inheritance is called a superclass or base class. A class that inherits from a superclass is called a subclass or derived class.
+
+Using the **extends** keyword, it allows the current component to access all the component\'s properties, including the function, and trigger it from the child component.
 
 **Example:**
 
 ```js
-class UserNameForm extends React.Component {
-   render() {
-      return (
-         <div>
-            <input type="text" />
-         </div>
-      )
-   }
+import React from "react";
+
+/**
+ * Parent Class
+ */
+export class ParentClass extends React.Component {
+  constructor(props) {
+    super(props);
+    this.callMe = this.callMe.bind(this);
+  }
+
+  // ParentClass function
+  callMe() {
+    console.log("This is a method from parent class");
+  }
+
+  render() {
+    return false;
+  }
 }
-class CreateUserName extends UserNameForm {
-   render() {
-      const parent = super.render();
-      return (
-         <div>
-            {parent}
-            <button>Create</button>
-         </div>
-      )
-   }
+
+/**
+ * Child Class
+ */
+export default class App extends ParentClass {
+  render() {
+    return <button onClick={() => this.callMe()}>Call Parent</button>;
+  }
 }
-class UpdateUserName extends UserNameForm {
-   render() {
-      const parent = super.render();
-      return (
-         <div>
-            {parent}
-            <button>Update</button>
-         </div>
-      )
-   }
-}
-ReactDOM.render(
-   (<div>
-      < CreateUserName />
-      < UpdateUserName />
-   </div>), document.getElementById('root')
-)
 ```
 
-Here, We extended the `UserNameForm` component and extracted its method in child component using `super.render()`
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-inheritance-c6uc64?file=/src/App.js)**
+
+*Note: React does not use inheritance except in the initial component class, which extends from the **react** package.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
