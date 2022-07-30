@@ -6511,13 +6511,9 @@ export default function App() {
  */
 export default function Name({ name, setName }) {
   return (
-    <div className="name">
+    <div>
       <label>Name: </label>
-      <input
-        className="name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
+      <input value={name} onChange={(event) => setName(event.target.value)} />
     </div>
   );
 }
