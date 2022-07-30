@@ -6484,42 +6484,46 @@ Composition is also a familiar concept in Object Oriented Programming. Instead o
 **Example:**
 
 ```js
-class UserNameForm extends React.Component {
-   render() {
-      return (
-         <div>
-            <input type="text" />
-         </div>
-      );
-   }
+/**
+ * Composition in React
+ */
+import React, { useState } from "react";
+import Name from "./Name";
+
+export default function App() {
+  const [name, setName] = useState("");
+
+  return (
+    <form>
+      <h2>React Composition Example</h2>
+      <Name name={name} setName={setName} />
+      <h3>{name}</h3>
+    </form>
+  );
 }
-class CreateUserName extends React.Component {
-   render() {
-      return (
-         <div>
-            < UserNameForm />
-            <button>Create</button>
-         </div>
-      )
-   }
-}
-class UpdateUserName extends React.Component {
-   render() {
-      return (
-         <div>
-            < UserNameForm />
-            <button>Update</button>
-         </div>
-      )
-   }
-}
-ReactDOM.render(
-   (<div>
-      <CreateUserName />
-      <UpdateUserName />
-   </div>), document.getElementById('root')
-)
 ```
+
+```js
+/**
+ * Name Component
+ * @param {*} param0 - name
+ * @param {*} param1 - setName
+ */
+export default function Name({ name, setName }) {
+  return (
+    <div className="name">
+      <label>Name: </label>
+      <input
+        className="name"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+      />
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-composition-kq6fpc?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
