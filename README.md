@@ -7134,19 +7134,22 @@ Test-driven development is an approach when developers create a product backward
 
 ## Q. Explain react unit testing using Jest and Enzyme?
 
-**Jest**  
+**1. Jest**  
 
 Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
 
 Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
 
-**Enzyme**
+**2. Enzyme**
 
 Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
 
 **Setup with Create React App**
 
 ```bash
+# Set up a React application
+npx create-react-app counter-app
+
 # for rendering snapshots
 npm install  react-test-renderer --save-dev
 
@@ -7154,31 +7157,13 @@ npm install  react-test-renderer --save-dev
 npm install enzyme --save-dev
 ```
 
-```json
-{
-  "react": "^16.13.1",
-  "@testing-library/jest-dom": "^4.2.4",
-  "@testing-library/react": "^9.5.0",
-  "@testing-library/user-event": "^7.2.1",
-  "enzyme": "3.9",
-  "jest": "24.5.0",
-  "jest-cli": "24.5.0",
-  "babel-jest": "24.5.0"
-}
-```
-
-**Set up a React application**
-
-```bash
-npx create-react-app counter-app
-```
-
 ```js
-// src/App.js
-
+/**
+ * App.js
+ */
 import React, { Component } from 'react'
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -7199,14 +7184,14 @@ class App extends Component {
     )
   }
 }
-export default App
 ```
 
-**Using Enzyme**
+**Writing Test Cases Using Enzyme**
 
 ```js
- // src/App.test.js
-
+/**
+ * App.test.js
+ */
 import React from 'react'
 import { shallow } from 'enzyme'
 import App from './App'
@@ -7218,15 +7203,9 @@ describe('App component', () => {
     expect(text).toEqual('Count: 0')
   })
 })
-```
 
-**Testing User Interaction**
-
-```js
-// src/App.test.js
-
+// Testing User Interaction
 describe('App component', () => {
-
   it('increments count by 1 when the increment button is clicked', () => {
     const wrapper = shallow(<App />)
     const incrementBtn = wrapper.find('button.increment')
@@ -7236,6 +7215,8 @@ describe('App component', () => {
   })
 })
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-test-qz363f?file=/src/App.test.js)**
 
 **Reference:**
 
