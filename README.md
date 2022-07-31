@@ -6898,27 +6898,34 @@ export default function App() {
 **Example:**
 
 ```js
-import { animated, useTrail, config } from 'react-spring'
+/**
+ * useTrail()
+ */
+import React, { useState } from "react";
+import { animated, useTrail } from "react-spring";
 
-const App = () => {
-  const [on, toggle] = useState(false)
+export default function App() {
+  const [on, toggle] = useState(false);
 
-  const springs = useTrail(5, {
+  const springs = useTrail(3, {
     to: { opacity: on ? 1 : 0 },
     config: { tension: 250 }
-  })
+  });
 
   return (
     <div>
       {springs.map((animation, index) => (
-        <animated.div style={animation} key={index}>Hello World</animated.div>
+        <animated.h1 style={animation} key={index}>
+          Hello World
+        </animated.h1>
       ))}
-
-      <button onClick={() => toggle(!on)}>Change</button>
+      <button onClick={() => toggle(!on)}>Click Here</button>
     </div>
-  )
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usetrail-jc3qc5?file=/src/App.js)**
 
 **4. useTransition()**
 
