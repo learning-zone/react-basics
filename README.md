@@ -7103,74 +7103,30 @@ export default function App() {
 
 <br/>
 
-## Q. What is Shallow Renderer in React testing?
+## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
 
-When shallow rendering is used, Jest will not render child components but return them as defined.
+Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
 
-**Example:** 
+**Process:**
 
-```js
-// App.js
+1. Add a test
+1. Run all tests and see if the new test fails (red)
+1. Write the code to pass the test (green)
+1. Run all tests
+1. Refactor
+1. Repeat
 
-function MyComponent() {
-  return (
-    <div>
-      <span className="heading">Title</span>
-      <Subcomponent msg="Sub Component" />
-    </div>
-  );
-}
-```
+**Pros:**
 
-Test case
+1. Design before implementation
+1. Helps prevent future regressions and bugs
+1. Increases confidence that the code works as expected
 
-```js
-// App.test.js
+**Cons:**
 
-import ShallowRenderer from 'react-test-renderer/shallow';
-
-
-const renderer = new ShallowRenderer();
-renderer.render(<MyComponent />);
-const result = renderer.getRenderOutput();
-
-expect(result.type).toBe('div');
-expect(result.props.children).toEqual([
-  <span className="heading">Title</span>,
-  <Subcomponent msg="Sub Component" />
-]);
-```
-
-*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is TestRenderer package in React?
-
-This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
-
-This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or jsdom.
-
-**Example:**
-
-```js
-import TestRenderer from 'react-test-renderer';
-
-function Link(props) {
-  return <a href={props.page}>{props.children}</a>;
-}
-
-const testRenderer = TestRenderer.create(
-  <Link page="https://www.facebook.com/">Facebook</Link>
-);
-
-console.log(testRenderer.toJSON());
-// { type: 'a',
-//   props: { href: 'https://www.facebook.com/' },
-//   children: [ 'Facebook' ] }
-```
+1. Takes longer to develop (but it can save time in the long run)
+1. Testing edge cases is hard
+1. Mocking, faking, and stubbing are all even harder
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -7281,10 +7237,83 @@ describe('App component', () => {
 })
 ```
 
-**Read More:**
+**Reference:**
 
 * *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
 * *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Shallow Renderer in React testing?
+
+When shallow rendering is used, Jest will not render child components but return them as defined.
+
+**Example:** 
+
+```js
+// App.js
+
+function MyComponent() {
+  return (
+    <div>
+      <span className="heading">Title</span>
+      <Subcomponent msg="Sub Component" />
+    </div>
+  );
+}
+```
+
+Test case
+
+```js
+// App.test.js
+
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+
+const renderer = new ShallowRenderer();
+renderer.render(<MyComponent />);
+const result = renderer.getRenderOutput();
+
+expect(result.type).toBe('div');
+expect(result.props.children).toEqual([
+  <span className="heading">Title</span>,
+  <Subcomponent msg="Sub Component" />
+]);
+```
+
+*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is TestRenderer package in React?
+
+This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+This package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a ReactDOM or React Native without using a browser or jsdom.
+
+**Example:**
+
+```js
+import TestRenderer from 'react-test-renderer';
+
+function Link(props) {
+  return <a href={props.page}>{props.children}</a>;
+}
+
+const testRenderer = TestRenderer.create(
+  <Link page="https://www.facebook.com/">Facebook</Link>
+);
+
+console.log(testRenderer.toJSON());
+// { type: 'a',
+//   props: { href: 'https://www.facebook.com/' },
+//   children: [ 'Facebook' ] }
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -7530,35 +7559,6 @@ describe('APP Component', () => {
     })
 }
 ```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
-
-Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
-
-**Process:**
-
-1. Add a test
-1. Run all tests and see if the new test fails (red)
-1. Write the code to pass the test (green)
-1. Run all tests
-1. Refactor
-1. Repeat
-
-**Pros:**
-
-1. Design before implementation
-1. Helps prevent future regressions and bugs
-1. Increases confidence that the code works as expected
-
-**Cons:**
-
-1. Takes longer to develop (but it can save time in the long run)
-1. Testing edge cases is hard
-1. Mocking, faking, and stubbing are all even harder
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
