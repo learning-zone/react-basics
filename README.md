@@ -6943,7 +6943,7 @@ const transition = useTransition(on, null, {
   from: { opacity: 0 },
   enter: { opacity: 1 },
   leave: { opacity: 0 }
-})
+});
 
 return (
 <div>
@@ -6998,6 +6998,8 @@ const App = () => {
   )
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usechain-ltxk82?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
