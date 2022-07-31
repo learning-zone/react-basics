@@ -6852,39 +6852,44 @@ It works kind of like a mix between useSpring and useTransition in that it takes
 **Example:**
 
 ```js
-import React, { useState } from 'react'
-import { animated, useSprings } from 'react-spring'
+/**
+ * useSprings()
+ */
+import React, { useState } from "react";
+import { animated, useSprings } from "react-spring";
 
-
-const App = () => {
-  const [on, toggle] = useState(false)
+export default function App() {
+  const [on, toggle] = useState(false);
 
   const items = [
-    { color: 'red', opacity: .5 },
-    { color: 'blue', opacity: 1 },
-    { color: 'green', opacity: .2 },
-    { color: 'orange', opacity: .8 },
-  ]
+    { color: "red", opacity: 1 },
+    { color: "blue", opacity: 0.6 },
+    { color: "green", opacity: 0.2 }
+  ];
 
-  const springs = useSprings(items.length, items.map(item => ({
-    from: { color: '#fff', opacity: 0 },
-    to: {
-      color: on ? item.color : '#fff',
-      opacity: on ? item.opacity : 0
-    }
-  })))
+  const springs = useSprings(
+    items.length,
+    items.map((item) => ({
+      from: { color: "#fff", opacity: 0 },
+      to: {
+        color: on ? item.color : "#fff",
+        opacity: on ? item.opacity : 0
+      }
+    }))
+  );
 
   return (
     <div>
-      {springs.map(animation => (
-        <animated.div style={animation}>Hello World</animated.div>
+      {springs.map((animation) => (
+        <animated.h1 style={animation}>Hello World</animated.h1>
       ))}
-
-      <button onClick={() => toggle(!on)}>Change</button>
+      <button onClick={() => toggle(!on)}>Click Here</button>
     </div>
-  )
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
 
 **3. useTrail()**
 
