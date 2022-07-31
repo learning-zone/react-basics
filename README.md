@@ -7014,7 +7014,7 @@ const App = () => {
 **Installing dependencies**
 
 ```bash
-npm install react-i18next i18next --save
+npm install react-i18next i18next i18next-browser-languagedetector --save
 ```
 
 **Configure i18next**
@@ -7022,82 +7022,76 @@ npm install react-i18next i18next --save
 Create a new file `i18n.js` beside your `index.js` containing following content:
 
 ```js
-import i18n from "i18next"
-import { initReactI18next } from "react-i18next"
-
-// Translations
-const resources = {
-  en: {
-    translation: {
-      "welcome.title": "Welcome to React and react-i18next"
-    }
-  }
-}
+/**
+ * i18next Component
+ */
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
 
 i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    resources,
-    lng: "en",
-    keySeparator: false, // we do not use keys in form messages.welcome
+    // we init with resources
+    resources: {
+      en: {
+        translations: {
+          "Welcome to React": "Welcome to React and react-i18next"
+        }
+      },
+      hi: {
+        translations: {
+          "Welcome to React": "React और react-i18next में आपका स्वागत है"
+        }
+      }
+    },
+    fallbackLng: "en",
+    debug: true,
+
+    // have a common namespace used around the full app
+    ns: ["translations"],
+    defaultNS: "translations",
+
+    keySeparator: false, // we use content as keys
+
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false
     }
-  })
+  });
 
-export default i18n
+export default i18n;
 ```
 
-we pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
+We pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
 
 ```js
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
-import './i18n'
-import App from './App'
+/**
+ * useTranslation() in React
+ */
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-// append app to dom
-ReactDOM.render(
-  <App />,
-  document.getElementById("root")
-)
-```
+export default function App() {
+  const { t, i18n } = useTranslation();
 
-**Using the Hook**
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
-The `t` function is the main function in i18next to translate content.
-
-```js
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-
-function MyComponent () {
-  const { t, i18n } = useTranslation()
-  return <h1>{t('welcome.title')}</h1>
+  return (
+    <>
+      <h2>{t("Welcome to React")}</h2>
+      <button onClick={() => changeLanguage("en")}>English</button>
+      <button onClick={() => changeLanguage("hi")}>Hindi</button>
+    </>
+  );
 }
 ```
 
-**Using the Higher Order Component**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usetranslation-5gb2jx?file=/src/App.js)**
 
-Using higher order components is one of the most used method to extend existing components by passing additional props to them. The `t` function is in `i18next` the main function to translate content.
-
-```js
-import React from 'react'
-import { withTranslation } from 'react-i18next'
-
-class HighOrderComponent extends React.Component {
-    render() {
-
-      return (
-        <h1>{this.props.t('welcome.title')}</h1>
-      )
-    }
-}
-
-export default withTranslation()(HighOrderComponent)
-```
-
-**Read More:**
+**Reference:**
 
 * *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
 
