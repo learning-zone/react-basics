@@ -6847,7 +6847,7 @@ export default function App() {
 
 **2. useSpring()**
 
-It works kind of like a mix between useSpring and useTransition in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
+It works kind of like a mix between useSpring() and useTransition() in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
 
 **Example:**
 
@@ -6893,7 +6893,7 @@ export default function App() {
 
 **3. useTrail()**
 
-`useTrail` allows to create an effect similar to both useSpring and useSprings, it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
+It allows to create an effect similar to both useSpring() and useSprings(), it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
 
 **Example:**
 
@@ -6929,7 +6929,7 @@ export default function App() {
 
 **4. useTransition()**
 
-`useTransition` allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
+It allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
 
 **Example:**
 
@@ -6958,7 +6958,7 @@ return (
 
 **5. useChain()**
 
-`useChain` allows to set the execution sequence of previously defined animation hooks. To do this, you need to use `refs`, which will subsequently prevent the independent execution of the animation.
+It allows to set the execution sequence of previously defined animation hooks. To do this, we use `refs`, which will subsequently prevent the independent execution of the animation.
 
 **Example:**
 
