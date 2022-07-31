@@ -6606,8 +6606,9 @@ You can write your CSS styling in a separate file, just save the file with the .
 **Example:**
 
 ```css
-/**  App.css **/
-
+/**  
+ * App.css 
+ */
 body {
   background-color: #282c34;
   color: white;
@@ -6800,11 +6801,11 @@ React Spring is a spring-physics based animation library that powers most UI rel
 
 There are 5 hooks in react-spring currently:
 
-* `useSpring` a single spring, moves data from a -> b
-* `useSprings` multiple springs, for lists, where each spring moves data from a -> b
-* `useTrail` multiple springs with a single dataset, one spring follows or trails behind the other
-* `useTransition` for mount/unmount transitions (lists where items are added/removed/updated)
-* `useChain` to queue or chain multiple animations together
+* **useSpring** a single spring, moves data from a -> b
+* **useSprings** multiple springs, for lists, where each spring moves data from a -> b
+* **useTrail** multiple springs with a single dataset, one spring follows or trails behind the other
+* **useTransition** for mount/unmount transitions (lists where items are added/removed/updated)
+* **useChain** to queue or chain multiple animations together
 
 **1. useSpring()**
 
@@ -6813,13 +6814,36 @@ It turns defined values into animated values. It does this in two ways, either b
 **Example:**
 
 ```js
-import {useSpring, animated} from 'react-spring'
+/**
+ * useSpring()
+ */
+import React from "react";
+import "./styles.css";
+import { useSpring, animated } from "react-spring";
 
-function App() {
-  const props = useSpring({opacity: 1, from: {opacity: 0}})
-  return <animated.div style={props}>I will fade in</animated.div>
+export default function App() {
+  const [message, setMessage] = React.useState(false);
+  const contentProps = useSpring({
+    opacity: message ? 1 : 0,
+    marginTop: message ? 0 : -500
+  });
+  return (
+    <div className="container">
+      <div className="button-container">
+        <button onClick={() => setMessage((a) => !a)} className="button">
+          Click Here
+        </button>
+      </div>
+
+      <animated.div className="box" style={contentProps}>
+        <h1>React Spring</h1>
+      </animated.div>
+    </div>
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
 
 **2. useSpring()**
 
