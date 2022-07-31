@@ -6642,8 +6642,9 @@ CSS Modules are convenient for components that are placed in separate files
 **Example:**
 
 ```css
-/** mystyle.module.css **/
-
+/**
+ * mystyle.module.css
+ */
 .bigblue {
   color: DodgerBlue;
   padding: 40px;
