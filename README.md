@@ -6549,7 +6549,12 @@ React Components can add styling in the following ways:
 
 In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces `{{}}`. Since the inline CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax:
 
+**Example:**
+
 ```js
+/**
+ * Inline Styling
+ */
 class HeaderComponent extends React.Component {
   render() {
     return (
@@ -6568,7 +6573,12 @@ class HeaderComponent extends React.Component {
 
 We can also create an object with styling information, and refer to it in the style attribute:
 
+**Example:**
+
 ```js
+/**
+ * JavaScript Object
+ */
 class HeaderComponent extends React.Component {
   render() {
     const mystyle = {
@@ -6593,6 +6603,8 @@ class HeaderComponent extends React.Component {
 
 You can write your CSS styling in a separate file, just save the file with the .css file extension, and import it in your application.
 
+**Example:**
+
 ```css
 /**  App.css **/
 
@@ -6606,6 +6618,9 @@ body {
 ```
 
 ```js
+/**
+ * CSS Stylesheet
+ */
 import './App.css';
 
 class HeaderComponent extends React.Component {
@@ -6624,6 +6639,8 @@ class HeaderComponent extends React.Component {
 
 CSS Modules are convenient for components that are placed in separate files
 
+**Example:**
+
 ```css
 /** mystyle.module.css **/
 
@@ -6636,6 +6653,9 @@ CSS Modules are convenient for components that are placed in separate files
 ```
 
 ```js
+/**
+ * CSS Modules
+ */
 import styles from './mystyle.module.css'; 
 
 class HeaderComponent extends React.Component {
