@@ -7144,7 +7144,7 @@ Jest also provides Snapshot testing, the ability to create a rendered *snapshot*
 
 Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
 
-**Setup with Create React App**
+**Setup with Create React App:**
 
 ```bash
 # Set up a React application
@@ -7161,59 +7161,54 @@ npm install enzyme --save-dev
 /**
  * App.js
  */
-import React, { Component } from 'react'
+import React, { useState } from "react";
 
-export default class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 0,
-    }
-  }
-  makeIncrementer = amount => () =>
-    this.setState(prevState => ({
-      count: prevState.count + amount,
-    }))
-  increment = this.makeIncrementer(1)
-  render() {
-    return (
-      <div>
-        <p>Count: {this.state.count}</p>
-        <button className="increment" onClick={this.increment}>Increment count</button>
-      </div>
-    )
-  }
+export default function Counter() {
+  const [counter, setCounter] = useState(0);
+
+  const incrementCounter = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+  };
+
+  return (
+    <>
+      <button onClick={incrementCounter}>Click Me</button>
+      <h2 data-testid="counter">{counter}</h2>
+    </>
+  );
 }
 ```
 
-**Writing Test Cases Using Enzyme**
+**Writing Test Cases:**
 
 ```js
 /**
  * App.test.js
  */
-import React from 'react'
-import { shallow } from 'enzyme'
-import App from './App'
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
 
-describe('App component', () => {
-  it('starts with a count of 0', () => {
-    const wrapper = shallow(<App />)
-    const text = wrapper.find('p').text()
-    expect(text).toEqual('Count: 0')
-  })
-})
+// Testing App Component
+describe("App component", () => {
+  it("starts with a count of 0", () => {
+    const wrapper = shallow(<App />);
+    const text = wrapper.find("h2").text();
+    expect(text).toEqual("0");
+  });
+});
 
-// Testing User Interaction
-describe('App component', () => {
-  it('increments count by 1 when the increment button is clicked', () => {
-    const wrapper = shallow(<App />)
-    const incrementBtn = wrapper.find('button.increment')
-    incrementBtn.simulate('click')
-    const text = wrapper.find('p').text()
-    expect(text).toEqual('Count: 1')
-  })
-})
+// Testing Button Event
+describe("App component", () => {
+  it("increments count by 1 when the increment button is clicked", () => {
+    const mockCallBack = jest.fn();
+
+    const button = shallow(<button onClick={mockCallBack}>Click Me</button>);
+    button.find("button").simulate("click");
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
+});
+
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-test-qz363f?file=/src/App.test.js)**
