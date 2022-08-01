@@ -7222,6 +7222,124 @@ describe("App component", () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. Explain unit test structure in React?
+
+```js
+describe('Component Description', () => {
+  beforeAll(() => {
+    /* Runs before all tests */
+  })
+  afterAll(() => {
+    /* Runs after all tests */
+  })
+  beforeEach(() => {
+    /* Runs before each test */
+  })
+  afterEach(() => {
+    /* Runs after each test */
+  })
+
+  test('test case decription', () => {
+    const actual = fn(['one', 'Two', 'Three'])
+    expect(actual).toEqual(['1 => One', '2 => Two', '3 => Three'])
+  })
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the matchers available in jest framework?
+
+**1. Basic matchers:**
+
+```js
+expect(42).toBe(42) // Strict equality (===)
+expect(42).not.toBe(3) // Strict equality (!==)
+expect([1, 2]).toEqual([1, 2]) // Deep equality
+expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) // Deep equality
+expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 }) // Strict equality (Jest 23+)
+```
+
+**2. Truthiness:**
+
+```js
+// Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)
+expect('foo').toBeTruthy()
+// Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)
+expect('').toBeFalsy()
+// Matches only null
+expect(null).toBeNull()
+// Matches only undefined
+expect(undefined).toBeUndefined()
+// The opposite of toBeUndefined
+expect(7).toBeDefined()
+// Matches true or false
+expect(true).toEqual(expect.any(Boolean))
+```
+
+**3. Numbers:**
+
+```js
+expect(2).toBeGreaterThan(1)
+expect(1).toBeGreaterThanOrEqual(1)
+expect(1).toBeLessThan(2)
+expect(1).toBeLessThanOrEqual(1)
+expect(0.2 + 0.1).toBeCloseTo(0.3, 5)
+expect(NaN).toEqual(expect.any(Number))
+```
+
+**4. Strings:**
+
+```js
+expect('long string').toMatch('str')
+expect('string').toEqual(expect.any(String))
+expect('coffee').toMatch(/ff/)
+expect('pizza').not.toMatch('coffee')
+expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])
+```
+
+**5. Arrays:**
+
+```js
+expect([]).toEqual(expect.any(Array))
+expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)
+expect(['Alice', 'Bob', 'Eve']).toContain('Alice')
+expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })
+expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))
+```
+
+**6. Objects:**
+
+```js
+expect({ a: 1 }).toHaveProperty('a')
+expect({ a: 1 }).toHaveProperty('a', 1)
+expect({ a: { b: 1 } }).toHaveProperty('a.b')
+expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })
+expect({ a: 1, b: 2 }).toMatchObject({
+  a: expect.any(Number),
+  b: expect.any(Number),
+})
+expect([{ a: 1 }, { b: 2 }]).toEqual([
+  expect.objectContaining({ a: expect.any(Number) }),
+  expect.anything(),
+])
+```
+
+**7. Exceptions:**
+
+```js
+// const fn = () => { throw new Error('Out of cheese!') }
+expect(fn).toThrow()
+expect(fn).toThrow('Out of cheese')
+expect(fn).toThrowErrorMatchingSnapshot()
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What is Shallow Renderer in React testing?
 
 When shallow rendering is used, Jest will not render child components but return them as defined.
