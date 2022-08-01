@@ -7347,9 +7347,10 @@ When shallow rendering is used, Jest will not render child components but return
 **Example:** 
 
 ```js
-// App.js
-
-function MyComponent() {
+/**
+ * App Component
+ */
+export default function App() {
   return (
     <div>
       <span className="heading">Title</span>
@@ -7359,11 +7360,10 @@ function MyComponent() {
 }
 ```
 
-Test case
-
 ```js
-// App.test.js
-
+/**
+ * App Test Component
+ */
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 
