@@ -14,7 +14,8 @@
 * [Redux Quick Reference](redux-quick-reference.md)
 * [Jest Quick Reference](jest-quick-reference.md)
 * [React Best Practices](best-practices.md)
-* [React Unit Testing using Jest and Enzyme](https://github.com/learning-zone/testing-react-with-jest-and-enzyme)
+* [Unit Test - Testing React App with Jest and Enzyme](https://github.com/learning-zone/testing-react-with-jest-and-enzyme)
+* [React Project - My Store](https://github.com/learning-zone/my-store)
 
 <br/>
 
