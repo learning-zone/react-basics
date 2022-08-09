@@ -7261,7 +7261,6 @@ describe('Component Description', () => {
 |----------|------------------------------|--------------------------|
 |toBe()    |expect(42).toBe(42)           | Strict equality (===)    |
 |not.toBe()|expect(42).not.toBe(3)        | Strict equality (!==)    |
-|toEqual() |expect([1, 2]).toEqual([1, 2])|Deep equality             |
 |toEqual() |expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) |Deep equality|
 |not.toStrictEqual()|expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 })|Strict equality|
 
@@ -7279,60 +7278,57 @@ describe('Component Description', () => {
 
 **3. Numbers:**
 
-```js
-expect(2).toBeGreaterThan(1)
-expect(1).toBeGreaterThanOrEqual(1)
-expect(1).toBeLessThan(2)
-expect(1).toBeLessThanOrEqual(1)
-expect(0.2 + 0.1).toBeCloseTo(0.3, 5)
-expect(NaN).toEqual(expect.any(Number))
-```
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBeGreaterThan()|expect(2).toBeGreaterThan(1)| |
+|toBeGreaterThanOrEqual()|expect(1).toBeGreaterThanOrEqual(1)| |
+|toBeLessThan() | expect(1).toBeLessThan(2)| |
+|toBeLessThanOrEqual()|expect(1).toBeLessThanOrEqual(1)| |
+|toBeCloseTo()|expect(0.2 + 0.1).toBeCloseTo(0.3, 5) | |
+|toEqual()    |expect(NaN).toEqual(expect.any(Number))| |
 
 **4. Strings:**
 
-```js
-expect('long string').toMatch('str')
-expect('string').toEqual(expect.any(String))
-expect('coffee').toMatch(/ff/)
-expect('pizza').not.toMatch('coffee')
-expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])
-```
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toMatch() |expect('long string').toMatch('str')| |
+|toEqual() |expect('string').toEqual(expect.any(String))| |
+|toMatch() |expect('coffee').toMatch(/ff/) | |
+|not.toMatch()|expect('pizza').not.toMatch('coffee')| |
+|toEqual() | expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])| |
 
 **5. Arrays:**
 
-```js
-expect([]).toEqual(expect.any(Array))
-expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)
-expect(['Alice', 'Bob', 'Eve']).toContain('Alice')
-expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })
-expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))
-```
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toEqual() |expect([]).toEqual(expect.any(Array))|  |
+|toHaveLength()|expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)| |
+|toContain() |expect(['Alice', 'Bob', 'Eve']).toContain('Alice')| | 
+|toContainEqual()|expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })| |
+|toEqual() |expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))| |
 
 **6. Objects:**
 
-```js
-expect({ a: 1 }).toHaveProperty('a')
-expect({ a: 1 }).toHaveProperty('a', 1)
-expect({ a: { b: 1 } }).toHaveProperty('a.b')
-expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })
-expect({ a: 1, b: 2 }).toMatchObject({
-  a: expect.any(Number),
-  b: expect.any(Number),
-})
-expect([{ a: 1 }, { b: 2 }]).toEqual([
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toHaveProperty()|expect({ a: 1 }).toHaveProperty('a')| |
+|toMatchObject()|expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })| |
+|toEqual() |expect([{ a: 1 }, { b: 2 }]).toEqual([
   expect.objectContaining({ a: expect.any(Number) }),
   expect.anything(),
-])
-```
+])| |
 
 **7. Exceptions:**
 
 ```js
-// const fn = () => { throw new Error('Out of cheese!') }
-expect(fn).toThrow()
-expect(fn).toThrow('Out of cheese')
-expect(fn).toThrowErrorMatchingSnapshot()
+const fn = () => { throw new Error('Throw some custom error!') }
 ```
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toThrow() |expect(fn).toThrow()| |
+|toThrow() |expect(fn).toThrow('Out of cheese')| |
+|toThrowErrorMatchingSnapshot()|expect(fn).toThrowErrorMatchingSnapshot()| |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
