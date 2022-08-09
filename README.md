@@ -7313,10 +7313,6 @@ describe('Component Description', () => {
 |----------|------------------------------|--------------------------|
 |toHaveProperty()|expect({ a: 1 }).toHaveProperty('a')| |
 |toMatchObject()|expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })| |
-|toEqual() |expect([{ a: 1 }, { b: 2 }]).toEqual([
-  expect.objectContaining({ a: expect.any(Number) }),
-  expect.anything(),
-])| |
 
 **7. Exceptions:**
 
