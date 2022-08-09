@@ -7257,30 +7257,25 @@ describe('Component Description', () => {
 
 **1. Basic matchers:**
 
-```js
-expect(42).toBe(42) // Strict equality (===)
-expect(42).not.toBe(3) // Strict equality (!==)
-expect([1, 2]).toEqual([1, 2]) // Deep equality
-expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) // Deep equality
-expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 }) // Strict equality (Jest 23+)
-```
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBe()    |expect(42).toBe(42)           | Strict equality (===)    |
+|not.toBe()|expect(42).not.toBe(3)        | Strict equality (!==)    |
+|toEqual() |expect([1, 2]).toEqual([1, 2])|Deep equality             |
+|toEqual() |expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) |Deep equality|
+|not.toStrictEqual()|expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 })|Strict equality|
 
 **2. Truthiness:**
 
-```js
-// Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)
-expect('foo').toBeTruthy()
-// Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)
-expect('').toBeFalsy()
-// Matches only null
-expect(null).toBeNull()
-// Matches only undefined
-expect(undefined).toBeUndefined()
-// The opposite of toBeUndefined
-expect(7).toBeDefined()
-// Matches true or false
-expect(true).toEqual(expect.any(Boolean))
-```
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBeTruthy()|expect('foo').toBeTruthy()| Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)|
+|toBeFalsy()|expect('').toBeFalsy() |Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)|
+|toBeNull()|expect(null).toBeNull()|Matches only null|
+|toBeUndefined()|expect(undefined).toBeUndefined()|Matches only undefined|
+|toBeDefined()|expect(7).toBeDefined()|The opposite of toBeUndefined|
+|toEqual()  |expect(true).toEqual(expect.any(Boolean)) |Matches true or false|
+|toBeInTheDocument()|expect(getByText(/React/i)).toBeInTheDocument()| Return true/false |
 
 **3. Numbers:**
 
