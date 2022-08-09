@@ -7330,50 +7330,6 @@ const fn = () => { throw new Error('Throw some custom error!') }
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is Shallow Renderer in React testing?
-
-When shallow rendering is used, Jest will not render child components but return them as defined.
-
-**Example:** 
-
-```js
-/**
- * App Component
- */
-export default function App() {
-  return (
-    <div>
-      <span className="heading">Title</span>
-      <Subcomponent msg="Sub Component" />
-    </div>
-  );
-}
-```
-
-```js
-/**
- * App Test Component
- */
-import ShallowRenderer from 'react-test-renderer/shallow';
-
-
-const renderer = new ShallowRenderer();
-renderer.render(<MyComponent />);
-const result = renderer.getRenderOutput();
-
-expect(result.type).toBe('div');
-expect(result.props.children).toEqual([
-  <span className="heading">Title</span>,
-  <Subcomponent msg="Sub Component" />
-]);
-```
-
-*Note: React Shallow testing currently doesn't not support refs. Alternative, use Enzyme\'s Shallow Rendering API.*
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What is TestRenderer package in React?
 
 This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
@@ -7397,131 +7353,6 @@ console.log(testRenderer.toJSON());
 // { type: 'a',
 //   props: { href: 'https://www.facebook.com/' },
 //   children: [ 'Facebook' ] }
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Explain about shallow() method in enzyme?
-
-The `shallow()` method is used to render the single component that we are testing. It does not render child components. Simple shallow calls the `constructor()`, `render()`, `componentDidMount()` methods.
-
-**Example:**
-
-```js
-import React from "react"
-import { shallow } from "enzyme"
-import Enzyme from "enzyme"
-import Adapter from "enzyme-adapter-react-16"
-
-Enzyme.configure({ adapter: new Adapter() })
-
-function Name(props) {
-  return <span>Welcome {props.name}</span>
-}
-
-function Welcome(props) {
-  return (
-    <h1>
-      <Name name={props.name} />
-    </h1>
-  )
-}
-
-const wrapper = shallow(<Welcome name="Alex" />)
-console.log(wrapper.debug())
-```
-
-**When not to use Shallow Rendering**
-
-* Shallow rendering is not useful for testing the end-user experience.
-* Shallow rendering is not useful for testing DOM rendering or interactions.
-* Shallow rendering is not useful for integration testing.
-* Shallow rendering is not useful for browser testing.
-* Shallow rendering is not useful for end to end testing.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is mount() method in Enzyme?
-
-**Full DOM rendering** generates a virtual DOM of the component with the help of a library called `jsdom`. It is useful when we want to test the behavior of a component with its children.
-
-This is more suitable when there are components which directly interfere with DOM API or lifecycle methods of React. Simple mount calls the `constructor()`, `render()`, `componentDidMount()` methods.
-
-**Example:**
-
-```js
-...
-import ListItem from './ListItem'
-...
-
-return (
-    <ul className="list-items">
-      {items.map(item => <ListItem key={item} item={item} />)}
-    </ul>
-)
-```
-
-```js
-import React from 'react'
-import { mount } from '../enzyme'
-import List from './List'
-
-describe('List tests', () => {
-
-  it('renders list-items', () => {
-    const items = ['one', 'two', 'three']
-
-    const wrapper = mount(<List items={items} />)
-
-    // Let's check what wrong in our instance
-    console.log(wrapper.debug())
-
-    // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined()
-    expect(wrapper.find('.item')).toHaveLength(items.length)
-  })
-
-  ...
-})
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is render() method in Enzyme?
-
-**Static rendering** is used to render react components to static HTML. It\'s implemented using a library called **Cheerio**. It renders the children. But this does not have access to React lifecycle methods.
-
-For static rendering, we can not access to Enzyme API methods such as `contains()` and `debug()`. However we can access to the full arsenal of Cheerios manipulation and traversal methods such as `addClass()` and `find()` respectively.
-
-**Example:**
-
-```js
-import React from 'react'
-import { render } from '../enzyme'
-
-import List from './List'
-import { wrap } from 'module'
-
-describe('List tests', () => {
-
-  it('renders list-items', () => {
-    const items = ['one', 'two', 'three']
-    const wrapper = render(<List items={items} />)
-
-    wrapper.addClass('foo')
-    // Expect the wrapper object to be defined
-    expect(wrapper.find('.list-items')).toBeDefined()
-    expect(wrapper.find('.item')).toHaveLength(items.length)
-  })
-
-  ...
-})
 ```
 
 <div align="right">
@@ -7659,7 +7490,7 @@ import './App.scss'
 
 function App() {
   return (
-    <div data-test='app-header'>
+    <div data-testid='app-header'>
       Hello React
     </div>
   )
@@ -7669,19 +7500,20 @@ export default App
 
 ```js
 import React from 'react'
-import { shallow } from 'enzyme'
+import { cleanup, render, screen } from "@testing-library/react";
 import App from './App'
-
+afterEach(cleanup);
 
 describe('APP Component', () => {
 
-  test('title', () => {
-    let wrapper = shallow(<APP />)
-    let title = wrapper.find(`[data-test='app-header']`).text()
-
-    expect(title).toMatch('Hello React')
+  let wrapper
+  beforeEach(() => {
+    wrapper = render(<Header/>)
   })
 
+  test('should check for the title', () => {
+    expect(screen.getByText(/Hello React/i)).toBeInTheDocument();
+  })
 })
 ```
 
