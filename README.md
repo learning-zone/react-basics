@@ -141,6 +141,177 @@ In React, a state is always owned by one component. Any changes made by this sta
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to declare constant in react?
+
+```js
+// Constants.js
+
+export const POSTURL = "http://localhost:3000/api/v1/patterns";
+export const DELETEURL = "http://localhost:3000/api/v1/patterns/";
+
+export const DeleteButton = require("./images/delete-icon.png");
+export const LoadingWheel = require("./images/loading-wheel.gif");
+
+```
+
+```js
+// App.js
+
+import * as Constants from "./Constants";
+
+const employee = {
+  emp_id: 10,
+  name: "Nakul Agate",
+  email: "nakul.agate@email.com"
+};
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div>Employee Details :{JSON.stringify(employee)}</div>
+        <div><img src={Constants.LoadingWheel} alt="Loading..." /></div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Destructuring in React?
+
+Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
+
+When used, destructuring does not modify an object or array but rather copies the desired items from those data structures into variables. These new variables can be accessed later on in a React component.
+
+**1. Destructuring in JS:**
+
+Without destructuring
+
+```js
+const person = {
+  firstName: "Alex",
+  lastName: "K",
+  age: 25,
+  sex: ""
+}
+
+const first = person.firstName
+const age = person.age
+const sex = person.sex || "Male"
+
+console.log(first) // "Alex"
+console.log(age) // 25
+console.log(sex) // Male --> default value
+```
+
+With destructuring
+
+```js
+const person = {
+  firstName: "Alex",
+  lastName: "K",
+  age: 25,
+  sex: "M"
+}
+
+const { firstName, lastName, age, sex } = person
+
+console.log(firstName) // Alex
+console.log(lastName) // K
+console.log(age) // 25
+console.log(sex) // M
+```
+
+**2. Destructuring in React:**
+
+*Example:*
+
+```js
+import React from 'react'
+import Button from '@material-ui/core/Button'
+
+
+export default function Events() {
+
+  const [counter, setcounter] = React.useState(0)
+
+  return (
+      <div className='Counter'>
+          <div>Result: {counter}</div>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => setcounter(counter + 1)}
+          >
+            Increment
+          </Button>
+
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)}
+          >
+            Decrement
+          </Button>
+      </div>
+    )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why is it necessary to start component names with a capital letter?
+
+In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
+
+When an element type starts with a lowercase letter, it refers to a built-in component like or and results in a string `<div>` or `<span>` passed to `React.createElement`. Types that start with a capital letter like compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
+
+* `<component />` compiles to `React.createElement('component')` (html tag)
+* `<Component />` compiles to `React.createElement(Component)`
+* `<obj.component />` compiles to `React.createElement(obj.component)`
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are fragments? Why are fragments better than container divs?
+
+Fragments allows to group a list of children without adding extra nodes to the DOM.
+
+*Example:*
+
+```js
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <ChildA />
+        <ChildB />
+        <ChildC />
+      </React.Fragment>
+    )
+  }
+}
+```
+
+**Benefits:**
+
+* It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
+* Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
+* The DOM inspector is less cluttered.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 2. REACT SETUP
 
 <br/>
@@ -8710,177 +8881,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to declare constant in react?
-
-```js
-// Constants.js
-
-export const POSTURL = "http://localhost:3000/api/v1/patterns";
-export const DELETEURL = "http://localhost:3000/api/v1/patterns/";
-
-export const DeleteButton = require("./images/delete-icon.png");
-export const LoadingWheel = require("./images/loading-wheel.gif");
-
-```
-
-```js
-// App.js
-
-import * as Constants from "./Constants";
-
-const employee = {
-  emp_id: 10,
-  name: "Nakul Agate",
-  email: "nakul.agate@email.com"
-};
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div>Employee Details :{JSON.stringify(employee)}</div>
-        <div><img src={Constants.LoadingWheel} alt="Loading..." /></div>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-constants-knzec?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is Destructuring in React?
-
-Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
-
-When used, destructuring does not modify an object or array but rather copies the desired items from those data structures into variables. These new variables can be accessed later on in a React component.
-
-**Destructuring in JS**
-
-Without destructuring
-
-```js
-const person = {
-  firstName: "Alex",
-  lastName: "K",
-  age: 25,
-  sex: ""
-}
-
-const first = person.firstName
-const age = person.age
-const sex = person.sex || "Male"
-
-console.log(first) // "Alex"
-console.log(age) // 25
-console.log(sex) // Male --> default value
-```
-
-With destructuring
-
-```js
-const person = {
-  firstName: "Alex",
-  lastName: "K",
-  age: 25,
-  sex: "M"
-}
-
-const { firstName, lastName, age, sex } = person
-
-console.log(firstName) // Alex
-console.log(lastName) // K
-console.log(age) // 25
-console.log(sex) // M
-```
-
-**Destructuring in React**
-
-*Example:*
-
-```js
-import React from 'react'
-import Button from '@material-ui/core/Button'
-
-
-export default function Events() {
-
-  const [counter, setcounter] = React.useState(0)
-
-  return (
-      <div className='Counter'>
-          <div>Result: {counter}</div>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => setcounter(counter + 1)}
-          >
-            Increment
-          </Button>
-
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)}
-          >
-            Decrement
-          </Button>
-      </div>
-    )
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why is it necessary to start component names with a capital letter?
-
-In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
-
-When an element type starts with a lowercase letter, it refers to a built-in component like or and results in a string `<div>` or `<span>` passed to `React.createElement`. Types that start with a capital letter like compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
-
-* `<component />` compiles to `React.createElement('component')` (html tag)
-* `<Component />` compiles to `React.createElement(Component)`
-* `<obj.component />` compiles to `React.createElement(obj.component)`
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What are fragments? Why are fragments better than container divs?
-
-Fragments allows to group a list of children without adding extra nodes to the DOM.
-
-*Example:*
-
-```js
-class App extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <ChildA />
-        <ChildB />
-        <ChildC />
-      </React.Fragment>
-    )
-  }
-}
-```
-
-**Benefits**
-
-* It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
-* Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
-* The DOM inspector is less cluttered.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
