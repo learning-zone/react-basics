@@ -8454,17 +8454,6 @@ renderContent() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What are the kinds of information that control a segment in React?
-
-There are mainly two sorts of information that control a segment
-
-* `State`: State information that will change, we need to utilize State.
-* `Props`: Props are set by the parent and which are settled all through the lifetime of a part.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What are the drawbacks of MVW pattern?
 
 MVW stands for **Model-View-Whatever**
