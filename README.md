@@ -5373,6 +5373,78 @@ The useState() function takes as argument a value for the initial state. In this
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. Why do we use array destructuring in useState?
+
+The `useState` hook allows us to make our function components stateful. When called, `useState()` returns an array of two items. The first being our state value and the second being a function for setting or updating that value. The `useState` hook takes a single argument, the initial value for the associated piece of state, which can be of any Javascript data type.
+
+```js
+import React, { useState } from 'react';
+
+const Component = () => {
+    const [value, setValue] = useState(initial value)
+    ...
+```
+
+**Example:** State with Various Data Types
+
+```js
+const [count, setCount] = useState(0)
+const [color, setColor] = useState('#526b2d')
+const [isHidden, setIsHidden] = useState(true)
+const [products, setProducts] = useState([])
+const [user, setUser] = useState({
+    username: '',
+    avatar: '',
+    email: '',
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is useReducer() in React?
+
+It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
+
+Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, `useState()` is actually implemented with `useReducer()`. This means `useReducer()` is primitive and we can use `useReducer()` for everything can do with useState(). Reducer is so powerful that it can apply for various use cases.
+
+**Example:**
+
+```js
+import React, { useReducer } from 'react'
+
+const initialState = 0
+const reducer = (state, action) => {
+  switch (action) {
+    case 'increment': return state + 1
+    case 'decrement': return state - 1
+    case 'reset': return 0
+    default: throw new Error('Unexpected action')
+  }
+}
+
+const ReducerExample = () => {
+  const [count, dispatch] = useReducer(reducer, initialState)
+  return (
+    <div>
+      {count}
+      <button onClick={() => dispatch('increment')}>+1</button>
+      <button onClick={() => dispatch('decrement')}>-1</button>
+      <button onClick={() => dispatch('reset')}>reset</button>
+    </div>
+  )
+}
+
+export default ReducerExample
+```
+
+Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT CONTEXT
 
 <br/>
@@ -7682,78 +7754,6 @@ const App = () => {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why do we use array destructuring in useState?
-
-The `useState` hook allows us to make our function components stateful. When called, `useState()` returns an array of two items. The first being our state value and the second being a function for setting or updating that value. The `useState` hook takes a single argument, the initial value for the associated piece of state, which can be of any Javascript data type.
-
-```js
-import React, { useState } from 'react';
-
-const Component = () => {
-    const [value, setValue] = useState(initial value)
-    ...
-```
-
-**Example:** State with Various Data Types
-
-```js
-const [count, setCount] = useState(0)
-const [color, setColor] = useState('#526b2d')
-const [isHidden, setIsHidden] = useState(true)
-const [products, setProducts] = useState([])
-const [user, setUser] = useState({
-    username: '',
-    avatar: '',
-    email: '',
-})
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is useReducer() in React?
-
-It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
-
-Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, `useState()` is actually implemented with `useReducer()`. This means `useReducer()` is primitive and we can use `useReducer()` for everything can do with useState(). Reducer is so powerful that it can apply for various use cases.
-
-**Example:**
-
-```js
-import React, { useReducer } from 'react'
-
-const initialState = 0
-const reducer = (state, action) => {
-  switch (action) {
-    case 'increment': return state + 1
-    case 'decrement': return state - 1
-    case 'reset': return 0
-    default: throw new Error('Unexpected action')
-  }
-}
-
-const ReducerExample = () => {
-  const [count, dispatch] = useReducer(reducer, initialState)
-  return (
-    <div>
-      {count}
-      <button onClick={() => dispatch('increment')}>+1</button>
-      <button onClick={() => dispatch('decrement')}>-1</button>
-      <button onClick={() => dispatch('reset')}>reset</button>
-    </div>
-  )
-}
-
-export default ReducerExample
-```
-
-Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
