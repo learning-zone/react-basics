@@ -997,6 +997,31 @@ render() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to conditionally add attributes to React components?
+
+Inline conditionals in attribute props
+
+```js
+import React from 'react'
+
+function App() {
+
+  const [mood] = React.useState("happy")
+
+  const greet = () => alert("Hi there! :)")
+
+  return (
+    <button onClick={greet} disabled={"happy" === mood ? false : true}>
+      Say Hi
+    </button>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
@@ -7987,31 +8012,6 @@ var MyComponent = React.createClass({
 ```
 
 The `getInitialState()` is used with `React.createClass` and `constructor()` is used with `React.Component`.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to conditionally add attributes to React components?
-
-Inline conditionals in attribute props
-
-```js
-import React from 'react'
-
-function App() {
-
-  const [mood] = React.useState("happy")
-
-  const greet = () => alert("Hi there! :)")
-
-  return (
-    <button onClick={greet} disabled={"happy" === mood ? false : true}>
-      Say Hi
-    </button>
-  )
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
