@@ -5332,6 +5332,47 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is useState() in React?
+
+The `useState()` is a Hook that allows to have state variables in functional components.
+
+```js
+import React, { useState } from 'react'
+
+const App = () => {
+  const [count, setCount] = React.useState(0)
+
+  const handleIncrease = () => {
+    setCount(count + 1)
+  }
+
+  const handleDecrease = () => {
+    setCount(count - 1)
+  }
+
+  return (
+    <div>
+      Count: {count}
+      <hr />
+      <div>
+        <button type="button" onClick={handleIncrease}>
+          Increase
+        </button>
+        <button type="button" onClick={handleDecrease}>
+          Decrease
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT CONTEXT
 
 <br/>
@@ -7588,47 +7629,6 @@ class MyButton extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is useState() in React?
-
-The `useState()` is a Hook that allows to have state variables in functional components.
-
-```js
-import React, { useState } from 'react'
-
-const App = () => {
-  const [count, setCount] = React.useState(0)
-
-  const handleIncrease = () => {
-    setCount(count + 1)
-  }
-
-  const handleDecrease = () => {
-    setCount(count - 1)
-  }
-
-  return (
-    <div>
-      Count: {count}
-      <hr />
-      <div>
-        <button type="button" onClick={handleIncrease}>
-          Increase
-        </button>
-        <button type="button" onClick={handleDecrease}>
-          Decrease
-        </button>
-      </div>
-    </div>
-  )
-}
-```
-
-The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
