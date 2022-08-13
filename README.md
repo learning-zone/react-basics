@@ -1537,6 +1537,53 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is difference between useEffect() vs componentDidMount()?
+
+In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
+
+The `componentDidMount()` and `useEffect()` run after the mount. However useEffect() runs after the paint has been committed to the screen as opposed to before. This means we would get a flicker if needed to read from the DOM, then synchronously set state to make new UI.
+
+The `useLayoutEffect()` was designed to have the same timing as componentDidMount(). So `useLayoutEffect(fn, [])` is a much closer match to componentDidMount() than useEffect(fn, []) -- at least from a timing standpoint.
+
+```js
+//Using a class based component.
+import React, { Component } from 'react'
+
+export default class SampleComponent extends Component {
+  componentDidMount() {
+    // code to run on component mount
+  }
+render() {
+    return (<div>foo</div>)
+  }
+}
+
+//Using a functional component
+import React, { useEffect } from 'react'
+
+const SampleComponent = () => {
+  useEffect(() => {
+    // code to run on component mount
+  }, [])
+return (<div>foo</div>)
+}
+export SampleComponent
+```
+
+**useEffect() Limitations:**
+
+When useEffect() is used to get data from server.
+
+* The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
+* The second argument is an array of values (usually props).
+* If any of the value in the array changes, the callback will be fired after every render.
+* When it is not present, the callback will always be fired after every render.
+* When it is an empty list, the callback will only be fired once, similar to componentDidMount.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.3. PURE COMPONENTS
 
 <br/>
@@ -7754,53 +7801,6 @@ const App = () => {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is difference between useEffect() vs componentDidMount()?
-
-In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
-
-The `componentDidMount()` and `useEffect()` run after the mount. However useEffect() runs after the paint has been committed to the screen as opposed to before. This means we would get a flicker if needed to read from the DOM, then synchronously set state to make new UI.
-
-The `useLayoutEffect()` was designed to have the same timing as componentDidMount(). So `useLayoutEffect(fn, [])` is a much closer match to componentDidMount() than useEffect(fn, []) -- at least from a timing standpoint.
-
-```js
-//Using a class based component.
-import React, { Component } from 'react'
-
-export default class SampleComponent extends Component {
-  componentDidMount() {
-    // code to run on component mount
-  }
-render() {
-    return (<div>foo</div>)
-  }
-}
-
-//Using a functional component
-import React, { useEffect } from 'react'
-
-const SampleComponent = () => {
-  useEffect(() => {
-    // code to run on component mount
-  }, [])
-return (<div>foo</div>)
-}
-export SampleComponent
-```
-
-**useEffect() Limitations:**
-
-When useEffect() is used to get data from server.
-
-* The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
-* The second argument is an array of values (usually props).
-* If any of the value in the array changes, the callback will be fired after every render.
-* When it is not present, the callback will always be fired after every render.
-* When it is an empty list, the callback will only be fired once, similar to componentDidMount.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
