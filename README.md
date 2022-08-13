@@ -1022,6 +1022,59 @@ function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How would you prevent a component from rendering?
+
+React `shouldComponentUpdate()` is a performance optimization method, and it tells React to avoid re-rendering a component, even if state or prop values may have changed. This method only used when a component will stay static or pure.
+The React `shouldComponentUpdate()` method return `true` if it needs to re-render or `false` to avoid being re-render.
+
+**Syntax:**
+
+```js
+shouldComponentUpdate(nextProps, nextState){ }
+```
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      countOfClicks: 0
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      countOfClicks: this.state.countOfClicks + 1
+    });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("this.state.countOfClicks", this.state.countOfClicks);
+    console.log("nextState.countOfClicks", nextState.countOfClicks);
+    return true;
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>shouldComponentUpdate Example</h2>
+        <p>Count of clicks: <b>{this.state.countOfClicks}</b></p>
+        <button onClick={this.handleClick}>CLICK ME</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
@@ -8017,58 +8070,6 @@ The `getInitialState()` is used with `React.createClass` and `constructor()` is 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How would you prevent a component from rendering?
-
-React `shouldComponentUpdate()` is a performance optimization method, and it tells React to avoid re-rendering a component, even if state or prop values may have changed. This method only used when a component will stay static or pure.
-The React `shouldComponentUpdate()` method return `true` if it needs to re-render or `false` to avoid being re-render.
-
-**Syntax:**
-
-```js
-shouldComponentUpdate(nextProps, nextState){ }
-```
-
-**Example:**
-
-```js
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      countOfClicks: 0
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState({
-      countOfClicks: this.state.countOfClicks + 1
-    });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("this.state.countOfClicks", this.state.countOfClicks);
-    console.log("nextState.countOfClicks", nextState.countOfClicks);
-    return true;
-  }
-
-  render() {
-    return (
-      <div>
-        <h2>shouldComponentUpdate Example</h2>
-        <p>Count of clicks: <b>{this.state.countOfClicks}</b></p>
-        <button onClick={this.handleClick}>CLICK ME</button>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
 
 ## Q. What is render hijacking in React?
 
