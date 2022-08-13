@@ -3777,6 +3777,152 @@ export default class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. When should we use arrow functions with React?
+
+**Arrows prevent `this` bugs**
+
+Arrow functions don not redefine the value of `this` within their function body. This makes it a lot easier to predict their behavior when passed as callbacks, and prevents bugs caused by use of this within callbacks. Using inline arrow functions in function components is a good way to achieve some decoupling.
+
+**Example:**
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.handleClick} style={this.state}>
+        Set background to red
+      </button>
+    )
+  }
+
+  handleClick = () => {
+    this.setState({ backgroundColor: 'red' })
+  }
+}
+
+ReactDOM.render(
+  <Button />,
+  document.getElementById('root')
+)
+```
+
+1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
+2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Is it good to use arrow functions in render methods?
+
+**Problem:**
+
+The **bind()** method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called. When arrow functions and binds in render. It breaks performance optimizations like `shouldComponentUpdate()` and `PureComponent`.
+
+**Example:**
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    ...
+  }
+
+  deleteUser = id => {
+    this.setState(prevState => {
+      return {
+        users: prevState.users.filter(user => user.id !== id)
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.users.map(user => {
+            return (
+              <User key={user.id} name={user.name} id={user.id}
+                onDeleteClick={() => this.deleteUser(user.id)}
+              />
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
+
+**Solution:**
+
+In below example, **App Component** has no arrow function in render. Instead, the relevant data is passed down to **User Component**. In User Component, `onDeleteClick()` calls the onClick function passed in on props with the relevant user.id.
+
+```js
+// User Component
+
+class User extends React.PureComponent {
+  onDeleteClick = () => {
+    // No bind needed since we can compose the relevant data for this item here
+    this.props.onClick(this.props.user.id);
+  };
+
+  render() {
+    console.log(`${this.props.user.name} just rendered`);
+    return (
+      <li>
+        <input type="button" value="Delete" onClick={this.onDeleteClick} />
+        {this.props.user.name}
+      </li>
+    );
+  }
+}
+```
+
+```js
+// App Component
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    ...
+  }
+
+  deleteUser = id => {
+    this.setState(prevState => {
+      return { 
+        users: prevState.users.filter(user => user.id !== id) 
+      };
+    });
+  };
+
+  renderUser = user => {
+    return <User key={user.id} user={user} onClick={this.deleteUser} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.users.map(this.renderUser)}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How can I prevent a function from being called too quickly?
 
 **1. Throttle:**
@@ -7809,152 +7955,6 @@ const App = () => {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. When should we use arrow functions with React?
-
-**Arrows prevent `this` bugs**
-
-Arrow functions don not redefine the value of `this` within their function body. This makes it a lot easier to predict their behavior when passed as callbacks, and prevents bugs caused by use of this within callbacks. Using inline arrow functions in function components is a good way to achieve some decoupling.
-
-**Example:**
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-
-class Button extends React.Component {
-  render() {
-    return (
-      <button onClick={this.handleClick} style={this.state}>
-        Set background to red
-      </button>
-    )
-  }
-
-  handleClick = () => {
-    this.setState({ backgroundColor: 'red' })
-  }
-}
-
-ReactDOM.render(
-  <Button />,
-  document.getElementById('root')
-)
-```
-
-1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
-2. If the component we pass this generated function to is extending `PureComponent()`, it will not be able to bail out on rerendering, even if the actual data has not changed.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Is it good to use arrow functions in render methods?
-
-**Problem:**
-
-The **bind()** method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called. When arrow functions and binds in render. It breaks performance optimizations like `shouldComponentUpdate()` and `PureComponent`.
-
-**Example:**
-
-```js
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    ...
-  }
-
-  deleteUser = id => {
-    this.setState(prevState => {
-      return {
-        users: prevState.users.filter(user => user.id !== id)
-      };
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.users.map(user => {
-            return (
-              <User key={user.id} name={user.name} id={user.id}
-                onDeleteClick={() => this.deleteUser(user.id)}
-              />
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-in-render-3d0x0)**
-
-**Solution:**
-
-In below example, **App Component** has no arrow function in render. Instead, the relevant data is passed down to **User Component**. In User Component, `onDeleteClick()` calls the onClick function passed in on props with the relevant user.id.
-
-```js
-// User Component
-
-class User extends React.PureComponent {
-  onDeleteClick = () => {
-    // No bind needed since we can compose the relevant data for this item here
-    this.props.onClick(this.props.user.id);
-  };
-
-  render() {
-    console.log(`${this.props.user.name} just rendered`);
-    return (
-      <li>
-        <input type="button" value="Delete" onClick={this.onDeleteClick} />
-        {this.props.user.name}
-      </li>
-    );
-  }
-}
-```
-
-```js
-// App Component
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    ...
-  }
-
-  deleteUser = id => {
-    this.setState(prevState => {
-      return { 
-        users: prevState.users.filter(user => user.id !== id) 
-      };
-    });
-  };
-
-  renderUser = user => {
-    return <User key={user.id} user={user} onClick={this.deleteUser} />;
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.users.map(this.renderUser)}
-        </ul>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-arrow-functions-v8yt7?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
