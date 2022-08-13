@@ -1541,38 +1541,46 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
 
 In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
 
+**1. componentDidMount():**
+
 The `componentDidMount()` and `useEffect()` run after the mount. However useEffect() runs after the paint has been committed to the screen as opposed to before. This means we would get a flicker if needed to read from the DOM, then synchronously set state to make new UI.
 
 The `useLayoutEffect()` was designed to have the same timing as componentDidMount(). So `useLayoutEffect(fn, [])` is a much closer match to componentDidMount() than useEffect(fn, []) -- at least from a timing standpoint.
 
 ```js
-//Using a class based component.
-import React, { Component } from 'react'
+/**
+ * componentDidMount() in Class Component
+ */
+import React, { Component } from "react";
 
 export default class SampleComponent extends Component {
   componentDidMount() {
     // code to run on component mount
   }
-render() {
-    return (<div>foo</div>)
+  render() {
+    return <>componentDidMount Example</>;
   }
 }
+```
 
-//Using a functional component
-import React, { useEffect } from 'react'
+**2. useEffect():**
+
+```js
+/**
+ * useEffect() in Functional Component
+ */
+import React, { useEffect } from "react";
 
 const SampleComponent = () => {
   useEffect(() => {
     // code to run on component mount
-  }, [])
-return (<div>foo</div>)
-}
-export SampleComponent
+  }, []);
+  return <>useEffect Example</>;
+};
+export default SampleComponent;
 ```
 
-* **useEffect() Limitations:**
-
-When useEffect() is used to get data from server.
+When `useEffect()` is used to get data from server.
 
 * The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
 * The second argument is an array of values (usually props).
