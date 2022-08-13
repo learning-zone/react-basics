@@ -1570,7 +1570,7 @@ return (<div>foo</div>)
 export SampleComponent
 ```
 
-**useEffect() Limitations:**
+* **useEffect() Limitations:**
 
 When useEffect() is used to get data from server.
 
