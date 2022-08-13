@@ -4046,6 +4046,51 @@ class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to avoid the need for binding in React?
+
+**1. Use Arrow Function in Class Property:**
+
+Usually when we want to access this inside a class method we would need to bind it to method like so:
+
+```js
+class Button extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { clicked: false }
+  }
+  handleClick = () => this.setState({ clicked: true })
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+Binding `this` to `handleClick()` in the `constructor()` allows us to use `this.setState()` from Component inside `handleClick()`.
+
+**2. Bind in Render:**
+
+```js
+onChange={this.handleChange.bind(this)}
+```
+
+This approach is terse and clear, however, there are performance implications since the function is reallocated on every render.
+
+**3. Bind in Constructor:**
+
+One way to avoid binding in render is to bind in the constructor
+
+```js
+constructor(props) {
+  super(props)
+  this.handleChange = this.handleChange.bind(this)
+}
+```
+
+This is the approach currently recommended in the React docs for "better performance in your application".
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How can I prevent a function from being called too quickly?
 
 **1. Throttle:**
@@ -8261,51 +8306,6 @@ setState({ searchString: event.target.value })
 Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
 
 When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to avoid the need for binding in React?
-
-**1. Use Arrow Function in Class Property**
-
-Usually when we want to access this inside a class method we would need to bind it to method like so:
-
-```js
-class Button extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { clicked: false }
-  }
-  handleClick = () => this.setState({ clicked: true })
-  render() {
-    return <button onClick={this.handleClick}>Click Me</button>
-  }
-}
-```
-Binding `this` to `handleClick()` in the `constructor()` allows us to use `this.setState()` from Component inside `handleClick()`.
-
-**2. Bind in Render**
-
-```js
-onChange={this.handleChange.bind(this)}
-```
-
-This approach is terse and clear, however, there are performance implications since the function is reallocated on every render.
-
-**3. Bind in Constructor**
-
-One way to avoid binding in render is to bind in the constructor
-
-```js
-constructor(props) {
-  super(props)
-  this.handleChange = this.handleChange.bind(this)
-}
-```
-
-This is the approach currently recommended in the React docs for "better performance in your application".
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
