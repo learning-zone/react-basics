@@ -1539,7 +1539,7 @@ Here, `shouldComponentUpdate()` will return false if the props its receiving are
 
 ## Q. What is difference between useEffect() vs componentDidMount()?
 
-In react when we use class based components we get access to lifecycle methods(like componentDidMount, componentDidUpdat, etc). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
+In react when we use class based components we get access to lifecycle methods ( like `componentDidMount()`, `componentDidUpdate(), etc ). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
 
 **1. componentDidMount():**
 
