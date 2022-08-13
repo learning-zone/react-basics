@@ -2890,6 +2890,65 @@ class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the difference between createElement and cloneElement?
+
+JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
+
+The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. We shoul use this function when a parent component wants to add or modify the `props` of its children.
+
+```js
+import React from 'react'
+
+export default class App extends React.Component {
+  // rendering the parent and child component
+  render() {
+    return (
+      <ParentComp>
+        <MyButton/>
+        <br/>
+        <MyButton/>
+      </ParentComp>
+    )
+  }
+}
+
+/**
+ * The parent component
+ */
+class ParentComp extends React.Component {
+  render() {
+    // The new prop to the added.
+    let newProp = 'red'
+      // Looping over the parent's entire children,
+      // cloning each child, adding a new prop.
+    return (
+      <div>
+        {React.Children.map(this.props.children,
+          child => {
+            return React.cloneElement(child,
+            {newProp}, null)
+        })}
+      </div>
+    )
+  }
+}
+
+/**
+ * The child component
+ */
+class MyButton extends React.Component {
+  render() {
+    return <button style =
+    {{ color: this.props.newProp }}>
+    Hello World!</button>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 6. REACT STATE
 
 <br/>
@@ -4903,6 +4962,61 @@ export default class App extends React.Component {
 ## # 10. REACT FORMS
 
 <br/>
+
+## Q. How dynamically generate menu options for `<select>` from an array?
+
+**Example:**
+
+```js
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      colors: {}
+    };
+    this.selectColor = this.selectColor.bind(this);
+  }
+
+  selectColor = (e) => {
+    console.log("Selected Color: ", e.target.value);
+  };
+
+  componentDidMount() {
+    this.setState({
+      colors: {
+        "#ff0000": "Red",
+        "#00ff00": "Green",
+        "#0000ff": "Blue"
+      }
+    });
+  }
+
+  render() {
+    const { colors } = this.state;
+
+    let colorsList = Object.keys(colors).map((k) => {
+      return (
+        <option key={k} value={k}>
+          {colors[k]}
+        </option>
+      );
+    }, this);
+
+    return (
+      <div>
+        <select onChange={this.selectColor}>{colorsList}</select>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. How would you create a form in React?
 
@@ -8473,114 +8587,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between createElement and cloneElement?
-
-JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
-
-The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. We shoul use this function when a parent component wants to add or modify the `props` of its children.
-
-```js
-import React from 'react'
-
-export default class App extends React.Component {
-  // rendering the parent and child component
-  render() {
-    return (
-      <ParentComp>
-        <MyButton/>
-        <br/>
-        <MyButton/>
-      </ParentComp>
-    )
-  }
-}
-// The parent component
-class ParentComp extends React.Component {
-  render() {
-    // The new prop to the added.
-    let newProp = 'red'
-      // Looping over the parent's entire children,
-      // cloning each child, adding a new prop.
-    return (
-      <div>
-        {React.Children.map(this.props.children,
-          child => {
-            return React.cloneElement(child,
-            {newProp}, null)
-        })}
-      </div>
-    )
-  }
-}
-// The child component
-class MyButton extends React.Component {
-  render() {
-    return <button style =
-    {{ color: this.props.newProp }}>
-    Hello World!</button>
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How dynamically generate menu options for `<select>` from an array?
-
-**Example:**
-
-```js
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      colors: {}
-    };
-    this.selectColor = this.selectColor.bind(this);
-  }
-
-  selectColor = (e) => {
-    console.log("Selected Color: ", e.target.value);
-  };
-
-  componentDidMount() {
-    this.setState({
-      colors: {
-        "#ff0000": "Red",
-        "#00ff00": "Green",
-        "#0000ff": "Blue"
-      }
-    });
-  }
-
-  render() {
-    const { colors } = this.state;
-
-    let colorsList = Object.keys(colors).map((k) => {
-      return (
-        <option key={k} value={k}>
-          {colors[k]}
-        </option>
-      );
-    }, this);
-
-    return (
-      <div>
-        <select onChange={this.selectColor}>{colorsList}</select>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
