@@ -2949,6 +2949,128 @@ class MyButton extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. When should I be using React.cloneElement vs this.props.children?
+
+The `React.cloneElement` only works if your child is a single React element.
+
+*Example:*
+
+```js
+<ReactCSSTransitionGroup
+     component="div"
+     transitionName="example"
+     transitionEnterTimeout={500}
+     transitionLeaveTimeout={500}
+     >
+     {React.cloneElement(this.props.children, {
+       key: this.props.location.pathname
+      })}
+</ReactCSSTransitionGroup>
+```
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+*Example:*
+
+```js
+class Users extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Users</h2>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to pass JSON Objects from Child to Parent Component?
+
+**Example:** Passing JSON Objects from Child to Parent Component using callback function
+
+```js
+// Parent Component
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: ""
+    };
+    this.onSubmitMessage = this.onSubmitMessage.bind(this);
+  }
+
+  onSubmitMessage(message) {
+    this.setState({ message: message });
+  }
+
+  render() {
+    const { message } = this.state;
+
+    return (
+      <div>
+        <h3>Parent component</h3>
+        <div>The message coming from the child component is : {message}</div>
+        <hr />
+        <Child
+          // passing as callback function
+          onSubmitMessage={this.onSubmitMessage}
+        />
+      </div>
+    );
+  }
+}
+```
+```js
+// Child Component
+
+export default class Child extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      greetingMessag: ""
+    };
+    this.onMessageChange = this.onMessageChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onMessageChange(event) {
+    let message = event.target.value;
+    this.setState({ greetingMessag: message });
+  }
+
+  // pass message to parent component using callback
+  onSubmit() {
+    this.props.onSubmitMessage(this.state.greetingMessag);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Child Component</h3>
+        <input
+          type="text"
+          onChange={this.onMessageChange}
+          placeholder="Enter a message"
+        />
+        <button onClick={this.onSubmit}>Submit</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 6. REACT STATE
 
 <br/>
@@ -8588,128 +8710,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. When should I be using React.cloneElement vs this.props.children?
-
-The `React.cloneElement` only works if your child is a single React element.
-
-*Example:*
-
-```js
-<ReactCSSTransitionGroup
-     component="div"
-     transitionName="example"
-     transitionEnterTimeout={500}
-     transitionLeaveTimeout={500}
-     >
-     {React.cloneElement(this.props.children, {
-       key: this.props.location.pathname
-      })}
-</ReactCSSTransitionGroup>
-```
-
-For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
-
-*Example:*
-
-```js
-class Users extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>Users</h2>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to pass JSON Objects from Child to Parent Component?
-
-**Example:** Passing JSON Objects from Child to Parent Component using callback function
-
-```js
-// Parent Component
-
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      message: ""
-    };
-    this.onSubmitMessage = this.onSubmitMessage.bind(this);
-  }
-
-  onSubmitMessage(message) {
-    this.setState({ message: message });
-  }
-
-  render() {
-    const { message } = this.state;
-
-    return (
-      <div>
-        <h3>Parent component</h3>
-        <div>The message coming from the child component is : {message}</div>
-        <hr />
-        <Child
-          // passing as callback function
-          onSubmitMessage={this.onSubmitMessage}
-        />
-      </div>
-    );
-  }
-}
-```
-```js
-// Child Component
-
-export default class Child extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      greetingMessag: ""
-    };
-    this.onMessageChange = this.onMessageChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onMessageChange(event) {
-    let message = event.target.value;
-    this.setState({ greetingMessag: message });
-  }
-
-  // pass message to parent component using callback
-  onSubmit() {
-    this.props.onSubmitMessage(this.state.greetingMessag);
-  }
-
-  render() {
-    return (
-      <div>
-        <h3>Child Component</h3>
-        <input
-          type="text"
-          onChange={this.onMessageChange}
-          placeholder="Enter a message"
-        />
-        <button onClick={this.onSubmit}>Submit</button>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
