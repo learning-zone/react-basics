@@ -4091,6 +4091,75 @@ This is the approach currently recommended in the React docs for "better perform
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do I bind a function to a component instance?
+
+There are several ways to make sure functions have access to component attributes like `this.props` and `this.state`, depending on which syntax and build steps you are using.
+
+**1. Bind in Constructor (ES5):**
+
+```js
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('Click happened')
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+
+**2. Class Properties:**
+
+```js
+class App extends Component {
+  // Note: this syntax is experimental and not standardized yet.
+  handleClick = () => {
+    console.log('Click happened')
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+
+**3. Bind in Render:**
+
+```js
+class App extends Component {
+  handleClick() {
+    console.log('Click happened')
+  }
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+  }
+}
+```
+
+*Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
+
+**4. Arrow Function in Render:**
+
+```js
+class App extends Component {
+  handleClick() {
+    console.log('Click happened')
+  }
+  render() {
+    return <button onClick={() => this.handleClick()}>Click Me</button>
+  }
+}
+```
+
+*Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How can I prevent a function from being called too quickly?
 
 **1. Throttle:**
@@ -8356,75 +8425,6 @@ export default IntervalExample
 ```
 
 The example above shows a React component, IntervalExample, scheduling a new interval once it mounts to the DOM. The interval increments the seconds state value by one, every second.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How do I bind a function to a component instance?
-
-There are several ways to make sure functions have access to component attributes like `this.props` and `this.state`, depending on which syntax and build steps you are using.
-
-**Bind in Constructor (ES5)**
-
-```js
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick() {
-    console.log('Click happened')
-  }
-  render() {
-    return <button onClick={this.handleClick}>Click Me</button>
-  }
-}
-```
-
-**Class Properties**
-
-```js
-class App extends Component {
-  // Note: this syntax is experimental and not standardized yet.
-  handleClick = () => {
-    console.log('Click happened')
-  }
-  render() {
-    return <button onClick={this.handleClick}>Click Me</button>
-  }
-}
-```
-
-**Bind in Render**
-
-```js
-class App extends Component {
-  handleClick() {
-    console.log('Click happened')
-  }
-  render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
-  }
-}
-```
-
-*Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
-
-**Arrow Function in Render**
-
-```js
-class App extends Component {
-  handleClick() {
-    console.log('Click happened')
-  }
-  render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>
-  }
-}
-```
-
-*Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
