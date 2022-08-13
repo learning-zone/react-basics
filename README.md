@@ -5997,6 +5997,43 @@ Here, we first define an initialState and a reducer. When a user clicks a button
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How does React renderer work exactly when we call setState?
+
+The `state` allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule. Components defined as classes have some additional features. Local state is a feature available only to class Components.
+
+The `setState()` is the API method provided with the library so that the user is able to define and manipulate state over time.
+`setState()` is the only legitimate way to update state after the initial state setup.
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class Search extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      searchString: ''
+    }
+  }
+}
+```
+
+we are passing an empty string as a value and, to update the state of searchString, we have to call setState().
+
+```js
+setState({ searchString: event.target.value })
+```
+
+Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
+
+When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT CONTEXT
 
 <br/>
@@ -8453,42 +8490,6 @@ In order to address the issue with our long chat feed, the React team recommends
 **Read More:**
 
 * *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How does React renderer work exactly when we call setState?
-
-The `state` allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule. Components defined as classes have some additional features. Local state is a feature available only to class Components.
-
-The `setState()` is the API method provided with the library so that the user is able to define and manipulate state over time.
-`setState()` is the only legitimate way to update state after the initial state setup.
-
-**Example:**
-
-```js
-import React, { Component } from 'react'
-
-class Search extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      searchString: ''
-    }
-  }
-}
-```
-we are passing an empty string as a value and, to update the state of searchString, we have to call setState().
-
-```js
-setState({ searchString: event.target.value })
-```
-
-Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
-
-When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
