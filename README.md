@@ -5516,6 +5516,82 @@ export default class DragItem extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is an alternative way to avoid having to bind to this in event callback methods?
+
+**1. Bind in Constructor:**
+
+```js
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+
+**2. Bind in Render:**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+  }
+}
+```
+
+**3. Arrow Function in Render:**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={() => this.handleClick()}>Click Me</button>
+  }
+}
+```
+
+Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the alternative of binding `this` in the constructor?
+
+**Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
+
+**Example:**
+
+```js
+class Button extends React.Component {
+  // no binding
+  handleClick = (e) => {
+    console.log('clicked !');
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 8. REACT LISTS
 
 <br/>
@@ -10662,82 +10738,6 @@ npm run flow init
 ```
 
 This will help to create a Flow configuration file that should be committed. The Flow config file helps to determine the files that Flow should work with and what should be ignored.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is an alternative way to avoid having to bind to this in event callback methods?
-
-**Bind in Constructor**
-
-```js
-class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick() {
-    console.log('Clicked !')
-  }
-  render() {
-    return <button onClick={this.handleClick}>Click Me</button>
-  }
-}
-```
-
-**Bind in Render**
-
-```js
-class App extends Component {
-
-  handleClick() {
-    console.log('Clicked !')
-  }
-  render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
-  }
-}
-```
-
-**Arrow Function in Render**
-
-```js
-class App extends Component {
-
-  handleClick() {
-    console.log('Clicked !')
-  }
-  render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>
-  }
-}
-```
-
-Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the alternative of binding `this` in the constructor?
-
-**Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
-
-**Example:**
-
-```js
-class Button extends React.Component {
-  // no binding
-  handleClick = (e) => {
-    console.log('clicked !');
-  }
-  render() {
-    return <button onClick={this.handleClick}>Click Me</button>;
-  }
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
