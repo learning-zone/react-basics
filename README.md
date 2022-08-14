@@ -9016,6 +9016,30 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to display style based on props value?
+
+```js
+import styled from 'styled-components'
+
+const Button = styled.button`
+  background: ${props => props.primary ? 'palevioletred' : 'white'}
+  color: ${props => props.primary ? 'white' : 'palevioletred'}
+`;
+
+function MyPureComponent(props) {
+  return (
+    <div>
+      <Button>Normal</Button>
+      <Button primary>Primary</Button>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 18. REACT INTERNATIONALIZATION
 
 <br/>
@@ -9918,30 +9942,6 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 
 ```js
 <div style={{ display: showInfo ? "block" : "none" }}>info</div>
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to display style based on props value?
-
-```js
-import styled from 'styled-components'
-
-const Button = styled.button`
-  background: ${props => props.primary ? 'palevioletred' : 'white'}
-  color: ${props => props.primary ? 'white' : 'palevioletred'}
-`;
-
-function MyPureComponent(props) {
-  return (
-    <div>
-      <Button>Normal</Button>
-      <Button primary>Primary</Button>
-    </div>
-  )
-}
 ```
 
 <div align="right">
