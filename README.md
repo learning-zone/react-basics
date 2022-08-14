@@ -2410,6 +2410,30 @@ const App = () => (
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the purpose of displayName class property?
+
+The **displayName** string is used in debugging messages. Usually, you don\'t need to set it explicitly because it\'s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component.
+
+**Example:**
+
+```js
+function withSubscription(WrappedComponent) {
+  
+  class WithSubscription extends React.Component {/* ... */}
+  
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  return WithSubscription;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.5. LAZY LOADING
 
 <br/>
@@ -9495,30 +9519,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the purpose of displayName class property?
-
-The **displayName** string is used in debugging messages. Usually, you don\'t need to set it explicitly because it\'s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component.
-
-**Example:**
-
-```js
-function withSubscription(WrappedComponent) {
-  
-  class WithSubscription extends React.Component {/* ... */}
-  
-  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
-  return WithSubscription;
-}
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
