@@ -8888,6 +8888,100 @@ const App = () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is code-splitting?
+
+Code-Splitting is a feature supported by bundlers like Webpack, Rollup and Browserify ( via factor-bundle ) which can create multiple bundles that can be dynamically loaded at runtime.
+
+Code splitting uses `React.lazy` and `Suspense` library, which helps to load a dependency lazily and only load it when needed by the user. The code splitting improves:
+
+* The performance of the app
+* The impact on memory
+* The downloaded Kilobytes (or Megabytes) size
+
+**React.lazy and Suspense**
+
+The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
+
+**Example:**
+
+```js
+import React, { Suspense } from 'react';
+
+const UsersComponent = React.lazy(() => import('./UsersComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <UsersComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is dynamic import in react
+
+`React.lazy` takes a function that must call a dynamic import(). This must return a Promise which resolves to a module with a default export containing a React component.
+
+The lazy component should then be rendered inside a Suspense component, which allows us to show some fallback content (such as a loading indicator) while we\'re waiting for the lazy component to load.
+
+**Example:**
+
+```js
+import React, { Suspense } from 'react';
+
+const UsersComponent = React.lazy(() => import('./UsersComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <UsersComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are loadable components?
+
+If you want to do code-splitting in a server rendered app, it is recommend to use Loadable Components because `React.lazy` and `Suspense` is not available for server-side rendering. Loadable lets you render a dynamic import as a regular component.
+
+**Installation:**
+
+```js
+npm install @loadable/component
+```
+
+**Example:**
+
+```js
+import loadable from '@loadable/component'
+
+const UsersComponent = loadable(() => import('./UsersComponent'))
+
+function MyComponent() {
+  return (
+    <div>
+      <UsersComponent />
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 14. REACT ERROR BOUNDARIES
 
 <br/>
@@ -11256,100 +11350,6 @@ class Component extends React.Component {
 
     static someMethod(){
     }
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is code-splitting?
-
-Code-Splitting is a feature supported by bundlers like Webpack, Rollup and Browserify ( via factor-bundle ) which can create multiple bundles that can be dynamically loaded at runtime.
-
-Code splitting uses `React.lazy` and `Suspense` library, which helps to load a dependency lazily and only load it when needed by the user. The code splitting improves:
-
-* The performance of the app
-* The impact on memory
-* The downloaded Kilobytes (or Megabytes) size
-
-**React.lazy and Suspense**
-
-The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
-
-**Example:**
-
-```js
-import React, { Suspense } from 'react';
-
-const UsersComponent = React.lazy(() => import('./UsersComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <UsersComponent />
-      </Suspense>
-    </div>
-  );
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is dynamic import in react
-
-`React.lazy` takes a function that must call a dynamic import(). This must return a Promise which resolves to a module with a default export containing a React component.
-
-The lazy component should then be rendered inside a Suspense component, which allows us to show some fallback content (such as a loading indicator) while we\'re waiting for the lazy component to load.
-
-**Example:**
-
-```js
-import React, { Suspense } from 'react';
-
-const UsersComponent = React.lazy(() => import('./UsersComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <UsersComponent />
-      </Suspense>
-    </div>
-  );
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What are loadable components?
-
-If you want to do code-splitting in a server rendered app, it is recommend to use Loadable Components because `React.lazy` and `Suspense` is not available for server-side rendering. Loadable lets you render a dynamic import as a regular component.
-
-**Installation:**
-
-```js
-npm install @loadable/component
-```
-
-**Example:**
-
-```js
-import loadable from '@loadable/component'
-
-const UsersComponent = loadable(() => import('./UsersComponent'))
-
-function MyComponent() {
-  return (
-    <div>
-      <UsersComponent />
-    </div>
-  )
 }
 ```
 
