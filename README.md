@@ -7724,6 +7724,58 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to prevent unnecessary updates using React.memo()?
+
+The **React.memo()** is a higher-order component that will memoize your component, very similar to **PureComponent**. It will shallowly compare current and new props of the component, and if nothing changes, React will skip the rendering of that component.
+
+```js
+// Memo.js
+
+const Text = (props) => {
+  console.log(`Text Component`);
+  return <div>Text Component re-render: {props.count} times </div>;
+};
+
+const MemoText = React.memo(
+  (props) => {
+    console.log(`MemoText Component`);
+    return <div>MemoText Component re-render: {props.count} times </div>;
+  },
+  (preprops, nextprops) => true
+);
+
+```
+
+```js
+// App.js
+
+const App = () => {
+  console.log(`App Component`);
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <h2>This is function component re-render: {count} times </h2>
+      <Text count={count} />
+      <MemoText count={count} />
+      <br />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        CLICK ME
+      </button>
+    </>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT CONTEXT
 
 <br/>
@@ -10782,59 +10834,6 @@ class MyButton extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to prevent unnecessary updates using React.memo()?
-
-The **React.memo()** is a higher-order component that will memoize your component, very similar to **PureComponent**. It will shallowly compare current and new props of the component, and if nothing changes, React will skip the rendering of that component.
-
-```js
-// Memo.js
-
-const Text = (props) => {
-  console.log(`Text Component`);
-  return <div>Text Component re-render: {props.count} times </div>;
-};
-
-const MemoText = React.memo(
-  (props) => {
-    console.log(`MemoText Component`);
-    return <div>MemoText Component re-render: {props.count} times </div>;
-  },
-  (preprops, nextprops) => true
-);
-
-```
-
-```js
-// App.js
-
-const App = () => {
-  console.log(`App Component`);
-  const [count, setCount] = useState(0);
-  return (
-    <>
-      <h2>This is function component re-render: {count} times </h2>
-      <Text count={count} />
-      <MemoText count={count} />
-      <br />
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        CLICK ME
-      </button>
-    </>
-  );
-};
-
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
