@@ -12221,6 +12221,10 @@ yarn add redux react-redux redux-thunk --save
   <img src="assets/redux-setup.png" alt="React Redux Folder structure" width="200px" />
 </p>
 
+**Reference:**
+
+* *[https://react-redux.js.org/introduction/getting-started](https://react-redux.js.org/introduction/getting-started)*
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
