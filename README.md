@@ -313,6 +313,44 @@ class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is Virtual DOM?
+
+In React, for every **DOM object**, there is a corresponding "virtual DOM object". A virtual DOM object is a representation of a DOM object, like a lightweight copy. A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing\'s power to directly change what\'s on the screen.
+
+Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM. 
+
+**&#9885; [Virtual DOM Example](https://codesandbox.io/s/react-virtual-dom-2w52y?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between ShadowDOM and VirtualDOM?
+
+<p align="center">
+  <img src="assets/shadow-dom.png" alt="DOM" width="600px" />
+</p>
+
+**1. Document Object Model:**
+
+It a way of representing a structured document via objects. It is cross-platform and language-independent convention for representing and interacting with data in HTML, XML, and others. Web browsers handle the DOM implementation details, so we can interact with it using JavaScript and CSS.
+
+**2. Virtual DOM:**
+
+Virtual DOM is any kind of representation of a real DOM. Virtual DOM is about avoiding unnecessary changes to the DOM, which are expensive performance-wise, because changes to the DOM usually cause re-rendering of the page. It allows to collect several changes to be applied at once, so not every single change causes a re-render, but instead re-rendering only happens once after a set of changes was applied to the DOM.
+
+**3. Shadow DOM:**
+
+Shadow DOM is mostly about encapsulation of the implementation. A single custom element can implement more-or-less complex logic combined with more-or-less complex DOM. Shadow DOM refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.
+
+**Difference:**
+
+The virtual DOM creates an additional DOM. The shadow DOM simply hides implementation details and provides isolated scope for web components.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 2. REACT SETUP
 
 <br/>
@@ -10738,62 +10776,6 @@ npm run flow init
 ```
 
 This will help to create a Flow configuration file that should be committed. The Flow config file helps to determine the files that Flow should work with and what should be ignored.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is Virtual DOM?
-
-In React, for every **DOM object**, there is a corresponding "virtual DOM object". A virtual DOM object is a representation of a DOM object, like a lightweight copy. A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing\'s power to directly change what\'s on the screen.
-
-Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM. 
-
-**&#9885; [Virtual DOM Example](https://codesandbox.io/s/react-virtual-dom-2w52y?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between ShadowDOM and VirtualDOM?
-
-<p align="center">
-  <img src="assets/shadow-dom.png" alt="DOM" width="600px" />
-</p>
-
-**Document Object Model**
-
-It a way of representing a structured document via objects. It is cross-platform and language-independent convention for representing and interacting with data in HTML, XML, and others. Web browsers handle the DOM implementation details, so we can interact with it using JavaScript and CSS.
-
-**Virtual DOM**
-
-Virtual DOM is any kind of representation of a real DOM. Virtual DOM is about avoiding unnecessary changes to the DOM, which are expensive performance-wise, because changes to the DOM usually cause re-rendering of the page. It allows to collect several changes to be applied at once, so not every single change causes a re-render, but instead re-rendering only happens once after a set of changes was applied to the DOM.
-
-**Shadow DOM**
-
-Shadow DOM is mostly about encapsulation of the implementation. A single custom element can implement more-or-less complex logic combined with more-or-less complex DOM. Shadow DOM refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.
-
-**Difference**
-
-The virtual DOM creates an additional DOM. The shadow DOM simply hides implementation details and provides isolated scope for web components.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why React uses className over class attribute?
-
-`class` is a keyword in javascript and JSX is an extension of javascript. That is the principal reason why React uses `className` instead of `class`.
-
-**Example:**
-
-```js
-import "./App.css";
-
-export default function App() {
-  return <h1 className="header">This is an example code</h1>
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
