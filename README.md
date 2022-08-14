@@ -1318,6 +1318,63 @@ In the above example, strict mode checks will not be run against the `<Header>` 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. Why to avoid using setState() after a component has been unmounted?
+
+Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. 
+
+Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
+
+**Example:**
+
+```js
+class News extends Component {
+  _isMounted = false // flag to check Mounted
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      news: [],
+    }
+  }
+
+  componentDidMount() {
+    this._isMounted = true
+
+    axios
+      .get('https://hn.algolia.com/api/v1/search?query=react')
+      .then(result => {
+        if (this._isMounted) {
+          this.setState({
+            news: result.data.hits,
+          })
+        }
+      })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.state.news.map(topic => (
+          <li key={topic.objectID}>{topic.title}</li>
+        ))}
+      </ul>
+    )
+  }
+  }
+}
+```
+
+Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
@@ -9545,63 +9602,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why to avoid using setState() after a component has been unmounted?
-
-Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. 
-
-Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
-
-**Example:**
-
-```js
-class News extends Component {
-  _isMounted = false // flag to check Mounted
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      news: [],
-    }
-  }
-
-  componentDidMount() {
-    this._isMounted = true
-
-    axios
-      .get('https://hn.algolia.com/api/v1/search?query=react')
-      .then(result => {
-        if (this._isMounted) {
-          this.setState({
-            news: result.data.hits,
-          })
-        }
-      })
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false
-  }
-
-  render() {
-    return (
-      <ul>
-        {this.state.news.map(topic => (
-          <li key={topic.objectID}>{topic.title}</li>
-        ))}
-      </ul>
-    )
-  }
-  }
-}
-```
-
-Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
