@@ -7410,6 +7410,114 @@ Link component is used to create links to different routes and implement navigat
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the difference between NavLink and Link?
+
+The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
+
+**Link**
+
+```js
+<Link to="/">Home</Link>
+```
+
+**NavLink**
+
+```js
+<NavLink to="/" activeClassName="active">Home</NavLink>
+```
+
+**Example:**
+
+index.css
+
+```css
+.active {
+  color: blue;
+}
+```
+
+Routes.js
+
+```js
+import ReactDOM from 'react-dom'
+import './index.css'
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
+import App from './App'
+import Users from './users'
+import Contact from './contact'
+import Notfound from './notfound'
+
+const Routes = (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/users">
+            Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/contact">
+            Contact
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/users" component={Users} />
+        <Route path="/contact" component={Contact} />
+        <Route component={Notfound} />
+      </Switch>
+    </div>
+  </Router>
+)
+
+ReactDOM.render(Routes, document.getElementById('root'))
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is withRouter for in react-router-dom?
+
+`withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
+
+**Example:**
+
+```js
+import React from "react"
+import PropTypes from "prop-types"
+import { withRouter } from "react-router"
+
+// A simple component that shows the pathname of the current location
+class ShowTheLocation extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  }
+
+  render() {
+    const { match, location, history } = this.props
+
+    return <div>You are now at {location.pathname}</div>
+  }
+}
+
+const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How React Router is different from history library?
 
 React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
@@ -10250,114 +10358,6 @@ const propsProxyHOC = (WrappedComponent) => {
 * Accessing the instance via Refs (be careful, avoid using refs)
 * Abstracting State
 * Wrapping/Composing the WrappedComponent with other elements
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between NavLink and Link?
-
-The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
-
-**Link**
-
-```js
-<Link to="/">Home</Link>
-```
-
-**NavLink**
-
-```js
-<NavLink to="/" activeClassName="active">Home</NavLink>
-```
-
-**Example:**
-
-index.css
-
-```css
-.active {
-  color: blue;
-}
-```
-
-Routes.js
-
-```js
-import ReactDOM from 'react-dom'
-import './index.css'
-import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
-import App from './App'
-import Users from './users'
-import Contact from './contact'
-import Notfound from './notfound'
-
-const Routes = (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <NavLink exact activeClassName="active" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName="active" to="/users">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName="active" to="/contact">
-            Contact
-          </NavLink>
-        </li>
-      </ul>
-      <hr />
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/users" component={Users} />
-        <Route path="/contact" component={Contact} />
-        <Route component={Notfound} />
-      </Switch>
-    </div>
-  </Router>
-)
-
-ReactDOM.render(Routes, document.getElementById('root'))
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is withRouter for in react-router-dom?
-
-`withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
-
-**Example:**
-
-```js
-import React from "react"
-import PropTypes from "prop-types"
-import { withRouter } from "react-router"
-
-// A simple component that shows the pathname of the current location
-class ShowTheLocation extends React.Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
-
-  render() {
-    const { match, location, history } = this.props
-
-    return <div>You are now at {location.pathname}</div>
-  }
-}
-
-const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
