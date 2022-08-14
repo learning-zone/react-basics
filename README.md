@@ -5067,6 +5067,83 @@ If we want to access the event properties in an asynchronous way, we should call
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to trigger click event programmatically?
+
+We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
+
+**Example:**
+
+```js
+class MyComponent extends React.Component {
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <input ref={input => this.inputElement = input} />
+      </div>
+    )
+  }
+
+  handleClick = (e) => {
+    this.inputElement.click()
+  }
+}
+```
+
+*Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to listen for click events that are outside of a component?
+
+**Example:**
+
+```js
+class OutsideAlerter extends Component {
+  // ...
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  /**
+   * Set the wrapper ref
+   */
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      alert("You clicked outside of me!");
+    }
+  }
+
+  render() {
+    return <div ref={this.setWrapperRef}>{this.props.children}</div>;
+  }
+}
+
+OutsideAlerter.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 8. REACT LISTS
 
 <br/>
@@ -9842,83 +9919,6 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 ```js
 <div style={{ display: showInfo ? "block" : "none" }}>info</div>
 ```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to trigger click event programmatically?
-
-We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
-
-**Example:**
-
-```js
-class MyComponent extends React.Component {
-
-  render() {
-    return (
-      <div onClick={this.handleClick}>
-        <input ref={input => this.inputElement = input} />
-      </div>
-    )
-  }
-
-  handleClick = (e) => {
-    this.inputElement.click()
-  }
-}
-```
-
-*Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to listen for click events that are outside of a component?
-
-**Example:**
-
-```js
-class OutsideAlerter extends Component {
-  // ...
-  componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-  }
-
-  /**
-   * Set the wrapper ref
-   */
-  setWrapperRef(node) {
-    this.wrapperRef = node;
-  }
-
-  /**
-   * Alert if clicked on outside of element
-   */
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      alert("You clicked outside of me!");
-    }
-  }
-
-  render() {
-    return <div ref={this.setWrapperRef}>{this.props.children}</div>;
-  }
-}
-
-OutsideAlerter.propTypes = {
-  children: PropTypes.element.isRequired
-};
-
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
