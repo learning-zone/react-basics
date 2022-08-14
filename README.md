@@ -12166,20 +12166,6 @@ node server/index.js
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the purpose of renderToNodeStream method?
-
-```js
-ReactDOMServer.renderToNodeStream(element)
-```
-
-This method is used to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
-
-*Note: This method is not available in the browser but only server.*
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. How can automated tooling be used to improve the accessibility of a React application?
 
 There are two main categories of automated tools that can be used to identify accessibility issues:
