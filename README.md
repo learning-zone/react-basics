@@ -1562,6 +1562,131 @@ Here, even though the component got unmounted and the request resolves eventuall
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is Lifting State Up in ReactJS?
+
+The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
+
+**Example:**
+
+The App component containing PlayerContent and PlayerDetails component. PlayerContent shows the player name buttons. PlayerDetails shows the details of the in one line.
+
+The app component contains the state for both the component. The selected player is shown once we click on the one of the player button.
+
+App.js
+
+```js
+import React from 'react'
+import PlayerContent from './PlayerContent'
+import PlayerDetails from './PlayerDetails'
+import './App.css'
+
+class App extends React.Component {
+   constructor(props) {
+      super(props)
+      this.state = { selectedPlayer: [0,0], playerName: ''}
+      this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this)
+   }
+   updateSelectedPlayer(id, name) {
+      var arr = [0, 0, 0, 0]
+      arr[id] = 1
+      this.setState({
+         playerName: name,
+         selectedPlayer: arr
+      })
+   }
+   render () {
+      return (
+        <div>
+            <PlayerContent active={this.state.selectedPlayer[0]}
+            clickHandler={this.updateSelectedPlayer} id={0} name="David"/>
+            <PlayerContent active={this.state.selectedPlayer[1]}
+            clickHandler={this.updateSelectedPlayer} id={1} name="Steve"/>
+            <PlayerDetails name={this.state.playerName}/>
+        </div>
+      )
+   }
+}
+export default App
+```
+
+PlayerContent.js
+
+```js
+import React , { Component} from 'react'
+
+class PlayerContent extends Component {
+   render () {
+      return (
+        <button
+          onClick={() => {this.props.clickHandler(this.props.id, this.props.name)}}
+          style={{color: this.props.active? 'red': 'blue'}}
+        >
+          {this.props.name}
+        </button>
+      )
+   }
+}
+export default PlayerContent
+```
+
+PlayerDetails.js
+
+```js
+import React, { Component } from 'react'
+
+class PlayerDetails extends Component {
+  render () {
+    return (
+      <div>{this.props.name}</div>
+    )
+  }
+}
+
+export default PlayerDetails
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is "Children" in React?
+
+The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
+
+**Example:**
+
+```js
+const Picture = (props) => {
+  return (
+    <div>
+      <img src={props.src}/>
+      {props.children}
+    </div>
+  )
+}
+```
+
+This component contains an `<img>` that is receiving some props and then it is displaying `{props.children}`.
+Whenever this component is invoked `{props.children}` will also be displayed and this is just a reference to what is between the opening and closing tags of the component.
+
+```js
+//App.js
+
+render () {
+  return (
+    <div className='container'>
+      <Picture key={picture.id} src={picture.src}>
+          //what is placed here is passed as props.children  
+      </Picture>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
@@ -10776,131 +10901,6 @@ npm run flow init
 ```
 
 This will help to create a Flow configuration file that should be committed. The Flow config file helps to determine the files that Flow should work with and what should be ignored.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is Lifting State Up in ReactJS?
-
-The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
-
-**Example:**
-
-The App component containing PlayerContent and PlayerDetails component. PlayerContent shows the player name buttons. PlayerDetails shows the details of the in one line.
-
-The app component contains the state for both the component. The selected player is shown once we click on the one of the player button.
-
-App.js
-
-```js
-import React from 'react'
-import PlayerContent from './PlayerContent'
-import PlayerDetails from './PlayerDetails'
-import './App.css'
-
-class App extends React.Component {
-   constructor(props) {
-      super(props)
-      this.state = { selectedPlayer: [0,0], playerName: ''}
-      this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this)
-   }
-   updateSelectedPlayer(id, name) {
-      var arr = [0, 0, 0, 0]
-      arr[id] = 1
-      this.setState({
-         playerName: name,
-         selectedPlayer: arr
-      })
-   }
-   render () {
-      return (
-        <div>
-            <PlayerContent active={this.state.selectedPlayer[0]}
-            clickHandler={this.updateSelectedPlayer} id={0} name="David"/>
-            <PlayerContent active={this.state.selectedPlayer[1]}
-            clickHandler={this.updateSelectedPlayer} id={1} name="Steve"/>
-            <PlayerDetails name={this.state.playerName}/>
-        </div>
-      )
-   }
-}
-export default App
-```
-
-PlayerContent.js
-
-```js
-import React , { Component} from 'react'
-
-class PlayerContent extends Component {
-   render () {
-      return (
-        <button
-          onClick={() => {this.props.clickHandler(this.props.id, this.props.name)}}
-          style={{color: this.props.active? 'red': 'blue'}}
-        >
-          {this.props.name}
-        </button>
-      )
-   }
-}
-export default PlayerContent
-```
-
-PlayerDetails.js
-
-```js
-import React, { Component } from 'react'
-
-class PlayerDetails extends Component {
-  render () {
-    return (
-      <div>{this.props.name}</div>
-    )
-  }
-}
-
-export default PlayerDetails
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is "Children" in React?
-
-The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
-
-**Example:**
-
-```js
-const Picture = (props) => {
-  return (
-    <div>
-      <img src={props.src}/>
-      {props.children}
-    </div>
-  )
-}
-```
-
-This component contains an `<img>` that is receiving some props and then it is displaying `{props.children}`.
-Whenever this component is invoked `{props.children}` will also be displayed and this is just a reference to what is between the opening and closing tags of the component.
-
-```js
-//App.js
-
-render () {
-  return (
-    <div className='container'>
-      <Picture key={picture.id} src={picture.src}>
-          //what is placed here is passed as props.children  
-      </Picture>
-    </div>
-  )
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
