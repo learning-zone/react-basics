@@ -565,6 +565,32 @@ The `browserslist` configuration controls the outputted JavaScript so that the e
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. Explain the use of Webpack and Babel in React?
+
+**1. Babel:**
+
+Babel is a JS transpiler that converts new JS code into old ones. It is a very flexible tool in terms of transpiling. One can easily add presets such as `es2015`, `es2016`, `es2017`, or `env`; so that Babel compiles them to ES5. Babel allows us to have a clean, maintainable code using the latest JS specifications without needing to worry about browser support.
+
+**2. Webpack:**
+
+Webpack is a modular build tool that has two sets of functionality — Loaders and Plugins. Loaders transform the source code of a module. For example, style-loader adds CSS to DOM using style tags. sass-loader compiles SASS files to CSS. babel-loader transpiles JS code given the presets. Plugins are the core of Webpack. They can do things that loaders can\'t. For example, there is a plugin called UglifyJS that minifies and uglifies the output of webpack.
+
+**3. create-react-app:**
+
+[create-react-app](https://create-react-app.dev/docs/getting-started/), a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
+
+*Example:* Quick Start
+
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 3. REACT JSX
 
 <br/>
@@ -9519,32 +9545,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Explain the use of Webpack and Babel in React?
-
-**Babel**
-
-Babel is a JS transpiler that converts new JS code into old ones. It is a very flexible tool in terms of transpiling. One can easily add presets such as `es2015`, `es2016`, `es2017`, or `env`; so that Babel compiles them to ES5. Babel allows us to have a clean, maintainable code using the latest JS specifications without needing to worry about browser support.
-
-**Webpack**
-
-Webpack is a modular build tool that has two sets of functionality — Loaders and Plugins. Loaders transform the source code of a module. For example, style-loader adds CSS to DOM using style tags. sass-loader compiles SASS files to CSS. babel-loader transpiles JS code given the presets. Plugins are the core of Webpack. They can do things that loaders can\'t. For example, there is a plugin called UglifyJS that minifies and uglifies the output of webpack.
-
-**create-react-app**
-
-[create-react-app](https://create-react-app.dev/docs/getting-started/), a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
-
-*Example:* Quick Start
-
-```bash
-npx create-react-app my-app
-cd my-app
-npm start
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
