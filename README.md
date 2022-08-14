@@ -617,6 +617,72 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is ReactDOM?
+
+ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
+
+ReactDOM provides the developers with an API containing the following methods
+
+* render()
+* findDOMNode()
+* unmountComponentAtNode()
+* hydrate()
+* createPortal()
+
+**1. render():**
+
+```js
+ReactDOM.render(element, container, callback)
+```
+
+Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
+
+**2. hydrate():**
+
+```js
+ReactDOM.hydrate(element, container, callback)
+```
+
+This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
+
+**3. unmountComponentAtNode():**
+
+```js
+ReactDOM.unmountComponentAtNode(container)
+```
+
+This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
+
+**4. findDOMNode():**
+
+```js
+ReactDOM.findDOMNode(component)
+```
+
+If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
+
+**5. createPortal():**
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 3. REACT JSX
 
 <br/>
@@ -11675,72 +11741,6 @@ React implements a heuristic O(n) algorithm based on two assumptions:
 
 1. Two elements of different types will produce different trees.
 1. The developer can hint at which child elements may be stable across different renders with a key prop."
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is ReactDOM?
-
-ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
-
-ReactDOM provides the developers with an API containing the following methods
-
-* render()
-* findDOMNode()
-* unmountComponentAtNode()
-* hydrate()
-* createPortal()
-
-**render()**
-
-```js
-ReactDOM.render(element, container, callback)
-```
-
-Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
-
-**hydrate()**
-
-```js
-ReactDOM.hydrate(element, container, callback)
-```
-
-This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
-
-**unmountComponentAtNode()**
-
-```js
-ReactDOM.unmountComponentAtNode(container)
-```
-
-This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
-
-**findDOMNode()**
-
-```js
-ReactDOM.findDOMNode(component)
-```
-
-If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
-
-**createPortal()**
-
-```js
-ReactDOM.createPortal(child, container)
-```
-
-createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
