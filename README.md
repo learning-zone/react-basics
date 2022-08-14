@@ -6157,6 +6157,196 @@ export default class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to use async await in React?
+
+**Example:**
+
+```js
+
+class App extends Component {
+  // ...
+  async componentDidMount() {
+    try {
+      const response = await fetch(`https://api.github.com/users`);
+
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        const json = await response.json();
+        this.setState({ data: json });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.data.map((el) => (
+            <li key={el.id}>
+              <img src={el.avatar_url} alt={el.avatar_url} />
+              <span className="UserLogin">{el.login}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How RxJS is used in React for state management?
+
+RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. Reactive programming is an event-based paradigm that allows us to run asynchronous sequences of events as soon as data is pushed to a consumer.
+
+**RxJS Terminology**
+
+* **Observable**: An Observable is a data stream that houses data that can be passed through different threads.
+* **Observer**: An Observer consumes the data supplied by an Observable
+* **Subscription**: In order for Observer to consume data from Observable, Observer has to subscribe it to the Observable.
+* **Subject**: An RxJS Subject can act as both an Observable and an Observer at the same time. In this way, values can be multicasted to many Observers from it so that when a Subject receives any data, that data can be forwarded to every Observer subscribed to it.
+* **Operators**: Operators are methods that can use on Observables and subjects to manipulate, filter or change the Observable in a specified manner into a new Observable.
+* **BehaviorSubject**: It allows multiple observers to listen on stream and events multicasted to the observers, BehaviorSubject stores the latest value and broadcasts it to any new subscribers.
+
+**Example:**
+
+```js
+// messageService.js
+import { BehaviourSubject } from 'rxjs'
+
+const subscriber = new BehaviourSubject(0)
+
+const messageService = {
+   send: function(msg) {
+     subscriber.next(msg)
+   }
+}
+export {
+  messageService,
+  subscriber
+}
+```
+
+The messageService object has a send function, which takes a msg parameter which holds the data we need to broadcast all listening components, in the function body we call the emit method in the subscriber object it multicasts the data to the subscribing components.
+
+```js
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import './style.css'
+import { subscriber, messageService } from './messageService'
+
+class ConsumerA extends React.Component {
+  constructor() {
+    this.state = {
+      counter: 0
+    }
+  }
+
+  componentDidMount() {
+    subscriber.subscribe((v) => {
+      let { counter } = this.state
+      counter = counter + v
+      this.setState({ counter })
+    })
+  }
+
+  render() {
+    let { counter } = this.state
+    return (
+      <div>
+        <hr/>
+          <h3> Counter for Consumer A </h3>
+          <div> Counter: {counter} </div>
+        <hr/>
+      </div>
+    )
+  }
+}
+
+class ConsumerB extends React.Component {
+  constructor() {
+    this.state = {
+      counter: 0
+    }
+  }
+  componentDidMount() {
+    subscriber.subscribe((v) => {
+      let { counter } = this.state
+      counter = counter + v
+      this.setState({ counter })
+    })
+  }
+
+  render() {
+    let { counter } = this.state
+    return (
+      <div>
+        <hr/>
+          <h3>Counter for Consumer B</h3>
+          <div> Counter: { counter } </div>
+        <hr/>
+        <ProducerB />
+      </div>
+    )
+  }
+}
+
+class ProducerA extends React.Component {
+  render() {
+    return (
+      <div>
+        <h3>ProducerA</h3>
+        <butto onClick={(e) => subscriber.next(1)}>Increment Counter</button>
+        <ConsumerA />
+      </div>
+    )
+  }
+}
+
+class ProducerB extends React.Component {
+  render() {
+    return (
+      <div>
+        <h3>ProducerB</h3>
+        <button onClick={(e) => subscriber.next(-1)}>Decrement Counter</button>
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <ProducerA />
+        <hr/>
+        <ConsumerB />
+      </div>
+    )
+  }
+}
+
+render(<App/>, document.getElementById('root'));
+```
+
+The ConsumerA and ConsumerB components keep a state counter individual. In their componentDidMount they subscribe to the same stream subscriber, anytime an event is published they both update the counter. The ProducerA and ProducerB have buttons Increment Counter and Decrement Counter when clicked they emit `1` or `-1`.
+
+**Reference:**
+
+* *[https://www.learnrxjs.io/](https://www.learnrxjs.io/)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 10. REACT FORMS
 
 <br/>
@@ -10358,196 +10548,6 @@ const propsProxyHOC = (WrappedComponent) => {
 * Accessing the instance via Refs (be careful, avoid using refs)
 * Abstracting State
 * Wrapping/Composing the WrappedComponent with other elements
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to use async await in React?
-
-**Example:**
-
-```js
-
-class App extends Component {
-  // ...
-  async componentDidMount() {
-    try {
-      const response = await fetch(`https://api.github.com/users`);
-
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        const json = await response.json();
-        this.setState({ data: json });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.data.map((el) => (
-            <li key={el.id}>
-              <img src={el.avatar_url} alt={el.avatar_url} />
-              <span className="UserLogin">{el.login}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-async-await-7mu7t?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How RxJS is used in React for state management?
-
-RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. Reactive programming is an event-based paradigm that allows us to run asynchronous sequences of events as soon as data is pushed to a consumer.
-
-**RxJS Terminology**
-
-* **Observable**: An Observable is a data stream that houses data that can be passed through different threads.
-* **Observer**: An Observer consumes the data supplied by an Observable
-* **Subscription**: In order for Observer to consume data from Observable, Observer has to subscribe it to the Observable.
-* **Subject**: An RxJS Subject can act as both an Observable and an Observer at the same time. In this way, values can be multicasted to many Observers from it so that when a Subject receives any data, that data can be forwarded to every Observer subscribed to it.
-* **Operators**: Operators are methods that can use on Observables and subjects to manipulate, filter or change the Observable in a specified manner into a new Observable.
-* **BehaviorSubject**: It allows multiple observers to listen on stream and events multicasted to the observers, BehaviorSubject stores the latest value and broadcasts it to any new subscribers.
-
-**Example:**
-
-```js
-// messageService.js
-import { BehaviourSubject } from 'rxjs'
-
-const subscriber = new BehaviourSubject(0)
-
-const messageService = {
-   send: function(msg) {
-     subscriber.next(msg)
-   }
-}
-export {
-  messageService,
-  subscriber
-}
-```
-
-The messageService object has a send function, which takes a msg parameter which holds the data we need to broadcast all listening components, in the function body we call the emit method in the subscriber object it multicasts the data to the subscribing components.
-
-```js
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import './style.css'
-import { subscriber, messageService } from './messageService'
-
-class ConsumerA extends React.Component {
-  constructor() {
-    this.state = {
-      counter: 0
-    }
-  }
-
-  componentDidMount() {
-    subscriber.subscribe((v) => {
-      let { counter } = this.state
-      counter = counter + v
-      this.setState({ counter })
-    })
-  }
-
-  render() {
-    let { counter } = this.state
-    return (
-      <div>
-        <hr/>
-          <h3> Counter for Consumer A </h3>
-          <div> Counter: {counter} </div>
-        <hr/>
-      </div>
-    )
-  }
-}
-
-class ConsumerB extends React.Component {
-  constructor() {
-    this.state = {
-      counter: 0
-    }
-  }
-  componentDidMount() {
-    subscriber.subscribe((v) => {
-      let { counter } = this.state
-      counter = counter + v
-      this.setState({ counter })
-    })
-  }
-
-  render() {
-    let { counter } = this.state
-    return (
-      <div>
-        <hr/>
-          <h3>Counter for Consumer B</h3>
-          <div> Counter: { counter } </div>
-        <hr/>
-        <ProducerB />
-      </div>
-    )
-  }
-}
-
-class ProducerA extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>ProducerA</h3>
-        <butto onClick={(e) => subscriber.next(1)}>Increment Counter</button>
-        <ConsumerA />
-      </div>
-    )
-  }
-}
-
-class ProducerB extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>ProducerB</h3>
-        <button onClick={(e) => subscriber.next(-1)}>Decrement Counter</button>
-      </div>
-    )
-  }
-}
-
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <ProducerA />
-        <hr/>
-        <ConsumerB />
-      </div>
-    )
-  }
-}
-
-render(<App/>, document.getElementById('root'));
-```
-
-The ConsumerA and ConsumerB components keep a state counter individual. In their componentDidMount they subscribe to the same stream subscriber, anytime an event is published they both update the counter. The ProducerA and ProducerB have buttons Increment Counter and Decrement Counter when clicked they emit `1` or `-1`.
-
-**Read More:**
-
-* *[https://www.learnrxjs.io/](https://www.learnrxjs.io/)*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
