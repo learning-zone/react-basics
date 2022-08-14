@@ -591,6 +591,32 @@ npm start
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the difference between ReactDOM and React?
+
+```js
+import React from 'react' /* importing react */
+import ReactDOM from 'react-dom' /* importing react-dom */
+
+class MyComponent extends React.Component {
+
+  render() {
+    return <div>Hello World</div>
+  }
+})
+
+ReactDOM.render(<MyComponent />, node)
+
+```
+**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
+
+**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
+
+The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 3. REACT JSX
 
 <br/>
@@ -11789,32 +11815,6 @@ When children have keys, React uses the key to match children in the original tr
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the difference between ReactDOM and React?
-
-```js
-import React from 'react' /* importing react */
-import ReactDOM from 'react-dom' /* importing react-dom */
-
-class MyComponent extends React.Component {
-
-  render() {
-    return <div>Hello World</div>
-  }
-})
-
-ReactDOM.render(<MyComponent />, node)
-
-```
-**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
-
-**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
-
-The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What is reconciliation in React?
 
 Reconciliation is the process through which React updates the DOM.
@@ -12104,11 +12104,11 @@ node server/index.js
 
 There are two main categories of automated tools that can be used to identify accessibility issues:
 
-**Static Analysis Tools:**
+**1. Static Analysis Tools:**
 
 Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
 
-**Browser Tools:**  
+**2. Browser Tools:**  
 
 Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
 
