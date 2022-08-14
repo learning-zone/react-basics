@@ -12448,7 +12448,7 @@ The following are details of how Redux works:
 * Components can easily subscribe to the Store.
 
 <p align="center">
-  <img src="assets/redux-workflow.png" alt="Redux Workflow" width="600px" />
+  <img src="assets/redux-workflow.png" alt="Redux Workflow" width="500px" />
 </p>
 
 <div align="right">
