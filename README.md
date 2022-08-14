@@ -48,7 +48,7 @@
   * [React CSS Styling](#-17-react-css-styling)
   * [React Internationalization](#-18-react-internationalization)
   * [React Testing](#-19-react-testing)
-  * [Miscellaneous](#-20-miscellaneous)
+  * [React Miscellaneous](#-20-react-miscellaneous)
 
 * Redux
   * [Redux Overview](#-1-redux-overview)
@@ -59,7 +59,7 @@
   * [Redux Reducers](#-6-redux-reducers)
   * [Redux Middleware](#-7-redux-middleware)
   * [Redux Forms](#-8-redux-forms)
-  * [Miscellaneous](#-9-miscellaneous)
+  * [Redux Miscellaneous](#-9-redux-miscellaneous)
 
 <br/>
 
@@ -10895,7 +10895,7 @@ describe('APP Component', () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 20. MISCELLANEOUS
+## # 20. REACT MISCELLANEOUS
 
 <br/>
 
@@ -13733,7 +13733,7 @@ export default connect(mapStateToProps)(reduxForm({
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 9. MISCELLANEOUS
+## # 9. REDUX MISCELLANEOUS
 
 <br/>
 
