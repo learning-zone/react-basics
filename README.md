@@ -3752,6 +3752,53 @@ export default class Child extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the use of this props?
+
+It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
+
+**Example:**
+
+```js
+<div {...this.props}>
+  Content Here
+</div>
+```
+
+It is equal to Class Component
+
+```js
+const person = {
+    name: "Alex",
+    age: 26,
+    country: "India"
+}
+
+class SpreadExample extends React.Component {
+    render() {
+      const {name, age, country} = {...this.props}
+      return (
+        <div>
+            <h3> Person Information: </h3>
+            <ul>
+              <li>name={name}</li>
+              <li>age={age}</li>
+              <li>country={country}</li>
+            </ul>
+        </div>
+      )
+    }
+}
+
+ReactDOM.render(
+    <SpreadExample {...person}/>
+    , mountNode
+)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 6. REACT STATE
 
 <br/>
@@ -10203,152 +10250,6 @@ const propsProxyHOC = (WrappedComponent) => {
 * Accessing the instance via Refs (be careful, avoid using refs)
 * Abstracting State
 * Wrapping/Composing the WrappedComponent with other elements
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the use of this props?
-
-It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
-
-**Example:**
-
-```js
-<div {...this.props}>
-  Content Here
-</div>
-```
-
-It is equal to Class Component
-
-```js
-const person = {
-    name: "Alex",
-    age: 26,
-    country: "India"
-}
-
-class SpreadExample extends React.Component {
-    render() {
-      const {name, age, country} = {...this.props}
-      return (
-        <div>
-            <h3> Person Information: </h3>
-            <ul>
-              <li>name={name}</li>
-              <li>age={age}</li>
-              <li>country={country}</li>
-            </ul>
-        </div>
-      )
-    }
-}
-
-ReactDOM.render(
-    <SpreadExample {...person}/>
-    , mountNode
-)
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How do you remove an element in the react state?
-
-**Using filter()**
-
-In the child component, we need to pass the id of the item we want to delete to the parent.
-
-```js
-// Item.js
-import React, { Component } from "react"
-
-class Item extends Component {
-  state = {
-    count: this.props.item.value
-  }
-
-  handleIncrement = e => {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <div className="card mb-2">
-          <h5 className={this.styleCardHeader()}>{this.styleCount()}</h5>
-          <div className="card-body">
-            <button
-              onClick={item => {
-                this.handleIncrement({ item })
-              }}
-              className="btn btn-lg btn-outline-secondary"
-            >
-              Increment
-            </button>
-
-            <button
-              onClick={() => this.props.onDelete(this.props.item.id)}
-              className="btn btn-lg btn-outline-danger ml-4"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </React.Fragment>
-    )
-  }
-
-  styleCardHeader() {
-    let classes = "card-header h4 text-white bg-"
-    classes += this.state.count === 0 ? "warning" : "primary"
-    return classes
-  }
-
-  styleCount() {
-    const { count } = this.state
-    return count === 0 ? "No Items!" : count
-  }
-}
-
-export default Item
-```
-
-Now in the parent component, we need to update the `handleDelete()` function to accept that id as a parameter. In addition, we need to use the filter function to create a new array of items which does not contain the item which was clicked. Then we have to call the `setState()` function to update the state.
-
-```js
-import React, { Component } from "react"
-import Item from "./item"
-
-class Items extends Component {
-  state = {
-    items: [{ id: 1, value: 0 }, { id: 2, value: 10 }, { id: 3, value: 0 }]
-  }
-
-  handleDelete = itemId => {
-    const items = this.state.items.filter(item => item.id !== itemId)
-    this.setState({ items: items })
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        {this.state.items.map(item => (
-          <Item
-            key={item.id}
-            onDelete={this.handleDelete}
-            item={item}
-          />
-        ))}
-      </React.Fragment>
-    )
-  }
-}
-
-export default Items
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
