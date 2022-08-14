@@ -11488,10 +11488,6 @@ registerServiceWorker();
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 20. MISCELLANEOUS
-
-<br/>
-
 ## Q. How Virtual-DOM is more efficient than Dirty checking?
 
 <p align="center">
