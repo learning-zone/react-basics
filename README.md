@@ -2871,6 +2871,40 @@ export default withLoader(withUser(Welcome))
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to create props proxy for Higher Order Component component?
+
+It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
+
+When we return the Wrapped Component we have the possibility to manipulate props and to abstract state, even passing state as a prop into the Wrapped Component.
+
+We can create `props` passed to the component using props proxy pattern as below
+
+```js
+const propsProxyHOC = (WrappedComponent) => {
+
+  return class extends React.Component {
+    render() {
+      const newProps = {
+        user: currentLoggedInUser
+      }
+
+      return <WrappedComponent {...this.props} {...newProps} />
+    }
+  }
+}
+```
+
+**Props Proxy HOCs are useful to the following situations:**
+
+* Manipulating props
+* Accessing the instance via Refs (be careful, avoid using refs)
+* Abstracting State
+* Wrapping/Composing the WrappedComponent with other elements
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How to use decorators in React?
 
 Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
@@ -11047,40 +11081,6 @@ setInterval(showTime, 1000);
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to create props proxy for Higher Order Component component?
-
-It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
-
-When we return the Wrapped Component we have the possibility to manipulate props and to abstract state, even passing state as a prop into the Wrapped Component.
-
-We can create `props` passed to the component using props proxy pattern as below
-
-```js
-const propsProxyHOC = (WrappedComponent) => {
-
-  return class extends React.Component {
-    render() {
-      const newProps = {
-        user: currentLoggedInUser
-      }
-
-      return <WrappedComponent {...this.props} {...newProps} />
-    }
-  }
-}
-```
-
-**Props Proxy HOCs are useful to the following situations:**
-
-* Manipulating props
-* Accessing the instance via Refs (be careful, avoid using refs)
-* Abstracting State
-* Wrapping/Composing the WrappedComponent with other elements
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
