@@ -7484,6 +7484,184 @@ When the request to `setState()` is triggered, React creates a new tree containi
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is a Webhook in React?
+
+Web hooks provide a mechanism where by a server-side application can notify a client-side application when a new event (that the client-side application might be interested in) has occurred on the server.
+
+Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-side application calls (consumes) the server-side application. Whereas, in case of web hooks it is the server-side that calls (consumes) the web hook (the end-point URL provided by the client-side application), i.e. it is the server-side application that calls the client-side application.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?
+
+**1. useCallback()**
+
+React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
+
+```js
+function App() {
+
+  const memoizedHandleClick = useCallback(
+    () => console.log('Click happened'), [],
+  ) // Tells React to memoize regardless of arguments.
+  return <Button onClick={memoizedHandleClick}>Click Me</Button>
+}
+```
+
+**2. useMemo()**
+
+React\'s `useMemo()` Hook can be used to optimize the computation costs of your React function components. The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type (not just functions). It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved (which typically will only happen once each time an element in the dependencies array changes between renders).
+
+**Example:**
+
+React application which renders a list of users and allows us to filter the users by their name. The filter happens only when a user explicitly clicks a button; not already when the user types into the input field.
+
+```js
+import React from 'react'
+
+const users = [
+  { id: 'a', name: 'Robin' },
+  { id: 'b', name: 'Dennis' },
+]
+
+const App = () => {
+  const [text, setText] = React.useState('')
+  const [search, setSearch] = React.useState('')
+
+  const handleText = (event) => {
+    setText(event.target.value)
+  }
+
+  const handleSearch = () => {
+    setSearch(text)
+  }
+
+  // useMemo Hooks
+  const filteredUsers = React.useMemo(
+    () =>
+      users.filter((user) => {
+        console.log('Filter function is running ...');
+        return user.name.toLowerCase().includes(search.toLowerCase());
+      }),
+    [search]
+  );
+
+  return (
+    <div>
+      <input type="text" value={text} onChange={handleText} />
+      <button type="button" onClick={handleSearch}>
+        Search
+      </button>
+
+      <List list={filteredUsers} />
+    </div>
+  )
+}
+
+const List = ({ list }) => {
+  return (
+    <ul>
+      {list.map((item) => (
+        <ListItem key={item.id} item={item} />
+      ))}
+    </ul>
+  )
+}
+
+const ListItem = ({ item }) => {
+  return <li>{item.name}</li>
+}
+
+export default App
+```
+
+Here, the **filteredUsers** function is only executed once the search state changes. It doesn\'t run if the text state changes, because that\'s not a dependency for this filter function and thus not a dependency in the dependency array for the useMemo hook.
+
+**3. useImperativeHandle()**
+
+`useImperativeHandle()` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using `refs` should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`.
+
+```js
+function FancyInput(props, ref) {
+  const inputRef = useRef()
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus()
+    }
+  }))
+  return <input ref={inputRef} ... />
+}
+FancyInput = forwardRef(FancyInput)
+```
+
+**4. useLayoutEffect()**
+
+<p align="center">
+  <img src="assets/useLayoutEffect.png" alt="useLayoutEffect" width="600px" />
+</p>
+
+This runs synchronously immediately after React has performed all DOM mutations. This can be useful if you need to make DOM measurements (like getting the scroll position or other styles for an element) and then make DOM mutations or trigger a synchronous re-render by updating state.
+
+As far as scheduling, this works the same way as `componentDidMount` and `componentDidUpdate`. Your code runs immediately after the DOM has been updated, but before the browser has had a chance to "paint" those changes (the user doesn\'t actually see the updates until after the browser has repainted).
+
+**Example:**
+
+```js
+import React, { useState, useLayoutEffect } from 'react'
+import ReactDOM from 'react-dom'
+
+const BlinkyRender = () => {
+  const [value, setValue] = useState(0)
+
+  useLayoutEffect(() => {
+    if (value === 0) {
+      setValue(10 + Math.random() * 200)
+    }
+  }, [value])
+
+  console.log('render', value)
+
+  return (
+    <div onClick={() => setValue(0)}>
+      value: {value}
+    </div>
+  )
+}
+
+ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
+```
+
+**useLayoutEffect vs useEffect**
+
+* **useLayoutEffect**: If you need to mutate the DOM and/or do need to perform measurements
+* **useEffect**: If you don\'t need to interact with the DOM at all or your DOM changes are unobservable (seriously, most of the time you should use this).
+
+**5. useDebugValue()**
+
+`useDebugValue()` can be used to display a label for custom hooks in React DevTools.
+
+**Example:**
+
+```js
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null)
+
+  // ...
+
+  // Show a label in DevTools next to this Hook
+  // e.g. "FriendStatus: Online"
+  useDebugValue(isOnline ? 'Online' : 'Offline')
+
+  return isOnline
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT CONTEXT
 
 <br/>
@@ -11000,184 +11178,6 @@ React Fiber uses `requestIdleCallback()` to schedule the low priority work and `
 * It would improve startup time while rendering components using React Suspense.
 
 Fiber is currently available for use but it runs in compatibility mode with the current implementation.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is a Webhook in React?
-
-Web hooks provide a mechanism where by a server-side application can notify a client-side application when a new event (that the client-side application might be interested in) has occurred on the server.
-
-Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-side application calls (consumes) the server-side application. Whereas, in case of web hooks it is the server-side that calls (consumes) the web hook (the end-point URL provided by the client-side application), i.e. it is the server-side application that calls the client-side application.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?
-
-**1. useCallback()**
-
-React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
-
-```js
-function App() {
-
-  const memoizedHandleClick = useCallback(
-    () => console.log('Click happened'), [],
-  ) // Tells React to memoize regardless of arguments.
-  return <Button onClick={memoizedHandleClick}>Click Me</Button>
-}
-```
-
-**2. useMemo()**
-
-React\'s `useMemo()` Hook can be used to optimize the computation costs of your React function components. The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type (not just functions). It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved (which typically will only happen once each time an element in the dependencies array changes between renders).
-
-**Example:**
-
-React application which renders a list of users and allows us to filter the users by their name. The filter happens only when a user explicitly clicks a button; not already when the user types into the input field.
-
-```js
-import React from 'react'
-
-const users = [
-  { id: 'a', name: 'Robin' },
-  { id: 'b', name: 'Dennis' },
-]
-
-const App = () => {
-  const [text, setText] = React.useState('')
-  const [search, setSearch] = React.useState('')
-
-  const handleText = (event) => {
-    setText(event.target.value)
-  }
-
-  const handleSearch = () => {
-    setSearch(text)
-  }
-
-  // useMemo Hooks
-  const filteredUsers = React.useMemo(
-    () =>
-      users.filter((user) => {
-        console.log('Filter function is running ...');
-        return user.name.toLowerCase().includes(search.toLowerCase());
-      }),
-    [search]
-  );
-
-  return (
-    <div>
-      <input type="text" value={text} onChange={handleText} />
-      <button type="button" onClick={handleSearch}>
-        Search
-      </button>
-
-      <List list={filteredUsers} />
-    </div>
-  )
-}
-
-const List = ({ list }) => {
-  return (
-    <ul>
-      {list.map((item) => (
-        <ListItem key={item.id} item={item} />
-      ))}
-    </ul>
-  )
-}
-
-const ListItem = ({ item }) => {
-  return <li>{item.name}</li>
-}
-
-export default App
-```
-
-Here, the **filteredUsers** function is only executed once the search state changes. It doesn\'t run if the text state changes, because that\'s not a dependency for this filter function and thus not a dependency in the dependency array for the useMemo hook.
-
-**3. useImperativeHandle()**
-
-`useImperativeHandle()` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using `refs` should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`.
-
-```js
-function FancyInput(props, ref) {
-  const inputRef = useRef()
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus()
-    }
-  }))
-  return <input ref={inputRef} ... />
-}
-FancyInput = forwardRef(FancyInput)
-```
-
-**4. useLayoutEffect()**
-
-<p align="center">
-  <img src="assets/useLayoutEffect.png" alt="useLayoutEffect" width="600px" />
-</p>
-
-This runs synchronously immediately after React has performed all DOM mutations. This can be useful if you need to make DOM measurements (like getting the scroll position or other styles for an element) and then make DOM mutations or trigger a synchronous re-render by updating state.
-
-As far as scheduling, this works the same way as `componentDidMount` and `componentDidUpdate`. Your code runs immediately after the DOM has been updated, but before the browser has had a chance to "paint" those changes (the user doesn\'t actually see the updates until after the browser has repainted).
-
-**Example:**
-
-```js
-import React, { useState, useLayoutEffect } from 'react'
-import ReactDOM from 'react-dom'
-
-const BlinkyRender = () => {
-  const [value, setValue] = useState(0)
-
-  useLayoutEffect(() => {
-    if (value === 0) {
-      setValue(10 + Math.random() * 200)
-    }
-  }, [value])
-
-  console.log('render', value)
-
-  return (
-    <div onClick={() => setValue(0)}>
-      value: {value}
-    </div>
-  )
-}
-
-ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
-```
-
-**useLayoutEffect vs useEffect**
-
-* **useLayoutEffect**: If you need to mutate the DOM and/or do need to perform measurements
-* **useEffect**: If you don\'t need to interact with the DOM at all or your DOM changes are unobservable (seriously, most of the time you should use this).
-
-**5. useDebugValue()**
-
-`useDebugValue()` can be used to display a label for custom hooks in React DevTools.
-
-**Example:**
-
-```js
-function useFriendStatus(friendID) {
-  const [isOnline, setIsOnline] = useState(null)
-
-  // ...
-
-  // Show a label in DevTools next to this Hook
-  // e.g. "FriendStatus: Online"
-  useDebugValue(isOnline ? 'Online' : 'Offline')
-
-  return isOnline
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
