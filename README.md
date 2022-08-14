@@ -43,11 +43,12 @@
   * [React Context](#-12-react-context)
   * [React Router](#-13-react-router)
   * [React Error Boundaries](#-14-react-error-boundaries)
-  * [React Composition](#-15-react-composition)
-  * [React CSS Styling](#-16-react-css-styling)
-  * [React Internationalization](#-17-react-internationalization)
-  * [React Testing](#-18-react-testing)
-  * [Miscellaneous](#-19-miscellaneous)
+  * [React Refs](#-15-react-ref)
+  * [React Composition](#-16-react-composition)
+  * [React CSS Styling](#-17-react-css-styling)
+  * [React Internationalization](#-18-react-internationalization)
+  * [React Testing](#-19-react-testing)
+  * [Miscellaneous](#-20-miscellaneous)
 
 * Redux
   * [Redux Overview](#-1-redux-overview)
@@ -5925,214 +5926,6 @@ In the hook, we create a ref with the **useRef** hook to create a non-reactive p
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What do you understand by refs in React?
-
-The **Refs** provide a way to access DOM nodes or React elements created in the render method. React `Refs` are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
-
-Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of **ref forwarding**.
-
-**Example:**
-
-```javascript
-/**
- * Refs
- */
-class App extends React.Component {
-    constructor(props) {
-      super(props)
-      // create a ref to store the textInput DOM element
-      this.textInput = React.createRef()
-      this.state = {
-        value: ''
-      }
-    }
-  
-  // Set the state for the ref
-  handleSubmit = e => {
-    e.preventDefault()
-    this.setState({ value: this.textInput.current.value })
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>React Ref - createRef</h1>
-         {/** This is what will update **/}
-        <h3>Value: {this.state.value}</h3>
-        <form onSubmit={this.handleSubmit}>
-          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
-          <input type="text" ref={this.textInput} />
-          <button>Submit</button>
-        </form>
-      </div>
-    )
-  }
-}
-```
-
-**When to Use Refs:**  
-
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
-
-**When not to use refs:**  
-
-* Should not be used with functional components because they dont have instances.
-* Not to be used on things that can be done declaritvely.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How can I use multiple refs for an array of elements with hooks?
-
-**Example:**
-
-```js
-/**
- * Multiple Refs
- */
-import React, { useRef } from "react";
-
-export default function App() {
-  const arr = [10, 20, 30];
-  // multiple refs
-  const refs = useRef([]); 
-
-  return (
-    <div>
-      {arr.map((item, index) => {
-        return (
-          <div
-            key={index}
-            ref={(element) => {
-              refs.current[index] = element;
-            }}
-          >
-            {item}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is the difference between useRef() and createRef()?
-
-**1. useRef():**
-
-The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
-
-**Example:**
-
-```js
-/**
- * useRef()
- */
-export default function App() {
-  const [count, setCount] = useState(0);
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = "SomeInitialValue";
-  }, []);
-
-  useEffect(() => {
-    console.log(count, ref.current);
-  }, [count]);
-
-  return (
-    <div className="App">
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
-
-**2. createRef():**
-
-The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
-
-**Example:**
-
-```js
-/**
- * createRef()
- */
-export default function App() {
-  const [count, setCount] = useState(0);
-  const ref = createRef();
-
-  useEffect(() => {
-    ref.current = "SomeInitialValue";
-  }, []);
-
-  useEffect(() => {
-    console.log(count, ref.current);
-  }, [count]);
-
-  return (
-    <div className="App">
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
-      <p>{count}</p>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why are inline ref callback or function not recommended?
-
-If **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one.
-
-**Example:**
-
-```js
-/**
- * Inline Ref Callback()
- */
-import React from "react";
-
-export default class App extends React.Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Input Value is: " + this.input.value);
-  };
-  render() {
-    return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" ref={(input) => (this.input = input)} />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
-}
-```
-
-Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. How to re-render the view when the browser is resized?
 
 **1. Using React Hooks:**
@@ -7479,7 +7272,313 @@ class ErrorBoundary extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 15. REACT COMPOSITION
+## # 15. REACT REFS
+
+<br/>
+
+## Q. What do you understand by refs in React?
+
+The **Refs** provide a way to access DOM nodes or React elements created in the render method. React `Refs` are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
+
+Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of **ref forwarding**.
+
+**Example:**
+
+```javascript
+/**
+ * Refs
+ */
+class App extends React.Component {
+    constructor(props) {
+      super(props)
+      // create a ref to store the textInput DOM element
+      this.textInput = React.createRef()
+      this.state = {
+        value: ''
+      }
+    }
+  
+  // Set the state for the ref
+  handleSubmit = e => {
+    e.preventDefault()
+    this.setState({ value: this.textInput.current.value })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>React Ref - createRef</h1>
+         {/** This is what will update **/}
+        <h3>Value: {this.state.value}</h3>
+        <form onSubmit={this.handleSubmit}>
+          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
+          <input type="text" ref={this.textInput} />
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+**When to Use Refs:**  
+
+* Managing focus, text selection, or media playback.
+* Triggering imperative animations.
+* Integrating with third-party DOM libraries.
+
+**When not to use refs:**  
+
+* Should not be used with functional components because they dont have instances.
+* Not to be used on things that can be done declaritvely.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How can I use multiple refs for an array of elements with hooks?
+
+**Example:**
+
+```js
+/**
+ * Multiple Refs
+ */
+import React, { useRef } from "react";
+
+export default function App() {
+  const arr = [10, 20, 30];
+  // multiple refs
+  const refs = useRef([]); 
+
+  return (
+    <div>
+      {arr.map((item, index) => {
+        return (
+          <div
+            key={index}
+            ref={(element) => {
+              refs.current[index] = element;
+            }}
+          >
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between useRef() and createRef()?
+
+**1. useRef():**
+
+The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
+
+**Example:**
+
+```js
+/**
+ * useRef()
+ */
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
+
+**2. createRef():**
+
+The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
+
+**Example:**
+
+```js
+/**
+ * createRef()
+ */
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = createRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why are inline ref callback or function not recommended?
+
+If **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one.
+
+**Example:**
+
+```js
+/**
+ * Inline Ref Callback()
+ */
+import React from "react";
+
+export default class App extends React.Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Input Value is: " + this.input.value);
+  };
+  render() {
+    return (
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <input type="text" ref={(input) => (this.input = input)} />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
+```
+
+Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Which is the preferred option callback refs or findDOMNode()?
+
+It is preferred to use **callback refs** over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
+
+The legacy approach of using `findDOMNode()`:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView()
+  }
+
+  render() {
+    return <div />
+  }
+}
+```
+
+The recommended approach is:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    this.node.scrollIntoView()
+  }
+
+  render() {
+    return <div ref={node => this.node = node} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why are string refs considered legacy in React?
+
+> Although string refs are not deprecated, they are considered legacy, and will likely be deprecated at some point in the future. Callback refs are preferred.
+
+**Callback Refs:**
+
+Instead of passing a **ref** attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
+
+**Example:**
+
+```js
+// Ref.js
+
+class CustomTextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.textInput = null;
+
+    this.setTextInputRef = (element) => {
+      this.textInput = element;
+    };
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.textInput.value);
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type="text" ref={this.setTextInputRef} />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// App.js
+
+const App = () => (
+  <div style={styles}>
+    <Hello name="React Refs" />
+    <CustomText />
+  </div>
+)
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 16. REACT COMPOSITION
 
 <br/>
 
@@ -7591,7 +7690,7 @@ React recommends use of Composition over Inheritance, here is why. Everything in
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 16. REACT CSS STYLING
+## # 17. REACT CSS STYLING
 
 <br/>
 
@@ -8059,7 +8158,7 @@ const App = () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 17. REACT INTERNATIONALIZATION
+## # 18. REACT INTERNATIONALIZATION
 
 <br/>
 
@@ -8153,7 +8252,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 18. REACT TESTING
+## # 19. REACT TESTING
 
 <br/>
 
@@ -8572,7 +8671,7 @@ describe('APP Component', () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 19. MISCELLANEOUS
+## # 20. MISCELLANEOUS
 
 <br/>
 
@@ -8983,100 +9082,6 @@ function App() {
 </p>
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Which is the preferred option callback refs or findDOMNode()?
-
-It is preferred to use **callback refs** over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
-
-The legacy approach of using `findDOMNode()`:
-
-```js
-class MyComponent extends Component {
-  componentDidMount() {
-    findDOMNode(this).scrollIntoView()
-  }
-
-  render() {
-    return <div />
-  }
-}
-```
-
-The recommended approach is:
-
-```js
-class MyComponent extends Component {
-  componentDidMount() {
-    this.node.scrollIntoView()
-  }
-
-  render() {
-    return <div ref={node => this.node = node} />
-  }
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Why are string refs considered legacy in React?
-
-> Although string refs are not deprecated, they are considered legacy, and will likely be deprecated at some point in the future. Callback refs are preferred.
-
-**Callback Refs:**
-
-Instead of passing a **ref** attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
-
-**Example:**
-
-```js
-// Ref.js
-
-class CustomTextInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.textInput = null;
-
-    this.setTextInputRef = (element) => {
-      this.textInput = element;
-    };
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.textInput.value);
-  };
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <input type="text" ref={this.setTextInputRef} />
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
-}
-```
-
-```js
-// App.js
-
-const App = () => (
-  <div style={styles}>
-    <Hello name="React Refs" />
-    <CustomText />
-  </div>
-)
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
