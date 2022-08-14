@@ -11682,13 +11682,13 @@ In brief, here is what happens when we update the DOM in React:
 
 ## Q. What is the difference between DOM and virtual DOM?
 
-**DOM:**
+**1. DOM:**
 
 DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
 
 The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
 
-**Virtual DOM:**  
+**2. Virtual DOM:**  
 
 The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
 
