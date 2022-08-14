@@ -11718,19 +11718,6 @@ Once this is done, the virtual DOM calculates the best possible method to make t
 
 ## Q. Explain DOM diffing?
 
-**Document Object Model:**
-
-The DOM (Document Object Model) is an interface that represents an HTML document in a tree-like structure with nodes. This structure allows the document to be traversed and modified by programmers with each node being represented as an object. The DOM is created by the browser when
-a web page is loaded.
-
-**React\'s "Virtual DOM":**
-
-The "Virtual DOM" is very similar to the real DOM, in that it is a tree-like structure kept in-memory, where React elements are represented as objects. This tree has many of the same properties as the real DOM without the power to change what is on the screen. It is a javascript object representing components in your application which can be updated quickly and efficiently by React.
-
-When a JSX element is rendered or the state of an element changes, a new Virtual DOM tree is created. The function responsible for the creation of this tree is React\'s render() function. This is a fast process because the virtual DOM tree is just a javascript object and the UI will not be re-painted based on this new tree.
-
-**DOM Diffing:**
-
 Once the Virtual DOM is created, React compares this new representation with a snapshot of the previous version of the virtual DOM to see exactly which elements have changed.
 
 Once the difference is known, React updates only those objects that differ on the actual DOM and the browser re-paints the screen. The next time state or props changes for a component in the application, a new virtual DOM tree of React elements will be created and the process will repeat.
@@ -11750,14 +11737,14 @@ React implements a heuristic O(n) algorithm based on two assumptions:
 
 The main work of a **diff algorithm** is to find a heuristic to change anything from a state to another. When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
 
-**Elements Of Different Types**
+**1. Elements Of Different Types:**
 
 Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
 When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
 
 When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
 
-**DOM Elements Of The Same Type**
+**2. DOM Elements Of The Same Type:**
 
 When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
 
@@ -11769,7 +11756,7 @@ When comparing two React DOM elements of the same type, React looks at the attri
 <div className="after" title="React JS" />
 ```
 
-**Component Elements Of The Same Type**
+**3. Component Elements Of The Same Type:**
 
 When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
 
