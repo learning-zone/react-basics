@@ -1943,6 +1943,126 @@ renderContent() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is difference between componentDidMount() and componentWillMount()?
+
+**componentDidMount()**
+
+The `componentDidMount()` is executed after the first render only on the client side. This is where AJAX requests and DOM or state updates should occur. This method is also used for integration with other JavaScript frameworks and any functions with delayed execution such as `setTimeout()` or `setInterval()`.
+
+*Example:*
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: 'Alex Belfort'
+    }
+  }
+
+  getData(){
+    setTimeout(() => {
+      console.log('Our data is fetched')
+      this.setState({
+        data: 'Hello Alex'
+      })
+    }, 1000)
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.data}
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+**componentWillMount()**
+
+The `componentWillMount()` method is executed before rendering, on both the server and the client side. `componentWillMount()` method is the least used lifecycle method and called before any HTML element is rendered. It is useful when we want to do something programatically right before the component mounts.
+
+*Example:*
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: 'Alex Belfort'
+    }
+  }
+  componentWillMount() {
+    console.log('First this called')
+  }
+
+  getData() {
+    setTimeout(() => {
+      console.log('Our data is fetched')
+      this.setState({
+        data: 'Hello Alex'
+      })
+    }, 1000)
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.data}
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Is it good to use setState() in componentWillMount() method?
+
+Avoid async initialization in `componentWillMount()`. 
+
+`componentWillMount()` is invoked immediately before mounting occurs. It is called before `render()`, therefore setting state in this method will not trigger a re-render. Avoid introducing any side-effects or subscriptions in this method.
+
+Make async calls for component initialization in `componentDidMount()` instead of `componentWillMount()`
+
+```js
+function componentDidMount() {
+  axios.get(`api/messages`)
+    .then((result) => {
+      const messages = result.data
+      console.log("COMPONENT WILL Mount messages : ", messages);
+      this.setState({
+        messages: [...messages.content]
+      })
+    })
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.3. PURE COMPONENTS
 
 <br/>
@@ -9397,126 +9517,6 @@ function withSubscription(WrappedComponent) {
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-}
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is difference between componentDidMount() and componentWillMount()?
-
-**componentDidMount()**
-
-The `componentDidMount()` is executed after the first render only on the client side. This is where AJAX requests and DOM or state updates should occur. This method is also used for integration with other JavaScript frameworks and any functions with delayed execution such as `setTimeout()` or `setInterval()`.
-
-*Example:*
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: 'Alex Belfort'
-    }
-  }
-
-  getData(){
-    setTimeout(() => {
-      console.log('Our data is fetched')
-      this.setState({
-        data: 'Hello Alex'
-      })
-    }, 1000)
-  }
-
-  componentDidMount() {
-    this.getData()
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.data}
-      </div>
-    )
-  }
-}
-
-export default App
-```
-
-**componentWillMount()**
-
-The `componentWillMount()` method is executed before rendering, on both the server and the client side. `componentWillMount()` method is the least used lifecycle method and called before any HTML element is rendered. It is useful when we want to do something programatically right before the component mounts.
-
-*Example:*
-
-```js
-import React, { Component } from 'react'
-
-class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: 'Alex Belfort'
-    }
-  }
-  componentWillMount() {
-    console.log('First this called')
-  }
-
-  getData() {
-    setTimeout(() => {
-      console.log('Our data is fetched')
-      this.setState({
-        data: 'Hello Alex'
-      })
-    }, 1000)
-  }
-
-  componentDidMount() {
-    this.getData()
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.data}
-      </div>
-    )
-  }
-}
-
-export default App
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. Is it good to use setState() in componentWillMount() method?
-
-Avoid async initialization in `componentWillMount()`. 
-
-`componentWillMount()` is invoked immediately before mounting occurs. It is called before `render()`, therefore setting state in this method will not trigger a re-render. Avoid introducing any side-effects or subscriptions in this method.
-
-Make async calls for component initialization in `componentDidMount()` instead of `componentWillMount()`
-
-```js
-function componentDidMount() {
-  axios.get(`api/messages`)
-    .then((result) => {
-      const messages = result.data
-      console.log("COMPONENT WILL Mount messages : ", messages);
-      this.setState({
-        messages: [...messages.content]
-      })
-    })
 }
 ```
 
