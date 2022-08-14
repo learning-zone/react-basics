@@ -11953,9 +11953,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 
 ## Q. What is Redux?
 
-Redux is a predictable state container for JavaScript applications. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
-
-Simply put, Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
+Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
 
 **Architecture**
 
