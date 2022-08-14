@@ -10906,40 +10906,6 @@ This will help to create a Flow configuration file that should be committed. The
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. Why are string refs considered legacy in React?
-
-Reactjs provides a way to get references to dom elements that react is rendering through jsx. Previously, it was through what are now legacy refs:
-
-```js
-componentWillUpdate() {
-  this.refs.example.tagName == "div";
-}
-
-render() {
-  return (
-    <div ref="example"/>
-  )
-}
-```
-
-Where we can assign an element an identifier and react would keep a `refs` hash up to date with references to the dom for that element.
-
-The new react version uses callbacks
-
-```js
-render() {
-  return (
-    <div ref={(div) => { console.log('tag name:', div.tagName); }} />
-  )
-}
-```
-
-This callback is called when the component `mounts` with a reference to the dom element as an argument. Importantly, when the component `unmounts` the callback is called again but this time with `null` as an argument.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What are the recommended way for static type checking?
 
 Static type checkers like `Flow` and `TypeScript` identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we should use `Flow` or `TypeScript` instead of `PropTypes` for larger code bases.
