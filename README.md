@@ -13631,6 +13631,8 @@ For the most part, it is a matter of wrapping each form control in a `<Field>` c
 
 The Field component will provide your input with `onChange`, `onBlur`, `onFocus`, `onDrag`, and `onDrop` props to listen to the events, as well as a **value** prop to make each input a **controlled component**. Notice that the SimpleForm component has no state; in fact, it uses the functional stateless component syntax.
 
+**Example:**
+
 ```js
 // SimpleForm.js
 
