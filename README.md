@@ -1687,6 +1687,37 @@ render () {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is Compound Components in React?
+
+A compound component is a type of component that manages the internal state of a feature while delegating control of the rendering to the place of implementation opposed to the point of declaration. They provide a way to shield feature specific logic from the rest of the app providing a clean and expressive API for consuming the component.
+
+Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
+
+**Example:**
+
+```js
+function App() {
+  return (
+    <Menu>
+      <MenuButton>
+        Actions <span aria-hidden>▾</span>
+      </MenuButton>
+      <MenuList>
+        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+      </MenuList>
+    </Menu>
+  )
+}
+```
+
+In this example, the `<Menu>` establishes some shared implicit state. The `<MenuButton>`, `<MenuList>`, and `<MenuItem>` components each access and/or manipulate that state, and it\'s all done implicitly. This allows you to have the expressive API you're looking for.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
@@ -10919,37 +10950,6 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
 `Flow` is a static analysis tool which uses a superset of the language, allows to add type annotations to all of your code and catch an entire class of bugs at compile time.
 
 `PropTypes` is a basic type checker which has been patched onto React. It can't check anything other than the types of the props being passed to a given component.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is Compound Components in React?
-
-A compound component is a type of component that manages the internal state of a feature while delegating control of the rendering to the place of implementation opposed to the point of declaration. They provide a way to shield feature specific logic from the rest of the app providing a clean and expressive API for consuming the component.
-
-Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
-
-**Example:**
-
-```js
-function App() {
-  return (
-    <Menu>
-      <MenuButton>
-        Actions <span aria-hidden>▾</span>
-      </MenuButton>
-      <MenuList>
-        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
-        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
-        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-      </MenuList>
-    </Menu>
-  )
-}
-```
-
-In this example, the `<Menu>` establishes some shared implicit state. The `<MenuButton>`, `<MenuList>`, and `<MenuItem>` components each access and/or manipulate that state, and it\'s all done implicitly. This allows you to have the expressive API you're looking for.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
