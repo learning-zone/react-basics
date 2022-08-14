@@ -12409,7 +12409,7 @@ The single source of truth is our state tree, that is not rewritten or reshaped.
 In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
 
 <p align="center">
-  <img src="assets/redux-state.png" alt="Redux State" width="600px" />
+  <img src="assets/redux-state.png" alt="Redux State" width="500px" />
 </p>
 
 A practical example would be that you have Redux store which contains items you want to display. In order to change list of items to be displayed, you don\'t change this data anywhere else other than store. And if that is changed, everything else related to it, should change as well.
