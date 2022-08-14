@@ -8929,6 +8929,30 @@ class MyComponent extends Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to set focus on an input field after rendering?
+
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+
+```js
+class AutoFocusTextInput extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.textInput = React.createRef()
+  }
+  componentDidMount() {
+    this.textInput.current.focus()
+  }
+  render() {
+    return <input ref={this.textInput} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. Why are string refs considered legacy in React?
 
 > Although string refs are not deprecated, they are considered legacy, and will likely be deprecated at some point in the future. Callback refs are preferred.
@@ -9085,30 +9109,6 @@ function App() {
 </p>
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to set focus on an input field after rendering?
-
-Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
-
-```js
-class AutoFocusTextInput extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.textInput = React.createRef()
-  }
-  componentDidMount() {
-    this.textInput.current.focus()
-  }
-  render() {
-    return <input ref={this.textInput} />
-  }
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
