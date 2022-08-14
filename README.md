@@ -7578,6 +7578,109 @@ const App = () => (
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is `forwardRef()` in React?
+
+Ref forwarding is a technique for passing a `ref` through a component to one of its children. It is very useful for cases like reusable component libraries and Higher Order Components (HOC).
+
+We can forward a `ref` to a component by using the `React.forwardRef()` function. Ref forwarding allows components to take a ref they receive and pass it further down (in other words, "forward" it) to a child.
+
+*Example:*
+
+```js
+// Ref.js
+const TextInput = React.forwardRef((props, ref) => (
+  <input type="text" placeholder="Hello World" ref={ref} />
+))
+
+const inputRef = React.createRef()
+
+class CustomTextInput extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(inputRef.current.value)
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <TextInput ref={inputRef} />
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+In the example above, we have a component called TextInput that has a child which is an input field. First, we start by creating a ref with the line of code below:
+
+```js
+const inputRef = React.createRef()
+```
+
+We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to debug forwardRefs() in DevTools?
+
+**React.forwardRef** accepts a render function as parameter and DevTools uses this function to determine what to display for the ref forwarding component.
+
+**Problem:** If you don\'t name the render function or not using displayName property then it will appear as "ForwardRef" in the DevTools,
+
+```js
+const WrappedComponent = React.forwardRef((props, ref) => {
+  return <LogProps {...props} forwardedRef={ref} />;
+});
+```
+
+**Solution:** If you name the render function then it will appear as "ForwardRef(myFunction)"
+
+```js
+const WrappedComponent = React.forwardRef(function myFunction(props, ref) {
+  return <LogProps {...props} forwardedRef={ref} />;
+});
+```
+
+**Example:**
+
+```js
+const ForwardP = React.forwardRef(function ForwardP(props, ref) {
+  return (
+    <>
+      <p>I'm a real component too</p>
+      <p>
+        Especially with <code>useImperativeMethods</code>
+      </p>
+      <p {...props} ref={ref} />
+    </>
+  );
+});
+
+function App() {
+  return (
+    <div className="App">
+      <ForwardP style={{ opacity: 0.5 }}>
+        But my props are <code>null</code> in DevTools
+      </ForwardP>
+    </div>
+  );
+}
+```
+
+<p align="center">
+  <img src="assets/forwardRef.png" alt="forwardRef()" width="500px" />
+</p>
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 16. REACT COMPOSITION
 
 <br/>
@@ -8979,109 +9082,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is `forwardRef()` in React?
-
-Ref forwarding is a technique for passing a `ref` through a component to one of its children. It is very useful for cases like reusable component libraries and Higher Order Components (HOC).
-
-We can forward a `ref` to a component by using the `React.forwardRef()` function. Ref forwarding allows components to take a ref they receive and pass it further down (in other words, "forward" it) to a child.
-
-*Example:*
-
-```js
-// Ref.js
-const TextInput = React.forwardRef((props, ref) => (
-  <input type="text" placeholder="Hello World" ref={ref} />
-))
-
-const inputRef = React.createRef()
-
-class CustomTextInput extends React.Component {
-  handleSubmit = e => {
-    e.preventDefault()
-    console.log(inputRef.current.value)
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <TextInput ref={inputRef} />
-          <button>Submit</button>
-        </form>
-      </div>
-    )
-  }
-}
-```
-
-In the example above, we have a component called TextInput that has a child which is an input field. First, we start by creating a ref with the line of code below:
-
-```js
-const inputRef = React.createRef()
-```
-
-We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How to debug forwardRefs() in DevTools?
-
-**React.forwardRef** accepts a render function as parameter and DevTools uses this function to determine what to display for the ref forwarding component.
-
-**Problem:** If you don\'t name the render function or not using displayName property then it will appear as "ForwardRef" in the DevTools,
-
-```js
-const WrappedComponent = React.forwardRef((props, ref) => {
-  return <LogProps {...props} forwardedRef={ref} />;
-});
-```
-
-**Solution:** If you name the render function then it will appear as "ForwardRef(myFunction)"
-
-```js
-const WrappedComponent = React.forwardRef(function myFunction(props, ref) {
-  return <LogProps {...props} forwardedRef={ref} />;
-});
-```
-
-**Example:**
-
-```js
-const ForwardP = React.forwardRef(function ForwardP(props, ref) {
-  return (
-    <>
-      <p>I'm a real component too</p>
-      <p>
-        Especially with <code>useImperativeMethods</code>
-      </p>
-      <p {...props} ref={ref} />
-    </>
-  );
-});
-
-function App() {
-  return (
-    <div className="App">
-      <ForwardP style={{ opacity: 0.5 }}>
-        But my props are <code>null</code> in DevTools
-      </ForwardP>
-    </div>
-  );
-}
-```
-
-<p align="center">
-  <img src="assets/forwardRef.png" alt="forwardRef()" width="500px" />
-</p>
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
