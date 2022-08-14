@@ -8268,6 +8268,30 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is lazy function in React?
+
+`React.lazy()` makes it easy to create components that are loaded using dynamic `import()` but are rendered like regular components. This will automatically cause the bundle containing the component to be loaded when the component is rendered.
+
+`React.lazy()` takes a function as its argument that must return a promise by calling `import()` to load the component. The returned Promise resolves to a module with a default export containing the React component.
+
+**Example:**
+
+```js
+import React, { lazy } from 'react'
+
+const MyComponent = React.lazy(() => import('./MyComponent'))
+
+const App = () => {
+  <div>
+    <MyComponent />
+  </div>
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 14. REACT ERROR BOUNDARIES
 
 <br/>
@@ -10548,30 +10572,6 @@ const propsProxyHOC = (WrappedComponent) => {
 * Accessing the instance via Refs (be careful, avoid using refs)
 * Abstracting State
 * Wrapping/Composing the WrappedComponent with other elements
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is lazy function in React?
-
-`React.lazy()` makes it easy to create components that are loaded using dynamic `import()` but are rendered like regular components. This will automatically cause the bundle containing the component to be loaded when the component is rendered.
-
-`React.lazy()` takes a function as its argument that must return a promise by calling `import()` to load the component. The returned Promise resolves to a module with a default export containing the React component.
-
-**Example:**
-
-```js
-import React, { lazy } from 'react'
-
-const MyComponent = React.lazy(() => import('./MyComponent'))
-
-const App = () => {
-  <div>
-    <MyComponent />
-  </div>
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
