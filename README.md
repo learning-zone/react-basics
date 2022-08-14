@@ -8261,6 +8261,219 @@ const App = () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How many ways can we style the React Component?
+
+**1. CSS Stylesheet**
+
+```css
+.DottedBox {
+  margin: 40px;
+  border: 5px dotted pink;
+}
+
+.DottedBox_content {
+  font-size: 15px;
+  text-align: center;
+}
+```
+
+```js
+import React from 'react'
+import './DottedBox.css'
+
+const DottedBox = () => (
+  <div className="DottedBox">
+    <p className="DottedBox_content">Get started with CSS styling</p>
+  </div>
+)
+
+export default DottedBox
+```
+
+**2. Inline styling**
+
+In React, inline styles are not specified as a string. Instead they are specified with an object whose **key** is the **camelCased** version of the style name, and whose value is the style\'s value, usually a string.
+
+```js
+import React from 'react'
+
+const divStyle = {
+  margin: '40px',
+  border: '5px solid pink'
+}
+const pStyle = {
+  fontSize: '15px',
+  textAlign: 'center'
+}
+
+const Box = () => (
+  <div style={divStyle}>
+    <p style={pStyle}>Get started with inline style</p>
+  </div>
+)
+
+export default Box
+```
+
+* We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
+* We can also pass the styling directly `style={{color: 'pink'}}`
+
+**3. CSS Modules**
+
+A CSS Module is a CSS file in which all class names and animation names are scoped locally by default.
+
+```css
+:local(.container) {
+   margin: 40px;
+   border: 5px dashed pink;
+ }
+ :local(.content) {
+   font-size: 15px;
+   text-align: center;
+ }
+```
+
+```js
+import React from 'react'
+import styles from './DashedBox.css'
+
+const DashedBox = () => (
+  <div className={styles.container}>
+    <p className={styles.content}>Get started with CSS Modules style</p>
+  </div>
+)
+
+export default DashedBox
+```
+
+we import css file `import styles './DashedBox.css'`, then we access to className as we access to object.
+
+* `:local(.className)`- this when you use create-react-app because of webpack configurations
+* `.className` - this if you use your own react boilerplate.
+
+**4. Styled-components**
+
+Styled-components is a library for React and React Native that allows to use component-level styles in component application that are written with a mixture of JavaScript and CSS
+
+```bash
+npm install styled-components --save
+```
+
+```js
+import React from 'react'
+import styled from 'styled-components'
+
+const Div = styled.div`
+  margin: 40px;
+  border: 5px outset pink;
+  &:hover {
+   background-color: yellow;
+ }
+`;
+
+const Paragraph = styled.p`
+  font-size: 15px;
+  text-align: center;
+`;
+
+const OutsetBox = () => (
+  <Div>
+    <Paragraph>Get started with styled-components</Paragraph>
+  </Div>
+)
+
+export default OutsetBox
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you apply vendor prefixes to inline styles in React?
+
+In React, inline styles keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes other than `ms` should begin with a capital letter.
+
+```js
+const divStyle = {
+  background: "#eee",
+  color: "blue",
+  padding: "20px",
+  margin: "20px",
+  WebkitTransition: "all", // note the capital 'W' here
+  msTransition: "all" // 'ms' is the only lowercase vendor prefix
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the popular animation package in React?
+
+**ReactCSSTransitionGroup**
+
+ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is an easy way to perform CSS transitions and animations when a React component enters or leaves the DOM. It has four components that display transitions from one component state to another using a declarative API used for mounting and unmounting of components:
+
+1. Transition
+2. CSSTransition
+3. SwitchTransition
+4. TransitionGroup
+
+*Example:*
+
+```js
+import ReactCSSTransitionGroup from 'react-transition-group'
+
+class AnimationComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {items: ['hello', 'world', 'click', 'me']}
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+
+  handleAdd() {
+    const newItems = this.state.items.concat([
+      prompt('Enter some text')
+    ])
+    this.setState({items: newItems})
+  }
+
+  handleRemove(i) {
+    let newItems = this.state.items.slice()
+    newItems.splice(i, 1)
+    this.setState({items: newItems})
+  }
+
+  render() {
+    const items = this.state.items.map((item, i) => (
+      <div key={item} onClick={() => this.handleRemove(i)}>
+        {item}
+      </div>
+    ))
+
+    return (
+      <div>
+        <button onClick={this.handleAdd}>Add Item</button>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {items}
+        </ReactCSSTransitionGroup>
+      </div>
+    )
+  }
+}
+```
+
+In this component, when a new item is added to ReactCSSTransitionGroup it will get the `example-enter` CSS class and the `example-enter-active` CSS class added in the next tick. This is a convention based on the `transitionName` prop.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 18. REACT INTERNATIONALIZATION
 
 <br/>
@@ -9082,219 +9295,6 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 3. Change state/model has another layer of complexity which is the mutation. When to consider the state or model is changed and how to build tools to help recognize the mutation.
 4. Adding to that if the application is a collaborative applications, (like google docs for examples) where lots of data changes happening in real-time.
 5. No way to do undo (travel back in time) easily without adding so much extra code.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How many ways can we style the React Component?
-
-**1. CSS Stylesheet**
-
-```css
-.DottedBox {
-  margin: 40px;
-  border: 5px dotted pink;
-}
-
-.DottedBox_content {
-  font-size: 15px;
-  text-align: center;
-}
-```
-
-```js
-import React from 'react'
-import './DottedBox.css'
-
-const DottedBox = () => (
-  <div className="DottedBox">
-    <p className="DottedBox_content">Get started with CSS styling</p>
-  </div>
-)
-
-export default DottedBox
-```
-
-**2. Inline styling**
-
-In React, inline styles are not specified as a string. Instead they are specified with an object whose **key** is the **camelCased** version of the style name, and whose value is the style\'s value, usually a string.
-
-```js
-import React from 'react'
-
-const divStyle = {
-  margin: '40px',
-  border: '5px solid pink'
-}
-const pStyle = {
-  fontSize: '15px',
-  textAlign: 'center'
-}
-
-const Box = () => (
-  <div style={divStyle}>
-    <p style={pStyle}>Get started with inline style</p>
-  </div>
-)
-
-export default Box
-```
-
-* We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
-* We can also pass the styling directly `style={{color: 'pink'}}`
-
-**3. CSS Modules**
-
-A CSS Module is a CSS file in which all class names and animation names are scoped locally by default.
-
-```css
-:local(.container) {
-   margin: 40px;
-   border: 5px dashed pink;
- }
- :local(.content) {
-   font-size: 15px;
-   text-align: center;
- }
-```
-
-```js
-import React from 'react'
-import styles from './DashedBox.css'
-
-const DashedBox = () => (
-  <div className={styles.container}>
-    <p className={styles.content}>Get started with CSS Modules style</p>
-  </div>
-)
-
-export default DashedBox
-```
-
-we import css file `import styles './DashedBox.css'`, then we access to className as we access to object.
-
-* `:local(.className)`- this when you use create-react-app because of webpack configurations
-* `.className` - this if you use your own react boilerplate.
-
-**4. Styled-components**
-
-Styled-components is a library for React and React Native that allows to use component-level styles in component application that are written with a mixture of JavaScript and CSS
-
-```bash
-npm install styled-components --save
-```
-
-```js
-import React from 'react'
-import styled from 'styled-components'
-
-const Div = styled.div`
-  margin: 40px;
-  border: 5px outset pink;
-  &:hover {
-   background-color: yellow;
- }
-`;
-
-const Paragraph = styled.p`
-  font-size: 15px;
-  text-align: center;
-`;
-
-const OutsetBox = () => (
-  <Div>
-    <Paragraph>Get started with styled-components</Paragraph>
-  </Div>
-)
-
-export default OutsetBox
-```
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How do you apply vendor prefixes to inline styles in React?
-
-In React, inline styles keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes other than `ms` should begin with a capital letter.
-
-```js
-const divStyle = {
-  background: "#eee",
-  color: "blue",
-  padding: "20px",
-  margin: "20px",
-  WebkitTransition: "all", // note the capital 'W' here
-  msTransition: "all" // 'ms' is the only lowercase vendor prefix
-};
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What are the popular animation package in React?
-
-**ReactCSSTransitionGroup**
-
-ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is an easy way to perform CSS transitions and animations when a React component enters or leaves the DOM. It has four components that display transitions from one component state to another using a declarative API used for mounting and unmounting of components:
-
-1. Transition
-2. CSSTransition
-3. SwitchTransition
-4. TransitionGroup
-
-*Example:*
-
-```js
-import ReactCSSTransitionGroup from 'react-transition-group'
-
-class AnimationComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {items: ['hello', 'world', 'click', 'me']}
-    this.handleAdd = this.handleAdd.bind(this)
-  }
-
-  handleAdd() {
-    const newItems = this.state.items.concat([
-      prompt('Enter some text')
-    ])
-    this.setState({items: newItems})
-  }
-
-  handleRemove(i) {
-    let newItems = this.state.items.slice()
-    newItems.splice(i, 1)
-    this.setState({items: newItems})
-  }
-
-  render() {
-    const items = this.state.items.map((item, i) => (
-      <div key={item} onClick={() => this.handleRemove(i)}>
-        {item}
-      </div>
-    ))
-
-    return (
-      <div>
-        <button onClick={this.handleAdd}>Add Item</button>
-        <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-          {items}
-        </ReactCSSTransitionGroup>
-      </div>
-    )
-  }
-}
-```
-
-In this component, when a new item is added to ReactCSSTransitionGroup it will get the `example-enter` CSS class and the `example-enter-active` CSS class added in the next tick. This is a convention based on the `transitionName` prop.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
