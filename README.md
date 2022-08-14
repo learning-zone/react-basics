@@ -1712,6 +1712,48 @@ ReactDOM.render(
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you set a timer to update every second?
+
+Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
+
+**Example:**
+
+```js
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      time: new Date().toLocaleString()
+    }
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID)
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    })
+  }
+  render() {
+    return (
+      <p className="App-clock">
+        The time is {this.state.time}.
+      </p>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. Differentiate between stateful and stateless components?
 
 Stateful and stateless components have many different names. They are also known as:
@@ -9820,48 +9862,6 @@ setInterval(showTime, 1000);
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. How do you set a timer to update every second?
-
-Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
-
-**Example:**
-
-```js
-class Clock extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      time: new Date().toLocaleString()
-    }
-  }
-  componentDidMount() {
-    this.intervalID = setInterval(
-      () => this.tick(),
-      1000
-    )
-  }
-  componentWillUnmount() {
-    clearInterval(this.intervalID)
-  }
-  tick() {
-    this.setState({
-      time: new Date().toLocaleString()
-    })
-  }
-  render() {
-    return (
-      <p className="App-clock">
-        The time is {this.state.time}.
-      </p>
-    )
-  }
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
