@@ -11073,7 +11073,7 @@ If your function component renders the same result given the same props, you can
 
 In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
 
-**Read More:**
+**Reference:**
 
 * *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
 
@@ -14142,7 +14142,7 @@ Relay is a JavaScript framework for fetching and managing GraphQL data in React 
 
 Relay achieves this by combining declarative data fetching and a static build step. With declarative data fetching, components declare what data they need, and Relay figures out how to efficiently fetch it. During the static build step, Relay validates and optimizes queries, and pre-computes artifacts to achieve faster runtime performance.
 
-**Read More:**
+**Reference:**
 
 * *[https://relay.dev/docs/](https://relay.dev/docs/)*
 
@@ -14656,7 +14656,7 @@ Some of the features in official documentation are as follows −
   <img src="assets/redux-devtool.png" alt="Redux DevTool" width="400px" />
 </p>
 
-**Read More**
+**Reference:**
 
 * *[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
 
