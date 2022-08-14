@@ -2408,6 +2408,41 @@ export default class App extends React.PureComponent {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is difference between Pure Component vs Component?
+
+PureComponent is exactly the same as Component except that it handles the `shouldComponentUpdate()` method. The major difference between React.PureComponent and React.Component is PureComponent does a shallow comparison on state change. It means that when comparing scalar values it compares their values, but when comparing objects it compares only references. It helps to improve the performance of the app.
+
+A component rerenders every time its parent rerenders, regardless of whether the component\'s props and state have changed.
+On the other hand, a pure component will not rerender if its parent rerenders, unless the pure component\'s `props` (or `state`) have changed.
+
+**When to use React.PureComponent:**
+
+* State/Props should be an immutable object
+* State/Props should not have a hierarchy
+* We should call forceUpdate when data changes
+
+**Example:**
+
+```js
+// Regular class component
+class App extends React.Component {
+  render() {
+    return <h1>Component Example !</h1>
+  }
+}
+
+// React Pure class component
+class Message extends React.Component {
+  render() {
+    return <h1>PureComponent Example !</h1>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What are the problems of using render props with PureComponent?
 
 If you create a function inside a **render** method, it negates the purpose of pure component. Because the shallow prop comparison will always return **false** for new props, and each **render** in this case will generate a new value for the render prop. You can solve this issue by defining the render function as instance method.
@@ -10168,41 +10203,6 @@ const propsProxyHOC = (WrappedComponent) => {
 * Accessing the instance via Refs (be careful, avoid using refs)
 * Abstracting State
 * Wrapping/Composing the WrappedComponent with other elements
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. What is difference between Pure Component vs Component?
-
-PureComponent is exactly the same as Component except that it handles the `shouldComponentUpdate()` method. The major difference between React.PureComponent and React.Component is PureComponent does a shallow comparison on state change. It means that when comparing scalar values it compares their values, but when comparing objects it compares only references. It helps to improve the performance of the app.
-
-A component rerenders every time its parent rerenders, regardless of whether the component\'s props and state have changed.
-On the other hand, a pure component will not rerender if its parent rerenders, unless the pure component\'s `props` (or `state`) have changed.
-
-**When to use React.PureComponent**
-
-* State/Props should be an immutable object
-* State/Props should not have a hierarchy
-* We should call forceUpdate when data changes
-
-**Example:**
-
-```js
-// Regular class component
-class App extends React.Component {
-  render() {
-    return <h1>Component Example !</h1>
-  }
-}
-
-// React Pure class component
-class Message extends React.Component {
-  render() {
-    return <h1>PureComponent Example !</h1>
-  }
-}
-```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
