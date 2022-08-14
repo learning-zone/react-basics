@@ -7988,6 +7988,30 @@ function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to set focus on an input field after rendering?
+
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+
+```js
+class AutoFocusTextInput extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.textInput = React.createRef()
+  }
+  componentDidMount() {
+    this.textInput.current.focus()
+  }
+  render() {
+    return <input ref={this.textInput} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 16. REACT COMPOSITION
 
 <br/>
