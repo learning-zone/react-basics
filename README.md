@@ -11083,18 +11083,7 @@ In order to address the issue with our long chat feed, the React team recommends
 
 ## Q. What do you understand with the term polling in React?
 
-Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals.
-
-```js
-useEffect(() => {
-  const interval = setInterval(() => {
-    console.log('This will run every second!')
-  }, 1000)
-  return () => clearInterval(interval)
-}, [])
-```
-
-The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
+Using **setInterval()** inside React components allows us to execute a function or some code at specific intervals. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
 
 **Example:**
 
