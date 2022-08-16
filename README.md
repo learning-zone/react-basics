@@ -11096,36 +11096,31 @@ useEffect(() => {
 
 The code above schedules a new interval to run every second inside of the useEffect Hook. This will schedule once the React component mounts for the first time. To properly clear the interval, we return `clearInterval()` from the `useEffect()` Hook, passing in the interval.
 
-**Using setInterval in React Components:**
-
-To schedule a new interval, we call the setInterval method inside of a React component, like so:
+**Example:**
 
 ```js
-import React, { useState, useEffect } from 'react'
+/**
+ * Polling in React
+ */
+import React, { useState, useEffect } from "react";
 
-const IntervalExample = () => {
-  const [seconds, setSeconds] = useState(0)
+export default function App() {
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(seconds => seconds + 1)
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+      setSeconds((seconds) => seconds + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {seconds} seconds have elapsed since mounting.
-      </header>
-    </div>
-  )
+  return <h2>{seconds} seconds have elapsed since mounting.</h2>;
 }
-
-export default IntervalExample
 ```
 
 The example above shows a React component, IntervalExample, scheduling a new interval once it mounts to the DOM. The interval increments the seconds state value by one, every second.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/polling-in-react-obsl1k?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
