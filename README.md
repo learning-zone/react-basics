@@ -11175,30 +11175,42 @@ A **re-render** is when React calls the function component again to get a new se
 **Example:**
 
 ```js
-class App extends React.Component {
+/**
+ * React Render()
+ */
+import React from "react";
+
+/**
+ * Message Component
+ * @param {*} props
+ */
+function Message(props) {
+  return <h2>{props.name}</h2>;
+}
+
+/**
+ * App Component
+ */
+export default class App extends React.Component {
   state = {
-    showUser: false
-  }
+    showMessage: false
+  };
 
   render() {
     return (
       <div>
-        {this.state.showUser && <User name="Brad" />}
-        <button onClick={() => this.setState({ showUser: true })}>
-          Show User
-        </button>
-        <button onClick={() => this.setState({ showUser: false })}>
-          Hide User
-        </button>
+        <button onClick={() => this.setState({ showMessage: true })}> Show Message </button>
+        <button onClick={() => this.setState({ showMessage: false })}> Hide Message </button>
+        {this.state.showMessage && <Message name="Hello React!" />}
       </div>
-    )
+    );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 Internally, React will create an instance of `App` and will eventually call the `render()` method to get the first set of instructions for what it needs to build in the DOM. Anytime React calls the render method of a class-based component, we call that a **render**.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-mh521n?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
