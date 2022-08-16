@@ -11718,7 +11718,7 @@ Normally, a functional or a class component renders a tree of React elements (us
 ReactDOM.createPortal(child, container)
 ```
 
-**Features**
+**Features:**
 
 * It transports its children component into a new React portal which is appended by default to `document.body`.
 * It can also target user specified DOM element.
@@ -11726,61 +11726,46 @@ ReactDOM.createPortal(child, container)
 * It supports returning arrays (no wrapper div\'s needed)
 * It uses `<Portal />` and `<PortalWithState />` so there is no compromise between flexibility and convenience.
 
-**When to use**
-
-The common use-cases of React portal include:
-
-* Modals
-* Tooltips
-* Floating menus
-* Widgets
-
-**Installation**
+**Installation:**
 
 ```bash
 npm install react-portal --save
 ```
 
-*Example:* React Portal
+**Example:** 
 
 ```js
-// App.js
+/**
+ * React Portal
+ */
+import PortalExample from "./PortalExample.js";
 
-import React, {Component} from 'react'
-import './App.css'  
-import PortalDemo from './PortalDemo.js'  
-  
-class App extends Component {
-    render () {
-      return (
-        <div className='App'>  
-          <PortalDemo />  
-        </div>
-        )
-    }
+export default function App() {
+  return (
+    <div>
+      <h2>React Component Example</h2>
+      <PortalExample />
+    </div>
+  );
 }
 
-export default App
+
+/**
+ * Portal Component
+ */
+import React from "react";
+import ReactDOM from "react-dom";
+
+
+export default function PortalExample() {
+  return ReactDOM.createPortal(
+    <h2>React Portal Example</h2>,
+    document.getElementById("portal-root")
+  );
+}
 ```
 
-The next step is to create a portal component and import it in the App.js file.
-
-```js
-// PortalDemo.js
-
-import React from 'react'  
-import ReactDOM from 'react-dom'  
-  
-function PortalDemo(){  
-    return ReactDOM.createPortal(  
-      <h1>Portals Demo</h1>,  
-      document.getElementById('portal-root')  
-    )  
-}  
-export default PortalDemo
-```
-
-Now, open the Index.html file and add a <div id="portal-root"></div> element to access the child component outside the root node.
+Now, open the Index.html file and add a `<div id="portal-root"></div>` element to access the child component outside the root node.
 
 ```html
 <!-- index.html -->
@@ -11802,6 +11787,8 @@ Now, open the Index.html file and add a <div id="portal-root"></div> element to 
   </body>  
 </html>  
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/keen-clarke-y10jp2?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
