@@ -11796,7 +11796,7 @@ Now, open the Index.html file and add a `<div id="portal-root"></div>` element t
 
 ## Q. What is ReactDOMServer?
 
-The `ReactDOMServer` object enables you to render components to static markup. Typically, it\'s used on a Node server:
+The **ReactDOMServer** object enables you to render components to static markup. Typically, it\'s used on a Node server:
 
 ```js
 // ES modules
@@ -12092,6 +12092,8 @@ Middleware is the suggested way to extend Redux with custom functionality. Middl
 ```js
 const store = createStore(reducers, initialState, middleware);
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redux-hello-world-y3i7u6?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
