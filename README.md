@@ -235,11 +235,11 @@ When an element type starts with a lowercase letter, it refers to a built-in com
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What are fragments? Why are fragments better than container divs?
+## Q. What are fragments?
 
 Fragments allows to group a list of children without adding extra nodes to the DOM.
 
-*Example:*
+**Example:**
 
 ```js
 class App extends React.Component {
@@ -569,7 +569,7 @@ Webpack is a modular build tool that has two sets of functionality — Loaders a
 
 [create-react-app](https://create-react-app.dev/docs/getting-started/), a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
 
-*Example:* Quick Start
+**Example:** Quick Start
 
 ```bash
 npx create-react-app my-app
@@ -2369,7 +2369,7 @@ renderContent() {
 
 The `componentDidMount()` is executed after the first render only on the client side. This is where AJAX requests and DOM or state updates should occur. This method is also used for integration with other JavaScript frameworks and any functions with delayed execution such as `setTimeout()` or `setInterval()`.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { Component } from 'react'
@@ -2412,7 +2412,7 @@ export default App
 
 The `componentWillMount()` method is executed before rendering, on both the server and the client side. `componentWillMount()` method is the least used lifecycle method and called before any HTML element is rendered. It is useful when we want to do something programatically right before the component mounts.
 
-*Example:*
+**Example:**
 
 ```js
 import React, { Component } from 'react'
@@ -3814,7 +3814,7 @@ class MyButton extends React.Component {
 
 The `React.cloneElement` only works if your child is a single React element.
 
-*Example:*
+**Example:**
 
 ```js
 <ReactCSSTransitionGroup
@@ -3831,7 +3831,7 @@ The `React.cloneElement` only works if your child is a single React element.
 
 For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
 
-*Example:*
+**Example:**
 
 ```js
 class Users extends React.Component {
@@ -5401,7 +5401,7 @@ string type
 
 The `SyntheticEvent` is pooled. This means that the SyntheticEvent object will be reused and all properties will be nullified after the event callback has been invoked. This is for performance reasons. As such, you cannot access the event in an `asynchronous` way.
 
-*Example:*
+**Example:**
 
 ```js
 function onClick(event) {
@@ -9420,7 +9420,7 @@ Ref forwarding is a technique for passing a `ref` through a component to one of 
 
 We can forward a `ref` to a component by using the `React.forwardRef()` function. Ref forwarding allows components to take a ref they receive and pass it further down (in other words, "forward" it) to a child.
 
-*Example:*
+**Example:**
 
 ```js
 // Ref.js
@@ -10257,7 +10257,7 @@ ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is
 3. SwitchTransition
 4. TransitionGroup
 
-*Example:*
+**Example:**
 
 ```js
 import ReactCSSTransitionGroup from 'react-transition-group'
@@ -11606,7 +11606,7 @@ As a developer we are creating tree of components, react then takes this tree, p
 
 Also synced versions between Virtual DOM and "real" DOM are served by libraries such as **ReactDOM**. React needs to be very fast at comparing those trees, so it uses **heuristic algorithm** with complexity of **O(n)**, so this says for 1000 nodes we need 1000 comparasions. This approach is used instead of state of the art algorithms, which have complexity of **O(n\^3)** => for 1000 nodes we need 1 bilion comparasions.
 
-*Example:* Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
+**Example:** Let\'s build a simple component that adds two numbers. The numbers will be entered in an input field.
 
 ```js
 class App extends React.Component {
@@ -11763,7 +11763,7 @@ The **Server-side rendering (SSR)** is a popular technique for rendering a clien
 * This approach can be useful for search engine optimization (SEO) when indexing does not handle JavaScript properly.
 * It is great when people share a page of your site on social media, as they can easily gather the metadata needed to nicely share the link (images, title, description..)
 
-*Example:*
+**Example:**
 
 **Creating an Express Server**
 
