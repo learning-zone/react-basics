@@ -1839,7 +1839,6 @@ export default App;
 ```js
 /**
  * Dependent Dropdown in React
- *
  */
 import { useState } from "react";
 
