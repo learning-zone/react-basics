@@ -190,80 +190,32 @@ Destructuring is a convenient way of accessing multiple properties stored in obj
 
 When used, destructuring does not modify an object or array but rather copies the desired items from those data structures into variables. These new variables can be accessed later on in a React component.
 
-**1. Destructuring in JS:**
-
-Without destructuring
+**Example:**
 
 ```js
-const person = {
-  firstName: "Alex",
-  lastName: "K",
-  age: 25,
-  sex: ""
-}
+/**
+ * Destructuring in React
+ */
+import React from "react";
 
-const first = person.firstName
-const age = person.age
-const sex = person.sex || "Male"
-
-console.log(first) // "Alex"
-console.log(age) // 25
-console.log(sex) // Male --> default value
-```
-
-With destructuring
-
-```js
-const person = {
-  firstName: "Alex",
-  lastName: "K",
-  age: 25,
-  sex: "M"
-}
-
-const { firstName, lastName, age, sex } = person
-
-console.log(firstName) // Alex
-console.log(lastName) // K
-console.log(age) // 25
-console.log(sex) // M
-```
-
-**2. Destructuring in React:**
-
-*Example:*
-
-```js
-import React from 'react'
-import Button from '@material-ui/core/Button'
-
-
-export default function Events() {
-
-  const [counter, setcounter] = React.useState(0)
+export default function App() {
+  // Destructuring
+  const [counter, setcounter] = React.useState(0);
 
   return (
-      <div className='Counter'>
-          <div>Result: {counter}</div>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => setcounter(counter + 1)}
-          >
-            Increment
-          </Button>
+    <>
+      <button onClick={() => setcounter(counter + 1)}> Increment </button>
+      <button onClick={() => setcounter(counter > 0 ? counter - 1 : 0)}>
+        Decrement
+      </button>
 
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => setcounter((counter > 0) ? (counter - 1) : 0)}
-          >
-            Decrement
-          </Button>
-      </div>
-    )
+      <h2>Result: {counter}</h2>
+    </>
+  );
 }
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/destructuring-in-react-6fxnbh?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
