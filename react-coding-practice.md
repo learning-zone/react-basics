@@ -1838,55 +1838,49 @@ export default App;
 
 ```js
 /**
- * Dependent Dropdowns in React
+ * Dependent Dropdown in React
+ *
  */
 import { useState } from "react";
 
-const dropDownData1 = [
-  {
-    name: "Delhi",
-    cities: ["Ali Pur", "Dhanbad", "Hazaribag", "Koderma", "Ramgarh", "Ranchi"]
+const data = [
+  { name: "Delhi",
+    cities: ["Siri", "Sultanpur", "Tughlqabad", "Jahanpanah", "Firozobad"]
   },
-  {
-    name: "Maharashtra",
+  { name: "Maharashtra",
     cities: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Jalgaon"]
   },
-  {
-    name: "West Bengal",
+  { name: "West Bengal",
     cities: ["Kolkata", "Asansol", "Siliguri", "Durgapur", "Baharampur"]
   },
-  {
-    name: "Tamil Nadu",
+  { name: "Tamil Nadu",
     cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"]
   }
 ];
 
 export default function App() 
 {
-  const [selectedDd1, setSelectedDd1] = useState(""); //storing state of drop down 1
-  const [selectedDd2, setSelectedDd2] = useState([]); //storing state of corresponding drop down 2
+  const [capitals, setCapitals] = useState("");
+  const [cities, setCities] = useState([]);
+
   function updateSelect(e) {
-    setSelectedDd1(e.target.value); //saving state of current selected drop down 1
-    if (selectedDd1 !== undefined) {
-      setSelectedDd2(
-        dropDownData1.find((data) => data.name === e.target.value).cities
-      ); //finding and saving the data for drop dop 2 related to the data of drop down 1
+    setCapitals(e.target.value); //saving state of current selected drop down 1
+    if (capitals !== undefined) {
+      setCities(data.find((data) => data.name === e.target.value).cities); //finding and saving the data for drop dop 2 related to the data of drop down 1
     }
   }
   return (
     <div>
-      <select value={selectedDd1} onChange={updateSelect}>
-        <option disabled>---SELECT---</option>
-        {dropDownData1.map((dd1) => {
-          return <option value={dd1.name}>{dd1.name}</option>;
+      <select value={capitals} onChange={updateSelect}>
+        <option disabled> --- SELECT --- </option>
+        {data.map((capital) => {
+          return <option value={capital.name}>{capital.name}</option>;
         })}
       </select>
       <select>
-        <option selected disabled>
-          ------------
-        </option>
-        {selectedDd2.map((dd2) => {
-          return <option value={dd2}>{dd2}</option>;
+        <option selected disabled> --- SELECT --- </option>
+        {cities.map((city) => {
+          return <option value={city}>{city}</option>;
         })}
       </select>
     </div>
