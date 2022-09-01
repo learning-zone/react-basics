@@ -1863,9 +1863,10 @@ export default function App()
   const [cities, setCities] = useState([]);
 
   function updateSelect(e) {
-    setCapitals(e.target.value); //saving state of current selected drop down 1
+    setCapitals(e.target.value); // Saving state of current selected drop down 1
     if (capitals !== undefined) {
-      setCities(data.find((data) => data.name === e.target.value).cities); //finding and saving the data for drop dop 2 related to the data of drop down 1
+      // Finding and saving the data for drop dop 2 related to the data of drop down 1
+      setCities(data.find((data) => data.name === e.target.value).cities); 
     }
   }
   return (
