@@ -583,25 +583,30 @@ npm start
 
 ## Q. What is the difference between ReactDOM and React?
 
-```js
-import React from 'react' /* importing react */
-import ReactDOM from 'react-dom' /* importing react-dom */
+The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
 
-class MyComponent extends React.Component {
-
-  render() {
-    return <div>Hello World</div>
-  }
-})
-
-ReactDOM.render(<MyComponent />, node)
-
-```
 **React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
 
 **ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
 
-The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
+**Example:**
+
+```js
+/**
+ * React vs ReactDOM
+ */
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+export default function App() {
+  return <h1>Hello React</h1>;
+}
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(<App />);
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
