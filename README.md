@@ -595,7 +595,6 @@ The ReactDOM module exposes DOM-specific methods, while React has the core tools
 /**
  * React vs ReactDOM
  */
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 export default function App() {
