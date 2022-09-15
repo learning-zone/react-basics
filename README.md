@@ -608,6 +608,8 @@ const root = createRoot(rootElement);
 root.render(<App />);
 ```
 
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vs-reactdom-o52zfc?file=/src/index.js)**
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
