@@ -1481,49 +1481,56 @@ Specifically, calling `setState()` in an unmounted component means that your app
 **Example:**
 
 ```js
-class News extends Component {
-  _isMounted = false // flag to check Mounted
+/**
+ * setState() in unmounted component
+ */
+import React, { Component } from "react";
+import axios from "axios";
+
+export default class App extends Component {
+  _isMounted = false; // flag to check Mounted
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      news: [],
-    }
+      news: []
+    };
   }
 
   componentDidMount() {
-    this._isMounted = true
+    this._isMounted = true;
 
     axios
-      .get('https://hn.algolia.com/api/v1/search?query=react')
-      .then(result => {
+      .get("https://hn.algolia.com/api/v1/search?query=react")
+      .then((result) => {
         if (this._isMounted) {
           this.setState({
-            news: result.data.hits,
-          })
+            news: result.data.hits
+          });
         }
-      })
+      });
   }
 
   componentWillUnmount() {
-    this._isMounted = false
+    this._isMounted = false;
   }
 
   render() {
     return (
       <ul>
-        {this.state.news.map(topic => (
+        {this.state.news.map((topic) => (
           <li key={topic.objectID}>{topic.title}</li>
         ))}
       </ul>
-    )
-  }
+    );
   }
 }
 ```
 
 Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-setstate-in-unmount-qmjn7m?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
