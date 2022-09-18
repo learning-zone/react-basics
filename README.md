@@ -1546,78 +1546,86 @@ The App component containing PlayerContent and PlayerDetails component. PlayerCo
 
 The app component contains the state for both the component. The selected player is shown once we click on the one of the player button.
 
-App.js
-
 ```js
-import React from 'react'
-import PlayerContent from './PlayerContent'
-import PlayerDetails from './PlayerDetails'
-import './App.css'
+/**
+ * Lifting State Up
+ */
+import React from "react";
+import PlayerContent from "./PlayerContent";
+import PlayerDetails from "./PlayerDetails";
 
-class App extends React.Component {
-   constructor(props) {
-      super(props)
-      this.state = { selectedPlayer: [0,0], playerName: ''}
-      this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this)
-   }
-   updateSelectedPlayer(id, name) {
-      var arr = [0, 0, 0, 0]
-      arr[id] = 1
-      this.setState({
-         playerName: name,
-         selectedPlayer: arr
-      })
-   }
-   render () {
-      return (
-        <div>
-            <PlayerContent active={this.state.selectedPlayer[0]}
-            clickHandler={this.updateSelectedPlayer} id={0} name="David"/>
-            <PlayerContent active={this.state.selectedPlayer[1]}
-            clickHandler={this.updateSelectedPlayer} id={1} name="Steve"/>
-            <PlayerDetails name={this.state.playerName}/>
-        </div>
-      )
-   }
-}
-export default App
-```
-
-PlayerContent.js
-
-```js
-import React , { Component} from 'react'
-
-class PlayerContent extends Component {
-   render () {
-      return (
-        <button
-          onClick={() => {this.props.clickHandler(this.props.id, this.props.name)}}
-          style={{color: this.props.active? 'red': 'blue'}}
-        >
-          {this.props.name}
-        </button>
-      )
-   }
-}
-export default PlayerContent
-```
-
-PlayerDetails.js
-
-```js
-import React, { Component } from 'react'
-
-class PlayerDetails extends Component {
-  render () {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedPlayer: [0, 0], playerName: "" };
+    this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this);
+  }
+  updateSelectedPlayer(id, name) {
+    var arr = [0, 0, 0, 0];
+    arr[id] = 1;
+    this.setState({
+      playerName: name,
+      selectedPlayer: arr
+    });
+  }
+  render() {
     return (
-      <div>{this.props.name}</div>
-    )
+      <div>
+        <PlayerContent
+          active={this.state.selectedPlayer[0]}
+          clickHandler={this.updateSelectedPlayer}
+          id={0}
+          name="Player 1"
+        />
+        <PlayerContent
+          active={this.state.selectedPlayer[1]}
+          clickHandler={this.updateSelectedPlayer}
+          id={1}
+          name="Player 2"
+        />
+        <PlayerDetails name={this.state.playerName} />
+      </div>
+    );
   }
 }
-
-export default PlayerDetails
 ```
+
+```js
+/**
+ * PlayerContent
+ */
+import React, { Component } from "react";
+
+export default class PlayerContent extends Component {
+  render() {
+    return (
+      <button
+        onClick={() => {
+          this.props.clickHandler(this.props.id, this.props.name);
+        }}
+        style={{ color: this.props.active ? "red" : "blue" }}
+      >
+        {this.props.name}
+      </button>
+    );
+  }
+}
+```
+
+```js
+/**
+ * PlayerDetails
+ */
+import React, { Component } from "react";
+
+export default class PlayerDetails extends Component {
+  render() {
+    return <h2>{this.props.name}</h2>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lifting-state-up-z8xkci?file=/src/App.js)**
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
