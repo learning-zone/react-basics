@@ -12417,7 +12417,7 @@ The following are details of how Redux works:
 
 ## Q. What is a store in Redux?
 
-A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+A store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
 
 **Example:**
 
@@ -12605,7 +12605,7 @@ There is typically a payload value that contains what the user is sending and wo
 
 ## Q. How to create action creators react with redux?
 
-**Action Type**
+**1. Action Type:**
 
 An action type is a string that simply describes the type of an action. They\'re commonly stored as constants or collected in enumerations to help reduce typos.
 
@@ -12620,11 +12620,13 @@ export const Actions = {
 }
 ```
 
-**Action**
+**2. Action:**
 
 An action is like a message that we send (i.e. dispatch) to our central Redux store. It can literally be anything. But ideally we want to stick to an agreed-upon pattern. And the standard pattern is as follows (this is a TypeScript type declaration):
 
-```ts
+**Example:**
+
+```js
 type Action = {
     type: string;    // Actions MUST have a type
     payload?: any;   // Actions MAY have a payload
@@ -12643,7 +12645,11 @@ An action to fetch the user named "Alex" might look something like this
 }
 ```
 
-**Action Creator**
+**3. Action Creator:**
+
+When writing basic Redux, an action creator simply returns an action. You would typically dispatch the action to your store immediately.
+
+**Example:**
 
 ```js
 export const getUserDetailsRequest = id => ({
@@ -12652,10 +12658,8 @@ export const getUserDetailsRequest = id => ({
 })
 ```
 
-When writing basic Redux, an action creator simply returns an action. You would typically dispatch the action to your store immediately.
-
 ```js
-store.dispatch(getUserDetailsRequest('Alex'))
+store.dispatch(getUserDetailsRequest('Ram'))
 ```
 
 Although, realistically, you\'ll be doing this via dispatch properties that are passed into a React component like this:
@@ -12663,7 +12667,7 @@ Although, realistically, you\'ll be doing this via dispatch properties that are 
 ```js
 // ES6
 export const mapDispatchToProps = dispatch => ({
-  onClick: () => dispatch(getUserDetailsRequest('Alex'))
+  onClick: () => dispatch(getUserDetailsRequest('Ram'))
 })
 ```
 
