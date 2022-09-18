@@ -12422,20 +12422,26 @@ A Store is an object that holds the whole state tree of your application. The Re
 **Example:**
 
 ```js
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from './reducers'
-import App from './components/App'
+/**
+ * store in Redux
+ */
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+import App from "./components/App";
 
-const store = createStore(rootReducer)
- render (
-   <provider store="{store}">
-     <app>
-   </app></provider>,
-   document.getElementById('root')
- )
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+// create store
+const store = createStore(rootReducer);
+
+root.render(
+  <provider store="{store}">
+    <App />
+  </provider>
+);
 ```
 
 When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
