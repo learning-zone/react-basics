@@ -1633,11 +1633,16 @@ export default class PlayerDetails extends Component {
 
 ## Q. What is "Children" in React?
 
-The children, in React, refer to the generic box whose contents are unknown until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use. The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
+In React, **children** refer to the generic box whose contents are **unknown** until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use.
+
+The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
 
 **Example:**
 
 ```js
+/**
+ * Children in React
+ */
 const Picture = (props) => {
   return (
     <div>
@@ -1652,13 +1657,15 @@ This component contains an `<img>` that is receiving some props and then it is d
 Whenever this component is invoked `{props.children}` will also be displayed and this is just a reference to what is between the opening and closing tags of the component.
 
 ```js
-//App.js
+/**
+ * App.js
+ */
 
 render () {
   return (
     <div className='container'>
       <Picture key={picture.id} src={picture.src}>
-          //what is placed here is passed as props.children  
+          // what is placed here is passed as props.children  
       </Picture>
     </div>
   )
