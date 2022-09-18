@@ -1538,7 +1538,7 @@ Here, even though the component got unmounted and the request resolves eventuall
 
 ## Q. What is Lifting State Up in ReactJS?
 
-The common approach to share state between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
+The common approach to share **state** between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
 
 **Example:**
 
