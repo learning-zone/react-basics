@@ -1665,7 +1665,7 @@ render () {
   return (
     <div className='container'>
       <Picture key={picture.id} src={picture.src}>
-          // what is placed here is passed as props.children  
+          {/** what is placed here is passed as props.children **/}
       </Picture>
     </div>
   )
