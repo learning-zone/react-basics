@@ -1363,6 +1363,8 @@ function App() {
 }
 ```
 
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/conditional-attributes-n13jg0?file=/src/App.js)**
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
