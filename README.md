@@ -1561,7 +1561,7 @@ export default class App extends React.Component {
     this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this);
   }
   updateSelectedPlayer(id, name) {
-    var arr = [0, 0, 0, 0];
+    const arr = [0, 0, 0, 0];
     arr[id] = 1;
     this.setState({
       playerName: name,
