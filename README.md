@@ -12626,7 +12626,7 @@ An action is like a message that we send (i.e. dispatch) to our central Redux st
 
 **Example:**
 
-```js
+```ts
 type Action = {
     type: string;    // Actions MUST have a type
     payload?: any;   // Actions MAY have a payload
@@ -12636,12 +12636,12 @@ type Action = {
 }
 ```
 
-An action to fetch the user named "Alex" might look something like this
+An action to fetch the user named "Ram" might look something like this
 
 ```js
 {
     type: 'GET_USER_DETAILS_REQUEST',
-    payload: 'Alex'
+    payload: 'Ram'
 }
 ```
 
