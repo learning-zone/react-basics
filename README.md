@@ -1373,7 +1373,8 @@ export default function App() {
 
 ## Q. How would you prevent a component from rendering?
 
-React `shouldComponentUpdate()` is a performance optimization method, and it tells React to avoid re-rendering a component, even if state or prop values may have changed. This method only used when a component will stay static or pure.
+React **shouldComponentUpdate()** is a performance optimization method, and it tells React to avoid re-rendering a component, even if state or prop values may have changed. This method only used when a component will stay static or pure.
+
 The React `shouldComponentUpdate()` method return `true` if it needs to re-render or `false` to avoid being re-render.
 
 **Syntax:**
@@ -1385,7 +1386,10 @@ shouldComponentUpdate(nextProps, nextState){ }
 **Example:**
 
 ```js
-class App extends React.Component {
+/**
+ * Prevent a component from rendering
+ */
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
