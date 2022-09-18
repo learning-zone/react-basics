@@ -1347,19 +1347,21 @@ render() {
 Inline conditionals in attribute props
 
 ```js
-import React from 'react'
+/**
+ * Conditionally add attributes
+ */
+import React from "react";
 
-function App() {
+export default function App() {
+  const [mood] = React.useState("happy");
 
-  const [mood] = React.useState("happy")
-
-  const greet = () => alert("Hi there! :)")
+  const greet = () => alert("Hi there! :)");
 
   return (
     <button onClick={greet} disabled={"happy" === mood ? false : true}>
       Say Hi
     </button>
-  )
+  );
 }
 ```
 
