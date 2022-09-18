@@ -913,6 +913,9 @@ You can simply use `Array.prototype.map` with ES6 arrow function syntax.
 **Example:**
 
 ```js
+/**
+ * Loop inside JSX
+ */
 const animals = [
   { id: 1, animal: "Dog" },
   { id: 2, animal: "Bird" },
