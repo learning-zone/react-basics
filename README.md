@@ -12720,6 +12720,8 @@ Reducers are pure functions that take the current state of an application, perfo
 
 It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
 
+**Example:**
+
 ```js
 const LoginComponent = (state = initialState, action) => {
     switch (action.type) {
