@@ -1315,7 +1315,6 @@ function LogInComponent(props) {
 }
 
 ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
   <LogInComponent isLoggedIn={false} />,
   document.getElementById('root')
 );
