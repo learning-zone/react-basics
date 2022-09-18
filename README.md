@@ -6,9 +6,9 @@
 
 ## Related Interview Questions
 
-* [HTML5 Interview Questions](https://github.com/learning-zone/html-interview-questions/blob/master/README.md)
-* [CSS Interview Questions](https://github.com/learning-zone/css-interview-questions/blob/master/README.md)
-* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions/blob/master/README.md)
+* [HTML5 Interview Questions](https://github.com/learning-zone/html-interview-questions)
+* [CSS Interview Questions](https://github.com/learning-zone/css-interview-questions)
+* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions)
 * [React Coding Practice](react-coding-practice.md)
 * [React Quick Reference](react-quick-reference.md)
 * [Redux Quick Reference](redux-quick-reference.md)
