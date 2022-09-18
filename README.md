@@ -12679,7 +12679,12 @@ export const mapDispatchToProps = dispatch => ({
 
 You can dispatch an action in `componentDidMount()` method and in `render()` method you can verify the data.
 
+**Example:**
+
 ```js
+/**
+ * Dispatch an action on load
+ */
 class App extends Component {
   componentDidMount() {
     this.props.fetchData()
