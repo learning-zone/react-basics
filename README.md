@@ -1084,12 +1084,12 @@ Components are the building blocks of any React app and a typical React app will
 
 A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
 
-**Stateless Component:**
+**1. Stateless Component:**
 
 ```js
 import React from 'react'
 
-const ExampleComponent = (props) => {
+const ExampleComponent = () => {
     return (<h1>Welcome to React!</h1>)
 }
 
@@ -1106,7 +1106,7 @@ export default class App extends React.Component {
 
 The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
 
-**Stateful Component:**
+**2. Stateful Component:**
 
 ```js
 import React from 'react'
