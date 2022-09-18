@@ -1430,30 +1430,29 @@ export default class App extends React.Component {
 
 ## Q. When would you use StrictMode component in React?
 
-`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants. Strict mode checks are run in development mode only; they do not impact the production build.
+The **StrictMode** is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+
+Strict mode checks are run in development mode only; they do not impact the production build.
+
+**Example:**
 
 ```js
-import React from 'react'
+/**
+ * StrictMode
+ */
+import { StrictMode } from "react";
+import MyComponent from "./MyComponent";
 
 export default function App() {
   return (
-    <Fragment>
-      <Header />
-      <React.StrictMode>
-        <div>
-          <ComponentOne />
-          <ComponentTwo />
-        </div>
-      </React.StrictMode>
-      <Footer />
-    </Fragment>
-  )
+    <StrictMode>
+      <MyComponent />
+    </StrictMode>
+  );
 }
 ```
 
-In the above example, strict mode checks will not be run against the `<Header>` and `<Footer>` components. However, `<ComponentOne>` and `<ComponentTwo>`, as well as all of their descendants, will have the checks.
-
-`React.StrictMode`, in order to be efficient and avoid potential problems by any side-effects, needs to trigger some methods and lifecycle hooks twice. These are:
+React StrictMode, in order to be efficient and avoid potential problems by any side-effects, needs to trigger some methods and lifecycle hooks twice. These are:
 
 * Class component constructor() method
 * The render() method
