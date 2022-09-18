@@ -4946,10 +4946,11 @@ Arrow functions are exempt from this behavior because they use **lexical** `this
 /**
  * Event Handling in React
  */
+import React from "react";
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -4958,11 +4959,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <button type="button" onClick={this.handleClick}>
-        Click Me
-      </button>
-    );
+    return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
 ```
