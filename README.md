@@ -6015,19 +6015,15 @@ Axios is a promise based HTTP client for making HTTP requests from a browser to 
  * GET Request using Axios
  */
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function App() {
-
   const [users, setUsers] = useState([]);
 
   const fetchData = () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setUsers(data);
-      });
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      setUsers(response.data);
+    });
   };
 
   useEffect(() => {
