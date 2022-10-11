@@ -6,7 +6,7 @@ Try to use JSX shorthand for passing boolean variables. Let\'s say you want to c
 
 **Bad:**
 
-```js
+```jsx
 return (
   <Navbar showTitle={true} />
 );
@@ -14,7 +14,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 return(
   <Navbar showTitle />  
 )
@@ -30,7 +30,7 @@ Let\'s say you want to show a particular user\'s details based on role.
 
 **Bad:**
 
-```js
+```jsx
 const { role } = user;
 
 if(role === ADMIN) {
@@ -42,7 +42,7 @@ if(role === ADMIN) {
 
 **Good:**
 
-```js
+```jsx
 const { role } = user;
 
 return role === ADMIN ? <AdminUser /> : <NormalUser />
@@ -58,7 +58,7 @@ Object literals can help make our code more readable. Let\'s say you want to sho
 
 **Bad:**
 
-```js
+```jsx
 const {role} = user
 
 switch(role){
@@ -73,7 +73,7 @@ switch(role){
 
 **Good:**
 
-```js
+```jsx
 const {role} = user
 
 const components = {
@@ -97,7 +97,7 @@ Always use Fragment over Div. It keeps the code clean and is also beneficial for
 
 **Bad:**
 
-```js
+```jsx
 return (
   <div>
      <Component1 />
@@ -109,7 +109,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 return (
   <>
      <Component1 />
@@ -129,7 +129,7 @@ Don\'t define a function inside render. Try to keep the logic inside render to a
 
 **Bad:**
 
-```js
+```jsx
 return (
     <button onClick={() => dispatch(ACTION_TO_SEND_DATA)}>    // NOTICE HERE
       This is a bad example 
@@ -139,7 +139,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 const submitData = () => dispatch(ACTION_TO_SEND_DATA)
 
 return (
@@ -159,7 +159,7 @@ React.PureComponent and Memo can significantly improve the performance of your a
 
 **Bad:**
 
-```js
+```jsx
 import React, { useState } from "react";
 
 export const TestMemo = () => {
@@ -189,7 +189,7 @@ Let\'s edit the ChildrenComponent to this:
 
 **Good:**
 
-```js
+```jsx
 import React ,{useState} from "react";
 
 const ChildrenComponent = React.memo(({userName}) => {
@@ -210,7 +210,7 @@ Try to avoid raw JavaScript when you are writing React applications because orga
 
 **Bad:**
 
-```js
+```jsx
 // CSS FILE
 
 .body {
@@ -226,7 +226,7 @@ return <div className='body'>
 
 **Good:**
 
-```js
+```jsx
 const bodyStyle = {
   height: "10px"
 }
@@ -246,7 +246,7 @@ Use object destructuring to your advantage. Let\'s say you need to show a user\'
 
 **Bad:**
 
-```js
+```jsx
 return (
   <>
     <div> {user.name} </div>
@@ -258,7 +258,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 const { name, age, profession } = user;
 
 return (
@@ -280,7 +280,7 @@ When passing string props to a children component.
 
 **Bad:**
 
-```js
+```jsx
 return(
   <Navbar title={"My Special App"} />
 )
@@ -288,7 +288,7 @@ return(
 
 **Good:**
 
-```js
+```jsx
 return(
   <Navbar title="My Special App" />  
 )
@@ -304,7 +304,7 @@ Move any JS code out of JSX if that doesn\'t serve any purpose of rendering or U
 
 **Bad:**
 
-```js
+```jsx
 return (
   <ul>
     {posts.map((post) => (
@@ -319,7 +319,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 const onClickHandler = (event) => {
    console.log(event.target, 'clicked!'); 
 }
@@ -343,7 +343,7 @@ Use template literals to build large strings. Avoid using string concatenation. 
 
 **Bad:**
 
-```js
+```jsx
 const userDetails = user.name + "'s profession is" + user.proffession
 
 return (
@@ -353,7 +353,7 @@ return (
 
 **Good:**
 
-```js
+```jsx
 const userDetails = `${user.name}'s profession is ${user.proffession}`
 
 return (
@@ -371,7 +371,7 @@ Always try to import things in a certain order. It improves code readability.
 
 **Bad:**
 
-```js
+```jsx
 import React from 'react';
 import ErrorImg from '../../assets/images/error.png';
 import styled from 'styled-components/native';
@@ -387,7 +387,7 @@ External
 Internal
 So the example above becomes:
 
-```js
+```jsx
 import React from 'react';
 
 import { PropTypes } from 'prop-types';
@@ -407,7 +407,7 @@ Use the JavaScript feature of implicit return to write beautiful code. Let\'s sa
 
 **Bad:**
 
-```js
+```jsx
 const add = (a, b) => {
   return a + b;
 }
@@ -415,7 +415,7 @@ const add = (a, b) => {
 
 **Good:**
 
-```js
+```jsx
 const add = (a, b) => a + b;
 ```
 
@@ -429,7 +429,7 @@ Always use PascalCase for components and camelCase for instances.
 
 **Bad:**
 
-```js
+```jsx
 import reservationCard from './ReservationCard';
 
 const ReservationItem = <ReservationCard />;
@@ -437,7 +437,7 @@ const ReservationItem = <ReservationCard />;
 
 **Good:**
 
-```js
+```jsx
 import ReservationCard from './ReservationCard';
 
 const reservationItem = <ReservationCard />;
@@ -453,7 +453,7 @@ Do not use DOM component prop names for passing props between components because
 
 **Bad:**
 
-```js
+```jsx
 <MyComponent style="dark" />
 
 <MyComponent className="dark" />
@@ -461,7 +461,7 @@ Do not use DOM component prop names for passing props between components because
 
 **Good:**
 
-```js
+```jsx
 <MyComponent variant="fancy" />
 ```
 
@@ -475,7 +475,7 @@ Use double quotes for JSX attributes and single quotes for all other JS.
 
 **Bad:**
 
-```js
+```jsx
 <Foo bar='bar' />
 
 <Foo style={{ left: "20px" }} />
@@ -483,7 +483,7 @@ Use double quotes for JSX attributes and single quotes for all other JS.
 
 **Good:**
 
-```js
+```jsx
 <Foo bar="bar" />
 
 <Foo style={{ left: '20px' }} />
@@ -499,7 +499,7 @@ Always use camelCase for prop names or PascalCase if the prop value is a React c
 
 **Bad:**
 
-```js
+```jsx
 <Component
   UserName="hello"
   phone_number={12345678}
@@ -508,7 +508,7 @@ Always use camelCase for prop names or PascalCase if the prop value is a React c
 
 **Good:**
 
-```js
+```jsx
 <MyComponent
   userName="hello"
   phoneNumber={12345678}
@@ -526,7 +526,7 @@ If your component spans more than one line, always wrap it in parentheses.
 
 **Bad:**
 
-```js
+```jsx
 return <MyComponent variant="long">
            <MyChild />
          </MyComponent>;
@@ -534,7 +534,7 @@ return <MyComponent variant="long">
 
 **Good:**
 
-```js
+```jsx
 return (
     <MyComponent variant="long">
       <MyChild />
@@ -552,13 +552,13 @@ If your component doesn\'t have any children, then use self-closing tags. It imp
 
 **Bad:**
 
-```js
+```jsx
 <SomeComponent variant="stuff"></SomeComponent>
 ```
 
 **Good:**
 
-```js
+```jsx
 <SomeComponent variant="stuff" />
 ```
 
@@ -572,7 +572,7 @@ Do not use underscores in any internal React method.
 
 **Bad:**
 
-```js
+```jsx
 const _onClickHandler = () => {
   // do stuff
 }
@@ -580,7 +580,7 @@ const _onClickHandler = () => {
 
 **Good:**
 
-```js
+```jsx
 const onClickHandler = () => {
   // do stuff
 }
@@ -596,7 +596,7 @@ Always include an alt prop in your `<img >` tags. And do not use picture or imag
 
 **Bad:**
 
-```js
+```jsx
 <img src="hello.jpg" />
 
 <img src="hello.jpg" alt="Picture of me rowing a boat" />
@@ -604,7 +604,7 @@ Always include an alt prop in your `<img >` tags. And do not use picture or imag
 
 **Good:**
 
-```js
+```jsx
 <img src="hello.jpg" alt="Me waving hello" />
 ```
 
@@ -616,7 +616,7 @@ Always include an alt prop in your `<img >` tags. And do not use picture or imag
 
 **Bad:**
 
-```js
+```jsx
 // Avoid
 const sampleComponent = () => {
   return isTrue ? <p>True!</p> : null
@@ -625,7 +625,7 @@ const sampleComponent = () => {
 
 **Good:**
 
-```js
+```jsx
 // Recommended: short-circuit evaluation
 const sampleComponent = () => {
   return isTrue && <p>True!</p>
