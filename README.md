@@ -11977,10 +11977,10 @@ It is based on the reduce function in JavaScript, where a single value is calcul
 
 **combine multiple reducers**: The `combineReducers()` helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.
 
-*Syntax*
+**Syntax:**
 
 ```js
-const rootReducert = combineReducer(reducer1, reducer2)
+const rootReducers = combineReducer(reducer1, reducer2)
 ```
 
 **3. Store in Redux**
@@ -12017,7 +12017,7 @@ Connect is a function that communicates with the Provider.
 
 Middleware is the suggested way to extend Redux with custom functionality. Middlewares are used to dispatch async functions. We configure Middleware\'s while creating a store.
 
-*Syntax*
+**Syntax:**
 
 ```js
 const store = createStore(reducers, initialState, middleware);
@@ -12787,7 +12787,7 @@ A reducer is a function that determines changes to an application\'s state. It u
 
 State changes are based on a user\'s interaction, or even something like a network request. If the application\'s state is managed by Redux, the changes happen inside a reducer function — this is the only place where state changes happen. The reducer function makes use of the initial state of the application and something called action, to determine what the new state will look like.
 
-*Syntax*
+**Syntax:**
 
 ```js
 const contactReducer = (state = initialState, action) => {
