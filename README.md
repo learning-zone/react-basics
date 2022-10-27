@@ -1116,7 +1116,7 @@ class ExampleComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      heading: "This is an Example Component!"
+      heading: "Stateful Component"
     }
   }
   render() {
