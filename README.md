@@ -1082,7 +1082,7 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
-A React component can be either **stateful** or **stateless**. Stateful components are of the class type, while stateless components are of the function type.
+A React component can be either **stateful** or **stateless**. A stateful component is a component that holds some state. Stateless components, by contrast, have no state.
 
 **1. Stateless Component:**
 
