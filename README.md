@@ -1792,81 +1792,39 @@ ReactDOM.render(
 
 ## Q. How to create a dynamic table in react?
 
-**Example:** Lets create a simple component and store the data in the state.
-
 ```js
-import React, { Component } from 'react'
-
+/**
+ * Generate dynamic table in React
+ */
 class Table extends React.Component {
    constructor(props) {
-      super(props) /** since we are extending class Table so we have to use super in order to override 
-      Component class constructor **/
-      this.state = { // state is by default an object
+      super(props)
+      this.state = {
          employees: [
-            { id: 1, name: 'Swarna Sachdeva', age: 28, email: 'swarna@email.com' },
-            { id: 2, name: 'Sarvesh Date', age: 33, email: 'sarvesh@email.com' },
-            { id: 3, name: 'Diksha Meka', age: 46, email: 'diksha@email.com' },
-            { id: 4, name: 'Tanvi Deol', age: 45, email: 'tanvi@email.com' },
-            { id: 4, name: 'Aapti Kara', age: 32, email: 'aapti@email.com' }
+            { id: 10, name: 'Swarna Sachdeva', email: 'swarna@email.com' },
+            { id: 20, name: 'Sarvesh Date', email: 'sarvesh@email.com' },
+            { id: 30, name: 'Diksha Meka', email: 'diksha@email.com' }
          ]
       }
    }
 
-   render() { 
-      return (
-         <div>
-            <h1>React Dynamic Table</h1>
-         </div>
-      )
+   renderTableHeader() {
+      let header = Object.keys(this.state.employees[0])
+      return header.map((key, index) => {
+         return <th key={index}>{key.toUpperCase()}</th>
+      })
    }
-}
 
-export default Table; // Exporting a component make it reusable
-```
-
-**1. Table Data:**
-
-Now we want to print out employees data in the Dom. We often use `map function` in react to itearate over array.
-Lets write a separate function for table data and calling it in our render method. This approach will make our code cleaner and easier to read.
-
-```js
-renderTableData() {
+   renderTableData() {
       return this.state.employees.map((employee, index) => {
-         const { id, name, age, email } = employee // Destructuring
+         const { id, name, age, email } = employee 
          return (
             <tr key={id}>
                <td>{id}</td>
                <td>{name}</td>
-               <td>{age}</td>
                <td>{email}</td>
             </tr>
          )
-      })
-   }
-
-   render() {
-      return (
-         <div>
-            <h1 id='title'>React Dynamic Table</h1>
-            <table id='employees'>
-               <tbody>
-                  {this.renderTableData()}
-               </tbody>
-            </table>
-         </div>
-      )
-   }
-```
-
-**2. Table Header:**
-
-Now we will write another method for table header.
-
-```js
-renderTableHeader() {
-      let header = Object.keys(this.state.employees[0])
-      return header.map((key, index) => {
-         return <th key={index}>{key.toUpperCase()}</th>
       })
    }
 
@@ -1883,9 +1841,8 @@ renderTableHeader() {
          </div>
       )
    }
+}
 ```
-
-`Object.Keys()` gives us all the keys of employees in the form of array and we stored it in a variable header. So we can iterate the header (array) using map method.
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
 
