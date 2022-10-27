@@ -7097,6 +7097,67 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to create custom Hooks?
+
+React also allows us to create custom Hooks with unique features that extracts component logic into reusable functions.
+
+A Custom Hook has following features:
+
+* As a function, it takes input and returns output.
+* Its name starts with **use** like useQuery, useMedia…
+* Unlike functional components, custom hooks return a normal, non-jsx data.
+* Unlike normal functions, custom hooks can use other hooks such as useState, useRef… and other custom hooks.
+
+**Example:** Custom Hook - useFetch()
+
+```js
+/**
+ * Custom Hook
+ */
+import { useState, useEffect } from "react";
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [url]);
+
+  return [data];
+};
+
+export default useFetch;
+```
+
+```js
+/**
+ * App Component
+ */
+import "./styles.css";
+import useFetch from "./useFetch";
+
+export default function App() {
+  // custom hook
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+  return (
+    <>
+      {data &&
+        data.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-hooks-2x8eu9?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How to fetch data with React Hooks?
 
 The **useState()** is a hook used to maintain local states in function components and **useEffect()** hook is used to execute functions after a component gets rendered (to "perform side effects").
