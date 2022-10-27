@@ -7101,7 +7101,7 @@ export default function App() {
 
 React also allows us to create custom Hooks with unique features that extracts component logic into reusable functions.
 
-A Custom Hook has following features:
+A custom Hooks has following features:
 
 * As a function, it takes input and returns output.
 * Its name starts with **use** like useQuery, useMedia…
