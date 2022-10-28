@@ -764,28 +764,6 @@ export default App
 * `State()` and `Props` are Shallow Compared
 * Pure Components are more performant in certain cases
 
-**1. Stateless Component:**
-
-```js
-import { pure } from 'recompose'
-
-export default pure ( (props) => {
-   return 'Stateless Component Example'
-})
-```
-
-**2. Stateful Component:**
-
-```js
-import React, { PureComponent } from 'react'
-
-export default class Test extends PureComponent{
-   render() {
-      return 'Stateful Component Example'
-   }
-}
-```
-
 **Example:**
 
 ```js
