@@ -1126,7 +1126,7 @@ const ExampleComponent = (props) => {
 
 
 const App = () => {
-  const defaultEmail = "abc@gmail.com"
+  const defaultEmail = "suniti.mukhopadhyay@gmail.com"
   return (
     <div>
       <ExampleComponent defaultEmail={defaultEmail} />
@@ -1137,7 +1137,9 @@ const App = () => {
 export default App;
 ```
 
-The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<input>`. First of all, in the `ExampleComponent`, we need to assign `defaultEmail` by props to a local **state** by a `useState()` hook in `ExampleComponent`. Next, we have to pass `email` to `value` property of a input tag and pass a function `changeEmailHandler` to an `onChange` event for a purpose keeping track of the current value of the input.
+The above example shows a stateful component named **ExampleComponent** which is inserted in the `<App/>` component. The **ExampleComponent** contains a `<input>`. First of all, in the **ExampleComponent**, we need to assign **defaultEmail** by props to a local **state** by a `useState()` hook in **ExampleComponent**.
+
+Next, we have to pass **email** to **value** property of a input tag and pass a function **changeEmailHandler** to an `onChange()` event for a purpose keeping track of the current value of the input.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
