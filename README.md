@@ -1082,66 +1082,62 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 
 Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
 
-A React component can be either **stateful** or **stateless**. A stateful component is a component that holds some state. Stateless components, by contrast, have no state.
+In React, a **Stateful Component** is a component that holds some state. A **Stateless component**, by contrast, has no state. Note that both types of components can use props.
 
 **1. Stateless Component:**
 
 ```js
 import React from 'react'
 
-const ExampleComponent = () => {
-    return (<h1>Welcome to React!</h1>)
-}
+const ExampleComponent = (props) => {
+    return <h1>Stateless Component - {props.message}</h1>;
+};
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ExampleComponent/>
-      </div>
-    )
-  }
-}
+const App = () => {
+  const message = 'React Interview Questions'
+  return (
+    <div>
+      <ExampleComponent message={message} />
+    </div>
+  );
+};
+
+export default App;
 ```
 
-The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element.
+The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element. Although the **Stateless component** has no state, it still receives data via props from a parent component.
 
 **2. Stateful Component:**
 
 ```js
-import React from 'react'
+import React, { useState } from 'react'
 
-class ExampleComponent extends React.Component {
+const ExampleComponent = (props) => {
+  const [email, setEmail] = useState(props.defaultEmail)
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      heading: "Stateful Component"
-    }
+  const changeEmailHandler = (e) => {
+    setEmail(e.target.value)
   }
-  render() {
-    return (
-        <div>
-            <h1>{ this.props.welcomeMsg }</h1>
-            <h2>{ this.state.heading }</h2>
-        </div>
-    )
-  }
+
+  return (
+    <input type="text" value={email} onChange={changeEmailHandler} />
+  );
 }
 
-export default class App extends React.Component {
-  render() {
-    const welcomeMsg = "Welcome to React!"
-    return (
-      <div>
-        <ExampleComponent welcomeMsg={welcomeMsg}/>
-      </div>
-    )
-  }
-}
+
+const App = () => {
+  const defaultEmail = "abc@gmail.com"
+  return (
+    <div>
+      <ExampleComponent defaultEmail={defaultEmail} />
+    </div>
+  );
+};
+
+export default App;
 ```
 
-The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<h1>` and the `<h2>` element wrapped in a `<div>`. The `<h1>` displays data using props while the `<h2>` takes its data from the internal state of the ExampleComponent.
+The above example shows a stateful component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` contains a `<input>`. First of all, in the `ExampleComponent`, we need to assign `defaultEmail` by props to a local **state** by a `useState()` hook in `ExampleComponent`. Next, we have to pass `email` to `value` property of a input tag and pass a function `changeEmailHandler` to an `onChange` event for a purpose keeping track of the current value of the input.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
