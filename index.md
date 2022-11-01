@@ -6458,3 +6458,17 @@ Dispatching an action within a reducer is an **anti-pattern**. Your reducer shou
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What are lifecycle of error boundaries in react?
+
+**1. static getDerivedStateFromError():**
+
+Use static getDerivedStateFromError() to render a fallback UI after an error has been thrown
+
+**2. componentDidCatch:**
+
+Use componentDidCatch() to log error information.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
