@@ -6600,3 +6600,52 @@ In the above example, useCallBack() memoizes the onClick callback. So, it will n
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is the difference between "super()" and "super(props)" in React?
+
+* **Super()**: It is used to call the constructor of its parent class. This is required when we need to access some variables of its parent class.
+
+* **Props**: It is a special keyword that is used in react stands for properties. Used for passing data from one component to another.
+
+super(props) would pass props to the parent constructor.
+
+**Case 01:**
+
+```js
+import React from "react";
+
+export default class MyComponent extends React.Component {
+  constructor(props) {
+    super();
+    console.log(this.props); // Undefined
+    console.log(props); // Defined Props Will Be Logged
+  }
+
+  render() {
+    return <div>Hello {this.props.message}</div>; // Defined
+  }
+}
+```
+
+**Case 02:**
+
+```js
+import React from "react";
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props); // Props Will Be Logged
+  }
+
+  render() {
+    return <div>Hello {this.props.message}</div>; // defined
+  }
+}
+
+export default MyComponent;
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
