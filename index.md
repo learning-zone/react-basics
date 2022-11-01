@@ -6472,3 +6472,53 @@ Use componentDidCatch() to log error information.
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to create protected route in react?
+
+Protected Routes are routes that can only be accessed if a condition is met(usually, if user is properly authenticated). It returns a Route that either renders a component or redirects a user to another route based on a set condition.
+
+* create a functional component that accepts component and other route details as props, and then
+* check a condition to confirm if user is authenticated or not. (In our case, we'll be getting **isAutheticated** from **localStorage**)
+* if the value is true, render the component, else, **Redirect** route to **/signin** page.
+
+```js
+/**
+ * Protected Route
+ */
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+
+export default function ProtectedRoute({ component: Component, ...restOfProps }) {
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  console.log("this", isAuthenticated);
+
+  return (
+    <Route
+      {...restOfProps}
+      render={(props) =>
+        isAuthenticated ? <Component {...props} /> : <Redirect to="/signin" />
+      }
+    />
+  );
+}
+```
+
+```js
+import Home from "./View/Home";
+import { BrowserRouter, Route } from "react-router-dom";
+import Signin from "./View/Authentication/Signin";
+import ProtectedRoute from "./Components/ProtectedRoute";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Route exact path="/signin" component={signin} />
+      <ProtectedRoute exact path="/" component={Home} />
+    </BrowserRouter>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
