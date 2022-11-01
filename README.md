@@ -2591,8 +2591,9 @@ A **Higher-Order Component(HOC)** is a function that takes a component and retur
 Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
 
 ```js
-// HOC.js
-
+/**
+ * Higher Order Component
+ */
 import React, { Component } from "react";
 
 export default function Hoc(HocComponent) {
@@ -2609,8 +2610,9 @@ export default function Hoc(HocComponent) {
 ```
 
 ```js
-// App.js
-
+/**
+ * App.js
+ */
 import React, { Component } from "react";
 import Hoc from "./HOC";
 
@@ -2622,9 +2624,9 @@ export default class App extends Component {
 App = Hoc(App);
 ```
 
-*Notes:*
+**Note:**
 
-* We do not modify or mutate components. We create new ones.
+* A HOC do not modify or mutate components. It creates a new ones.
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
