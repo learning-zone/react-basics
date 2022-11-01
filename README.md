@@ -10982,31 +10982,25 @@ Experience performance problems with a specific component, the React DevTools Pr
   <img src="assets/react-dev-tools.png"  alt="React DevTools" />
 </p>
 
-**2. Using `shouldComponentUpdate()` method**
+**2. `shouldComponentUpdate()` method**
 
-By default, React will render the virtual DOM and compare the difference for every component in the tree for any change in its props or state. But that is obviously not reasonable. As our app grows, attempting to re-render and compare the entire virtual DOM at every action will eventually slow the whole thing down.
+React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate() which is triggered before the re-rendering process starts. The default implementation of this function returns **true**. 
 
-React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate which is triggered before the re-rendering process starts. The default implementation of this function returns true.
-
-```js
-shouldComponentUpdate(nextProps, nextState) {
-  return true
-}
-```
-
-When this function returns true for any component, it allows the render differentiating process to be triggered. This gives us the power of controlling the render differentiating process. Suppose we need to prevent a component from being re-rendered, we need simply to return false from that function. As we can see from the implementation of the method, we can compare the current and next props and state to determine whether a re-render is necessary:
+If you know that in some situations your component doesn\'t need to update, you can return **false** from shouldComponentUpdate() instead, to skip the whole rendering process, including calling render() on component.
 
 ```js
 shouldComponentUpdate(nextProps, nextState) {
-  return nextProps.id !== this.props.id
+  return false;
 }
 ```
 
-**3. Using Pure Components**
+**3. Functional Components and PureComponent**
 
-Pure Components in React are the components which do not re-renders when the value of `state` and `props` has been updated with the same values. If the value of the previous `state` or `props` and the new `state` or `props` is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
+Functional components reduce the bundle size as they are better at minifying than classes and they prevent construction of class instances.
 
-**4. Using React.memo**
+Pure Components in React are the components which do not re-renders when the value of `state` and `props` has been updated with the same values. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
+
+**4. React.memo()**
 
 React.memo is a higher order component. It\'s similar to `React.PureComponent` but for function components instead of classes.
 
@@ -11023,6 +11017,10 @@ If your function component renders the same result given the same props, you can
 **5. Virtualizing Long Lists**
 
 In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
+
+**6. Use the Production Build:**
+
+React\'s production build improves react apps performance. The file size of the production build is significantly smaller, which means that the page loads faster as the browser has to download, parse, and execute fewer elements.
 
 **Reference:**
 
