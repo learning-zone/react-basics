@@ -6522,3 +6522,81 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to avoid render parent component in react?
+
+Memoization enables your code to re-render components only if there\'s a change in the props. With this technique, developers can avoid unnecessary renderings and reduce the computational load in applications.
+
+React provides two Hooks to implement memoization:
+
+* useMemo()
+* UseCallback()
+
+These Hooks reduce re-renderings by caching and returning the same result if the inputs are the same without any computations. When the inputs change, the cache gets invalidated and the new component state gets rendered.
+
+**1. useMemo():**
+
+If we use the useMemo() Hook, we can avoid component re-rendering if the inputs are the same and save the result in the cache.
+
+**Example:**
+
+```js
+/**
+ * useMemo() Hook
+ */
+import { useState, useMemo } from 'react';
+
+export default function App() {
+
+  const [number, setNumber] = useState(1);
+  const [inc, setInc] = useState(0);
+  const factorial = useMemo(() => factorialOf(number), [number]);
+  
+  const onChange = event => {
+    setNumber(Number(event.target.value));
+  };
+  const onClick = () => setInc(i => i + 1);
+  
+  return (
+    <div>
+      Factorial of 
+      <input type="number" value={number} onChange={onChange} />
+      is {factorial}
+      <button onClick={onClick}>Re-render</button>
+    </div>
+  );
+}
+
+function factorialOf(n) {
+  return n <= 0 ? 1 : n * factorialOf(n - 1);
+}
+```
+
+**2. UseCallback():**
+
+The UseCallback() is another React Hook to implement memoization. But, unlike useMemo(), it does not cache the result. Instead, it memoizes the callback function provided to it.
+
+```js
+/**
+ * UseCallback() Hook
+ */
+import { useCallback } from 'react';
+
+export default function MyParent() {
+
+  const onClick = useCallback(event => {
+    console.log('Clicked Item : ', event.currentTarget);
+  }, [item]);
+  
+  return (
+    <Listitem={item} onClick={onClick}
+    />
+  );
+}
+```
+
+In the above example, useCallBack() memoizes the onClick callback. So, it will not re-render the component if the user clicks the same item again and again.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
