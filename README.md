@@ -7483,21 +7483,47 @@ Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-s
 
 **1. useCallback()**
 
-React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
+React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. 
+
+This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
+
+**Example:**
 
 ```js
-function App() {
+/**
+ * useCallback()
+ */
+import React, { useState, useCallback, useEffect } from "react";
 
-  const memoizedHandleClick = useCallback(
-    () => console.log('Click happened'), [],
-  ) // Tells React to memoize regardless of arguments.
-  return <Button onClick={memoizedHandleClick}>Click Me</Button>
+const count = new Set();
+
+export default function App() {
+  const [counter, setCounter] = useState(0);
+
+  const increment = useCallback(() => {
+    setCounter(counter + 1);
+  }, [counter]);
+
+  useEffect(() => {
+    count.add(increment);
+    console.log(count.size);
+  }, [increment]);
+
+  return (
+    <>
+      <h1>useCallback()</h1>
+      <h2>Function Call: {count.size}</h2>
+      <button onClick={increment}>Increment</button>
+    </>
+  );
 }
 ```
 
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usecallback-zecshz?file=/src/App.js)**
+
 **2. useMemo()**
 
-React\'s `useMemo()` Hook can be used to optimize the computation costs of your React function components. The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type (not just functions). It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved (which typically will only happen once each time an element in the dependencies array changes between renders).
+The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type. It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved.
 
 **Example:**
 
