@@ -8867,7 +8867,7 @@ const App = () => {
 
 ## Q. What is code-splitting?
 
-Code-Splitting is a feature supported by bundlers like Webpack, Rollup and Browserify ( via factor-bundle ) which can create multiple bundles that can be dynamically loaded at runtime.
+Code-Splitting is a feature supported by bundlers like **Webpack**, **Rollup** and **Browserify** ( via factor-bundle ) which can create multiple bundles that can be dynamically loaded at runtime.
 
 Code splitting uses `React.lazy` and `Suspense` library, which helps to load a dependency lazily and only load it when needed by the user. The code splitting improves:
 
@@ -8901,7 +8901,7 @@ function MyComponent() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is dynamic import in react
+## Q. What is dynamic import in react?
 
 `React.lazy` takes a function that must call a dynamic import(). This must return a Promise which resolves to a module with a default export containing a React component.
 
