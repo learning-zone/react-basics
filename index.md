@@ -6754,3 +6754,37 @@ useEffect hook is called after the screen is painted. Therefore mutating the DOM
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to use componentWillUnmount() with Functional Components in React?
+
+The **useEffect()** can be used to manage API calls, as well as implementing **componentWillMount()**, and **componentWillUnmount()**.
+
+If we pass an empty array as the second argument, it tells useEffect to fire on component load. This is the only time it will fire.
+
+```js
+import React, { useEffect } from 'react';
+
+const ComponentExample => () => {
+   useEffect( () => {
+      // Anything in here is fired on component mount.
+   }, []);
+}
+```
+
+If you add a return function inside the useEffect() function, it is triggered when a component unmounts from the DOM.
+
+```js
+import React, { useEffect } from 'react';
+
+const ComponentExample => () => {
+    useEffect(() => {
+        return () => {
+            // Anything in here is fired on component unmount.
+        }
+    }, [])
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
