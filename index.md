@@ -6713,3 +6713,44 @@ root.render(
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is the difference between useLayoutEffect() and useEffect() hook?
+
+**1. useEffect():**
+
+The useEffect() runs asynchronously after a render is painted to the screen, unblocking the browser paint process.
+
+```js
+import { useEffect, useState, useLayoutEffect } from 'react';
+
+function App() {
+ const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.log('useEffect is fired');
+    // side effect
+  }, [count]);
+
+return(
+ <div>
+    <h1>Count: {count} </h1>
+    <button onClick={() => setCount(count + 1)}>Increment count</button>
+ </div>
+ )
+}
+```
+
+**2. useLayoutEffect():**
+
+useLayoutEffect fires synchronously after all DOM mutations.
+
+Most of the time we are fetching data and setting up event handlers that do not need to happen immediately. It also does not affect page appearance. For all such cases, we should use the useEffect() hook.
+
+If our effect will mutate the DOM (like getting the scroll position or other styles for an element) or involves animation prefer useLayoutEffect over useEffect. 
+
+Reason:
+
+useEffect hook is called after the screen is painted. Therefore mutating the DOM again immediately after the screen has been painted, will cause a flickering effect if the mutation is visible to the client.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
