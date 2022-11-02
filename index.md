@@ -6649,3 +6649,67 @@ export default MyComponent;
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Why does useEffect() run multiple times?
+
+The useEffect() hook is executed only once per render cycle, but you have several state updates in your useEffect() which cause a re-render. useEffect executes on every re-render if you don\'t pass the dependency array.
+
+**Problem:**
+
+```js
+function App() {
+  const [count, setCount] = useState(0); //initial value of this 
+
+  useEffect(() => {
+    setCount((count) => count + 1); //increment this Hook
+  }); //no dependency array.
+
+  return (
+    <div className="App">
+      <p> value of count: {count} </p>
+    </div>
+  );
+}
+```
+
+The useEffect() by default triggers on every update cycle if there are no dependencies. As a result, the app here will execute the setCount function upon every render. So, this causes an infinite loop:
+
+**Solution:**
+
+```js
+function App() {
+  const [count, setCount] = useState(0); 
+
+  useEffect(() => {
+    setCount((count) => count + 1); 
+  }, []); //empty array as second argument.
+
+  return (
+    <div className="App">
+      <p> value of count: {count} </p>
+    </div>
+  );
+}
+```
+
+In React 18, the default behavior of useEffect() changed to run it **2 times**. The only way to disable this behavior is to disable **strict mode**.
+
+**Example:**
+
+```js
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+import App from './App';
+
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
+  <App /> // no strict mode
+);
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
