@@ -1,14 +1,14 @@
-# React Interview Questions ( v18.x )
+# React Basics ( v18.x )
 
 > *Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Your contributions are heartily ♡ welcome.*
 
 <br/>
 
-## Related Interview Questions
+## Related Topics
 
-* [HTML5 Interview Questions](https://github.com/learning-zone/html-interview-questions)
-* [CSS Interview Questions](https://github.com/learning-zone/css-interview-questions)
-* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions)
+* [HTML5](https://github.com/learning-zone/html-interview-questions)
+* [CSS](https://github.com/learning-zone/css-interview-questions)
+* [JavaScript](https://github.com/learning-zone/javascript-interview-questions)
 * [React Coding Practice](react-coding-practice.md)
 * [React Quick Reference](react-quick-reference.md)
 * [Redux Quick Reference](redux-quick-reference.md)
