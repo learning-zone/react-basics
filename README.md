@@ -6,9 +6,9 @@
 
 ## Related Topics
 
-* [HTML5](https://github.com/learning-zone/html-interview-questions)
-* [CSS](https://github.com/learning-zone/css-interview-questions)
-* [JavaScript](https://github.com/learning-zone/javascript-interview-questions)
+* [HTML5 Basics](https://github.com/learning-zone/html-interview-questions)
+* [CSS Basics](https://github.com/learning-zone/css-interview-questions)
+* [JavaScript Basics](https://github.com/learning-zone/javascript-interview-questions)
 * [React Coding Practice](react-coding-practice.md)
 * [React Quick Reference](react-quick-reference.md)
 * [Redux Quick Reference](redux-quick-reference.md)
