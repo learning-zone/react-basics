@@ -105,8 +105,8 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
 * Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
 Testable. React native tools are offered for testing, debugging code.
 * SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
-    * React.renderComponentToString is called on the server. 
-    * React.renderComponent() is called on the client side. 
+    * React.renderComponentToString is called on the server.
+    * React.renderComponent() is called on the client side.
     * React preserves markup rendered on the server side, attaches event handlers.  
 
 **Limitations:**  
@@ -269,7 +269,7 @@ class App extends React.Component {
 
 In React, for every **DOM object**, there is a corresponding "virtual DOM object". A virtual DOM object is a representation of a DOM object, like a lightweight copy. A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing\'s power to directly change what\'s on the screen.
 
-Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM. 
+Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM.
 
 **&#9885; [Virtual DOM Example](https://codesandbox.io/s/react-virtual-dom-2w52y?file=/src/index.js)**
 
@@ -615,7 +615,7 @@ root.render(<App />);
 
 ## Q. What is ReactDOM?
 
-ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. 
+ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page.
 
 ReactDOM provides the developers with an API containing the following methods
 
@@ -641,7 +641,7 @@ Render a React element into the DOM in the supplied container and return a refer
 ReactDOM.hydrate(element, container, callback)
 ```
 
-This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered. 
+This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
 
@@ -671,7 +671,7 @@ If this component has been mounted into the DOM, this returns the corresponding 
 ReactDOM.createPortal(child, container)
 ```
 
-createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component. 
+createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
 
@@ -1472,7 +1472,7 @@ React StrictMode, in order to be efficient and avoid potential problems by any s
 
 ## Q. Why to avoid using setState() after a component has been unmounted?
 
-Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly. 
+Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly.
 
 Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
 
@@ -2085,7 +2085,7 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 
-**Preventing unnecessary renders**
+**Preventing unnecessary renders:**
 
 The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
 
@@ -2325,7 +2325,7 @@ renderContent() {
 
 ## Q. What is difference between componentDidMount() and componentWillMount()?
 
-**componentDidMount()**
+**componentDidMount():**
 
 The `componentDidMount()` is executed after the first render only on the client side. This is where AJAX requests and DOM or state updates should occur. This method is also used for integration with other JavaScript frameworks and any functions with delayed execution such as `setTimeout()` or `setInterval()`.
 
@@ -2368,7 +2368,7 @@ class App extends Component {
 export default App
 ```
 
-**componentWillMount()**
+**componentWillMount():**
 
 The `componentWillMount()` method is executed before rendering, on both the server and the client side. `componentWillMount()` method is the least used lifecycle method and called before any HTML element is rendered. It is useful when we want to do something programatically right before the component mounts.
 
@@ -2420,7 +2420,7 @@ export default App
 
 ## Q. Is it good to use setState() in componentWillMount() method?
 
-Avoid async initialization in `componentWillMount()`. 
+Avoid async initialization in `componentWillMount()`.
 
 `componentWillMount()` is invoked immediately before mounting occurs. It is called before `render()`, therefore setting state in this method will not trigger a re-render. Avoid introducing any side-effects or subscriptions in this method.
 
@@ -3866,6 +3866,7 @@ export default class App extends React.Component {
   }
 }
 ```
+
 ```js
 // Child Component
 
@@ -4026,7 +4027,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{ color: `${this.state.color}` }}>
+        <h3 style={{color: `${this.state.color}`}}>
           Color: {this.state.color}
         </h3>
 
@@ -5349,7 +5350,7 @@ function handleClick(event) {
 }
 ```
 
-**SyntheticEvent Object**
+**SyntheticEvent Object:**
 
 ```js
 void preventDefault()
@@ -6435,7 +6436,7 @@ class App extends Component {
 
 RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. Reactive programming is an event-based paradigm that allows us to run asynchronous sequences of events as soon as data is pushed to a consumer.
 
-**RxJS Terminology**
+**RxJS Terminology:**
 
 * **Observable**: An Observable is a data stream that houses data that can be passed through different threads.
 * **Observer**: An Observer consumes the data supplied by an Observable
@@ -7515,9 +7516,9 @@ Webhooks are also sometimes referred to as "Reverse APIs". In APIs, the client-s
 
 ## Q. Exlain is useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect(), useDebugValue() in React?
 
-**1. useCallback()**
+**1. useCallback():**
 
-React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. 
+React\'s `useCallback()` Hook can be used to optimize the rendering behavior of your React function components. The `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed.
 
 This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. shouldComponentUpdate).
 
@@ -7555,7 +7556,7 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usecallback-zecshz?file=/src/App.js)**
 
-**2. useMemo()**
+**2. useMemo():**
 
 The `useMemo()` is similar to `useCallback()` except it allows you to apply memoization to any value type. It does this by accepting a function which returns the value and then that function is only called when the value needs to be retrieved.
 
@@ -7624,7 +7625,7 @@ export default App
 
 Here, the **filteredUsers** function is only executed once the search state changes. It doesn\'t run if the text state changes, because that\'s not a dependency for this filter function and thus not a dependency in the dependency array for the useMemo hook.
 
-**3. useImperativeHandle()**
+**3. useImperativeHandle():**
 
 `useImperativeHandle()` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using `refs` should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`.
 
@@ -7641,7 +7642,7 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput)
 ```
 
-**4. useLayoutEffect()**
+**4. useLayoutEffect():**
 
 <p align="center">
   <img src="assets/useLayoutEffect.png" alt="useLayoutEffect" width="600px" />
@@ -7678,12 +7679,12 @@ const BlinkyRender = () => {
 ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
 ```
 
-**useLayoutEffect vs useEffect**
+**useLayoutEffect vs useEffect:**
 
 * **useLayoutEffect**: If you need to mutate the DOM and/or do need to perform measurements
 * **useEffect**: If you don\'t need to interact with the DOM at all or your DOM changes are unobservable (seriously, most of the time you should use this).
 
-**5. useDebugValue()**
+**5. useDebugValue():**
 
 `useDebugValue()` can be used to display a label for custom hooks in React DevTools.
 
@@ -7715,8 +7716,8 @@ If your component renders the same result given the same props, you can wrap it 
 
 **Example:** Let\'s take an example of search functionality. In the example below, the App component contains:
 
-* Search input for the fruit name 
-* A button and a child component where the user search will be displayed 
+* Search input for the fruit name
+* A button and a child component where the user search will be displayed
 * A count of the number of times a user has clicked the button
 
 ```js
@@ -8211,13 +8212,13 @@ Link component is used to create links to different routes and implement navigat
 
 The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
 
-**Link**
+**Link:**
 
 ```js
 <Link to="/">Home</Link>
 ```
 
-**NavLink**
+**NavLink:**
 
 ```js
 <NavLink to="/" activeClassName="active">Home</NavLink>
@@ -8780,7 +8781,7 @@ export default function App() {
 * A router which uses client side hash routing.
 * Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
 * Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
-* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
+* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API
 
 **Syntax:**
 
@@ -8909,7 +8910,7 @@ Code splitting uses `React.lazy` and `Suspense` library, which helps to load a d
 * The impact on memory
 * The downloaded Kilobytes (or Megabytes) size
 
-**React.lazy and Suspense**
+**React.lazy and Suspense:**
 
 The `React.lazy` function allows us to render a dynamic import as a regular component. The `suspense` component is responsible for handling the output when the lazy component is fetched and rendered.
 
@@ -9958,7 +9959,7 @@ There are 5 hooks in react-spring currently:
 * **useTransition** for mount/unmount transitions (lists where items are added/removed/updated)
 * **useChain** to queue or chain multiple animations together
 
-**1. useSpring()**
+**1. useSpring():**
 
 It turns defined values into animated values. It does this in two ways, either by overwriting the existing props with a different set of props on component re-render or by passing an updater function that returns a different set of props that is then used to update the props using set.
 
@@ -9996,7 +9997,7 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
 
-**2. useSpring()**
+**2. useSpring():**
 
 It works kind of like a mix between useSpring() and useTransition() in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
 
@@ -10042,7 +10043,7 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
 
-**3. useTrail()**
+**3. useTrail():**
 
 It allows to create an effect similar to both useSpring() and useSprings(), it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
 
@@ -10078,7 +10079,7 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usetrail-jc3qc5?file=/src/App.js)**
 
-**4. useTransition()**
+**4. useTransition():**
 
 It allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
 
@@ -10107,7 +10108,7 @@ return (
 )
 ```
 
-**5. useChain()**
+**5. useChain():**
 
 It allows to set the execution sequence of previously defined animation hooks. To do this, we use `refs`, which will subsequently prevent the independent execution of the animation.
 
@@ -10158,7 +10159,7 @@ const App = () => {
 
 ## Q. How many ways can we style the React Component?
 
-**1. CSS Stylesheet**
+**1. CSS Stylesheet:**
 
 ```css
 .DottedBox {
@@ -10185,7 +10186,7 @@ const DottedBox = () => (
 export default DottedBox
 ```
 
-**2. Inline styling**
+**2. Inline styling:**
 
 In React, inline styles are not specified as a string. Instead they are specified with an object whose **key** is the **camelCased** version of the style name, and whose value is the style\'s value, usually a string.
 
@@ -10213,7 +10214,7 @@ export default Box
 * We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
 * We can also pass the styling directly `style={{color: 'pink'}}`
 
-**3. CSS Modules**
+**3. CSS Modules:**
 
 A CSS Module is a CSS file in which all class names and animation names are scoped locally by default.
 
@@ -10246,7 +10247,7 @@ we import css file `import styles './DashedBox.css'`, then we access to classNam
 * `:local(.className)`- this when you use create-react-app because of webpack configurations
 * `.className` - this if you use your own react boilerplate.
 
-**4. Styled-components**
+**4. Styled-components:**
 
 Styled-components is a library for React and React Native that allows to use component-level styles in component application that are written with a mixture of JavaScript and CSS
 
@@ -10307,7 +10308,7 @@ const divStyle = {
 
 ## Q. What are the popular animation package in React?
 
-**ReactCSSTransitionGroup**
+**ReactCSSTransitionGroup:**
 
 ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is an easy way to perform CSS transitions and animations when a React component enters or leaves the DOM. It has four components that display transitions from one component state to another using a declarative API used for mounting and unmounting of components:
 
@@ -10399,13 +10400,13 @@ function MyPureComponent(props) {
 
 ## Q. How to translate your React app with react-i18next?
 
-**Installing dependencies**
+**Installing dependencies:**
 
 ```bash
 npm install react-i18next i18next i18next-browser-languagedetector --save
 ```
 
-**Configure i18next**
+**Configure i18next:**
 
 Create a new file `i18n.js` beside your `index.js` containing following content:
 
@@ -10522,13 +10523,13 @@ Test-driven development is an approach when developers create a product backward
 
 ## Q. Explain react unit testing using Jest and Enzyme?
 
-**1. Jest**  
+**1. Jest:**
 
 Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
 
 Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
 
-**2. Enzyme**
+**2. Enzyme:**
 
 Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
 
@@ -10688,7 +10689,7 @@ describe('Component Description', () => {
 |----------|------------------------------|--------------------------|
 |toEqual() |expect([]).toEqual(expect.any(Array))|  |
 |toHaveLength()|expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)| |
-|toContain() |expect(['Alice', 'Bob', 'Eve']).toContain('Alice')| | 
+|toContain() |expect(['Alice', 'Bob', 'Eve']).toContain('Alice')| |
 |toContainEqual()|expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })| |
 |toEqual() |expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))| |
 
@@ -10756,7 +10757,7 @@ console.log(testRenderer.toJSON());
 * `renderIntoDocument()`
 * `Simulate()`
 
-**act()**
+**act():**
 
 To prepare a component for assertions, wrap the code rendering it and performing updates inside an act() call. This makes your test run closer to how React works in the browser.
 
@@ -11034,7 +11035,7 @@ export default function VirtualizedList() {
 
 React uses many techniques to minimize the number of DOM operations for us already. For many applications, if you are using the production build, you may already meet or surpass your performance expectations. Nevertheless, there are several ways you can speed up your application.
 
-**1. React DevTools Profiler**
+**1. React DevTools Profiler:**
 
 Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
 
@@ -11044,7 +11045,7 @@ Experience performance problems with a specific component, the React DevTools Pr
 
 **2. `shouldComponentUpdate()` method**
 
-React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate() which is triggered before the re-rendering process starts. The default implementation of this function returns **true**. 
+React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate() which is triggered before the re-rendering process starts. The default implementation of this function returns **true**.
 
 If you know that in some situations your component doesn\'t need to update, you can return **false** from shouldComponentUpdate() instead, to skip the whole rendering process, including calling render() on component.
 
@@ -11054,13 +11055,13 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 
-**3. Functional Components and PureComponent**
+**3. Functional Components and PureComponent:**
 
 Functional components reduce the bundle size as they are better at minifying than classes and they prevent construction of class instances.
 
 Pure Components in React are the components which do not re-renders when the value of `state` and `props` has been updated with the same values. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
 
-**4. React.memo()**
+**4. React.memo():**
 
 React.memo is a higher order component. It\'s similar to `React.PureComponent` but for function components instead of classes.
 
@@ -11074,7 +11075,7 @@ If your function component renders the same result given the same props, you can
 
 `React.memo` only checks for `prop` changes. If your function component wrapped in `React.memo` has a `useState` or `useContext` Hook in its implementation, it will still rerender when `state` or `context` change.
 
-**5. Virtualizing Long Lists**
+**5. Virtualizing Long Lists:**
 
 In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
 
@@ -11227,25 +11228,25 @@ Internally, React will create an instance of `App` and will eventually call the 
 
 ## Q. What is Flow in react?
 
-**Type Checking**
+**Type Checking:**
 
 Type checking means ensuring that the type of a property (variable, object, function, string) in a programming language is being used as it should be. It is the process of verifying and enforcing the constraints of types, and it can occur either at compile time or at runtime. It helps to detect and report errors.
 
 Type checking can be divided into two: static type checking and dynamic type checking.
 
-**1. Static Type Checking**
+**1. Static Type Checking:**
 
 Static type checking is used in static-typed languages where the type of the variable is known at the compile time. This means that the type of the variable must be declared beforehand. Static typing usually results in compiled code that executes more quickly because the compiler already knows the exact data types that are in use.
 
-**2. Dynamic type checking**
+**2. Dynamic type checking:**
 
 Dynamic type checking is used in dynamic-typed languages where the type is usually known at runtime. This means that the type of the variable doesn\'t need to be explicitly defined.
 
-**Flow**
+**Flow:**
 
 Flow is a static type checker for JavaScript apps that aims to find and eliminate problems as you code. Designed by the Facebook team for JavaScript developers, it\'s a static type checker that catches common errors in your application before they run.
 
-**Integrating Flow**
+**Integrating Flow:**
 
 ```bash
 # Create React App with Flowchecker
@@ -11331,7 +11332,7 @@ React Fiber uses `requestIdleCallback()` to schedule the low priority work and `
 * Long-running tasks cause frame drops.
 * Different tasks have different priorities.
 
-**How React Fiber works**
+**How React Fiber works:**
 
 * It makes apps more fluid and responsible.
 * In the future, it could parallelize work a.k.a. Time Slicing.
@@ -11503,7 +11504,7 @@ registerServiceWorker();
 
 In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
 
-Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that. 
+Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that.
 
 Updating virtual DOM in ReactJS is faster because ReactJS uses
 
@@ -11588,14 +11589,14 @@ The main work of a **diff algorithm** is to find a heuristic to change anything 
 
 **1. Elements Of Different Types:**
 
-Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. 
-When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. 
+Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch.
+When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`.
 
 When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
 
 **2. DOM Elements Of The Same Type:**
 
-When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. 
+When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes.
 
 **Example:** By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
 
@@ -11609,7 +11610,7 @@ When comparing two React DOM elements of the same type, React looks at the attri
 
 When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
 
-**Recursing On Children**
+**Recursing On Children:**
 
 By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there\'s a difference.
 
@@ -11630,7 +11631,7 @@ For example, when adding an element at the end of the children, converting betwe
 
 React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
 
-**Keys**
+**Keys:**
 
 When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
 
@@ -11716,7 +11717,6 @@ When an entry is made in the first input field, React creates a new tree. The ne
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-
 ## Q. What are portals in React?
 
 Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
@@ -11741,7 +11741,7 @@ ReactDOM.createPortal(child, container)
 npm install react-portal --save
 ```
 
-**Example:** 
+**Example:**
 
 ```js
 /**
@@ -11822,7 +11822,7 @@ The **Server-side rendering (SSR)** is a popular technique for rendering a clien
 
 **Example:**
 
-**Creating an Express Server**
+**Creating an Express Server:**
 
 ```bash
 npm install express
@@ -11890,7 +11890,7 @@ ReactDOM.hydrate(<App />, document.getElementById('root'))
 
 All the Node.js code needs to be transpiled by Babel, as server-side Node.js code does not know anything about JSX, nor ES Modules (which we use for the include statements).
 
-**Babel Package**
+**Babel Package:**
 
 ```bash
 npm install @babel/register @babel/preset-env @babel/preset-react ignore-styles
@@ -11947,7 +11947,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 
 Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
 
-**Architecture**
+**Architecture:**
 
 In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
 
@@ -11959,19 +11959,19 @@ There is a central store that holds the entire state of the application. Each co
 
 ## Q. What are the benefits of using Redux?
 
-**1. State transfer**
+**1. State transfer:**
 
 State is stored together in a single place called the ‘store.’ While you do not need to store all the state variables in the ‘store,’ it is especially important to when state is being shared by multiple components or in a more complex architecture. It also allows you to call state data from any component easily.
 
-**2. Predictability**
+**2. Predictability:**
 
 Redux is “a predictable state container for Javascript apps.” Because reducers are pure functions, the same result will always be produced when a state and action are passed in.
 
-**3. Maintainability**
+**3. Maintainability:**
 
 Redux provides a strict structure for how the code and state should be managed, which makes the architecture easy to replicate and scale for somebody who has previous experience with Redux.
 
-**4. Ease of testing and debugging**
+**4. Ease of testing and debugging:**
 
 Redux makes it easy to test and debug your code since it offers powerful tools such as Redux DevTools in which you can time travel to debug, track your changes, and much more to streamline your development process.
 
@@ -11985,19 +11985,19 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
   <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
 </p>
 
-**1. Actions in Redux**
+**1. Actions in Redux:**
 
 Action is static information about the event that initiates a state change. When you update your state with Redux, you always start with an action. Actions are in the form of Javascript objects, containing a `type` and an optional `payload`. Actions are sent using the `store.dispatch()` method. Actions are created via an action creator.
 
-**Action creators** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
+**Action creators:** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
 
-**2. Reducers in Redux**
+**2. Reducers in Redux:**
 
 Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
 
 It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
 
-**combine multiple reducers**: The `combineReducers()` helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.
+**combine multiple reducers:** The `combineReducers()` helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.
 
 **Syntax:**
 
@@ -12005,13 +12005,13 @@ It is based on the reduce function in JavaScript, where a single value is calcul
 const rootReducers = combineReducer(reducer1, reducer2)
 ```
 
-**3. Store in Redux**
+**3. Store in Redux:**
 
 A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
 
 When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
 
-**4. Dispatch**
+**4. Dispatch:**
 
 Dispatch is a method that triggers an action with type and payload to Reducer.
 
@@ -12019,7 +12019,7 @@ Dispatch is a method that triggers an action with type and payload to Reducer.
 store.dispatch() 
 ```
 
-**5. Subscribe**
+**5. Subscribe:**
 
 Subscribe is a method that is used to subscribe data/state from the Store.
 
@@ -12027,15 +12027,15 @@ Subscribe is a method that is used to subscribe data/state from the Store.
 store.subscribe()
 ```
 
-**6. Provider**
+**6. Provider:**
 
 The Provider is a component that has a reference to the Store and provides the data from the Store to the component it wraps.
 
-**7. Connect**
+**7. Connect:**
 
 Connect is a function that communicates with the Provider.
 
-**8. Middleware**
+**8. Middleware:**
 
 Middleware is the suggested way to extend Redux with custom functionality. Middlewares are used to dispatch async functions. We configure Middleware\'s while creating a store.
 
@@ -12121,7 +12121,7 @@ export default allReducers;
 
 ## Q. What is difference between presentational component and container component in react redux?
 
-**1. Container Components**
+**1. Container Components:**
 
 * Container components are primarily concerned with how things work
 * They rarely have any HTML tags of their own, aside from a wrapping `<div>`
@@ -12160,7 +12160,7 @@ class Collage extends Component {
 }
 ```
 
-**2. Presentational Components**
+**2. Presentational Components:**
 
 * Presentational Components are primarily concerned with how things look
 * Probably only contain a render method and little else logic
@@ -12311,7 +12311,7 @@ Redux has five main entities. Action Creators, Dispatching Function, Reducers, S
 
 Redux can be described in three fundamental principles:
 
-**1. Single source of truth**
+**1. Single source of truth:**
 
 > The state of your whole application is stored in an object tree inside a single store.
 
@@ -12339,7 +12339,7 @@ console.log(store.getState())
 */
 ```
 
-**2. State is read-only**
+**2. State is read-only:**
 
 > The only way to change the state is to emit an action, an object describing what happened.
 
@@ -12359,7 +12359,7 @@ store.dispatch({
 })
 ```
 
-**3. Changes are made with pure functions**
+**3. Changes are made with pure functions:**
 
 > To specify how the state tree is transformed by actions, you write pure reducers.
 
@@ -12435,7 +12435,7 @@ When using Redux with React, states will no longer need to be lifted up. Everyth
 * The **store** can be thought of as a "middleman" for all state changes in the application.
 * With Redux involved, components don\'t communicate directly with each other. Rather, all state changes must go  through the single source of truth, the **store**.
 
-**Core Principal**
+**Core Principal:**
 
 Redux has three core principals:
 
@@ -12443,7 +12443,7 @@ Redux has three core principals:
 **2. State Is Read-Only**: The only way to change the state is to dispatch an **action**, an object describing what happened.  
 **3. Changes Are Made With Pure Functions**: To specify how the state tree is transformed by actions, you write pure **reducers**.  
 
-**Redux Workflow**
+**Redux Workflow:**
 
 Redux allows you to manage the state of the application using Store. A child component can directly access the state from the Store.
 
@@ -12507,7 +12507,7 @@ To access redux store outside a react component, Redux `connect` function works 
 
 In the examples below shows how to access a JWT token from the Redux store.
 
-**Option 1: Export the Store**
+**Option 1:** Export the Store
 
 ```js
 import { createStore } from 'redux'
@@ -12541,7 +12541,7 @@ export function getProtectedThing() {
 }
 ```
 
-**Option 2: Pass the Value From a React Component**
+**Option 2:** Pass the value from a React Component
 
 It\'s simple to get access to the store inside a React component – no need to pass the store as a prop or import it, just use the `connect()` function from React Redux, and supply a `mapStateToProps()` function that pulls out the data.
 
@@ -12601,8 +12601,8 @@ The `connect()` function connects a React component to a Redux store. It provide
 
 It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
 
-* **Use `mapStateToProps()`**: It maps the state variables from your store to the props that you specify.
-* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container. 
+* **Use `mapStateToProps()`:** It maps the state variables from your store to the props that you specify.
+* **Connect props to container:** The object returned by the `mapStateToProps` function is connected to the container.
 
 **Example:**
 
@@ -12805,7 +12805,7 @@ const LoginComponent = (state = initialState, action) => {
 
 A reducer is a function that determines changes to an application\'s state. It uses the action it receives to determine this change. Redux manage an application\'s state changes in a single store so that they behave consistently. Redux relies heavily on reducer functions that take the previous state and an action in order to execute the next state.
 
-**1. State**
+**1. State:**
 
 State changes are based on a user\'s interaction, or even something like a network request. If the application\'s state is managed by Redux, the changes happen inside a reducer function — this is the only place where state changes happen. The reducer function makes use of the initial state of the application and something called action, to determine what the new state will look like.
 
@@ -12817,7 +12817,7 @@ const contactReducer = (state = initialState, action) => {
 }
 ```
 
-**2. State Parameter**
+**2. State Parameter:**
 
 The state parameter that gets passed to the reducer function has to be the current state of the application. In this case, we\'re calling that our initialState because it will be the first (and current) state and nothing will precede it.
 
@@ -12835,7 +12835,7 @@ const initialState = {
 }
 ```
 
-**3. Action Parameter**
+**3. Action Parameter:**
 
 An action is an object that contains two keys and their values. The state update that happens in the reducer is always dependent on the value of action.type.
 
@@ -12850,7 +12850,7 @@ const action = {
 
 There is typically a `payload` value that contains what the user is sending and would be used to update the state of the application. It is important to note that `action.type` is required, but `action.payload` is optional. Making use of `payload` brings a level of structure to how the action object looks like.
 
-**4. Updating State**
+**4. Updating State:**
 
 The state is meant to be immutable, meaning it shouldn\'t be changed directly. To create an updated state, we can make use of `Object.assign()` or opt for the **spread operator**.
 
@@ -12977,7 +12977,7 @@ These terms will be used to distinguish between different types of functions and
 * **case function**: a function that is being used to handle the update logic for a specific action. This may actually be a reducer function, or it may require other parameters to do its work properly.
 * **higher-order reducer**: a function that takes a reducer function as an argument, and/or returns a new reducer  function as a result (such as `combineReducers`, or `redux-undo`).
 
-**Benefits**
+**Benefits:**
 
 * **For fast page loads**
 
@@ -13007,7 +13007,7 @@ With reducer level code-splitting, reducers can be code split on a split compone
 
 Redux Thunk is a **middleware** that lets you call action creators that return a function instead of an action object. That function receives the store\'s dispatch method, which is then used to dispatch regular synchronous actions inside the body of the function once the asynchronous operations have completed. The inner function receives the store methods `dispatch()` and `getState()` as parameters.
 
-**Setup**
+**Setup:**
 
 ```bash
 # install create react app
@@ -13100,7 +13100,7 @@ function asyncAction() {
 }
 ```
 
-**App.js**
+**App.js:**
 
 ```js
 import React, { Component } from 'react'
@@ -13158,7 +13158,7 @@ const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
 export default AppContainer
 ```
 
-**index.js**
+**index.js:**
 
 ```js
 import React from 'react'
@@ -13209,7 +13209,7 @@ Redux is inspired by functional programming, and out of the box, has no place fo
 
 Predictable state container for JavaScript apps. Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger. However, Redux has one, but very significant problem - it doesn\'t handle asynchronous operations very well by itself.
 
-**RxJS**
+**RxJS:**
 
 The Reactive Extensions for JavaScript. RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
 
@@ -13280,7 +13280,7 @@ store$.subscribe((state) =>
     ReactDOM.render(<App {...state} />, dom));
 ```
 
-**Async actions**
+**Async actions:**
 
 Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, `flatMap()` to squash the results of the asynchronous operation back onto the `action$` stream.
 
@@ -13445,7 +13445,7 @@ There are three most widely used and stable Redux Ajax middleware are:
 * Redux Thunk Middleware
 * Redux Saga Middleware
 
-**1. Redux Promise Middleware**
+**1. Redux Promise Middleware:**
 
 This is the most simple way of doing Ajax calls with Redux. When using Redux Promise, your action creator can return a Promise inside the Action.
 
@@ -13462,13 +13462,13 @@ function getUserName(userId) {
 
 This middleware automatically dispatches two events when the Ajax call succeeds: `SETUSERNAMEPENDING`  and `SETUSERNAMEFULFILLED`. If something fails it dispatches `SETUSERNAMEREJECTED`.
 
-**When to use**
+**When to use:**
 
 * You want the simplest thing with minimum overhead
 * You prefer convention over configuration
 * You have simple Ajax requirements
 
-**2. Redux Thunk Middleware**
+**2. Redux Thunk Middleware:**
 
 This is the standard way of doing Ajax with Redux. When using Redux Thunk, your action creators returns a function that takes one argument dispatch:
 
@@ -13484,12 +13484,12 @@ function getUserName(userId) {
 
 The action creator can call dispatch inside `.then` to execute it asynchronously. The action creator can call dispatch as many time as it wants.
 
-**When to use**
+**When to use:**
 
 * You make many Ajax calls in one action, and need to dispatch many actions
 * You require full control of the format of your actions
 
-**3. Redux Saga Middleware**
+**3. Redux Saga Middleware:**
 
 This is the most advanced way of doing Ajax with Redux. It uses an ES6 feature called `generators`. When using Redux Saga you do your Ajax calls in a saga instead of an action creator. This is how a saga looks like:
 
@@ -13515,7 +13515,7 @@ export default mySaga
 
 Here, sagas listen to actions which you dispatch as regular synchronous actions. In this case, the saga `getUserName` is executed when the action `SET_USERNAME` is dispatched. The `*` next to the function means it\'s a generator and yield is a generator keyword.
 
-**When to use**
+**When to use:**
 
 * You need to be able to test the asynchronous flow easily
 * You are comfortable working with ES6 Generators
@@ -13737,7 +13737,7 @@ Decorators make it possible to annotate and modify classes and properties at des
 
 Here\'s an example of setting up Redux without and with a decorator:
 
-**Without a decorator**
+**Without a decorator:**
 
 ```js
 import React from 'react'
@@ -13760,7 +13760,7 @@ class MyApp extends React.Component {
 export default connect(mapStateToProps, mapDispatchToProps)(MyApp)
 ```
 
-**Using a decorator**
+**Using a decorator:**
 
 ```js
 import React from 'react'
@@ -13798,9 +13798,9 @@ When using Redux, state is stored globally in the Redux store. Any component tha
 
 ## Q. What is Flux?
 
-Flux is an application design paradigm used as a replacement for the more traditional MVC pattern. Flux is a Javascript architecture or pattern for UI which runs on a unidirectional data flow and has a centralized dispatcher. It is useful when your project has dynamic data and you need to keep the data updated in an effective manner. It was created by Facebook, and complements React as view. 
+Flux is an application design paradigm used as a replacement for the more traditional MVC pattern. Flux is a Javascript architecture or pattern for UI which runs on a unidirectional data flow and has a centralized dispatcher. It is useful when your project has dynamic data and you need to keep the data updated in an effective manner. It was created by Facebook, and complements React as view.
 
-**Architecture**
+**Architecture:**
 
 The Flux architecture is based on the following components:
 
@@ -13821,7 +13821,7 @@ In the Flux architecture, when a user clicks on something, the view creates acti
 
 ## Q. What are the drawbacks of Redux contrasted with Flux?
 
-**Flux vs Redux**
+**Flux vs Redux:**
 
 | Flux                                       | Redux                            |
 |--------------------------------------------|----------------------------------|
@@ -13836,7 +13836,7 @@ In the Flux architecture, when a user clicks on something, the view creates acti
 
 ## Q. Describe Flux vs MVC?
 
-**1. MVC**
+**1. MVC:**
 
 MVC stands for Model View Controller. It is an architectural pattern used for developing the user interface. It divides the application into three different logical components: the Model, the View, and the Controller.
 
@@ -13855,7 +13855,7 @@ MVC can be interpreted or modified in many ways to fit a particular framework or
 
 In general, MVC makes no assumptions about whether data flow within an application should be unidirectional or bidirectional. In server Side, MVC is good, but in Client side most of the JS frameworks provide data binding support which let the view can talk with model directly, It shoudn\'t be, Many times it become hard to debug something as there are scope for a property being changed by many ways.
 
-**2. Flux**
+**2. Flux:**
 
 Flux places unidirectional data flow front and center, by making it a requirement. Here are the four major roles that make up the Flux architecture:
 
@@ -13874,7 +13874,7 @@ Flux places unidirectional data flow front and center, by making it a requiremen
 4. The stores in turn relay that change event to the controller-views to alert them of the change
 5. The controller-views listen for events, retrieve data from the appropriate stores as required and re-render themselves and all their children in the component tree accordingly.
 
-**MVC Vs. Flux**
+**MVC vs Flux:**
 
 |  MVC                   |Flux                              |
 |------------------------|----------------------------------|
@@ -13899,7 +13899,7 @@ The most common use case for middleware is to support asynchronous actions witho
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk, logger)(createStore);
 ```
 
-**Example: Custom Logger Middleware**
+**Example: Custom Logger Middleware:**
 
 ```js
 import { createStore, applyMiddleware } from 'redux'
@@ -13937,7 +13937,7 @@ store.dispatch({
 
 ## Q. How to set initial state in Redux?
 
-**1. Initializing State**
+**1. Initializing State:**
 
 In Redux, all application state is held in the store; which is an object that holds the complete state tree of your app. There is only one way to change its state and that is by dispatching actions.
 
@@ -13976,7 +13976,7 @@ function todoActionCreator (newTodo) {
 
 When a store is created, Redux dispatches a dummy action to your reducer to populate the store with the initial state.
 
-**2. createStore Pattern**
+**2. createStore Pattern:**
 
 The createStore method can accept an optional preloadedState value as its second argument. In our example, we called `createStore()` without passing this value. When a value is passed to the `preloadedState` it becomes the initial state.
 
@@ -13985,7 +13985,7 @@ const initialState = ["eat", "code", "sleep"];
 const store = createStore(todosReducer, initialState)
 ```
 
-**3. Reducer Pattern**
+**3. Reducer Pattern:**
 
 Reducers can also specify an initial state value by looking for an incoming state argument that is undefined, and returning the value they'd like to use as a default.
 
