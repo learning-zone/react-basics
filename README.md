@@ -4027,12 +4027,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{color: `${this.state.color}`}}>
-          Color: {this.state.color}
-        </h3>
+        <h3>Color: {this.state.color}</h3>
 
         <button type="button" onClick={this.handleColor}>
-          Change color
+          Change Color
         </button>
       </div>
     );
