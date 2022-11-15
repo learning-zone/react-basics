@@ -3682,13 +3682,13 @@ export default function App() {
 
 The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
 
-**Link**
+**Link:**
 
 ```js
 <Link to="/">Home</Link>
 ```
 
-**NavLink**
+**NavLink:**
 
 ```js
 <NavLink to="/" activeClassName="active">Home</NavLink>
@@ -4210,7 +4210,7 @@ export default function App() {
 * A router which uses client side hash routing.
 * Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
 * Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
-* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API 
+* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API
 
 **Syntax:**
 
@@ -5236,13 +5236,13 @@ describe('APP Component', () => {
   <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
 </p>
 
-**1. Actions in Redux**
+**1. Actions in Redux:**
 
 Action is static information about the event that initiates a state change. When you update your state with Redux, you always start with an action. Actions are in the form of Javascript objects, containing a `type` and an optional `payload`. Actions are sent using the `store.dispatch()` method. Actions are created via an action creator.
 
 **Action creators** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
 
-**2. Reducers in Redux**
+**2. Reducers in Redux:**
 
 Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
 
@@ -5256,13 +5256,13 @@ It is based on the reduce function in JavaScript, where a single value is calcul
 const rootReducers = combineReducer(reducer1, reducer2)
 ```
 
-**3. Store in Redux**
+**3. Store in Redux:**
 
 A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
 
 When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
 
-**4. Dispatch**
+**4. Dispatch:**
 
 Dispatch is a method that triggers an action with type and payload to Reducer.
 
@@ -5270,7 +5270,7 @@ Dispatch is a method that triggers an action with type and payload to Reducer.
 store.dispatch() 
 ```
 
-**5. Subscribe**
+**5. Subscribe:**
 
 Subscribe is a method that is used to subscribe data/state from the Store.
 
@@ -5278,15 +5278,15 @@ Subscribe is a method that is used to subscribe data/state from the Store.
 store.subscribe()
 ```
 
-**6. Provider**
+**6. Provider:**
 
 The Provider is a component that has a reference to the Store and provides the data from the Store to the component it wraps.
 
-**7. Connect**
+**7. Connect:**
 
 Connect is a function that communicates with the Provider.
 
-**8. Middleware**
+**8. Middleware:**
 
 Middleware is the suggested way to extend Redux with custom functionality. Middlewares are used to dispatch async functions. We configure Middleware\'s while creating a store.
 
@@ -5434,7 +5434,7 @@ To access redux store outside a react component, Redux `connect` function works 
 
 In the examples below shows how to access a JWT token from the Redux store.
 
-**Option 1: Export the Store**
+**Option 1:** Export the Store
 
 ```js
 import { createStore } from 'redux'
@@ -5468,7 +5468,7 @@ export function getProtectedThing() {
 }
 ```
 
-**Option 2: Pass the Value From a React Component**
+**Option 2:** Pass the Value From a React Component
 
 It\'s simple to get access to the store inside a React component – no need to pass the store as a prop or import it, just use the `connect()` function from React Redux, and supply a `mapStateToProps()` function that pulls out the data.
 
@@ -5514,7 +5514,7 @@ The `connect()` function connects a React component to a Redux store. It provide
 It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
 
 * **Use `mapStateToProps()`**: It maps the state variables from your store to the props that you specify.
-* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container. 
+* **Connect props to container**: The object returned by the `mapStateToProps` function is connected to the container.
 
 **Example:**
 
@@ -5887,7 +5887,7 @@ There are three most widely used and stable Redux Ajax middleware are:
 * Redux Thunk Middleware
 * Redux Saga Middleware
 
-**1. Redux Promise Middleware**
+**1. Redux Promise Middleware:**
 
 This is the most simple way of doing Ajax calls with Redux. When using Redux Promise, your action creator can return a Promise inside the Action.
 
@@ -6066,7 +6066,7 @@ Context API is easy to is use as it has a short learning curve. It requires less
 
 **2. Rendering:**
 
-Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components. 
+Context API prompts a re-render on each update of the state and re-renders all components regardless. Redux however, only re-renders the updated components.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6259,7 +6259,7 @@ ReactDOM.render(
 
 ## Q. What are the different ways to write mapDispatchToProps()?
 
-**mapDispatchToProps** is the second argument that connect expects to receive. In the context of a react-redux application, the `mapDispatchToProps` argument is responsible for enabling a component to dispatch actions. 
+**mapDispatchToProps** is the second argument that connect expects to receive. In the context of a react-redux application, the `mapDispatchToProps` argument is responsible for enabling a component to dispatch actions.
 
 In practical terms, `mapDispatchToProps` is where react events (and lifecycle events) are mapped to redux actions. There are a few ways of binding action creators to `dispatch()` in `mapDispatchToProps()`.
 
@@ -6745,7 +6745,7 @@ useLayoutEffect fires synchronously after all DOM mutations.
 
 Most of the time we are fetching data and setting up event handlers that do not need to happen immediately. It also does not affect page appearance. For all such cases, we should use the useEffect() hook.
 
-If our effect will mutate the DOM (like getting the scroll position or other styles for an element) or involves animation prefer useLayoutEffect over useEffect. 
+If our effect will mutate the DOM (like getting the scroll position or other styles for an element) or involves animation prefer useLayoutEffect over useEffect.
 
 Reason:
 
