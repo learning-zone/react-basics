@@ -2,6 +2,43 @@
 
 <br/>
 
+## Q. Create a React component, that displays data from https://reqres.in/api/users Display first_name and last_name as list items?
+
+```js
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function App() {
+  const [users, setUsers] = useState([]);
+
+  const fetchData = () => {
+    axios.get("https://reqres.in/api/users?page=1").then((response) => {
+      setUsers(response.data.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {users.length > 0 && (
+        <ul>
+          {users.map((user) => (
+            <li key={user.id}>
+              {user.first_name} - {user.last_name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rest-api-hmcx8p?file=/src/App.js)**
+
 ## Q. What is Destructuring in React?
 
 Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
