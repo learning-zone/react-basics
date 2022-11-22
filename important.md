@@ -27,7 +27,7 @@ export default function App() {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              {user.first_name} - {user.last_name}
+              {user.first_name} {user.last_name}
             </li>
           ))}
         </ul>
