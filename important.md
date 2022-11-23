@@ -11,27 +11,21 @@ import axios from "axios";
 export default function App() {
   const [users, setUsers] = useState([]);
 
-  const fetchData = () => {
+  useEffect(() => {
     axios.get("https://reqres.in/api/users?page=1").then((response) => {
       setUsers(response.data.data);
     });
-  };
-
-  useEffect(() => {
-    fetchData();
   }, []);
 
   return (
     <div>
-      {users.length > 0 && (
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              {user.first_name} {user.last_name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.first_name} {user.last_name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
