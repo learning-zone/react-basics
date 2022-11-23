@@ -2,7 +2,7 @@
 
 <br/>
 
-## Q. Create a React component, that displays data from https://reqres.in/api/users Display first_name and last_name as list items?
+## Q. Create a component, that displays data from https://reqres.in/api/users?
 
 ```js
 import React, { useEffect, useState } from "react";
