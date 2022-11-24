@@ -63,7 +63,7 @@
 
 <br/>
 
-## # 1. INTRODUCTION
+## 1. INTRODUCTION
 
 <br/>
 
@@ -303,7 +303,7 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 2. REACT SETUP
+## 2. REACT SETUP
 
 <br/>
 
@@ -679,7 +679,7 @@ createPortal allow us to render a component into a DOM node that resides outside
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 3. REACT JSX
+## 3. REACT JSX
 
 <br/>
 
@@ -1074,7 +1074,7 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4. REACT COMPONENTS
+## 4. REACT COMPONENTS
 
 <br/>
 
@@ -1705,7 +1705,7 @@ In this example, the `<Menu>` establishes some shared implicit state. The `<Menu
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.1. FUNCTIONAL COMPONENTS
+## 4.1. FUNCTIONAL COMPONENTS
 
 <br/>
 
@@ -1736,7 +1736,7 @@ ReactDOM.render(
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.2. CLASS COMPONENTS
+## 4.2. CLASS COMPONENTS
 
 <br/>
 
@@ -2130,7 +2130,7 @@ root.render(<App />);
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.2.1. REACT LIFECYCLE
+## 4.2.1. REACT LIFECYCLE
 
 <br/>
 
@@ -2477,7 +2477,7 @@ const ComponentExample => () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.3. PURE COMPONENTS
+## 4.3. PURE COMPONENTS
 
 <br/>
 
@@ -2610,7 +2610,7 @@ On the other hand, we should not use `PureComponent()` as a base component if:
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.4. HIGHER ORDER COMPONENTS
+## 4.4. HIGHER ORDER COMPONENTS
 
 <br/>
 
@@ -2897,7 +2897,7 @@ function getDisplayName(WrappedComponent) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4.5. LAZY LOADING
+## 4.5. LAZY LOADING
 
 <br/>
 
@@ -2980,7 +2980,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 5. REACT PROPS
+## 5. REACT PROPS
 
 <br/>
 
@@ -3959,7 +3959,7 @@ ReactDOM.render(
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 6. REACT STATE
+## 6. REACT STATE
 
 <br/>
 
@@ -4663,7 +4663,7 @@ Props should never be changed in a child component. Props are also used to allow
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 7. REACT EVENTS
+## 7. REACT EVENTS
 
 <br/>
 
@@ -5747,7 +5747,7 @@ class Button extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 8. REACT LISTS
+## 8. REACT LISTS
 
 <br/>
 
@@ -5889,7 +5889,7 @@ const NumberList = (props) => (
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 9. React RESTful API
+## 9. React RESTful API
 
 <br/>
 
@@ -6574,7 +6574,7 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 10. REACT FORMS
+## 10. REACT FORMS
 
 <br/>
 
@@ -6966,7 +6966,7 @@ render() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 11. REACT HOOKS
+## 11. REACT HOOKS
 
 <br/>
 
@@ -7820,7 +7820,7 @@ const App = () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 12. REACT CONTEXT
+## 12. REACT CONTEXT
 
 <br/>
 
@@ -8127,7 +8127,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 13. REACT ROUTER
+## 13. REACT ROUTER
 
 <br/>
 
@@ -8992,7 +8992,7 @@ function MyComponent() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 14. REACT ERROR BOUNDARIES
+## 14. REACT ERROR BOUNDARIES
 
 <br/>
 
@@ -9142,7 +9142,7 @@ class ErrorBoundary extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 15. REACT REFS
+## 15. REACT REFS
 
 <br/>
 
@@ -9575,7 +9575,7 @@ function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 16. REACT COMPOSITION
+## 16. REACT COMPOSITION
 
 <br/>
 
@@ -9687,7 +9687,7 @@ React recommends use of Composition over Inheritance, here is why. Everything in
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 17. REACT CSS STYLING
+## 17. REACT CSS STYLING
 
 <br/>
 
@@ -10392,7 +10392,7 @@ function MyPureComponent(props) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 18. REACT INTERNATIONALIZATION
+## 18. REACT INTERNATIONALIZATION
 
 <br/>
 
@@ -10486,7 +10486,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 19. REACT TESTING
+## 19. REACT TESTING
 
 <br/>
 
@@ -10905,7 +10905,7 @@ describe('APP Component', () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 20. REACT MISCELLANEOUS
+## 20. REACT MISCELLANEOUS
 
 <br/>
 
@@ -11937,7 +11937,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 1. REDUX OVERVIEW
+## 1. REDUX OVERVIEW
 
 <br/>
 
@@ -12186,7 +12186,7 @@ export default Image
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 2. REDUX SETUP
+## 2. REDUX SETUP
 
 <br/>
 
@@ -12282,7 +12282,7 @@ The most of the applications has several top-level directories as below:
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 3. REDUX DATA FLOW
+## 3. REDUX DATA FLOW
 
 <br/>
 
@@ -12460,7 +12460,7 @@ The following are details of how Redux works:
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 4. REDUX STORE
+## 4. REDUX STORE
 
 <br/>
 
@@ -12625,7 +12625,7 @@ export default connect(mapStateToProps)(App)
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 5. REDUX ACTIONS
+## 5. REDUX ACTIONS
 
 <br/>
 
@@ -12759,7 +12759,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App)
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 6. REDUX REDUCERS
+## 6. REDUX REDUCERS
 
 <br/>
 
@@ -12997,7 +12997,7 @@ With reducer level code-splitting, reducers can be code split on a split compone
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 7. REDUX MIDDLEWARE
+## 7. REDUX MIDDLEWARE
 
 <br/>
 
@@ -13639,7 +13639,7 @@ sagaMiddleware.run(mySaga)
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 8. REDUX FORMS
+## 8. REDUX FORMS
 
 <br/>
 
@@ -13725,7 +13725,7 @@ export default connect(mapStateToProps)(reduxForm({
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 9. REDUX MISCELLANEOUS
+## 9. REDUX MISCELLANEOUS
 
 <br/>
 
