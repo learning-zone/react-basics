@@ -679,7 +679,23 @@ createPortal allow us to render a component into a DOM node that resides outside
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to build a progressive web app with react?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What is the difference between create-react-app and webpack?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between grunt and webpack?
 
 *ToDo*
 
@@ -10913,6 +10929,14 @@ describe('APP Component', () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to write unit test for multiple fetch with Promise.all using jest?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 20. REACT MISCELLANEOUS
 
 <br/>
@@ -13736,6 +13760,14 @@ export default connect(mapStateToProps)(reduxForm({
 ## # 9. REDUX MISCELLANEOUS
 
 <br/>
+
+## Q. What is redux toolkit?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What is the at symbol in the Redux connect decorator?
 
