@@ -1,5 +1,45 @@
 # React Coding Practice
 
+## Q. Create a multilevel dropdown menu in React?
+
+```js
+Input:
+[
+  {
+    label: "Menu 1",
+  },
+  {
+    label: "Menu 2",
+    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
+  },
+  {
+    label: "Menu 3",
+    submenu: [
+      { label: "Sub Menu 1" },
+      { label: "Sub Menu 2" },
+      { label: "Sub Menu 3" },
+      { label: "Sub Menu 4" },
+    ],
+  },
+  {
+    label: "Menu 4",
+    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
+  },
+];
+```
+
+<details><summary><b>Answer</b></summary>
+
+```js
+
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. Display Simple Data with JSX
 
 ```js
