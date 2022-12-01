@@ -40,63 +40,48 @@ Input:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Display Simple Data with JSX
+## Q. Create a component, that displays data from https://reqres.in/api/users?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
-/**
-* JSX Example using Functional Component
-*
-**/
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://reqres.in/api/users?page=1").then((response) => {
+      setUsers(response.data.data);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <h1>JSX Example!</h1>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/jsx-example-b1hpp?file=/src/App.js)**
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Loop Over and Display Data with JSX
-
-```js
-// App.js
-
-import users from "./users-data";
-
-function App() {
-  return (
-    <div className="App">
-      <div className="page-deets">
-        <h2>Loop Over and Display Data with JSX</h2>
-      </div>
-      {/* Iterate over imported array in userData */}
-      <div className="users">
-        {users.map((user, index) => (
-          <div key={index}>
-            <h3>{user.name}</h3>
-            <p>{user.location}</p>
-            <p>{user.car}</p>
-          </div>
+    <div>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.first_name} {user.last_name}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-iterate-array-ej0wm?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rest-api-hmcx8p?file=/src/App.js)**
+
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Use React State to Update the DOM
+## Q. Use React State to Update the DOM?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 function App() {
@@ -126,11 +111,15 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-update-dom-vu4il?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 ## Q. Show an Alert Based on an Input
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 function App() {
@@ -161,11 +150,15 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-alert-based-on-input-hk2ip?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Add Two Numbers
+## Q. Create a component in react to add two numbers?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 function App() {
@@ -202,51 +195,15 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-calculator-8ud1d?file=/src/index.js)**
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. Fetch and Display from an API
-
-```js
-const gitHubUrl = "https://api.github.com/users/deekshasharma";
-
-function App() {
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    getGitHubUserWithFetch();
-  }, []);
-
-  const getGitHubUserWithFetch = async () => {
-    const response = await fetch(gitHubUrl);
-    const jsonData = await response.json();
-    setUserData(jsonData);
-  };
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>GitHub User Data</h2>
-      </header>
-      <div className="user-container">
-        <h5 className="info-item">{userData.name}</h5>
-        <h5 className="info-item">{userData.location}</h5>
-        <h5 className="info-item">{userData.blog}</h5>
-        <h5 className="info-item">{userData.company}</h5>
-      </div>
-    </div>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-api-4wrts?file=/src/App.js)**
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. React Simple Counter
+## Q. Create a simple counter in react?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 const App = () => {
@@ -270,11 +227,15 @@ const App = () => {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-counter-bhp4q?file=/src/App.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Use Context to Pass Data
+## Q. Write a program to pass values to child using context in ReactJS?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 // Counter.js
@@ -320,11 +281,15 @@ const App = () => {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Create ToDo App using React?
+## Q. Create a ToDo list app using React?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 class App extends React.Component {
@@ -411,6 +376,8 @@ class App extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-todo-list-hw45y?file=/src/App.js)**
+
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
