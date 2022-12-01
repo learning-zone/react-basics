@@ -383,15 +383,28 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Search text based on list
+## Q. Create a search filter in react?
 
 ```js
+Input:
+
 const people = [
   "Shashi Koshy",
   "Dhriti Taneja",
-  "Dipa Mishra"
+  "Dipa Mishra",
+  "Ansh Thakkar",
+  "Lakshmi Thaker",
+  "Sushila Matthai",
+  "Shresth Nigam",
+  "Bhavana Biswas",
+  "Vasudha Mangat",
+  "Priya Saran"
 ];
+```
 
+<details><summary><b>Answer</b></summary>
+
+```js
 function App() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
@@ -406,6 +419,7 @@ function App() {
     );
     setSearchResults(results);
   }, [searchTerm]);
+
   return (
     <div className="App">
       <input
@@ -426,14 +440,22 @@ function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-search-list-u1s8b?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Fizz Buzz program in React
+## Q. Create a Fizz Buzz program in React?
 
 ```js
-class FrizzBuzz extends React.Component {
+Counting incrementally, replacing any number divisible by three with the word "fizz", and any number divisible by five with the word "buzz".
+```
+
+<details><summary><b>Answer</b></summary>
+
+```js
+class FizzBuzz extends React.Component {
   state = {
     count: 1
   };
@@ -474,6 +496,8 @@ class FrizzBuzz extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fizz-buzz-qtk36?file=/src/index.js)**
+
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
