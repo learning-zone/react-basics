@@ -449,7 +449,8 @@ function App() {
 ## Q. Create a Fizz Buzz program in React?
 
 ```js
-Counting incrementally, replacing any number divisible by three with the word "fizz", and any number divisible by five with the word "buzz".
+Counting incrementally, replacing any number divisible by three with the word "fizz", 
+and any number divisible by five with the word "buzz".
 ```
 
 <details><summary><b>Answer</b></summary>
