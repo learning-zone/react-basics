@@ -40,7 +40,7 @@ Input:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Create a component, that displays data from https://reqres.in/api/users?
+## Q. Create a functional component that displays data from https://reqres.in/api/users?
 
 <details><summary><b>Answer</b></summary>
 
@@ -79,7 +79,7 @@ export default function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Use React State to Update the DOM?
+## Q. Write a program to display searched keyword in React?
 
 <details><summary><b>Answer</b></summary>
 
@@ -117,7 +117,7 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Show an Alert Based on an Input
+## Q. Create a functional component to show an alert message based on user input?
 
 <details><summary><b>Answer</b></summary>
 
@@ -156,7 +156,7 @@ function App() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Create a component in react to add two numbers?
+## Q. Create a functional component in react to add two numbers?
 
 <details><summary><b>Answer</b></summary>
 
@@ -233,7 +233,7 @@ const App = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Write a program to pass values to child using context in ReactJS?
+## Q. Write a program to pass values to child using context in React?
 
 <details><summary><b>Answer</b></summary>
 
@@ -383,7 +383,7 @@ class App extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Create a search filter in react?
+## Q. Create a search filter component in react?
 
 ```js
 Input:
@@ -504,9 +504,11 @@ class FizzBuzz extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Call child method from parent in React
+## Q. Write a program to call child method from parent in React?
 
-**React.forwardRef():**
+<details><summary><b>Answer</b></summary>
+
+**1. Using React.forwardRef():**
 
 ```js
 import { forwardRef, useRef, useImperativeHandle } from "react";
@@ -535,7 +537,7 @@ const Parent = () => {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-3serh?file=/src/index.js)**
 
-**Class Component:**
+**2. Using Class Component:**
 
 ```js
 
@@ -572,7 +574,7 @@ class Child extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-t0gud?file=/src/index.js)**
 
-**Callback Ref API:**
+**3. Using callback Ref API:**
 
 ```js
 class Parent extends React.Component {
@@ -601,42 +603,19 @@ class Child extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-ref-api-kp30y?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Show or hide element in React
+## Q. Write a program to show and hide element in React?
 
-**Using React Class:**
-
-```js
-class Toggle extends React.Component {
-  state = {
-    show: true
-  };
-
-  toggle = () =>
-    this.setState((currentState) => ({ show: !currentState.show }));
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.toggle}>
-          Toggle: {this.state.show ? "Show" : "Hide"}
-        </button>
-        {this.state.show && <h2>Hello World!</h2>}
-      </div>
-    );
-  }
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-toggle-9h4ui?file=/src/App.js)**
-
-**Using React hooks:**
+<details><summary><b>Answer</b></summary>
 
 ```js
 export default function App() {
+
   const [show, toggleShow] = React.useState(true);
 
   return (
@@ -652,11 +631,15 @@ export default function App() {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-toggle-gipub?file=/src/App.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How can I update the parent state in React?
+## Q. How to update the parent state in React?
+
+<details><summary><b>Answer</b></summary>
 
 **Using function as a Prop:**
 
@@ -700,11 +683,15 @@ class Child extends Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-function-as-a-prop-2unfh?file=/src/App.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 ## Q. How do I reference a local image in React?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 import React, { Component } from "react";
@@ -725,11 +712,15 @@ export default class Header extends Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/image-in-react-ud0ry?file=/src/App.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 ## Q. How to access a child state in React?
+
+<details><summary><b>Answer</b></summary>
 
 **Using createRef():**
 
@@ -744,6 +735,7 @@ export default class App extends React.Component {
     const childelement = this.ChildElement.current;
     alert("Current state of child is: " + childelement.state.name);
   };
+
   render() {
     return (
       <div>
@@ -768,40 +760,15 @@ class Child extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/access-child-state-p2iip?file=/src/App.js)**
 
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. React prop validation for date objects
-
-**PropTypes.instanceOf(Date):**
-
-```js
-import React from "react";
-import PropTypes from "prop-types";
-
-const DateDisplay = ({ date }) => <p>{date.toString()}</p>;
-
-DateDisplay.propTypes = {
-  date: PropTypes.instanceOf(Date)
-};
-
-export default function App() {
-  return (
-    <h3>
-      <DateDisplay date={new Date()} />
-    </h3>
-  );
-}
-```
-
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-date-validation-z7g6g?file=/src/App.js)**
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
 ## Q. How to access custom attributes from event object in React?
+
+<details><summary><b>Answer</b></summary>
 
 **event.target.getAttribute:**
 
@@ -823,11 +790,15 @@ export default class Header extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-attributes-i3mu0?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Updating state on props change in React
+## Q. How to update state on props change in React?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 // Counter.js
@@ -871,16 +842,23 @@ class App extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-change-state-by-props-phjde?file=/src/index.js)**
 
+</details>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Delete an item from state array in react
+## Q. Write a program to delete an item from array in React?
+
+<details><summary><b>Answer</b></summary>
 
 ```js
 const userData = [
-  { id: "100", name: "Chanda Mittal" },
-  { id: "101", name: "Sumati Pau" }
+  { id: "101", name: "Tanu Kanda" },
+  { id: "102", name: "Sathwik Bhatti" },
+  { id: "103", name: "Vritika Nath" },
+  { id: "104", name: "Chanda Mittal" },
+  { id: "105", name: "Sumati Pau" }
 ];
 
 export default class ListComponent extends React.Component {
@@ -920,6 +898,8 @@ export default class ListComponent extends React.Component {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-delete-an-item-3d9t2?file=/src/index.js)**
+
+</details>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
