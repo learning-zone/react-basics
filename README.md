@@ -11977,6 +11977,14 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+#### Q. How to do SEO on react?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 1. REDUX OVERVIEW
 
 <br/>
