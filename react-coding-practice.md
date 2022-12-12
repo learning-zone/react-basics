@@ -905,7 +905,7 @@ export default class ListComponent extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Sending the bearer token with axios
+## Q. How to pass bearer token with axios
 
 **Autherization token in axios:**
 
