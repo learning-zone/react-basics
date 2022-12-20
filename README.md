@@ -11988,6 +11988,7 @@ Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automa
 </div>
 
 #### Q. How to do SEO on react?
+#### Q. How to create a Micro Frontend application using React?
 
 *ToDo*
 
