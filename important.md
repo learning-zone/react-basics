@@ -2441,7 +2441,7 @@ Interceptors are methods which are triggered before or after the main method. Th
 
 **1. Request Interceptor:**
 
-This is called before the actual call to the endpoint is made. One common use case for a request handler is to modify or add new HTTP headers. For example, an authentication token could be injected into all requests.
+It allows you to write or execute a piece of your code before the request gets sent. For example, an authentication token could be injected into all requests.
 
 **Example:**
 
@@ -2461,9 +2461,9 @@ axios.interceptors.request.use(
 )
 ```
 
-**2. Response and error Interceptor:**
+**2. Response Interceptor:**
 
-This is called before the promise is completed and the data is received by the then callback.
+It allows you to write or execute a piece of your code before response reaches the calling end.
 
 **Example:**
 
