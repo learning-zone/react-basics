@@ -1703,7 +1703,7 @@ render () {
 
 ## Q. What is Compound Components in React?
 
-A compound component is a type of component that manages the internal state of a feature while delegating control of the rendering to the place of implementation opposed to the point of declaration. They provide a way to shield feature specific logic from the rest of the app providing a clean and expressive API for consuming the component.
+The Compound components are a pattern in which components are used together such that they share an implicit state that lets them communicate with each other in the background.
 
 Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
 
