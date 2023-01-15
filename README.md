@@ -3858,11 +3858,12 @@ class Users extends React.Component {
 
 ## Q. How to pass JSON Objects from Child to Parent Component?
 
-**Example:** Passing JSON Objects from Child to Parent Component using callback function
+**Using callback function:** 
 
 ```js
-// Parent Component
-
+/**
+ * Parent Component
+ */
 export default class App extends React.Component {
   constructor() {
     super();
@@ -3895,8 +3896,9 @@ export default class App extends React.Component {
 ```
 
 ```js
-// Child Component
-
+/**
+ * Child Component
+ */
 export default class Child extends React.Component {
   constructor() {
     super();
