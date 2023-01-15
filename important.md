@@ -2199,26 +2199,23 @@ OutsideAlerter.propTypes = {
 ## Q. How to convert text to uppercase on user input entered?
 
 ```js
-import React, { useState } from "react"
-import ReactDOM from "react-dom"
+import React from "react";
 
-const toInputUppercase = e => {
-  e.target.value = ("" + e.target.value).toUpperCase()
-}
+const toInputUppercase = (e) => {
+  e.target.value = ("" + e.target.value).toUpperCase();
+};
 
-const App = () => {
-  const [name, setName] = useState("")
+export default function App() {
+  const [name, setName] = React.useState("");
 
   return (
     <input
       name={name}
-      onChange={e => setName(e.target.value)}
+      onChange={(e) => setName(e.target.value)}
       onInput={toInputUppercase} // apply on input which do you want to be capitalize
     />
-  )
+  );
 }
-
-ReactDOM.render(<App />, document.getElementById("root"))
 ```
 
 <div align="right">
