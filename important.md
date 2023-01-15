@@ -114,7 +114,7 @@ The **innerHTML** is risky because it is easy to expose users to a cross-site sc
 ```js
 /**
  * InnerHtml in React
- **/
+ */
 import React from "react";
 
 export default function App() {
