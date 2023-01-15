@@ -1024,15 +1024,20 @@ The **innerHTML** is risky because it is easy to expose users to a cross-site sc
 **Example:**
 
 ```js
-function App() {
-    return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: "<h2>This text is set using dangerouslySetInnerHTML</h2>"
-        }}
-      ></div>
-    );
-  }
+/**
+ * InnerHtml in React
+ */
+import React from "react";
+
+export default function App() {
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: "<p>This text is set using <b>dangerouslySetInnerHTML</b></p>"
+      }}
+    ></div>
+  );
+}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
