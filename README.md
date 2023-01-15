@@ -1842,7 +1842,7 @@ class Table extends React.Component {
 
    renderTableData() {
       return this.state.employees.map((employee, index) => {
-         const { id, name, age, email } = employee 
+         const { id, name, email } = employee 
          return (
             <tr key={id}>
                <td>{id}</td>
