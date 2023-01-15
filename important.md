@@ -310,7 +310,7 @@ export default class App extends React.Component {
 
 ## Q. What is Compound Components in React?
 
-The Compound components are a pattern in which components are used together such that they share an implicit state that lets them communicate with each other in the background. In other words, when multiple components work together to have a shared state and handle logic together, they are called compound components.
+The Compound components are a pattern in which components are used together such that they share an implicit state that lets them communicate with each other in the background.
 
 Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
 
