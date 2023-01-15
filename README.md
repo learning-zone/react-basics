@@ -2687,7 +2687,7 @@ App = Hoc(App);
 
 **Note:**
 
-* A HOC do not modify or mutate components. It creates a new ones.
+* A HOC do not modify or mutate components. It creates a new one.
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
