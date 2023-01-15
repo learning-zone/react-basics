@@ -1182,9 +1182,8 @@ For example, this is a presentational component. It gets data from its props, an
 
 ```js
 /**
- * Presentational Component
- * 
- **/
+ * Presentational Component 
+ */
 const Users = props => (
   <ul>
     {props.users.map(user => (
@@ -1198,9 +1197,8 @@ On the other hand this is a container component. It manages and stores its own d
 
 ```js
 /**
- * Container Component
- * 
- **/
+ * Container Component 
+ */
 class UsersContainer extends React.Component {
   constructor() {
     this.state = {
