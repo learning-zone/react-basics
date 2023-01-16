@@ -1910,10 +1910,6 @@ export default function App()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-<div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="200" height="200"/>
-</div>
-
 ## [Sorting Articles](https://github.com/hackerrank-test/hackerrank-react-sorting-articles)
 
 <img src="https://hrcdn.net/s3_pub/istreet-assets/YkVzgbGgMj0cfT9P97s8jg/sorting-articles.gif" title="Sorting Articles" alt="Sorting Articles" width="350" height="300"/>
