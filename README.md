@@ -2641,7 +2641,7 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 
 <br/>
 
-## Q. What is Higher Order Components in React.js?
+## Q. What are Higher Order Components in React.js?
 
 A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
 
@@ -2687,7 +2687,7 @@ App = Hoc(App);
 
 **Note:**
 
-* A HOC do not modify or mutate components. It creates a new one.
+* A HOC does not modify or mutate components. It creates a new one.
 * A HOC is used to compose components for code reuse.
 * A HOC is a pure function. It has no side effects, returning only a new component.
 
