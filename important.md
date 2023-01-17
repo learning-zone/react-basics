@@ -491,28 +491,6 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What does shouldComponentUpdate() do and why is it important?
-
-The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
-
-The default implementation of this function returns true so to stop the re-render you need to return false here:
-
-```js
-shouldComponentUpdate(nextProps, nextState) {
-  console.log(nextProps, nextState)
-  console.log(this.props, this.state)
-  return false  
-}
-```
-
-**Preventing unnecessary renders:**
-
-The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
-
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
 ## Q. What is the purpose of render() function in React?
 
 The React class components uses render() function. It is used to update the UI.
