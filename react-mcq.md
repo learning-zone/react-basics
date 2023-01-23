@@ -1,10 +1,8 @@
-
-
 # React Multiple Choice Questions
 
 <br/>
 
-## Q. If you want to import just the Component from the React library, what syntax do you use?
+#### Q. If you want to import just the Component from the React library, what syntax do you use?
 
 - [ ] `import React.Component from 'react'`
 - [ ] `import [ Component ] from 'react'`
@@ -15,7 +13,7 @@
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. If a function component should always render the same way given the same props, what is a simple performance optimization available for it?
+#### Q. If a function component should always render the same way given the same props, what is a simple performance optimization available for it?
 
 - [x] Wrap it in the `React.memo` higher-order component.
 - [ ] Implement the `useReducer` Hook.
@@ -26,7 +24,7 @@
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you fix the syntax error that results from running this code?
+#### Q. How do you fix the syntax error that results from running this code?
 
 ```javascript
 const person =(firstName, lastName) =>
@@ -46,7 +44,7 @@ console.log(person("Jill", "Wilson"))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. If you see the following import in a file, what is being used for state management in the component?
+#### Q. If you see the following import in a file, what is being used for state management in the component?
 
 `import React, {useState} from 'react';`
 
@@ -59,7 +57,7 @@ console.log(person("Jill", "Wilson"))
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Using object literal enhancement, you can put values back into an object. When you log person to the console, what is the output?
+#### Q. Using object literal enhancement, you can put values back into an object. When you log person to the console, what is the output?
 
 ```javascript
 const name = 'Rachel';
@@ -77,7 +75,7 @@ console.log(person);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the testing library most often associated with React?
+#### Q. What is the testing library most often associated with React?
 
 - [ ] Mocha
 - [ ] Chai
@@ -88,7 +86,7 @@ console.log(person);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. To get the first item from the array ("cooking") using array destructuring, how do you adjust this line?
+#### Q. To get the first item from the array ("cooking") using array destructuring, how do you adjust this line?
 
 ```javascript
 const topics = ['cooking', 'art', 'history'];
@@ -103,7 +101,7 @@ const topics = ['cooking', 'art', 'history'];
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you handle passing through the component tree without having to pass props down manually at every level?
+#### Q. How do you handle passing through the component tree without having to pass props down manually at every level?
 
 - [ ] React Send
 - [ ] React Pinpoint
@@ -114,7 +112,7 @@ const topics = ['cooking', 'art', 'history'];
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What should the console read when the following code is run?
+#### Q. What should the console read when the following code is run?
 
 ```javascript
 const [, , animal] = ['Horse', 'Mouse', 'Cat'];
@@ -130,7 +128,7 @@ console.log(animal);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the name of the tool used to take JSX and turn it into createElement calls?
+#### Q. What is the name of the tool used to take JSX and turn it into createElement calls?
 
 - [ ] JSX Editor
 - [ ] ReactDOM
@@ -141,7 +139,7 @@ console.log(animal);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why might you use useReducer over useState in a React component?
+#### Q. Why might you use useReducer over useState in a React component?
 
 - [ ] when you want to replace Redux
 - [x] when you need to manage more complex state in an app
@@ -152,7 +150,7 @@ console.log(animal);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which props from the props object is available to the component with the following syntax?
+#### Q. Which props from the props object is available to the component with the following syntax?
 
 ```javascript
 <Message {...props} />
@@ -167,7 +165,7 @@ console.log(animal);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Consider the following code from React Router. What do you call :id in the path prop?
+#### Q. Consider the following code from React Router. What do you call :id in the path prop?
 
 ```javascript
 <Route path="/:id" />
@@ -182,7 +180,7 @@ console.log(animal);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. If you created a component called Dish and rendered it to the DOM, what type of element would be rendered?
+#### Q. If you created a component called Dish and rendered it to the DOM, what type of element would be rendered?
 
 ```javascript
 function Dish() {
@@ -201,7 +199,7 @@ ReactDOM.render(<Dish />, document.getElementById('root'));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What does this React element look like given the following function? (Alternative: Given the following code, what does this React element look like?)
+#### Q. What does this React element look like given the following function? (Alternative: Given the following code, what does this React element look like?)
 
 ```javascript
 React.createElement('h1', null, "What's happening?");
@@ -216,7 +214,7 @@ React.createElement('h1', null, "What's happening?");
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What property do you need to add to the Suspense component in order to display a spinner or loading state?
+#### Q. What property do you need to add to the Suspense component in order to display a spinner or loading state?
 
 ```javascript
 function MyComponent() {
@@ -239,7 +237,7 @@ function MyComponent() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What do you call the message wrapped in curly braces below?
+#### Q. What do you call the message wrapped in curly braces below?
 
 ```javascript
 const message = 'Hi there';
@@ -255,7 +253,7 @@ const element = <p>{message}</p>;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What can you use to handle code splitting?
+#### Q. What can you use to handle code splitting?
 
 - [ ] `React.memo`
 - [ ] `React.split`
@@ -266,7 +264,7 @@ const element = <p>{message}</p>;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When do you use `useLayoutEffect`?
+#### Q. When do you use `useLayoutEffect`?
 
 - [ ] to optimize for all devices
 - [ ] to complete the update
@@ -280,7 +278,7 @@ const element = <p>{message}</p>;
 **Explanation:**
 `useLayoutEffect` gets executed _before_ the `useEffect` hook without much concern for DOM mutation. Even though the React hook `useLayoutEffect` is set after the `useEffect` Hook, it gets triggered first!
 
-## Q. What is the difference between the click behaviors of these two buttons (assuming that this.handleClick is bound correctly)?
+#### Q. What is the difference between the click behaviors of these two buttons (assuming that this.handleClick is bound correctly)?
 
 ```javascript
 A. <button onClick={this.handleClick}>Click Me</button>
@@ -296,7 +294,7 @@ B. <button onClick={event => this.handleClick(event)}>Click Me</button>
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you destructure the properties that are sent to the Dish component?
+#### Q. How do you destructure the properties that are sent to the Dish component?
 
 ```javascript
 function Dish(props) {
@@ -317,7 +315,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When might you use `React.PureComponent`?
+#### Q. When might you use `React.PureComponent`?
 
 - [ ] when you do not want your component to have props
 - [ ] when you have sibling components that need to be compared
@@ -328,7 +326,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why is it important to avoid copying the values of props into a component's state where possible?
+#### Q. Why is it important to avoid copying the values of props into a component's state where possible?
 
 - [ ] because you should never mutate state
 - [ ] because `getDerivedStateFromProps()` is an unsafe method to use
@@ -339,7 +337,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the children prop?
+#### Q. What is the children prop?
 
 - [ ] a property that adds child components to state
 - [x] a special property that JSX creates on components that contain both an opening tag and a closing tag, referencing it's contents.
@@ -350,7 +348,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which attribute is React's replacement for using innerHTML in the browser DOM?
+#### Q. Which attribute is React's replacement for using innerHTML in the browser DOM?
 
 - [ ] injectHTML
 - [x] dangerouslySetInnerHTML
@@ -361,7 +359,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which of these terms commonly describe React applications?
+#### Q. Which of these terms commonly describe React applications?
 
 - [x] declarative
 - [ ] integrated
@@ -372,7 +370,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When using webpack, why would you need to use a loader?
+#### Q. When using webpack, why would you need to use a loader?
 
 - [ ] to put together physical file folders
 - [x] to preprocess files
@@ -383,7 +381,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. A representation of a user interface that is kept in memory and is synced with the "real" DOM is called what?
+#### Q. A representation of a user interface that is kept in memory and is synced with the "real" DOM is called what?
 
 - [x] virtual DOM
 - [ ] DOM
@@ -394,7 +392,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. You have written the following code but nothing is rendering. How do you fix this problem?
+#### Q. You have written the following code but nothing is rendering. How do you fix this problem?
 
 ```javascript
 const Heading = () => {
@@ -411,7 +409,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. To create a constant in JavaScript, which keyword do you use?
+#### Q. To create a constant in JavaScript, which keyword do you use?
 
 - [x] const
 - [ ] let
@@ -422,7 +420,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What do you call a React component that catches JavaScript errors anywhere in the child component tree?
+#### Q. What do you call a React component that catches JavaScript errors anywhere in the child component tree?
 
 - [ ] error bosses
 - [ ] error catchers
@@ -433,7 +431,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In which lifecycle method do you make requests for data in a class component?
+#### Q. In which lifecycle method do you make requests for data in a class component?
 
 - [ ] constructor
 - [x] componentDidMount
@@ -444,7 +442,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. React components are composed to create a user interface. How are components composed?
+#### Q. React components are composed to create a user interface. How are components composed?
 
 - [ ] by putting them in the same file
 - [x] by nesting components
@@ -455,7 +453,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. All React components must act like **\_** with respect to their props.
+#### Q. All React components must act like **\_** with respect to their props.
 
 - [ ] monads
 - [x] pure functions
@@ -466,7 +464,7 @@ const Heading = () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is `[e.target.id]` called in this code snippet?
+#### Q. What is `[e.target.id]` called in this code snippet?
 
 ```javascript
 const handleChange = (e) => {
@@ -483,7 +481,7 @@ const handleChange = (e) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the name of this component?
+#### Q. What is the name of this component?
 
 ```javascript
 class Clock extends React.Component {
@@ -502,7 +500,7 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is sent to an `Array.map()` function?
+#### Q. What is sent to an `Array.map()` function?
 
 - [x] a callback function that is called once for each element in the array
 - [ ] the name of another array to iterate over
@@ -513,7 +511,7 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why is it a good idea to pass a function to `setState` instead of an object?
+#### Q. Why is it a good idea to pass a function to `setState` instead of an object?
 
 - [ ] It provides better encapsulation.
 - [ ] It makes sure that the object is not mutated.
@@ -526,7 +524,7 @@ class Clock extends React.Component {
 
 **Explanation:** Because `this.props` and `this.state` may be updated asynchronously, you should not rely on their values for calculating the next state.
 
-## Q. What package contains the render() function that renders a React element tree to the DOM?
+#### Q. What package contains the render() function that renders a React element tree to the DOM?
 
 - [ ] `React`
 - [x] `ReactDOM`
@@ -537,7 +535,7 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you set a default value for an uncontrolled form field?
+#### Q. How do you set a default value for an uncontrolled form field?
 
 - [ ] Use the `value` property.
 - [x] Use the `defaultValue` property.
@@ -548,7 +546,7 @@ class Clock extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What do you need to change about this code to get it to run?
+#### Q. What do you need to change about this code to get it to run?
 
 ```js
 const clock = (props) => {
@@ -567,7 +565,7 @@ const clock = (props) => {
 
 **Explanation:** In JSX, lower-case tag names are considered to be HTML tags.
 
-## Q. Which Hook could be used to update the document's title?
+#### Q. Which Hook could be used to update the document's title?
 
 - [x] `useEffect(function updateTitle() { document.title = name + ' ' + lastname; });`
 - [ ] `useEffect(() => { title = name + ' ' + lastname; });`
@@ -578,7 +576,7 @@ const clock = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which function from React can you use to wrap Component imports to load them lazily?
+#### Q. Which function from React can you use to wrap Component imports to load them lazily?
 
 - [ ] `fallback`
 - [ ] `split`
@@ -589,7 +587,7 @@ const clock = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you invoke setDone only when component mounts, using hooks?
+#### Q. How do you invoke setDone only when component mounts, using hooks?
 
 ```javascript
 function MyComponent(props) {
@@ -608,7 +606,7 @@ function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Currently, `handleClick` is being called instead of passed as a reference. How do you fix this?
+#### Q. Currently, `handleClick` is being called instead of passed as a reference. How do you fix this?
 
 ```javascript
 <button onClick={this.handleClick()}>Click this</button>
@@ -623,7 +621,7 @@ function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which answer best describes a function component?
+#### Q. Which answer best describes a function component?
 
 - [ ] A function component is the same as a class component.
 - [x] A function component accepts a single props object and returns a React element.
@@ -634,7 +632,7 @@ function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which library does the `fetch()` function come from?
+#### Q. Which library does the `fetch()` function come from?
 
 - [ ] FetchJS
 - [ ] ReactDOM
@@ -645,7 +643,7 @@ function MyComponent(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What will happen when this useEffect Hook is executed, assuming name is not already equal to John?
+#### Q. What will happen when this useEffect Hook is executed, assuming name is not already equal to John?
 
 ```javascript
 useEffect(() => {
@@ -662,7 +660,7 @@ useEffect(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which choice will not cause a React component to rerender?
+#### Q. Which choice will not cause a React component to rerender?
 
 - [ ] if the component calls `this.setState(...)`
 - [ ] the value of one of the component's props changes
@@ -673,7 +671,7 @@ useEffect(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. You have created a new method in a class component called handleClick, but it is not working. Which code is missing?
+#### Q. You have created a new method in a class component called handleClick, but it is not working. Which code is missing?
 
 ```javascript
 class Button extends React.Component{
@@ -696,7 +694,7 @@ class Button extends React.Component{
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. React does not render two sibling elements unless they are wrapped in a fragment. Below is one way to render a fragment. What is the shorthand for this?
+#### Q. React does not render two sibling elements unless they are wrapped in a fragment. Below is one way to render a fragment. What is the shorthand for this?
 
 ```javascript
 <React.Fragment>
@@ -745,7 +743,7 @@ class Button extends React.Component{
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. If you wanted to display the count state value in the component, what do you need to add to the curly braces in the `h1`?
+#### Q. If you wanted to display the count state value in the component, what do you need to add to the curly braces in the `h1`?
 
 ```javascript
 class Ticker extends React.component {
@@ -768,7 +766,7 @@ class Ticker extends React.component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Per the following code, when is the Hello component assigned to greeting?
+#### Q. Per the following code, when is the Hello component assigned to greeting?
 
 ```javascript
 const greeting = isLoggedIn ? <Hello /> : null;
@@ -783,7 +781,7 @@ const greeting = isLoggedIn ? <Hello /> : null;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In the following code block, what type is orderNumber?
+#### Q. In the following code block, what type is orderNumber?
 
 ```javascript
 ReactDOM.render(<Message orderNumber="16" />, document.getElementById('root'));
@@ -798,7 +796,7 @@ ReactDOM.render(<Message orderNumber="16" />, document.getElementById('root'));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. You have added a style property to the `h1` but there is an unexpected token error when it runs. How do you fix this?
+#### Q. You have added a style property to the `h1` but there is an unexpected token error when it runs. How do you fix this?
 
 ```javascript
 const element = <h1 style={ backgroundColor: "blue" }>Hi</h1>;
@@ -813,7 +811,7 @@ const element = <h1 style={ backgroundColor: "blue" }>Hi</h1>;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which function is used to update state variables in a React class component?
+#### Q. Which function is used to update state variables in a React class component?
 
 - [ ] `replaceState`
 - [ ] `refreshState`
@@ -824,7 +822,7 @@ const element = <h1 style={ backgroundColor: "blue" }>Hi</h1>;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Consider the following component. What is the default color for the star?
+#### Q. Consider the following component. What is the default color for the star?
 
 ```javascript
 const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} />;
@@ -839,7 +837,7 @@ const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} /
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the difference between the click behaviors of these two buttons(assuming that this.handleClick is not bound correctly)
+#### Q. What is the difference between the click behaviors of these two buttons(assuming that this.handleClick is not bound correctly)
 
 ```javascript
   A. <button onClick=this.handleClick>Click Me</button>
@@ -855,7 +853,7 @@ const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} /
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How would you add to this code, from React Router, to display a component called About?
+#### Q. How would you add to this code, from React Router, to display a component called About?
 
 ```javascript
 <Route path="/:id" />
@@ -894,7 +892,7 @@ const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} /
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which class-based component is equivalent to this function component?
+#### Q. Which class-based component is equivalent to this function component?
 
 ```javascript
 const Greeting = ({ name }) => <h1>Hello {name}!</h1>;
@@ -942,7 +940,7 @@ class Greeting extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Give the code below, what does the second argument that is sent to the render function describe?
+#### Q. Give the code below, what does the second argument that is sent to the render function describe?
 
 ```javascript
 ReactDOM.render(
@@ -960,7 +958,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why should you use React Router's Link component instead of a basic `<a>` tag in React?
+#### Q. Why should you use React Router's Link component instead of a basic `<a>` tag in React?
 
 - [ ] The link component allows the user to use the browser's `Back` button.
 - [ ] There is no difference--the `Link` component is just another name for the `<a>` tag.
@@ -971,7 +969,7 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the first argument, `x`, that is sent to the `createElement` function?
+#### Q. What is the first argument, `x`, that is sent to the `createElement` function?
 
 ```javascript
 React.createElement(x, y, z);
@@ -986,7 +984,7 @@ React.createElement(x, y, z);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which class-based lifecycle method would be called at the same time as this effect Hook?
+#### Q. Which class-based lifecycle method would be called at the same time as this effect Hook?
 
 ```javascript
 useEffect(() => {
@@ -1003,7 +1001,7 @@ useEffect(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the name of the base component of this component?
+#### Q. What is the name of the base component of this component?
 
 ```javascript
 class Comp extends React.Component {
@@ -1022,7 +1020,7 @@ class Comp extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When using a portal, what is the first argument?
+#### Q. When using a portal, what is the first argument?
 
 ```javascript
 ReactDOM.createPortal(x, y);
@@ -1037,7 +1035,7 @@ ReactDOM.createPortal(x, y);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is `setCount`?
+#### Q. What is `setCount`?
 
 ```javascript
 const [count, setCount] = useState(0);
@@ -1052,7 +1050,7 @@ const [count, setCount] = useState(0);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the use of map function below?
+#### Q. What is the use of map function below?
 
 ```javascript
 const database = [{ data: 1 }, { data: 2 }, { data: 3 }];
@@ -1068,7 +1066,7 @@ database.map((user) => <h1>{user.data}</h1>);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Describe what is happening in this code?
+#### Q. Describe what is happening in this code?
 
 ```javascript
 const { name: firstName } = props;
@@ -1083,7 +1081,7 @@ const { name: firstName } = props;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is wrong with this code?
+#### Q. What is wrong with this code?
 
 ```javascript
 const MyComponent = ({ names }) => (
@@ -1101,7 +1099,7 @@ const MyComponent = ({ names }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When using a portal, what is the second argument?
+#### Q. When using a portal, what is the second argument?
 
 ```javascript
 ReactDOM.createPortal(x, y);
@@ -1116,7 +1114,7 @@ ReactDOM.createPortal(x, y);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Given this code, what will be printed in the `<div>` tag?
+#### Q. Given this code, what will be printed in the `<div>` tag?
 
 ```javascript
 const MyComponent = ({ children }) => (
@@ -1140,7 +1138,7 @@ const MyComponent = ({ children }) => (
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is this pattern called?
+#### Q. What is this pattern called?
 
 ```javascript
 const [count, setCount] = useState(0);
@@ -1155,7 +1153,7 @@ const [count, setCount] = useState(0);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the first file loaded by the browser in a basic React project?
+#### Q. What is the first file loaded by the browser in a basic React project?
 
 - [ ] src/App.js
 - [ ] src/index.js
@@ -1166,7 +1164,7 @@ const [count, setCount] = useState(0);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. The code below is rendering nothing and generate this error: "ReactDOM is not defined." How do you fix this issue?
+#### Q. The code below is rendering nothing and generate this error: "ReactDOM is not defined." How do you fix this issue?
 
 ```javascript
 import React from 'react';
@@ -1188,7 +1186,7 @@ root.render(element);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In this component, how do you display whether the user was logged in or not?
+#### Q. In this component, how do you display whether the user was logged in or not?
 
 ```javascript
 render() {
@@ -1210,7 +1208,7 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. You are rendering a list with React when this warning appears in the console: "Warning: Each child in a list should have a unique 'key' prop." How do you fix this issue?
+#### Q. You are rendering a list with React when this warning appears in the console: "Warning: Each child in a list should have a unique 'key' prop." How do you fix this issue?
 
 - [ ] Add a key prop with the same value to each item in the list
 - [ ] Clear the console warnings
@@ -1221,7 +1219,7 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How would you generate the boilerplate code for a new app that you are building to collect underpants?
+#### Q. How would you generate the boilerplate code for a new app that you are building to collect underpants?
 
 - [ ] npm create-react-app collect-underpants
 - [ ] npx start-app collect-underpants
@@ -1232,7 +1230,7 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Add the code that will fire the photon torpedoes when the button is clicked.
+#### Q. Add the code that will fire the photon torpedoes when the button is clicked.
 
 ```javascript
 class StarTrekkin extends React.Component {
@@ -1254,7 +1252,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the process of deciding whether an update is necessary?
+#### Q. What is the process of deciding whether an update is necessary?
 
 - [ ] shadow DOM
 - [ ] fiber
@@ -1265,7 +1263,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. React is an open-source project but is maintained by which company?
+#### Q. React is an open-source project but is maintained by which company?
 
 - [ ] Intuit
 - [ ] Twitter
@@ -1276,7 +1274,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What command can you use to generate a React project?
+#### Q. What command can you use to generate a React project?
 
 - [ ] react-starter
 - [x] create-react-app
@@ -1287,7 +1285,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the browser extension called that React developers use to debug applications?
+#### Q. What is the browser extension called that React developers use to debug applications?
 
 - [x] React Developer Tools
 - [ ] React Tooling Add-on
@@ -1298,7 +1296,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which tool is not part of Create React App?
+#### Q. Which tool is not part of Create React App?
 
 - [ ] React
 - [x] jQuery
@@ -1309,7 +1307,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the JavaScript syntax extension that is commonly used to create React elements?
+#### Q. What is the JavaScript syntax extension that is commonly used to create React elements?
 
 - [ ] HTML
 - [ ] JavaScriptX
@@ -1320,7 +1318,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How might you check property types without using Flow or TypeScript?
+#### Q. How might you check property types without using Flow or TypeScript?
 
 - [ ] Check Manually.
 - [ ] Use `prop-helper`.
@@ -1331,7 +1329,7 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you add an id of heading to the following h1 element?
+#### Q. How do you add an id of heading to the following h1 element?
 
 ```javascript
 let dish = <h1>Mac and Cheese</h1>;
@@ -1346,7 +1344,7 @@ let dish = <h1>Mac and Cheese</h1>;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What value of button will allow you to pass the name of the person to be hugged?
+#### Q. What value of button will allow you to pass the name of the person to be hugged?
 
 ```javascript
 class Huggable extends React.Component {
@@ -1373,7 +1371,7 @@ This question test knowledge of react class components. You need to use `this` i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What syntax do you use to create a component in React?
+#### Q. What syntax do you use to create a component in React?
 
 - [ ] a generator
 - [x] a function or a class
@@ -1387,7 +1385,7 @@ This question test knowledge of react class components. You need to use `this` i
 **Explanation:**
 React Components are like functions that return HTML elements. Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
 
-## Q. You want to disable a button so that it does not emit any events onClick. Which prop do you use to acomplish this?
+#### Q. You want to disable a button so that it does not emit any events onClick. Which prop do you use to acomplish this?
 
 - [ ] onBlur
 - [ ] onPress
@@ -1398,7 +1396,7 @@ React Components are like functions that return HTML elements. Components are in
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In this function, which is the best way to describe the Dish component?
+#### Q. In this function, which is the best way to describe the Dish component?
 
 ```javascript
 function Dish() {
@@ -1420,7 +1418,7 @@ function Dish() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When does the componentDidMount function fire?
+#### Q. When does the componentDidMount function fire?
 
 - [x] right after the component is added to the DOM
 - [ ] before the component is added to the DOM
@@ -1431,7 +1429,7 @@ function Dish() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What might you use webpack for in React development?
+#### Q. What might you use webpack for in React development?
 
 - [ ] to fetch remote dependencies used by your app
 - [x] to split your app into smaller chunks that can be more easily loaded by the browser
@@ -1442,7 +1440,7 @@ function Dish() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When using the React Developer Tools Chrome extension, what does it mean if the React icon is red?
+#### Q. When using the React Developer Tools Chrome extension, what does it mean if the React icon is red?
 
 - [x] You are using the development build of React.
 - [ ] You are using the production build of React.
@@ -1453,7 +1451,7 @@ function Dish() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How would you modify the constructor to fix this error: "ReferenceError: Must call super constructor in derived class before accessing 'this'..."?
+#### Q. How would you modify the constructor to fix this error: "ReferenceError: Must call super constructor in derived class before accessing 'this'..."?
 
 ```javascript
 class TransIsBeautiful extends React.Component {
@@ -1474,7 +1472,7 @@ class TransIsBeautiful extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which language can you not use with React?
+#### Q. Which language can you not use with React?
 
 - [x] Swift.
 - [ ] JSX.
@@ -1485,7 +1483,7 @@ class TransIsBeautiful extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. This code is part of an app that collects Pokemon. How would you print the list of the ones collected so far?
+#### Q. This code is part of an app that collects Pokemon. How would you print the list of the ones collected so far?
 
 ```javascript
 constructor(props) {
@@ -1505,7 +1503,7 @@ constructor(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What would be the result of running this code?
+#### Q. What would be the result of running this code?
 
 ```javascript
 function add(x = 1, y = 2) {
@@ -1526,7 +1524,7 @@ add();
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why might you use a React.ref?
+#### Q. Why might you use a React.ref?
 
 - [ ] to refer to another JS file
 - [ ] to bind the function
@@ -1537,7 +1535,7 @@ add();
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What pattern is being used in this code block?
+#### Q. What pattern is being used in this code block?
 
 ```javascript
 const { tree, lake } = nature;
@@ -1552,7 +1550,7 @@ const { tree, lake } = nature;
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How would you correct this code block to make sure that the sent property is set to the Boolean value false?
+#### Q. How would you correct this code block to make sure that the sent property is set to the Boolean value false?
 
 ```javascript
 ReactDom.render(
@@ -1589,7 +1587,7 @@ ReactDom.render(<Message sent="false" />, document.getElementById('root'));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
+#### Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
 
 ```javascript
 const PokeDex = (props) => {
@@ -1607,7 +1605,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When using a portal, what is the second argument?
+#### Q. When using a portal, what is the second argument?
 
 ```javascript
 ReactDOM.createPortal(x, y);
@@ -1622,7 +1620,7 @@ ReactDOM.createPortal(x, y);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What would you pass to the onClick prop that wil allow you to pass the initName prop into the greeet handler?
+#### Q. What would you pass to the onClick prop that wil allow you to pass the initName prop into the greeet handler?
 
 ```javascript
 const Greeting = ({ initName }) => {
@@ -1648,7 +1646,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the name of the compiler used to transform JSX into JavaScript?
+#### Q. What is the name of the compiler used to transform JSX into JavaScript?
 
 - [x] Babel
 - [ ] JSX Editor
@@ -1659,7 +1657,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which hook is used to prevent a function from being recreated on every component render?
+#### Q. Which hook is used to prevent a function from being recreated on every component render?
 
 - [x] useCallback
 - [ ] useMemo
@@ -1670,7 +1668,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why might you use the `useRef` hook?
+#### Q. Why might you use the `useRef` hook?
 
 - [ ] To bind the function
 - [ ] To call a function
@@ -1681,7 +1679,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which of the following is required to use React?
+#### Q. Which of the following is required to use React?
 
 - [x] JavaScript
 - [ ] React Router
@@ -1692,7 +1690,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the correct way to get a value from context?
+#### Q. What is the correct way to get a value from context?
 
 - [ ] const value = useContext(MyContext.Consumer)
 - [ ] const value = useContext(MyContext.Provider)
@@ -1703,7 +1701,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why is ref used?
+#### Q. Why is ref used?
 
 - [ ] to bind function
 - [ ] to call function
@@ -1714,7 +1712,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Choose the method which should be overridden to stop the component from updating?
+#### Q. Choose the method which should be overridden to stop the component from updating?
 
 - [ ] componentDidMount
 - [ ] componentDidUpdate
@@ -1725,7 +1723,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the functionality of a “webpack” command?
+#### Q. What is the functionality of a “webpack” command?
 
 - [x] Runs react local development server
 - [ ] Transfers all JS files to down into one file
@@ -1736,7 +1734,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Choose the method which is not a part of ReactDOM?
+#### Q. Choose the method which is not a part of ReactDOM?
 
 - [ ] ReactDOM.createPortal()
 - [ ] ReactDOM.hydrate()
@@ -1747,7 +1745,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In react, the key should be?
+#### Q. In react, the key should be?
 
 - [x] Unique among his siblings
 - [ ] Unique in DOM
@@ -1758,7 +1756,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which company developed ReactJS?
+#### Q. Which company developed ReactJS?
 
 - [ ] Google
 - [x] Meta (ex Facebook)
@@ -1769,7 +1767,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Choose the library which is most often associated with react?
+#### Q. Choose the library which is most often associated with react?
 
 - [ ] Chai
 - [ ] Sinon
@@ -1780,7 +1778,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What of the following is used in React.js to increase performance?
+#### Q. What of the following is used in React.js to increase performance?
 
 - [ ] Original DOM
 - [x] Virtual DOM
@@ -1791,7 +1789,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Among The following options, choose the one which helps react for keeping their data uni-directional?
+#### Q. Among The following options, choose the one which helps react for keeping their data uni-directional?
 
 - [ ] DOM
 - [x] flux
@@ -1802,7 +1800,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is this pattern called?
+#### Q. What is this pattern called?
 
 ```javascript
 const [count, setCount] = useState(0);
@@ -1817,7 +1815,7 @@ const [count, setCount] = useState(0);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
+#### Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
 
 ```javascript
 const PokeDex = (props) => {
@@ -1835,7 +1833,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What company open-sourced React?
+#### Q. What company open-sourced React?
 
 - [ ] Amazon
 - [x] Facebook
@@ -1846,7 +1844,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is JSX?
+#### Q. What is JSX?
 
 - [ ] A testing library for React.
 - [x] An HTML-like language that compiles to JavaScript.
@@ -1857,7 +1855,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is one way that JSX and HTML differ?
+#### Q. What is one way that JSX and HTML differ?
 
 - [x] JSX uses className instead of class. 
 - [ ] JSX uses `<container>` instead of `<div>`.
@@ -1868,7 +1866,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why does React typically require a build step?
+#### Q. Why does React typically require a build step?
 
 - [ ] To transpile HTML to JSX
 - [ ] To transpile JSX to CSS
@@ -1879,7 +1877,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why do you have to worry about version conflicts in React, but not need to with native web components?
+#### Q. Why do you have to worry about version conflicts in React, but not need to with native web components?
 
 - [ ] Native web components have an adapter layer.
 - [ ] Native web components don't use JavaScript.
@@ -1890,7 +1888,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What pattern does React use for handling data flows?
+#### Q. What pattern does React use for handling data flows?
 
 - [x] One-way binding
 - [ ] Auto-binding
@@ -1901,7 +1899,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is a benefit of React's single file approach?
+#### Q. What is a benefit of React's single file approach?
 
 - [ ] Designers have a separate file to work with.
 - [ ] It enhances security.
@@ -1912,7 +1910,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why is React inherently more flexible than many popular competitors?
+#### Q. Why is React inherently more flexible than many popular competitors?
 
 - [x] React is an library. 
 - [ ] React's API is HTML-oriented instead of JavaScript-oriented.
@@ -1923,7 +1921,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the benefit of React's virtual DOM?
+#### Q. What is the benefit of React's virtual DOM?
 
 - [ ] It transpiles JSX before converting to DOM nodes.
 - [ ] It reduces React's bundle size.
@@ -1934,7 +1932,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is a benefit of React's library approach mentioned in this module?
+#### Q. What is a benefit of React's library approach mentioned in this module?
 
 - [ ] Clear and comprehensive opinions are built in
 - [ ] Enforced consistency
@@ -1945,7 +1943,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When do we store variables on the component itself (vs on a component instance)
+#### Q. When do we store variables on the component itself (vs on a component instance)
 
 - [x] When the variable is not related on a component instance
 - [ ] When the variable is a fixed constant value
@@ -1955,7 +1953,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What can we do if components A and B are siblings and they require access to the same state element?
+#### Q. What can we do if components A and B are siblings and they require access to the same state element?
 
 - [ ] Place the state in either A or B
 - [x] Place the state in the parent component of A and B
@@ -1966,7 +1964,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What's the right syntax to assign the function doSomething as the handler of a click event?
+#### Q. What's the right syntax to assign the function doSomething as the handler of a click event?
 
 - [ ] onClick={() => doSomething}
 - [x] onClick={doSomething}
@@ -1976,7 +1974,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When is not a good idea to introduce a new state element?
+#### Q. When is not a good idea to introduce a new state element?
 
 - [ ] When that element is itself an array or object
 - [ ] When a change on that element should drive a change in the UI
@@ -1987,7 +1985,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. We have a boolean X. We want to render component A if X is true, and component B if X is false. Which is correct?
+#### Q. We have a boolean X. We want to render component A if X is true, and component B if X is false. Which is correct?
 
 - [ ] <{ X ? A : B } />
 - [x] { X ? <A /> : <B /> }
@@ -1998,7 +1996,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What function can be used to change the state of a React component?
+#### Q. What function can be used to change the state of a React component?
 
 - [ ] this.state = {}
 - [x] this.setState
@@ -2008,7 +2006,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What instance property can be used to access the properties of a class component?
+#### Q. What instance property can be used to access the properties of a class component?
 
 - [ ] this.properties
 - [ ] this.attrs
@@ -2019,7 +2017,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the format of the data returned by the Github API?
+#### Q. What is the format of the data returned by the Github API?
 
 - [ ] YAML
 - [ ] XML
@@ -2029,7 +2027,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you get a random number in JavaScript?
+#### Q. How do you get a random number in JavaScript?
 
 - [x] Math.random()
 - [ ] Number.random()
@@ -2039,7 +2037,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When is the class component syntax needed?
+#### Q. When is the class component syntax needed?
 
 - [ ] Only for components that are children of class components
 - [ ] Never
@@ -2050,7 +2048,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How do you render a React component?
+#### Q. How do you render a React component?
 
 - [x] Pass a React element and a DOM element to the ReactDOM.render function
 - [ ] Call the React elements toString() method
@@ -2061,7 +2059,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Why is JSX used in React applications?
+#### Q. Why is JSX used in React applications?
 
 - [ ] Because HTML is xml-like
 - [x] To specify the composition of React components
@@ -2071,7 +2069,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What does a JSX expression compile to?
+#### Q. What does a JSX expression compile to?
 
 - [ ] HTML
 - [ ] JSX byte code
@@ -2082,7 +2080,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the primary technique for passing data out of a React component?
+#### Q. What is the primary technique for passing data out of a React component?
 
 - [ ] Use a JavaScript class component
 - [x] Pass the data to a function passed in as a prop
@@ -2093,7 +2091,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the name of React's normalized event abstraction?
+#### Q. What is the name of React's normalized event abstraction?
 
 - [x] SyntheticEvent
 - [ ] on*
@@ -2103,7 +2101,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. How can routing be added to a React application?
+#### Q. How can routing be added to a React application?
 
 - [ ] By implementing server-side rendering
 - [ ] By using the React.route function
@@ -2114,7 +2112,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. The facility that allows a component to have local, mutable data is called?
+#### Q. The facility that allows a component to have local, mutable data is called?
 
 - [ ] Function components
 - [ ] Webpack
@@ -2125,7 +2123,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. React is...
+#### Q. React is...
 
 - [ ] an optimizing compiler for JavaScript.
 - [x] a client-side library providing rendering and event handling.
@@ -2136,7 +2134,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. A Redux 'action' is...
+#### Q. A Redux 'action' is...
 
 - [x] the same thing as a model-view-intent 'intent'.
 - [ ] the same thing as a model-view-intent 'model'.
@@ -2146,7 +2144,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. Which of the following is NOT provided by React?
+#### Q. Which of the following is NOT provided by React?
 
 - [ ] Cross-browser support
 - [ ] An event handing system
@@ -2157,7 +2155,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When working with the useState hook, what is the first parameter passed to useState?
+#### Q. When working with the useState hook, what is the first parameter passed to useState?
 
 - [ ] useState does not take any parameters
 - [ ] The timeout value for how long the state will be set
@@ -2168,7 +2166,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. If the dependency array that is passed into the useEffect React Hook is an empty array, what is the expected result?
+#### Q. If the dependency array that is passed into the useEffect React Hook is an empty array, what is the expected result?
 
 - [ ] The function passed into the useEffect hook will never be executed.
 - [x] The function passed into the useEffect hook will be executed one time only.
@@ -2179,7 +2177,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When building a React tree of components, what does "prop drilling" refer to in the React app itself?
+#### Q. When building a React tree of components, what does "prop drilling" refer to in the React app itself?
 
 - [ ] Referencing a property by reference instead of by value
 - [ ] Deleting a property so deep it can never be recovered
@@ -2189,7 +2187,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In a reducer function, what is the reason for spreading state (...state) as part of the return of that function?
+#### Q. In a reducer function, what is the reason for spreading state (...state) as part of the return of that function?
 
 - [ ] So you can visualize the state in the debugger making it easier to find bugs
 - [x] To guarantee that all existing properties of state are copied into the new returned state
@@ -2199,7 +2197,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the second parameter of the useReducer React hooks best described as?
+#### Q. What is the second parameter of the useReducer React hooks best described as?
 
 - [ ] The reducer function
 - [x] The initial state
@@ -2210,7 +2208,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. What is the default return value for a typical reducer function that you would associate with useReducer?
+#### Q. What is the default return value for a typical reducer function that you would associate with useReducer?
 
 - [ ] A state array
 - [ ] null
@@ -2221,7 +2219,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. In a class component, what call would you use if you want to reference a DOM element?
+#### Q. In a class component, what call would you use if you want to reference a DOM element?
 
 - [ ] React.initRef()
 - [ ] React.newRef()
@@ -2232,7 +2230,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. You have an empty array as the second parameter to your useEffect hook. Which statement is true?
+#### Q. You have an empty array as the second parameter to your useEffect hook. Which statement is true?
 
 - [ ] in a class component lifecycle, componentDidMount will be called on every component render.
 - [ ] in a class component lifeycle, componentDidUpdate will never be called more than once.
@@ -2242,7 +2240,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When you build new React Hooks that contain other combined React Hooks, which statement is true?
+#### Q. When you build new React Hooks that contain other combined React Hooks, which statement is true?
 
 - [ ] Combined React Hooks cannot contain useEffect, but they can contain all other React Hooks.
 - [ ] Combined React Hooks cannot be nested with other combined React Hooks.
@@ -2252,7 +2250,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. When you create new React Custom Hooks, what is true about passing in parameters to these new Custom Hooks?
+#### Q. When you create new React Custom Hooks, what is true about passing in parameters to these new Custom Hooks?
 
 - [ ] Only parameters from React Hooks that are being combined can be passed into the custom React Hook.
 - [ ] Only const objects can be passed into a custom React Hook.
