@@ -1834,3 +1834,430 @@ const PokeDex = (props) => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. What company open-sourced React?
+
+- [ ] Amazon
+- [x] Facebook
+- [ ] Google
+- [ ] Twitter
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is JSX?
+
+- [ ] A testing library for React.
+- [x] An HTML-like language that compiles to JavaScript.
+- [ ] An HTML-like language that compiles to CSS.
+- [ ] An HTTP API library for React.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is one way that JSX and HTML differ?
+
+- [x] JSX uses className instead of class. 
+- [ ] JSX uses `<container>` instead of `<div>`.
+- [ ] HTML is for creating a user interface.
+- [ ] JSX uses `<textinput>` instead of `<input>`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why does React typically require a build step?
+
+- [ ] To transpile HTML to JSX
+- [ ] To transpile JSX to CSS
+- [ ] To transpile JSX to HTML
+- [x] To transpile JSX to Javascript
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why do you have to worry about version conflicts in React, but not need to with native web components?
+
+- [ ] Native web components have an adapter layer.
+- [ ] Native web components don't use JavaScript.
+- [ ] When a new version of React is released, you can't use old versions.
+- [x] React has a runtime, web components don't.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What pattern does React use for handling data flows?
+
+- [x] One-way binding
+- [ ] Auto-binding
+- [ ] Three-way binding
+- [ ] Two-way binding
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is a benefit of React's single file approach?
+
+- [ ] Designers have a separate file to work with.
+- [ ] It enhances security.
+- [ ] It honors the rule of least power.
+- [x] You can read, understand, and work with each autonomous file in isolation.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why is React inherently more flexible than many popular competitors?
+
+- [x] React is an library. 
+- [ ] React's API is HTML-oriented instead of JavaScript-oriented.
+- [ ] React is a comprehensive framework.
+- [ ] React embeds HTTP calls, testing, and internationalization.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the benefit of React's virtual DOM?
+
+- [ ] It transpiles JSX before converting to DOM nodes.
+- [ ] It reduces React's bundle size.
+- [ ] It fascilitates inter-component communication via JSON.
+- [x] It improves performance by minimizing DOM changes.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is a benefit of React's library approach mentioned in this module?
+
+- [ ] Clear and comprehensive opinions are built in
+- [ ] Enforced consistency
+- [x] It's light-weight and configurable
+- [ ] Less setup overhead
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When do we store variables on the component itself (vs on a component instance)
+
+- [x] When the variable is not related on a component instance
+- [ ] When the variable is a fixed constant value
+- [ ] When the variable holds a function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What can we do if components A and B are siblings and they require access to the same state element?
+
+- [ ] Place the state in either A or B
+- [x] Place the state in the parent component of A and B
+- [ ] Place the state in a third component C that is a sibling to A and B
+- [ ] Restructure the application to have A and B be related differently
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What's the right syntax to assign the function doSomething as the handler of a click event?
+
+- [ ] onClick={() => doSomething}
+- [x] onClick={doSomething}
+- [ ] onClick={doSomething()}
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When is not a good idea to introduce a new state element?
+
+- [ ] When that element is itself an array or object
+- [ ] When a change on that element should drive a change in the UI
+- [ ] When other elements needs to compute their value based on this new element
+- [x] When that element can be computed from other elements
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. We have a boolean X. We want to render component A if X is true, and component B if X is false. Which is correct?
+
+- [ ] <{ X ? A : B } />
+- [x] { X ? <A /> : <B /> }
+- [ ] { if (X) { A } else { B } }
+- [ ] { if  X then A else B }
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What function can be used to change the state of a React component?
+
+- [ ] this.state = {}
+- [x] this.setState
+- [ ] this.changeState
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What instance property can be used to access the properties of a class component?
+
+- [ ] this.properties
+- [ ] this.attrs
+- [x] this.props
+- [ ] this.attributes
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the format of the data returned by the Github API?
+
+- [ ] YAML
+- [ ] XML
+- [x] JSON
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you get a random number in JavaScript?
+
+- [x] Math.random()
+- [ ] Number.random()
+- [ ] rand()
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When is the class component syntax needed?
+
+- [ ] Only for components that are children of class components
+- [ ] Never
+- [ ] Always
+- [x] When we need to manage state or use lifecycle methods
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do you render a React component?
+
+- [x] Pass a React element and a DOM element to the ReactDOM.render function
+- [ ] Call the React elements toString() method
+- [ ] Implement a render function that returns a JSX expression
+- [ ] Provide values for each prop of a React component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Why is JSX used in React applications?
+
+- [ ] Because HTML is xml-like
+- [x] To specify the composition of React components
+- [ ] To be able to mix markup and code together
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What does a JSX expression compile to?
+
+- [ ] HTML
+- [ ] JSX byte code
+- [x] A call to the React.createElement function
+- [ ] A call to the ReactDOM.render function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the primary technique for passing data out of a React component?
+
+- [ ] Use a JavaScript class component
+- [x] Pass the data to a function passed in as a prop
+- [ ] Dispatch an action to a state container
+- [ ] Return the data from the render method
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the name of React's normalized event abstraction?
+
+- [x] SyntheticEvent
+- [ ] on*
+- [ ] Event
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How can routing be added to a React application?
+
+- [ ] By implementing server-side rendering
+- [ ] By using the React.route function
+- [ ] By using the <Route /> component
+- [x] By adding a HTML5 pushState API based router library
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. The facility that allows a component to have local, mutable data is called?
+
+- [ ] Function components
+- [ ] Webpack
+- [ ] Props
+- [x] State
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. React is...
+
+- [ ] an optimizing compiler for JavaScript.
+- [x] a client-side library providing rendering and event handling.
+- [ ] a comprehensive client-side application framework.
+- [ ] a library that represents asynchronous data streams with observables.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. A Redux 'action' is...
+
+- [x] the same thing as a model-view-intent 'intent'.
+- [ ] the same thing as a model-view-intent 'model'.
+- [ ] the same thing as a model-view-intent 'view'.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Which of the following is NOT provided by React?
+
+- [ ] Cross-browser support
+- [ ] An event handing system
+- [ ] Server-side rendering
+- [x] A router
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When working with the useState hook, what is the first parameter passed to useState?
+
+- [ ] useState does not take any parameters
+- [ ] The timeout value for how long the state will be set
+- [ ] A lambda function whose purpose is to set the value of state
+- [x] The initial value of the state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. If the dependency array that is passed into the useEffect React Hook is an empty array, what is the expected result?
+
+- [ ] The function passed into the useEffect hook will never be executed.
+- [x] The function passed into the useEffect hook will be executed one time only.
+- [ ] The function passed into the useEffect hook will not be affected.
+- [ ] The function passed into the useEffect hook will be executed on every render.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When building a React tree of components, what does "prop drilling" refer to in the React app itself?
+
+- [ ] Referencing a property by reference instead of by value
+- [ ] Deleting a property so deep it can never be recovered
+- [x] Passing properties through one or more layers of a component hierarchy
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. In a reducer function, what is the reason for spreading state (...state) as part of the return of that function?
+
+- [ ] So you can visualize the state in the debugger making it easier to find bugs
+- [x] To guarantee that all existing properties of state are copied into the new returned state
+- [ ] To make sure that no previously passed in state values return to the caller of the reducer
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the second parameter of the useReducer React hooks best described as?
+
+- [ ] The reducer function
+- [x] The initial state
+- [ ] A call the parent reducer
+- [ ] The cancellation token passed to the reducer
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What is the default return value for a typical reducer function that you would associate with useReducer?
+
+- [ ] A state array
+- [ ] null
+- [x] state
+- [ ] An empty string
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. In a class component, what call would you use if you want to reference a DOM element?
+
+- [ ] React.initRef()
+- [ ] React.newRef()
+- [x] React.createRef()
+- [ ] React.useRef()
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. You have an empty array as the second parameter to your useEffect hook. Which statement is true?
+
+- [ ] in a class component lifecycle, componentDidMount will be called on every component render.
+- [ ] in a class component lifeycle, componentDidUpdate will never be called more than once.
+- [x] In a class component lifecycle, componentDidMount will get called once.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When you build new React Hooks that contain other combined React Hooks, which statement is true?
+
+- [ ] Combined React Hooks cannot contain useEffect, but they can contain all other React Hooks.
+- [ ] Combined React Hooks cannot be nested with other combined React Hooks.
+- [x] Combined React Hooks can contain their own useEffect as well as other React Hooks.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. When you create new React Custom Hooks, what is true about passing in parameters to these new Custom Hooks?
+
+- [ ] Only parameters from React Hooks that are being combined can be passed into the custom React Hook.
+- [ ] Only const objects can be passed into a custom React Hook.
+- [x] Any JavaScript object can be passed to a custom React Hook.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
