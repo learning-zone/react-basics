@@ -184,7 +184,7 @@ class App extends React.Component {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is Destructuring in React?
+## Q. What is Destructuring?
 
 Destructuring is a convenient way of accessing multiple properties stored in objects and arrays. It was introduced to JavaScript by ES6 and has provided developers with an increased amount of utility when accessing data properties in Objects or Arrays.
 
