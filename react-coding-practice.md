@@ -3,8 +3,7 @@
 ## Q. Create a multilevel dropdown menu in React?
 
 ```js
-Input:
-[
+Input: [
   {
     label: "Menu 1",
   },
@@ -31,7 +30,58 @@ Input:
 <details><summary><b>Answer</b></summary>
 
 ```js
+import { useState } from "react";
+const data = [
+  {
+    label: "Menu 1",
+    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
+  },
+  {
+    label: "Menu 2",
+    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
+  },
+  {
+    label: "Menu 3",
+    submenu: [
+      { label: "Sub Menu 1" },
+      { label: "Sub Menu 2" },
+      { label: "Sub Menu 3" },
+      { label: "Sub Menu 4" },
+    ],
+  },
+  {
+    label: "Menu 4",
+  },
+];
 
+export default function App() {
+  const [parent1, setParent1] = useState(data[0].label);
+  const [children, setChildren] = useState(data[0].submenu || []);
+  console.log(parent1);
+  return (
+    <div>
+      <select
+        value={parent1}
+        onChange={(e) => {
+          const x = e.target.value;
+          setParent1(x);
+          const parentObj = data.find((obj) => obj.label === x);
+          const childrenArr = parentObj.submenu || [];
+          setChildren(childrenArr);
+        }}
+      >
+        {data.map((depth1) => {
+          return <option key={depth1.label}>{depth1.label}</option>;
+        })}
+      </select>
+      <select value={children} onChange={(e) => setChildren(e.target.value)}>
+        {children.map((child) => {
+          return <option key={child.label}>{child.label}</option>;
+        })}
+      </select>
+    </div>
+  );
+}
 ```
 
 </details>
@@ -297,14 +347,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       userInput: "",
-      list: []
+      list: [],
     };
   }
 
   // Set a user input value
   updateInput(value) {
     this.setState({
-      userInput: value
+      userInput: value,
     });
   }
 
@@ -316,7 +366,7 @@ class App extends React.Component {
         id: Math.random(),
 
         // Add a user value to list
-        value: this.state.userInput
+        value: this.state.userInput,
       };
 
       // Update list
@@ -326,7 +376,7 @@ class App extends React.Component {
       // reset state
       this.setState({
         list,
-        userInput: ""
+        userInput: "",
       });
     }
   }
@@ -340,7 +390,7 @@ class App extends React.Component {
 
     // Update list in state
     this.setState({
-      list: updateList
+      list: updateList,
     });
   }
 
@@ -449,7 +499,7 @@ function App() {
 ## Q. Create a Fizz Buzz program in React?
 
 ```js
-Counting incrementally, replacing any number divisible by three with the word "fizz", 
+Counting incrementally, replacing any number divisible by three with the word "fizz",
 and any number divisible by five with the word "buzz".
 ```
 
@@ -458,7 +508,7 @@ and any number divisible by five with the word "buzz".
 ```js
 class FizzBuzz extends React.Component {
   state = {
-    count: 1
+    count: 1,
   };
 
   handleDecrement = () => {
@@ -475,9 +525,11 @@ class FizzBuzz extends React.Component {
     return (
       <div>
         <h1> React Fizz Buzz </h1>
-        <p> Counting incrementally, replacing any number divisible by three with
-          the word "fizz", and any number divisible by five with the word
-          "buzz". </p>
+        <p>
+          {" "}
+          Counting incrementally, replacing any number divisible by three with the
+          word "fizz", and any number divisible by five with the word "buzz".{" "}
+        </p>
 
         <h2>
           {this.state.count % 15 === 0
@@ -517,7 +569,7 @@ const Child = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     getMessage() {
       alert("Message from Child");
-    }
+    },
   }));
 
   return <h1>Child Component</h1>;
@@ -540,7 +592,6 @@ const Parent = () => {
 **2. Using Class Component:**
 
 ```js
-
 class Parent extends React.Component {
   constructor(props) {
     super(props);
@@ -581,8 +632,16 @@ class Parent extends React.Component {
   render() {
     return (
       <div>
-        <Child ref={(instance) => { this.child = instance; }} />
-        <button onClick={() => { this.child.getMessage(); }} >
+        <Child
+          ref={(instance) => {
+            this.child = instance;
+          }}
+        />
+        <button
+          onClick={() => {
+            this.child.getMessage();
+          }}
+        >
           Click
         </button>
       </div>
@@ -615,7 +674,6 @@ class Child extends React.Component {
 
 ```js
 export default function App() {
-
   const [show, toggleShow] = React.useState(true);
 
   return (
@@ -646,7 +704,7 @@ export default function App() {
 ```js
 class Parent extends Component {
   state = {
-    text: "Click Me !"
+    text: "Click Me !",
   };
 
   // Function to update state
@@ -749,7 +807,7 @@ export default class App extends React.Component {
 
 class Child extends React.Component {
   state = {
-    name: "Hello React"
+    name: "Hello React",
   };
 
   render() {
@@ -820,14 +878,14 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 1
+      count: 1,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
     });
   }
   render() {
@@ -858,20 +916,20 @@ const userData = [
   { id: "102", name: "Sathwik Bhatti" },
   { id: "103", name: "Vritika Nath" },
   { id: "104", name: "Chanda Mittal" },
-  { id: "105", name: "Sumati Pau" }
+  { id: "105", name: "Sumati Pau" },
 ];
 
 export default class ListComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: userData
+      users: userData,
     };
   }
 
   onDeleteByIndex(index) {
     this.setState({
-      users: this.state.users.filter((item, i) => i !== index)
+      users: this.state.users.filter((item, i) => i !== index),
     });
   }
 
@@ -910,7 +968,7 @@ export default class ListComponent extends React.Component {
 **Autherization token in axios:**
 
 ```js
-const api = 'your api'; 
+const api = 'your api';
 const user = JSON.parse(sessionStorage.getItem('data'));
 const token = user.data.id; /*take only token and save in token variable*/
 
@@ -966,7 +1024,7 @@ const App = () => {
       </Router>
     </section>
   );
-}
+};
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/pass-props-in-react-router-xs34i?file=/src/index.js)**
@@ -980,12 +1038,12 @@ const App = () => {
 ```js
 class App extends React.Component {
   state = {
-    email: ""
+    email: "",
   };
 
   handleChange = (e) => {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
   };
 
@@ -1016,7 +1074,6 @@ class App extends React.Component {
 import React, { useState, useRef } from "react";
 
 export default function App() {
-
   const prevScrollY = useRef(0);
   const [goingUp, setGoingUp] = useState(false);
 
@@ -1184,16 +1241,15 @@ export default function App() {
 
 ```js
 /**
-* If you use class variable, React will be unaware 
-* of it and won't re-render your component.
-*
-**/
+ * If you use class variable, React will be unaware
+ * of it and won't re-render your component.
+ *
+ **/
 export default class Test extends React.Component {
-
   constructor() {
     super();
-    this.value = 10;  // class variable
-    this.state = { value: 20 };  // state variable
+    this.value = 10; // class variable
+    this.state = { value: 20 }; // state variable
   }
 
   render() {
@@ -1219,7 +1275,7 @@ export default class Test extends React.Component {
 const posts = [
   { id: 10, title: "Link One" },
   { id: 20, title: "Link Two" },
-  { id: 30, title: "Link Three" }
+  { id: 30, title: "Link Three" },
 ];
 
 export default function App() {
@@ -1365,7 +1421,7 @@ class App extends React.Component {
 
           // Clone location object and push it to history
           history.push({
-            pathname: newLocation.pathname
+            pathname: newLocation.pathname,
           });
         }
       } else {
@@ -1494,7 +1550,7 @@ ReactDOM.render(
 
 ## Q. How to restrict access to routes in react-router?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1505,7 +1561,7 @@ ReactDOM.render(
 ```js
 class App extends Component {
   state = {
-    file: null
+    file: null,
   };
 
   handleFile(e) {
@@ -1537,8 +1593,8 @@ const uploadImage = async (file) => {
     formData.append("create_thumbnail", true);
     const config = {
       headers: {
-        "content-type": "multipart/form-data"
-      }
+        "content-type": "multipart/form-data",
+      },
     };
 
     const url = "FILE_DIRECTORY";
@@ -1564,7 +1620,6 @@ ReactDOM.render(<App />, rootElement);
 
 ```js
 function App() {
-
   const [value, setValue] = React.useState("");
 
   const handleOnChange = (event) => {
@@ -1724,8 +1779,12 @@ function App() {
       <h2> React Font Awesome Icons </h2>
       <nav>
         <ul>
-          <li><FontAwesomeIcon icon={faHome} /> Home </li>
-          <li><FontAwesomeIcon icon={faAddressBook} /> Contact Us </li>
+          <li>
+            <FontAwesomeIcon icon={faHome} /> Home{" "}
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faAddressBook} /> Contact Us{" "}
+          </li>
         </ul>
       </nav>
     </div>
@@ -1768,11 +1827,13 @@ function App() {
 
 ```js
 export default function App() {
-
   let inputFields = [];
   for (let i = 0; i < 5; ++i) {
     inputFields.push(
-      <div> Field {i}: <input type="text" placeholder="Search" /> </div>
+      <div>
+        {" "}
+        Field {i}: <input type="text" placeholder="Search" />{" "}
+      </div>
     );
   }
 
@@ -1813,7 +1874,6 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 
 const App = () => {
-
   const [name, setName] = useState("");
   const [cookies, setCookie] = useCookies(["user"]);
 
@@ -1829,15 +1889,12 @@ const App = () => {
         onChange={(e) => setName(e.target.value)}
       />
       <button onClick={handle}>Set Cookie</button>
-      
-      {cookies.name && (
-        <div>Name: {cookies.name}</div>
-      )}
+
+      {cookies.name && <div>Name: {cookies.name}</div>}
     </div>
   );
 };
 export default App;
-
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/repeat-an-element-n-times-using-jsx-ze1yh?file=/src/App.js)**
@@ -1855,22 +1912,25 @@ export default App;
 import { useState } from "react";
 
 const data = [
-  { name: "Delhi",
-    cities: ["Siri", "Sultanpur", "Tughlqabad", "Jahanpanah", "Firozobad"]
+  {
+    name: "Delhi",
+    cities: ["Siri", "Sultanpur", "Tughlqabad", "Jahanpanah", "Firozobad"],
   },
-  { name: "Maharashtra",
-    cities: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Jalgaon"]
+  {
+    name: "Maharashtra",
+    cities: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Jalgaon"],
   },
-  { name: "West Bengal",
-    cities: ["Kolkata", "Asansol", "Siliguri", "Durgapur", "Baharampur"]
+  {
+    name: "West Bengal",
+    cities: ["Kolkata", "Asansol", "Siliguri", "Durgapur", "Baharampur"],
   },
-  { name: "Tamil Nadu",
-    cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"]
-  }
+  {
+    name: "Tamil Nadu",
+    cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"],
+  },
 ];
 
-export default function App() 
-{
+export default function App() {
   const [capitals, setCapitals] = useState("");
   const [cities, setCities] = useState([]);
 
@@ -1878,7 +1938,7 @@ export default function App()
     setCapitals(e.target.value); // Saving state of current selected drop down 1
     if (capitals !== undefined) {
       // Finding and saving the data for drop dop 2 related to the data of drop down 1
-      setCities(data.find((data) => data.name === e.target.value).cities); 
+      setCities(data.find((data) => data.name === e.target.value).cities);
     }
   }
   return (
@@ -1890,7 +1950,10 @@ export default function App()
         })}
       </select>
       <select>
-        <option selected disabled> --- SELECT --- </option>
+        <option selected disabled>
+          {" "}
+          --- SELECT ---{" "}
+        </option>
         {cities.map((city) => {
           return <option value={city}>{city}</option>;
         })}
@@ -1904,7 +1967,7 @@ export default function App()
 
 #### Q. Create a chat application
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
