@@ -111,7 +111,7 @@ Testable. React native tools are offered for testing, debugging code.
 
 **Limitations:**  
 
-* Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
+* Learning curve. Being not full-featured framework it is required in-depth knowledge for integration user interface free library into MVC framework.
 * View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 
