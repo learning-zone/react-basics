@@ -7618,6 +7618,7 @@ npm i react-hook-form @mui/material @emotion/react @emotion/styled
 
 **Example:**
 
+{% raw %}
 ```js
 /**
  * React Hook Form with MUI
@@ -7696,6 +7697,7 @@ export default function SignupForm() {
   );
 }
 ```
+{% endraw %}
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
 
