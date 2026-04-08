@@ -353,7 +353,9 @@ The virtual DOM creates an additional DOM. The shadow DOM simply hides implement
 
 Virtual DOM is about performance (efficiently updating the UI), while Shadow DOM is about encapsulation (isolating component styles and structure from the rest of the page).
 
-**Note:** React uses Virtual DOM but doesn\'t use Shadow DOM by default.
+**Note:** 
+
+*React uses Virtual DOM but doesn\'t use Shadow DOM by default.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -421,7 +423,7 @@ my-react-app
 
 **Key Differences from Create React App:**
 
-* **Faster startup** - Vite uses native ES modules and doesn't bundle during development
+* **Faster startup** - Vite uses native ES modules and doesn\'t bundle during development
 * **Instant HMR** - Updates reflect immediately without full page reload
 * **Optimized builds** - Uses Rollup for production builds
 * **Smaller bundle sizes** - Better tree-shaking and code splitting
@@ -585,26 +587,33 @@ ReactDOM is a package that provides DOM-specific methods for managing DOM elemen
 
 ReactDOM provides the developers with an API containing the following methods
 
-**Key Methods:**
+**Key Methods (React 18+):**
 
-* **render()** - Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components).
+* **createRoot()** - Creates a React root for displaying content inside a browser DOM element. Use it to render and update your React component tree.
 
-* **hydrate()** - This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
+* **hydrateRoot()** - Replaces `hydrate()` for server-side rendering. Attaches React to existing server-rendered HTML and enables React to manage it.
 
-* **unmountComponentAtNode()** - This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
+* **root.unmount()** - Destroys a rendered React tree inside a root, cleaning up all associated resources.
 
-* **findDOMNode()** - If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+* **createPortal()** - The `createPortal()` allows rendering a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
 
-* **createPortal()** - The `createPortal()` allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
+**Note:** 
+
+*`ReactDOM.render()`, `ReactDOM.hydrate()`, `ReactDOM.unmountComponentAtNode()`, and `ReactDOM.findDOMNode()` are deprecated as of React 18. Use the `react-dom/client` APIs instead.*
 
 **Syntax:**
 
 ```js
-ReactDOM.render(element, container, callback)   // render()
-ReactDOM.hydrate(element, container, callback)  // hydrate()
-ReactDOM.unmountComponentAtNode(container)      // unmountComponentAtNode()
-ReactDOM.findDOMNode(component)                 // findDOMNode
-ReactDOM.createPortal(child, container)         // createPortal()
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { createPortal } from 'react-dom';
+
+const root = createRoot(container);   // createRoot()
+root.render(element);                 // render()
+root.unmount();                       // unmount()
+
+hydrateRoot(container, element);      // hydrateRoot() — replaces hydrate()
+
+createPortal(child, container);       // createPortal()
 ```
 
 **Example:**
@@ -1003,7 +1012,9 @@ render() {
 }
 ```
 
-**Note**: React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
+**Note**: 
+
+*React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -1133,8 +1144,8 @@ const items = ['Apple', 'Banana', 'Cherry'];
 function FruitList() {
   return (
     <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
       ))}
     </ul>
   );
@@ -1615,18 +1626,17 @@ You can use variables to store elements. This can help you conditionally render 
 **Example:**
 
 ```js
-function LogInComponent(props) {
-  const isLoggedIn = props.isLoggedIn;
+import { createRoot } from 'react-dom/client';
+
+function LogInComponent({ isLoggedIn }) {
   if (isLoggedIn) {
     return <UserComponent />;
   }
   return <GuestComponent />;
 }
 
-ReactDOM.render(
-  <LogInComponent isLoggedIn={false} />,
-  document.getElementById('root')
-);
+const root = createRoot(document.getElementById('root'));
+root.render(<LogInComponent isLoggedIn={false} />);
 ```
 
 **2. Ternary Operator(`? :`)**
@@ -1887,7 +1897,7 @@ The component retains references in memory even after unmounting, preventing gar
 **Warning Messages:**
 
 ```cmd
-Warning: Can't perform a React state update on an unmounted component. 
+Warning: Can not perform a React state update on an unmounted component. 
 This is a no-op, but it indicates a memory leak in your application.
 ```
 
@@ -2271,7 +2281,7 @@ To ensure your timer starts correctly and doesn\'t cause memory leaks, follow th
 **Example:** Counting Up Every Second
 
 ```js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function Timer() {
   const [seconds, setSeconds] = useState(0);
@@ -2467,7 +2477,9 @@ class App extends React.Component {
 
 The `render()` method is called automatically whenever props or state change, causing React to update the DOM with the new output.
 
-Note that with modern React (v18+), functional components use return directly instead of a render() method, and the actual DOM rendering is done via `createRoot().render()`.
+**Note**:
+
+*The modern React (v18+), functional components use return directly instead of a render() method, and the actual DOM rendering is done via `createRoot().render()`.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-l2q7qk?file=/src/index.js)**
 
@@ -2724,7 +2736,9 @@ class App extends Component {
 }
 ```
 
-**Note:** - componentWillMount() is now deprecated in modern React. You should avoid using it and use componentDidMount() or the constructor() instead for initialization logic.
+**Note:** 
+
+*`componentWillMount()` is now deprecated in modern React. You should avoid using it and use `componentDidMount()` or the `constructor()` instead for initialization logic.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -3031,7 +3045,7 @@ function UserProfile() {
 
 **Benefits:**
 
-* **Code Reusability** - HOCs allow you to extract common logic used by many components into a single, reusable function. This prevents code duplication (Don’t Repeat Yourself) and makes updates significantly easier because changes to the shared logic only need to be made in one place
+* **Code Reusability** - HOCs allow you to extract common logic used by many components into a single, reusable function. This prevents code duplication (Don\'t Repeat Yourself) and makes updates significantly easier because changes to the shared logic only need to be made in one place
 
 * **No Method Name Clashing** - If two HOCs implement the same method, there is no name collision
 
@@ -3208,7 +3222,7 @@ This pattern is called a "props proxy" because the HOC acts as a proxy for the p
 
 ## Q. What is the purpose of displayName class property?
 
-By default, React infers the `displayName` from the function or class name, but it can set it explicitly—especially useful for higher-order components (HOCs) that wrap other components, so the debug output reflects the wrapped component'\s name.
+By default, React infers the `displayName` from the function or class name, but it can set it explicitly—especially useful for higher-order components (HOCs) that wrap other components, so the debug output reflects the wrapped component\'s name.
 
 It helps tools like React DevTools and error messages show a clear, descriptive name for the component, making it easier to identify in the component tree.
 
@@ -3355,7 +3369,7 @@ function Welcome({ name, age }) {
 **Special Props**
 
 * **children**: A built-in prop that represents whatever content is placed between the opening and closing tags of a component.
-* **Default Props**: You can set fallback values for props in case the parent doesn't provide them. 
+* **Default Props**: You can set fallback values for props in case the parent doesn\'t provide them. 
 
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-props-2k0081?file=/src/App.js)**
@@ -3397,7 +3411,7 @@ A component should only be responsible for managing its own internal state. Prop
 
 ## Q. What are default props?
 
-The defaultProps is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed.
+The **defaultProps** is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed.
 
 The `defaultProps` can be defined as a property on the component class itself to set the default props for the class. `defaultProps` is used for **undefined** props, not for **null** props.
 
@@ -3489,7 +3503,7 @@ In react, numbers can be passed via curly braces(`{}`) where as strings in quote
 
 ```js
 function App() {
-  return <Greetings name="Nathan" age={27} occupation="Software Developer" />;
+  return <Greetings name="Pradeep" age={28} occupation="Software Developer" />;
 }
 
 // Greetings Component
@@ -3708,7 +3722,7 @@ const App = () => (
 
 ## Q. What are render props?
 
-Render props are a React pattern where a component accepts a **function** as a prop, and calls that function to determine what to render.
+Render props are a React pattern where a component accepts a **function as a prop**, and calls that function to determine what to render.
 
 The function receives data or state from the component and returns React elements. This enables sharing logic between components.
 
@@ -3795,7 +3809,7 @@ The benefits of using Render Props in React are:
 
 ## Q. How do you create Higher Order Component using render props?
 
-You can create a Higher Order Component (HOC) using render props by combining the two patterns: the HOC returns a component that uses a render prop to share logic or state with the wrapped component. Here\'s how you do it:
+You can create a Higher Order Component (HOC) using render props by combining the two patterns: the HOC returns a component that uses a render prop to share logic or state with the wrapped component. Here is how you do it:
 
 * Define a function (the HOC) that takes a component as an argument.
 * Inside, return a new component that renders the original component, passing it data or methods via props.
@@ -4161,7 +4175,7 @@ function RadioGroup({ name, children }) {
 }
 
 // Usage:
-// Even though we didn't add the 'name' prop to each <input />,
+// Even though we did not add the 'name' prop to each <input />,
 // RadioGroup will inject it into both clones.
 function App() {
   return (
@@ -4173,49 +4187,9 @@ function App() {
 }
 ```
 
-* **Note on modern best practices**: The React documentation warns that overusing `cloneElement` can make data flow harder to trace. In many cases, using **render props** or **Context** is preferred for passing data down the tree.
+**Note**: 
 
-<div align="right">
-    <b><a href="#table-of-contents">↥ back to top</a></b>
-</div>
-
-## Q. When should I be using React.cloneElement vs this.props.children?
-
-Use `React.cloneElement` when you need to modify or add props to a child element before rendering it—such as injecting extra data, event handlers, or styles. This is useful for component composition when the parent wants to enhance or control its children.
-
-Use `this.props.children` (or just `children` in function components) when you simply want to render the children passed to a component without any modification. This is the default and most common way to render nested elements in React.
-
-**Example:**
-
-```js
-<ReactCSSTransitionGroup
-     component="div"
-     transitionName="example"
-     transitionEnterTimeout={500}
-     transitionLeaveTimeout={500}
-     >
-     {React.cloneElement(this.props.children, {
-       key: this.props.location.pathname
-      })}
-</ReactCSSTransitionGroup>
-```
-
-For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
-
-**Example:**
-
-```js
-class Users extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>Users</h2>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-```
+*The React documentation warns that overusing `cloneElement` can make data flow harder to trace. In many cases, using **render props** or **Context** is preferred for passing data down the tree.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -4388,7 +4362,7 @@ export default class App extends React.Component {
 
 **Note:** 
 
-In modern functional components, developers use the `useState()` Hook. While it serves the same purpose, there is a key difference: the "set" function from useState replaces the state instead of merging it
+*In modern functional components, developers use the `useState()` Hook. While it serves the same purpose, there is a key difference: the "set" function from useState replaces the state instead of merging it*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-setstate-d58xff?file=/src/App.js)**
 
@@ -4416,9 +4390,32 @@ The second argument to `setState()` in React Class Component is an optional **ca
 /**
  * setState() Callback
  */
-this.setState({ count: 1 }, () => {
-    console.log('setState has finished and the component has re-rendered.')
-});
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 }, () => {
+      console.log('setState has finished and the component has re-rendered.');
+      console.log('Updated count:', this.state.count);
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
 ```
 
 The setState() will always lead to a re-render unless `shouldComponentUpdate()` returns **false**. To avoid unnecessary renders, calling setState() only when the new state differs from the previous state makes sense and can avoid calling setState() in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
@@ -4487,7 +4484,7 @@ setUser(prevUser => ({
 
 **Note:**
 
-Never mutate state directly. Always create a new object/array and update state with the new value. This ensures React can detect changes and re-render correctly.
+*Never mutate state directly. Always create a new object/array and update state with the new value. This ensures React can detect changes and re-render correctly.*
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
 
@@ -4870,7 +4867,9 @@ class Child extends React.Component {
 }
 ```
 
-**Note:** This approach is not recommended for most cases. Prefer passing data up via **callbacks**. Use refs only when necessary.
+**Note:** 
+
+*This approach is not recommended for most cases. Prefer passing data up via **callbacks**. Use refs only when necessary.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
 
@@ -5001,7 +5000,7 @@ Event handling in React means responding to user actions like clicks, typing, fo
 
 * **CamelCase Naming**: Unlike HTML where events are lowercase (e.g., onclick), React uses camelCase for event names (e.g., onClick, onChange, onSubmit).
 
-* **Function References**: You pass a function itself as the event handler, rather than a string of code. For example, use onClick={handleClick} instead of onclick="handleClick()".
+* **Function References**: You pass a function itself as the event handler, rather than a string of code. For example, use `onClick={handleClick}` instead of `onclick="handleClick()`".
 
 * **Synthetic Events**: React wraps native browser events in a SyntheticEvent object. This acts as a "cross-browser wrapper" that ensures the event behaves identically regardless of which browser the user is using.
 
@@ -5016,7 +5015,7 @@ function Button() {
     console.log("Button clicked");
   };
 
-  return <button onClick={handleClick}>Click me</button>;
+  return <button onClick={handleClick}>Click Me</button>;
 }
 ```
 
@@ -5067,17 +5066,16 @@ React provides a wide range of built-in event handlers that follow standard HTML
 **Example:**
 
 ```js
-const message = "Hey there!";
-export default class App extends React.Component {
-  displayMessage(message) {
-    alert(message);
-  }
+const message = "Hello World!";
 
-  render() {
-    return (
-      <button onClick={() => this.displayMessage(message)}>CLICK ME</button>
-    );
-  }
+export default function App() {
+  const displayMessage = (message) => {
+    alert(message);
+  };
+
+  return (
+    <button onClick={() => displayMessage(message)}>CLICK ME</button>
+  );
 }
 ```
 
@@ -5089,39 +5087,44 @@ export default class App extends React.Component {
 
 ## Q. How do you pass an event handler to a component?
 
+In React, you pass an event handler to a component by defining a function in the parent and passing it as a **prop** to the child component. The child then "plugs" that prop into a standard HTML event attribute like `onClick`.
+
+**Pattern**:
+
+* Define the handler in the parent
+* Pass it as a prop to the child
+* The child attaches it to a DOM element
+
 **Example:**
 
 ```js
-import React, {useState} from "react";
+/**
+ * Pass an event handler to a component
+ */
+import { useState } from "react";
 
-export default function App() {
-  return (
-    <Container/>
-  );
-}
+// Child receives handler via props and wires it to a DOM event
+const CustomButton = ({ onCustomClick }: { onCustomClick: () => void }) => {
+  return <button onClick={onCustomClick}>Increment</button>;
+};
 
+// Parent defines the handler and passes it down
 const Container = () => {
   const [counter, setCounter] = useState(0);
-  
+
   const handleCustomClick = () => {
-    setCounter(counter + 1)
-  }
+    setCounter(counter + 1);
+  };
 
   return (
     <div>
-      <div>Counter: {counter}</div>
-      <CustomButton onCustomClick={handleCustomClick}/>
+      <p>Count: {counter}</p>
+      <CustomButton onCustomClick={handleCustomClick} />
     </div>
   );
-}
+};
 
-const CustomButton = ({onCustomClick}) => {
-  return (
-    <button onClick={onCustomClick}>
-      My Custom Button
-    </button>
-  );
-}
+export default Container;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
@@ -5237,13 +5240,15 @@ Arrow functions are exempt from this behavior because they use **lexical** `this
 /**
  * Event Handling in React
  */
+import React from "react";
+
 export default class App extends React.Component {
-  constructor(props) {
+  constructor(props: object) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
+  handleClick() {
     alert("Click event triggered!");
   }
 
@@ -5286,15 +5291,15 @@ This is equivalent to calling `.bind`
 /**
  * Pass parameter to an event handler
  */
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const A = 65; // ASCII character code
 
 const App = () => {
-  const [justClicked, setJustClicked] = useState(null);
-  const [letters] = useState(Array.from({ length: 26 }, (_, i) => String.fromCharCode(A + i)));
+  const [justClicked, setJustClicked] = useState<string | null>(null);
+  const [letters] = useState(Array.from({ length: 26 }, (_, i) => String.fromCodePoint(A + i)));
 
-  const handleClick = (letter) => {
+  const handleClick = (letter: string) => {
     setJustClicked(letter);
   };
 
@@ -5303,8 +5308,10 @@ const App = () => {
       Just clicked: {justClicked}
       <ul>
         {letters.map((letter) => (
-          <li key={letter} onClick={() => handleClick(letter)}>
-            {letter}
+          <li key={letter}>
+            <button type="button" onClick={() => handleClick(letter)}>
+              {letter}
+            </button>
           </li>
         ))}
       </ul>
@@ -5479,6 +5486,8 @@ class App extends React.Component {
 Arrow methods capture lexical this, so they are auto-bound.
 
 ```js
+import React from 'react';
+
 class Button extends React.Component {
   state = { clicked: false };
 
@@ -5490,6 +5499,8 @@ class Button extends React.Component {
     return <button onClick={this.handleClick}>Click</button>;
   }
 }
+
+export default Button;
 ```
 
 **2. Bind in Render:**
@@ -5516,12 +5527,16 @@ This is the approach currently recommended in the React docs for "better perform
 **4. Function components with hooks (modern React):**
 
 ```js
+import React from 'react';
+
 function Button() {
   const [clicked, setClicked] = React.useState(false);
   const handleClick = () => setClicked(true);
 
-  return <button onClick={handleClick}>Click</button>;
+  return <button onClick={handleClick}>{clicked ? "Clicked!" : "Click"}</button>;
 }
+
+export default Button;
 ```
 
 <div align="right">
@@ -5535,37 +5550,47 @@ There are several ways to make sure functions have access to component attribute
 **1. Bind in Constructor (ES5):**
 
 ```js
+import { Component } from 'react';
+
 class App extends Component {
-  constructor(props) {
+  constructor(props: object) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick() {
-    console.log('Click happened')
+    console.log('Clicked!');
   }
   render() {
     return <button onClick={this.handleClick}>Click Me</button>
   }
 }
+
+export default App;
 ```
 
 **2. Class Properties:**
 
 ```js
+import { Component } from 'react';
+
 class App extends Component {
-  // Note: this syntax is experimental and not standardized yet.
+
   handleClick = () => {
-    console.log('Click happened')
+    console.log('Clicked!');
   }
   render() {
     return <button onClick={this.handleClick}>Click Me</button>
   }
 }
+
+export default App;
 ```
 
 **3. Bind in Render:**
 
 ```js
+import { Component } from 'react';
+
 class App extends Component {
   handleClick() {
     console.log('Click happened')
@@ -5574,13 +5599,19 @@ class App extends Component {
     return <button onClick={this.handleClick.bind(this)}>Click Me</button>
   }
 }
+
+export default App;
 ```
 
-*Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
+**Note**: 
+
+*Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
 
 **4. Arrow Function in Render:**
 
 ```js
+import { Component } from 'react';
+
 class App extends Component {
   handleClick() {
     console.log('Click happened')
@@ -5589,9 +5620,13 @@ class App extends Component {
     return <button onClick={() => this.handleClick()}>Click Me</button>
   }
 }
+
+export default App;
 ```
 
-*Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
+**Note**: 
+
+*Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
 
 **Best Practice:**
 
@@ -5644,7 +5679,7 @@ const onSearchChange = debounce((value) => {
 import * as React from "react";
 import * as _ from "lodash";
 
-export default class App extends React.Component {
+export default class App extends React.Component<object, { count: number }> {
   state = { count: 0 };
 
   handleCount() {
@@ -5682,20 +5717,24 @@ export default class App extends React.Component {
 /**
  * RequestAnimationFrame Throttling
  */
+/**
+ * RequestAnimationFrame Throttling
+ */
+import React from "react";
 import rafSchedule from "raf-schd";
 
+type Point = { x: number; y: number };
+type Props = { onScroll: (point: Point) => void };
 
-export default class App extends React.Component {
-  constructor(props) {
+export default class App extends React.Component<Props> {
+  scheduleUpdate = rafSchedule((point: Point) => this.props.onScroll(point));
+
+  constructor(props: Props) {
     super(props);
-
     this.handleScroll = this.handleScroll.bind(this);
-
-    // Create a new function to schedule updates.
-    this.scheduleUpdate = rafSchedule((point) => this.props.onScroll(point));
   }
 
-  handleScroll(e) {
+  handleScroll(e: React.UIEvent<HTMLDivElement> & { clientX: number; clientY: number }) {
     // When we receive a scroll event, schedule an update.
     // If we receive many updates within a frame, we'll only publish the latest value.
     this.scheduleUpdate({ x: e.clientX, y: e.clientY });
@@ -5709,7 +5748,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{ overflow: "scroll" }} onScroll={this.handleScroll}>
-        <img src="/my-huge-image.png" alt="Nature" />
+        <img src="https://picsum.photos/800/600" alt="Nature" />
       </div>
     );
   }
@@ -5849,7 +5888,7 @@ function OutsideClickBox({ onOutsideClick, children }) {
 
 **Note:**
 
-Use `mousedown` instead of `click` if you want the outside action to happen earlier (before focus/click side effects inside other elements).
+*Use `mousedown` instead of `click` if you want the outside action to happen earlier (before focus/click side effects inside other elements).*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
 
@@ -5981,7 +6020,7 @@ class App extends Component {
 
 **Note:**
 
-Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
+*Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6028,7 +6067,7 @@ const items = ['Apple', 'Banana', 'Cherry'];
 function FruitList() {
   return (
     <ul>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
     </ul>
@@ -6083,12 +6122,13 @@ function MyList() {
 
   return (
     <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
       ))}
     </ul>
   );
 }
+export default MyList;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
@@ -6329,19 +6369,9 @@ If a single item changes and the whole list array reference changes, all memoize
 // ❌ Array — updating one item rebuilds the whole array
 const [users, setUsers] = useState([...]);
 
-// ✅ Map — updating one entry doesn't disturb others
+// ✅ Map — updating one entry does not disturb others
 const [usersById, setUsersById] = useState({ u1: {...}, u2: {...} });
 ```
-
-**Summary:**
-
-| Technique | What it prevents |
-|---|---|
-| Stable `key` | Unnecessary DOM mutations |
-| `React.memo` on item component | Re-rendering unchanged items |
-| `useCallback` for handlers | Breaking memo due to new function refs |
-| No inline objects/arrays in JSX | Breaking memo due to new object refs |
-| Normalized / granular state | Cascade re-renders from parent state changes |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6440,18 +6470,10 @@ const initialTasks = [
 export default function TaskList() {
   const [tasks, setTasks] = useState(initialTasks);
 
-  const toggleDone = (id) => {
+  const toggleDone = (id: number) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
         task.id === id ? { ...task, done: !task.done } : task
-      )
-    );
-  };
-
-  const updateTitle = (id, newTitle) => {
-    setTasks(prevTasks =>
-      prevTasks.map(task =>
-        task.id === id ? { ...task, title: newTitle } : task
       )
     );
   };
@@ -6486,22 +6508,21 @@ Rendering thousands of DOM nodes at once causes slow initial paint, sluggish scr
 Only render the rows currently visible in the viewport. As the user scrolls, off-screen rows are unmounted and new ones are mounted. Libraries like `react-window` and `react-virtual` implement this efficiently.
 
 ```js
-import { FixedSizeList } from 'react-window';
+import { List, RowComponentProps } from 'react-window';
 
-const Row = ({ index, style }) => (
+const Row = ({ index, style }: RowComponentProps) => (
   <div style={style}>Row {index}</div>
 );
 
 export default function BigList() {
   return (
-    <FixedSizeList
-      height={500}        // viewport height in px
-      itemCount={100000}  // total number of rows
-      itemSize={35}       // height of each row in px
-      width="100%"
-    >
-      {Row}
-    </FixedSizeList>
+    <List
+      style={{ height: 500, width: '100%' }}
+      rowCount={100000}
+      rowHeight={25}
+      rowComponent={Row}
+      rowProps={{}}
+    />
   );
 }
 ```
@@ -6515,17 +6536,22 @@ For variable-height rows use `VariableSizeList`; for grids use `FixedSizeGrid` /
 Fetch and render only one page of data at a time. Users navigate between pages explicitly. This is the simplest strategy and works well for tabular data.
 
 ```js
-const PAGE_SIZE = 50;
+import { useState } from 'react';
 
-export default function PaginatedList({ allItems }) {
+const PAGE_SIZE = 10;
+
+const ALL_ITEMS = Array.from({ length: 100 }, (_, i) => ({ id: i + 1, name: `Item ${i + 1}` }));
+
+export default function PaginatedList() {
   const [page, setPage] = useState(1);
-  const visible = allItems.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const totalPages = Math.ceil(ALL_ITEMS.length / PAGE_SIZE);
+  const visible = ALL_ITEMS.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <>
       <ul>{visible.map(item => <li key={item.id}>{item.name}</li>)}</ul>
       <button disabled={page === 1} onClick={() => setPage(p => p - 1)}>Prev</button>
-      <button onClick={() => setPage(p => p + 1)}>Next</button>
+      <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
     </>
   );
 }
@@ -6536,23 +6562,33 @@ export default function PaginatedList({ allItems }) {
 Load the next batch of items when the user reaches the bottom. Use the `IntersectionObserver` API (or a library like `react-intersection-observer`) to detect when a sentinel element enters the viewport.
 
 ```js
-import { useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
-export default function InfiniteList({ items, loadMore, hasMore }) {
-  const observer = useRef();
+type Item = { id: number; name: string };
 
-  const sentinelRef = useCallback(node => {
+const ALL_ITEMS: Item[] = Array.from({ length: 100 }, (_, i) => ({ id: i + 1, name: `Item ${i + 1}` }));
+const PAGE_SIZE = 10;
+
+export default function InfiniteList() {
+  const [count, setCount] = useState(PAGE_SIZE);
+  const items = ALL_ITEMS.slice(0, count);
+  const hasMore = count < ALL_ITEMS.length;
+  const loadMore = () => setCount(c => Math.min(c + PAGE_SIZE, ALL_ITEMS.length));
+
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const sentinelRef = useCallback((node: Element | null) => {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore) loadMore();
     });
     if (node) observer.current.observe(node);
-  }, [hasMore, loadMore]);
+  }, [hasMore]);
 
   return (
     <ul>
-      {items.map(item => <li key={item.id}>{item.name}</li>)}
-      <li ref={sentinelRef} />  {/* sentinel — triggers load when visible */}
+      {items.map((item: Item) => <li key={item.id}>{item.name}</li>)}
+      {hasMore && <li ref={sentinelRef} />}
     </ul>
   );
 }
@@ -6571,17 +6607,6 @@ const ListRow = React.memo(function ListRow({ item, onSelect }) {
 const handleSelect = useCallback((id) => {
   setSelectedId(id);
 }, []);
-```
-
-**5. Avoid common performance pitfalls:**
-
-```js
-// ❌ Inline object creates new reference every render — breaks React.memo
-{items.map(item => <Row key={item.id} style={{ color: 'red' }} item={item} />)}
-
-// ✅ Stable reference outside render
-const rowStyle = { color: 'red' };
-{items.map(item => <Row key={item.id} style={rowStyle} item={item} />)}
 ```
 
 **Strategy comparison:**
@@ -6737,11 +6762,19 @@ Client Components are required whenever the list is interactive — sorting, fil
 
 import { useState } from 'react';
 
-export default function FilterableList({ initialUsers }) {
+type User = { id: number; name: string };
+
+const USERS: User[] = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
+
+export default function FilterableList() {
   const [query, setQuery] = useState('');
 
-  const filtered = initialUsers.filter(u =>
-    u.name.toLowerCase().includes(query.toLowerCase())
+  const filtered = USERS.filter(user =>
+    user.name.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -6760,8 +6793,6 @@ export default function FilterableList({ initialUsers }) {
   );
 }
 ```
-
-The `initialUsers` data is passed as a prop from a parent Server Component (see pattern below).
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6845,11 +6876,17 @@ Axios is a promise based HTTP client for making HTTP requests from a browser to 
 /**
  * GET Request using Axios
  */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
 export default function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -6858,8 +6895,8 @@ export default function App() {
       try {
         const response = await axios.get("https://jsonplaceholder.typicode.com/users");
         setUsers(response.data);
-      } catch (err) {
-        setError("Failed to fetch users");
+      } catch (error) {
+        setError("Failed to fetch users: " + (error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -6903,14 +6940,19 @@ Use Axios post inside a submit handler, then update state with the response.
  * POST Request using Axios
  */
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+
+interface CreatedUser {
+  id: number;
+  name: string;
+}
 
 export default function CreateUser() {
   const [name, setName] = useState("");
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<CreatedUser | null>(null);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
     setResult(null);
@@ -6923,7 +6965,8 @@ export default function CreateUser() {
       setResult(response.data);
       setName("");
     } catch (err) {
-      setError("Failed to create user");
+      const axiosErr = err as AxiosError;
+      setError("Failed to create user" + (axiosErr.response ? `: ${axiosErr.response.statusText}` : ""));
     }
   };
 
@@ -7062,7 +7105,7 @@ Caching in React is typically handled through three distinct layers: Memoization
 
 **1. In-Component Memoization**
 
-These built-in hooks prevent expensive calculations or component re-renders when inputs haven't changed. 
+These built-in hooks prevent expensive calculations or component re-renders when inputs haven\'t changed. 
 
 * **useMemo**: Caches the result of a calculation. Use it for heavy data processing to avoid recalculating on every render.
 
@@ -7132,12 +7175,19 @@ const getUser = cache(async (id) => {
 ```js
 import useSWR from 'swr';
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 // 1. Define a fetcher function (can use fetch, axios, etc.)
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 function Profile() {
   // 2. Use the hook with a unique key (URL) and the fetcher
-  const { data, error, isLoading } = useSWR('https://api.github.com', fetcher);
+  const { data, error, isLoading } = useSWR<User[]>('https://jsonplaceholder.typicode.com/users', fetcher);
 
   // 3. Handle loading and error states
   if (error) return <div>Failed to load</div>;
@@ -7145,13 +7195,20 @@ function Profile() {
 
   // 4. Render data
   return (
-    <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>{data.subscribers_count}</strong>
-    </div>
+    <>
+      <h1>Users</h1>
+      <ul>
+        {data?.map((user) => (
+          <li key={user.id}>
+            <strong>{user.name}</strong> — {user.email} — {user.phone}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
+
+export default Profile;
 ```
 
 **3. Persistent & Browser Caching**
@@ -7177,20 +7234,27 @@ The `useEffect` hook is used to perform side effects like data fetching. By pass
 **Example:**
 
 ```js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+interface User {
+  id: number;
+  name: string;
+}
 
 function UserProfile() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // AJAX request starts here
-    fetch('https://api.example.com/user')
+    fetch('https://jsonplaceholder.typicode.com/users/1')
       .then(res => res.json())
       .then(data => setUser(data)); // Updates state once data is received
   }, []); // Run only on mount
 
   return <div>{user ? user.name : "Loading..."}</div>;
 }
+
+export default UserProfile;
 ```
 
 **2. Class Component (Legacy Approach)**
@@ -7239,8 +7303,13 @@ To work around this, define an async function inside the effect and call it imme
 ```js
 import { useEffect, useState } from "react";
 
+interface User {
+  id: number;
+  name: string;
+}
+
 export default function Users() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -7255,13 +7324,15 @@ export default function Users() {
         const data = await res.json();
         if (!ignore) setUsers(data);
       } catch (err) {
-        if (!ignore) setError(err.message);
+        if (!ignore) setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         if (!ignore) setLoading(false);
       }
     }
 
     fetchUsers();
+
+    return () => { ignore = true; };
   }, []); // Empty array runs this only once on mount
 
   if (loading) return <p>Loading...</p>;
@@ -7373,7 +7444,7 @@ export function Counter() {
 
 **Note:**
 
-Use RxJS when you truly need stream composition; for simple app state, React context/useReducer may be simpler.
+*Use RxJS when you truly need stream composition; for simple app state, React context/useReducer may be simpler.*
 
 **Reference:**
 
@@ -7535,7 +7606,9 @@ export default function App() {
 
 ## Q. How to use react hook form with material-ui?
 
-Use React Hook Form with MUI by wiring MUI inputs through Controller (or register for simple native inputs), then handling submit with handleSubmit.
+**React Hook Form:**
+
+React Hook Form is a library for managing form state and validation in React with minimal re-renders. Use React Hook Form with MUI by wiring MUI inputs through Controller (or register for simple native inputs), then handling submit with handleSubmit.
 
 **Install:**
 
@@ -7546,16 +7619,23 @@ npm i react-hook-form @mui/material @emotion/react @emotion/styled
 **Example:**
 
 ```js
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
+/**
+ * React Hook Form with MUI
+ */
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { TextField, Button, Stack } from "@mui/material";
+
+type FormValues = {
+  name: string;
+  email: string;
+};
 
 export default function SignupForm() {
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitting }
-  } = useForm({
+  } = useForm<FormValues>({
     defaultValues: {
       name: "",
       email: ""
@@ -7563,7 +7643,7 @@ export default function SignupForm() {
     mode: "onBlur"
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log("Form data:", data);
     // await apiCall(data)
   };
@@ -7625,7 +7705,7 @@ export default function SignupForm() {
 
 ## Q. Why You Should Choose React Hook Form Over Formik and Redux-Form?
 
-Below are the main reasons to recommend React Hook Form Over Formik and Redux-Form,
+Below are the main reasons to recommend **React Hook Form** Over Formik and Redux-Form,
 
 **1. Isolate Component Re-Rendering:**
 
@@ -7808,14 +7888,16 @@ React Hooks are in-built functions that let you "hook into" React features like 
 import { useState } from "react";
 
 function App() {
-  const [isButtonClicked, setIsButtonClickedStatus] = useState(false);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   return (
-    <button onClick={() => setIsButtonClickedStatus(!isButtonClicked)}>
+    <button onClick={() => setIsButtonClicked(!isButtonClicked)}>
       {isButtonClicked ? "Clicked" : "Click Me, Please"}
     </button>
   );
 }
+
+export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usestate-mqb4jb?file=/src/App.js)**
@@ -7864,7 +7946,7 @@ A custom Hooks has following features:
  */
 import { useState, useEffect } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url: string) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -7921,8 +8003,13 @@ The two main hooks used for fetching data are:
  */
 import { useState, useEffect } from "react";
 
+interface User {
+  id: number;
+  login: string;
+}
+
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     fetch("https://api.github.com/users")
@@ -7933,11 +8020,12 @@ function App() {
   return (
     <ul>
       {users.map(user => (
-        <li key={user.id}>{user.name}</li>
+        <li key={user.id}>{user.login}</li>
       ))}
     </ul>
   );
 }
+export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-siuu6t?file=/src/App.js)**
@@ -7962,7 +8050,7 @@ In most cases, yes, Hooks replace the need for render props and higher-order com
 
 Despite the shift to Hooks, these patterns still have specific use cases: 
 
-**HOCs:**
+**Higher-Order Components:**
 
 * **Conditional Rendering**: Useful for wrapping a component with logic that decides whether to render it at all (e.g., an withAuthentication wrapper).
 
@@ -8038,30 +8126,45 @@ To re-render a React component when the browser is resized, you can use the `use
 ```js
 import { useState, useEffect } from 'react';
 
+/**
+ * Custom hook that tracks the current browser window dimensions.
+ * Updates on every resize event and cleans up the listener on unmount.
+ * @returns The current `{ width, height }` of the window, or `undefined` before first mount.
+ */
 function useWindowSize() {
-  // Initialize state with current window dimensions
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [windowSize, setWindowSize] = useState<{ width: number; height: number } | undefined>(
+    undefined
+  );
 
   useEffect(() => {
-    // Function to update state
     const handleResize = () => {
-      setDimensions({
+      setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     };
 
-    // Add event listener on mount
+    handleResize();
     window.addEventListener('resize', handleResize);
-
-    // Clean up listener on unmount to prevent memory leaks
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty dependency array ensures this only runs once
+  }, []);
 
   return windowSize;
+}
+```
+```js
+/**
+ * Page component that displays the current window width and height.
+ */
+export default function Page() {
+  const size = useWindowSize();
+
+  return (
+    <div>
+      <p>Width: {size?.width}</p>
+      <p>Height: {size?.height}</p>
+    </div>
+  );
 }
 ```
 
@@ -8190,18 +8293,30 @@ const [state, dispatch] = useReducer(reducer, initialState);
 **Example:**
 
 ```js
-import React, { useReducer } from 'react'
+import { useReducer } from 'react'
+
+type Action = 'increment' | 'decrement' | 'reset'
 
 const initialState = 0
-const reducer = (state, action) => {
+
+/**
+ * Reducer function for managing a counter state.
+ * @param state - The current counter value.
+ * @param action - The action to perform: 'increment', 'decrement', or 'reset'.
+ * @returns The updated counter value.
+ */
+const reducer = (state: number, action: Action) => {
   switch (action) {
     case 'increment': return state + 1
     case 'decrement': return state - 1
     case 'reset': return 0
-    default: throw new Error('Unexpected action')
+    default: throw new Error('Unexpected Action!')
   }
 }
 
+/**
+ * Component that demonstrates useReducer with increment, decrement, and reset actions.
+ */
 const ReducerExample = () => {
   const [count, dispatch] = useReducer(reducer, initialState)
   return (
@@ -8323,7 +8438,8 @@ This is useful when passing callbacks to optimized child components that rely on
 
 ```js
 /**
- * useCallback()
+ * Demonstrates useCallback() to memoize a function reference.
+ * The memoized `increment` callback is only recreated when `counter` changes, preventing unnecessary re-renders and function calls.
  */
 import { useState, useCallback, useEffect } from "react";
 
@@ -8343,12 +8459,14 @@ function App() {
 
   return (
     <>
-      <h1>useCallback()</h1>
+      <h1>useCallback Hook Example</h1>
       <h2>Function Call: {count.size}</h2>
       <button onClick={increment}>Increment</button>
     </>
   );
 }
+
+export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usecallback-zecshz?file=/src/App.js)**
@@ -8359,84 +8477,100 @@ The `useMemo()` is similar to `useCallback()` except it allows you to apply memo
 
 **Example:**
 
-React application which renders a list of users and allows us to filter the users by their name. The filter happens only when a user explicitly clicks a button; not already when the user types into the input field.
-
 ```js
 import React from 'react'
 
 const users = [
-  { id: 'a', name: 'Robin' },
-  { id: 'b', name: 'Dennis' },
+  { id: '101', name: 'Dennis' },
+  { id: '102', name: 'Alice' },
+  { id: '103', name: 'Bob' },
+  { id: '104', name: 'Carol' },
+  { id: '105', name: 'Dave' }
 ]
 
+/**
+ * App component that renders a searchable list of users.
+ * Uses `useMemo` to memoize the filtered user list, recomputing
+ * only when the search query changes.
+ */
 const App = () => {
-  const [text, setText] = React.useState('')
   const [search, setSearch] = React.useState('')
 
-  const handleText = (event) => {
-    setText(event.target.value)
-  }
-
-  const handleSearch = () => {
-    setSearch(text)
-  }
-
-  // useMemo Hooks
   const filteredUsers = React.useMemo(
-    () =>
-      users.filter((user) => {
-        console.log('Filter function is running ...');
-        return user.name.toLowerCase().includes(search.toLowerCase());
-      }),
+    () => users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase())),
     [search]
-  );
+  )
 
   return (
     <div>
-      <input type="text" value={text} onChange={handleText} />
-      <button type="button" onClick={handleSearch}>
-        Search
-      </button>
-
-      <List list={filteredUsers} />
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search users"
+      />
+      <ul>
+        {filteredUsers.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-const List = ({ list }) => {
-  return (
-    <ul>
-      {list.map((item) => (
-        <ListItem key={item.id} item={item} />
-      ))}
-    </ul>
-  )
-}
-
-const ListItem = ({ item }) => {
-  return <li>{item.name}</li>
-}
-
 export default App
 ```
-
-Here, the **filteredUsers** function is only executed once the search state changes. It doesn\'t run if the text state changes, because that\'s not a dependency for this filter function and thus not a dependency in the dependency array for the useMemo hook.
 
 **3. useImperativeHandle():**
 
 `useImperativeHandle()` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using `refs` should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`.
 
 ```js
-function FancyInput(props, ref) {
-  const inputRef = useRef()
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus()
-    }
-  }))
-  return <input ref={inputRef} ... />
+import { useRef, useImperativeHandle, forwardRef } from 'react'
+
+interface InputHandle {
+  focus: () => void
+  clear: () => void
 }
-FancyInput = forwardRef(FancyInput)
+
+/**
+ * A custom input component that exposes `focus` and `clear` methods
+ * to parent components via `useImperativeHandle`.
+ */
+const CustomInput = forwardRef<InputHandle>((_, ref) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useImperativeHandle(ref, () => ({
+    focus() {
+      inputRef.current?.focus()
+    },
+    clear() {
+      if (inputRef.current) inputRef.current.value = ''
+    },
+  }))
+
+  return <input ref={inputRef} type="text" placeholder="Type something..." />
+})
+
+CustomInput.displayName = 'CustomInput'
+
+/**
+ * App component that uses a ref to imperatively call `focus` and `clear`
+ * on the CustomInput child component.
+ */
+const App = () => {
+  const inputRef = useRef<InputHandle>(null)
+
+  return (
+    <div>
+      <CustomInput ref={inputRef} />
+      <button onClick={() => inputRef.current?.focus()}>Focus</button>
+      <button onClick={() => inputRef.current?.clear()}>Clear</button>
+    </div>
+  )
+}
+
+export default App
 ```
 
 **4. useLayoutEffect():**
@@ -8452,28 +8586,40 @@ As far as scheduling, this works the same way as `componentDidMount` and `compon
 **Example:**
 
 ```js
-import { useState, useLayoutEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { useRef, useLayoutEffect } from 'react'
 
-const BlinkyRender = () => {
-  const [value, setValue] = useState(0)
+/**
+ * Demonstrates useLayoutEffect() to measure a DOM element\'s width
+ * synchronously after the browser has performed layout, before paint.
+ */
+const App = () => {
+  const boxRef = useRef<HTMLDivElement>(null)
+  const labelRef = useRef<HTMLSpanElement>(null)
 
   useLayoutEffect(() => {
-    if (value === 0) {
-      setValue(10 + Math.random() * 200)
+    const measure = () => {
+      if (boxRef.current && labelRef.current) {
+        const width = boxRef.current.getBoundingClientRect().width
+        labelRef.current.textContent = `Box width: ${Math.round(width)}px`
+      }
     }
-  }, [value])
 
-  console.log('render', value)
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
 
   return (
-    <div onClick={() => setValue(0)}>
-      value: {value}
+    <div>
+      <div ref={boxRef} style={{ width: '50%', background: '#d1d5db', padding: '1rem' }}>
+        Resize the window
+      </div>
+      <span ref={labelRef} />
     </div>
   )
 }
 
-ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
+export default App
 ```
 
 **useLayoutEffect vs useEffect:**
@@ -8547,51 +8693,41 @@ If your component renders the same result given the same props, you can wrap it 
 * A count of the number of times a user has clicked the button
 
 ```js
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
-const fruits = ["apple", "orange", "banana"];   
+const fruits = ['apple', 'orange', 'banana'];
 
+/**
+ * App component that renders a searchable fruit list.
+ * Uses `useMemo` to memoize the filtered results, recomputing
+ * only when the search query changes.
+ */
 function App() {
-  const [fruitName, setFruitName] = useState("");
-  const [searchedFruit, setSearchedFruit] = useState("Search your favorite fruit");
-  const [count, setCount] = useState(0);
+  const [query, setQuery] = useState('');
 
-  const searchFruitName = () => {
-    if (fruits.includes(fruitName.toLowerCase())) {
-      setSearchedFruit(fruitName);
-    } else {
-      setSearchedFruit("No results Found");
-    }
-    setCount(prev => prev + 1);
-  };
-
-  // Memoize the list display so it doesn't recalculate on every keystroke
-  const renderedFruits = useMemo(() => {
-    return fruits.map((fruit, index) => (
-      <span key={index} className="fruitname">
-        {fruit}
-      </span>
-    ));
-  }, []);
+  const filteredFruits = useMemo(
+    () => fruits.filter((fruit) => fruit.includes(query.toLowerCase())),
+    [query]
+  );
 
   return (
-    <div className="App">
-      <h3>Count: {count}</h3>
-      <div className="fruits">{renderedFruits}</div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search.."
-          onChange={event => setFruitName(event.target.value)}
-          value={fruitName}
-        />
-        <button onClick={searchFruitName}>Search</button>
-      </div>
-      {/* This only re-renders when 'searchedFruit' changes */}
-      <SearchComponent searchedFruitName={searchedFruit} />
+    <div>
+      <input
+        type="text"
+        placeholder="Search fruits..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <ul>
+        {filteredFruits.map((fruit) => (
+          <li key={fruit}>{fruit}</li>
+        ))}
+      </ul>
     </div>
   );
 }
+
+export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
@@ -8778,6 +8914,71 @@ For massive applications where these methods aren\'t enough, consider these "pro
 * **Context Selectors:** Use libraries like use-context-selector to subscribe only to specific "slices" of a context value.
 * **External State Management:** If you have high-frequency updates (like mouse movements), React Context may not be the right tool. Libraries like Zustand or Jotai are specifically optimized to avoid the wholesale re-rendering issues of Context. 
 
+**Example**:
+
+```js
+/**
+ * Counter Component
+ *
+ * Consumes CountContext to display the current count value
+ * and provides Increment/Decrement buttons to update it.
+ */
+import { createContext, useContext } from 'react';
+
+interface CountContextType {
+  count: number;
+  increase: () => void;
+  decrease: () => void;
+}
+
+export const CountContext = createContext<CountContextType | undefined>(undefined);
+
+function Counter() {
+  const { count, increase, decrease } = useContext(CountContext) as CountContextType;
+  return (
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count"> {count} </span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+}
+
+export default Counter;
+```
+
+```js
+/**
+ * App Component
+ *
+ * Root page component that manages the counter state and provides
+ * it via CountContext to the Counter child component.
+ * Uses useCallback to stabilize handlers and useMemo to avoid
+ * unnecessary context re-renders.
+ */
+import { useState, useMemo, useCallback } from 'react';
+import Counter, { CountContext } from './child';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const increase = useCallback(() => setCount(prev => prev + 1), []);
+  const decrease = useCallback(() => setCount(prev => prev - 1), []);
+
+  const contextValue = useMemo(() => ({ count, increase, decrease }), [count, increase, decrease]);
+
+  return (
+    <div>
+      <CountContext.Provider value={contextValue}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+}
+
+export default App;
+```
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
@@ -8854,21 +9055,25 @@ The **ContextType** property on a **class component** can be assigned a Context 
 
 ```js
 /**
- * ContextType()
+ * ContextType Example
+ *
+ * Demonstrates class-based context consumption using static contextType.
+ * ThemeContext provides a "dark" theme value to the Header component,
+ * which reads it via this.context.
  */
 import React from "react";
 
 const ThemeContext = React.createContext("light");
 
 class Header extends React.Component {
-  static contextType = ThemeContext;
+  static readonly contextType = ThemeContext;
 
   componentDidMount() {
     console.log("Current theme:", this.context);
   }
 
   render() {
-    const theme = this.context;
+    const theme = this.context as string;
     return <h1>Theme: {theme}</h1>;
   }
 }
@@ -8898,35 +9103,48 @@ The Context API allows data storage and makes it accessible to any child compone
 /**
  * React Context API
  */
-import { useState, useContext } from "react";
-const MyContext = React.createContext();
+import { useState, useContext, createContext, useMemo, useCallback } from "react";
+
+interface MyContextType {
+  count: number;
+  increment: () => void;
+}
+
+const MyContext = createContext<MyContextType | undefined>(undefined);
 
 /**
  * Child Component
  */
 const ChildComponent = () => {
-  const { count, increment } = useContext(MyContext);
+  const { count, increment } = useContext(MyContext) as MyContextType;
 
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button> {count}
+      <button onClick={increment}>Increment</button>
     </div>
   );
 };
 
 /**
  * App Component
+ * 
+ * Root component that manages count state and provides it via MyContext.
+ * Uses useMemo to memoize the context value and useCallback to stabilize
+ * the increment handler, preventing unnecessary re-renders in consumers.
  */
 export default function App() {
-  const [count, updateCount] = useState(0);
-  function increment() {
-    updateCount(count + 1);
-  }
+  const [count, setCount] = useState(0);
+  
+  const increment = useCallback(() => {
+    setCount(prev => prev + 1);
+  }, []);
+
+  const contextValue = useMemo(() => ({ count, increment }), [count, increment]);
 
   return (
-    <MyContext.Provider value={{ count, increment }}>
-        <MyComponent />
+    <MyContext.Provider value={contextValue}>
+        <ChildComponent />
     </MyContext.Provider>
   );
 }
@@ -8958,13 +9176,16 @@ The Context API solves some of these prop drilling problems. It let pass data to
 
 ```js
 /**
- * Prop Drilling
+ * React Context API
+ * 
+ * Demonstrates sharing a value across the component tree without prop drilling.
+ * NumberContext provides a numeric value to all descendant consumers.
  */
 import { useContext, createContext } from "react";
 
 // It returns an object with 2 values:
 // { Provider, Consumer }
-const NumberContext = createContext();
+const NumberContext = createContext<number>(0);
 const CONTEXT_VALUE = 100;
 
 function Display() {
@@ -8972,9 +9193,13 @@ function Display() {
   return <h3>Context Value: {value}</h3>;
 }
 
+/**
+ * App Component
+ * 
+ * Wraps the component tree with NumberContext.Provider,
+ * making CONTEXT_VALUE available to all children via useContext.
+ */
 export default function App() {
-  // Use the Provider to make a value available to all
-  // children and grandchildren
   return (
     <NumberContext.Provider value={CONTEXT_VALUE}>
         <Display />
@@ -8997,7 +9222,7 @@ export default function App() {
 
 React router enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling.
 
-**Core components (v6):**
+**Core components (v7):**
 
 * **BrowserRouter:**	Parent wrapper; uses HTML5 History API to sync UI with URL
 * **Routes:**	Container for all Route definitions; matches the best route
@@ -9009,7 +9234,7 @@ React router enables the navigation among views of various components in a React
 
 ```js
 /**
- * React Router v6
+ * React Router v7
  */
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
@@ -9119,9 +9344,8 @@ index.css
 Routes.js
 
 ```js
-import { createRoot } from 'react-dom/client'
-import './index.css'
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
+import './index.css'
 import App from './App'
 import Users from './users'
 import Contact from './contact'
@@ -9148,12 +9372,12 @@ const AppRoutes = () => (
   </Router>
 )
 
-createRoot(document.getElementById('root')).render(<AppRoutes />)
+export default AppRoutes;
 ```
 
 **Note:**
 
-In React Router v6, `NavLink` uses a function for `className` instead of `activeClassName`.
+*In React Router v7, `NavLink` uses a function for `className` instead of `activeClassName`.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9165,7 +9389,7 @@ React Router is a high-level, React-specific routing library built **on top of**
 
 **Key Differences:**
 
-| Feature | `history` library | React Router v6 |
+| Feature | `history` library | React Router v7 |
 |---|---|---|
 | Level | Low-level | High-level |
 | React awareness | None | React-specific |
@@ -9174,7 +9398,7 @@ React Router is a high-level, React-specific routing library built **on top of**
 | URL params | Manual | `useParams()` hook |
 | UI sync | Manual | Automatic |
 
-React Router v6 **internalizes** the `history` dependency — you no longer install or interact with it directly. All navigation is handled through hooks.
+React Router v7 **internalizes** the `history` dependency — you no longer install or interact with it directly. All navigation is handled through hooks.
 
 ```js
 // <BrowserRouter> — clean URLs using HTML5 History API
@@ -9186,7 +9410,7 @@ http://example.com/#/about
 
 The `<BrowserRouter>` is preferred for modern apps as it uses the HTML5 History API. Use `<HashRouter>` only when you cannot configure the server to handle all routes (e.g., static file hosting).
 
-**Example (React Router v6):**
+**Example (React Router v7):**
 
 ```js
 // src/index.js
@@ -9201,7 +9425,7 @@ createRoot(document.getElementById("root")).render(
 );
 ```
 
-**Navigating programmatically in v6:**
+**Navigating programmatically in v7:**
 
 ```js
 import { useNavigate, useLocation } from "react-router-dom";
@@ -9216,15 +9440,15 @@ function MyComponent() {
 }
 ```
 
-In React Router v6, `history.goBack()` and `history.goForward()` are replaced by `navigate(-1)` and `navigate(1)` respectively.
+In React Router v7, `history.goBack()` and `history.goForward()` are replaced by `navigate(-1)` and `navigate(1)` respectively.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to use useNavigate() in React Router v6?
+## Q. How to use useNavigate() in React Router v7?
 
-The **useNavigate()** hook is introduced in React Router v6 to replace the `useHistory()` hook. In the earlier version, the `useHistory()` hook accesses the React Router history object and navigates to the other routers using the `push()` or `replace()` methods.
+The **useNavigate()** hook is introduced in React Router v7 to replace the `useHistory()` hook. In the earlier version, the `useHistory()` hook accesses the React Router history object and navigates to the other routers using the `push()` or `replace()` methods.
 
 The `useNavigate()` hook returns a function that lets you navigate programmatically, for example after a form is submitted. If using `replace: true`, the navigation will replace the current entry in the history stack instead of adding a new one.
 
@@ -9310,13 +9534,13 @@ function Profile() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to access history object in React Router v6?
+## Q. How to access history object in React Router v7?
 
-The **useNavigate()** hook has been added to React Router v6 to replace the `useHistory()` hook.
+The **useNavigate()** hook has been added to React Router v7 to replace the `useHistory()` hook.
 
 **Difference:**
 
-|v5 (useHistory)	        |v6 (useNavigate)     |
+|v5 (useHistory)	        |v7 (useNavigate)     |
 |-------------------------|---------------------|
 |`history.push('/path')`    |	`navigate('/path')`   |
 |`history.replace('/path')` |	`navigate('/path', { replace: true })`|
@@ -9385,24 +9609,33 @@ function HomeButton() {
 
 In contrast to the Navigate component and its declarative redirect, we can perform a programmatic redirect by using React Router\'s **useNavigate()** Hook:
 
-**Example:**
+**Example:** Using `<Navigate>` component (declarative)
 
 ```js
 /**
- * Automatic Redirect in router-v6
+ * Automatic Redirect in React Router v7
  */
-import { NavLink, BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  NavLink,
+} from "react-router-dom";
 
-export default function App() {
+// --- Approach 1: <Navigate> component (declarative) ------------------------------
+
+function AppWithNavigate() {
   return (
     <BrowserRouter>
-      <nav style={{ display: "flex", flexDirection: "row", gap: "1em" }}>
-        <NavLink to="/" children="Home" />
-        <NavLink to="/about" children="About" />
-        <NavLink to="/help" children="Help" />
+      <nav style={{ display: "flex", gap: "1em" }}>
+        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/help">Help</NavLink>
       </nav>
       <Routes>
-        <Route index element={<Navigate replace to="home" />} />
+        {/* Visiting "/" automatically redirects to "/home" */}
+        <Route index element={<Navigate replace to="/home" />} />
         <Route path="home" element={<h1>Home Page</h1>} />
         <Route path="about" element={<h1>About Page</h1>} />
         <Route path="help" element={<h1>Help Page</h1>} />
@@ -9410,9 +9643,41 @@ export default function App() {
     </BrowserRouter>
   );
 }
+export default AppWithNavigate;
 ```
 
-*Note: To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back.*
+**Example:** Using `redirect()` in a loader (v7 data router)
+
+```js
+// --- Approach 2: redirect() in a loader (v7 data router) ---------------------
+
+import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    // loader runs before rendering; returning redirect() sends the user elsewhere
+    loader: () => redirect("/home"),
+  },
+  {
+    path: "/home",
+    element: <h1>Home Page</h1>,
+  },
+  {
+    path: "/about",
+    element: <h1>About Page</h1>,
+  },
+]);
+
+function AppWithLoaderRedirect() {
+  return <RouterProvider router={router} />;
+}
+export default AppWithLoaderRedirect;
+```
+
+**Note**: 
+
+*To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-automatic-redirect-odw0yn?file=/src/App.js)**
 
@@ -9488,7 +9753,7 @@ export default function App() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. How to pass props in React router v6?
+## Q. How to pass props in React router v7?
 
 React Router uses a declarative, component-based approach to routing. `Route` allows you to map URL paths to different React components.
 
@@ -9914,21 +10179,30 @@ Error boundaries are React components that catch JavaScript errors anywhere in t
 ```js
 /**
  * ErrorBoundary Component
+ *
+ * Note: Error boundaries only catch errors during rendering, in lifecycle
+ * methods, and in constructors of the whole tree below them. They do NOT
+ * catch errors inside event handlers.
  */
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+import React from "react";
+
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false };
   }
 
   // Updates state so the next render shows the fallback UI
-  static getDerivedStateFromError(error) {  
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   // Used for logging error information
-  componentDidCatch(error, errorInfo) {
-    logErrorToMyService(error, errorInfo);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error(error, errorInfo);
   }
 
   render() {
@@ -9936,8 +10210,12 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
+}
+
+function MyComponent() {
+  return <p>Hello from MyComponent</p>;
 }
 
 // Usage: Wrap components that might crash during render
@@ -9969,7 +10247,7 @@ Here, We have a state object having two variables `isErrorOccured` and `errorMes
 import { useState } from 'react';
 
 function Profile() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleUpdate = async () => {
     try {
@@ -9979,17 +10257,18 @@ function Profile() {
       // ... process data
     } catch (err) {
       // Manually handle the error state for the UI
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
   return (
     <div>
-      {error && <p>Error: {error}</p>}
+      {error && <p>Error: {error}!</p>}
       <button onClick={handleUpdate}>Update Profile</button>
     </div>
   );
 }
+export default Profile;
 ```
 
 **2. Error Boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
@@ -10016,7 +10295,7 @@ In React, the primary difference is that Error Boundaries are for declarative co
 
 **Note:**
 
-Error Boundaries cannot catch errors in event handlers — you must use `try...catch` for those.
+*Error Boundaries cannot catch errors in event handlers — you must use `try...catch` for those.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
 
@@ -10052,20 +10331,25 @@ To create an error boundary, we simply have to create a class component and defi
 /**
  * Error Boundary in React
  */
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+import React from 'react';
+
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(): { hasError: boolean } {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, errorInfo);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    // Log the error to an error reporting service
+    console.error(error, errorInfo);
   }
 
   render() {
@@ -10074,9 +10358,11 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
+
+export default ErrorBoundary;
 ```
 
 <div align="right">
@@ -10103,19 +10389,18 @@ import { useRef, useState } from "react";
 
 function App() {
   // create a ref to store the textInput DOM element
-  const textInput = useRef(null);
+  const textInput = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState('');
 
   // Set the state for the ref
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setValue(textInput.current.value);
+    setValue(textInput.current?.value ?? '');
   };
 
   return (
     <div>
-      <h1>React Ref - useRef</h1>
-      {/** This is what will update **/}
+      <h1>React Ref - useRef Example</h1>
       <h3>Value: {value}</h3>
       <form onSubmit={handleSubmit}>
         {/** Call the ref on <input> so we can use it to update the <h3> value **/}
@@ -10125,6 +10410,8 @@ function App() {
     </div>
   );
 }
+
+export default App;
 ```
 
 **When to Use Refs:**  
@@ -10155,23 +10442,25 @@ To manage multiple **refs** for an array of elements, use a single `useRef` init
  */
 import { useRef } from 'react';
 
-function MyComponent({ items }) {
+function MyComponent() {
   const items = [10, 20, 30];
-  const itemRefs = useRef([]);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   return (
     <ul>
       {items.map((item, index) => (
         <li 
-          key={index} 
-          ref={el => itemRefs.current[index] = el}
+          key={item} 
+          ref={el => { itemRefs.current[index] = el; }}
         >
-          {item.text}
+          {item}
         </li>
       ))}
     </ul>
   );
 }
+
+export default MyComponent; 
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
@@ -10192,12 +10481,14 @@ The `useRef` is a hook that uses the same `ref` throughout. It saves its value b
 /**
  * useRef()
  */
+import { useEffect, useRef, useState } from "react";
+
 export default function App() {
   const [count, setCount] = useState(0);
-  const ref = useRef();
+  const ref = useRef<number | null>(null);
 
   useEffect(() => {
-    ref.current = "SomeInitialValue";
+    ref.current = 100; // Initial Value
   }, []);
 
   useEffect(() => {
@@ -10206,7 +10497,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <button onClick={() => setCount((c) => c + 10)}>Increment</button>
       <p>{count}</p>
     </div>
   );
@@ -10225,18 +10516,24 @@ The `createRef` is a function that creates a new ref every time. Unlike the `use
 /**
  * createRef()
  */
-export default class App extends React.Component {
-  constructor(props) {
+import React, { createRef } from "react";
+
+type AppProps = Record<string, never>;
+type AppState = { count: number };
+
+export default class App extends React.Component<AppProps, AppState> {
+  ref = createRef<number>();
+
+  constructor(props: AppProps) {
     super(props);
     this.state = { count: 0 };
-    this.ref = createRef();
   }
 
   componentDidMount() {
-    this.ref.current = "SomeInitialValue";
+    this.ref.current = 100; // Initial Value
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: AppProps, prevState: AppState) {
     if (prevState.count !== this.state.count) {
       console.log(this.state.count, this.ref.current);
     }
@@ -10245,7 +10542,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button onClick={() => this.setState((s) => ({ count: s.count + 1 }))}>
+        <button onClick={() => this.setState((s) => ({ count: s.count + 10 }))}>
           Increment
         </button>
         <p>{this.state.count}</p>
@@ -10257,7 +10554,7 @@ export default class App extends React.Component {
 
 **Note:**
 
-Always use `useRef()` in functional components. `createRef()` is intended for class components where it\'s called once in the constructor. In classes, you typically call it once in the constructor and assign it to `this.myRef`. Because the class instance stays the same during re-renders, the `ref` remains stable.
+*Always use `useRef()` in functional components. `createRef()` is intended for class components where it\'s called once in the constructor. In classes, you typically call it once in the constructor and assign it to `this.myRef`. Because the class instance stays the same during re-renders, the `ref` remains stable.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
 
@@ -10309,7 +10606,7 @@ import { useState, useCallback } from 'react';
 function StableRefExample() {
   const [count, setCount] = useState(0);
 
-  // Memoize the function so it doesn't change on re-renders
+  // Memoize the function so it does not change on re-renders
   const stableRef = useCallback((node) => {
     if (node !== null) {
       console.log("Ref initialized once:", node);
@@ -10628,7 +10925,7 @@ function Counter() {
 
   return (
     <div>
-      <h2>Count: {countRef.current}</h2> {/* Won't update on screen */}
+      <h2>Count: {countRef.current}</h2> {/* Won\'t update on screen */}
       <button onClick={handleClick}>Increment</button>
     </div>
   );
@@ -10714,7 +11011,7 @@ function Timer() {
 **Use useRef when:**
 
 * Accessing DOM elements
-* Storing mutable values that don't affect rendering
+* Storing mutable values that do not affect rendering
 * Keeping track of previous values
 * Storing timer IDs
 * Avoiding unnecessary re-renders
@@ -10743,6 +11040,8 @@ In React, **inheritance** is a concept where one component inherits properties o
 /**
  * Parent Class
  */
+import React from "react";
+
 export class ParentClass extends React.Component {
   constructor(props) {
     super(props);
@@ -10758,7 +11057,9 @@ export class ParentClass extends React.Component {
     return false;
   }
 }
+```
 
+```js
 /**
  * Child Class
  */
@@ -10771,7 +11072,9 @@ export default class App extends ParentClass {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-inheritance-c6uc64?file=/src/App.js)**
 
-*Note: React does not use inheritance except in the initial component class, which extends from the **react** package.*
+**Note**: 
+
+*React does not use inheritance except in the initial component class, which extends from the **react** package.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11444,7 +11747,7 @@ Instead of mounting thousands of DOM nodes simultaneously—which can cause lagg
 
 * **Visible "Window":** Only the 5–10 items the user can see are rendered in the DOM.
 * **Dynamic Swapping:** As the user scrolls, items exiting the viewport are unmounted, and new items entering the "window" are mounted.
-* **Absolute Positioning:** A large "inner container" is used to simulate the total height of the full list, ensuring the scrollbar behaves accurately even though most items aren't actually there.
+* **Absolute Positioning:** A large "inner container" is used to simulate the total height of the full list, ensuring the scrollbar behaves accurately even though most items are not actually there.
 
 **Popular Libraries:**
 
@@ -11766,7 +12069,7 @@ This will help to create a Flow configuration file that should be committed. The
 
 **Note**:
 
-React recommends using **Flow** or **TypeScript** over PropTypes for larger codebases, as they catch a broader class of bugs at compile time rather than at runtime.
+*React recommends using **Flow** or **TypeScript** over PropTypes for larger codebases, as they catch a broader class of bugs at compile time rather than at runtime.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11776,7 +12079,7 @@ React recommends using **Flow** or **TypeScript** over PropTypes for larger code
 
 `Flow` is a static analysis tool which uses a superset of the language, allows to add type annotations to all of your code and catch an entire class of bugs at compile time.
 
-`PropTypes` is a basic type checker which has been patched onto React. It can't check anything other than the types of the props being passed to a given component.
+`PropTypes` is a basic type checker which has been patched onto React. It can not check anything other than the types of the props being passed to a given component.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11890,12 +12193,14 @@ export default UserCard;
 
 ## Q. How do you access imperative API of web components?
 
-Web Components often expose an imperative API (methods you call directly on the DOM element, like `.play()`, `.focus()`, `.open()`). Since React\'s declarative model doesn't directly call these, you need a ref to access the underlying DOM node.
+Web Components often expose an imperative API (methods you call directly on the DOM element, like `.play()`, `.focus()`, `.open()`). Since React\'s declarative model does not directly call these, you need a ref to access the underlying DOM node.
 
 **Example:** Using React in your Web Components
 
 ```js
 // 1. Define the Web Component (vanilla JS)
+import { createRoot } from 'react-dom/client';
+
 class XSearch extends HTMLElement {
   connectedCallback() {
     const mountPoint = document.createElement('span');
@@ -11903,7 +12208,7 @@ class XSearch extends HTMLElement {
 
     const name = this.getAttribute('name');
     const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
-    ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
+    createRoot(mountPoint).render(<a href={url}>{name}</a>);
   }
 }
 customElements.define('x-search', XSearch);
@@ -11959,7 +12264,9 @@ The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to a
 }
 ```
 
-**Note**: This plugin is included by default in Create React App.
+**Note**: 
+
+*This plugin is included by default in Create React App.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
