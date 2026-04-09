@@ -1,4 +1,4 @@
-# React Unit Testing using Jest and React Testing Library Interview Questions
+# React Unit Testing Interview Questions
 
 > *Comprehensive guide to React unit testing using Jest and React Testing Library*
 
