@@ -202,13 +202,13 @@ ReactDOM.render(<Dish />, document.getElementById('root'));
 #### Q. What does this React element look like given the following function? (Alternative: Given the following code, what does this React element look like?)
 
 ```javascript
-React.createElement('h1', null, "What's happening?");
+React.createElement('h1', null, "What\'s happening?");
 ```
 
-- [ ] `<h1 props={null}>What's happening?</h1>`
-- [x] `<h1>What's happening?</h1>`
-- [ ] `<h1 id="component">What's happening?</h1>`
-- [ ] `<h1 id="element">What's happening?</h1>`
+- [ ] `<h1 props={null}>What\'s happening?</h1>`
+- [x] `<h1>What\'s happening?</h1>`
+- [ ] `<h1 id="component">What\'s happening?</h1>`
+- [ ] `<h1 id="element">What\'s happening?</h1>`
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -315,18 +315,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. When might you use `React.PureComponent`?
-
-- [ ] when you do not want your component to have props
-- [ ] when you have sibling components that need to be compared
-- [x] when you want a default implementation of `shouldComponentUpdate()`
-- [ ] when you do not want your component to have state
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. Why is it important to avoid copying the values of props into a component's state where possible?
+#### Q. Why is it important to avoid copying the values of props into a component\'s state where possible?
 
 - [ ] because you should never mutate state
 - [ ] because `getDerivedStateFromProps()` is an unsafe method to use
@@ -340,7 +329,7 @@ function Dish(props) {
 #### Q. What is the children prop?
 
 - [ ] a property that adds child components to state
-- [x] a special property that JSX creates on components that contain both an opening tag and a closing tag, referencing it's contents.
+- [x] a special property that JSX creates on components that contain both an opening tag and a closing tag, referencing it\'s contents.
 - [ ] a property that lets you set an array as a property
 - [ ] a property that lets you pass data to child elements
 
@@ -348,7 +337,7 @@ function Dish(props) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Which attribute is React's replacement for using innerHTML in the browser DOM?
+#### Q. Which attribute is React\'s replacement for using innerHTML in the browser DOM?
 
 - [ ] injectHTML
 - [x] dangerouslySetInnerHTML
@@ -375,7 +364,7 @@ function Dish(props) {
 - [ ] to put together physical file folders
 - [x] to preprocess files
 - [ ] to load external data
-- [ ] to load the website into everyone's phone
+- [ ] to load the website into everyone\'s phone
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -565,7 +554,7 @@ const clock = (props) => {
 
 **Explanation:** In JSX, lower-case tag names are considered to be HTML tags.
 
-#### Q. Which Hook could be used to update the document's title?
+#### Q. Which Hook could be used to update the document\'s title?
 
 - [x] `useEffect(function updateTitle() { document.title = name + ' ' + lastname; });`
 - [ ] `useEffect(() => { title = name + ' ' + lastname; });`
@@ -663,9 +652,9 @@ useEffect(() => {
 #### Q. Which choice will not cause a React component to rerender?
 
 - [ ] if the component calls `this.setState(...)`
-- [ ] the value of one of the component's props changes
+- [ ] the value of one of the component\'s props changes
 - [ ] if the component calls `this.forceUpdate()`
-- [x] one of the component's siblings rerenders
+- [x] one of the component\'s siblings rerenders
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -958,9 +947,9 @@ ReactDOM.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. Why should you use React Router's Link component instead of a basic `<a>` tag in React?
+#### Q. Why should you use React Router\'s Link component instead of a basic `<a>` tag in React?
 
-- [ ] The link component allows the user to use the browser's `Back` button.
+- [ ] The link component allows the user to use the browser\'s `Back` button.
 - [ ] There is no difference--the `Link` component is just another name for the `<a>` tag.
 - [ ] The `<a>` tag will cause an error when used in React.
 - [x] The `<a>` tag triggers a full page reload, while the `Link` component does not.
@@ -1058,7 +1047,7 @@ database.map((user) => <h1>{user.data}</h1>);
 ```
 
 - [ ] gives a map of all the entries in database
-- [x] returns a heading tag for every entry in the database containing it's data
+- [x] returns a heading tag for every entry in the database containing it\'s data
 - [ ] returns one heading tag for all the entries in database
 - [ ] checks which entry in the database is suitable for heading tag
 
@@ -1073,9 +1062,9 @@ const { name: firstName } = props;
 ```
 
 - [ ] It is creating a new object that contains the same name property as the props object.
-- [ ] It is assigning the value of the props object's firstName property to a constant called name.
+- [ ] It is assigning the value of the props object\'s firstName property to a constant called name.
 - [ ] It is retrieving the value of props.name.firstName.
-- [x] It is assigning the value of the props object's name property to a constant called firstName.
+- [x] It is assigning the value of the props object\'s name property to a constant called firstName.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1219,17 +1208,6 @@ render() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. How would you generate the boilerplate code for a new app that you are building to collect underpants?
-
-- [ ] npm create-react-app collect-underpants
-- [ ] npx start-app collect-underpants
-- [ ] react new collect-underpants
-- [x] npx create-react-app collect-underpants
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 #### Q. Add the code that will fire the photon torpedoes when the button is clicked.
 
 ```javascript
@@ -1263,45 +1241,12 @@ class StarTrekkin extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. React is an open-source project but is maintained by which company?
-
-- [ ] Intuit
-- [ ] Twitter
-- [x] Facebook
-- [ ] Snapchat
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. What command can you use to generate a React project?
-
-- [ ] react-starter
-- [x] create-react-app
-- [ ] react-gen
-- [ ] react-start
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 #### Q. What is the browser extension called that React developers use to debug applications?
 
 - [x] React Developer Tools
 - [ ] React Tooling Add-on
 - [ ] React Codewatch
 - [ ] React Debug
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. Which tool is not part of Create React App?
-
-- [ ] React
-- [x] jQuery
-- [ ] webpack
-- [ ] ReactDOM
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1605,21 +1550,6 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. When using a portal, what is the second argument?
-
-```javascript
-ReactDOM.createPortal(x, y);
-```
-
-- [ ] the current state
-- [ ] the rendered element
-- [ ] the App component
-- [x] the DOM element that exists outside of the parent component
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 #### Q. What would you pass to the onClick prop that wil allow you to pass the initName prop into the greeet handler?
 
 ```javascript
@@ -1640,7 +1570,7 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
   This is a functional Component, so `this` from `this.hug` actually refers to browser window.
   Since it is a functional component, we can directly refer to hug without using `this`.
 - To pass a handler to onClick, we should always pass a function rather than execute a function. So we need to use callback here.
-  `initName` is available in Greeting's function scope, so we can directly supply as an argument to hug().
+  `initName` is available in Greeting\'s function scope, so we can directly supply as an argument to hug().
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1800,50 +1730,6 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What is this pattern called?
-
-```javascript
-const [count, setCount] = useState(0);
-```
-
-- [ ] code pushing
-- [ ] object destructuring
-- [ ] spread operating
-- [x] array destructuring
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
-
-```javascript
-const PokeDex = (props) => {
-  const [pokeDex, setPokeDex] = useState([]);
-  //...
-};
-```
-
-- [x] pokeDex
-- [ ] this.props.pokeDex
-- [ ] setPokeDex()
-- [ ] props.pokeDex
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. What company open-sourced React?
-
-- [ ] Amazon
-- [x] Facebook
-- [ ] Google
-- [ ] Twitter
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 #### Q. What is JSX?
 
 - [ ] A testing library for React.
@@ -1880,9 +1766,9 @@ const PokeDex = (props) => {
 #### Q. Why do you have to worry about version conflicts in React, but not need to with native web components?
 
 - [ ] Native web components have an adapter layer.
-- [ ] Native web components don't use JavaScript.
-- [ ] When a new version of React is released, you can't use old versions.
-- [x] React has a runtime, web components don't.
+- [ ] Native web components don\'t use JavaScript.
+- [ ] When a new version of React is released, you can\'t use old versions.
+- [x] React has a runtime, web components don\'t.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1899,7 +1785,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What is a benefit of React's single file approach?
+#### Q. What is a benefit of React\'s single file approach?
 
 - [ ] Designers have a separate file to work with.
 - [ ] It enhances security.
@@ -1913,7 +1799,7 @@ const PokeDex = (props) => {
 #### Q. Why is React inherently more flexible than many popular competitors?
 
 - [x] React is an library. 
-- [ ] React's API is HTML-oriented instead of JavaScript-oriented.
+- [ ] React\'s API is HTML-oriented instead of JavaScript-oriented.
 - [ ] React is a comprehensive framework.
 - [ ] React embeds HTTP calls, testing, and internationalization.
 
@@ -1921,10 +1807,10 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What is the benefit of React's virtual DOM?
+#### Q. What is the benefit of React\'s virtual DOM?
 
 - [ ] It transpiles JSX before converting to DOM nodes.
-- [ ] It reduces React's bundle size.
+- [ ] It reduces React\'s bundle size.
 - [ ] It fascilitates inter-component communication via JSON.
 - [x] It improves performance by minimizing DOM changes.
 
@@ -1932,11 +1818,11 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What is a benefit of React's library approach mentioned in this module?
+#### Q. What is a benefit of React\'s library approach mentioned in this module?
 
 - [ ] Clear and comprehensive opinions are built in
 - [ ] Enforced consistency
-- [x] It's light-weight and configurable
+- [x] It\'s light-weight and configurable
 - [ ] Less setup overhead
 
 <div align="right">
@@ -1964,7 +1850,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What's the right syntax to assign the function doSomething as the handler of a click event?
+#### Q. What\'s the right syntax to assign the function doSomething as the handler of a click event?
 
 - [ ] onClick={() => doSomething}
 - [x] onClick={doSomething}
@@ -2037,28 +1923,6 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. When is the class component syntax needed?
-
-- [ ] Only for components that are children of class components
-- [ ] Never
-- [ ] Always
-- [x] When we need to manage state or use lifecycle methods
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-#### Q. How do you render a React component?
-
-- [x] Pass a React element and a DOM element to the ReactDOM.render function
-- [ ] Call the React elements toString() method
-- [ ] Implement a render function that returns a JSX expression
-- [ ] Provide values for each prop of a React component
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 #### Q. Why is JSX used in React applications?
 
 - [ ] Because HTML is xml-like
@@ -2091,7 +1955,7 @@ const PokeDex = (props) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. What is the name of React's normalized event abstraction?
+#### Q. What is the name of React\'s normalized event abstraction?
 
 - [x] SyntheticEvent
 - [ ] on*
@@ -2255,6 +2119,1095 @@ const PokeDex = (props) => {
 - [ ] Only parameters from React Hooks that are being combined can be passed into the custom React Hook.
 - [ ] Only const objects can be passed into a custom React Hook.
 - [x] Any JavaScript object can be passed to a custom React Hook.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is selective hydration in React 18?
+
+- [ ] Hydrating only components that have changed since the last server render
+- [x] React 18\'s ability to start hydrating parts of the page before the full HTML has streamed in, and to prioritize hydrating components the user is interacting with
+- [ ] A technique for skipping hydration on components wrapped in `React.lazy`
+- [ ] A Suspense feature that hydrates child components before their parent
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of `React.lazy()` and `Suspense` together?
+
+- [ ] To run expensive computations lazily on first access
+- [ ] To stream data from the server without blocking the initial render
+- [x] To dynamically import a component so it is loaded only when needed, with `Suspense` providing a fallback UI while the chunk loads
+- [ ] To debounce re-renders of expensive components until the user stops interacting
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is code splitting in React, and which bundler feature enables it?
+
+- [ ] Splitting CSS and JavaScript into separate bundles at compile time
+- [x] Breaking the application bundle into smaller chunks that are loaded on demand; enabled by dynamic `import()` which bundlers like webpack and Vite use to create split points
+- [ ] Separating component logic from presentation for better testability
+- [ ] Splitting a single large component file into multiple smaller files
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the Context API\'s main performance concern, and how can it be mitigated?
+
+- [ ] Context values are synchronous and block the event loop; use `useTransition` to fix this
+- [x] Any component consuming a context re-renders whenever the context value changes, even if it only uses part of the value; mitigations include splitting contexts, memoizing the context value with `useMemo`, or using a state management library with fine-grained subscriptions
+- [ ] Context causes memory leaks because consumers are never garbage collected
+- [ ] Context doesn\'t work in concurrent mode; use Redux instead
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why does `React.StrictMode` double-invoke render functions and state initializers in development?
+
+- [ ] It is a bug in React that was fixed in React 18
+- [ ] React renders each component twice to compare outputs for accessibility validation
+- [x] React intentionally double-invokes them to detect side effects that rely on rendering being a pure, idempotent operation — helping surface bugs early; this only occurs in development mode
+- [ ] React double-invokes functions to warm up the JIT compiler for better runtime performance
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the significance of returning a cleanup function from `useEffect`?
+
+- [ ] It resets state to its initial value when the dependency changes
+- [ ] It prevents the component from unmounting
+- [x] It runs before the next effect execution or when the component unmounts, allowing you to cancel subscriptions, clear timers, or abort fetch requests to prevent memory leaks and stale closures
+- [ ] It tells React to skip the current render cycle
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is a stale closure problem in React Hooks, and when does it occur?
+
+- [ ] A closure that references a component that has been unmounted
+- [x] When a `useEffect`, `useCallback`, or event handler captures a variable (e.g., state or prop) at the time of its creation and later accesses an outdated version of that variable because the function was not re-created when the dependency changed
+- [ ] A performance issue caused by creating too many closures inside a render function
+- [ ] When `useMemo` returns a memoized value from a previous render instead of recomputing
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the `useImperativeHandle` hook used for?
+
+- [ ] To imperatively update state without triggering a re-render
+- [ ] To expose internal component state to a parent via context
+- [x] To customize the instance value exposed to parent components when using `forwardRef`, allowing fine-grained control over what imperative methods the parent can call
+- [ ] To bypass React\'s synthetic event system for native DOM event handling
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is `forwardRef` in React and why is it needed?
+
+- [ ] To forward props from a parent to a deeply nested component without prop drilling
+- [x] To allow a parent component to pass a ref through a functional component down to a DOM element or class component inside it, since refs are not automatically forwarded through functional components
+- [ ] To create a reference to a component\'s rendered output for testing
+- [ ] To share a single ref object between multiple sibling components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How does `useLayoutEffect` differ from `useEffect`?
+
+- [ ] `useLayoutEffect` runs asynchronously after the browser paints; `useEffect` runs synchronously before paint
+- [x] `useLayoutEffect` fires synchronously after all DOM mutations but before the browser paints, making it suitable for measuring layout or imperatively modifying the DOM; `useEffect` fires asynchronously after paint
+- [ ] `useLayoutEffect` replaces `componentDidMount`; `useEffect` replaces `componentDidUpdate`
+- [ ] They are identical except `useLayoutEffect` works only in SSR environments
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When rendering very large lists in React, what is the recommended optimization technique?
+
+- [ ] Using `React.memo` on each list item to prevent all re-renders
+- [ ] Splitting the list into pages and only rendering the current page
+- [x] Virtualization (windowing) — rendering only the items currently visible in the viewport using libraries like `react-window` or `react-virtual`, dramatically reducing the number of DOM nodes
+- [ ] Moving the list to a Web Worker thread for off-main-thread rendering
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of the `scheduler` package used internally by React?
+
+- [ ] To schedule HTTP requests in the correct order during SSR
+- [ ] To manage Redux action dispatch timing
+- [x] To prioritize and schedule units of work based on urgency, allowing React to interrupt low-priority rendering and handle high-priority user interactions first
+- [ ] To debounce React state updates across multiple components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the problem that React Query (TanStack Query) solves that `useEffect` + `useState` does not handle well?
+
+- [ ] It prevents unnecessary re-renders caused by global state changes
+- [ ] It replaces `useEffect` for managing component lifecycle
+- [x] React Query handles server-state concerns such as caching, background refetching, deduplication, stale-while-revalidate, and cache invalidation — all of which are complex and error-prone to implement manually
+- [ ] It provides type-safe API calls without needing TypeScript
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of `React.createPortal()`?
+
+- [ ] To teleport state from one component tree to another
+- [x] To render a component\'s children into a different DOM node outside of the parent component\'s DOM hierarchy, while preserving React\'s event bubbling through the component tree
+- [ ] To create a new React root for micro-frontend integration
+- [ ] To render components on the server and inject them into a specific DOM node
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the compound component pattern in React?
+
+- [ ] A pattern where multiple reducers are combined into a single global store
+- [ ] A design pattern that wraps third-party components to add additional behaviour
+- [x] A pattern where a parent component manages shared state and exposes child components (often via context) that implicitly share that state, allowing flexible composition — similar to how `<select>` and `<option>` work in HTML
+- [ ] A pattern for combining multiple custom hooks into a single reusable hook
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the render props pattern and what problem does it solve?
+
+- [ ] A pattern that returns JSX from a callback passed as an event handler prop
+- [x] A technique where a component accepts a function as a prop (or as `children`) and calls it to determine what to render, enabling cross-cutting logic reuse across components without HOCs — replaced in many cases by custom hooks but still useful for render-time data injection
+- [ ] A pattern for memoizing render output to prevent re-renders
+- [ ] A way to pass rendered JSX elements as props to child components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is a Higher-Order Component (HOC) and what are its modern alternatives?
+
+- [ ] A component that renders at a higher z-index than its siblings
+- [x] A function that takes a component and returns a new component with additional behaviour, used historically for cross-cutting concerns (auth, logging, theming); modern alternatives are custom Hooks, which avoid prop collision and wrapper nesting issues
+- [ ] A component that uses `React.createContext` to provide data to its subtree
+- [ ] A class component that extends `React.PureComponent` for performance
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is `React.PureComponent` and how does it differ from `React.Component`?
+
+- [ ] `PureComponent` uses `useEffect` internally for lifecycle management
+- [x] `PureComponent` implements `shouldComponentUpdate` with a shallow comparison of props and state, preventing re-renders when they haven\'t changed; `Component` always re-renders on `setState` calls regardless of whether the value actually changed
+- [ ] `PureComponent` supports concurrent mode; `Component` does not
+- [ ] `PureComponent` is deprecated in React 18 and replaced by `React.memo`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does "lifting state up" mean and when is it appropriate?
+
+- [ ] Moving state from class components to functional components during refactoring
+- [ ] Storing component state in a global Redux store
+- [x] Moving state to the closest common ancestor of the components that need to share it, so it can be passed down as props — appropriate when sibling or cousin components need to synchronize their state
+- [ ] Extracting derived state calculations to a parent component to reduce child renders
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does `flushSync` do in React 18 and when should it be used?
+
+- [ ] It synchronously cancels all pending state updates in the queue
+- [x] It forces React to flush all pending state updates synchronously inside the provided callback instead of batching them — useful when you need the DOM to update immediately before measuring an element or setting focus
+- [ ] It synchronously re-renders the entire React tree from the root
+- [ ] It disables automatic batching for a specific component subtree
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is streaming SSR in React 18 and what is its advantage over traditional SSR?
+
+- [ ] A technique that streams assets (CSS, JS) before HTML is sent
+- [x] React 18 streams HTML to the browser progressively as content is ready; combined with Suspense, non-suspended content is sent first and suspended sections stream in once data resolves — reducing TTFB and improving perceived performance
+- [ ] A pattern where server components stream updates to the client via WebSockets
+- [ ] Sending component bundles over HTTP/2 streams instead of in a single JS file
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of the `useId` hook introduced in React 18?
+
+- [ ] To generate globally unique component IDs for Redux state slices
+- [ ] To create stable keys for list items during reconciliation
+- [x] To generate unique, stable IDs consistent between server and client renders, preventing hydration mismatches when associating form labels with inputs or ARIA attributes
+- [ ] To assign deterministic component identifiers for React DevTools profiling
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When does React\'s `useEffect` cleanup function run, and what are the implications for subscriptions?
+
+- [ ] Only when the component unmounts; subscriptions from prior runs are never cleaned up between renders
+- [x] Before every re-execution of the effect when dependencies change AND when the component unmounts; this means every subscription created in an effect must be torn down in its cleanup or multiple active subscriptions will stack up on each re-render
+- [ ] Only when the component\'s parent re-renders with new props
+- [ ] Only once, after the final render of the component\'s lifetime
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the difference between eager and lazy state initialization in `useState`?
+
+- [ ] Eager initialization runs the state on first render and every re-render; lazy runs only on unmount
+- [x] Eager initialization passes a value directly — `useState(computeValue())` — so the expression evaluates on every render even though only the first result is used; lazy initialization passes a function — `useState(computeValue)` — so React calls it only once on mount, which is important for expensive computations
+- [ ] Lazy initialization is an async pattern where state is set after a `useEffect` runs
+- [ ] They are equivalent — React optimizes both internally to run only once
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In Next.js App Router (built on React Server Components), what is the default rendering strategy and how do you opt into client-side interactivity?
+
+- [ ] All components default to SSR with hydration; add `"use server"` to make them static
+- [x] All components are Server Components by default — they render on the server with no client JS shipped; add `"use client"` at the top of a file to opt that component and its import subtree into the client bundle for hydration and interactivity
+- [ ] Components default to static generation; add `export const dynamic = "force-dynamic"` for any interactivity
+- [ ] All components are client components by default; add `"use server"` to server-render them
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of the `useOptimistic` hook in React 19?
+
+- [ ] To optimistically memoize state values before they are confirmed by the server
+- [x] To immediately update the UI with an optimistic state while an async action (e.g., a server mutation) is in progress, then automatically revert or replace with the real state when the action completes
+- [ ] To cache server responses optimistically for instant navigation
+- [ ] To schedule state updates at the highest React priority level
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is tree shaking in a React application build, and what is a common pitfall that defeats it?
+
+- [ ] Removing unused CSS class names from component stylesheets at build time
+- [x] Eliminating dead (unused) JavaScript code from the final bundle during the build; a common pitfall is importing entire libraries (`import _ from 'lodash'`) instead of specific functions or using barrel files (`index.js`) that re-export everything, making dead-code analysis impossible
+- [ ] Removing components from the React tree that have never been rendered
+- [ ] Stripping PropTypes validations from production builds
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of `React.memo` with a custom comparator and what are the risks?
+
+- [ ] The comparator runs before the component renders and can abort rendering if it returns `false`
+- [x] The second argument to `React.memo` is a custom `areEqual(prevProps, nextProps)` function; returning `true` skips the re-render; the risk is an incorrect comparator that suppresses necessary re-renders — returning `true` when the UI should update — leading to hard-to-debug stale UI bugs
+- [ ] The comparator is used to deeply clone props before passing them to the component
+- [ ] React validates the comparator against PropTypes definitions automatically
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How does React\'s event delegation model work, and how did it change in React 17?
+
+- [ ] React attaches event listeners directly to each DOM node; in React 17, it moved them to shadow DOM
+- [x] React uses event delegation, attaching a single listener at the root container; prior to React 17, listeners were attached to `document`; React 17 changed this to the root DOM container to allow multiple React versions to coexist and improve interoperability with non-React code
+- [ ] React 17 introduced native browser event handling instead of synthetic events
+- [ ] React 17 moved event delegation to the `window` object for better iframe compatibility
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does it mean for a React component to be "pure" and why does it matter for concurrent mode?
+
+- [ ] A pure component extends `React.PureComponent` and uses shallow comparison for props
+- [x] A pure component produces the same output for the same props/state and has no side effects during rendering; this is critical for concurrent mode because React may render a component multiple times or interrupt and restart a render — impure rendering logic (mutating external state during render) causes bugs and inconsistencies
+- [ ] A pure component does not use any hooks and contains no state
+- [ ] A pure component uses `Object.freeze` on its props to enforce immutability
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the `use` hook introduced in React 19 and what can it accept?
+
+- [ ] A replacement for all existing hooks, accepting any hook as its argument
+- [ ] A hook that accepts a component and renders it inline
+- [x] A hook that accepts a Promise or a React Context object and unwraps the value; Promises cause the component to Suspend until resolved; Context works like `useContext` but can also be called conditionally
+- [ ] A hook for consuming browser Web APIs like `fetch` and `navigator`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is a memory leak in a React component and how do you fix it?
+
+- [ ] A component that renders too many DOM nodes, causing the page to slow down
+- [x] A leak occurs when a component\'s async operation (fetch, timer, subscription) attempts to update state after the component has unmounted; fixed by returning a cleanup function from `useEffect` that cancels or ignores the async operation using `AbortController` or a boolean flag
+- [ ] A leak caused by reading stale props inside a `useCallback` without proper dependencies
+- [ ] A component that holds references to large arrays in `useState`, preventing garbage collection
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of `React.StrictMode`\'s double-mounting behavior in React 18 development mode?
+
+- [ ] To test that components handle multiple simultaneous renders from different roots
+- [x] To simulate concurrent mode behavior where components may be mounted, unmounted, and remounted (as can happen with offscreen/cache features), exposing bugs where effects are not properly cleaned up or state is not correctly initialized on remount
+- [ ] To verify that all prop types are correctly validated on both initial and second mount
+- [ ] To warm up the component cache for faster subsequent renders in production
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How does React Fiber improve on the previous stack-based reconciler?
+
+- [ ] Fiber compiles JSX directly to native browser APIs, bypassing the virtual DOM
+- [x] Fiber is a reimplementation of React\'s core reconciliation algorithm that represents work as a linked list of "fiber" units, allowing React to pause, abort, or reuse work and assign priority to updates — enabling concurrent features like time-slicing and Suspense that were impossible with the synchronous call-stack-based reconciler
+- [ ] Fiber eliminates the virtual DOM entirely, using a direct DOM diffing strategy
+- [ ] Fiber moves all rendering work to a Web Worker to free the main thread
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the difference between `useTransition` and `useDeferredValue` in React 18?
+
+- [ ] `useTransition` is for server transitions; `useDeferredValue` is for client-side deferred values
+- [x] `useTransition` lets you mark a state update as non-urgent (wrapping the setter call), giving React permission to interrupt it for higher-priority updates; `useDeferredValue` accepts a value and returns a deferred version of it, deferring re-renders that depend on it — `useTransition` is used when you control the state update; `useDeferredValue` when you only receive the value (e.g., from a prop)
+- [ ] They are identical; React recommends using `useDeferredValue` as the modern replacement
+- [ ] `useTransition` works with Suspense; `useDeferredValue` only works with synchronous state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the "unnecessary re-render" problem with object and function literals in JSX props?
+
+- [ ] Object literals in props are automatically memoized by React\'s renderer
+- [x] Every time a parent component renders, object literals (`<Child style={{ color: 'red' }} />`) and inline function definitions (`<Child onClick={() => doSomething()} />`) create new references, causing `React.memo` and `PureComponent` comparisons to always fail and the child to re-render; fixed with `useMemo` and `useCallback` respectively
+- [ ] This only affects class components, not functional components
+- [ ] React performs deep equality on object props automatically to prevent this
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is Zustand and how does it compare to Redux for state management?
+
+- [ ] Zustand is a React-specific CSS-in-JS library; Redux is for global state
+- [ ] Zustand requires reducers and actions like Redux but with a smaller API
+- [x] Zustand is a minimal, unopinionated state management library with a simple hook-based API that requires no boilerplate (no reducers, actions, or providers); Redux provides a more structured, predictable unidirectional data flow with a larger ecosystem, middleware support, and devtools
+- [ ] Zustand is built on top of Context API internally; Redux uses its own subscription model
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In React, what is the primary purpose of using `key` props when rendering a list of components?
+
+- [x] To help React identify which items have changed, been added, or been removed for efficient DOM updates
+- [ ] To improve the visual styling of list items
+- [ ] To provide a unique ID for CSS targeting
+- [ ] To bind event handlers to each individual list item
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is the primary benefit of using React Fragments?
+
+- [x] They allow grouping multiple elements without adding extra nodes to the DOM
+- [ ] They improve component performance by caching render results
+- [ ] They enable lazy loading of child components on demand
+- [ ] They provide a way to apply shared styles across sibling children
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is the primary purpose of the React Context API?
+
+- [x] To share data between components without having to pass props manually at every level
+- [ ] To manage HTTP requests and API calls from a central location
+- [ ] To provide access to the browser\'s localStorage and sessionStorage
+- [ ] To handle client-side routing between pages of the application
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of `props` in React?
+
+- [x] To pass data from a parent component to a child component
+- [ ] To store mutable state locally within a component
+- [ ] To define the component\'s lifecycle behavior
+- [ ] To subscribe components to global state updates
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is the correct way to update state in a React functional component using `useState`?
+
+- [x] `setCount(count + 1)`
+- [ ] `this.setState({ count: count + 1 })`
+- [ ] `count = count + 1`
+- [ ] `setState(count + 1)`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which lifecycle method is invoked immediately after a class component is mounted into the DOM?
+
+- [x] `componentDidMount`
+- [ ] `componentWillMount`
+- [ ] `componentDidUpdate`
+- [ ] `componentWillUpdate`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following statements is most accurate regarding the `useEffect` hook?
+
+- [x] It runs after every render by default and is controlled via a dependency array to limit when it re-executes
+- [ ] It runs before the component renders and blocks rendering until it completes
+- [ ] It can only be used once per functional component
+- [ ] It automatically cleans up subscriptions without needing a cleanup return function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of `React.memo`?
+
+- [x] To memoize a functional component so it only re-renders when its props change
+- [ ] To memoize the result of an expensive calculation within a component
+- [ ] To memoize a function definition to prevent it from being recreated on every render
+- [ ] To create a cached version of a context value
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary use case for the `useRef` hook in React?
+
+- [x] To access and interact with DOM elements directly, and to persist mutable values across renders without triggering re-renders
+- [ ] To share state between sibling components without using Context
+- [ ] To memoize expensive computation results across renders
+- [ ] To subscribe to context value changes in functional components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of React Error Boundaries?
+
+- [x] To catch JavaScript errors anywhere in the child component tree and display a fallback UI instead of crashing the whole application
+- [ ] To validate prop types and throw warnings for incorrect types at runtime
+- [ ] To prevent unnecessary re-renders when state updates do not change values
+- [ ] To handle network errors from API calls made inside components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary use case for `React.forwardRef`?
+
+- [x] To allow a parent component to pass a `ref` to a DOM element inside a child functional component
+- [ ] To forward all props from a parent to many child components at once
+- [ ] To enable a component to access its nearest ancestor\'s context value
+- [ ] To cache refs across renders for performance optimization
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is the correct way to update state using the `useReducer` hook in React?
+
+- [x] By calling the `dispatch` function with an action object describing the type of update
+- [ ] By directly mutating the state object returned from `useReducer`
+- [ ] By calling `setState()` with a reducer function as its argument
+- [ ] By passing the new state value directly to the reducer returned from `useReducer`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of a Higher-Order Component (HOC) in React?
+
+- [x] To reuse component logic by taking a component as an argument and returning a new enhanced component
+- [ ] To render multiple components in parallel and merge their outputs
+- [ ] To provide direct DOM access without using refs
+- [ ] To handle asynchronous rendering using Suspense boundaries
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary use case for React Portals?
+
+- [x] To render children into a DOM node that exists outside the parent component\'s DOM hierarchy
+- [ ] To teleport state from one component to another without using props
+- [ ] To render components on the server and hydrate them on the client
+- [ ] To create reusable UI templates that can be instantiated multiple times
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In React, what is the primary characteristic of a controlled component?
+
+- [x] Its form element value is controlled by React state and updated through an `onChange` event handler
+- [ ] It cannot be unmounted once it has been rendered to the DOM
+- [ ] It manages its own internal state without interacting with React\'s state system
+- [ ] It renders outside the React fiber tree for improved performance
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of React Strict Mode?
+
+- [x] To highlight potential problems by intentionally double-invoking certain functions and detecting unexpected side effects during development
+- [ ] To enforce TypeScript type checking across all components at runtime
+- [ ] To prevent child components from accessing parent state directly
+- [ ] To restrict the use of deprecated lifecycle methods at runtime and throw errors
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following best describes the primary purpose of the `useMemo` hook?
+
+- [x] To memoize the result of an expensive calculation so it is only recomputed when its dependencies change
+- [ ] To memoize a function reference so it is not recreated on every render
+- [ ] To persist a mutable value across renders without causing a re-render
+- [ ] To run a side effect and cache its cleanup function across renders
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which scenario is `useCallback` primarily designed to optimize?
+
+- [x] Preventing unnecessary re-renders of child components that receive a callback function as a prop
+- [ ] Avoiding duplicate API calls when a component re-mounts due to strict mode
+- [ ] Caching the return value of expensive computations between renders
+- [ ] Ensuring event handlers fire exactly once per user interaction
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is the primary benefit of using `React.lazy` and `Suspense`?
+
+- [x] They enable code-splitting so components are loaded lazily on demand, reducing the initial bundle size
+- [ ] They allow components to suspend rendering indefinitely until external data is cached
+- [ ] They enable concurrent rendering of multiple independent component trees
+- [ ] They memoize component output to avoid redundant renders on prop equality
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary purpose of the `useImperativeHandle` hook in React?
+
+- [x] To customize the instance value exposed to parent components when a component is wrapped in `forwardRef`
+- [ ] To imperatively update a child\'s state from the parent without using props
+- [ ] To bypass React\'s reconciliation and directly manipulate the DOM node
+- [ ] To attach multiple independent refs to a single DOM element
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does the `children` prop in React represent?
+
+- [x] The JSX elements or components passed between the opening and closing tags of a component
+- [ ] The list of direct DOM child nodes of the component\'s container element
+- [ ] The default props automatically injected into every React component
+- [ ] The return value of the parent component\'s render method passed downward
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does the acronym JSX stand for in React development?
+
+- [x] JavaScript XML
+- [ ] JavaScript Extension
+- [ ] Java Syntax Extension
+- [ ] JSON XML Syntax
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which tool is used internally to transpile JSX code into standard JavaScript that browsers can understand?
+
+- [x] Babel
+- [ ] Webpack
+- [ ] TypeScript Compiler (tsc)
+- [ ] ESLint
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How are event names written differently in React JSX compared to standard HTML?
+
+- [x] React uses camelCase (e.g., `onClick`) while HTML uses lowercase (e.g., `onclick`)
+- [ ] React uses SCREAMING_SNAKE_CASE while HTML uses lowercase
+- [ ] React uses kebab-case while HTML uses camelCase
+- [ ] React event names are identical to HTML attribute names
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which method must be used in a React class component to trigger a state update and re-render?
+
+- [x] `setState()`
+- [ ] Directly assigning a new value to `this.state`
+- [ ] `updateState()`
+- [ ] `forceUpdate()`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is Redux primarily used for in React applications?
+
+- [x] Managing and centralizing application state predictably across the entire app
+- [ ] Handling client-side routing between different pages and views
+- [ ] Managing CSS-in-JS styling and theming for components
+- [ ] Optimizing bundle size through automatic code splitting
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the difference between a React Node, a React Element, and a React Component?
+
+- [x] A React Node is anything renderable (string, number, element, null); a React Element is a plain object describing what to render; a React Component is a function or class that accepts props and returns React Elements
+- [ ] A React Node is a class component; a React Element is a functional component; a React Component is a Higher-Order Component
+- [ ] All three terms are fully interchangeable and refer to the same concept in React
+- [ ] A React Node represents a DOM node; a React Element represents props; a React Component represents state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the consequence of using array indices as `key` values when rendering lists in React?
+
+- [x] When items are reordered, added, or removed, React may incorrectly reuse DOM nodes, leading to rendering bugs and corrupted component state
+- [ ] It causes a runtime error because indices are not guaranteed to be unique across the application
+- [ ] It prevents the list from re-rendering at all when items change
+- [ ] It has no negative consequence and is the recommended approach for static lists
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are some pitfalls of using React Context for state management?
+
+- [x] All components consuming a context re-render whenever the context value changes, which can cause performance problems in large component trees
+- [ ] Context can only hold primitive values like strings and numbers, not objects or arrays
+- [ ] Context does not work with functional components and requires class components
+- [ ] Context automatically replaces the need for `useState` and `useReducer` throughout the app
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are the rules of React Hooks?
+
+- [x] Hooks must only be called at the top level of a component (not inside loops, conditions, or nested functions) and only from React function components or custom hooks
+- [ ] Hooks can be called conditionally but must always be declared before the return statement
+- [ ] Hooks can only be used inside class components that extend `React.PureComponent`
+- [ ] Hooks must be imported individually and no more than three hooks can be combined in a single component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the key difference between `useEffect` and `useLayoutEffect` in React?
+
+- [x] `useEffect` runs asynchronously after the browser has painted the screen; `useLayoutEffect` runs synchronously after DOM mutations but before the browser paints, making it suitable for DOM measurements
+- [ ] `useEffect` fires only on component mount; `useLayoutEffect` fires on every render including updates
+- [ ] `useEffect` is for data fetching side effects; `useLayoutEffect` is for memoizing layout calculations
+- [ ] `useLayoutEffect` is deprecated in React 18 and should be replaced with `useEffect` in all modern code
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the purpose of using the callback function format of `setState()` in React class components?
+
+- [x] To ensure the state update is based on the most recent state value, which is critical when multiple updates may be batched together
+- [ ] To schedule the state update to run after all synchronous code in the call stack completes
+- [ ] To batch multiple state updates from different components into a single coordinated re-render
+- [ ] To prevent the state update from triggering an unnecessary re-render of the component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does the dependency array of `useEffect` control?
+
+- [x] It specifies which values the effect depends on; the effect re-runs only when those values change, and an empty array causes it to run only once on mount
+- [ ] It declares which external modules must be imported for the effect to function correctly
+- [ ] It lists the state variables that should be reset to their initial values when the effect runs
+- [ ] It controls the priority order in which multiple effects run within the same component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is `forwardRef()` in React used for?
+
+- [x] To allow a functional component to receive a `ref` from its parent and forward it to a DOM element or another child component
+- [ ] To pass a ref from a child component up to its parent component
+- [ ] To create a persistent ref that survives component unmounting and remounting
+- [ ] To automatically forward all props including refs between two components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you properly reset a component\'s state in React?
+
+- [x] By changing the component\'s `key` prop, which causes React to unmount the old instance and mount a fresh one with its initial state
+- [ ] By calling `setState(null)` which automatically clears all state values to their defaults
+- [ ] By invoking `React.reset()` and passing a reference to the component
+- [ ] By passing a special `resetState` prop to the component indicating it should reinitialize
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why does React recommend against mutating state directly?
+
+- [x] React relies on reference equality checks to detect state changes; mutating state in place doesn\'t create a new reference, so React won\'t know a re-render is needed
+- [ ] Mutating state synchronously crashes the application with a runtime error
+- [ ] All React state is stored in a read-only Proxy object that throws a TypeError when mutated
+- [ ] Mutating state bypasses the Redux store and breaks the application\'s unidirectional data flow
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is React hydration?
+
+- [x] The process where React attaches event listeners and makes server-rendered static HTML fully interactive on the client side
+- [ ] The process of pre-fetching and caching component data before any component renders
+- [ ] A technique for streaming React component markup incrementally from server to browser
+- [ ] The act of rendering React components inside a dedicated Web Worker thread for performance
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is code splitting in a React application?
+
+- [x] Dividing the JavaScript bundle into smaller chunks that are loaded on demand, improving initial page load time
+- [ ] Separating CSS styles from JavaScript logic inside React component files
+- [ ] Breaking a large component file into multiple smaller single-responsibility component files
+- [ ] Running React rendering simultaneously on both server and client in concurrent mode
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How would you optimize the performance of React Context to reduce unnecessary re-renders?
+
+- [x] Split contexts by concern so updates to one context don\'t re-render consumers of another, and memoize the context value with `useMemo`
+- [ ] Always reset context values to `null` when components that use them are not visible
+- [ ] Wrap the `Provider` component in `React.memo` to prevent all child re-renders
+- [ ] Replace all Context usage with local component state to avoid propagation overhead
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is React Fiber and how is it an improvement over the previous reconciler?
+
+- [x] React Fiber is a complete rewrite of React\'s reconciliation engine that enables incremental rendering, allowing React to pause, abort, or reuse work and prioritize updates by urgency
+- [ ] React Fiber is a lightweight version of React optimized specifically for mobile and low-power devices
+- [ ] React Fiber is a built-in hook for managing complex asynchronous data-fetching workflows
+- [ ] React Fiber is the internal name for React\'s Server Components architecture introduced in React 18
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is React Suspense and what does it enable?
+
+- [x] A mechanism that lets components "suspend" rendering while waiting for something (such as lazy-loaded code or async data), showing a fallback UI in the meantime
+- [ ] A way to run React component rendering in a suspended background thread for better performance
+- [ ] A replacement for Error Boundaries that catches asynchronous errors thrown during rendering
+- [ ] A hook that defers state updates until the browser is idle to avoid blocking the main thread
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is React reconciliation?
+
+- [x] The process by which React compares the previous and new virtual DOM trees to determine the minimal set of actual DOM changes needed
+- [ ] The mechanism React uses to synchronize state between multiple browser tabs
+- [ ] The process of merging props from parent and child components into a single flat object
+- [ ] Resolving conflicts between concurrent state updates triggered by different user interactions
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are Higher-Order Components (HOCs) in React?
+
+- [x] Functions that accept a component as an argument and return a new enhanced component, enabling logic reuse across multiple components
+- [ ] Special React built-in components that render above all other components in the virtual DOM tree
+- [ ] Components that can only be rendered at the root level of the application
+- [ ] Components that automatically provide accessibility attributes to all their children
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the Flux pattern and what are its primary benefits?
+
+- [x] An application architecture for React that enforces unidirectional data flow through Actions, a Dispatcher, Stores, and Views, making state changes predictable and traceable
+- [ ] A CSS architecture pattern for managing styles in React component libraries
+- [ ] A data-fetching pattern using WebSockets for real-time updates in React applications
+- [ ] A build optimization pattern that reduces bundle size by removing unused React features
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are some common React anti-patterns developers should avoid?
+
+- [x] Directly mutating state, using array index as `key` in dynamic lists, deriving state from props without memoization, and defining components inside other components
+- [ ] Using functional components, using multiple `useState` hooks, splitting code across files, and using hooks in custom hook functions
+- [ ] Using `React.memo`, splitting contexts by domain, using `useReducer` for complex state, and using TypeScript with React
+- [ ] Using `useCallback` to stabilize function references, using `Suspense` for lazy loading, and using portals for modals
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you handle asynchronous data loading in React applications?
+
+- [x] Use `useEffect` with an async function inside it (or a library like React Query or SWR) to fetch data after mount, tracking loading and error states with `useState`
+- [ ] Fetch data in the component body directly with `await` since React now supports top-level await in components
+- [ ] Use `useMemo` with an async function since it will suspend the component until the promise resolves
+- [ ] Make API calls inside the JSX return statement using an immediately invoked async function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are render props in React and what are they used for?
+
+- [x] A pattern where a component receives a prop whose value is a function that returns JSX, allowing logic (like mouse position tracking) to be shared without HOCs or hooks
+- [ ] Props that are automatically rendered as HTML attributes on the underlying DOM element
+- [ ] Special built-in props like `key` and `ref` that React processes before passing to the component
+- [ ] Props that use lazy evaluation, only computing their value when the component renders them
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you decide between using React local state, Context, and external state managers (like Redux or Zustand)?
+
+- [x] Use local state for UI-specific data, Context for low-frequency global data (theme, auth), and external managers for complex, high-frequency shared state needing middleware or devtools
+- [ ] Always use Context because it is built-in and eliminates the need for any external library
+- [ ] Always use Redux for all state because external managers are more reliable than built-in options
+- [ ] Use external managers only for API data and local state for everything else regardless of sharing needs
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the presentational vs container component pattern in React?
+
+- [x] Presentational components focus purely on how things look (receive data via props, no side effects), while container components handle data fetching, state, and pass data down as props
+- [ ] Presentational components are class components and container components are functional components
+- [ ] Presentational components contain multiple child components and container components are leaf nodes
+- [ ] Presentational components use CSS Modules while container components use styled-components
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the composition pattern in React and why is it preferred over inheritance?
+
+- [x] Composition builds complex UIs by combining smaller, reusable components (often using `children` or render props) and is preferred because it is more flexible and avoids the tight coupling of class inheritance
+- [ ] Composition compiles multiple component files into a single optimized output file at build time
+- [ ] Composition is a React 18 feature that merges concurrent state updates into a single re-render
+- [ ] Composition uses the Prototype chain to share methods between components at runtime
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When does React re-render a component?
+
+- [x] When the component\'s state changes, when its props change, when its parent re-renders, or when a context it subscribes to updates
+- [ ] Only when `setState` is called with a value strictly different from the current state using `===` comparison
+- [ ] Only when the component explicitly calls `this.forceUpdate()` or the equivalent hook
+- [ ] Only when the browser triggers a repaint due to a CSS or layout change
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the virtual DOM in React?
+
+- [x] A lightweight in-memory JavaScript representation of the actual DOM that React uses to calculate the minimal set of real DOM changes needed after a state update
+- [ ] A separate browser API provided by modern browsers to speed up React rendering
+- [ ] A version of the DOM that is stored server-side and synced to the client
+- [ ] A direct reference to the browser\'s DOM stored in a React ref object
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does `ReactDOM.createPortal()` do?
+
+- [x] It renders a React child into a different DOM node than the parent component\'s DOM container, useful for modals and tooltips that must visually escape overflow constraints
+- [ ] It creates a new isolated React root that is completely disconnected from the main component tree
+- [ ] It renders a component outside the browser entirely, in a Web Worker thread
+- [ ] It clones an existing DOM node and attaches a React component to the cloned node
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following best describes one-way data flow in React?
+
+- [x] Data flows from parent to child components via props; children must call callback functions received as props to communicate changes back up to the parent
+- [ ] Data flows bidirectionally between parent and child using two-way binding similar to Angular\'s `[(ngModel)]`
+- [ ] Data flows directly between sibling components via shared refs without going through a parent
+- [ ] Data flows from the global Redux store directly to DOM nodes, bypassing the component tree
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are some common pitfalls when doing data fetching inside React components?
+
+- [x] Not cleaning up async operations on unmount (memory leaks), missing dependencies in `useEffect`, not handling loading/error states, and triggering fetch in a loop by including a new object in the dependency array each render
+- [ ] Using `async/await` instead of `.then()` chains since React doesn\'t support async inside `useEffect`
+- [ ] Calling `fetch()` inside the component body because it only executes on the first render
+- [ ] Using `useCallback` for fetch functions since it automatically cancels the previous request on re-run
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is server-side rendering (SSR) in React and what are its key benefits?
+
+- [x] SSR renders React components to HTML on the server before sending them to the client, improving SEO and perceived performance since users see content before JavaScript loads
+- [ ] SSR runs the entire React application in a Node.js thread while the browser stays idle until rendering is complete
+- [ ] SSR replaces client-side React entirely and no JavaScript is shipped to the browser
+- [ ] SSR caches the rendered output in a CDN and serves identical HTML to all users regardless of their state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the `useId` hook in React and when should it be used?
+
+- [x] It generates a stable unique ID that is consistent between server and client renders, primarily used to associate accessible labels with form inputs
+- [ ] It returns a unique identifier for the current component instance useful for debugging and logging
+- [ ] It creates a random UUID each render suitable for use as a `key` prop in dynamic lists
+- [ ] It provides an ID that increments globally across all component instances in the application
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is static site generation (SSG) in React and what are its benefits?
+
+- [x] SSG pre-renders pages to static HTML at build time; it delivers the fastest possible load times and is ideal for content that doesn\'t change per user request
+- [ ] SSG generates a new static HTML file for each user session at request time
+- [ ] SSG is the same as SSR but caches the output in the browser\'s localStorage for faster subsequent visits
+- [ ] SSG removes all JavaScript from the output and delivers purely semantic HTML without any interactivity
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What happens internally when the `useState` setter function is called in React?
+
+- [x] React schedules a re-render of the component; during the next render the state variable will hold the new value, and React may batch multiple setter calls together for efficiency
+- [ ] The component immediately re-renders synchronously before any other code runs
+- [ ] The state is updated in place and React compares old and new values before deciding whether to render
+- [ ] React emits a custom DOM event that bubbles up to all ancestor components signaling a state change
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you test React applications?
+
+- [x] Use Jest as the test runner with React Testing Library for component tests (querying by accessible roles), and Cypress or Playwright for end-to-end tests simulating real user flows
+- [ ] Use only snapshot tests with `JSON.stringify` because React components are pure functions of props and state
+- [ ] Mount every component in a full browser DOM with Selenium since jsdom is not accurate enough for React
+- [ ] Write tests using the React DevTools because they expose all component internals for assertion
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you debug React applications?
+
+- [x] Use the React DevTools browser extension to inspect the component tree, state, and props; use `console.log` and browser breakpoints; use the Profiler tab to find performance bottlenecks
+- [ ] Add `debug={true}` prop to the root component which enables React\'s built-in debug mode with verbose logging
+- [ ] Use only `alert()` statements since React swallows `console.log` output in production mode
+- [ ] Disable React StrictMode since it masks the real behavior of components during debugging
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What are the benefits of using React Hooks over class components?
+
+- [x] Hooks eliminate boilerplate (`this`, `constructor`, `bind`), allow reusing stateful logic via custom hooks, and keep related logic grouped together rather than split across lifecycle methods
+- [ ] Hooks are faster at runtime because they bypass the React reconciler entirely
+- [ ] Hooks allow components to access the DOM directly without needing refs
+- [ ] Hooks remove the need for JSX since logic and rendering are unified in a single function call
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
