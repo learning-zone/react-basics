@@ -12,6 +12,7 @@
 * *[React Coding Practice](react-coding-practice.md)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[React 19 Interview Questions](react-19-interview-questions.md)*
+* *[Next.js Interview Questions](next-interview-questions.md)*
 * *[Redux Interview Questions](redux-interview-questions.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
