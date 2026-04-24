@@ -1047,6 +1047,4 @@ export function LikeButton({ postId, initialLikes }) {
 7. **Using `getServerSideProps` for mostly static content** — use ISR instead
 8. **Not setting `cache: 'no-store'` for truly dynamic routes** — stale data bugs
 
----
 
-*Last updated: April 2026 | Covers Next.js 13–15*
