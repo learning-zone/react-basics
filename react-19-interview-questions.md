@@ -170,7 +170,7 @@ The `use()` API is a new Hook that lets you read the value of a resource like a 
 import { use, Suspense } from 'react';
 
 function Comments({ commentsPromise }) {
-  // use() will suspend if the Promise isn't resolved
+  // use() will suspend if the Promise isn\'t resolved
   const comments = use(commentsPromise);
   
   return comments.map(comment => (
@@ -230,7 +230,7 @@ function Component({ condition }) {
     return <div className={theme}>Themed</div>;
   }
   
-  // ❌ Invalid with useContext() - can't call conditionally
+  // ❌ Invalid with useContext() - can\'t call conditionally
   // if (condition) {
   //   const theme = useContext(ThemeContext);
   // }
@@ -1409,7 +1409,7 @@ export default function ClientComponent({ data, children }) {
 // ClientComponent.js
 'use client';
 
-import ServerComponent from './ServerComponent'; // ❌ Can't import
+import ServerComponent from './ServerComponent'; // ❌ Can\'t import
 
 export default function ClientComponent() {
   return <ServerComponent />; // ❌ Error
