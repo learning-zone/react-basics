@@ -373,6 +373,108 @@ The most of the applications has several top-level directories as below:
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is Redux DEVTools?
+
+**Redux DevTools** is a browser extension and debugging platform that provides a powerful UI for inspecting every Redux action and state change in your application in real time. It is one of Redux\'s most compelling developer experience features.
+
+**Installation:**
+
+```bash
+# Chrome Extension
+https://chrome.google.com/webstore/detail/redux-devtools
+
+# Firefox Extension
+https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/
+
+# Standalone (Electron app — for React Native, non-browser, etc.)
+npm install --save-dev @redux-devtools/app
+```
+
+**Setup with Redux Toolkit:**
+
+Redux Toolkit\'s `configureStore()` automatically connects to the Redux DevTools Extension in development — no extra configuration needed:
+
+```js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+// DevTools Extension is enabled automatically in development
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+
+export default store;
+```
+
+**Setup without Redux Toolkit (legacy):**
+
+```js
+import { createStore, compose } from 'redux';
+import rootReducer from './reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers()
+);
+```
+
+**Key Features:**
+
+| Feature | Description |
+|---------|-------------|
+| **Action log** | See every dispatched action with its `type` and `payload` in chronological order |
+| **State diff** | View exactly what changed in the state tree after each action |
+| **Time-travel debugging** | Click any past action to "jump" the app back to that exact state |
+| **Action replay** | Step forward and backward through actions like a video player |
+| **State inspector** | Inspect the full current state tree with an interactive JSON viewer |
+| **Dispatching actions** | Manually dispatch actions from the DevTools panel |
+| **Import / Export** | Save and share a full session log (actions + state) as a JSON file |
+| **Chart view** | Visualize the state tree as a chart |
+| **Persist on page reload** | Optionally persist the action history across page refreshes |
+
+**Panels Overview:**
+
+**1. Inspector Tab (default):**
+- Left panel: action list — click any action to inspect it
+- Right panel: switches between **Action** (payload), **State** (full tree after action), and **Diff** (what changed)
+
+**2. Log Monitor:**
+- Displays a running log of all actions and corresponding state changes in a compact format.
+
+**3. Chart Tab:**
+- Renders the Redux state tree as an interactive diagram, useful for understanding the shape of nested state.
+
+**Time-Travel Debugging:**
+
+```
+Dispatch: ADD_TODO   → state v1
+Dispatch: TOGGLE_TODO → state v2
+Dispatch: DELETE_TODO → state v3
+          ↑
+       Jump here → app instantly reverts to state v2
+```
+
+**Disabling in production:**
+
+Redux Toolkit automatically disables DevTools in production builds. For manual setup, guard it explicitly:
+
+```js
+devTools: process.env.NODE_ENV !== 'production'
+```
+
+**Reference:**
+
+* *[https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools)*
+* *[https://redux.js.org/usage/configuring-your-store#using-redux-devtools-extension](https://redux.js.org/usage/configuring-your-store)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 4. REDUX DATA FLOW
 
 <br/>
@@ -2144,7 +2246,7 @@ function LiveStock() {
 
 ```js
 function UserDetails({ userId }) {
-  // Don't run the query if userId is not yet available
+  // Don\'t run the query if userId is not yet available
   const { data: user } = useGetUserQuery(userId, {
     skip: !userId,
   })
@@ -2708,7 +2810,7 @@ const counterSlice = createSlice({
   reducers: {
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers
-      // It doesn't actually mutate the state because it uses the Immer library
+      // It doesn\'t actually mutate the state because it uses the Immer library
       state.value += 1;
     },
     decrement: (state) => {
@@ -3032,7 +3134,7 @@ export const fetchPostsWithCondition = createAsyncThunk(
     if (state.posts.lastFetch) {
       const timeSinceLastFetch = Date.now() - state.posts.lastFetch;
       if (timeSinceLastFetch < 60000) { // 1 minute
-        return rejectWithValue('Too soon to refetch');
+        return rejectWithValue('too soon to refetch');
       }
     }
     
@@ -3052,7 +3154,7 @@ export const fetchPostsWithCondition = createAsyncThunk(
     condition: (arg, { getState }) => {
       const state = getState();
       if (state.posts.loading === 'pending') {
-        // Already fetching, don't fetch again
+        // Already fetching, don\'t fetch again
         return false;
       }
     }
@@ -3340,7 +3442,7 @@ function todosReducer(state = [], action) {
 **Example: With Immer (Redux Toolkit)**
 
 ```js
-// Redux Toolkit - using Immer's draft state
+// Redux Toolkit - using Immer\'s draft state
 import { createSlice } from '@reduxjs/toolkit';
 
 const todosSlice = createSlice({
@@ -3437,8 +3539,8 @@ const blogSlice = createSlice({
 
 **Important Rules:**
 
-1. **Either mutate OR return** - Don't do both in the same reducer
-2. **Don't return undefined** - Always return state or nothing
+1. **Either mutate OR return** - Don\'t do both in the same reducer
+2. **Don\'t return undefined** - Always return state or nothing
 
 ```js
 // ✅ GOOD - Mutate the draft
@@ -3459,7 +3561,7 @@ reducers: {
 reducers: {
   increment: (state) => {
     state.value += 1;
-    return state; // Don't do this!
+    return state; // Don\'t do this!
   }
 }
 
@@ -3591,7 +3693,7 @@ const store = configureStore({
 
 ## Q. How to migrate from Redux to Redux Toolkit?
 
-Migrating from traditional Redux to Redux Toolkit can be done gradually. You don't need to rewrite everything at once.
+Migrating from traditional Redux to Redux Toolkit can be done gradually. You don\'t need to rewrite everything at once.
 
 **Migration Strategy:**
 
@@ -3937,7 +4039,7 @@ MVC can be interpreted or modified in many ways to fit a particular framework or
 * Separating the presentation from the model: enables implementation of different UIs and better testability
 * Separating the controller from the view: most useful with web interfaces and not commonly used in most GUI frameworks
 
-In general, MVC makes no assumptions about whether data flow within an application should be unidirectional or bidirectional. In server Side, MVC is good, but in Client side most of the JS frameworks provide data binding support which let the view can talk with model directly, It shoudn\'t be, Many times it become hard to debug something as there are scope for a property being changed by many ways.
+In general, MVC makes no assumptions about whether data flow within an application should be unidirectional or bidirectional. In server Side, MVC is good, but in Client side most of the JS frameworks provide data binding support which let the view can talk with model directly, It should not be, Many times it become hard to debug something as there are scope for a property being changed by many ways.
 
 **2. Flux:**
 
@@ -4233,7 +4335,7 @@ import CommentReducer from './CommentReducer';
  */
 
 const appReducer = combineReducers({
-  /* your app's top-level reducers */
+  /* your app\'s top-level reducers */
   users: UsersReducer,
   orders: OrderReducer,
   notifications: NotificationReducer,
@@ -4364,7 +4466,7 @@ class TodoListContainer extends Component {
 
     const { dispatch } = props
 
-    // Here's a good use case for bindActionCreators:
+    // Here\'s a good use case for bindActionCreators:
     // You want a child component to be completely unaware of Redux.
     // We create bound versions of these functions now so we can
     // pass them down to our child later.
@@ -4381,7 +4483,7 @@ class TodoListContainer extends Component {
     // Injected by react-redux:
     let { dispatch } = this.props
 
-    // Note: this won't work:
+    // Note: this won\'t work:
     // TodoActionCreators.addTodo('Use Redux')
 
     // You're just calling a function that creates an action.
