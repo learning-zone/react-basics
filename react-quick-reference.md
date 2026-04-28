@@ -1,5 +1,7 @@
 # React Quick Reference
 
+<br/>
+
 - Components
   - [Components](#components)
   - [Stateless Components](#stateless-components)
@@ -35,6 +37,8 @@
   - [Lists](#lists)
   - [Short-Circuit Evaluation](#short-circuit-evaluation)
   - [Fragments and Arrays](#fragments-and-arrays)
+
+<br/>
 
 ## Components
 
@@ -361,7 +365,7 @@ class TodoList extends Component {
 // Arrays
 
 render () {
-  // Don't forget the keys!
+  // Don\'t forget the keys!
   return [
     <li key="A">First item</li>,
     <li key="B">Second item</li>
@@ -370,7 +374,7 @@ render () {
 
 // Fragments
 render () {
-  // Fragments don't require keys!
+  // Fragments don\'t require keys!
   return (
     <Fragment>
       <li>First item</li>
