@@ -16,7 +16,6 @@
 - [Async tests](#async-tests)
   - [async/await](#asyncawait)
   - [Promises](#promises)
-  - [done() callback](#done-callback)
 - [Mocks](#mocks)
   - [Mock functions](#mock-functions-1)
   - [Returning, resolving and rejecting values](#Returning-resolving-and-rejecting-values)
@@ -31,6 +30,15 @@
 - [Data-driven tests (Jest 23+)](#data-driven-tests-jest-23)
 - [Skipping tests](#skipping-tests)
 - [Testing modules with side effects](#testing-modules-with-side-effects)
+- [mockImplementation vs mockReturnValue](#mockimplementation-vs-mockreturnvalue)
+- [Spying on methods](#spying-on-methods)
+- [Isolating modules](#isolating-modules)
+- [Concurrent tests](#concurrent-tests)
+- [Custom matchers (expect.extend)](#custom-matchers-expectextend)
+- [Jest configuration](#jest-configuration)
+- [CLI flags](#cli-flags)
+- [TypeScript with Jest](#typescript-with-jest)
+- [Coverage](#coverage)
 
 ## Basic Test Structure
 
@@ -223,7 +231,7 @@ test('resolve to lemon', async () => {
 
 See [more examples](https://facebook.github.io/jest/docs/en/tutorial-async.html) in Jest docs.
 
-It’s a good practice to specify a number of expected assertions in async tests, so the test will fail if your assertions weren’t called at all.
+It\'s a good practice to specify a number of expected assertions in async tests, so the test will fail if your assertions weren\'t called at all.
 
 ```js
 test('async test', () => {
@@ -263,25 +271,6 @@ test('async test', () => {
 })
 ```
 
-### done() callback
-
-Wrap your assertions in try/catch block, otherwise Jest will ignore failures:
-
-```js
-test('async test', done => {
-  expect.assertions(1)
-  runAsyncOperation()
-  setTimeout(() => {
-    try {
-      const result = getAsyncOperationResult()
-      expect(result).toBe(true)
-      done()
-    } catch (err) {
-      done.fail(err)
-    }
-  })
-})
-```
 
 ## Mocks
 
@@ -359,7 +348,7 @@ const callback = jest.fn()
 
 ```js
 jest.mock('lodash/memoize', () => a => a) // The original lodash/memoize should exist
-jest.mock('lodash/memoize', () => a => a, { virtual: true }) // The original lodash/memoize isn’t required
+jest.mock('lodash/memoize', () => a => a, { virtual: true }) // The original lodash/memoize isn\'t required
 ```
 
 [jest.mock docs](https://facebook.github.io/jest/docs/jest-object.html#jestmockmodulename-factory-options)
@@ -443,7 +432,7 @@ jest.restoreAllMocks()
 ```js
 jest.mock('fs')
 const fs = require('fs') // Mocked module
-const fs = require.requireActual('fs') // Original module
+const fs = jest.requireActual('fs') // Original module
 ```
 
 ### Timer mocks
@@ -533,19 +522,19 @@ Do not run these tests:
 
 ```js
 describe.skip('makePoniesPink'...
-tests.skip('make each pony pink'...
+test.skip('make each pony pink'...
 ```
 
 Run only these tests:
 
 ```js
 describe.only('makePoniesPink'...
-tests.only('make each pony pink'...
+test.only('make each pony pink'...
 ```
 
 ## Testing modules with side effects
 
-Node.js and Jest will cache modules you `require`. To test modules with side effects you’ll need to reset the module registry between tests:
+Node.js and Jest will cache modules you `require`. To test modules with side effects you\'ll need to reset the module registry between tests:
 
 ```js
 const modulePath = '../module-to-test'
@@ -565,4 +554,372 @@ test('second text', () => {
   const fn = () => require(modulePath)
   expect(fn).toThrow()
 })
+```
+
+## mockImplementation vs mockReturnValue
+
+Use `mockReturnValue` when the mock simply returns a static value. Use `mockImplementation` when the mock needs to execute logic, use arguments, or produce side effects.
+
+```js
+// mockReturnValue — static value, no logic needed
+const fn = jest.fn().mockReturnValue(42)
+fn() // 42
+fn() // 42
+
+// mockReturnValueOnce — return a value only on the first call
+const fn = jest.fn()
+  .mockReturnValueOnce('first')
+  .mockReturnValueOnce('second')
+  .mockReturnValue('default')
+fn() // 'first'
+fn() // 'second'
+fn() // 'default'
+
+// mockImplementation — full function body
+const fn = jest.fn().mockImplementation((a, b) => a + b)
+fn(1, 2) // 3
+
+// mockImplementationOnce — implementation only for the next call
+const fn = jest.fn()
+  .mockImplementationOnce(() => 'temp')
+  .mockImplementation(() => 'stable')
+fn() // 'temp'
+fn() // 'stable'
+
+// mockResolvedValue / mockRejectedValue — async shorthand
+const asyncFn = jest.fn().mockResolvedValue({ data: [] })
+const failFn  = jest.fn().mockRejectedValue(new Error('network error'))
+```
+
+## Spying on methods
+
+Use `jest.spyOn` to observe calls on an existing object method without replacing it, or to temporarily override it.
+
+```js
+// Spy without replacing implementation
+const spy = jest.spyOn(Math, 'random')
+Math.random() // original implementation runs
+expect(spy).toHaveBeenCalled()
+spy.mockRestore() // restores original Math.random
+
+// Spy and override implementation
+const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
+componentThatLogsErrors()
+expect(spy).toHaveBeenCalledWith(expect.stringContaining('Error:'))
+spy.mockRestore()
+
+// Spy on a module method
+import * as utils from './utils'
+const spy = jest.spyOn(utils, 'formatDate').mockReturnValue('2026-01-01')
+expect(utils.formatDate(new Date())).toBe('2026-01-01')
+spy.mockRestore()
+
+// Assert call count and arguments
+const spy = jest.spyOn(api, 'fetchUser')
+await loadUser(1)
+expect(spy).toHaveBeenCalledTimes(1)
+expect(spy).toHaveBeenCalledWith(1)
+```
+
+> Note: `mockRestore()` only works with `jest.spyOn`. For `jest.fn()`, use `mockReset()` or `mockClear()`.
+
+## Isolating modules
+
+Use `jest.isolateModules` to get a fresh module registry for a specific block, without affecting other tests.
+
+```js
+test('loads config in production mode', () => {
+  jest.isolateModules(() => {
+    process.env.NODE_ENV = 'production'
+    const config = require('./config')
+    expect(config.debug).toBe(false)
+  })
+})
+
+test('loads config in development mode', () => {
+  jest.isolateModules(() => {
+    process.env.NODE_ENV = 'development'
+    const config = require('./config')
+    expect(config.debug).toBe(true)
+  })
+})
+```
+
+Use `jest.resetModules()` inside `beforeEach` for the same effect across many tests:
+
+```js
+beforeEach(() => {
+  jest.resetModules()
+})
+```
+
+## Concurrent tests
+
+Run independent async tests in parallel within a `describe` block using `test.concurrent`.
+
+```js
+describe('independent async operations', () => {
+  test.concurrent('fetches users', async () => {
+    const users = await fetchUsers()
+    expect(users).toHaveLength(3)
+  })
+
+  test.concurrent('fetches products', async () => {
+    const products = await fetchProducts()
+    expect(products).toHaveLength(10)
+  })
+})
+```
+
+> `test.concurrent` runs tests in the same file in parallel. Use it only for truly independent tests with no shared mutable state.
+
+## Custom matchers (expect.extend)
+
+Add project-specific matchers to make assertions more readable and reusable.
+
+```js
+// setupTests.js (referenced in jest.config.js `setupFilesAfterFramework`)
+expect.extend({
+  toBeWithinRange(received, floor, ceiling) {
+    const pass = received >= floor && received <= ceiling
+    if (pass) {
+      return {
+        message: () => `expected ${received} not to be within [${floor}, ${ceiling}]`,
+        pass: true,
+      }
+    }
+    return {
+      message: () => `expected ${received} to be within [${floor}, ${ceiling}]`,
+      pass: false,
+    }
+  },
+
+  toBeValidEmail(received) {
+    const pass = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(received)
+    return {
+      message: () => `expected "${received}" ${pass ? 'not ' : ''}to be a valid email`,
+      pass,
+    }
+  },
+})
+
+// Usage in tests
+expect(100).toBeWithinRange(90, 110)
+expect('user@example.com').toBeValidEmail()
+```
+
+**TypeScript — declare custom matchers:**
+
+```ts
+// jest.d.ts
+declare namespace jest {
+  interface Matchers<R> {
+    toBeWithinRange(floor: number, ceiling: number): R
+    toBeValidEmail(): R
+  }
+}
+```
+
+## Jest configuration
+
+Common `jest.config.js` options:
+
+```js
+// jest.config.js
+export default {
+  // Test environment
+  testEnvironment: 'jsdom',          // or 'node' for non-browser code
+
+  // File patterns
+  testMatch: ['**/__tests__/**/*.{js,ts}', '**/*.{spec,test}.{js,ts}'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+
+  // Transform — compile files before running
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['@babel/preset-env'] }],
+  },
+
+  // Module name mapper — handle static assets and path aliases
+  moduleNameMapper: {
+    '\\.(css|scss|png|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+
+  // Setup files
+  setupFilesAfterFramework: ['<rootDir>/src/setupTests.js'],
+
+  // Coverage
+  collectCoverageFrom: ['src/**/*.{js,ts,jsx,tsx}', '!src/**/*.d.ts'],
+  coverageThreshold: {
+    global: { branches: 80, functions: 80, lines: 80, statements: 80 },
+  },
+
+  // Display
+  verbose: true,
+}
+```
+
+## CLI flags
+
+```bash
+# Run all tests
+npx jest
+
+# Run tests matching a file name pattern
+npx jest Button
+npx jest src/components
+
+# Run a single test by name
+npx jest --testNamePattern="renders correctly"
+
+# Watch mode — re-run affected tests on file change
+npx jest --watch        # watches only changed files (requires git)
+npx jest --watchAll     # watches all files
+
+# Coverage report
+npx jest --coverage
+npx jest --coverage --coverageReporters=text-summary
+
+# Run tests in band (serially, no workers) — useful for debugging
+npx jest --runInBand
+
+# Update snapshots
+npx jest --updateSnapshot
+npx jest -u
+
+# Show individual test results
+npx jest --verbose
+
+# Bail after N failures (default: no bail)
+npx jest --bail=1
+
+# Clear the Jest cache
+npx jest --clearCache
+
+# Pass extra config inline
+npx jest --testEnvironment=node
+```
+
+## TypeScript with Jest
+
+**Setup with `ts-jest`:**
+
+```bash
+npm install --save-dev jest ts-jest @types/jest
+npx ts-jest config:init
+```
+
+```js
+// jest.config.js
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+}
+```
+
+**Alternative — Babel + TypeScript:**
+
+```bash
+npm install --save-dev @babel/preset-typescript
+```
+
+```js
+// babel.config.js
+module.exports = {
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }],
+    '@babel/preset-typescript',
+  ],
+}
+```
+
+**Typed mock helpers:**
+
+```ts
+import { fetchUser } from './api'
+
+// Cast to jest.MockedFunction for full TypeScript support
+jest.mock('./api')
+const mockedFetchUser = jest.mocked(fetchUser)  // jest.mocked() available in Jest 27+
+
+mockedFetchUser.mockResolvedValue({ id: 1, name: 'Alice' })
+
+test('loads user', async () => {
+  const user = await fetchUser(1)
+  expect(user.name).toBe('Alice')
+  expect(mockedFetchUser).toHaveBeenCalledWith(1)
+})
+```
+
+**Typing mock modules:**
+
+```ts
+jest.mock('./utils', () => ({
+  formatDate: jest.fn(() => '2026-01-01'),
+  parseDate: jest.fn((s: string) => new Date(s)),
+}))
+```
+
+## Coverage
+
+Jest measures four coverage metrics:
+
+| Metric | Meaning |
+|--------|---------|
+| **Statements** | Every executable statement executed at least once |
+| **Branches** | Every `if`/`else`, ternary, and `&&`/`\|\|` branch taken |
+| **Functions** | Every function/method called at least once |
+| **Lines** | Every source line executed at least once |
+
+**Generate a coverage report:**
+
+```bash
+npx jest --coverage
+```
+
+**Output formats:**
+
+```js
+// jest.config.js
+coverageReporters: ['text', 'text-summary', 'lcov', 'html', 'json'],
+```
+
+- `text` — printed in terminal (default)
+- `lcov` — required by CI tools (Codecov, Coveralls)
+- `html` — opens in browser at `coverage/lcov-report/index.html`
+
+**Enforce thresholds (CI guard):**
+
+```js
+// jest.config.js
+coverageThreshold: {
+  global: {
+    branches: 80,
+    functions: 80,
+    lines: 80,
+    statements: 80,
+  },
+  // Per-file thresholds
+  './src/utils/critical.ts': {
+    branches: 100,
+    functions: 100,
+    lines: 100,
+    statements: 100,
+  },
+},
+```
+
+**Exclude files from coverage:**
+
+```js
+collectCoverageFrom: [
+  'src/**/*.{js,ts,jsx,tsx}',
+  '!src/**/*.d.ts',
+  '!src/**/*.stories.{js,ts,jsx,tsx}',
+  '!src/index.{js,ts}',
+  '!src/**/types.ts',
+],
 ```
