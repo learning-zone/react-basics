@@ -12,7 +12,7 @@ Input: [
     submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
   },
   {
-    label: "Menu 3",
+    label: "Menu 3",react-coding-practice.md
     submenu: [
       { label: "Sub Menu 1" },
       { label: "Sub Menu 2" },
@@ -2416,98 +2416,7 @@ export default function Autocomplete() {
 
 ## Q. Build a Multi-step Form (Wizard) in React?
 
-<details><summary><b>Answer</b></summary>
-
-```js
-import { useState } from "react";
-
-type Step1 = { name: string; email: string };
-type Step2 = { phone: string; address: string };
-type Step3 = { plan: string };
-type FormData = Step1 & Step2 & Step3;
-
-const STEPS = ["Personal Info", "Contact Details", "Plan Selection", "Review"];
-
-function ProgressBar({ current, total }: { current: number; total: number }) {
-  return (
-    <div style={{ marginBottom: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-        {STEPS.map((step, i) => (
-          <span key={step} style={{ fontWeight: i === current ? "bold" : "normal", color: i <= current ? "#2563eb" : "#9ca3af" }}>
-            {step}
-          </span>
-        ))}
-      </div>
-      <div style={{ height: 6, background: "#e5e7eb", borderRadius: 3 }}>
-        <div style={{ height: "100%", width: `${((current + 1) / total) * 100}%`, background: "#2563eb", borderRadius: 3, transition: "width 0.3s" }} />
-      </div>
-    </div>
-  );
-}
-
-export default function MultiStepForm() {
-  const [step, setStep] = useState(0);
-  const [data, setData] = useState<FormData>({ name: "", email: "", phone: "", address: "", plan: "basic" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const update = (fields: Partial<FormData>) => setData((prev) => ({ ...prev, ...fields }));
-
-  const next = () => setStep((s) => Math.min(s + 1, STEPS.length - 1));
-  const back = () => setStep((s) => Math.max(s - 1, 0));
-
-  if (submitted) return <div><h2>Submitted!</h2><pre>{JSON.stringify(data, null, 2)}</pre></div>;
-
-  return (
-    <div style={{ maxWidth: 420, padding: 24, border: "1px solid #e5e7eb", borderRadius: 8 }}>
-      <ProgressBar current={step} total={STEPS.length} />
-
-      {step === 0 && (
-        <div>
-          <h3>Personal Info</h3>
-          <label>Name <input value={data.name} onChange={(e) => update({ name: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
-          <label>Email <input type="email" value={data.email} onChange={(e) => update({ email: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
-        </div>
-      )}
-
-      {step === 1 && (
-        <div>
-          <h3>Contact Details</h3>
-          <label>Phone <input value={data.phone} onChange={(e) => update({ phone: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
-          <label>Address <input value={data.address} onChange={(e) => update({ address: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div>
-          <h3>Select Plan</h3>
-          {["basic", "pro", "enterprise"].map((plan) => (
-            <label key={plan} style={{ display: "block", marginBottom: 8 }}>
-              <input type="radio" value={plan} checked={data.plan === plan} onChange={() => update({ plan })} style={{ marginRight: 8 }} />
-              {plan.charAt(0).toUpperCase() + plan.slice(1)}
-            </label>
-          ))}
-        </div>
-      )}
-
-      {step === 3 && (
-        <div>
-          <h3>Review</h3>
-          <pre style={{ background: "#f1f5f9", padding: 12, borderRadius: 6 }}>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-      )}
-
-      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
-        <button onClick={back} disabled={step === 0}>Back</button>
-        {step < STEPS.length - 1
-          ? <button onClick={next}>Next</button>
-          : <button onClick={() => setSubmitted(true)}>Submit</button>}
-      </div>
-    </div>
-  );
-}
-```
-
-</details>
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
