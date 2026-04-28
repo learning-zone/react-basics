@@ -24,7 +24,7 @@
 
 ## # 1. React Fundamentals
 
-### Q1. A developer writes the following component. What will be rendered in the browser?
+## Q1. A developer writes the following component. What will be rendered in the browser?
 
 ```jsx
 function Greet({ name }) {
@@ -47,7 +47,7 @@ function Greet({ name }) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q2. A developer renders a list without a `key` prop. What is the primary risk?
+## Q2. A developer renders a list without a `key` prop. What is the primary risk?
 
 ```jsx
 const items = ["Apple", "Banana", "Cherry"];
@@ -67,7 +67,7 @@ items.map(item => <li>{item}</li>);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q3. A developer sees stale data after a state update. What is wrong with the following code?
+## Q3. A developer sees stale data after a state update. What is wrong with the following code?
 
 ```jsx
 const [count, setCount] = useState(0);
@@ -91,7 +91,7 @@ function increment() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q4. A developer passes a new object literal as a prop on every render. What is the consequence?
+## Q4. A developer passes a new object literal as a prop on every render. What is the consequence?
 
 ```jsx
 <UserCard style={{ color: "blue" }} />
@@ -110,7 +110,7 @@ function increment() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q5. What does the following JSX compile to?
+## Q5. What does the following JSX compile to?
 
 ```jsx
 const el = <button className="btn" onClick={handleClick}>Submit</button>;
@@ -131,7 +131,7 @@ const el = <button className="btn" onClick={handleClick}>Submit</button>;
 
 ## # 2. React Hooks
 
-### Q6. A developer wants to run a side effect only when `userId` changes. Which implementation is correct?
+## Q6. A developer wants to run a side effect only when `userId` changes. Which implementation is correct?
 
 ```jsx
 // Option A
@@ -160,7 +160,7 @@ useEffect(() => { fetchUser(userId); }, [userId, fetchUser]);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q7. A developer wraps an event handler with `useCallback` but still sees child re-renders. What is the likely cause?
+## Q7. A developer wraps an event handler with `useCallback` but still sees child re-renders. What is the likely cause?
 
 ```jsx
 const handleClick = useCallback(() => {
@@ -181,7 +181,7 @@ const handleClick = useCallback(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q8. What does `useMemo` return?
+## Q8. What does `useMemo` return?
 
 ```jsx
 const sortedList = useMemo(() => {
@@ -202,7 +202,7 @@ const sortedList = useMemo(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q9. A developer uses `useRef` to hold a mutable value. What is true about this pattern?
+## Q9. A developer uses `useRef` to hold a mutable value. What is true about this pattern?
 
 ```jsx
 const timerRef = useRef(null);
@@ -225,7 +225,7 @@ function start() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q10. A developer uses the `useReducer` hook. When should it be preferred over `useState`?
+## Q10. A developer uses the `useReducer` hook. When should it be preferred over `useState`?
 
 ```jsx
 const [state, dispatch] = useReducer(reducer, initialState);
@@ -246,7 +246,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
 
 ## # 3. Component Lifecycle
 
-### Q11. What does the cleanup function returned from `useEffect` do?
+## Q11. What does the cleanup function returned from `useEffect` do?
 
 ```jsx
 useEffect(() => {
@@ -268,7 +268,7 @@ useEffect(() => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q12. A class component uses `componentDidUpdate`. What is its hooks-based equivalent?
+## Q12. A class component uses `componentDidUpdate`. What is its hooks-based equivalent?
 
 ```jsx
 componentDidUpdate(prevProps) {
@@ -291,7 +291,7 @@ componentDidUpdate(prevProps) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q13. A developer notices a layout flash when reading a DOM node\'s size. Which hook should replace `useEffect`?
+## Q13. A developer notices a layout flash when reading a DOM node\'s size. Which hook should replace `useEffect`?
 
 - A) `useRef`
 - B) `useMemo`
@@ -308,7 +308,7 @@ componentDidUpdate(prevProps) {
 
 ## # 4. React 19 Features
 
-### Q14. React 19 introduces the `use()` hook. What does the following code do?
+## Q14. React 19 introduces the `use()` hook. What does the following code do?
 
 ```jsx
 import { use } from "react";
@@ -332,7 +332,7 @@ function UserProfile({ userPromise }) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q15. A developer uses the React 19 `useFormStatus` hook. What data does it expose?
+## Q15. A developer uses the React 19 `useFormStatus` hook. What data does it expose?
 
 ```jsx
 import { useFormStatus } from "react-dom";
@@ -356,7 +356,7 @@ function SubmitButton() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q16. What is the purpose of `useOptimistic` in React 19?
+## Q16. What is the purpose of `useOptimistic` in React 19?
 
 ```jsx
 const [optimisticMessages, addOptimisticMessage] = useOptimistic(
@@ -378,7 +378,7 @@ const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q17. A developer migrates a form to use React 19 Server Actions. Which statement is correct?
+## Q17. A developer migrates a form to use React 19 Server Actions. Which statement is correct?
 
 ```jsx
 // Server component file
@@ -405,7 +405,7 @@ export default function PostForm() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q18. In React 19, what changed about `ref` handling for function components?
+## Q18. In React 19, what changed about `ref` handling for function components?
 
 - A) `ref` is no longer supported on function components
 - B) Function components can now accept `ref` as a regular prop without `forwardRef`
@@ -422,7 +422,7 @@ export default function PostForm() {
 
 ## # 5. Redux & State Management
 
-### Q19. A developer dispatches an action but the UI does not update. What is the most likely bug?
+## Q19. A developer dispatches an action but the UI does not update. What is the most likely bug?
 
 ```js
 // reducer
@@ -444,7 +444,7 @@ case "ADD_ITEM":
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q20. What is the role of middleware such as `redux-thunk`?
+## Q20. What is the role of middleware such as `redux-thunk`?
 
 ```js
 const fetchUser = (id) => async (dispatch) => {
@@ -467,7 +467,7 @@ const fetchUser = (id) => async (dispatch) => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q21. A developer uses `useSelector` and notices unnecessary re-renders. What is the cause?
+## Q21. A developer uses `useSelector` and notices unnecessary re-renders. What is the cause?
 
 ```jsx
 const data = useSelector(state => ({
@@ -489,7 +489,7 @@ const data = useSelector(state => ({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q22. What is the purpose of `combineReducers`?
+## Q22. What is the purpose of `combineReducers`?
 
 ```js
 const rootReducer = combineReducers({
@@ -514,7 +514,7 @@ const rootReducer = combineReducers({
 
 ## # 6. Redux Toolkit
 
-### Q23. A developer uses `createSlice`. What does `createSlice` automatically generate?
+## Q23. A developer uses `createSlice`. What does `createSlice` automatically generate?
 
 ```js
 const counterSlice = createSlice({
@@ -540,7 +540,7 @@ const counterSlice = createSlice({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q24. A developer uses `createAsyncThunk`. What lifecycle actions does it dispatch?
+## Q24. A developer uses `createAsyncThunk`. What lifecycle actions does it dispatch?
 
 ```js
 export const fetchPosts = createAsyncThunk("posts/fetchAll", async () => {
@@ -562,7 +562,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchAll", async () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q25. A developer uses RTK Query\'s `createApi`. What does the following `useGetUserQuery` hook return?
+## Q25. A developer uses RTK Query\'s `createApi`. What does the following `useGetUserQuery` hook return?
 
 ```js
 export const { useGetUserQuery } = createApi({
@@ -590,7 +590,7 @@ const { data, isLoading, isError } = useGetUserQuery(userId);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q26. A developer forgets to add the RTK Query API reducer to the store. What happens?
+## Q26. A developer forgets to add the RTK Query API reducer to the store. What happens?
 
 ```js
 // Missing: [api.reducerPath]: api.reducer
@@ -616,7 +616,7 @@ const store = configureStore({
 
 ## # 7. Performance Optimization
 
-### Q27. A parent re-renders frequently. A child component receives the same props every time. How do you prevent the child from re-rendering?
+## Q27. A parent re-renders frequently. A child component receives the same props every time. How do you prevent the child from re-rendering?
 
 ```jsx
 function Child({ label }) {
@@ -637,7 +637,7 @@ function Child({ label }) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q28. A developer profiles the app and sees a slow computation running on every render. Which hook should they apply?
+## Q28. A developer profiles the app and sees a slow computation running on every render. Which hook should they apply?
 
 ```jsx
 function Dashboard({ transactions }) {
@@ -659,7 +659,7 @@ function Dashboard({ transactions }) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q29. A developer uses `useTransition`. What does `isPending` indicate?
+## Q29. A developer uses `useTransition`. What does `isPending` indicate?
 
 ```jsx
 const [isPending, startTransition] = useTransition();
@@ -684,7 +684,7 @@ function handleSearch(e) {
 
 ## # 8. Context API
 
-### Q30. A developer wraps the app in a `ThemeContext.Provider`. A deeply nested component reads the theme. What happens when the theme value changes?
+## Q30. A developer wraps the app in a `ThemeContext.Provider`. A deeply nested component reads the theme. What happens when the theme value changes?
 
 ```jsx
 <ThemeContext.Provider value={theme}>
@@ -705,7 +705,7 @@ function handleSearch(e) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q31. A developer notices that changing an unrelated state in the Provider\'s parent causes all consumers to re-render. What is the fix?
+## Q31. A developer notices that changing an unrelated state in the Provider\'s parent causes all consumers to re-render. What is the fix?
 
 ```jsx
 function App() {
@@ -735,7 +735,7 @@ function App() {
 
 ## # 9. Error Boundaries
 
-### Q32. A developer wraps a component tree in an Error Boundary. Which types of errors does it catch?
+## Q32. A developer wraps a component tree in an Error Boundary. Which types of errors does it catch?
 
 ```jsx
 class ErrorBoundary extends React.Component {
@@ -760,7 +760,7 @@ class ErrorBoundary extends React.Component {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q33. What is the difference between `getDerivedStateFromError` and `componentDidCatch`?
+## Q33. What is the difference between `getDerivedStateFromError` and `componentDidCatch`?
 
 - A) They are identical; either can be used
 - B) `getDerivedStateFromError` is used to render a fallback UI (render phase); `componentDidCatch` is used to log error information (commit phase)
@@ -777,7 +777,7 @@ class ErrorBoundary extends React.Component {
 
 ## # 10. Code Splitting & Lazy Loading
 
-### Q34. A developer lazy-loads a component. Why is `Suspense` required?
+## Q34. A developer lazy-loads a component. Why is `Suspense` required?
 
 ```jsx
 const LazyChart = React.lazy(() => import("./Chart"));
@@ -804,7 +804,7 @@ function Dashboard() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q35. A developer code-splits by route. Which approach is correct for React Router v6?
+## Q35. A developer code-splits by route. Which approach is correct for React Router v6?
 
 ```jsx
 // Option A
@@ -831,7 +831,7 @@ const Home = import("./Home");
 
 ## # 11. Forms & Controlled Components
 
-### Q36. A developer builds a controlled input. What is missing?
+## Q36. A developer builds a controlled input. What is missing?
 
 ```jsx
 function SearchBox() {
@@ -853,7 +853,7 @@ function SearchBox() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q37. A developer uses React Hook Form. What advantage does it have over fully controlled forms?
+## Q37. A developer uses React Hook Form. What advantage does it have over fully controlled forms?
 
 ```jsx
 const { register, handleSubmit } = useForm();
@@ -878,7 +878,7 @@ const { register, handleSubmit } = useForm();
 
 ## # 12. Jest — Unit Testing
 
-### Q38. A developer writes the following test. What does `jest.fn()` return?
+## Q38. A developer writes the following test. What does `jest.fn()` return?
 
 ```js
 const mockFn = jest.fn();
@@ -901,7 +901,7 @@ console.log(mockFn.mock.calls);
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q39. A developer tests an async function. Why does this test always pass even when it should fail?
+## Q39. A developer tests an async function. Why does this test always pass even when it should fail?
 
 ```js
 test("fetches user", () => {
@@ -924,7 +924,7 @@ test("fetches user", () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q40. What is a Jest snapshot test doing in the following scenario?
+## Q40. What is a Jest snapshot test doing in the following scenario?
 
 ```js
 test("renders correctly", () => {
@@ -946,7 +946,7 @@ test("renders correctly", () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q41. A developer needs to mock a module dependency in Jest. Which approach is correct?
+## Q41. A developer needs to mock a module dependency in Jest. Which approach is correct?
 
 ```js
 // api.js
@@ -971,7 +971,7 @@ getUser.mockResolvedValue({ name: "Alice" });
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q42. A developer uses `beforeEach` and `afterEach`. What is their purpose?
+## Q42. A developer uses `beforeEach` and `afterEach`. What is their purpose?
 
 ```js
 describe("Counter", () => {
@@ -998,7 +998,7 @@ describe("Counter", () => {
 
 ## # 13. React Testing Library
 
-### Q43. A developer queries a button using `getByRole`. Why is this preferred over `getByTestId`?
+## Q43. A developer queries a button using `getByRole`. Why is this preferred over `getByTestId`?
 
 ```jsx
 const button = screen.getByRole("button", { name: /submit/i });
@@ -1017,7 +1017,7 @@ const button = screen.getByRole("button", { name: /submit/i });
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q44. A developer tests a form submission. What does `userEvent.click` do compared to `fireEvent.click`?
+## Q44. A developer tests a form submission. What does `userEvent.click` do compared to `fireEvent.click`?
 
 ```js
 await userEvent.click(screen.getByRole("button", { name: /submit/i }));
@@ -1036,7 +1036,7 @@ await userEvent.click(screen.getByRole("button", { name: /submit/i }));
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q45. A developer needs to wait for an async update after an action. Which assertion is correct?
+## Q45. A developer needs to wait for an async update after an action. Which assertion is correct?
 
 ```jsx
 test("loads users", async () => {
@@ -1059,7 +1059,7 @@ test("loads users", async () => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q46. A developer needs to test that an element is NOT present in the DOM. Which approach is correct?
+## Q46. A developer needs to test that an element is NOT present in the DOM. Which approach is correct?
 
 ```js
 // Option A
@@ -1082,7 +1082,7 @@ expect(screen.queryByText("Error")).not.toBeInTheDocument();
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-### Q47. A Redux-connected component needs testing. What is the recommended setup?
+## Q47. A Redux-connected component needs testing. What is the recommended setup?
 
 ```jsx
 import { Provider } from "react-redux";
