@@ -2318,6 +2318,1704 @@ export default function DragDropList() {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. Build an Autocomplete / Typeahead component in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState, useRef, useEffect, useCallback } from "react";
+
+const SUGGESTIONS = [
+  "Apple", "Banana", "Blueberry", "Cherry", "Coconut",
+  "Grape", "Guava", "Kiwi", "Lemon", "Mango",
+  "Orange", "Papaya", "Peach", "Pear", "Pineapple",
+  "Plum", "Pomegranate", "Raspberry", "Strawberry", "Watermelon",
+];
+
+export default function Autocomplete() {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  const filtered = SUGGESTIONS.filter((s) =>
+    s.toLowerCase().startsWith(query.toLowerCase())
+  );
+
+  const select = useCallback((value: string) => {
+    setQuery(value);
+    setOpen(false);
+    setActiveIndex(-1);
+  }, []);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!open) return;
+    if (e.key === "ArrowDown") setActiveIndex((i) => Math.min(i + 1, filtered.length - 1));
+    else if (e.key === "ArrowUp") setActiveIndex((i) => Math.max(i - 1, 0));
+    else if (e.key === "Enter" && activeIndex >= 0) select(filtered[activeIndex]);
+    else if (e.key === "Escape") setOpen(false);
+  };
+
+  useEffect(() => {
+    if (listRef.current && activeIndex >= 0) {
+      (listRef.current.children[activeIndex] as HTMLElement)?.scrollIntoView({ block: "nearest" });
+    }
+  }, [activeIndex]);
+
+  return (
+    <div style={{ position: "relative", width: 280 }}>
+      <h2>Autocomplete</h2>
+      <input
+        value={query}
+        onChange={(e) => { setQuery(e.target.value); setOpen(true); setActiveIndex(-1); }}
+        onKeyDown={handleKeyDown}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        onFocus={() => query && setOpen(true)}
+        placeholder="Type a fruit…"
+        style={{ width: "100%", padding: "6px 10px" }}
+        aria-autocomplete="list"
+        aria-expanded={open}
+      />
+      {open && filtered.length > 0 && (
+        <ul
+          ref={listRef}
+          role="listbox"
+          style={{
+            position: "absolute", top: "100%", left: 0, right: 0,
+            border: "1px solid #ccc", borderRadius: 4, background: "#fff",
+            maxHeight: 200, overflowY: "auto", margin: 0, padding: 0, listStyle: "none", zIndex: 10,
+          }}
+        >
+          {filtered.map((item, i) => (
+            <li
+              key={item}
+              role="option"
+              aria-selected={i === activeIndex}
+              onMouseDown={() => select(item)}
+              style={{
+                padding: "8px 12px",
+                background: i === activeIndex ? "#dbeafe" : "transparent",
+                cursor: "pointer",
+              }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Build a Multi-step Form (Wizard) in React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState } from "react";
+
+type Step1 = { name: string; email: string };
+type Step2 = { phone: string; address: string };
+type Step3 = { plan: string };
+type FormData = Step1 & Step2 & Step3;
+
+const STEPS = ["Personal Info", "Contact Details", "Plan Selection", "Review"];
+
+function ProgressBar({ current, total }: { current: number; total: number }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+        {STEPS.map((step, i) => (
+          <span key={step} style={{ fontWeight: i === current ? "bold" : "normal", color: i <= current ? "#2563eb" : "#9ca3af" }}>
+            {step}
+          </span>
+        ))}
+      </div>
+      <div style={{ height: 6, background: "#e5e7eb", borderRadius: 3 }}>
+        <div style={{ height: "100%", width: `${((current + 1) / total) * 100}%`, background: "#2563eb", borderRadius: 3, transition: "width 0.3s" }} />
+      </div>
+    </div>
+  );
+}
+
+export default function MultiStepForm() {
+  const [step, setStep] = useState(0);
+  const [data, setData] = useState<FormData>({ name: "", email: "", phone: "", address: "", plan: "basic" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const update = (fields: Partial<FormData>) => setData((prev) => ({ ...prev, ...fields }));
+
+  const next = () => setStep((s) => Math.min(s + 1, STEPS.length - 1));
+  const back = () => setStep((s) => Math.max(s - 1, 0));
+
+  if (submitted) return <div><h2>Submitted!</h2><pre>{JSON.stringify(data, null, 2)}</pre></div>;
+
+  return (
+    <div style={{ maxWidth: 420, padding: 24, border: "1px solid #e5e7eb", borderRadius: 8 }}>
+      <ProgressBar current={step} total={STEPS.length} />
+
+      {step === 0 && (
+        <div>
+          <h3>Personal Info</h3>
+          <label>Name <input value={data.name} onChange={(e) => update({ name: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
+          <label>Email <input type="email" value={data.email} onChange={(e) => update({ email: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
+        </div>
+      )}
+
+      {step === 1 && (
+        <div>
+          <h3>Contact Details</h3>
+          <label>Phone <input value={data.phone} onChange={(e) => update({ phone: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
+          <label>Address <input value={data.address} onChange={(e) => update({ address: e.target.value })} style={{ display: "block", width: "100%", margin: "4px 0 12px" }} /></label>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div>
+          <h3>Select Plan</h3>
+          {["basic", "pro", "enterprise"].map((plan) => (
+            <label key={plan} style={{ display: "block", marginBottom: 8 }}>
+              <input type="radio" value={plan} checked={data.plan === plan} onChange={() => update({ plan })} style={{ marginRight: 8 }} />
+              {plan.charAt(0).toUpperCase() + plan.slice(1)}
+            </label>
+          ))}
+        </div>
+      )}
+
+      {step === 3 && (
+        <div>
+          <h3>Review</h3>
+          <pre style={{ background: "#f1f5f9", padding: 12, borderRadius: 6 }}>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+      )}
+
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
+        <button onClick={back} disabled={step === 0}>Back</button>
+        {step < STEPS.length - 1
+          ? <button onClick={next}>Next</button>
+          : <button onClick={() => setSubmitted(true)}>Submit</button>}
+      </div>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Build a Shopping Cart using useContext and useReducer in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { createContext, useContext, useReducer, ReactNode } from "react";
+
+type Product = { id: number; name: string; price: number };
+type CartItem = Product & { quantity: number };
+
+type CartAction =
+  | { type: "ADD"; product: Product }
+  | { type: "REMOVE"; id: number }
+  | { type: "INCREMENT"; id: number }
+  | { type: "DECREMENT"; id: number };
+
+function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
+  switch (action.type) {
+    case "ADD": {
+      const existing = state.find((i) => i.id === action.product.id);
+      if (existing) return state.map((i) => i.id === action.product.id ? { ...i, quantity: i.quantity + 1 } : i);
+      return [...state, { ...action.product, quantity: 1 }];
+    }
+    case "REMOVE": return state.filter((i) => i.id !== action.id);
+    case "INCREMENT": return state.map((i) => i.id === action.id ? { ...i, quantity: i.quantity + 1 } : i);
+    case "DECREMENT": return state.map((i) => i.id === action.id ? { ...i, quantity: Math.max(1, i.quantity - 1) } : i);
+    default: return state;
+  }
+}
+
+const CartContext = createContext<{ cart: CartItem[]; dispatch: React.Dispatch<CartAction> } | null>(null);
+
+function CartProvider({ children }: { children: ReactNode }) {
+  const [cart, dispatch] = useReducer(cartReducer, []);
+  return <CartContext.Provider value={{ cart, dispatch }}>{children}</CartContext.Provider>;
+}
+
+function useCart() {
+  const ctx = useContext(CartContext);
+  if (!ctx) throw new Error("useCart must be inside CartProvider");
+  return ctx;
+}
+
+const PRODUCTS: Product[] = [
+  { id: 1, name: "React T-Shirt", price: 29 },
+  { id: 2, name: "Next.js Mug", price: 15 },
+  { id: 3, name: "TypeScript Hoodie", price: 55 },
+];
+
+function ProductList() {
+  const { dispatch } = useCart();
+  return (
+    <div>
+      <h3>Products</h3>
+      {PRODUCTS.map((p) => (
+        <div key={p.id} style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+          <span>{p.name} — ${p.price}</span>
+          <button onClick={() => dispatch({ type: "ADD", product: p })}>Add to Cart</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Cart() {
+  const { cart, dispatch } = useCart();
+  const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  return (
+    <div>
+      <h3>Cart ({cart.reduce((s, i) => s + i.quantity, 0)} items)</h3>
+      {cart.length === 0 ? <p>Empty cart</p> : cart.map((item) => (
+        <div key={item.id} style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "center" }}>
+          <span style={{ flex: 1 }}>{item.name}</span>
+          <button onClick={() => dispatch({ type: "DECREMENT", id: item.id })}>-</button>
+          <span>{item.quantity}</span>
+          <button onClick={() => dispatch({ type: "INCREMENT", id: item.id })}>+</button>
+          <button onClick={() => dispatch({ type: "REMOVE", id: item.id })}>✕</button>
+        </div>
+      ))}
+      {cart.length > 0 && <strong>Total: ${total}</strong>}
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <CartProvider>
+      <h2>Shopping Cart</h2>
+      <ProductList />
+      <hr />
+      <Cart />
+    </CartProvider>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a reusable Modal / Dialog component in React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useEffect, useRef, ReactNode } from "react";
+import { createPortal } from "react-dom";
+
+type ModalProps = Readonly<{
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: ReactNode;
+}>;
+
+function Modal({ isOpen, onClose, title, children }: ModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [isOpen, onClose]);
+
+  // Trap focus inside modal
+  useEffect(() => {
+    if (isOpen) dialogRef.current?.focus();
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return createPortal(
+    <div
+      role="presentation"
+      onClick={onClose}
+      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+        style={{ background: "#fff", borderRadius: 8, padding: 24, minWidth: 320, maxWidth: "90vw", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <h2 id="modal-title" style={{ margin: 0 }}>{title}</h2>
+          <button onClick={onClose} aria-label="Close modal" style={{ background: "none", border: "none", fontSize: 20, cursor: "pointer" }}>✕</button>
+        </div>
+        {children}
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+// Usage
+import { useState } from "react";
+
+export default function App() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ padding: 24 }}>
+      <button onClick={() => setOpen(true)}>Open Modal</button>
+      <Modal isOpen={open} onClose={() => setOpen(false)} title="Confirm Action">
+        <p>Are you sure you want to proceed?</p>
+        <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 16 }}>
+          <button onClick={() => setOpen(false)}>Cancel</button>
+          <button onClick={() => { alert("Confirmed!"); setOpen(false); }} style={{ background: "#2563eb", color: "#fff", border: "none", borderRadius: 4, padding: "6px 16px" }}>Confirm</button>
+        </div>
+      </Modal>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a reusable Tabs component in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState, ReactNode } from "react";
+
+type Tab = { label: string; content: ReactNode };
+
+type TabsProps = Readonly<{ tabs: Tab[]; defaultIndex?: number }>;
+
+function Tabs({ tabs, defaultIndex = 0 }: TabsProps) {
+  const [active, setActive] = useState(defaultIndex);
+
+  return (
+    <div>
+      <div role="tablist" style={{ display: "flex", borderBottom: "2px solid #e5e7eb" }}>
+        {tabs.map((tab, i) => (
+          <button
+            key={tab.label}
+            role="tab"
+            aria-selected={i === active}
+            aria-controls={`panel-${i}`}
+            id={`tab-${i}`}
+            onClick={() => setActive(i)}
+            style={{
+              padding: "10px 20px", border: "none", background: "none", cursor: "pointer",
+              borderBottom: i === active ? "2px solid #2563eb" : "2px solid transparent",
+              marginBottom: -2, fontWeight: i === active ? 700 : 400,
+              color: i === active ? "#2563eb" : "#374151",
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      {tabs.map((tab, i) => (
+        <div
+          key={tab.label}
+          role="tabpanel"
+          id={`panel-${i}`}
+          aria-labelledby={`tab-${i}`}
+          hidden={i !== active}
+          style={{ padding: "16px 0" }}
+        >
+          {i === active && tab.content}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Usage
+export default function App() {
+  return (
+    <div style={{ padding: 24, maxWidth: 480 }}>
+      <h2>Tabs Component</h2>
+      <Tabs
+        tabs={[
+          { label: "Overview", content: <p>This is the Overview panel.</p> },
+          { label: "Details", content: <p>This is the Details panel.</p> },
+          { label: "Reviews", content: <p>This is the Reviews panel.</p> },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a reusable Accordion component in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState, ReactNode } from "react";
+
+type AccordionItem = { title: string; content: ReactNode };
+
+function AccordionPanel({ item, isOpen, onToggle }: { item: AccordionItem; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div style={{ border: "1px solid #e5e7eb", borderRadius: 6, marginBottom: 8, overflow: "hidden" }}>
+      <button
+        aria-expanded={isOpen}
+        onClick={onToggle}
+        style={{
+          width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
+          padding: "12px 16px", background: isOpen ? "#eff6ff" : "#f9fafb",
+          border: "none", cursor: "pointer", fontWeight: 600, textAlign: "left",
+        }}
+      >
+        {item.title}
+        <span style={{ fontSize: 18, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+      </button>
+      {isOpen && (
+        <div style={{ padding: "12px 16px", background: "#fff" }}>
+          {item.content}
+        </div>
+      )}
+    </div>
+  );
+}
+
+type AccordionProps = Readonly<{ items: AccordionItem[]; allowMultiple?: boolean }>;
+
+export function Accordion({ items, allowMultiple = false }: AccordionProps) {
+  const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set());
+
+  const toggle = (index: number) => {
+    setOpenIndexes((prev) => {
+      const next = new Set(allowMultiple ? prev : new Set<number>());
+      if (prev.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
+  return (
+    <div>
+      {items.map((item, i) => (
+        <AccordionPanel key={item.title} item={item} isOpen={openIndexes.has(i)} onToggle={() => toggle(i)} />
+      ))}
+    </div>
+  );
+}
+
+// Usage
+export default function App() {
+  return (
+    <div style={{ maxWidth: 480, padding: 24 }}>
+      <h2>FAQ Accordion</h2>
+      <Accordion
+        allowMultiple
+        items={[
+          { title: "What is React?", content: <p>React is a JavaScript library for building user interfaces.</p> },
+          { title: "What is JSX?", content: <p>JSX is a syntax extension that lets you write HTML-like markup in JavaScript.</p> },
+          { title: "What are hooks?", content: <p>Hooks let you use state and other React features in functional components.</p> },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement a `usePrevious` custom hook in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useRef, useEffect, useState } from "react";
+
+function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T | undefined>(undefined);
+  useEffect(() => {
+    ref.current = value;
+  }); // runs after every render — captures the value from the previous render
+  return ref.current;
+}
+
+// Usage
+export default function App() {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count);
+
+  return (
+    <div>
+      <h2>usePrevious Hook</h2>
+      <p>Current: <strong>{count}</strong></p>
+      <p>Previous: <strong>{prevCount ?? "—"}</strong></p>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <button onClick={() => setCount((c) => c - 1)} style={{ marginLeft: 8 }}>Decrement</button>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement Undo / Redo state management in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useReducer, useCallback } from "react";
+
+type HistoryState<T> = { past: T[]; present: T; future: T[] };
+type HistoryAction<T> =
+  | { type: "SET"; payload: T }
+  | { type: "UNDO" }
+  | { type: "REDO" };
+
+function historyReducer<T>(state: HistoryState<T>, action: HistoryAction<T>): HistoryState<T> {
+  switch (action.type) {
+    case "SET":
+      return { past: [...state.past, state.present], present: action.payload, future: [] };
+    case "UNDO": {
+      if (state.past.length === 0) return state;
+      const previous = state.past[state.past.length - 1];
+      return { past: state.past.slice(0, -1), present: previous, future: [state.present, ...state.future] };
+    }
+    case "REDO": {
+      if (state.future.length === 0) return state;
+      const next = state.future[0];
+      return { past: [...state.past, state.present], present: next, future: state.future.slice(1) };
+    }
+  }
+}
+
+function useUndoRedo<T>(initialValue: T) {
+  const [state, dispatch] = useReducer(historyReducer<T>, { past: [], present: initialValue, future: [] });
+  return {
+    value: state.present,
+    set: useCallback((v: T) => dispatch({ type: "SET", payload: v }), []),
+    undo: useCallback(() => dispatch({ type: "UNDO" }), []),
+    redo: useCallback(() => dispatch({ type: "REDO" }), []),
+    canUndo: state.past.length > 0,
+    canRedo: state.future.length > 0,
+  };
+}
+
+// Usage — simple text editor with undo/redo
+export default function App() {
+  const { value, set, undo, redo, canUndo, canRedo } = useUndoRedo("");
+
+  return (
+    <div style={{ padding: 24, maxWidth: 480 }}>
+      <h2>Undo / Redo Text Editor</h2>
+      <textarea
+        value={value}
+        onChange={(e) => set(e.target.value)}
+        rows={5}
+        style={{ width: "100%", padding: 8, fontFamily: "monospace" }}
+        placeholder="Start typing…"
+      />
+      <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+        <button onClick={undo} disabled={!canUndo}>↩ Undo</button>
+        <button onClick={redo} disabled={!canRedo}>↪ Redo</button>
+      </div>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement a Virtual List (windowing) for large data sets in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useRef, useState, useCallback } from "react";
+
+const TOTAL_ITEMS = 100_000;
+const ITEM_HEIGHT = 40;
+const VISIBLE_COUNT = 15;
+const CONTAINER_HEIGHT = ITEM_HEIGHT * VISIBLE_COUNT;
+
+const items = Array.from({ length: TOTAL_ITEMS }, (_, i) => `Row ${i + 1}`);
+
+export default function VirtualList() {
+  const [scrollTop, setScrollTop] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+  const endIndex = Math.min(startIndex + VISIBLE_COUNT + 1, TOTAL_ITEMS);
+  const visibleItems = items.slice(startIndex, endIndex);
+  const totalHeight = TOTAL_ITEMS * ITEM_HEIGHT;
+  const offsetY = startIndex * ITEM_HEIGHT;
+
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    setScrollTop((e.currentTarget as HTMLDivElement).scrollTop);
+  }, []);
+
+  return (
+    <div>
+      <h2>Virtual List ({TOTAL_ITEMS.toLocaleString()} items)</h2>
+      <div
+        ref={containerRef}
+        onScroll={handleScroll}
+        style={{ height: CONTAINER_HEIGHT, overflowY: "auto", border: "1px solid #e5e7eb", borderRadius: 6 }}
+      >
+        {/* Spacer to represent full height */}
+        <div style={{ height: totalHeight, position: "relative" }}>
+          <div style={{ position: "absolute", top: offsetY, width: "100%" }}>
+            {visibleItems.map((item, i) => (
+              <div
+                key={startIndex + i}
+                style={{
+                  height: ITEM_HEIGHT, display: "flex", alignItems: "center",
+                  padding: "0 16px", borderBottom: "1px solid #f3f4f6",
+                  background: (startIndex + i) % 2 === 0 ? "#fff" : "#f9fafb",
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement an Error Boundary component in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { Component, ErrorInfo, ReactNode } from "react";
+
+type ErrorBoundaryState = { hasError: boolean; error: Error | null };
+
+class ErrorBoundary extends Component<{ children: ReactNode; fallback?: ReactNode }, ErrorBoundaryState> {
+  state: ErrorBoundaryState = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    // Log to monitoring service (e.g., Sentry) in production
+    console.error("ErrorBoundary caught:", error, info.componentStack);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback ?? (
+        <div style={{ padding: 24, border: "1px solid #fca5a5", borderRadius: 8, background: "#fef2f2", color: "#991b1b" }}>
+          <h2>Something went wrong</h2>
+          <pre style={{ whiteSpace: "pre-wrap", fontSize: 13 }}>{this.state.error?.message}</pre>
+          <button onClick={() => this.setState({ hasError: false, error: null })}>Try again</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// Buggy child to test boundary
+import { useState } from "react";
+
+function BuggyCounter() {
+  const [count, setCount] = useState(0);
+  if (count === 3) throw new Error("Count reached 3 — intentional crash!");
+  return (
+    <div>
+      <p>Count: {count} (crashes at 3)</p>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <div style={{ padding: 24 }}>
+      <h2>Error Boundary Demo</h2>
+      <ErrorBoundary fallback={<p style={{ color: "red" }}>Custom fallback UI</p>}>
+        <BuggyCounter />
+      </ErrorBoundary>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement a `useDebounce` and `useThrottle` custom hook in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState, useEffect, useRef, useCallback } from "react";
+
+// useDebounce — returns a debounced copy of a value
+function useDebounce<T>(value: T, delay: number): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const id = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(id);
+  }, [value, delay]);
+  return debounced;
+}
+
+// useThrottle — limits how often a callback can fire
+function useThrottle<T extends unknown[]>(fn: (...args: T) => void, delay: number) {
+  const lastCall = useRef(0);
+  return useCallback((...args: T) => {
+    const now = Date.now();
+    if (now - lastCall.current >= delay) {
+      lastCall.current = now;
+      fn(...args);
+    }
+  }, [fn, delay]);
+}
+
+// Usage
+export default function App() {
+  const [input, setInput] = useState("");
+  const [throttleLog, setThrottleLog] = useState<string[]>([]);
+
+  const debouncedInput = useDebounce(input, 500);
+
+  const throttledLog = useThrottle(
+    (val: string) => setThrottleLog((prev) => [...prev.slice(-4), `Throttled: "${val}"`]),
+    1000
+  );
+
+  return (
+    <div style={{ padding: 24, maxWidth: 480 }}>
+      <h2>useDebounce & useThrottle</h2>
+      <input
+        value={input}
+        onChange={(e) => { setInput(e.target.value); throttledLog(e.target.value); }}
+        placeholder="Type here…"
+        style={{ width: "100%", padding: "6px 10px" }}
+      />
+      <p>Debounced (500 ms): <strong>{debouncedInput || "—"}</strong></p>
+      <ul>{throttleLog.map((l, i) => <li key={i}>{l}</li>)}</ul>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Build a Data Table with sorting and filtering in React? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import { useState, useMemo } from "react";
+
+type Employee = { id: number; name: string; department: string; salary: number };
+type SortKey = keyof Employee;
+type SortDir = "asc" | "desc";
+
+const DATA: Employee[] = [
+  { id: 1, name: "Alice Johnson", department: "Engineering", salary: 95000 },
+  { id: 2, name: "Bob Smith", department: "Marketing", salary: 72000 },
+  { id: 3, name: "Carol White", department: "Engineering", salary: 105000 },
+  { id: 4, name: "David Brown", department: "HR", salary: 68000 },
+  { id: 5, name: "Eva Martinez", department: "Engineering", salary: 112000 },
+  { id: 6, name: "Frank Lee", department: "Marketing", salary: 75000 },
+  { id: 7, name: "Grace Kim", department: "HR", salary: 71000 },
+];
+
+export default function DataTable() {
+  const [filter, setFilter] = useState("");
+  const [sortKey, setSortKey] = useState<SortKey>("id");
+  const [sortDir, setSortDir] = useState<SortDir>("asc");
+
+  const handleSort = (key: SortKey) => {
+    if (key === sortKey) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    else { setSortKey(key); setSortDir("asc"); }
+  };
+
+  const tableData = useMemo(() => {
+    const filtered = DATA.filter((row) =>
+      Object.values(row).some((v) => String(v).toLowerCase().includes(filter.toLowerCase()))
+    );
+    return filtered.sort((a, b) => {
+      const [av, bv] = [a[sortKey], b[sortKey]];
+      const cmp = av < bv ? -1 : av > bv ? 1 : 0;
+      return sortDir === "asc" ? cmp : -cmp;
+    });
+  }, [filter, sortKey, sortDir]);
+
+  const thStyle = (key: SortKey): React.CSSProperties => ({
+    padding: "10px 14px", textAlign: "left", cursor: "pointer",
+    background: "#f1f5f9", userSelect: "none",
+    fontWeight: sortKey === key ? 700 : 400,
+  });
+
+  return (
+    <div style={{ padding: 16 }}>
+      <h2>Employee Table</h2>
+      <input
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        placeholder="Filter…"
+        style={{ marginBottom: 12, padding: "6px 10px", width: 240 }}
+      />
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr>
+            {(["id", "name", "department", "salary"] as SortKey[]).map((key) => (
+              <th key={key} onClick={() => handleSort(key)} style={thStyle(key)}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+                {sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : ""}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((row) => (
+            <tr key={row.id} style={{ borderBottom: "1px solid #e5e7eb" }}>
+              <td style={{ padding: "10px 14px" }}>{row.id}</td>
+              <td style={{ padding: "10px 14px" }}>{row.name}</td>
+              <td style={{ padding: "10px 14px" }}>{row.department}</td>
+              <td style={{ padding: "10px 14px" }}>${row.salary.toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style={{ color: "#6b7280" }}>Showing {tableData.length} / {DATA.length} rows</p>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+---
+
+## Next.js Coding Questions
+
+---
+
+## Q. Implement Server-Side Rendering (SSR) using an async Server Component in Next.js 13+ App Router?
+
+<details><summary><b>Answer</b></summary>
+
+```tsx
+// app/users/page.tsx  (Server Component — default in App Router)
+
+type User = { id: number; name: string; email: string };
+
+async function getUsers(): Promise<User[]> {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+    cache: "no-store", // SSR — always fetch fresh data on every request
+  });
+  if (!res.ok) throw new Error("Failed to fetch users");
+  return res.json();
+}
+
+export default async function UsersPage() {
+  const users = await getUsers();
+
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>Users (SSR)</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <strong>{user.name}</strong> — {user.email}
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+```
+
+**Key points:**
+- `cache: "no-store"` disables caching → fresh data on every request (SSR behavior).
+- `cache: "force-cache"` (default) → data fetched once and cached (SSG behavior).
+- `next: { revalidate: 60 }` → ISR — regenerate every 60 seconds.
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement Incremental Static Regeneration (ISR) in Next.js? 
+
+<details><summary><b>Answer</b></summary>
+
+```tsx
+// app/posts/page.tsx — ISR with 60-second revalidation
+
+type Post = { id: number; title: string; body: string };
+
+async function getPosts(): Promise<Post[]> {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10", {
+    next: { revalidate: 60 }, // ISR: regenerate at most once every 60 seconds
+  });
+  if (!res.ok) throw new Error("Failed to fetch posts");
+  return res.json();
+}
+
+export default async function PostsPage() {
+  const posts = await getPosts();
+
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>Posts (ISR — revalidates every 60s)</h1>
+      <p style={{ color: "#6b7280" }}>Built at: {new Date().toLocaleTimeString()}</p>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id} style={{ marginBottom: 12 }}>
+            <strong>{post.title}</strong>
+            <p style={{ margin: "4px 0", color: "#374151" }}>{post.body.slice(0, 80)}…</p>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+```
+
+```tsx
+// On-demand revalidation via API route
+// app/api/revalidate/route.ts
+
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const secret = searchParams.get("secret");
+
+  if (secret !== process.env.REVALIDATE_SECRET) {
+    return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
+  }
+
+  revalidatePath("/posts");
+  return NextResponse.json({ revalidated: true });
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a dynamic API route with input validation in Next.js? 
+
+<details><summary><b>Answer</b></summary>
+
+```tsx
+// app/api/users/[id]/route.ts
+
+import { NextRequest, NextResponse } from "next/server";
+
+type User = { id: number; name: string; email: string };
+
+const USERS: User[] = [
+  { id: 1, name: "Alice Johnson", email: "alice@example.com" },
+  { id: 2, name: "Bob Smith", email: "bob@example.com" },
+  { id: 3, name: "Carol White", email: "carol@example.com" },
+];
+
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = Number(params.id);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+  }
+
+  const user = USERS.find((u) => u.id === id);
+  if (!user) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+
+  return NextResponse.json(user);
+}
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = Number(params.id);
+  if (!Number.isInteger(id) || id <= 0) {
+    return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+  }
+
+  const body = await req.json().catch(() => null);
+  if (!body || typeof body.name !== "string" || typeof body.email !== "string") {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  const userIndex = USERS.findIndex((u) => u.id === id);
+  if (userIndex === -1) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+
+  USERS[userIndex] = { ...USERS[userIndex], name: body.name, email: body.email };
+  return NextResponse.json(USERS[userIndex]);
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement Server Actions for form submission in Next.js 13+? 
+
+<details><summary><b>Answer</b></summary>
+
+```tsx
+// app/contact/actions.ts
+"use server";
+
+type FormState = { success: boolean; message: string };
+
+export async function submitContact(
+  _prevState: FormState,
+  formData: FormData
+): Promise<FormState> {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const message = formData.get("message") as string;
+
+  if (!name?.trim() || !email?.includes("@") || !message?.trim()) {
+    return { success: false, message: "Please fill in all fields correctly." };
+  }
+
+  // Simulate sending email / saving to DB
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  console.log("Contact received:", { name, email, message });
+  return { success: true, message: `Thank you, ${name}! We'll be in touch soon.` };
+}
+```
+
+```tsx
+// app/contact/page.tsx
+"use client";
+
+import { useFormState, useFormStatus } from "react-dom";
+import { submitContact } from "./actions";
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending} style={{ padding: "8px 20px" }}>
+      {pending ? "Sending…" : "Send Message"}
+    </button>
+  );
+}
+
+const initialState = { success: false, message: "" };
+
+export default function ContactPage() {
+  const [state, formAction] = useFormState(submitContact, initialState);
+
+  return (
+    <main style={{ padding: 24, maxWidth: 420 }}>
+      <h1>Contact Us</h1>
+      {state.message && (
+        <p style={{ color: state.success ? "green" : "red" }}>{state.message}</p>
+      )}
+      <form action={formAction} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <input name="name" placeholder="Your name" required style={{ padding: "6px 10px" }} />
+        <input name="email" type="email" placeholder="Your email" required style={{ padding: "6px 10px" }} />
+        <textarea name="message" placeholder="Your message" rows={4} required style={{ padding: "6px 10px" }} />
+        <SubmitButton />
+      </form>
+    </main>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Implement route-based authentication Middleware in Next.js?
+
+<details><summary><b>Answer</b></summary>
+
+```tsx
+// middleware.ts  (project root)
+
+import { NextRequest, NextResponse } from "next/server";
+
+const PROTECTED_ROUTES = ["/dashboard", "/profile", "/settings"];
+const PUBLIC_ROUTES = ["/login", "/register"];
+
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  const token = req.cookies.get("auth-token")?.value;
+
+  const isProtected = PROTECTED_ROUTES.some((r) => pathname.startsWith(r));
+  const isPublic = PUBLIC_ROUTES.some((r) => pathname.startsWith(r));
+
+  // Redirect unauthenticated users away from protected routes
+  if (isProtected && !token) {
+    const loginUrl = new URL("/login", req.url);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  // Redirect authenticated users away from login/register
+  if (isPublic && token) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/dashboard/:path*", "/profile/:path*", "/settings/:path*", "/login", "/register"],
+};
+```
+
+```tsx
+// app/login/page.tsx — login page that sets the cookie
+
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const params = useSearchParams();
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const email = data.get("email") as string;
+    const password = data.get("password") as string;
+
+    if (email === "admin@example.com" && password === "password") {
+      document.cookie = "auth-token=demo-token; path=/; max-age=3600";
+      router.push(params.get("callbackUrl") ?? "/dashboard");
+    } else {
+      setError("Invalid credentials");
+    }
+  };
+
+  return (
+    <form onSubmit={handleLogin} style={{ padding: 24, maxWidth: 360, display: "flex", flexDirection: "column", gap: 12 }}>
+      <h2>Login</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <input name="email" type="email" placeholder="Email" required style={{ padding: "6px 10px" }} />
+      <input name="password" type="password" placeholder="Password" required style={{ padding: "6px 10px" }} />
+      <button type="submit" style={{ padding: "8px 16px" }}>Sign In</button>
+    </form>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+---
+
+## Redux Toolkit Coding Questions 
+---
+
+## Q. Build a Counter app using Redux Toolkit (`createSlice`, `useSelector`, `useDispatch`)?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+// store/counterSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+type CounterState = { value: number; step: number };
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0, step: 1 } as CounterState,
+  reducers: {
+    increment: (state) => { state.value += state.step; },
+    decrement: (state) => { state.value -= state.step; },
+    reset: (state) => { state.value = 0; },
+    setStep: (state, action: PayloadAction<number>) => { state.step = action.payload; },
+    incrementByAmount: (state, action: PayloadAction<number>) => { state.value += action.payload; },
+  },
+});
+
+export const { increment, decrement, reset, setStep, incrementByAmount } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+```js
+// store/store.ts
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./counterSlice";
+
+export const store = configureStore({ reducer: { counter: counterReducer } });
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+```
+
+```js
+// Counter.tsx
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "./store/store";
+import { increment, decrement, reset, setStep, incrementByAmount } from "./store/counterSlice";
+
+export default function Counter() {
+  const { value, step } = useSelector((state: RootState) => state.counter);
+  const dispatch = useDispatch<AppDispatch>();
+
+  return (
+    <div style={{ padding: 24 }}>
+      <h2>Redux Counter: {value}</h2>
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        <button onClick={() => dispatch(decrement())}>-</button>
+        <button onClick={() => dispatch(increment())}>+</button>
+        <button onClick={() => dispatch(reset())}>Reset</button>
+        <button onClick={() => dispatch(incrementByAmount(10))}>+10</button>
+      </div>
+      <label>
+        Step:
+        <input type="number" value={step} min={1}
+          onChange={(e) => dispatch(setStep(Number(e.target.value)))}
+          style={{ marginLeft: 8, width: 60 }}
+        />
+      </label>
+    </div>
+  );
+}
+```
+
+```js
+// App.tsx
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import Counter from "./Counter";
+
+export default function App() {
+  return <Provider store={store}><Counter /></Provider>;
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Build a Shopping Cart with Redux Toolkit? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+// store/cartSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+export type CartItem = { id: number; name: string; price: number; quantity: number };
+
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: [] as CartItem[],
+  reducers: {
+    addItem: (state, action: PayloadAction<Omit<CartItem, "quantity">>) => {
+      const existing = state.find((i) => i.id === action.payload.id);
+      if (existing) { existing.quantity += 1; }
+      else { state.push({ ...action.payload, quantity: 1 }); }
+    },
+    removeItem: (state, action: PayloadAction<number>) =>
+      state.filter((i) => i.id !== action.payload),
+    updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+      const item = state.find((i) => i.id === action.payload.id);
+      if (item) item.quantity = Math.max(1, action.payload.quantity);
+    },
+    clearCart: () => [],
+  },
+});
+
+export const { addItem, removeItem, updateQuantity, clearCart } = cartSlice.actions;
+export default cartSlice.reducer;
+```
+
+```js
+// store/selectors.ts
+import type { RootState } from "./store";
+
+export const selectCartItems = (state: RootState) => state.cart;
+export const selectCartTotal = (state: RootState) =>
+  state.cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+export const selectCartCount = (state: RootState) =>
+  state.cart.reduce((sum, i) => sum + i.quantity, 0);
+```
+
+```js
+// CartPage.tsx
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch } from "./store/store";
+import { addItem, removeItem, updateQuantity, clearCart } from "./store/cartSlice";
+import { selectCartItems, selectCartTotal, selectCartCount } from "./store/selectors";
+
+const PRODUCTS = [
+  { id: 1, name: "Laptop", price: 999 },
+  { id: 2, name: "Mouse", price: 29 },
+  { id: 3, name: "Keyboard", price: 79 },
+  { id: 4, name: "Monitor", price: 349 },
+];
+
+export default function CartPage() {
+  const dispatch = useDispatch<AppDispatch>();
+  const items = useSelector(selectCartItems);
+  const total = useSelector(selectCartTotal);
+  const count = useSelector(selectCartCount);
+
+  return (
+    <div style={{ display: "flex", gap: 32, padding: 24 }}>
+      {/* Product list */}
+      <div>
+        <h2>Products</h2>
+        {PRODUCTS.map((p) => (
+          <div key={p.id} style={{ display: "flex", justifyContent: "space-between", marginBottom: 8, minWidth: 280 }}>
+            <span>{p.name} — ${p.price}</span>
+            <button onClick={() => dispatch(addItem(p))}>Add to Cart</button>
+          </div>
+        ))}
+      </div>
+
+      {/* Cart */}
+      <div>
+        <h2>Cart ({count} items)</h2>
+        {items.length === 0 ? <p>Your cart is empty.</p> : (
+          <>
+            {items.map((item) => (
+              <div key={item.id} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <span style={{ width: 120 }}>{item.name}</span>
+                <input
+                  type="number" min={1} value={item.quantity}
+                  onChange={(e) => dispatch(updateQuantity({ id: item.id, quantity: Number(e.target.value) }))}
+                  style={{ width: 50 }}
+                />
+                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                <button onClick={() => dispatch(removeItem(item.id))}>✕</button>
+              </div>
+            ))}
+            <strong>Total: ${total.toFixed(2)}</strong>
+            <button onClick={() => dispatch(clearCart())} style={{ display: "block", marginTop: 12 }}>Clear Cart</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Fetch async data using `createAsyncThunk` in Redux Toolkit? 
+
+<details><summary><b>Answer</b></summary>
+
+```js
+// store/postsSlice.ts
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+type Post = { id: number; title: string; body: string };
+type PostsState = { data: Post[]; loading: boolean; error: string | null };
+
+export const fetchPosts = createAsyncThunk<Post[], void, { rejectValue: string }>(
+  "posts/fetchAll",
+  async (_, { rejectWithValue }) => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
+    if (!res.ok) return rejectWithValue(`HTTP error ${res.status}`);
+    return res.json() as Promise<Post[]>;
+  }
+);
+
+const postsSlice = createSlice({
+  name: "posts",
+  initialState: { data: [], loading: false, error: null } as PostsState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPosts.pending, (state) => { state.loading = true; state.error = null; })
+      .addCase(fetchPosts.fulfilled, (state, action) => { state.loading = false; state.data = action.payload; })
+      .addCase(fetchPosts.rejected, (state, action) => { state.loading = false; state.error = action.payload ?? "Unknown error"; });
+  },
+});
+
+export default postsSlice.reducer;
+```
+
+```js
+// PostsList.tsx
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "./store/store";
+import { fetchPosts } from "./store/postsSlice";
+
+export default function PostsList() {
+  const dispatch = useDispatch<AppDispatch>();
+  const { data, loading, error } = useSelector((state: RootState) => state.posts);
+
+  useEffect(() => { dispatch(fetchPosts()); }, [dispatch]);
+
+  if (loading) return <p>Loading posts…</p>;
+  if (error)   return <p style={{ color: "red" }}>Error: {error}</p>;
+
+  return (
+    <div style={{ padding: 24 }}>
+      <h2>Posts (fetched via createAsyncThunk)</h2>
+      <ul>
+        {data.map((post) => (
+          <li key={post.id} style={{ marginBottom: 12 }}>
+            <strong>{post.title}</strong>
+            <p style={{ margin: "4px 0", color: "#374151" }}>{post.body.slice(0, 100)}…</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Build a full CRUD Todo app using Redux Toolkit?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+// store/todosSlice.ts
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+
+export type Todo = { id: number; title: string; completed: boolean };
+type TodosState = { items: Todo[]; loading: boolean; filter: "all" | "active" | "completed" };
+
+// Seed data from API on first load
+export const loadTodos = createAsyncThunk("todos/load", async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=8");
+  if (!res.ok) throw new Error("Failed to load todos");
+  return res.json() as Promise<Todo[]>;
+});
+
+const todosSlice = createSlice({
+  name: "todos",
+  initialState: { items: [], loading: false, filter: "all" } as TodosState,
+  reducers: {
+    addTodo: (state, action: PayloadAction<string>) => {
+      state.items.unshift({ id: Date.now(), title: action.payload, completed: false });
+    },
+    toggleTodo: (state, action: PayloadAction<number>) => {
+      const todo = state.items.find((t) => t.id === action.payload);
+      if (todo) todo.completed = !todo.completed;
+    },
+    deleteTodo: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter((t) => t.id !== action.payload);
+    },
+    editTodo: (state, action: PayloadAction<{ id: number; title: string }>) => {
+      const todo = state.items.find((t) => t.id === action.payload.id);
+      if (todo) todo.title = action.payload.title;
+    },
+    clearCompleted: (state) => { state.items = state.items.filter((t) => !t.completed); },
+    setFilter: (state, action: PayloadAction<TodosState["filter"]>) => { state.filter = action.payload; },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadTodos.pending, (state) => { state.loading = true; })
+      .addCase(loadTodos.fulfilled, (state, action) => { state.loading = false; state.items = action.payload; })
+      .addCase(loadTodos.rejected, (state) => { state.loading = false; });
+  },
+});
+
+export const { addTodo, toggleTodo, deleteTodo, editTodo, clearCompleted, setFilter } = todosSlice.actions;
+export default todosSlice.reducer;
+```
+
+```js
+// TodoApp.tsx
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "./store/store";
+import { loadTodos, addTodo, toggleTodo, deleteTodo, editTodo, clearCompleted, setFilter } from "./store/todosSlice";
+
+export default function TodoApp() {
+  const dispatch = useDispatch<AppDispatch>();
+  const { items, loading, filter } = useSelector((s: RootState) => s.todos);
+  const [input, setInput] = useState("");
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editText, setEditText] = useState("");
+
+  useEffect(() => { dispatch(loadTodos()); }, [dispatch]);
+
+  const handleAdd = () => {
+    const trimmed = input.trim();
+    if (!trimmed) return;
+    dispatch(addTodo(trimmed));
+    setInput("");
+  };
+
+  const handleSaveEdit = (id: number) => {
+    const trimmed = editText.trim();
+    if (trimmed) dispatch(editTodo({ id, title: trimmed }));
+    setEditId(null);
+  };
+
+  const visible = items.filter((t) =>
+    filter === "active" ? !t.completed : filter === "completed" ? t.completed : true
+  );
+
+  if (loading) return <p>Loading…</p>;
+
+  return (
+    <div style={{ maxWidth: 480, padding: 24 }}>
+      <h2>Redux Toolkit CRUD Todo</h2>
+
+      {/* Add input */}
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        <input value={input} onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+          placeholder="New task…" style={{ flex: 1, padding: "6px 10px" }}
+        />
+        <button onClick={handleAdd}>Add</button>
+      </div>
+
+      {/* Filter */}
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+        {(["all", "active", "completed"] as const).map((f) => (
+          <button key={f} onClick={() => dispatch(setFilter(f))}
+            style={{ fontWeight: filter === f ? 700 : 400 }}>
+            {f.charAt(0).toUpperCase() + f.slice(1)}
+          </button>
+        ))}
+        <button onClick={() => dispatch(clearCompleted())} style={{ marginLeft: "auto", color: "red" }}>
+          Clear Completed
+        </button>
+      </div>
+
+      {/* List */}
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {visible.map((todo) => (
+          <li key={todo.id} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+            <input type="checkbox" checked={todo.completed}
+              onChange={() => dispatch(toggleTodo(todo.id))} />
+            {editId === todo.id ? (
+              <>
+                <input value={editText} onChange={(e) => setEditText(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(todo.id)}
+                  style={{ flex: 1, padding: "4px 8px" }} autoFocus
+                />
+                <button onClick={() => handleSaveEdit(todo.id)}>Save</button>
+                <button onClick={() => setEditId(null)}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <span style={{ flex: 1, textDecoration: todo.completed ? "line-through" : "none", color: todo.completed ? "#9ca3af" : "inherit" }}>
+                  {todo.title}
+                </span>
+                <button onClick={() => { setEditId(todo.id); setEditText(todo.title); }}>✏</button>
+                <button onClick={() => dispatch(deleteTodo(todo.id))}>✕</button>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <p style={{ color: "#6b7280" }}>
+        {items.filter((t) => !t.completed).length} item(s) remaining
+      </p>
+    </div>
+  );
+}
+```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+---
+
 ## [Sorting Articles](https://github.com/hackerrank-test/hackerrank-react-sorting-articles)
 
 <img src="https://hrcdn.net/s3_pub/istreet-assets/YkVzgbGgMj0cfT9P97s8jg/sorting-articles.gif" title="Sorting Articles" alt="Sorting Articles" width="350" height="300"/>
