@@ -1,6 +1,6 @@
-# Next.js Interview Questions & Answers
+# Next.js Interview Questions
 
----
+<br/>
 
 ## Table of Contents
 
@@ -14,8 +14,12 @@
 8. [Middleware & Authentication](#middleware--authentication)
 9. [Deployment & Configuration](#deployment--configuration)
 10. [Advanced Topics](#advanced-topics)
+11. [Testing](#testing)
+12. [Security & Best Practices](#security--best-practices)
+13. [Internationalization (i18n)](#internationalization-i18n)
+14. [Enterprise & Scalability Patterns](#enterprise--scalability-patterns)
 
----
+<br/>
 
 ## Core Concepts
 
@@ -32,7 +36,9 @@ Next.js is a React framework built on top of React that provides:
 
 Plain React is a UI library that only handles the view layer. Next.js adds the full-stack capabilities on top of it.
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 2. What are the main rendering strategies in Next.js?
 
@@ -44,7 +50,9 @@ Plain React is a UI library that only handles the view layer. Next.js adds the f
 | **CSR** (Client-Side Rendering) | Browser | Highly interactive UIs |
 | **RSC** (React Server Components) | Server, streamed | App Router default |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 3. What is the difference between the Pages Router and the App Router?
 
@@ -58,7 +66,9 @@ Plain React is a UI library that only handles the view layer. Next.js adds the f
 | Error handling | `_error.tsx` | `error.tsx` per segment |
 | Streaming | Not native | Native via Suspense |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 4. What is `_app.tsx` in the Pages Router?
 
@@ -79,7 +89,9 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 5. What is `_document.tsx` and when do you use it?
 
@@ -106,7 +118,9 @@ export default function Document() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Rendering Strategies
 
@@ -143,7 +157,9 @@ export async function getStaticPaths() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 7. How does Server-Side Rendering (SSR) work?
 
@@ -163,7 +179,9 @@ export async function getServerSideProps(context) {
 - Page requires authentication context
 - SEO is needed but data is user-specific
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 8. What is Incremental Static Regeneration (ISR)?
 
@@ -190,7 +208,9 @@ export default async function handler(req, res) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 9. How do React Server Components (RSC) work in the App Router?
 
@@ -221,7 +241,9 @@ export default function Counter() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 10. What is streaming and how does Next.js support it?
 
@@ -249,7 +271,9 @@ export default function Dashboard() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Routing
 
@@ -274,7 +298,9 @@ export default function Dashboard() {
 | `app/blog/[id]/page.tsx` | `/blog/:id` |
 | `app/[...slug]/page.tsx` | Catch-all |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 12. What are route groups and parallel routes in the App Router?
 
@@ -311,7 +337,9 @@ export default function Layout({ children, team, analytics }) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 13. What are intercepting routes?
 
@@ -332,7 +360,9 @@ Convention:
 | `(..)(..)` | Two levels up |
 | `(...)` | Root |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 14. How do you programmatically navigate in Next.js?
 
@@ -366,7 +396,9 @@ import Link from 'next/link';
 <Link href="/about">About</Link>
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 15. What is the `usePathname`, `useSearchParams`, and `useParams` hook?
 
@@ -385,7 +417,9 @@ function MyComponent() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Data Fetching
 
@@ -408,7 +442,9 @@ const data = await fetch('https://api.example.com/data', {
 });
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 17. What is `revalidatePath` and `revalidateTag`?
 
@@ -430,7 +466,9 @@ Tag a fetch:
 const data = await fetch('/api/posts', { next: { tags: ['posts'] } });
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 18. How does request memoization work in Next.js?
 
@@ -447,7 +485,9 @@ async function ComponentB() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## App Router (Next.js 13+)
 
@@ -464,7 +504,9 @@ async function ComponentB() {
 | `template.tsx` | Like layout but re-renders on every navigation |
 | `default.tsx` | Fallback for parallel routes |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 20. What is a Server Action?
 
@@ -496,7 +538,9 @@ export default function NewPostForm() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 21. What is the difference between `layout.tsx` and `template.tsx`?
 
@@ -506,7 +550,9 @@ export default function NewPostForm() {
 | DOM | Not unmounted/remounted | Unmounted and remounted |
 | Use case | Persistent UI (nav, sidebar) | Page-specific enter animations, resetting state |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 22. How do you handle errors in the App Router?
 
@@ -534,7 +580,9 @@ export default function Error({
 
 For root-level errors (outside root layout), use `global-error.tsx`.
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Performance & Optimization
 
@@ -561,7 +609,9 @@ import Image from 'next/image';
 />
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 24. How does `next/font` work?
 
@@ -585,7 +635,9 @@ export default function RootLayout({ children }) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 25. What is the Next.js `<Script>` component?
 
@@ -604,7 +656,9 @@ import Script from 'next/script';
 <Script src="https://analytics.example.com/script.js" strategy="lazyOnload" />
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 26. What is code splitting in Next.js?
 
@@ -619,7 +673,9 @@ const HeavyChart = dynamic(() => import('./HeavyChart'), {
 });
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## API Routes & Server Actions
 
@@ -642,7 +698,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 28. How do you create a Route Handler in the App Router?
 
@@ -664,7 +722,9 @@ export async function POST(request: NextRequest) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 29. What are the differences between API Routes and Server Actions?
 
@@ -676,7 +736,9 @@ export async function POST(request: NextRequest) {
 | Progressive enhancement | No | Yes (works without JS) |
 | Caching | Manual | Integrates with Next.js cache |
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Middleware & Authentication
 
@@ -709,7 +771,9 @@ export const config = {
 };
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 31. What is the `matcher` config in Middleware?
 
@@ -724,7 +788,9 @@ export const config = {
 };
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 32. How do you implement authentication in Next.js?
 
@@ -766,7 +832,9 @@ export default async function ProtectedPage() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Deployment & Configuration
 
@@ -794,7 +862,9 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 34. What are the deployment options for Next.js?
 
@@ -813,7 +883,9 @@ Static export:
 const nextConfig = { output: 'export' };
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 35. What is the Edge Runtime vs. Node.js Runtime?
 
@@ -830,7 +902,9 @@ Opt into Edge Runtime in a Route Handler:
 export const runtime = 'edge';
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Advanced Topics
 
@@ -850,7 +924,9 @@ export async function generateStaticParams() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 37. What is `generateMetadata`?
 
@@ -882,7 +958,9 @@ export const metadata: Metadata = {
 };
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 38. How does the fetch cache work in the App Router?
 
@@ -904,7 +982,9 @@ fetch(url, { next: { tags: ['products'] } });
 
 > **Note:** As of Next.js 15, `fetch` requests are **no longer cached by default** — you must opt-in explicitly.
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 39. What is `unstable_cache` and when do you use it?
 
@@ -923,7 +1003,9 @@ const getCachedPosts = unstable_cache(
 const posts = await getCachedPosts();
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 40. What is the `use cache` directive? (Next.js 15+)
 
@@ -944,7 +1026,9 @@ async function PostList() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 41. What is Turbopack?
 
@@ -960,7 +1044,9 @@ Enabled automatically, or explicitly:
 next dev --turbopack
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 42. What is the difference between `notFound()` and redirecting to a 404 page?
 
@@ -980,7 +1066,9 @@ async function PostPage({ params }) {
 
 Manual redirect to `/404` is discouraged — it loses route context and returns a 200 status code unless handled properly.
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 43. How does `useFormState` / `useActionState` work with Server Actions?
 
@@ -1006,7 +1094,9 @@ export default function Form() {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 44. What is `useOptimistic` and how does it work with Server Actions?
 
@@ -1034,7 +1124,9 @@ export function LikeButton({ postId, initialLikes }) {
 }
 ```
 
----
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ### 45. What are common Next.js performance pitfalls?
 
@@ -1047,4 +1139,758 @@ export function LikeButton({ postId, initialLikes }) {
 7. **Using `getServerSideProps` for mostly static content** — use ISR instead
 8. **Not setting `cache: 'no-store'` for truly dynamic routes** — stale data bugs
 
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
+## Testing
+
+
+### 46. How do you unit test Next.js components?
+
+Use **Jest** with **React Testing Library** for component and hook testing.
+
+**Setup:**
+
+```bash
+npm install --save-dev jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+```
+
+```ts
+// jest.config.ts
+import type { Config } from 'jest';
+import nextJest from 'next/jest';
+
+const createJestConfig = nextJest({ dir: './' });
+
+const config: Config = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterFramework: ['<rootDir>/jest.setup.ts'],
+};
+
+export default createJestConfig(config);
+```
+
+```tsx
+// __tests__/Counter.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import Counter from '@/components/Counter';
+
+test('increments counter on click', () => {
+  render(<Counter />);
+  const button = screen.getByRole('button');
+  fireEvent.click(button);
+  expect(screen.getByText('1')).toBeInTheDocument();
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 47. How do you test Server Actions and Route Handlers?
+
+**Route Handlers** can be tested by constructing a `NextRequest` directly:
+
+```ts
+// __tests__/api/posts.test.ts
+import { GET } from '@/app/api/posts/route';
+import { NextRequest } from 'next/server';
+
+test('GET /api/posts returns a list', async () => {
+  const req = new NextRequest('http://localhost/api/posts');
+  const res = await GET(req);
+  const data = await res.json();
+
+  expect(res.status).toBe(200);
+  expect(Array.isArray(data)).toBe(true);
+});
+```
+
+**Server Actions** are regular async functions and can be tested directly:
+
+```ts
+// __tests__/actions/createPost.test.ts
+import { createPost } from '@/app/actions';
+
+test('createPost persists title', async () => {
+  const formData = new FormData();
+  formData.set('title', 'Test Post');
+
+  const result = await createPost(null, formData);
+  expect(result.success).toBe(true);
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 48. How do you write E2E tests for Next.js with Playwright?
+
+Playwright is the recommended E2E tool for Next.js (also works with Cypress).
+
+```bash
+npm install --save-dev @playwright/test
+npx playwright install
+```
+
+```ts
+// playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  webServer: {
+    command: 'npm run build && npm start',
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI,
+  },
+  use: { baseURL: 'http://localhost:3000' },
+});
+```
+
+```ts
+// e2e/navigation.spec.ts
+import { test, expect } from '@playwright/test';
+
+test('navigates to about page', async ({ page }) => {
+  await page.goto('/');
+  await page.click('text=About');
+  await expect(page).toHaveURL('/about');
+  await expect(page.locator('h1')).toContainText('About');
+});
+
+test('form submission shows success message', async ({ page }) => {
+  await page.goto('/contact');
+  await page.fill('input[name="email"]', 'user@example.com');
+  await page.click('button[type="submit"]');
+  await expect(page.locator('[data-testid="success"]')).toBeVisible();
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Security & Best Practices
+
+
+### 49. How do you set security headers in Next.js?
+
+Configure security headers in `next.config.js` using the `headers` async function:
+
+```js
+// next.config.js
+const securityHeaders = [
+  { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload',
+  },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: https:",
+    ].join('; '),
+  },
+];
+
+module.exports = {
+  async headers() {
+    return [{ source: '/(.*)', headers: securityHeaders }];
+  },
+};
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 50. How do you handle environment variables securely in Next.js?
+
+Next.js separates server-only and browser-exposed variables by prefix:
+
+| Prefix | Accessible in | Example |
+|---|---|---|
+| `NEXT_PUBLIC_` | Browser + Server | `NEXT_PUBLIC_API_URL` |
+| No prefix | Server only | `DATABASE_URL`, `JWT_SECRET` |
+
+```env
+# .env.local — gitignored by default
+DATABASE_URL=postgresql://user:pass@host/db
+JWT_SECRET=a-very-long-random-secret-at-least-32-chars
+NEXT_PUBLIC_ANALYTICS_ID=UA-000000
+```
+
+**Best practices:**
+- Never expose secrets with `NEXT_PUBLIC_` prefix
+- Validate env vars at startup using `zod` or `@t3-oss/env-nextjs`:
+
+```ts
+// lib/env.ts
+import { z } from 'zod';
+
+const envSchema = z.object({
+  DATABASE_URL: z.string().url(),
+  JWT_SECRET: z.string().min(32),
+  NEXT_PUBLIC_API_URL: z.string().url(),
+});
+
+export const env = envSchema.parse(process.env);
+// Throws at startup if any variable is missing or malformed
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 51. How do you handle CORS in Next.js Route Handlers?
+
+Set CORS headers explicitly — never use a wildcard `*` for credentialed requests:
+
+```ts
+// app/api/posts/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+
+const ALLOWED_ORIGINS = ['https://app.example.com', 'https://www.example.com'];
+
+function corsHeaders(origin: string) {
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : '';
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Credentials': 'true',
+  };
+}
+
+export async function GET(request: NextRequest) {
+  const origin = request.headers.get('origin') ?? '';
+  const posts = await db.post.findMany();
+  return NextResponse.json(posts, { headers: corsHeaders(origin) });
+}
+
+// Handle preflight
+export async function OPTIONS(request: NextRequest) {
+  const origin = request.headers.get('origin') ?? '';
+  return new NextResponse(null, { status: 204, headers: corsHeaders(origin) });
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 52. How do you implement rate limiting in Next.js Middleware?
+
+Use a sliding-window rate limiter backed by Redis (e.g., Upstash) in Middleware — runs at the Edge so it\'s extremely fast:
+
+```ts
+// middleware.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, '10 s'), // 10 req / 10 s per IP
+});
+
+export async function middleware(request: NextRequest) {
+  const ip = request.headers.get('x-forwarded-for') ?? 'anonymous';
+  const { success, limit, reset, remaining } = await ratelimit.limit(ip);
+
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Too Many Requests' },
+      {
+        status: 429,
+        headers: {
+          'X-RateLimit-Limit': String(limit),
+          'X-RateLimit-Remaining': String(remaining),
+          'X-RateLimit-Reset': String(reset),
+          'Retry-After': String(Math.ceil((reset - Date.now()) / 1000)),
+        },
+      }
+    );
+  }
+
+  return NextResponse.next();
+}
+
+export const config = { matcher: '/api/:path*' };
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 53. How do you implement Role-Based Access Control (RBAC) in Next.js?
+
+Combine Auth.js sessions with Middleware to enforce role-based route protection:
+
+```ts
+// middleware.ts
+import { auth } from '@/auth';
+import { NextResponse } from 'next/server';
+
+const roleRoutes: Record<string, string[]> = {
+  '/admin': ['admin'],
+  '/dashboard': ['admin', 'user'],
+};
+
+export default auth((req) => {
+  const session = req.auth;
+  const pathname = req.nextUrl.pathname;
+
+  const entry = Object.entries(roleRoutes).find(([route]) =>
+    pathname.startsWith(route)
+  );
+
+  if (entry) {
+    const [, requiredRoles] = entry;
+    if (!session) {
+      return NextResponse.redirect(new URL('/login', req.url));
+    }
+    if (!requiredRoles.includes(session.user?.role as string)) {
+      return NextResponse.redirect(new URL('/unauthorized', req.url));
+    }
+  }
+
+  return NextResponse.next();
+});
+```
+
+For fine-grained control inside Server Components:
+
+```tsx
+import { auth } from '@/auth';
+import { notFound } from 'next/navigation';
+
+export default async function AdminPage() {
+  const session = await auth();
+  if (session?.user?.role !== 'admin') notFound();
+
+  return <div>Admin panel</div>;
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Internationalization (i18n)
+
+
+### 54. How do you implement internationalization in Next.js?
+
+**App Router** — use `next-intl` (most popular library):
+
+```
+app/
+  [locale]/
+    layout.tsx
+    page.tsx
+    about/page.tsx
+messages/
+  en.json
+  fr.json
+  de.json
+```
+
+```ts
+// middleware.ts
+import createMiddleware from 'next-intl/middleware';
+
+export default createMiddleware({
+  locales: ['en', 'fr', 'de'],
+  defaultLocale: 'en',
+});
+
+export const config = {
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
+};
+```
+
+```tsx
+// app/[locale]/page.tsx
+import { useTranslations } from 'next-intl';
+
+export default function HomePage() {
+  const t = useTranslations('HomePage');
+  return <h1>{t('title')}</h1>;
+}
+```
+
+```json
+// messages/en.json
+{
+  "HomePage": { "title": "Welcome to our app" }
+}
+```
+
+**Pages Router** has built-in i18n routing (no library needed for basic cases):
+
+```js
+// next.config.js
+module.exports = {
+  i18n: {
+    locales: ['en', 'fr', 'de'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
+};
+```
+
+Pages automatically receive the `locale` in `getServerSideProps` / `getStaticProps` context.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Enterprise & Scalability Patterns
+
+
+### 55. What are the four caching mechanisms in the Next.js App Router?
+
+Next.js has four distinct, layered caching mechanisms:
+
+| Cache | Location | Purpose | Duration |
+|---|---|---|---|
+| **Request Memoization** | Server memory | Dedup identical `fetch` calls in one render pass | Per request |
+| **Data Cache** | Server (persistent) | Store `fetch` responses across requests | Until revalidated |
+| **Full Route Cache** | Server (persistent) | Cache rendered HTML + RSC payload for static routes | Until revalidated |
+| **Router Cache** | Client (browser) | Cache RSC payloads for visited routes | 30s (dynamic) / 5min (static) |
+
+```
+Incoming Request
+  → Router Cache (client-side, browser memory)
+    → Full Route Cache (server-side, filesystem/CDN)
+      → Data Cache (server-side, persistent store)
+        → Origin (DB / external API)
+```
+
+**Opting out of caches:**
+
+```ts
+// Skip Data Cache
+fetch(url, { cache: 'no-store' });
+
+// Skip Full Route Cache (force dynamic rendering)
+export const dynamic = 'force-dynamic';
+
+// Invalidate Router Cache for a path
+revalidatePath('/dashboard');
+
+// Invalidate Data Cache by tag
+revalidateTag('products');
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 56. What is Partial Prerendering (PPR)?
+
+PPR (stable in Next.js 15) combines **static** and **dynamic** rendering on the same page. The static shell is pre-rendered at build time and served instantly; dynamic holes are **streamed in** from the server.
+
+```js
+// next.config.js (Next.js 15)
+module.exports = { experimental: { ppr: 'incremental' } };
+```
+
+```tsx
+// Opt a specific route into PPR
+export const experimental_ppr = true;
+```
+
+```tsx
+// app/product/[id]/page.tsx
+import { Suspense } from 'react';
+import StaticProductInfo from './StaticProductInfo'; // Statically rendered at build
+import DynamicStock from './DynamicStock';           // Streamed per-request
+
+export default function ProductPage() {
+  return (
+    <>
+      <StaticProductInfo />          {/* Served from edge cache instantly */}
+      <Suspense fallback={<p>Checking stock...</p>}>
+        <DynamicStock />             {/* Dynamic island, streamed in */}
+      </Suspense>
+    </>
+  );
+}
+```
+
+**Key benefit:** Eliminates the all-or-nothing tradeoff between SSG (fast but stale) and SSR (fresh but slow).
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 57. How do you manage database connections in a serverless Next.js deployment?
+
+Serverless functions spin up/down per request, which can exhaust database connection limits without careful management.
+
+**Singleton pattern for development (avoids Hot Reload leaks):**
+
+```ts
+// lib/prisma.ts
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ?? new PrismaClient({ log: ['error'] });
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma;
+}
+```
+
+**For production serverless** (Vercel, AWS Lambda), use an external connection pooler that maintains a persistent pool outside the function:
+- **Prisma Accelerate** — managed connection pooling + global cache
+- **PgBouncer** — self-hosted pooler for PostgreSQL
+- **Neon / PlanetScale** — serverless-native databases with built-in pooling
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 58. How do you structure a large-scale Next.js project?
+
+A common scalable structure used in enterprise applications:
+
+```
+src/
+  app/                    # App Router routes
+    (auth)/               # Route group — auth pages
+    (dashboard)/          # Route group — protected pages
+    api/                  # Route Handlers
+  components/
+    ui/                   # Primitive, reusable components (Button, Input)
+    features/             # Feature-scoped components (PostCard, UserAvatar)
+  lib/
+    db.ts                 # Database client (singleton)
+    auth.ts               # Auth.js config
+    utils.ts              # Pure utility functions
+  hooks/                  # Custom React hooks
+  store/                  # Global client state (Zustand / Redux)
+  services/               # External API clients
+  actions/                # Server Actions
+  types/                  # Shared TypeScript interfaces/types
+public/
+next.config.js
+```
+
+**Use `tsconfig.json` path aliases to avoid deep relative imports:**
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/actions/*": ["./src/actions/*"]
+    }
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 59. How do you implement URL-based search and filter state in Next.js?
+
+Store search/filter state in URL search params rather than `useState` — makes pages shareable and bookmarkable, and works with the browser Back button:
+
+```tsx
+// components/SearchInput.tsx
+'use client';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useCallback } from 'react';
+
+export default function SearchInput() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const handleSearch = useCallback(
+    (term: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (term) {
+        params.set('query', term);
+        params.delete('page'); // Reset pagination on new search
+      } else {
+        params.delete('query');
+      }
+      router.push(`${pathname}?${params.toString()}`);
+    },
+    [searchParams, pathname, router]
+  );
+
+  return (
+    <input
+      defaultValue={searchParams.get('query') ?? ''}
+      onChange={(e) => handleSearch(e.target.value)}
+      placeholder="Search..."
+    />
+  );
+}
+```
+
+```tsx
+// app/search/page.tsx — Server Component reads params directly
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ query?: string; page?: string }>;
+}) {
+  const { query = '', page = '1' } = await searchParams;
+  const results = await searchDB(query, parseInt(page));
+  return <ResultsList data={results} />;
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 60. How do you configure redirects and rewrites in Next.js?
+
+Defined in `next.config.js` — processed at the Edge before rendering:
+
+```js
+// next.config.js
+module.exports = {
+  async redirects() {
+    return [
+      // Permanent redirect (308) — updates the browser URL
+      {
+        source: '/old-blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      // Conditional redirect based on query param
+      {
+        source: '/docs',
+        has: [{ type: 'query', key: 'version', value: 'v1' }],
+        destination: '/docs/v1',
+        permanent: false,
+      },
+    ];
+  },
+
+  async rewrites() {
+    return [
+      // Proxy to external API — browser URL stays the same
+      {
+        source: '/api/proxy/:path*',
+        destination: 'https://internal-service.company.com/:path*',
+      },
+    ];
+  },
+};
+```
+
+| | Redirect | Rewrite |
+|---|---|---|
+| Browser URL changes | Yes | No |
+| HTTP status code | 308 (permanent) / 307 (temp) | 200 |
+| Use case | Old URL → New URL | API proxy, A/B testing |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 61. How do you analyze and reduce bundle size in Next.js?
+
+Use `@next/bundle-analyzer` to visualize what goes into each bundle:
+
+```bash
+npm install --save-dev @next/bundle-analyzer
+```
+
+```js
+// next.config.js
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({});
+```
+
+```bash
+ANALYZE=true npm run build   # Opens an interactive bundle map in the browser
+```
+
+**Common optimizations:**
+
+| Problem | Fix |
+|---|---|
+| Large component loaded eagerly | `next/dynamic` with `ssr: false` |
+| Full library imported | Named imports: `import { debounce } from 'lodash-es'` |
+| `moment.js` (very large) | Replace with `date-fns` or `dayjs` |
+| Third-party scripts blocking render | `<Script strategy="lazyOnload" />` |
+| Unused CSS | Configure `purgeCSS` or use Tailwind JIT |
+
+Check the `next build` output — routes marked `○` are static, `ƒ` are dynamic (SSR). Aim to maximize `○` routes.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+### 62. What is the `next/headers` API and when do you use it?
+
+`next/headers` provides access to **incoming request headers and cookies** in Server Components, Server Actions, and Route Handlers. Accessing it opts the route out of static rendering.
+
+```tsx
+import { headers, cookies } from 'next/headers';
+
+// Reading in a Server Component
+export default async function Page() {
+  const headersList = await headers();
+  const cookieStore = await cookies();
+
+  const userAgent = headersList.get('user-agent');
+  const token = cookieStore.get('auth-token')?.value;
+
+  return <div>User Agent: {userAgent}</div>;
+}
+```
+
+```ts
+// Setting a cookie in a Server Action
+'use server';
+import { cookies } from 'next/headers';
+
+export async function setTheme(theme: string) {
+  const cookieStore = await cookies();
+  cookieStore.set('theme', theme, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    path: '/',
+  });
+}
+```
+
+> **Note:** In Next.js 15, `cookies()` and `headers()` return Promises and must be awaited.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
