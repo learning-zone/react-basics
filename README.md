@@ -248,7 +248,7 @@ function myButton() {
   return <button>Click me</button>;
 }
 
-// Using it: <myButton /> // Won't work as expected
+// Using it: <myButton /> // Won\'t work as expected
 
 // ✅ Correct - React treats this as a component
 function MyButton() {
@@ -368,6 +368,148 @@ Virtual DOM is about performance (efficiently updating the UI), while Shadow DOM
 **Note:** 
 
 *React uses Virtual DOM but doesn\'t use Shadow DOM by default.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is React Native and how does it differ from React (React DOM)?
+
+**React** (or React DOM) is a JavaScript library for building web user interfaces that render to the browser\'s DOM.
+
+**React Native** is a framework for building native mobile applications for iOS and Android using React concepts — but instead of rendering HTML to the browser, it renders native platform components (like `UIView` on iOS and `View` on Android).
+
+**How React Native works:**
+
+```
+Your JavaScript/JSX code
+         ↓
+React Native Bridge (JS thread ↔ Native thread)
+         ↓
+Native Platform APIs → Real iOS/Android UI components
+```
+
+**Syntax differences:**
+
+```jsx
+// React (Web) — renders HTML elements
+import React from 'react';
+
+function WebButton({ label, onClick }) {
+  return (
+    <div style={{ padding: '10px', backgroundColor: 'blue' }}>
+      <button onClick={onClick}>{label}</button>
+    </div>
+  );
+}
+
+// React Native — renders native components (NOT HTML)
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+function NativeButton({ label, onPress }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onPress}>
+        <Text>{label}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { padding: 10, backgroundColor: 'blue' },
+});
+```
+
+**Key differences:**
+
+| Feature | React (Web) | React Native |
+|---------|------------|--------------|
+| Renders to | Browser DOM (div, span, button) | Native platform views (View, Text, Image) |
+| Styling | CSS (class names, CSS-in-JS, modules) | StyleSheet API (subset of CSS, no cascading) |
+| Navigation | React Router, History API | React Navigation, Expo Router |
+| Flexbox | Standard CSS flex | Flex with column direction default |
+| Animations | CSS animations, Framer Motion | Animated API, Reanimated |
+| Platform access | Web APIs (localStorage, fetch) | Device APIs (camera, GPS, notifications) |
+| Build output | HTML/CSS/JS bundle | iOS .ipa / Android .apk |
+| Dev tooling | Browser DevTools | Expo Go, Metro Bundler, Flipper |
+
+**What React and React Native share:**
+
+* Component model (functional components, hooks, props, state)
+* Same core React APIs: `useState`, `useEffect`, `useContext`, `useRef`, etc.
+* JSX syntax
+* Component lifecycle behavior
+* Context API, React.memo, lazy loading
+
+**Code sharing strategies:**
+
+```
+monorepo/
+├── packages/
+│   ├── shared/          ← Shared business logic, hooks, utilities (no UI)
+│   │   ├── useAuth.ts
+│   │   └── formatDate.ts
+│   ├── web/             ← React DOM components
+│   └── mobile/          ← React Native components
+```
+
+**Expo:** The most common React Native development environment. Provides a managed workflow with pre-built native modules, OTA updates, and a simple build system.
+
+```bash
+npx create-expo-app my-app
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does React compare to Vue and Angular?
+
+React, Vue, and Angular are the three dominant front-end technologies, but they serve different purposes and follow different philosophies.
+
+**React (by Meta):**
+
+* A **UI library**, not a full framework — it handles the View layer only.
+* Uses JSX (JavaScript + HTML together).
+* Unidirectional data flow (parent → child via props).
+* Relies on the ecosystem for routing (`react-router`), state management (`Redux`, `Zustand`, `Context`), and form handling.
+* Highly flexible but requires assembling your own stack.
+* Introduced Hooks (v16.8) to enable functional-component patterns.
+
+**Vue (by Evan You):**
+
+* A **progressive framework** — can be adopted incrementally.
+* Uses single-file components (`.vue` files): HTML template, script, and style in one file.
+* Supports both one-way and two-way data binding (`v-model`).
+* Built-in routing (`vue-router`) and state (`Vuex`/`Pinia`) are official packages.
+* Gentler learning curve than React or Angular.
+
+**Angular (by Google):**
+
+* A **full-featured, opinionated framework** — includes everything out of the box.
+* Uses TypeScript by default.
+* Two-way data binding via `ngModel`.
+* Built-in dependency injection, routing, forms (`ReactiveFormsModule`), HTTP client, and testing.
+* Steeper learning curve but fewer architectural decisions to make.
+
+**Comparison Table:**
+
+| Feature | React | Vue | Angular |
+|---------|-------|-----|---------|
+| Type | UI Library | Progressive Framework | Full Framework |
+| Language | JSX | HTML Templates | TypeScript |
+| Data Binding | One-way | One-way + v-model | Two-way (ngModel) |
+| State Mgmt | External (Redux, Zustand) | Pinia / Vuex | NgRx / Services |
+| Learning Curve | Medium | Low | High |
+| Backed By | Meta | Community | Google |
+| Mobile | React Native | NativeScript/Ionic | Ionic |
+
+**When to choose:**
+
+* **React** — large teams, flexible architecture, strong ecosystem, React Native for mobile.
+* **Vue** — rapid prototyping, smaller teams, gentle learning curve.
+* **Angular** — enterprise applications, large teams that want an opinionated, batteries-included solution.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -1333,6 +1475,77 @@ It involves using a conditional inside of your JSX that looks like `checkIfTrue 
 ```js
 <div style={{ display: showInfo ? "block" : "none" }}>info</div>
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does Babel transpile JSX?
+
+Babel is a JavaScript compiler that converts modern JavaScript (including JSX) into backwards-compatible JavaScript that browsers can understand. JSX is not valid JavaScript on its own — Babel transforms it into `React.createElement()` calls at build time.
+
+**Step-by-step transpilation:**
+
+**1. Old JSX Transform (React 16 and earlier):**
+
+```jsx
+// What you write
+const element = <h1 className="title">Hello, World!</h1>;
+
+// What Babel compiles it to
+const element = React.createElement(
+  "h1",
+  { className: "title" },
+  "Hello, World!"
+);
+```
+
+This required `import React from 'react'` in every file.
+
+**2. New JSX Transform (React 17+):**
+
+```jsx
+// What you write
+const element = <h1 className="title">Hello, World!</h1>;
+
+// What Babel compiles it to (automatic runtime)
+import { jsx as _jsx } from "react/jsx-runtime";
+const element = _jsx("h1", { className: "title", children: "Hello, World!" });
+```
+
+The new transform **automatically imports** the jsx runtime, so you no longer need to import React at the top of every file.
+
+**How it works in the build pipeline:**
+
+```
+Your JSX code
+     ↓
+Babel (with @babel/preset-react)
+     ↓
+React.createElement() / jsx() calls (plain JavaScript)
+     ↓
+Webpack/Vite bundles the output
+     ↓
+Browser executes standard JavaScript
+```
+
+**Babel Configuration:**
+
+```json
+// babel.config.json
+{
+  "presets": [
+    ["@babel/preset-react", { "runtime": "automatic" }]
+  ]
+}
+```
+
+**Key Points:**
+
+* JSX is **syntactic sugar** — it always compiles down to function calls.
+* The `runtime: "automatic"` option enables the new JSX transform (no manual React import).
+* Babel also transpiles ES6+ features (arrow functions, destructuring, async/await) for older browser compatibility.
+* Vite uses `@vitejs/plugin-react` (which uses Babel under the hood) to handle JSX transformation.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5335,6 +5548,76 @@ function useFriendStatus(friendID) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the difference between useCallback() and useMemo()?
+
+Both `useCallback` and `useMemo` are memoization hooks that prevent unnecessary recalculations on every render, but they memoize different things.
+
+**`useCallback(fn, deps)`** — memoizes a **function reference**. Returns the same function object as long as the dependencies haven't changed. Use it to prevent child components from re-rendering unnecessarily when they receive a function as a prop.
+
+**`useMemo(fn, deps)`** — memoizes a **computed value**. Calls the function and caches its return value. Use it to avoid expensive calculations being repeated on every render.
+
+```jsx
+import { useState, useCallback, useMemo } from 'react';
+
+function ParentComponent() {
+  const [count, setCount] = useState(0);
+  const [items] = useState(['apple', 'banana', 'cherry', 'date']);
+
+  // useCallback — memoizes the function itself
+  // The same function reference is returned until 'count' changes
+  const handleClick = useCallback(() => {
+    console.log('Clicked, count is:', count);
+  }, [count]);
+
+  // useMemo — memoizes the return value of the function
+  // Only re-runs the filter when 'items' or 'count' changes
+  const filteredItems = useMemo(
+    () => items.filter(item => item.length > count),
+    [items, count]
+  );
+
+  return (
+    <div>
+      <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>
+      <ChildButton onClick={handleClick} />   {/* Won't re-render unless count changes */}
+      <ul>{filteredItems.map(i => <li key={i}>{i}</li>)}</ul>
+    </div>
+  );
+}
+
+const ChildButton = React.memo(({ onClick }) => {
+  console.log('ChildButton rendered');
+  return <button onClick={onClick}>Click me</button>;
+});
+```
+
+**Key Differences:**
+
+| | `useCallback` | `useMemo` |
+|---|---|---|
+| Returns | The memoized **function** | The memoized **value** (result of calling the function) |
+| Purpose | Stable function reference for props/deps | Cache expensive computation |
+| Example use | Event handlers, callbacks passed to `React.memo` components | Filtered lists, derived data, sorted arrays |
+| Mental model | `useCallback(fn, deps)` ≡ `useMemo(() => fn, deps)` | Calls fn, caches result |
+
+**When NOT to use them:**
+
+* Don't use either hook for cheap computations — the memoization overhead can cost more than the saved work.
+* Don't use `useCallback` if the child component isn't wrapped in `React.memo` — the memoized callback won't prevent re-renders.
+* Premature optimization is a code smell. Profile first with React DevTools Profiler, then optimize.
+
+```jsx
+// ❌ Pointless — this is not an expensive operation
+const double = useMemo(() => count * 2, [count]);
+
+// ✅ Worthwhile — filtering a large array
+const filtered = useMemo(() => largeDataset.filter(applyComplexFilters), [largeDataset, filters]);
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What is the difference between useEffect() and useLayoutEffect() hooks?
 
 The main difference between the useEffect() hook and the useLayoutEffect() hook is that the useEffect() hook serves **asynchronously**, whereas the useLayoutEffect() hook works **synchronously**.
@@ -5638,6 +5921,271 @@ export default function App() {
 |Use when|You own the state setter|You receive the value as a prop|
 |API|`startTransition(() => setState(...))`|`const deferred = useDeferredValue(value)`|
 |`isPending` flag|✅ Yes|❌ No (use `deferred !== value` instead)|
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the Rules of Hooks in React?
+
+The Rules of Hooks are two fundamental constraints enforced by React (and the `eslint-plugin-react-hooks` linter) that ensure hooks work correctly and predictably.
+
+**Rule 1: Only call Hooks at the top level**
+
+Never call Hooks inside loops, conditions, nested functions, or after early returns. Hooks must always be called in the same order on every render.
+
+```jsx
+// ❌ WRONG — conditional Hook call
+function Component({ isLoggedIn }) {
+  if (isLoggedIn) {
+    const [name, setName] = useState('');  // Breaks rule — different call order each render
+  }
+}
+
+// ✅ CORRECT — call at the top level, put condition inside
+function Component({ isLoggedIn }) {
+  const [name, setName] = useState('');  // Always called
+  if (!isLoggedIn) return null;          // Guard after hooks
+}
+```
+
+**Rule 2: Only call Hooks from React functions**
+
+Call Hooks only from React function components or custom Hooks — never from regular JavaScript functions, class components, or event handlers.
+
+```jsx
+// ❌ WRONG — calling a Hook from a plain function
+function fetchUser() {
+  const [user, setUser] = useState(null);  // Not a React function
+}
+
+// ✅ CORRECT — inside a React function component
+function UserProfile() {
+  const [user, setUser] = useState(null);  // OK
+}
+
+// ✅ CORRECT — inside a custom Hook (starts with "use")
+function useUser() {
+  const [user, setUser] = useState(null);  // OK
+}
+```
+
+**Why do these rules exist?**
+
+React relies on the **call order** of Hooks to associate state with the correct component instance. On every render, React expects the same number of Hooks to be called in the same sequence. If you skip a Hook call (due to a condition), React loses track of which state corresponds to which Hook.
+
+```jsx
+// Internally, React tracks hooks by index: [state[0], state[1], state[2], ...]
+// If hook[1] is skipped on re-render, hook[2] state gets assigned to hook[1] → bugs
+```
+
+**Enforcing the rules with ESLint:**
+
+```bash
+npm install eslint-plugin-react-hooks --save-dev
+```
+
+```json
+// .eslintrc
+{
+  "plugins": ["react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the common pitfalls of the useEffect dependency array?
+
+The dependency array is the most misunderstood part of `useEffect`. Missing or incorrectly specified dependencies lead to subtle bugs including stale closures, infinite loops, and missed updates.
+
+**Pitfall 1: Missing dependencies (stale closure)**
+
+```jsx
+// ❌ WRONG — 'count' is missing from deps; the effect closes over the initial value
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(count);  // Always logs 0 — stale closure!
+      setCount(count + 1); // count is always 0 inside here
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []); // empty deps — runs once, never re-subscribes
+}
+
+// ✅ FIX — use functional update form to avoid needing 'count' in deps
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCount(prev => prev + 1); // ✅ No stale closure — uses latest value
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
+```
+
+**Pitfall 2: Infinite loop from object/function deps**
+
+```jsx
+// ❌ WRONG — new object created on every render → effect runs infinitely
+function Search({ query }) {
+  const options = { url: '/api/search', params: { q: query } }; // new ref every render
+
+  useEffect(() => {
+    fetch(options.url); // re-runs forever
+  }, [options]);
+
+// ✅ FIX 1 — use primitive values as deps
+  useEffect(() => {
+    fetch(`/api/search?q=${query}`);
+  }, [query]); // only runs when query changes
+
+// ✅ FIX 2 — useMemo to stabilize the object
+  const options = useMemo(() => ({ url: '/api/search', params: { q: query } }), [query]);
+}
+```
+
+**Pitfall 3: Unnecessary dependencies causing extra re-runs**
+
+```jsx
+// ❌ Using a function defined in the component as a dep — it changes every render
+function Component() {
+  const fetchData = () => fetch('/api/data');  // new function every render
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]); // runs every render because fetchData is always new
+
+// ✅ FIX — wrap the function in useCallback or move it inside useEffect
+  const fetchData = useCallback(() => fetch('/api/data'), []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]); // stable reference — runs only once
+}
+```
+
+**Pitfall 4: Not cleaning up async effects (race condition)**
+
+```jsx
+// ❌ If 'id' changes fast, an earlier fetch may resolve after a later one
+useEffect(() => {
+  fetch(`/api/user/${id}`)
+    .then(res => res.json())
+    .then(data => setUser(data)); // may set stale data
+}, [id]);
+
+// ✅ FIX — use AbortController or an "active" flag
+useEffect(() => {
+  let active = true;
+  fetch(`/api/user/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      if (active) setUser(data); // only update if effect is still current
+    });
+  return () => { active = false; };
+}, [id]);
+```
+
+**Quick reference:**
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Stale value | Missing dep | Add dep or use functional updater |
+| Infinite loop | Object/function dep | `useMemo` / `useCallback` or primitive dep |
+| Race condition | Async + fast dep changes | AbortController or `active` flag |
+| Extra runs | Unstable function dep | `useCallback` to memoize function |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are stale closures in React Hooks and how do you fix them?
+
+A **stale closure** is a bug where a function "remembers" an old version of a variable from a previous render, even though the state has since been updated. It\'s one of the most common React Hook pitfalls.
+
+**How stale closures happen:**
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  // This handler captures 'count = 0' at the time it was created
+  const handleClick = () => {
+    setTimeout(() => {
+      // 3 seconds later, 'count' is still 0 — even if user clicked many times
+      alert(`Count is: ${count}`);  // ← Stale closure!
+    }, 3000);
+  };
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCount(c => c + 1)}>Increment</button>
+      <button onClick={handleClick}>Show count in 3s</button>
+    </div>
+  );
+}
+```
+
+**Fix 1: Use a ref to always hold the latest value**
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    countRef.current = count;
+  }, [count]);
+
+  const handleClick = () => {
+    setTimeout(() => {
+      alert(`Count is: ${countRef.current}`);  // ✅ Always fresh
+    }, 3000);
+  };
+}
+```
+
+**Fix 2: Use functional state updater (avoids capturing state)**
+
+```jsx
+// ❌ Stale — captures 'count' at time of call
+setCount(count + 1);
+
+// ✅ Fresh — React passes the latest state as argument
+setCount(prevCount => prevCount + 1);
+```
+
+**Fix 3: Move the value into useEffect dependencies**
+
+```jsx
+// ❌ Stale — handler is memoized with old 'count'
+const handleSave = useCallback(() => {
+  saveData(count);  // stale if count changed
+}, []); // missing 'count' in deps
+
+// ✅ Add count to deps — new function created when count changes
+const handleSave = useCallback(() => {
+  saveData(count);
+}, [count]);
+```
+
+**Common places stale closures appear:**
+
+| Pattern | Risk | Fix |
+|---------|------|-----|
+| `setTimeout` / `setInterval` | High | `useRef` for latest value |
+| `useEffect` with `[]` | High | Functional updater or add deps |
+| `useCallback` with missing deps | High | Exhaust deps or `useRef` |
+| Event listeners attached once | Medium | Re-register on change or use ref |
+| Async functions in effects | High | Capture all deps or abort |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -8011,6 +8559,142 @@ export default function FileUpload() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to implement two-way data binding in React?
+
+Two-way data binding means the UI and the application state stay in sync: when the state changes, the input updates, and when the user types, the state updates.
+
+React doesn't have built-in two-way binding like Angular\'s `ngModel`, but you can achieve it manually using **controlled components** — pairing a `value` prop with an `onChange` handler.
+
+**Example: Controlled Input (Simulating Two-Way Binding)**
+
+```jsx
+import { useState } from 'react';
+
+function TwoWayBindingExample() {
+  const [text, setText] = useState('');
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={text}         // State → UI (one direction)
+        onChange={(e) => setText(e.target.value)}  // UI → State (other direction)
+      />
+      <p>Live preview: {text}</p>
+    </div>
+  );
+}
+```
+
+**Example: Two-way binding with multiple fields**
+
+```jsx
+function ProfileForm() {
+  const [form, setForm] = useState({ name: '', email: '' });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <form>
+      <input name="name"  value={form.name}  onChange={handleChange} placeholder="Name" />
+      <input name="email" value={form.email} onChange={handleChange} placeholder="Email" />
+      <p>{form.name} — {form.email}</p>
+    </form>
+  );
+}
+```
+
+**Note on ReactLink:**
+
+`ReactLink` was an older React add-on (`react-addons-linked-state-mixin`) that provided syntactic sugar for two-way binding in class components. It has been **deprecated and removed**. The modern approach is to use controlled components as shown above, or a form library like `react-hook-form`.
+
+**Comparison with Angular:**
+
+```html
+<!-- Angular two-way binding -->
+<input [(ngModel)]="name" />
+
+<!-- React equivalent (manual) -->
+<input value={name} onChange={(e) => setName(e.target.value)} />
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the `rules` property in react-hook-form?
+
+In `react-hook-form`, the `rules` property is passed to the `register()` function (or the `Controller` component) to apply **validation constraints** to a form field. It follows the same API as HTML5 constraint validation and supports both built-in rules and custom validators.
+
+**Basic Syntax:**
+
+```jsx
+import { useForm } from 'react-hook-form';
+
+function MyForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <input
+        {...register('email', {
+          required: 'Email is required',
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: 'Invalid email address',
+          },
+          maxLength: { value: 100, message: 'Max 100 characters' },
+        })}
+      />
+      {errors.email && <p>{errors.email.message}</p>}
+
+      <input
+        type="number"
+        {...register('age', {
+          required: true,
+          min: { value: 18, message: 'Must be at least 18' },
+          max: { value: 100, message: 'Must be at most 100' },
+          validate: (value) => Number.isInteger(Number(value)) || 'Must be a whole number',
+        })}
+      />
+      {errors.age && <p>{errors.age.message}</p>}
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+**Supported `rules` properties:**
+
+| Rule | Type | Description |
+|------|------|-------------|
+| `required` | `boolean \| string` | Makes the field mandatory |
+| `min` | `number \| object` | Minimum value (for numbers/dates) |
+| `max` | `number \| object` | Maximum value |
+| `minLength` | `number \| object` | Minimum string length |
+| `maxLength` | `number \| object` | Maximum string length |
+| `pattern` | `RegExp \| object` | Regex pattern validation |
+| `validate` | `Function \| object` | Custom validation function(s) |
+
+**Custom `validate` function:**
+
+```jsx
+register('password', {
+  validate: {
+    hasUppercase: (v) => /[A-Z]/.test(v) || 'Needs an uppercase letter',
+    hasNumber:    (v) => /\d/.test(v)    || 'Needs a number',
+  }
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 11. REACT CSS STYLING
 
 <br/>
@@ -9397,6 +10081,53 @@ export default App
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is the difference between SPA and MPA?
+
+**Single Page Application (SPA):**
+
+An SPA loads a single HTML page and dynamically updates the content using JavaScript without doing a full page reload. React is the most popular library for building SPAs.
+
+* The browser loads one HTML file on the first visit, then JavaScript takes over all routing and rendering.
+* Navigation between "pages" is handled client-side by the router (e.g., React Router).
+* Only the data that changes is fetched from the server (via API calls).
+
+**Multi-Page Application (MPA):**
+
+An MPA serves a separate HTML page for each route. Every navigation triggers a full round-trip to the server, which responds with a complete HTML document.
+
+* Traditional approach used by most websites and frameworks (PHP, Ruby on Rails, Django, etc.).
+* Each URL has its own server-rendered HTML page.
+* Suitable for content-heavy websites with many distinct pages.
+
+**Comparison:**
+
+| Feature | SPA | MPA |
+|---------|-----|-----|
+| Page reloads | No (virtual navigation) | Yes (full page reload) |
+| Initial load | Slower (loads entire app bundle) | Faster (loads only current page) |
+| Subsequent navigation | Fast (no server round-trip) | Slower (new HTML each time) |
+| SEO | Harder (requires SSR or pre-rendering) | Easier (server renders full HTML) |
+| State management | Client-side (Context, Redux, etc.) | Mostly server-side |
+| Development complexity | Higher | Lower |
+| Examples | Gmail, Twitter, React apps | Wikipedia, e-commerce product pages |
+
+**React\'s Position:**
+
+React is primarily used for SPAs, but can support MPA patterns via:
+
+* **Server-Side Rendering (SSR)** with Next.js — renders HTML on the server per request.
+* **Static Site Generation (SSG)** with Next.js or Gatsby — pre-renders pages at build time.
+* **React Router** with `createBrowserRouter` — enables file-system-like routing within a SPA.
+
+**When to choose:**
+
+* **SPA**: Dashboards, admin panels, web apps with rich interactivity (e.g., email clients, project management tools).
+* **MPA**: Content sites, e-commerce, blogs, SEO-critical pages, or apps where each page is largely independent.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 13. React RESTful API
 
 <br/>
@@ -10466,6 +11197,84 @@ export default function App() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-prop-drilling-knowbp?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Zustand and how does it compare to Redux?
+
+**Zustand** is a small, fast, and flexible state management library for React. It uses a simplified store API without reducers, actions, or boilerplate.
+
+**Zustand store:**
+
+```js
+import { create } from 'zustand';
+
+const useCounterStore = create((set, get) => ({
+  count: 0,
+  increment: () => set(state => ({ count: state.count + 1 })),
+  decrement: () => set(state => ({ count: state.count - 1 })),
+  reset: () => set({ count: 0 }),
+  // Access current state in an action using get()
+  double: () => set({ count: get().count * 2 }),
+}));
+```
+
+**Using Zustand in components:**
+
+```jsx
+function Counter() {
+  // Only subscribes to the pieces of state it uses — no unnecessary re-renders
+  const count = useCounterStore(state => state.count);
+  const increment = useCounterStore(state => state.increment);
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={increment}>+</button>
+    </div>
+  );
+}
+
+// ✅ Can also use outside of React (in utilities, non-component code)
+const currentCount = useCounterStore.getState().count;
+useCounterStore.setState({ count: 10 });
+```
+
+**Async actions in Zustand:**
+
+```js
+const useUserStore = create((set) => ({
+  user: null,
+  loading: false,
+  fetchUser: async (id) => {
+    set({ loading: true });
+    const user = await fetch(`/api/users/${id}`).then(r => r.json());
+    set({ user, loading: false });
+  },
+}));
+```
+
+**Zustand vs Redux comparison:**
+
+| Feature | Zustand | Redux Toolkit |
+|---------|---------|---------------|
+| Bundle size | ~1 KB | ~40 KB |
+| Boilerplate | Minimal (no actions/reducers) | Low (with RTK), but more structured |
+| Learning curve | Very easy | Medium |
+| DevTools | Via middleware | Excellent (Redux DevTools) |
+| Middleware | Simple (`persist`, `devtools`) | Extensive ecosystem |
+| Outside React | ✅ `getState()` / `setState()` | ✅ `store.getState()` |
+| TypeScript | Excellent | Excellent |
+| Use case | Small-medium apps, simple global state | Large apps needing strict patterns |
+
+**When to choose Zustand over Redux:**
+
+* Smaller applications or features that don't need strict action-based patterns.
+* You want minimal setup with no Provider wrapping needed.
+* You need to read/write state outside of React components.
+* Performance is critical — Zustand uses selective subscriptions by default.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -12255,6 +13064,270 @@ export default App;
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to use the React Profiler to measure and improve performance?
+
+The **React Profiler** is a built-in tool (available in React DevTools browser extension and programmatically via the `<Profiler>` component) that measures how often components render and what their render cost is.
+
+**1. React DevTools Profiler (Browser Extension)**
+
+Open Chrome/Firefox DevTools → React tab → Profiler tab:
+- Click **Record**, interact with your app, then click **Stop**.
+- View a **flame chart** showing which components rendered, how long they took, and why they re-rendered.
+- Look for components that render unnecessarily (appear in every frame despite no prop changes).
+
+**2. Programmatic Profiling with `<Profiler>` component**
+
+```jsx
+import { Profiler } from 'react';
+
+function onRenderCallback(
+  id,           // Component tree identifier
+  phase,        // 'mount' | 'update' | 'nested-update'
+  actualDuration,   // Time spent rendering (ms)
+  baseDuration,     // Estimated time without memoization (ms)
+  startTime,
+  commitTime
+) {
+  console.log(`[Profiler] ${id} (${phase}): ${actualDuration.toFixed(2)}ms`);
+  // Send to analytics in production for real-user performance data
+}
+
+function App() {
+  return (
+    <Profiler id="Navigation" onRender={onRenderCallback}>
+      <Navigation />
+    </Profiler>
+  );
+}
+```
+
+**3. Identifying and fixing performance issues**
+
+```jsx
+// Step 1: Find the bottleneck — look for high actualDuration in Profiler
+// Step 2: Check WHY a component re-rendered (hover flame chart bars in DevTools)
+
+// Common fixes:
+
+// Fix A: Memoize expensive child components
+const ExpensiveList = React.memo(({ items }) => (
+  <ul>{items.map(item => <li key={item.id}>{item.name}</li>)}</ul>
+));
+
+// Fix B: Stabilize callback props with useCallback
+const handleDelete = useCallback((id) => {
+  setItems(prev => prev.filter(item => item.id !== id));
+}, []);  // Stable reference → React.memo child doesn\'t re-render
+
+// Fix C: Memoize derived data with useMemo
+const sortedItems = useMemo(
+  () => [...items].sort((a, b) => a.name.localeCompare(b.name)),
+  [items]
+);
+
+// Fix D: Split state to minimize re-render scope
+// ❌ One big state object — any field update re-renders everything
+const [formState, setFormState] = useState({ name: '', email: '', bio: '' });
+
+// ✅ Separate state per field — each update only affects its own subtree
+const [name, setName]   = useState('');
+const [email, setEmail] = useState('');
+```
+
+**4. React DevTools Profiler interaction types explained**
+
+| Why it rendered | Meaning | Fix |
+|----------------|---------|-----|
+| "Props changed" | A prop reference changed | Check parent re-renders; use `useMemo`/`useCallback` |
+| "State changed" | Local state update | Expected; localize state if too broad |
+| "Context changed" | A context value changed | Split contexts; use selectors |
+| "Parent re-rendered" | Parent re-rendered and child is not memoized | Wrap with `React.memo` |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to implement feature flags in React?
+
+Feature flags (also called feature toggles) allow you to enable or disable features at runtime without deploying new code. They are used for A/B testing, gradual rollouts, canary releases, and kill switches.
+
+**1. Simple environment-variable approach**
+
+```jsx
+// .env
+VITE_FEATURE_NEW_CHECKOUT=true
+VITE_FEATURE_AI_SEARCH=false
+
+// Component
+function CheckoutButton() {
+  const isNewCheckout = import.meta.env.VITE_FEATURE_NEW_CHECKOUT === 'true';
+
+  return isNewCheckout
+    ? <NewCheckoutButton />
+    : <LegacyCheckoutButton />;
+}
+```
+
+**2. Context-based feature flag provider**
+
+```jsx
+// FeatureFlagContext.jsx
+const FeatureFlagContext = createContext({});
+
+export function FeatureFlagProvider({ children }) {
+  const [flags, setFlags] = useState({
+    newDashboard: false,
+    aiSearch: false,
+    darkMode: true,
+  });
+
+  // Load flags from server/LaunchDarkly/etc.
+  useEffect(() => {
+    fetch('/api/feature-flags')
+      .then(res => res.json())
+      .then(setFlags);
+  }, []);
+
+  return (
+    <FeatureFlagContext.Provider value={flags}>
+      {children}
+    </FeatureFlagContext.Provider>
+  );
+}
+
+// Custom hook
+export function useFeatureFlag(flagName) {
+  const flags = useContext(FeatureFlagContext);
+  return flags[flagName] ?? false;
+}
+
+// Usage in any component
+function SearchBar() {
+  const hasAiSearch = useFeatureFlag('aiSearch');
+
+  return hasAiSearch
+    ? <AiSearchBar />
+    : <BasicSearchBar />;
+}
+```
+
+**3. HOC pattern for feature-gated components**
+
+```jsx
+function withFeatureFlag(flagName, FallbackComponent = null) {
+  return function FeatureGatedComponent({ WrappedComponent, ...props }) {
+    const enabled = useFeatureFlag(flagName);
+    if (!enabled) return FallbackComponent ? <FallbackComponent {...props} /> : null;
+    return <WrappedComponent {...props} />;
+  };
+}
+```
+
+**4. Using LaunchDarkly (popular enterprise tool)**
+
+```jsx
+import { LDProvider, useFlags } from 'launchdarkly-react-client-sdk';
+
+function App() {
+  return (
+    <LDProvider clientSideID="your-client-id" context={{ kind: 'user', key: user.id }}>
+      <Dashboard />
+    </LDProvider>
+  );
+}
+
+function Dashboard() {
+  const { newDashboard } = useFlags();
+  return newDashboard ? <NewDashboard /> : <OldDashboard />;
+}
+```
+
+**Feature flag strategies:**
+
+| Strategy | Use case |
+|----------|---------|
+| Boolean toggle | Simple on/off |
+| Percentage rollout | Gradually expose to % of users |
+| User targeting | Enable for specific user IDs/segments |
+| A/B testing | Show variant A to 50%, B to 50% |
+| Kill switch | Instantly disable a broken feature |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why does React Strict Mode invoke effects and lifecycle methods twice in development?
+
+React `StrictMode` intentionally invokes certain functions **twice** in development to help you detect side effects that aren\'t properly cleaned up. This double-invocation does **not** happen in production.
+
+**What gets called twice:**
+
+* Function component bodies (render phase)
+* `useState`, `useMemo`, `useReducer` initializer functions
+* `useEffect` setup and cleanup functions (mount → unmount → mount)
+* Class component `constructor`, `render`, `getDerivedStateFromProps`, `shouldComponentUpdate`
+
+**Why this matters:**
+
+```jsx
+// ❌ Bug exposed by StrictMode — this fires twice on mount
+useEffect(() => {
+  const subscription = eventBus.subscribe('event', handler);
+  // Missing cleanup! Second invocation creates a duplicate subscription.
+}, []);
+
+// ✅ Correct — cleanup properly cancels the subscription
+useEffect(() => {
+  const subscription = eventBus.subscribe('event', handler);
+  return () => subscription.unsubscribe();  // Cleanup runs between the two mounts
+}, []);
+```
+
+**The double-mount lifecycle in StrictMode:**
+
+```
+1. Component mounts     → setup() runs         (first mount)
+2. Component unmounts   → cleanup() runs        (StrictMode unmount)
+3. Component remounts   → setup() runs again    (StrictMode remount)
+```
+
+This simulates what happens in React\'s future Offscreen API (where components can be hidden and shown again while preserving state), ensuring your code handles mount/unmount cycles gracefully.
+
+**Common patterns that break under StrictMode:**
+
+```jsx
+// ❌ Broken — counter is incremented twice on first render
+useEffect(() => {
+  analytics.trackPageView();  // Fires twice — duplicate analytics event!
+}, []);
+
+// ✅ Fixed with cleanup guard
+useEffect(() => {
+  let active = true;
+  if (active) analytics.trackPageView();  // Still fires twice but idempotent pattern
+  return () => { active = false; };
+}, []);
+
+// ❌ Broken — WebSocket connection created twice with no cleanup
+useEffect(() => {
+  const ws = new WebSocket(url);
+  ws.onmessage = handleMessage;
+}, [url]);
+
+// ✅ Fixed
+useEffect(() => {
+  const ws = new WebSocket(url);
+  ws.onmessage = handleMessage;
+  return () => ws.close();  // Close on unmount/re-mount
+}, [url]);
+```
+
+**Key takeaway:** If your code breaks in StrictMode, it means you have a real bug — a side effect that isn\'t idempotent or not properly cleaned up. StrictMode is a linter for effects, not a problem itself.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. How to optimize React Performance?
 
 Optimizing React performance generally falls into three categories: reducing the size of your code, minimizing unnecessary rendering, and managing heavy data efficiently.
@@ -12598,6 +13671,171 @@ Fiber is currently available for use but it runs in compatibility mode with the 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What are the key new features introduced in React 19?
+
+React 19 (released in 2024) introduced several major features focused on simplifying async data handling, form management, and reducing the need for manual memoization.
+
+**1. Actions — async state management made easy**
+
+React 19 introduced **Actions**, which are async functions used with form `action` props or `useTransition`. They automatically handle pending states, errors, and optimistic updates.
+
+```jsx
+// React 19 — <form> with async action (no onSubmit needed)
+function UpdateName() {
+  const [error, setError] = useState(null);
+  const [isPending, startTransition] = useTransition();
+
+  const submitAction = async (formData) => {
+    startTransition(async () => {
+      const { error } = await updateUsername(formData.get('username'));
+      if (error) setError(error);
+    });
+  };
+
+  return (
+    <form action={submitAction}>
+      <input name="username" />
+      <button disabled={isPending}>{isPending ? 'Saving...' : 'Save'}</button>
+      {error && <p>{error}</p>}
+    </form>
+  );
+}
+```
+
+**2. `useActionState` (formerly `useFormState`)**
+
+Manages the state and pending status of async form actions:
+
+```jsx
+import { useActionState } from 'react';
+
+async function submitForm(prevState, formData) {
+  const result = await saveData(formData.get('name'));
+  return result.error ? { error: result.error } : { success: true };
+}
+
+function Form() {
+  const [state, action, isPending] = useActionState(submitForm, null);
+
+  return (
+    <form action={action}>
+      <input name="name" />
+      <button disabled={isPending}>Submit</button>
+      {state?.error && <p className="error">{state.error}</p>}
+      {state?.success && <p>Saved!</p>}
+    </form>
+  );
+}
+```
+
+**3. `useOptimistic` — optimistic UI updates**
+
+Renders an optimistic value immediately while an async operation completes:
+
+```jsx
+import { useOptimistic } from 'react';
+
+function TodoList({ todos, addTodo }) {
+  const [optimisticTodos, addOptimisticTodo] = useOptimistic(
+    todos,
+    (currentTodos, newTodo) => [...currentTodos, { ...newTodo, pending: true }]
+  );
+
+  async function handleAdd(formData) {
+    const newTodo = { id: Date.now(), text: formData.get('text') };
+    addOptimisticTodo(newTodo);  // Show immediately (optimistic)
+    await saveTodo(newTodo);     // Persist to server
+  }
+
+  return (
+    <form action={handleAdd}>
+      <input name="text" />
+      <button>Add</button>
+      <ul>
+        {optimisticTodos.map(todo => (
+          <li key={todo.id} style={{ opacity: todo.pending ? 0.5 : 1 }}>
+            {todo.text}
+          </li>
+        ))}
+      </ul>
+    </form>
+  );
+}
+```
+
+**4. `use()` — read Promises and Context in render**
+
+The new `use()` hook can read a Promise (suspending if not resolved) or a Context — and unlike other hooks, it can be called conditionally:
+
+```jsx
+import { use, Suspense } from 'react';
+
+// Reading a Promise (triggers Suspense while pending)
+function UserProfile({ userPromise }) {
+  const user = use(userPromise);  // Suspends until promise resolves
+  return <h1>{user.name}</h1>;
+}
+
+// Can be called conditionally (unlike other hooks)
+function Component({ shouldRead }) {
+  if (shouldRead) {
+    const value = use(MyContext);  // ✅ Conditional use() is allowed
+  }
+}
+```
+
+**5. React Server Actions**
+
+Server Actions are async functions that run on the server and can be called directly from Client Components:
+
+```jsx
+// actions.js (Server Action)
+'use server';
+
+export async function updateProfile(formData) {
+  const name = formData.get('name');
+  await db.users.update({ name });
+}
+
+// Component (Client or Server)
+import { updateProfile } from './actions';
+
+function ProfileForm() {
+  return <form action={updateProfile}><input name="name" /><button>Save</button></form>;
+}
+```
+
+**6. Improved `ref` handling**
+
+Function components can now accept `ref` as a regular prop — no `forwardRef()` needed:
+
+```jsx
+// React 19 — ref as a normal prop
+function Input({ placeholder, ref }) {
+  return <input ref={ref} placeholder={placeholder} />;
+}
+
+// Usage
+const inputRef = useRef(null);
+<Input ref={inputRef} placeholder="Type here" />
+```
+
+**React 19 feature summary:**
+
+| Feature | Description |
+|---------|-------------|
+| `useActionState` | Manages async form action state |
+| `useFormStatus` | Reads pending/data state of parent form |
+| `useOptimistic` | Optimistic UI during async operations |
+| `use()` | Read Promises and Context; callable conditionally |
+| Server Actions | `'use server'` functions callable from client |
+| `ref` as prop | No more `forwardRef()` needed |
+| `<Context>` as provider | Use `<MyContext value={...}>` instead of `<MyContext.Provider>` |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. Does the static object work with ES6 classes in React?
 
 Yes, Although `statics` only works with the legacy `React.createClass()`, you can still write static methods in ES6 notation. If you are using ES7, then you can also write static properties.
@@ -12814,6 +14052,210 @@ serviceWorkerRegistration.register({
 // To opt out of service workers entirely, call unregister() instead:
 serviceWorkerRegistration.unregister();
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to implement Push Notifications in a React PWA?
+
+Push Notifications allow a server to send messages to a user\'s browser even when the web app is not open. They require a **Service Worker** (to receive pushes in the background) and the **Push API** + **Notification API**.
+
+**Step 1: Request notification permission**
+
+```jsx
+// In your React component
+async function requestNotificationPermission() {
+  const permission = await Notification.requestPermission();
+  if (permission === 'granted') {
+    console.log('Notification permission granted');
+  }
+}
+```
+
+**Step 2: Subscribe to Push notifications (client)**
+
+```jsx
+async function subscribeToPush(registration) {
+  const VAPID_PUBLIC_KEY = import.meta.env.VITE_VAPID_PUBLIC_KEY;
+
+  const subscription = await registration.pushManager.subscribe({
+    userVisibleOnly: true,                   // Required: notifications always shown to user
+    applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
+  });
+
+  // Send the subscription to your server to store
+  await fetch('/api/push/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(subscription),
+  });
+}
+
+// Helper: convert VAPID key
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = atob(base64);
+  return Uint8Array.from([...rawData].map(c => c.charCodeAt(0)));
+}
+```
+
+**Step 3: Handle push events in the Service Worker**
+
+```js
+// public/sw.js
+self.addEventListener('push', (event) => {
+  const data = event.data?.json() ?? { title: 'New Notification', body: '' };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: '/pwa-192x192.png',
+      badge: '/badge-72x72.png',
+      data: { url: data.url },
+    })
+  );
+});
+
+// Handle notification click
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(clients.openWindow(event.notification.data.url || '/'));
+});
+```
+
+**Step 4: React component wiring**
+
+```jsx
+import { useEffect } from 'react';
+
+export function usePushNotifications() {
+  useEffect(() => {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+    navigator.serviceWorker.ready.then(async (registration) => {
+      const existing = await registration.pushManager.getSubscription();
+      if (!existing) {
+        await requestNotificationPermission();
+        await subscribeToPush(registration);
+      }
+    });
+  }, []);
+}
+```
+
+**Key considerations:**
+
+* Push notifications require **HTTPS** (except `localhost`).
+* Use **VAPID keys** (`web-push` package on Node.js) for secure server-to-browser messaging.
+* Always call `event.waitUntil()` in service worker event handlers to prevent early termination.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Background Sync in a PWA and how does it work with React?
+
+**Background Sync** is a Service Worker API that allows a web application to defer tasks (like form submissions or data uploads) until the user has a stable internet connection — even if the app is closed.
+
+**How it works:**
+
+```
+User performs action (e.g., submits form)
+         ↓
+App is offline → Store request in IndexedDB
+         ↓
+Register a sync event with the Service Worker
+         ↓
+Device reconnects to internet
+         ↓
+Service Worker fires 'sync' event
+         ↓
+Service Worker replays the stored request
+         ↓
+User's data is successfully sent to the server
+```
+
+**Step 1: Register a sync tag (React component)**
+
+```jsx
+async function submitFormWithBackgroundSync(formData) {
+  if ('serviceWorker' in navigator && 'SyncManager' in window) {
+    // Store data locally first
+    await saveToIndexedDB('pending-forms', formData);
+
+    // Register a sync event
+    const registration = await navigator.serviceWorker.ready;
+    await registration.sync.register('submit-form');
+
+    console.log('Form queued for background sync');
+  } else {
+    // Fallback: submit directly
+    await fetch('/api/submit', { method: 'POST', body: JSON.stringify(formData) });
+  }
+}
+```
+
+**Step 2: Handle sync event in the Service Worker**
+
+```js
+// public/sw.js
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'submit-form') {
+    event.waitUntil(replayPendingForms());
+  }
+});
+
+async function replayPendingForms() {
+  const pendingForms = await getFromIndexedDB('pending-forms');
+
+  for (const formData of pendingForms) {
+    try {
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      await removeFromIndexedDB('pending-forms', formData.id);
+    } catch (err) {
+      // Will retry on next sync event
+      throw err;
+    }
+  }
+}
+```
+
+**Step 3: React hook for offline-aware submission**
+
+```jsx
+function useOfflineForm() {
+  const [status, setStatus] = useState('idle');
+
+  const submitForm = async (data) => {
+    setStatus('submitting');
+    if (navigator.onLine) {
+      await fetch('/api/submit', { method: 'POST', body: JSON.stringify(data) });
+      setStatus('success');
+    } else {
+      await submitFormWithBackgroundSync(data);
+      setStatus('queued');
+    }
+  };
+
+  return { submitForm, status };
+}
+```
+
+**Background Sync vs Periodic Background Sync:**
+
+| Feature | Background Sync | Periodic Background Sync |
+|---------|----------------|--------------------------|
+| Trigger | Network reconnect | Time interval (e.g., every hour) |
+| User visible | No | No |
+| Permission required | No | Yes (via `periodicSync` permission) |
+| Use case | Retry failed requests | Refresh cached content |
+| Browser support | Good | Limited |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -13528,6 +14970,382 @@ Sitemap: https://example.com/sitemap.xml
 
 * *[Next.js Documentation](https://nextjs.org/docs)*
 * *[Google Search Central - JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Server-Side Rendering (SSR) and when should you use it?
+
+**Server-Side Rendering (SSR)** is the technique of rendering a React component tree on the server and sending the resulting HTML to the browser. The browser displays the HTML immediately (no blank-screen flicker), then React "hydrates" it — attaching event listeners and making it interactive.
+
+**How SSR works:**
+
+```
+Client requests URL
+       ↓
+Node.js server renders React → HTML string
+       ↓
+Server sends fully-formed HTML to browser
+       ↓
+Browser displays HTML (fast First Contentful Paint)
+       ↓
+React JavaScript bundle loads
+       ↓
+React "hydrates" the HTML (attaches event handlers)
+       ↓
+Page is fully interactive
+```
+
+**React APIs for SSR:**
+
+```jsx
+// react-dom/server
+import { renderToString } from 'react-dom/server';
+import { hydrateRoot }    from 'react-dom/client';
+
+// Server side
+const html = renderToString(<App />);
+
+// Client side (hydration)
+hydrateRoot(document.getElementById('root'), <App />);
+```
+
+**SSR with Next.js:**
+
+Next.js is the most popular way to use SSR with React.
+
+```jsx
+// pages/products/[id].jsx  (Next.js Pages Router)
+export async function getServerSideProps({ params }) {
+  const product = await fetchProduct(params.id);
+  return { props: { product } };
+}
+
+export default function ProductPage({ product }) {
+  return <h1>{product.name}</h1>;
+}
+```
+
+**SSR vs CSR vs SSG:**
+
+| | SSR | CSR (SPA) | SSG |
+|-|-----|-----------|-----|
+| Rendering | Server, per request | Browser, client-side | Build time, static files |
+| SEO | Excellent | Poor (needs workarounds) | Excellent |
+| First load speed | Fast (HTML ready) | Slow (blank page + JS) | Fastest |
+| Data freshness | Real-time | Real-time (via API) | Stale until rebuild |
+| Server cost | Higher | Lower | Lowest |
+| Use case | E-commerce, dashboards | Web apps, admin panels | Blogs, marketing sites |
+
+**When to use SSR:**
+
+* SEO-critical pages (product pages, news, blogs).
+* Personalized content that changes per user/request.
+* Pages that require real-time data.
+* Improving Largest Contentful Paint (LCP) and Core Web Vitals.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to migrate a React application to a newer version?
+
+Upgrading a React application between major versions requires a structured approach to avoid regressions.
+
+**General Migration Steps:**
+
+**1. Read the Release Notes and Migration Guide**
+
+Always check the official [React changelog](https://react.dev/blog) and the migration guide for the target version. Breaking changes are documented there.
+
+**2. Upgrade incrementally**
+
+```bash
+# Check for outdated packages
+npm outdated
+
+# Upgrade React and ReactDOM together
+npm install react@latest react-dom@latest
+
+# Upgrade related tooling
+npm install @types/react@latest @types/react-dom@latest  # TypeScript
+```
+
+**3. Use the official codemods**
+
+React provides automated code transformers via `react-codemod`:
+
+```bash
+npx react-codemod <transform-name> <path>
+
+# Common transforms:
+npx react-codemod update-react-imports .   # Remove unused React imports
+npx react-codemod rename-unsafe-lifecycles . # Rename UNSAFE_ methods
+```
+
+**4. Common changes by version:**
+
+| Migration | Key Changes |
+|-----------|-------------|
+| v15 → v16 | Fiber rewrite; `componentDidCatch` added |
+| v16 → v17 | New JSX transform (no `import React` needed); event delegation moved to root |
+| v17 → v18 | `createRoot()` replaces `ReactDOM.render()`; concurrent features; automatic batching |
+| v18 → v19 | Server Actions, `use()` hook, ref as prop, improved error reporting |
+
+**5. Replace deprecated APIs:**
+
+```jsx
+// React 18: replace ReactDOM.render
+// ❌ Old
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// ✅ New
+import { createRoot } from 'react-dom/client';
+createRoot(document.getElementById('root')).render(<App />);
+```
+
+**6. Address breaking changes and test**
+
+* Run your full test suite after each incremental upgrade.
+* Fix TypeScript type errors.
+* Test SSR hydration if applicable.
+* Monitor `console.error` for deprecation warnings in strict mode.
+
+**Migrating a Monorepo:**
+
+* Upgrade shared React version in the root `package.json` or workspace config.
+* Ensure all packages use the same React version (duplicate React instances cause bugs).
+* Use `peerDependencies` correctly in reusable component packages.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Enzyme and React Testing Library (RTL)?
+
+**Enzyme** (by Airbnb) and **React Testing Library (RTL)** (by Kent C. Dodds / Testing Library) are the two most popular testing utilities for React components, but they take fundamentally different approaches.
+
+**Enzyme:**
+
+* Tests component **implementation details** — you can inspect state, call lifecycle methods directly, and access internal methods.
+* Focuses on the component tree and its internal structure.
+* Uses `.shallow()` (shallow rendering), `.mount()` (full DOM), or `.render()` (static HTML).
+* Encourages testing *how* a component works internally.
+
+```jsx
+// Enzyme example
+import { shallow } from 'enzyme';
+
+const wrapper = shallow(<Counter />);
+wrapper.find('button').simulate('click');
+expect(wrapper.state('count')).toBe(1); // Tests internal state
+```
+
+**React Testing Library (RTL):**
+
+* Tests **user behavior** — it queries the DOM the way a user would interact with it.
+* Discourages testing implementation details (no access to internal state or methods).
+* Built on top of `@testing-library/dom`; uses queries like `getByText`, `getByRole`, `getByLabelText`.
+* Encourages testing *what the user sees and does*.
+
+```jsx
+// RTL example
+import { render, screen, fireEvent } from '@testing-library/react';
+
+render(<Counter />);
+fireEvent.click(screen.getByRole('button', { name: /increment/i }));
+expect(screen.getByText('Count: 1')).toBeInTheDocument(); // Tests visible output
+```
+
+**Comparison:**
+
+| Feature | Enzyme | RTL |
+|---------|--------|-----|
+| Philosophy | Implementation details | User behavior |
+| Shallow rendering | ✅ Yes | ❌ No (full render only) |
+| Access to state | ✅ Yes | ❌ No (by design) |
+| Query style | CSS selectors, class names | Role, text, label, placeholder |
+| React 18 support | Limited / unofficial | ✅ Official |
+| Active maintenance | Minimal | ✅ Actively maintained |
+| Recommended for new projects | ❌ No | ✅ Yes |
+
+**Recommendation:**
+
+* Use **RTL** for all new React projects. It aligns with best practices, is actively maintained, and produces more resilient tests.
+* **Enzyme** may still be used in legacy codebases but should be migrated away from.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you measure and enforce code coverage in a React project?
+
+**Code coverage** measures how much of your source code is executed during automated tests. It\'s reported across four dimensions: **Statements**, **Branches**, **Functions**, and **Lines**.
+
+**Running Coverage with Vitest (recommended with Vite):**
+
+```bash
+npm install --save-dev @vitest/coverage-v8
+
+# vitest.config.js
+export default {
+  test: {
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      thresholds: {
+        statements: 80,
+        branches: 75,
+        functions: 80,
+        lines: 80,
+      },
+      exclude: ['node_modules', 'src/**/*.stories.*', 'src/main.jsx'],
+    },
+  },
+};
+
+# Run coverage
+npx vitest run --coverage
+```
+
+**Running Coverage with Jest (CRA / Jest-based setups):**
+
+```bash
+# Run tests and collect coverage
+npx react-scripts test --coverage --watchAll=false
+
+# Or directly with Jest
+npx jest --coverage
+```
+
+**Coverage output:**
+
+```
+----------|---------|----------|---------|---------|
+File      | % Stmts | % Branch | % Funcs | % Lines |
+----------|---------|----------|---------|---------|
+Counter.jsx |  95.24 |    87.50 |  100.00 |  95.24  |
+----------|---------|----------|---------|---------|
+```
+
+**Code Quality Measures:**
+
+Beyond coverage, React projects benefit from these quality tools:
+
+| Tool | Purpose |
+|------|---------|
+| **ESLint** + `eslint-plugin-react` | Static analysis: unused vars, React rules |
+| **eslint-plugin-react-hooks** | Enforces Rules of Hooks |
+| **Prettier** | Consistent code formatting |
+| **TypeScript** | Static type checking |
+| **Husky + lint-staged** | Pre-commit hooks to run linters/tests |
+| **SonarQube / SonarCloud** | Continuous code quality and security scanning |
+| **Codecov / Coveralls** | Coverage tracking and PR gate checks |
+
+**Example: Husky pre-commit hook**
+
+```json
+// package.json
+{
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are client-side logging and monitoring tools for React applications?
+
+Client-side monitoring captures errors, performance metrics, and user behavior in the browser, helping you diagnose issues in production that you can\'t reproduce locally.
+
+**1. Error Monitoring — Sentry**
+
+The most widely used React error monitoring tool. Captures JavaScript exceptions, component stack traces, and release-level tracking.
+
+```bash
+npm install @sentry/react
+```
+
+```jsx
+// main.jsx
+import * as Sentry from '@sentry/react';
+
+Sentry.init({
+  dsn: 'https://<key>@sentry.io/<project>',
+  integrations: [Sentry.browserTracingIntegration()],
+  tracesSampleRate: 0.2,  // 20% of transactions
+  release: import.meta.env.VITE_APP_VERSION,
+});
+
+// Wrap your app with the ErrorBoundary
+root.render(
+  <Sentry.ErrorBoundary fallback={<p>An error occurred</p>}>
+    <App />
+  </Sentry.ErrorBoundary>
+);
+```
+
+**2. Performance Monitoring — Web Vitals**
+
+React 18+ ships with built-in support for reporting Core Web Vitals:
+
+```jsx
+import { onCLS, onFID, onLCP } from 'web-vitals';
+
+function sendToAnalytics(metric) {
+  console.log(metric); // or POST to your analytics endpoint
+}
+
+onCLS(sendToAnalytics);
+onFID(sendToAnalytics);
+onLCP(sendToAnalytics);
+```
+
+**3. Session Recording — LogRocket / FullStory**
+
+Records user sessions, network requests, and Redux state changes so you can replay what happened before a crash.
+
+```bash
+npm install logrocket
+```
+
+```jsx
+import LogRocket from 'logrocket';
+LogRocket.init('your-app/project-id');
+```
+
+**4. Application Performance Monitoring (APM)**
+
+| Tool | Focus |
+|------|-------|
+| **Sentry** | Error tracking + performance |
+| **Datadog RUM** | Real User Monitoring, traces |
+| **New Relic Browser** | Full-stack APM |
+| **LogRocket** | Session replay + Redux logging |
+| **Grafana / OpenTelemetry** | Custom metrics, self-hosted |
+
+**5. Console Logging Best Practices**
+
+```jsx
+// Use structured logging in development
+if (process.env.NODE_ENV === 'development') {
+  console.log('[ComponentName]', { state, props });
+}
+
+// Never log sensitive data (tokens, passwords, PII)
+// Use log levels: debug/info/warn/error
+```
+
+**Key metrics to monitor:**
+
+* **JavaScript errors** — unhandled exceptions, promise rejections.
+* **Core Web Vitals** — LCP (load), FID/INP (interactivity), CLS (layout shift).
+* **API latency** — slow or failed network requests.
+* **User flows** — drop-off points and error-triggering actions.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -14495,6 +16313,167 @@ function LoginPage() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What are the different login/authentication types used in React applications?
+
+React applications can implement several authentication strategies depending on security requirements and backend architecture.
+
+**1. Cookie-Based Authentication (Session Auth)**
+
+The server creates a session and sets a `Set-Cookie` header. The browser stores the cookie and sends it automatically with every subsequent request.
+
+```jsx
+// Login: server sets httpOnly cookie
+async function login(username, password) {
+  await fetch('/api/login', {
+    method: 'POST',
+    credentials: 'include',  // Required to send/receive cookies cross-origin
+    body: JSON.stringify({ username, password }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+// All subsequent requests include the cookie automatically
+fetch('/api/profile', { credentials: 'include' });
+```
+
+**2. Token-Based Authentication (JWT)**
+
+The server issues a signed JSON Web Token (JWT) on login. The client stores it (localStorage or memory) and attaches it to every request via the `Authorization` header.
+
+```jsx
+// Store token (prefer memory or sessionStorage over localStorage)
+const token = await loginResponse.json().token;
+
+// Attach to every API request
+fetch('/api/data', {
+  headers: { Authorization: `Bearer ${token}` },
+});
+```
+
+**3. OAuth 2.0 / Social Login**
+
+Users authenticate via a third-party provider (Google, GitHub, Microsoft) and the app receives an access token or authorization code.
+
+* The user is redirected to the provider\'s login page.
+* After consent, the provider redirects back with a code.
+* The server exchanges the code for an access token.
+
+Popular libraries: `@react-oauth/google`, `react-github-login`, `next-auth`.
+
+**4. Single Sign-On (SSO)**
+
+One login grants access to multiple applications within an organization. Common protocols: **SAML**, **OIDC (OpenID Connect)**, and **OAuth 2.0**.
+
+```jsx
+// OIDC with a library like @auth0/auth0-react
+import { useAuth0 } from '@auth0/auth0-react';
+
+function LoginButton() {
+  const { loginWithRedirect } = useAuth0();
+  return <button onClick={loginWithRedirect}>Log In</button>;
+}
+```
+
+**5. Multi-Factor Authentication (MFA)**
+
+Adds a second verification step (OTP, authenticator app, email code) after password entry.
+
+**Comparison:**
+
+| Type | Storage | CSRF Risk | XSS Risk | Use Case |
+|------|---------|-----------|----------|----------|
+| Cookie (httpOnly) | Server session | Medium (needs CSRF token) | Low | Traditional web apps |
+| JWT (localStorage) | Client | Low | High | SPAs, mobile APIs |
+| JWT (httpOnly cookie) | Client cookie | Medium | Low | Best of both worlds |
+| OAuth 2.0 | Provider | Low | Low | Social login |
+| SSO / OIDC | Provider/Server | Low | Low | Enterprise apps |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to handle cookies securely in React applications?
+
+Cookies can be used for authentication tokens, session IDs, or user preferences, but they must be configured correctly to prevent security vulnerabilities.
+
+**Secure Cookie Attributes:**
+
+| Attribute | Purpose |
+|-----------|---------|
+| `HttpOnly` | Prevents JavaScript (`document.cookie`) from accessing the cookie — mitigates XSS |
+| `Secure` | Cookie is only sent over HTTPS connections |
+| `SameSite=Strict` | Cookie not sent on cross-site requests — prevents CSRF |
+| `SameSite=Lax` | Cookie sent on top-level navigation but not cross-site sub-requests (default in modern browsers) |
+| `Max-Age` / `Expires` | Controls cookie lifetime |
+| `Path` | Restricts cookie to a specific URL path |
+
+**Setting secure cookies on the server (Node.js / Express):**
+
+```js
+// Server sets the cookie — not React/client-side
+res.cookie('token', jwtToken, {
+  httpOnly: true,      // Not accessible via JS
+  secure: true,        // HTTPS only
+  sameSite: 'strict',  // CSRF protection
+  maxAge: 3600000,     // 1 hour in ms
+  path: '/',
+});
+```
+
+**Reading cookies in React (non-httpOnly only):**
+
+```jsx
+// ⚠️ Only works for cookies WITHOUT httpOnly flag
+import Cookies from 'js-cookie';  // npm install js-cookie
+
+// Set a cookie
+Cookies.set('theme', 'dark', { expires: 7, secure: true, sameSite: 'strict' });
+
+// Get a cookie
+const theme = Cookies.get('theme');
+
+// Delete a cookie
+Cookies.remove('theme');
+```
+
+**Best practices:**
+
+```jsx
+// ✅ DO: Use httpOnly cookies for auth tokens (set server-side)
+// ✅ DO: Always use Secure flag in production
+// ✅ DO: Set SameSite to Strict or Lax to prevent CSRF
+// ✅ DO: Set short expiry times for sensitive tokens
+// ✅ DO: Use CSRF tokens for state-changing requests with cookies
+
+// ❌ DON\'t: Store JWT tokens or sensitive data in localStorage (XSS risk)
+// ❌ DON\'t: Set cookies without Secure flag in production
+// ❌ DON\'t: Use SameSite=None without also setting Secure
+// ❌ DON\'t: Store PII or passwords in cookies
+```
+
+**CSRF Protection with cookies:**
+
+When using cookie-based auth, protect state-changing endpoints with a CSRF token:
+
+```jsx
+// Include CSRF token from meta tag in POST requests
+const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+fetch('/api/profile', {
+  method: 'POST',
+  credentials: 'include',
+  headers: {
+    'X-CSRF-Token': csrfToken,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 26. REACT DATA FETCHING LIBRARIES
 
 <br/>
@@ -14968,6 +16947,96 @@ function Dashboard() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What are React Server Components (RSC) and how do they differ from SSR?
+
+React Server Components (RSC) is a paradigm introduced in React 18 and popularized by Next.js App Router that allows individual components to run **exclusively on the server** — never shipping their JavaScript to the browser.
+
+**Core difference: RSC vs SSR**
+
+| Aspect | SSR (Server-Side Rendering) | React Server Components |
+|--------|----------------------------|------------------------|
+| **What runs on server** | Entire component tree (one time per request) | Individual marked components (permanently) |
+| **Client JS bundle** | Full React + all components sent to browser | Server component code **never** sent to browser |
+| **Interactivity** | All components hydrated on client | Only Client Components hydrate |
+| **Data access** | Via API calls or `getServerSideProps` | Direct DB/filesystem access inside component |
+| **Framework** | Any React + server setup | Next.js App Router, frameworks with RSC support |
+
+**Server vs Client Components:**
+
+```jsx
+// app/UserProfile.jsx — Server Component (default in Next.js App Router)
+// Runs ONLY on server. Has direct DB access. Zero JS bundle cost.
+async function UserProfile({ userId }) {
+  // Direct database query — no API needed!
+  const user = await db.users.findById(userId);
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+      <LikeButton userId={userId} />  {/* ← Client Component for interactivity */}
+    </div>
+  );
+}
+
+// app/LikeButton.jsx — Client Component
+'use client';  // ← This directive makes it a Client Component
+
+import { useState } from 'react';
+
+function LikeButton({ userId }) {
+  const [liked, setLiked] = useState(false);  // useState: Client Components only
+
+  return (
+    <button onClick={() => setLiked(!liked)}>
+      {liked ? '❤️ Liked' : '🤍 Like'}
+    </button>
+  );
+}
+```
+
+**Rules of Server Components:**
+
+```
+Server Components CAN:                    Server Components CANNOT:
+✅ async/await directly                   ❌ useState, useReducer, useContext
+✅ Direct DB/filesystem access            ❌ useEffect, useLayoutEffect
+✅ Import server-only packages            ❌ Browser APIs (window, document)
+✅ Render Client Components               ❌ Event handlers (onClick, onChange)
+✅ Pass serializable props to clients     ❌ Pass non-serializable props (functions)
+```
+
+**Benefits of React Server Components:**
+
+* **Zero-bundle-cost components** — server component code never goes to the browser.
+* **Direct backend access** — query databases, read files without an intermediate API layer.
+* **Automatic code splitting** — client/server boundary is explicit.
+* **Better initial load performance** — smaller JavaScript bundles.
+* **Improved security** — secrets, tokens, and queries never exposed to the browser.
+
+**Example: Data streaming with Suspense**
+
+```jsx
+// app/page.jsx (Server Component)
+import { Suspense } from 'react';
+import UserPosts from './UserPosts';
+
+export default function Page({ params }) {
+  return (
+    <div>
+      <h1>Profile</h1>
+      <Suspense fallback={<p>Loading posts...</p>}>
+        <UserPosts userId={params.id} />  {/* Streams in as data is ready */}
+      </Suspense>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 28. GRAPHQL WITH REACT
 
 <br/>
@@ -15397,6 +17466,90 @@ Challenge: Each MFE needs access to auth state.
 Solution: Shell authenticates and passes tokens via props,
 URL params, or a shared auth library federated module.
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Monolith, Monorepo, and Micro-frontend architectures?
+
+These three terms describe different aspects of software architecture. They are often confused but address different concerns: **Monolith vs Micro-frontend** describes how an application is **split at runtime**, while **Monorepo vs Polyrepo** describes how code is **organized in repositories**.
+
+**1. Monolith Architecture**
+
+A single, unified application where all features are bundled and deployed together as one unit.
+
+```
+monolith-app/
+├── src/
+│   ├── features/
+│   │   ├── auth/
+│   │   ├── dashboard/
+│   │   ├── checkout/
+│   │   └── reports/
+│   └── App.jsx          ← Single entry point, single deployment
+```
+
+* **Pros:** Simple to develop, test, and deploy initially; no network boundaries between features.
+* **Cons:** Scales poorly for large teams; deployment of one feature requires deploying everything; tight coupling.
+
+**2. Micro-frontend Architecture**
+
+The application is split into independent frontend applications ("micro-frontends"), each owned by a separate team and deployed independently. They are composed in the shell/host application.
+
+```
+shell-app/                    ← Orchestrates the MFEs
+├── header-mfe/              ← Team A — deploys independently
+├── dashboard-mfe/           ← Team B — deploys independently
+└── checkout-mfe/            ← Team C — deploys independently
+```
+
+* **Pros:** Independent deployments, team autonomy, technology flexibility per MFE.
+* **Cons:** Complexity of integration, shared dependency management, performance overhead (multiple bundles).
+
+**3. Monorepo**
+
+A **single Git repository** that contains multiple packages/apps. This is a code organization strategy, not a runtime architecture. A monorepo can contain multiple separate apps (micro-frontends or SPAs) or a monolith.
+
+```
+monorepo/
+├── apps/
+│   ├── shell/            ← React Shell app
+│   ├── dashboard-mfe/    ← Micro-frontend
+│   └── marketing-site/   ← Next.js site
+├── packages/
+│   ├── ui-library/       ← Shared components
+│   └── utils/            ← Shared utilities
+└── package.json          ← Workspace root (Turborepo / Nx / pnpm)
+```
+
+* **Pros:** Shared code is easy to manage; atomic commits across packages; consistent tooling.
+* **Cons:** Larger repository; CI/CD must be configured carefully to avoid rebuilding everything.
+
+**4. Polyrepo**
+
+Each app/package lives in its own separate repository.
+
+* **Pros:** Clear ownership, independent CI/CD pipelines, smaller repos.
+* **Cons:** Sharing code requires publishing packages; harder to make atomic cross-repo changes.
+
+**Comparison:**
+
+| Dimension | Monolith | Micro-frontend | Monorepo | Polyrepo |
+|-----------|---------|----------------|----------|---------|
+| What it describes | Runtime bundling | Runtime composition | Repo organization | Repo organization |
+| Deployment | Single deploy | Independent per MFE | Depends on apps inside | Independent per repo |
+| Team scalability | Poor | Excellent | Good | Good |
+| Code sharing | Easy (same codebase) | Hard (versioned packages) | Easy (shared packages) | Hard |
+| Complexity | Low | High | Medium | Medium |
+| Common tooling | Any | Module Federation, single-spa | Nx, Turborepo, pnpm workspaces | Git + npm registry |
+
+**When to choose:**
+
+* **Monolith**: Small to medium teams, early-stage products, when simplicity matters.
+* **Micro-frontend**: Large organizations with many teams, when independent deployments are critical.
+* **Monorepo**: Any size, when you want to share code between multiple apps while maintaining a single development workflow.
+* **Polyrepo**: Strictly separate teams with different release cadences who rarely share code.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
