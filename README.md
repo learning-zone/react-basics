@@ -63,6 +63,8 @@
    * [GraphQL with React](#-28-graphql-with-react)
    * [Micro-frontend Architecture](#-29-micro-frontend-architecture)
    * [Real-time Data with React](#-30-real-time-data-with-react)
+* **Technical Lead Role**
+   * [Technical Lead Role](#-31-technical-lead-role)
 
 <br/>
 
@@ -5552,7 +5554,7 @@ function useFriendStatus(friendID) {
 
 Both `useCallback` and `useMemo` are memoization hooks that prevent unnecessary recalculations on every render, but they memoize different things.
 
-**`useCallback(fn, deps)`** — memoizes a **function reference**. Returns the same function object as long as the dependencies haven't changed. Use it to prevent child components from re-rendering unnecessarily when they receive a function as a prop.
+**`useCallback(fn, deps)`** — memoizes a **function reference**. Returns the same function object as long as the dependencies haven\'t changed. Use it to prevent child components from re-rendering unnecessarily when they receive a function as a prop.
 
 **`useMemo(fn, deps)`** — memoizes a **computed value**. Calls the function and caches its return value. Use it to avoid expensive calculations being repeated on every render.
 
@@ -5579,7 +5581,7 @@ function ParentComponent() {
   return (
     <div>
       <button onClick={() => setCount(c => c + 1)}>Count: {count}</button>
-      <ChildButton onClick={handleClick} />   {/* Won't re-render unless count changes */}
+      <ChildButton onClick={handleClick} />   {/* Won\'t re-render unless count changes */}
       <ul>{filteredItems.map(i => <li key={i}>{i}</li>)}</ul>
     </div>
   );
@@ -5602,8 +5604,8 @@ const ChildButton = React.memo(({ onClick }) => {
 
 **When NOT to use them:**
 
-* Don't use either hook for cheap computations — the memoization overhead can cost more than the saved work.
-* Don't use `useCallback` if the child component isn't wrapped in `React.memo` — the memoized callback won't prevent re-renders.
+* Don\'t use either hook for cheap computations — the memoization overhead can cost more than the saved work.
+* Don\'t use `useCallback` if the child component isn\'t wrapped in `React.memo` — the memoized callback won\'t prevent re-renders.
 * Premature optimization is a code smell. Profile first with React DevTools Profiler, then optimize.
 
 ```jsx
@@ -8563,7 +8565,7 @@ export default function FileUpload() {
 
 Two-way data binding means the UI and the application state stay in sync: when the state changes, the input updates, and when the user types, the state updates.
 
-React doesn't have built-in two-way binding like Angular\'s `ngModel`, but you can achieve it manually using **controlled components** — pairing a `value` prop with an `onChange` handler.
+React doesn\'t have built-in two-way binding like Angular\'s `ngModel`, but you can achieve it manually using **controlled components** — pairing a `value` prop with an `onChange` handler.
 
 **Example: Controlled Input (Simulating Two-Way Binding)**
 
@@ -11271,7 +11273,7 @@ const useUserStore = create((set) => ({
 
 **When to choose Zustand over Redux:**
 
-* Smaller applications or features that don't need strict action-based patterns.
+* Smaller applications or features that don\'t need strict action-based patterns.
 * You want minimal setup with no Provider wrapping needed.
 * You need to read/write state outside of React components.
 * Performance is critical — Zustand uses selective subscriptions by default.
@@ -17863,6 +17865,414 @@ function SearchBar() {
   );
 }
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 31. TECHNICAL LEAD ROLE
+
+<br/>
+
+## Q. How do you decide on the folder structure and module architecture for a large-scale React application?
+
+A scalable React project structure should reflect the way the team thinks about the domain, not just the file types. There is no single correct answer, but two common strategies are **feature-based** and **layer-based** organization.
+
+**Feature-based (recommended for large apps):**
+
+Group all files related to a single feature together — components, hooks, tests, styles, and API calls live in one folder. This makes it easy to find everything related to a feature, and you can delete or move a feature without hunting across the codebase.
+
+```
+src/
+├── features/
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── api/
+│   │   ├── store/
+│   │   └── index.ts        ← public API for the feature
+│   ├── dashboard/
+│   └── products/
+├── shared/                 ← truly reusable across features
+│   ├── components/
+│   ├── hooks/
+│   └── utils/
+├── app/                    ← routing, providers, global setup
+└── pages/                  ← thin route-entry components
+```
+
+**Key decisions to make as a lead:**
+
+* **Enforce barrel files (`index.ts`)** at feature boundaries to expose a public API and hide internals.
+* **Absolute imports** (`@features/auth`) over deep relative paths — configure in `tsconfig.json` and/or `vite.config.ts`.
+* **Colocation**: Keep tests next to the files they test (`Button.test.tsx` beside `Button.tsx`).
+* **Shared vs. feature**: A component used in two features belongs in `shared/`; one used in one feature stays local.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you choose between Redux, Context API, Zustand, Jotai, and React Query for state management?
+
+As a tech lead, the answer depends on the **type of state** being managed, not on habit or personal preference.
+
+| State Type | Description | Recommended Solution |
+|---|---|---|
+| **Server / async state** | Data fetched from an API; loading, error, caching | React Query (TanStack Query) or SWR |
+| **Global UI state** | Theme, locale, authenticated user, modal open/closed | React Context (for low-frequency updates) or Zustand |
+| **Complex shared state** | Many interconnected slices, dev-tools needed, time-travel | Redux Toolkit |
+| **Atomic / fine-grained** | Per-item state, derived state, no provider needed | Jotai or Recoil |
+| **Local component state** | Form values, toggle states, counters | `useState` / `useReducer` |
+
+**Decision heuristic for a lead:**
+
+1. **Always reach for React Query / SWR first** for anything that comes from a server. It handles caching, deduplication, background refresh, and optimistic updates out of the box — eliminating the most common Redux use case.
+2. **Use Context** for low-frequency global values (auth, theme). Avoid it for high-frequency updates because every consumer re-renders.
+3. **Prefer Zustand over Redux** for global UI state in new projects — it has a minimal API, no boilerplate, and works outside of React.
+4. **Keep Redux Toolkit** only when the team already has it, needs robust DevTools, or when state logic is genuinely complex (e.g., large e-commerce, financial apps).
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you conduct effective code reviews for a React team?
+
+Code reviews are one of the highest-leverage activities for a tech lead. The goal is not to find bugs (that\'s what tests are for) but to **transfer knowledge, maintain consistency, and prevent long-term design problems**.
+
+**What to check in a React PR:**
+
+* **Correctness**: Does the component handle loading, error, and empty states? Are side effects properly cleaned up in `useEffect`?
+* **Performance**: Are `memo`, `useCallback`, or `useMemo` used correctly (or over-used)? Are large lists virtualized?
+* **Accessibility**: Are interactive elements keyboard-navigable? Are ARIA attributes correct?
+* **Naming & readability**: Are component, prop, and hook names clear and consistent with the team\'s conventions?
+* **Test coverage**: Do tests cover the happy path, edge cases, and user interactions — not just snapshots?
+* **Security**: Is user input sanitized? Is `dangerouslySetInnerHTML` avoided or guarded?
+
+**Process practices for a lead:**
+
+* Set a **PR size limit** (e.g., 400 lines) and enforce it via guidelines. Large PRs are rarely reviewed well.
+* Use **automated checks** (ESLint, TypeScript, test coverage gates) to handle style and trivial issues so human review focuses on design.
+* Give **actionable, specific feedback** — not "this is bad" but "consider extracting this into a custom hook because it will be needed in the `ProfilePage` component too."
+* **Distinguish blocking vs. non-blocking comments** clearly (e.g., `[nit]` prefix for optional suggestions).
+* **Approve and merge promptly** — a PR sitting for days kills team velocity and creates merge conflicts.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you define and enforce coding standards across a React team?
+
+Standards are only useful if they are automated, documented, and agreed upon — not just enforced by a single person\'s opinion during code review.
+
+**Tooling layer (automated enforcement):**
+
+```json
+// package.json devDependencies
+{
+  "eslint": "...",
+  "eslint-plugin-react": "...",
+  "eslint-plugin-react-hooks": "...",     // enforces Rules of Hooks
+  "eslint-plugin-jsx-a11y": "...",        // accessibility rules
+  "@typescript-eslint/eslint-plugin": "...",
+  "prettier": "...",
+  "lint-staged": "...",
+  "husky": "..."
+}
+```
+
+Configure `husky` + `lint-staged` to run ESLint and Prettier on every commit. Block merges on CI if linting fails.
+
+**Documentation layer:**
+
+* Maintain an **Architecture Decision Record (ADR)** folder (`docs/adr/`) where significant decisions (e.g., "We use React Query instead of Redux for server state") are recorded with context and rationale.
+* Write a short **`CONTRIBUTING.md`** covering naming conventions, component size limits, folder rules, and how to add a new feature.
+
+**Social layer:**
+
+* Discuss and **agree on rules as a team** — rules imposed top-down are resented and ignored.
+* Run a brief **standards retrospective** every quarter to remove outdated rules and add new ones.
+* Use **real examples from your own codebase** in the documentation, not abstract guidelines.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you define a testing strategy for a React project?
+
+A solid testing strategy follows the **Testing Trophy** (Kent C. Dodds) — an adaptation of the Testing Pyramid for frontend:
+
+```
+        /\
+       /  \         ← E2E tests (few, slow, high confidence)
+      /----\
+     /      \       ← Integration tests (most, medium speed)
+    /--------\
+   /          \     ← Unit tests (many, fast, low scope)
+  /------------\
+ /              \   ← Static analysis (TypeScript, ESLint — always on)
+```
+
+**Practical breakdown for React:**
+
+| Layer | Tool | What to test |
+|---|---|---|
+| **Static** | TypeScript + ESLint | Type errors, hook rules, a11y |
+| **Unit** | Vitest / Jest | Pure functions, custom hooks (`renderHook`) |
+| **Integration** | React Testing Library | User interactions, form submission, API mocking with MSW |
+| **E2E** | Playwright / Cypress | Critical user journeys (login, checkout, signup) |
+
+**Lead guidelines:**
+
+* **Test behavior, not implementation.** Query the DOM like a user would (`getByRole`, `getByLabelText`) — never test internal state or call component methods directly.
+* **Mock at the network boundary** using Mock Service Worker (MSW), not by mocking `fetch` or specific modules.
+* **Set a coverage floor** (e.g., 80%) but treat coverage as a floor, not a goal — 100% coverage with bad tests is worse than 70% with good ones.
+* **Prioritize integration tests** for feature-level confidence at a reasonable speed.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you handle performance investigations and optimizations as a tech lead?
+
+**Step 1 — Measure, don\'t guess.** Before any optimization, profile the app with real data.
+
+* **React DevTools Profiler**: Identifies which components re-render, how often, and how long they take.
+* **Chrome Performance tab**: Reveals long tasks, layout thrashing, and scripting time.
+* **Lighthouse / Web Vitals**: Measures user-facing metrics (LCP, INP, CLS) — the ones that matter most.
+* **`why-did-you-render` library**: Logs unnecessary re-renders to the console during development.
+
+**Step 2 — Fix the right things first.**
+
+| Issue | Symptom | Fix |
+|---|---|---|
+| Large bundle | Slow initial load, high LCP | Code splitting with `React.lazy`, tree shaking |
+| Unnecessary re-renders | Slow interactions | `memo`, `useCallback`, state colocation |
+| Long lists | Scroll jank | `react-window` or `react-virtual` virtualization |
+| Slow API responses | Loading spinners everywhere | React Query caching, optimistic updates, streaming |
+| Heavy computations | UI freezes | `useMemo`, `useTransition`, Web Workers |
+
+**Step 3 — Prevent regressions.** Add performance budgets to your CI pipeline using tools like `bundlesize` or Lighthouse CI. This ensures new PRs cannot silently increase the bundle by more than an agreed threshold.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you manage React version upgrades and dependency health in a large project?
+
+**Upgrade strategy:**
+
+1. **Track the ecosystem** — subscribe to the React blog, the `react` GitHub releases, and security advisories (`npm audit`).
+2. **Use a staged upgrade process**: upgrade in a feature branch → run the full test suite → test manually in staging → merge.
+3. **Use codemods** when available. The React team ships codemods (via `@react-codemod`) for breaking changes (e.g., class to hooks, legacy lifecycle renames).
+4. **Update React and React DOM together** — they must always be the same version.
+
+**Dependency hygiene:**
+
+```bash
+# Weekly audit
+npm audit                              # security vulnerabilities
+npx npm-check-updates --interactive    # shows outdated deps
+```
+
+* Use **Dependabot** or **Renovate** to automate dependency update PRs. Configure it to batch patch/minor updates weekly and major updates monthly.
+* Before adding a new dependency, evaluate: bundle size impact (use `bundlephobia.com`), maintenance status (last commit, open issues), license compatibility.
+* **Set a rule**: every new dependency added must be justified in the PR description.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you onboard new developers to a React project?
+
+Effective onboarding reduces time-to-productivity and prevents new developers from introducing anti-patterns.
+
+**Documentation to prepare before their first day:**
+
+* **`README.md`** — How to install, start, build, and test the project in under 5 commands.
+* **`ARCHITECTURE.md`** — Folder structure, key design decisions, data flow diagram, and which patterns are in use (e.g., "we use feature slices; server state via React Query").
+* **`CONTRIBUTING.md`** — Branching strategy, PR process, commit conventions, how to run/write tests.
+
+**First week plan:**
+
+1. **Day 1**: Set up environment, run the app, read architecture doc.
+2. **Day 2-3**: Fix a small, well-defined bug — to navigate real code in context.
+3. **Day 4-5**: Deliver a small, scoped feature — to go through the full PR process.
+
+**Ongoing support:**
+
+* Assign a **code buddy** (a mid-level or senior developer) for the first month.
+* Schedule **weekly 1:1s** for the first month to surface blockers early.
+* Create a shared Slack/Teams channel for questions — answers there benefit the whole team, unlike DMs.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you communicate technical debt and architectural improvements to non-technical stakeholders?
+
+Technical debt is invisible to business stakeholders unless you make it visible in terms they care about: **speed, risk, and cost**.
+
+**Strategies:**
+
+**1. Translate to business impact**
+
+Don\'t say: *"Our component tree has excessive prop drilling and lacks a proper data layer."*
+Say: *"Adding any new field to the checkout form currently takes 3–4 days because of how the code is structured. Refactoring this area would reduce that to half a day."*
+
+**2. Maintain a tech debt backlog** (not just a verbal list)
+
+Keep debt items in the same issue tracker as features. Assign each item a rough **impact** (development speed, reliability, security) and **cost to fix** (story points). This makes it easy to prioritize alongside product work.
+
+**3. Propose the 20% rule**
+
+Negotiate with product management to dedicate ~20% of each sprint to technical improvements. Frame it as: *"This keeps the team\'s velocity stable long-term and prevents the cost of fixing debt from compounding."*
+
+**4. Use the "interest" metaphor**
+
+Technical debt accrues interest: every new feature built on top of the problematic area costs more. Fixing it now has a one-time cost; leaving it has a recurring cost that grows.
+
+**5. Be specific, not general**
+
+Stakeholders disengage with vague statements like "the code quality is poor." Be specific: *"We have three production incidents in the last month caused by the same authentication module. Rewriting it will take one sprint and eliminate this entire class of bug."*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you migrate a legacy React codebase from class components to functional components and hooks?
+
+Migration should be **incremental, not a big-bang rewrite**. A big-bang rewrite risks introducing regressions across the entire app simultaneously and stalls feature work for months.
+
+**Recommended approach:**
+
+**1. Establish a baseline**
+
+* Ensure the existing codebase has good test coverage *before* migrating. Tests catch regressions during conversion.
+* Add TypeScript gradually if it is not already present — it catches many hook-related bugs at compile time.
+
+**2. Set a migration policy**
+
+* **New code** must always use functional components and hooks — no new class components.
+* **Touched code** — if a developer modifies an existing class component for a feature or bug fix, they convert it as part of that PR.
+* **Dedicated migration sprints** for high-traffic or high-risk components.
+
+**3. Convert in order of risk (low → high)**
+
+* Start with **leaf components** (no children, simple rendering) — low risk, high count.
+* Then **container components** that manage state.
+* Last, **complex lifecycle components** (those using `componentDidMount`, `shouldComponentUpdate`, `getSnapshotBeforeUpdate`).
+
+**4. Common class → hooks mappings:**
+
+```jsx
+// State
+this.state = { count: 0 }  →  const [count, setCount] = useState(0)
+
+// Lifecycle
+componentDidMount     →  useEffect(() => { ... }, [])
+componentDidUpdate    →  useEffect(() => { ... }, [dep])
+componentWillUnmount  →  useEffect(() => { return () => cleanup() }, [])
+
+// Context
+static contextType   →  useContext(MyContext)
+
+// shouldComponentUpdate / PureComponent  →  React.memo()
+```
+
+**5. Track progress**
+
+Use a shared spreadsheet or project board listing all class components and their migration status. This keeps the effort visible and prevents it from being deprioritized indefinitely.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you set up CI/CD for a React project?
+
+A robust CI/CD pipeline for React automates quality gates and deployment, reducing manual errors and keeping the main branch always deployable.
+
+**Typical pipeline stages:**
+
+```
+PR Created
+    │
+    ▼
+┌─────────────┐
+│   CI Checks │  (fast, ~2–3 min)
+│  - Type check (tsc --noEmit)
+│  - Lint (ESLint)
+│  - Unit + Integration tests (Vitest/Jest)
+│  - Bundle size check (bundlesize)
+└──────┬──────┘
+       │ Pass
+       ▼
+┌─────────────────────┐
+│  Preview Deployment │  (branch-specific URL)
+│  - Deploy to staging (Vercel/Netlify preview)
+│  - Run E2E tests against preview URL (Playwright)
+└──────┬──────────────┘
+       │ Approved + Merged to main
+       ▼
+┌───────────────────────┐
+│  Production Deployment │
+│  - Build + deploy
+│  - Smoke tests
+│  - Notify team (Slack)
+└───────────────────────┘
+```
+
+**Example GitHub Actions workflow (simplified):**
+
+```yaml
+name: CI
+on: [pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - run: npm test -- --coverage --ci
+      - run: npx bundlesize
+```
+
+**Lead responsibilities:**
+
+* Define and document the **branching strategy** (GitFlow vs. trunk-based development).
+* Ensure **secrets** (API keys, tokens) are stored in CI environment variables — never hardcoded.
+* Set **required status checks** on the main branch so PRs cannot be merged without passing CI.
+* Monitor build times — if CI exceeds 10 minutes, developers start skipping it.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you mentor junior and mid-level React developers on your team?
+
+Mentoring is distinct from managing. As a tech lead, your goal is to **increase the team\'s overall capability**, not just your own output.
+
+**Structured practices:**
+
+* **Pair programming**: Work alongside junior developers on real tasks — not toy examples. Let them drive while you ask guiding questions. This transfers knowledge in context.
+* **Deliberate PR feedback**: Instead of fixing issues yourself, leave specific, educational comments explaining *why* something is a problem and *how* to think about it differently. Link to docs or ADRs.
+* **Growth-oriented task assignment**: Assign tasks that are slightly above a developer\'s current comfort zone — not so hard they get stuck, not so easy they stagnate.
+* **Technical presentations**: Encourage developers to present topics they're learning to the team (lightning talks). Teaching is the most effective way to consolidate knowledge.
+
+**Feedback approach:**
+
+* Give feedback **frequently and specifically**, not just in annual reviews.
+* Follow the **Situation–Behavior–Impact (SBI)** model: *"In yesterday\'s PR [Situation], you added business logic directly inside the JSX [Behavior], which makes this component harder to test and reuse [Impact]. Let\'s talk about how to extract that into a hook."*
+* Acknowledge progress explicitly — developers often underestimate their own growth.
+
+**Common pitfalls to avoid:**
+
+* **Being the bottleneck**: If every decision waits for you, the team doesn\'t grow. Delegate technical decisions with guidance, then review the outcome.
+* **Over-engineering examples**: Show pragmatic, real-world patterns — not theoretical perfect architecture.
+* **Ignoring soft skills**: Teach developers how to write clear PR descriptions, communicate blockers early, and participate in planning meetings.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
