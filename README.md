@@ -10,6 +10,7 @@
 * *[CSS Basics](https://github.com/learning-zone/css-basics)*
 * *[JavaScript Basics](https://github.com/learning-zone/javascript-basics)*
 * *[React Coding Practice](react-coding-practice.md)*
+* *[React Multiple Choice Questions](react-mcq.md)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[React 19 Interview Questions](react-19-interview-questions.md)*
 * *[Next.js Interview Questions](next-interview-questions.md)*
