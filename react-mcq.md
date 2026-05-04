@@ -20,6 +20,8 @@
 * [Jest Unit Testing](#-12-jest-unit-testing)
 * [React Testing Library](#-13-react-testing-library)
 * [Miscellaneous](#-14-miscellaneous)
+* [Next.js](#-15-nextjs)
+* [React Router](#-16-react-router)
 
 <br/>
 
@@ -37,12 +39,12 @@
 - C) Both a and b are correct
 - D) Both a and b are incorrect
 
-**Answer: A) Use Index as the key**
+**Answer: C) Both a and b are correct**
 
-> When no unique value exists, using the array index as the key suppresses the warning and is acceptable for static, non-reordered lists. Using `Math.random()` is an anti-pattern — it generates a new key on every render, causing React to unmount and remount every list item, which destroys state and hurts performance.
+> Both options remove the React unique key warning — React only requires a key prop to be present. Using the array **index** as a key is acceptable for static, non-reordered lists. Using `Math.random()` also removes the warning by supplying a key, but it is an anti-pattern: it generates a new key on every render, causing React to unmount and remount every list item, destroying component state and hurting performance. The question asks what *removes the warning*, not what is best practice — so both are technically correct.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Alex is working on a project where she needs to implement a new feature requiring dynamic component loading. She plans to use React CLI for setting up the project and ensuring the feature integrates seamlessly. Considering her goal to optimize component handling and building times, which React CLI feature should Alex use to improve performance and manage components effectively?
@@ -57,7 +59,7 @@
 > For dynamic component loading, module bundling and optimization (such as code splitting and lazy loading via `React.lazy`) is the right approach. These techniques allow components to be loaded on demand, reducing initial bundle size and improving build and runtime performance.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What will be the possible output for the below program?
@@ -91,7 +93,7 @@ export function App() {
 > React components must return JSX (or `null`), not plain JavaScript objects. Returning a plain object causes a runtime error: *"Objects are not valid as a React child."* To render the data, you would need to map it into JSX elements.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Which JSX will return by following the App Component?
@@ -114,7 +116,7 @@ function App() {
 > A React component can only return a single root element. Returning two adjacent `<div>` elements without a wrapper causes a compile-time error: *"Adjacent JSX elements must be wrapped in an enclosing tag."* The fix is to wrap them in a fragment `<>...</>` or a container element.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Suppose you are working on an e-commerce website. You must create a production package. Which command will you use?
@@ -129,7 +131,7 @@ function App() {
 > `npm run build` triggers the production build script (e.g., via Create React App or Vite), which bundles and minifies the application for deployment. `npm start` runs the development server, `npm run dev` is a common dev-server alias, and `npm run prod` is not a standard script.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer writes the following component. What will be rendered in the browser?
@@ -152,7 +154,7 @@ function Greet({ name }) {
 > When `name` prop is not provided it is `undefined`, which is falsy. The `||` operator falls back to `"World"`, so the output is `Hello, World!`.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer renders a list without a `key` prop. What is the primary risk?
@@ -172,7 +174,7 @@ items.map(item => <li>{item}</li>);
 > React uses `key` to identify which items changed, were added, or removed. Without keys, React falls back to index-based diffing, which can cause incorrect state association and performance issues.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer sees stale data after a state update. What is wrong with the following code?
@@ -196,7 +198,7 @@ function increment() {
 > State updates in React are batched. Both calls close over the same `count` value. Use the functional updater `setCount(prev => prev + 1)` to guarantee sequential increments.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer passes a new object literal as a prop on every render. What is the consequence?
@@ -215,7 +217,7 @@ function increment() {
 > `React.memo` uses shallow comparison. A new object literal `{}` creates a new reference on every render, defeating memoization. Hoist the object outside the component or use `useMemo`.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What does the following JSX compile to?
@@ -234,7 +236,52 @@ const el = <button className="btn" onClick={handleClick}>Submit</button>;
 > JSX is syntactic sugar. Babel (or the React transform) compiles JSX into `React.createElement(type, props, ...children)` calls that produce React element descriptor objects.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer wraps several components with `withAuth(Component)` to enforce authentication. What React pattern does `withAuth` represent?
+
+- A) Render Props
+- B) Compound Components
+- C) Higher-Order Component (HOC)
+- D) Observer Pattern
+
+**Answer: C) Higher-Order Component (HOC)**
+
+> A Higher-Order Component (HOC) is a function with the signature `(WrappedComponent) => EnhancedComponent`. It adds cross-cutting concerns (auth guards, logging, theming) without modifying the original component. In modern React, custom hooks have largely replaced HOCs for logic reuse, but HOCs remain common in legacy codebases and libraries.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer needs to render a modal dialog outside the parent DOM node to avoid `overflow: hidden` and z-index stacking issues. Which React API solves this?
+
+- A) `React.createContext`
+- B) `React.createPortal`
+- C) `React.lazy`
+- D) `React.forwardRef`
+
+**Answer: B) `React.createPortal`**
+
+> `ReactDOM.createPortal(children, domNode)` renders children into any DOM node outside the component\'s parent hierarchy. Despite the separate DOM placement, React event bubbling still follows the React component tree — making portals ideal for modals, tooltips, and dropdown menus that must escape CSS overflow or z-index constraints.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer has a component with no state, receiving only primitive props. Which optimization avoids re-rendering it when its parent re-renders with the same props?
+
+- A) Wrap it in `React.lazy()`
+- B) Extend `React.PureComponent` (class) or wrap with `React.memo` (function)
+- C) Move all logic into `useEffect`
+- D) Use `ReactDOM.createPortal`
+
+**Answer: B) Extend `React.PureComponent` (class) or wrap with `React.memo` (function)**
+
+> `React.PureComponent` performs a shallow comparison of props and state for class components. `React.memo` does the same for function components. Both prevent re-renders when props are shallowly unchanged — a lightweight optimization for "leaf" display components that receive only primitives or stable references.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2. React Hooks
@@ -253,7 +300,7 @@ const el = <button className="btn" onClick={handleClick}>Submit</button>;
 > `useRef` gives you a direct reference to the underlying DOM element. By attaching the ref to the input (`<input ref={inputRef} />`), you can imperatively call `inputRef.current.blur()` from any other event handler to programmatically trigger the blur event.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. You are working on a food delivery web application. On the restaurant selection, you want to get elements from its stable unique ID. Which React hook will you use?
@@ -268,7 +315,7 @@ const el = <button className="btn" onClick={handleClick}>Submit</button>;
 > `useId` is a React hook that generates a stable, unique ID that is consistent between server and client renders. It is ideal for associating form elements with labels or any scenario requiring a guaranteed unique identifier per component instance.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer wants to run a side effect only when `userId` changes. Which implementation is correct?
@@ -297,7 +344,7 @@ useEffect(() => { fetchUser(userId); }, [userId, fetchUser]);
 > Option C correctly lists `userId` as the only dependency. Option D is also valid if `fetchUser` is unstable, but Option C is the minimal correct answer for this scenario.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer wraps an event handler with `useCallback` but still sees child re-renders. What is the likely cause?
@@ -318,7 +365,7 @@ const handleClick = useCallback(() => {
 > Because `count` is a dependency, the callback is recreated on each count change, producing a new reference. Use `setCount(prev => prev + 1)` and remove `count` from the dependency array to keep a stable reference.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What does `useMemo` return?
@@ -339,7 +386,7 @@ const sortedList = useMemo(() => {
 > `useMemo` caches the result of the computation and only recomputes when a listed dependency changes. This avoids an expensive sort on every render.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses `useRef` to hold a mutable value. What is true about this pattern?
@@ -362,7 +409,7 @@ function start() {
 > `useRef` returns a mutable container whose `.current` property survives re-renders without triggering them - ideal for storing timers, previous values, or DOM nodes.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses the `useReducer` hook. When should it be preferred over `useState`?
@@ -381,7 +428,73 @@ const [state, dispatch] = useReducer(reducer, initialState);
 > `useReducer` centralizes complex state transitions into a pure reducer function, making state logic easier to test and reason about compared to multiple independent `useState` calls.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What makes `useWindowWidth` a valid custom hook?
+
+```js
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return width;
+}
+```
+
+- A) The function accesses a browser API (`window`)
+- B) The function name starts with `use` and calls built-in React hooks internally, following the Rules of Hooks
+- C) The function returns exactly one value
+- D) The function must be exported from a dedicated file
+
+**Answer: B) The function name starts with `use` and calls built-in React hooks internally, following the Rules of Hooks**
+
+> Custom hooks are plain JavaScript functions whose name begins with `use`. The `use` prefix signals to React\'s linter (eslint-plugin-react-hooks) that the function must follow the Rules of Hooks. They allow stateful logic to be shared across components without changing the component hierarchy or introducing HOC/render-prop complexity.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer violates the Rules of Hooks. What is wrong with the following code?
+
+```jsx
+function UserProfile({ isAdmin }) {
+  if (isAdmin) {
+    const [role, setRole] = useState("admin");
+  }
+  return <div />;
+}
+```
+
+- A) `useState` cannot be used in functional components
+- B) Hooks must not be called conditionally — the order of hook calls must be identical on every render
+- C) The `if` block should be replaced with `useEffect`
+- D) `isAdmin` must be listed in a dependency array
+
+**Answer: B) Hooks must not be called conditionally — the order of hook calls must be identical on every render**
+
+> React tracks each hook\'s state by its call order. Placing a hook inside an `if` block means it may or may not execute depending on the condition, corrupting React\'s internal state tracking. The fix is to call the hook unconditionally and use the condition inside it: `const [role, setRole] = useState(isAdmin ? "admin" : "")`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer calls `useContext(ThemeContext)` inside a component. When does the component re-render?
+
+- A) Every time any state changes anywhere in the application
+- B) Only when the component\'s own state changes
+- C) Whenever the `value` prop of the nearest `ThemeContext.Provider` above it changes
+- D) `useContext` never causes a re-render
+
+**Answer: C) Whenever the `value` prop of the nearest `ThemeContext.Provider` above it changes**
+
+> `useContext` subscribes the component to context updates. React re-renders the consumer whenever the `value` reference on the matching Provider changes. To prevent unnecessary re-renders, memoize the context value with `useMemo` so it only changes when the underlying data changes.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 3. Component Lifecycle
@@ -407,7 +520,7 @@ useEffect(() => {
 > React calls the cleanup function before re-running the effect due to a dependency change, and also when the component unmounts. This prevents stale subscriptions and memory leaks.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A class component uses `componentDidUpdate`. What is its hooks-based equivalent?
@@ -430,7 +543,7 @@ componentDidUpdate(prevProps) {
 > Listing `id` in the dependency array replicates the `prevProps.id !== this.props.id` guard - the effect only re-runs when `id` changes.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer notices a layout flash when reading a DOM node\'s size. Which hook should replace `useEffect`?
@@ -445,7 +558,7 @@ componentDidUpdate(prevProps) {
 > `useLayoutEffect` fires synchronously after all DOM mutations but before the browser paints, allowing DOM measurements and mutations without a visible flash.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4. React 19 Features
@@ -473,7 +586,7 @@ function UserProfile({ userPromise }) {
 > `use()` is a new React 19 hook that can be called conditionally (unlike other hooks). It integrates with Suspense - the component suspends while the Promise is pending and resumes with the resolved value.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses the React 19 `useFormStatus` hook. What data does it expose?
@@ -497,7 +610,7 @@ function SubmitButton() {
 > `useFormStatus` (react-dom) gives child components access to the form\'s submission state. `pending` is `true` while the form action is executing, enabling progressive-enhancement UX patterns.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of `useOptimistic` in React 19?
@@ -519,7 +632,7 @@ const [optimisticMessages, addOptimisticMessage] = useOptimistic(
 > `useOptimistic` lets you speculatively update the UI before the server confirms the action. Once the action settles, React replaces the optimistic state with the real server state.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer migrates a form to use React 19 Server Actions. Which statement is correct?
@@ -546,7 +659,7 @@ export default function PostForm() {
 > React 19 Server Actions allow async functions marked `"use server"` to be passed directly to `<form action>`. The form works even without JavaScript, and React manages serialization automatically.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. In React 19, what changed about `ref` handling for function components?
@@ -561,7 +674,7 @@ export default function PostForm() {
 > React 19 deprecates `forwardRef`. Function components can receive `ref` directly in their props, simplifying ref forwarding patterns significantly.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5. Redux & State Management
@@ -587,7 +700,7 @@ case "ADD_ITEM":
 > Redux reducers must be pure functions that return a new state object. Mutating and returning the same reference means React-Redux\'s shallow equality check sees no change and skips re-rendering. Return `{ ...state, items: [...state.items, action.payload] }` instead.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the role of middleware such as `redux-thunk`?
@@ -610,7 +723,7 @@ const fetchUser = (id) => async (dispatch) => {
 > Plain Redux only handles synchronous plain-object actions. `redux-thunk` intercepts function actions and calls them with `dispatch` and `getState`, enabling async workflows.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses `useSelector` and notices unnecessary re-renders. What is the cause?
@@ -632,7 +745,7 @@ const data = useSelector(state => ({
 > `useSelector` uses reference equality by default. Returning a new object `{}` each time always fails the equality check. Use separate `useSelector` calls, `shallowEqual` as the second argument, or `createSelector` from Reselect.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the purpose of `combineReducers`?
@@ -655,7 +768,7 @@ const rootReducer = combineReducers({
 > `combineReducers` delegates different parts of the state to separate reducer functions. Each reducer only receives and manages its own slice of the state (`state.auth`, `state.cart`, etc.).
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 6. Redux Toolkit
@@ -685,7 +798,7 @@ const counterSlice = createSlice({
 > `createSlice` uses Immer under the hood (enabling safe mutation syntax) and auto-generates action creators whose `type` matches `"sliceName/reducerName"` - e.g., `"counter/increment"`.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses `createAsyncThunk`. What lifecycle actions does it dispatch?
@@ -707,7 +820,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchAll", async () => {
 > `createAsyncThunk` automatically dispatches `pending` before the Promise starts, `fulfilled` on resolution, and `rejected` on rejection - matching the FSA lifecycle convention.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses RTK Query\'s `createApi`. What does the following `useGetUserQuery` hook return?
@@ -735,7 +848,7 @@ const { data, isLoading, isError } = useGetUserQuery(userId);
 > RTK Query auto-generates hooks that manage fetching, caching, and re-fetching. The hook re-fetches whenever `userId` changes and handles deduplication and cache invalidation automatically.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer forgets to add the RTK Query API reducer to the store. What happens?
@@ -759,7 +872,55 @@ const store = configureStore({
 > RTK Query stores its normalized cache in the Redux state tree under `api.reducerPath`. Without the reducer, there is nowhere to persist data and the cache/invalidation system will not function.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer wants to respond to `fetchPosts` (a `createAsyncThunk`) inside a `createSlice`. Where should the thunk lifecycle actions be handled?
+
+```js
+const postsSlice = createSlice({
+  name: "posts",
+  initialState: { items: [], status: "idle" },
+  reducers: {},
+  // ??? handle fetchPosts here
+});
+```
+
+- A) Inside the `reducers` field with matching action type strings
+- B) Inside `extraReducers` using the builder callback: `builder.addCase(fetchPosts.fulfilled, ...)`
+- C) In a separate `createReducer` call outside the slice
+- D) Directly inside the component with `useDispatch` and a `useEffect`
+
+**Answer: B) Inside `extraReducers` using the builder callback: `builder.addCase(fetchPosts.fulfilled, ...)`**
+
+> `extraReducers` is the correct location to handle actions that were generated outside the slice — such as thunk lifecycle actions from `createAsyncThunk`. The builder API provides type-safe methods (`addCase`, `addMatcher`, `addDefaultCase`) to react to `pending`, `fulfilled`, and `rejected` states.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer uses `createSelector` from Redux Toolkit (Reselect). What problem does it solve?
+
+```js
+import { createSelector } from "@reduxjs/toolkit";
+
+const selectFilteredItems = createSelector(
+  [(state) => state.items, (state) => state.filter],
+  (items, filter) => items.filter((item) => item.category === filter)
+);
+```
+
+- A) It replaces `useSelector` for all state access
+- B) It memoizes derived data — the result function re-runs only when the input selectors return new values, preventing unnecessary recomputation and re-renders
+- C) It validates the shape of the Redux state tree
+- D) It auto-generates action creators for each selector
+
+**Answer: B) It memoizes derived data — the result function re-runs only when the input selectors return new values, preventing unnecessary recomputation and re-renders**
+
+> Without memoization, a selector computing derived data (filtered lists, sorted arrays, aggregates) runs on every render. `createSelector` caches the last result and skips recomputation when its input selectors return the same references, improving both CPU usage and render performance when used with `useSelector`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7. Performance Optimization
@@ -778,7 +939,7 @@ const store = configureStore({
 > Debouncing limits how often a high-frequency event handler fires by delaying execution until a burst of events has stopped. This directly reduces performance bottlenecks for events like scroll, resize, or keypress. A Global Event Bus adds coupling, the Observer pattern addresses subscriptions not rate-limiting, and Redux middleware handles async side effects rather than event frequency.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Suppose you are working on an inventory management portal. When your product list loads, you don\'t have any control over its state but you want to give high priority to UI updates. Which React feature will help you?
@@ -793,7 +954,7 @@ const store = configureStore({
 > `useDeferredValue` is the right choice when you do not control the state (e.g., it comes from a prop or an external source). It creates a deferred copy of the value so React can prioritize urgent UI updates and render the deferred value when the browser is idle. `useTransition` is similar but requires you to own the state update.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A parent re-renders frequently. A child component receives the same props every time. How do you prevent the child from re-rendering?
@@ -814,7 +975,7 @@ function Child({ label }) {
 > `React.memo` is a higher-order component that memoizes the rendered output. If the next props shallowly equal the previous props, React reuses the last render and skips the child\'s reconciliation.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer profiles the app and sees a slow computation running on every render. Which hook should they apply?
@@ -836,7 +997,7 @@ function Dashboard({ transactions }) {
 > `useMemo(() => transactions.reduce(...), [transactions])` ensures the expensive reduction only runs when `transactions` changes, not on every render.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses `useTransition`. What does `isPending` indicate?
@@ -859,7 +1020,7 @@ function handleSearch(e) {
 > `useTransition` marks an update as non-urgent. `isPending` is `true` while React is rendering the deferred update, allowing you to show a loading indicator without blocking the input.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8. Context API
@@ -878,7 +1039,7 @@ function handleSearch(e) {
 > The React Context API is designed exactly for this scenario — passing data through a component tree without having to thread props through every intermediate level (prop drilling). Create a context with `React.createContext`, wrap the tree in a `Provider`, and any descendant can consume the value with `useContext`.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer wraps the app in a `ThemeContext.Provider`. A deeply nested component reads the theme. What happens when the theme value changes?
@@ -899,7 +1060,7 @@ function handleSearch(e) {
 > React re-renders every component that called `useContext(ThemeContext)` whenever the `value` reference changes. Components that do not consume the context are not affected.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer notices that changing an unrelated state in the Provider\'s parent causes all consumers to re-render. What is the fix?
@@ -927,7 +1088,7 @@ function App() {
 > A new `theme` object is created on every render, causing all consumers to re-render. `const theme = useMemo(() => ({ color: "blue" }), [])` produces a stable reference and prevents unnecessary consumer updates.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9. Error Boundaries
@@ -946,7 +1107,7 @@ function App() {
 > `window.addEventListener('unhandledrejection', handler)` is the standard browser API for globally capturing unhandled promise rejections. The event object provides the rejected `reason`, enabling comprehensive logging. Error Boundaries do not catch async/promise errors, and `try-catch` only works when applied locally around each async call.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer wraps a component tree in an Error Boundary. Which types of errors does it catch?
@@ -971,7 +1132,7 @@ class ErrorBoundary extends React.Component {
 > Error Boundaries catch errors during React\'s render phase and lifecycle methods. They do NOT catch errors in event handlers (use `try/catch` there), async code, or server-side rendering.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is the difference between `getDerivedStateFromError` and `componentDidCatch`?
@@ -986,7 +1147,7 @@ class ErrorBoundary extends React.Component {
 > `getDerivedStateFromError` runs during rendering so it can update state to show a fallback. `componentDidCatch` runs after the tree has re-rendered and is the right place to call error reporting services.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10. Code Splitting & Lazy Loading
@@ -1005,7 +1166,7 @@ class ErrorBoundary extends React.Component {
 > Code splitting with `React.lazy()` and dynamic `import()` allows the dashboard to load only the code needed for the initial view, deferring heavier modules until they are required. This reduces the initial bundle size and improves load time without removing features or limiting data.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Alex, a software developer, is working on an application where she needs to implement a seamless transition between pages. She is considering using the Transition API to enhance the user experience. Which approach should Alex take to achieve smooth transitions in her application?
@@ -1020,7 +1181,7 @@ class ErrorBoundary extends React.Component {
 > `startTransition` (from `useTransition` or `React.startTransition`) marks a state update as a non-urgent transition, allowing React to keep the current UI responsive while preparing the new page in the background. This is the correct way to achieve smooth page-to-page transitions with the Transition API.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. Alex, a software developer, is working on an application where she is utilizing Suspense for handling data fetching. Despite configuring Suspense she observes that her component does not render immediately when waiting for data. She is puzzled about the potential reasons behind this delay in rendering. What could be the reason for this behavior?
@@ -1035,7 +1196,7 @@ class ErrorBoundary extends React.Component {
 > Suspense requires components that perform asynchronous data fetching to be wrapped inside a `<Suspense>` boundary with a `fallback` prop. Without proper wrapping, the component will not know to show a fallback UI while data loads, resulting in unexpected rendering behavior.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer lazy-loads a component. Why is `Suspense` required?
@@ -1062,7 +1223,7 @@ function Dashboard() {
 > `React.lazy` throws a Promise while the module is loading. A `Suspense` boundary catches that Promise and renders its `fallback` prop until the Promise resolves and the component is ready.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer code-splits by route. Which approach is correct for React Router v6?
@@ -1087,7 +1248,7 @@ const Home = import("./Home");
 > Dynamic `import()` must be wrapped in `React.lazy()` and the resulting component must be rendered inside a `Suspense` boundary. Option B creates a Promise, not a React component.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11. Forms & Controlled Components
@@ -1113,7 +1274,7 @@ function SearchBox() {
 > In a controlled component, React drives the input value via the `value` prop. Without `onChange` calling `setQuery`, user keystrokes are ignored and the input appears frozen.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses React Hook Form. What advantage does it have over fully controlled forms?
@@ -1136,7 +1297,7 @@ const { register, handleSubmit } = useForm();
 > React Hook Form avoids re-rendering on each keystroke by managing values through DOM refs instead of React state, significantly improving performance for complex forms.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 12. Jest - Unit Testing
@@ -1163,7 +1324,7 @@ console.log(mockFn.mock.calls);
 > `jest.fn()` creates a mock function. `mock.calls` is an array where each element is an array of arguments from a single invocation. Useful for asserting what arguments the mock received.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer tests an async function. Why does this test always pass even when it should fail?
@@ -1186,7 +1347,7 @@ test("fetches user", () => {
 > Jest completes the test when the synchronous function returns. The `.then()` callback runs asynchronously after Jest has already marked the test as passed. Use `async/await` or return the Promise to fix this.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. What is a Jest snapshot test doing in the following scenario?
@@ -1208,7 +1369,7 @@ test("renders correctly", () => {
 > Snapshot tests serialize the rendered output. If the output changes unexpectedly, the test fails. Run `jest --updateSnapshot` to intentionally update the saved snapshot after a deliberate change.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer needs to mock a module dependency in Jest. Which approach is correct?
@@ -1233,7 +1394,7 @@ getUser.mockResolvedValue({ name: "Alice" });
 > `jest.mock` is hoisted before imports by Babel, replacing all exports with `jest.fn()`. `mockResolvedValue` configures the mock to resolve with the given value, simulating a successful async API call.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer uses `beforeEach` and `afterEach`. What is their purpose?
@@ -1258,7 +1419,7 @@ describe("Counter", () => {
 > `beforeEach`/`afterEach` are test lifecycle hooks that set up and tear down state around each individual test, preventing state leakage between tests. Use `beforeAll`/`afterAll` for once-per-suite setup.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 13. React Testing Library
@@ -1281,7 +1442,7 @@ const button = screen.getByRole("button", { name: /submit/i });
 > The Testing Library philosophy is to test from a user\'s perspective. `getByRole` mirrors how screen readers navigate the DOM, and tests that break only when real user-visible behavior changes.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer tests a form submission. What does `userEvent.click` do compared to `fireEvent.click`?
@@ -1300,7 +1461,7 @@ await userEvent.click(screen.getByRole("button", { name: /submit/i }));
 > `@testing-library/user-event` simulates realistic user interactions including all intermediate events, making tests closer to real browser behavior. `fireEvent` dispatches a single synthetic event.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer needs to wait for an async update after an action. Which assertion is correct?
@@ -1323,7 +1484,7 @@ test("loads users", async () => {
 > `findBy*` queries combine `waitFor` and `getBy*`. They poll the DOM at intervals until the element appears or the timeout (default 1000 ms) expires, making them ideal for testing async rendering.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A developer needs to test that an element is NOT present in the DOM. Which approach is correct?
@@ -1346,7 +1507,7 @@ expect(screen.queryByText("Error")).not.toBeInTheDocument();
 > `getBy*` throws an error when an element is not found. `queryBy*` returns `null` instead, which is the correct variant when you need to assert the element is absent.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## Q. A Redux-connected component needs testing. What is the recommended setup?
@@ -1371,7 +1532,7 @@ function renderWithStore(ui, { preloadedState } = {}) {
 > Using a real store with `preloadedState` keeps tests realistic and avoids brittle mocks. Redux Toolkit\'s `configureStore` is lightweight enough to spin up per test. This is the pattern recommended by the Redux and RTL maintainers.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 14. MISCELLANEOUS
@@ -1406,5 +1567,378 @@ export default Rxjs
 > The code uses `import {Observables} from 'Rxjs'` which has two problems: the named import is misspelled as `Observables` (should be `Observable`), and the package name `'Rxjs'` should be lowercase `'rxjs'`. The correct import is `import { Observable } from 'rxjs'`. The `new` keyword is also required when constructing an Observable, so option B is incorrect.
 
 <div align="right">
-    <b><a href="#">? back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 15. Next.js
+
+<br>
+
+## Q. Which command scaffolds a new Next.js project with the latest version?
+
+- A) `npx create-react-app --template next`
+- B) `npx create-next-app@latest`
+- C) `npm init next-app`
+- D) `npx next init`
+
+**Answer: B) `npx create-next-app@latest`**
+
+> The official scaffold tool is `create-next-app`. Running `npx create-next-app@latest` interactively prompts for TypeScript, ESLint, Tailwind CSS, the `src/` directory structure, and whether to use the App Router.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In the Next.js Pages Router, a component exported from `pages/blog/index.js` maps to which URL path?
+
+- A) `/pages/blog`
+- B) `/blog/index`
+- C) `/blog`
+- D) `/blog/index.js`
+
+**Answer: C) `/blog`**
+
+> Next.js uses file-based routing. An `index.js` file maps to the root of its directory segment, so `pages/blog/index.js` resolves to `/blog`. This mirrors standard web server conventions for index files.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Which Next.js built-in component should be used for client-side navigation to avoid a full page reload?
+
+- A) `<a href="/about">`
+- B) `<Router to="/about">`
+- C) `<Link href="/about">` from `next/link`
+- D) `<Navigate to="/about">`
+
+**Answer: C) `<Link href="/about">` from `next/link`**
+
+> The `<Link>` component from `next/link` intercepts clicks and performs client-side route transitions using the browser History API. It also prefetches linked pages in the background in production, delivering near-instant navigation — unlike a plain `<a>` tag which triggers a full page reload.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What advantage does `next/image` offer over a plain HTML `<img>` tag?
+
+- A) Support for SVG animations
+- B) Automatic image optimization, lazy loading by default, and responsive `srcset` generation
+- C) Built-in CSS filter effects
+- D) Client-side image cropping and editing
+
+**Answer: B) Automatic image optimization, lazy loading by default, and responsive `srcset` generation**
+
+> `next/image` passes images through Next.js\'s built-in optimization pipeline: it converts to modern formats (WebP/AVIF), resizes on demand, lazy-loads by default, and prevents cumulative layout shift (CLS) by requiring explicit `width` and `height` props. This significantly improves Core Web Vitals scores.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the key difference between `getStaticProps` and `getServerSideProps` in the Next.js Pages Router?
+
+- A) Both run on the server and produce identical output
+- B) `getStaticProps` runs at build time (SSG); `getServerSideProps` runs on every incoming request (SSR)
+- C) `getStaticProps` is only for API routes
+- D) `getServerSideProps` permanently caches its result
+
+**Answer: B) `getStaticProps` runs at build time (SSG); `getServerSideProps` runs on every incoming request (SSR)**
+
+> `getStaticProps` pre-renders pages at build time, producing static HTML that can be cached at a CDN edge — ideal for content that rarely changes. `getServerSideProps` generates fresh HTML per request, granting access to real-time data, request cookies, and headers, but at the cost of higher server latency.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer needs a dynamic route for individual product pages at `/products/[id]`. Which file path in the Pages Router is correct?
+
+- A) `pages/products/:id.js`
+- B) `pages/products/{id}.js`
+- C) `pages/products/[id].js`
+- D) `pages/products/$id.js`
+
+**Answer: C) `pages/products/[id].js`**
+
+> Next.js uses square-bracket notation for dynamic route segments. `pages/products/[id].js` matches `/products/42`, `/products/abc`, etc. The dynamic value is accessible as `router.query.id` or via the `params` argument in `getStaticProps` / `getServerSideProps`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer creates `pages/api/orders.js`. What does this file expose?
+
+- A) A React page component rendered at `/api/orders`
+- B) A serverless API endpoint that handles HTTP requests at `/api/orders`
+- C) A static JSON file served at `/api/orders`
+- D) A WebSocket connection endpoint
+
+**Answer: B) A serverless API endpoint that handles HTTP requests at `/api/orders`**
+
+> Files inside `pages/api/` are API routes that run exclusively on the server. They receive Node.js-style `req` and `res` objects, are never sent to the browser, and keep server-only logic (database queries, secret keys) completely isolated from the client bundle.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A Next.js developer needs an environment variable to be accessible in client-side JavaScript. What naming convention is required?
+
+- A) `REACT_APP_API_KEY`
+- B) `NEXT_PUBLIC_API_KEY`
+- C) `PUBLIC_API_KEY`
+- D) `CLIENT_API_KEY`
+
+**Answer: B) `NEXT_PUBLIC_API_KEY`**
+
+> Next.js only inlines environment variables into the browser bundle when they are prefixed with `NEXT_PUBLIC_`. All other env variables remain server-side only and are never included in client code, protecting secrets like database passwords and API tokens from exposure.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer wants a statically generated page to automatically refresh stale content every 10 minutes without a full rebuild. What is the correct approach?
+
+```js
+export async function getStaticProps() {
+  const data = await fetchProducts();
+  return { props: { data }, revalidate: 600 };
+}
+```
+
+- A) This is incorrect; use `getServerSideProps` instead for refreshing content
+- B) This uses Incremental Static Regeneration (ISR) — after 600 seconds, the next request triggers background regeneration while the stale page is served
+- C) The page is rebuilt every 600 seconds automatically regardless of traffic
+- D) `revalidate` is not a valid key in the `getStaticProps` return object
+
+**Answer: B) This uses Incremental Static Regeneration (ISR) — after 600 seconds, the next request triggers background regeneration while the stale page is served**
+
+> ISR combines the performance of static pages with the freshness of server rendering. Once the revalidation window expires, the next visitor gets the stale page immediately while Next.js regenerates it in the background. The freshly generated page replaces the old one for subsequent visitors.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In Next.js App Router (`app/` directory), what is the role of a `layout.tsx` file?
+
+- A) It defines page-level `<head>` metadata like `<title>` and Open Graph tags
+- B) It is a persistent UI shell that wraps the current segment and all nested segments, preserving state across route changes
+- C) It replaces `getServerSideProps` for server-side data fetching
+- D) It is used only for CSS-in-JS scope isolation
+
+**Answer: B) It is a persistent UI shell that wraps the current segment and all nested segments, preserving state across route changes**
+
+> `layout.tsx` defines shared UI (nav, sidebar, providers) that persists across navigations within its segment. React preserves the layout component\'s state and DOM — it is not unmounted when a child route changes. Every segment can have its own `layout.tsx`, and they nest automatically for granular control.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In Next.js App Router, what does adding `"use client"` at the top of a file declare?
+
+- A) The file should only be included in the development bundle
+- B) The component is a Client Component — it is hydrated in the browser and can use hooks, state, and browser APIs
+- C) The file handles client authentication logic only
+- D) All exports from the file are server-only utilities
+
+**Answer: B) The component is a Client Component — it is hydrated in the browser and can use hooks, state, and browser APIs**
+
+> By default, all App Router components are React Server Components that render only on the server with zero JavaScript shipped to the client. Adding `"use client"` marks a boundary: that file and its imports become part of the client bundle, enabling interactivity via `useState`, `useEffect`, and event handlers. Server Components cannot use these APIs.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer uses `getStaticPaths` with `fallback: 'blocking'`. What happens when a visitor requests a path that was not pre-generated at build time?
+
+- A) A 404 page is returned immediately
+- B) A loading skeleton from `router.isFallback` is shown while the page generates
+- C) The page is server-rendered on the first request, the response is cached as static HTML, and subsequent visitors get the static file
+- D) The Next.js build is triggered again to include the new path
+
+**Answer: C) The page is server-rendered on the first request, the response is cached as static HTML, and subsequent visitors get the static file**
+
+> `fallback: 'blocking'` generates unbuilt pages on-demand via SSR (the request blocks until rendering is complete), then stores the result as static HTML. Unlike `fallback: true`, no intermediate loading state is shown. Use it when you want on-demand generation without a loading flash.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Where does Next.js Middleware execute, and what is it primarily used for?
+
+- A) In the browser after the page loads, to modify the DOM
+- B) In the Node.js API runtime to validate request bodies
+- C) At the Edge runtime, before a request is matched to a route — for redirects, rewrites, auth checks, and header manipulation
+- D) Inside React Server Components as an async data-fetching wrapper
+
+**Answer: C) At the Edge runtime, before a request is matched to a route — for redirects, rewrites, auth checks, and header manipulation**
+
+> Next.js Middleware runs in the lightweight Edge Runtime (V8-based) and executes before route resolution. It is ideal for authentication redirects, A/B testing, geo-targeting, and request/response header manipulation with near-zero added latency since it runs at the network edge close to the user.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In the Next.js App Router, what is the purpose of `generateStaticParams`?
+
+```tsx
+// app/products/[id]/page.tsx
+export async function generateStaticParams() {
+  const products = await fetchProducts();
+  return products.map((p) => ({ id: String(p.id) }));
+}
+```
+
+- A) It validates the params passed to a dynamic route at runtime
+- B) It is the App Router equivalent of `getStaticPaths` — it returns param objects to pre-render at build time
+- C) It generates TypeScript types for dynamic route parameters
+- D) It runs on every request to fetch the latest parameters from the database
+
+**Answer: B) It is the App Router equivalent of `getStaticPaths` — it returns param objects to pre-render at build time**
+
+> `generateStaticParams` replaces `getStaticPaths` from the Pages Router. It is exported from a dynamic segment\'s `page.tsx` and returns an array of param objects that Next.js uses to determine which paths to pre-render during `next build`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In the Next.js App Router, how do React Server Components (RSC) fetch data differently from client components?
+
+- A) RSC use `useEffect` with `fetch` in the component body
+- B) RSC use a special `getData()` hook provided by Next.js
+- C) RSC can be declared as `async` functions and `await` data directly in the component body — no hooks required
+- D) RSC require Redux Toolkit for all server-side data fetching
+
+**Answer: C) RSC can be declared as `async` functions and `await` data directly in the component body — no hooks required**
+
+> React Server Components run exclusively on the server and are never hydrated in the browser. Because they do not participate in the React hook lifecycle, they can be `async` functions that `await` database queries, file reads, or API calls directly in the component body, eliminating the need for `useEffect`-based data fetching patterns.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer wraps a slow data-fetching Server Component with `<Suspense>` in the Next.js App Router. What is the performance benefit?
+
+```tsx
+<Suspense fallback={<Skeleton />}>
+  <SlowDataComponent />
+</Suspense>
+```
+
+- A) It moves `SlowDataComponent` to client-side rendering automatically
+- B) It enables HTML streaming — the server sends the outer shell (including the fallback) immediately and streams the component\'s HTML when its data resolves
+- C) It caches the component\'s output in a Redis store
+- D) It prevents `SlowDataComponent` from receiving any props until data is ready
+
+**Answer: B) It enables HTML streaming — the server sends the outer shell (including the fallback) immediately and streams the component\'s HTML when its data resolves**
+
+> Next.js App Router supports HTTP streaming via React Suspense. The server flushes the page shell and Suspense fallback to the browser immediately (improving TTFB), then streams the resolved component HTML as a small `<script>` injection once the awaited data is ready — without a full page reload or client-side fetch.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 16. React Router
+
+<br>
+
+## Q. A developer sets up React Router v6. Which component provides the routing context to the entire application?
+
+```jsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+- A) `<Routes>`
+- B) `<Route>`
+- C) `<BrowserRouter>`
+- D) `<Switch>`
+
+**Answer: C) `<BrowserRouter>`**
+
+> `<BrowserRouter>` provides the routing context to the component tree using the browser\'s History API. `<Routes>` selects the best-matching `<Route>` for the current URL. `<Switch>` was the v5 equivalent of `<Routes>` and does not exist in v6.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer needs to read the `:id` parameter from the URL `/users/42`. Which React Router v6 hook should they use?
+
+- A) `useQuery()`
+- B) `useHistory()`
+- C) `useParams()`
+- D) `useLocation()`
+
+**Answer: C) `useParams()`**
+
+> `useParams()` returns an object of the matched URL parameters. For a route defined as `/users/:id`, calling `const { id } = useParams()` gives `"42"`. `useHistory` was the v5 API replaced by `useNavigate` in v6. `useLocation` provides the current location object (pathname, search, hash) without URL params.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer wants to programmatically redirect to `/dashboard` after a successful form submission. Which React Router v6 hook should they use?
+
+- A) `useHistory()`
+- B) `useNavigate()`
+- C) `useLocation()`
+- D) `useRedirect()`
+
+**Answer: B) `useNavigate()`**
+
+> In React Router v6, `useNavigate()` returns a `navigate` function for imperative navigation: `const navigate = useNavigate(); navigate("/dashboard")`. `useHistory()` was its v5 predecessor and was removed in v6. `useLocation()` only reads the current URL without navigating.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer builds a protected route pattern. What does the following component do?
+
+```jsx
+function PrivateRoute({ children }) {
+  const isLoggedIn = useAuth();
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
+}
+```
+
+- A) It always renders children and ignores the auth state
+- B) It renders children when authenticated; otherwise it declaratively redirects to `/login` using `<Navigate>`
+- C) It suspends rendering until authentication resolves
+- D) `<Navigate>` is only valid as a direct child of `<Routes>`
+
+**Answer: B) It renders children when authenticated; otherwise it declaratively redirects to `/login` using `<Navigate>`**
+
+> `<Navigate>` is the declarative redirect component in React Router v6. When rendered, it immediately triggers a navigation to the specified route. The `replace` prop replaces the current history entry so the user cannot navigate back to the protected page with the browser back button.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer defines nested routes in React Router v6. Where must `<Outlet />` be placed for child routes to render?
+
+```jsx
+<Route path="/dashboard" element={<DashboardLayout />}>
+  <Route path="stats" element={<Stats />} />
+  <Route path="settings" element={<Settings />} />
+</Route>
+```
+
+- A) In each of the child components (`<Stats />`, `<Settings />`)
+- B) In `<DashboardLayout />`, at the position where the matched child route element should appear
+- C) Immediately inside `<BrowserRouter>`
+- D) `<Outlet />` is not needed; child routes render automatically
+
+**Answer: B) In `<DashboardLayout />`, at the position where the matched child route element should appear**
+
+> `<Outlet>` is a placeholder inside a parent route\'s element component. It renders the matched child route\'s element at that position. Without `<Outlet>`, child routes match in the URL but their elements never appear in the DOM.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
