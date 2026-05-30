@@ -1,4 +1,4 @@
-# Next.js Interview Questions
+# Next.js Basics
 
 <br/>
 
@@ -23,7 +23,9 @@
 
 ## Core Concepts
 
-### 1. What is Next.js and how does it differ from plain React?
+<br>
+
+## Q. What is Next.js and how does it differ from plain React?
 
 Next.js is a React framework built on top of React that provides:
 
@@ -40,7 +42,7 @@ Plain React is a UI library that only handles the view layer. Next.js adds the f
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 2. What are the main rendering strategies in Next.js?
+## Q. What are the main rendering strategies in Next.js?
 
 | Strategy | Renders At | Use Case |
 |---|---|---|
@@ -54,7 +56,7 @@ Plain React is a UI library that only handles the view layer. Next.js adds the f
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 3. What is the difference between the Pages Router and the App Router?
+## Q. What is the difference between the Pages Router and the App Router?
 
 | Feature | Pages Router | App Router (Next.js 13+) |
 |---|---|---|
@@ -70,7 +72,7 @@ Plain React is a UI library that only handles the view layer. Next.js adds the f
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 4. What is `_app.tsx` in the Pages Router?
+## Q. What is `_app.tsx` in the Pages Router?
 
 `_app.tsx` is the custom App component that wraps all pages. It is used to:
 
@@ -93,7 +95,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 5. What is `_document.tsx` and when do you use it?
+## Q. What is `_document.tsx` and when do you use it?
 
 `_document.tsx` customizes the HTML document shell (`<html>`, `<head>`, `<body>`). It only renders on the server and is used for:
 
@@ -122,9 +124,79 @@ export default function Document() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is hydration in Next.js?
+
+Hydration is the process where React attaches event listeners to server-rendered HTML on the client, making it interactive. The server sends static HTML and React "hydrates" it by reconciling the server HTML with the client-side component tree.
+
+**Hydration mismatch errors** occur when server and client render different content (e.g., `Date.now()`, `Math.random()`, browser-only APIs).
+
+**Avoiding hydration errors:**
+
+```tsx
+// Option 1: Render client-only content after mount
+'use client';
+import { useState, useEffect } from 'react';
+
+export default function ClientOnly({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted ? <>{children}</> : null;
+}
+```
+
+```tsx
+// Option 2: Dynamic import with ssr: false
+import dynamic from 'next/dynamic';
+
+const BrowserOnlyMap = dynamic(() => import('./Map'), { ssr: false });
+```
+
+```tsx
+// Option 3: Suppress warning for intentionally different content (use sparingly)
+<time dateTime={serverTime} suppressHydrationWarning>
+  {clientTime}
+</time>
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the Next.js SWC compiler?
+
+Next.js uses **SWC** (Speedy Web Compiler), a Rust-based compiler that replaces Babel for transpilation and Terser for minification. It is enabled by default since Next.js 12.
+
+**Benefits over Babel:**
+- **~17× faster** local builds
+- **~5× faster** production builds
+- Native support for TypeScript, JSX, and modern JS
+- React Fast Refresh out of the box
+
+If a `babel.config.js` is present, Next.js falls back to Babel automatically. You can configure SWC transforms in `next.config.js`:
+
+```js
+// next.config.js
+module.exports = {
+  compiler: {
+    // Remove console.log in production
+    removeConsole: process.env.NODE_ENV === 'production',
+    // Enable styled-components support
+    styledComponents: true,
+    // Strip data-testid attributes from production builds
+    reactRemoveProperties: { properties: ['^data-testid$'] },
+  },
+};
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Rendering Strategies
 
-### 6. How does Static Site Generation (SSG) work in the Pages Router?
+<br>
+
+## Q. How does Static Site Generation (SSG) work in the Pages Router?
 
 Use `getStaticProps` to fetch data at build time. The page is pre-rendered as static HTML.
 
@@ -161,7 +233,7 @@ export async function getStaticPaths() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 7. How does Server-Side Rendering (SSR) work?
+## Q. How does Server-Side Rendering (SSR) work?
 
 Use `getServerSideProps` to fetch data on every request.
 
@@ -183,7 +255,7 @@ export async function getServerSideProps(context) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 8. What is Incremental Static Regeneration (ISR)?
+## Q. What is Incremental Static Regeneration (ISR)?
 
 ISR allows statically generated pages to be revalidated in the background after a set interval without rebuilding the entire site.
 
@@ -212,7 +284,7 @@ export default async function handler(req, res) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 9. How do React Server Components (RSC) work in the App Router?
+## Q. How do React Server Components (RSC) work in the App Router?
 
 In the App Router, **all components are Server Components by default**. They:
 
@@ -245,7 +317,7 @@ export default function Counter() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 10. What is streaming and how does Next.js support it?
+## Q. What is streaming and how does Next.js support it?
 
 Streaming lets the server send HTML chunks progressively to the browser using HTTP chunked transfer. This improves Time to First Byte (TTFB) and perceived performance.
 
@@ -275,9 +347,52 @@ export default function Dashboard() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What is Client-Side Rendering (CSR) in Next.js?
+
+In CSR, the page is rendered entirely in the browser. The server sends a minimal HTML shell and React fetches data and renders the UI on the client.
+
+**When to use CSR:**
+- Highly interactive dashboards that don\'t need SEO
+- Pages behind authentication with user-specific real-time data
+- Components that rely on browser-only APIs
+
+Mark a component `'use client'` and fetch with `useEffect` or a data-fetching library:
+
+```tsx
+'use client';
+import useSWR from 'swr';
+
+const fetcher = (url: string) => fetch(url).then(r => r.json());
+
+export default function Dashboard() {
+  const { data, error, isLoading } = useSWR('/api/stats', fetcher);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Failed to load</p>;
+  return <pre>{JSON.stringify(data, null, 2)}</pre>;
+}
+```
+
+**CSR vs Server Components:**
+
+| | CSR (`'use client'`) | Server Components |
+|---|---|---|
+| Renders at | Browser | Server |
+| Can use hooks | Yes | No |
+| SEO | Limited | Full |
+| Bundle size | Adds to JS bundle | Zero client JS |
+
+> Prefer Server Components for initial data loads. Use CSR only for interactive or user-specific post-hydration data.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Routing
 
-### 11. How does file-based routing work in Next.js?
+<br>
+
+## Q. How does file-based routing work in Next.js?
 
 **Pages Router:**
 
@@ -302,7 +417,7 @@ export default function Dashboard() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 12. What are route groups and parallel routes in the App Router?
+## Q. What are route groups and parallel routes in the App Router?
 
 **Route Groups** — use `(folderName)` to organize routes without affecting the URL:
 
@@ -341,7 +456,7 @@ export default function Layout({ children, team, analytics }) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 13. What are intercepting routes?
+## Q. What are intercepting routes?
 
 Intercepting routes allow you to display a route within the current layout while keeping the URL of another route — commonly used for modals.
 
@@ -364,7 +479,7 @@ Convention:
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 14. How do you programmatically navigate in Next.js?
+## Q. How do you programmatically navigate in Next.js?
 
 **App Router:**
 
@@ -400,7 +515,7 @@ import Link from 'next/link';
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 15. What is the `usePathname`, `useSearchParams`, and `useParams` hook?
+## Q. What is the `usePathname`, `useSearchParams`, and `useParams` hook?
 
 These are App Router hooks (all require `'use client'`):
 
@@ -421,9 +536,94 @@ function MyComponent() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do nested layouts work in the App Router?
+
+Layouts wrap their child segments and persist across navigations without re-rendering. Place a `layout.tsx` inside any subdirectory to create a nested layout:
+
+```
+app/
+  layout.tsx           ← Root layout (must include <html> and <body>)
+  dashboard/
+    layout.tsx         ← Dashboard layout (e.g. sidebar)
+    page.tsx           ← /dashboard
+    settings/
+      layout.tsx       ← Settings layout (e.g. settings nav)
+      page.tsx         ← /dashboard/settings
+```
+
+```tsx
+// app/dashboard/layout.tsx
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1">{children}</main>
+    </div>
+  );
+}
+```
+
+**Key behaviors:**
+- Layouts **preserve state** when navigating between child routes — they do not unmount
+- The root `layout.tsx` **must** define `<html>` and `<body>` tags
+- Use `useSelectedLayoutSegment()` in a Client Component layout to highlight the active child segment
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does `<Link>` prefetching work in Next.js?
+
+`<Link>` automatically **prefetches** the linked route in the background when it enters the viewport, making subsequent navigations feel instantaneous.
+
+**App Router behavior:**
+- Prefetches the static parts of the route (shared layouts + loading UI)
+- Dynamic segments are **not** prefetched by default
+- Only active in production builds
+
+**Pages Router behavior:**
+- Prefetches the full page for static routes
+- For dynamic/SSR routes, only the JSON data is prefetched
+
+```tsx
+import Link from 'next/link';
+
+// Prefetching enabled by default
+<Link href="/about">About</Link>
+
+// Disable prefetching for rarely-visited or heavy routes
+<Link href="/reports" prefetch={false}>Reports</Link>
+```
+
+**Programmatic prefetch:**
+
+```tsx
+'use client';
+import { useRouter } from 'next/navigation';
+
+export default function ProductHover({ id }: { id: string }) {
+  const router = useRouter();
+  return (
+    <div onMouseEnter={() => router.prefetch(`/product/${id}`)}>
+      Hover to prefetch
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Data Fetching
 
-### 16. How do you fetch data in the App Router?
+<br>
+
+## Q. How do you fetch data in the App Router?
 
 Fetch data directly in Server Components using `async/await`. Next.js extends the native `fetch` API with caching options:
 
@@ -446,7 +646,7 @@ const data = await fetch('https://api.example.com/data', {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 17. What is `revalidatePath` and `revalidateTag`?
+## Q. What is `revalidatePath` and `revalidateTag`?
 
 These are App Router cache invalidation utilities used inside Server Actions or Route Handlers.
 
@@ -470,7 +670,7 @@ const data = await fetch('/api/posts', { next: { tags: ['posts'] } });
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 18. How does request memoization work in Next.js?
+## Q. How does request memoization work in Next.js?
 
 Within a single render tree, Next.js automatically deduplicates `fetch` calls with the same URL and options. This means you can safely call the same fetch in multiple Server Components without making duplicate network requests.
 
@@ -489,9 +689,72 @@ async function ComponentB() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you fetch data on the client side in Next.js?
+
+For data that must be fetched after hydration (user-specific, real-time), use **SWR** or **TanStack Query** inside Client Components.
+
+**SWR** (by Vercel — lightweight, built for Next.js):
+
+```bash
+npm install swr
+```
+
+```tsx
+'use client';
+import useSWR from 'swr';
+
+const fetcher = (url: string) => fetch(url).then(r => r.json());
+
+export default function UserProfile() {
+  const { data, error, isLoading, mutate } = useSWR('/api/user', fetcher, {
+    refreshInterval: 30_000, // Revalidate every 30 seconds
+  });
+
+  if (isLoading) return <Skeleton />;
+  if (error) return <p>Failed to load</p>;
+  return (
+    <div>
+      <p>{data.name}</p>
+      <button onClick={() => mutate()}>Refresh</button>
+    </div>
+  );
+}
+```
+
+**TanStack Query** (full-featured, ideal for complex apps):
+
+```bash
+npm install @tanstack/react-query
+```
+
+```tsx
+'use client';
+import { useQuery } from '@tanstack/react-query';
+
+export default function Posts() {
+  const { data, isPending, error } = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => fetch('/api/posts').then(r => r.json()),
+    staleTime: 60_000, // Data considered fresh for 1 minute
+  });
+
+  if (isPending) return <Spinner />;
+  if (error) return <p>Failed to load posts</p>;
+  return <ul>{data.map(p => <li key={p.id}>{p.title}</li>)}</ul>;
+}
+```
+
+> **Best practice:** Fetch initial data in Server Components and pass it as props or use it as a prefetched cache seed. Reserve client-side fetching for mutations and post-hydration updates.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## App Router (Next.js 13+)
 
-### 19. What are the special files in the App Router?
+<br>
+
+## Q. What are the special files in the App Router?
 
 | File | Purpose |
 |---|---|
@@ -508,7 +771,7 @@ async function ComponentB() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 20. What is a Server Action?
+## Q. What is a Server Action?
 
 Server Actions are async functions that run on the server and can be called directly from Client or Server Components. They eliminate the need for separate API routes for form handling and mutations.
 
@@ -542,7 +805,7 @@ export default function NewPostForm() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 21. What is the difference between `layout.tsx` and `template.tsx`?
+## Q. What is the difference between `layout.tsx` and `template.tsx`?
 
 | | `layout.tsx` | `template.tsx` |
 |---|---|---|
@@ -554,7 +817,7 @@ export default function NewPostForm() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 22. How do you handle errors in the App Router?
+## Q. How do you handle errors in the App Router?
 
 Create an `error.tsx` file in the route segment. It must be a Client Component.
 
@@ -584,9 +847,63 @@ For root-level errors (outside root layout), use `global-error.tsx`.
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you pass data from Server Components to Client Components?
+
+Server Components can pass **serializable props** to Client Components — strings, numbers, plain objects, arrays. Functions and class instances cannot be passed across the server/client boundary.
+
+```tsx
+// app/page.tsx — Server Component
+import ClientCard from '@/components/ClientCard';
+
+export default async function Page() {
+  const user = await db.user.findFirst(); // Runs on server
+  return <ClientCard name={user.name} role={user.role} />;
+}
+```
+
+```tsx
+// components/ClientCard.tsx — Client Component
+'use client';
+export default function ClientCard({ name, role }: { name: string; role: string }) {
+  return <div onClick={() => alert(`Role: ${role}`)}>{name}</div>;
+}
+```
+
+**Composition patterns:**
+
+| Pattern | Description |
+|---|---|
+| **Props** | Pass serializable data directly from Server → Client |
+| **Children as slot** | Wrap a Client Component with a Server Component via `children` |
+| **Context** | Provide context inside a Client wrapper at the root |
+
+**Server Component passed as `children` (stays on the server):**
+
+```tsx
+// app/page.tsx
+import ClientShell from '@/components/ClientShell';
+import ServerContent from '@/components/ServerContent';
+
+export default function Page() {
+  return (
+    <ClientShell>
+      <ServerContent /> {/* Rendered on server, passed as children */}
+    </ClientShell>
+  );
+}
+```
+
+> You **cannot** import a Server Component directly inside a `'use client'` file — always pass it via props or `children`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Performance & Optimization
 
-### 23. How does `next/image` optimize images?
+<br>
+
+## Q. How does `next/image` optimize images?
 
 The `<Image>` component from `next/image`:
 
@@ -613,7 +930,7 @@ import Image from 'next/image';
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 24. How does `next/font` work?
+## Q. How does `next/font` work?
 
 `next/font` downloads fonts at build time, self-hosts them, and eliminates layout shift. No requests are sent to Google at runtime.
 
@@ -639,7 +956,7 @@ export default function RootLayout({ children }) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 25. What is the Next.js `<Script>` component?
+## Q. What is the Next.js `<Script>` component?
 
 `next/script` provides strategies to control when third-party scripts load:
 
@@ -660,7 +977,7 @@ import Script from 'next/script';
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 26. What is code splitting in Next.js?
+## Q. What is code splitting in Next.js?
 
 Next.js automatically code-splits by page/route — each page only loads the JavaScript it needs. Additional manual splitting can be done with `next/dynamic`:
 
@@ -679,7 +996,9 @@ const HeavyChart = dynamic(() => import('./HeavyChart'), {
 
 ## API Routes & Server Actions
 
-### 27. How do you create an API route in the Pages Router?
+<br>
+
+## Q. How do you create an API route in the Pages Router?
 
 Files inside `pages/api/` become API endpoints:
 
@@ -702,7 +1021,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 28. How do you create a Route Handler in the App Router?
+## Q. How do you create a Route Handler in the App Router?
 
 Route Handlers live in `app/` as `route.ts` files and export named HTTP method functions:
 
@@ -726,7 +1045,7 @@ export async function POST(request: NextRequest) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 29. What are the differences between API Routes and Server Actions?
+## Q. What are the differences between API Routes and Server Actions?
 
 | | API Routes / Route Handlers | Server Actions |
 |---|---|---|
@@ -742,7 +1061,9 @@ export async function POST(request: NextRequest) {
 
 ## Middleware & Authentication
 
-### 30. What is Next.js Middleware?
+<br>
+
+## Q. What is Next.js Middleware?
 
 Middleware runs before a request is completed. It executes at the Edge (very fast, close to the user) and can:
 
@@ -775,7 +1096,7 @@ export const config = {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 31. What is the `matcher` config in Middleware?
+## Q. What is the `matcher` config in Middleware?
 
 `matcher` limits which routes the middleware runs on. This improves performance by skipping static files and irrelevant routes.
 
@@ -792,7 +1113,7 @@ export const config = {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 32. How do you implement authentication in Next.js?
+## Q. How do you implement authentication in Next.js?
 
 Common approaches:
 
@@ -838,7 +1159,9 @@ export default async function ProtectedPage() {
 
 ## Deployment & Configuration
 
-### 33. What is `next.config.js` used for?
+<br>
+
+## Q. What is `next.config.js` used for?
 
 `next.config.js` configures the Next.js build and runtime:
 
@@ -866,7 +1189,7 @@ module.exports = nextConfig;
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 34. What are the deployment options for Next.js?
+## Q. What are the deployment options for Next.js?
 
 | Option | Notes |
 |---|---|
@@ -887,7 +1210,7 @@ const nextConfig = { output: 'export' };
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 35. What is the Edge Runtime vs. Node.js Runtime?
+## Q. What is the Edge Runtime vs. Node.js Runtime?
 
 | | Edge Runtime | Node.js Runtime |
 |---|---|---|
@@ -908,7 +1231,9 @@ export const runtime = 'edge';
 
 ## Advanced Topics
 
-### 36. What is `generateStaticParams`?
+<br>
+
+## Q. What is `generateStaticParams`?
 
 In the App Router, `generateStaticParams` replaces `getStaticPaths` for dynamic routes:
 
@@ -928,7 +1253,7 @@ export async function generateStaticParams() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 37. What is `generateMetadata`?
+## Q. What is `generateMetadata`?
 
 `generateMetadata` generates dynamic SEO metadata per route:
 
@@ -962,7 +1287,7 @@ export const metadata: Metadata = {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 38. How does the fetch cache work in the App Router?
+## Q. How does the fetch cache work in the App Router?
 
 Next.js maintains a **Data Cache** that persists across requests and deployments (on Vercel). The cache is controlled via `fetch` options:
 
@@ -986,7 +1311,7 @@ fetch(url, { next: { tags: ['products'] } });
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 39. What is `unstable_cache` and when do you use it?
+## Q. What is `unstable_cache` and when do you use it?
 
 `unstable_cache` caches the result of any async function (not just `fetch`), useful for ORM queries:
 
@@ -1007,7 +1332,7 @@ const posts = await getCachedPosts();
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 40. What is the `use cache` directive? (Next.js 15+)
+## Q. What is the `use cache` directive? (Next.js 15+)
 
 `use cache` is a new directive (stable in Next.js 15) that marks a function or component as cacheable — similar to `unstable_cache` but with cleaner syntax:
 
@@ -1030,7 +1355,7 @@ async function PostList() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 41. What is Turbopack?
+## Q. What is Turbopack?
 
 Turbopack is the Rust-based successor to Webpack, included in Next.js 13+. It offers:
 
@@ -1048,7 +1373,7 @@ next dev --turbopack
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 42. What is the difference between `notFound()` and redirecting to a 404 page?
+## Q. What is the difference between `notFound()` and redirecting to a 404 page?
 
 `notFound()` is a Next.js function that triggers the `not-found.tsx` file for the closest ancestor:
 
@@ -1070,7 +1395,7 @@ Manual redirect to `/404` is discouraged — it loses route context and returns 
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 43. How does `useFormState` / `useActionState` work with Server Actions?
+## Q. How does `useFormState` / `useActionState` work with Server Actions?
 
 `useActionState` (renamed from `useFormState` in React 19) connects form state to a Server Action:
 
@@ -1098,7 +1423,7 @@ export default function Form() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 44. What is `useOptimistic` and how does it work with Server Actions?
+## Q. What is `useOptimistic` and how does it work with Server Actions?
 
 `useOptimistic` allows you to show an optimistic (predicted) UI update before the Server Action resolves:
 
@@ -1128,7 +1453,7 @@ export function LikeButton({ postId, initialLikes }) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 45. What are common Next.js performance pitfalls?
+## Q. What are common Next.js performance pitfalls?
 
 1. **Not using `priority` on LCP images** — causes poor Core Web Vitals
 2. **Importing large libraries on the client** — use `next/dynamic` with `ssr: false`
@@ -1145,8 +1470,9 @@ export function LikeButton({ postId, initialLikes }) {
 
 ## Testing
 
+<br>
 
-### 46. How do you unit test Next.js components?
+## Q. How do you unit test Next.js components?
 
 Use **Jest** with **React Testing Library** for component and hook testing.
 
@@ -1188,7 +1514,7 @@ test('increments counter on click', () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 47. How do you test Server Actions and Route Handlers?
+## Q. How do you test Server Actions and Route Handlers?
 
 **Route Handlers** can be tested by constructing a `NextRequest` directly:
 
@@ -1226,7 +1552,7 @@ test('createPost persists title', async () => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 48. How do you write E2E tests for Next.js with Playwright?
+## Q. How do you write E2E tests for Next.js with Playwright?
 
 Playwright is the recommended E2E tool for Next.js (also works with Cypress).
 
@@ -1272,10 +1598,69 @@ test('form submission shows success message', async ({ page }) => {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you mock `next/navigation` and `next/router` in tests?
+
+**App Router — mock `next/navigation`:**
+
+```ts
+// jest.setup.ts or at the top of a test file
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    back: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => '/current-path',
+  useSearchParams: () => new URLSearchParams('q=test'),
+  useParams: () => ({ id: '42' }),
+  redirect: jest.fn(),
+  notFound: jest.fn(),
+}));
+```
+
+**Pages Router — mock `next/router`:**
+
+```ts
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    pathname: '/about',
+    query: {},
+    push: jest.fn(),
+    replace: jest.fn(),
+    back: jest.fn(),
+  }),
+}));
+```
+
+**Example test with a typed mock:**
+
+```tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { useRouter } from 'next/navigation';
+import BackButton from '@/components/BackButton';
+
+jest.mock('next/navigation', () => ({ useRouter: jest.fn() }));
+
+test('calls router.back on click', () => {
+  const mockBack = jest.fn();
+  (useRouter as jest.Mock).mockReturnValue({ back: mockBack });
+
+  render(<BackButton />);
+  fireEvent.click(screen.getByRole('button', { name: /back/i }));
+  expect(mockBack).toHaveBeenCalledTimes(1);
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Security & Best Practices
 
+<br>
 
-### 49. How do you set security headers in Next.js?
+## Q. How do you set security headers in Next.js?
 
 Configure security headers in `next.config.js` using the `headers` async function:
 
@@ -1316,7 +1701,7 @@ module.exports = {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 50. How do you handle environment variables securely in Next.js?
+## Q. How do you handle environment variables securely in Next.js?
 
 Next.js separates server-only and browser-exposed variables by prefix:
 
@@ -1354,7 +1739,7 @@ export const env = envSchema.parse(process.env);
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 51. How do you handle CORS in Next.js Route Handlers?
+## Q. How do you handle CORS in Next.js Route Handlers?
 
 Set CORS headers explicitly — never use a wildcard `*` for credentialed requests:
 
@@ -1391,7 +1776,7 @@ export async function OPTIONS(request: NextRequest) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 52. How do you implement rate limiting in Next.js Middleware?
+## Q. How do you implement rate limiting in Next.js Middleware?
 
 Use a sliding-window rate limiter backed by Redis (e.g., Upstash) in Middleware — runs at the Edge so it\'s extremely fast:
 
@@ -1435,7 +1820,7 @@ export const config = { matcher: '/api/:path*' };
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 53. How do you implement Role-Based Access Control (RBAC) in Next.js?
+## Q. How do you implement Role-Based Access Control (RBAC) in Next.js?
 
 Combine Auth.js sessions with Middleware to enforce role-based route protection:
 
@@ -1489,10 +1874,63 @@ export default async function AdminPage() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you prevent XSS and CSRF attacks in Next.js?
+
+**Preventing XSS (Cross-Site Scripting):**
+
+React automatically escapes JSX output, but `dangerouslySetInnerHTML` bypasses this:
+
+```tsx
+//  Never render unsanitized user input as HTML
+<div dangerouslySetInnerHTML={{ __html: userInput }} />
+
+//  Sanitize first with a trusted library
+import DOMPurify from 'isomorphic-dompurify';
+<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(userInput) }} />
+```
+
+Also set a strict `Content-Security-Policy` header (see Security Headers section) to block inline script injection.
+
+**Preventing CSRF (Cross-Site Request Forgery):**
+
+**Server Actions** are protected against CSRF by default in Next.js 14+ — they check the `Origin` header and require the same-origin.
+
+For custom **Route Handlers** that perform mutations, validate the `Origin` header:
+
+```ts
+// app/api/transfer/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function POST(request: NextRequest) {
+  const origin = request.headers.get('origin') ?? '';
+  const host = request.headers.get('host') ?? '';
+
+  if (!origin.includes(host)) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  // Process the request...
+}
+```
+
+**Additional mitigations:**
+
+| Measure | Purpose |
+|---|---|
+| `SameSite=Lax` or `Strict` on cookies | Prevents cookies being sent on cross-site requests |
+| `HttpOnly` cookies | Blocks JS access to session tokens |
+| `Secure` flag on cookies | Ensures cookies are only sent over HTTPS |
+| Input validation with `zod` | Prevents malformed data reaching the server |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Internationalization (i18n)
 
+<br>
 
-### 54. How do you implement internationalization in Next.js?
+## Q. How do you implement internationalization in Next.js?
 
 **App Router** — use `next-intl` (most popular library):
 
@@ -1558,10 +1996,77 @@ Pages automatically receive the `locale` in `getServerSideProps` / `getStaticPro
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How do you handle locale-aware metadata and SEO in Next.js?
+
+Use `generateMetadata` with the locale param to produce locale-specific titles, descriptions, and `hreflang` alternate links for search engines:
+
+```tsx
+// app/[locale]/layout.tsx
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+
+const locales = ['en', 'fr', 'de'];
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `https://example.com/${locale}`,
+      languages: Object.fromEntries(
+        locales.map(l => [l, `https://example.com/${l}`])
+      ),
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  return (
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+**`messages/en.json`:**
+
+```json
+{
+  "Metadata": {
+    "title": "My App",
+    "description": "Welcome to our platform"
+  }
+}
+```
+
+The `alternates.languages` map produces `<link rel="alternate" hreflang="...">` tags that help search engines serve the correct locale to users.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Enterprise & Scalability Patterns
 
+<br>
 
-### 55. What are the four caching mechanisms in the Next.js App Router?
+## Q. What are the four caching mechanisms in the Next.js App Router?
 
 Next.js has four distinct, layered caching mechanisms:
 
@@ -1600,7 +2105,7 @@ revalidateTag('products');
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 56. What is Partial Prerendering (PPR)?
+## Q. What is Partial Prerendering (PPR)?
 
 PPR (stable in Next.js 15) combines **static** and **dynamic** rendering on the same page. The static shell is pre-rendered at build time and served instantly; dynamic holes are **streamed in** from the server.
 
@@ -1638,7 +2143,7 @@ export default function ProductPage() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 57. How do you manage database connections in a serverless Next.js deployment?
+## Q. How do you manage database connections in a serverless Next.js deployment?
 
 Serverless functions spin up/down per request, which can exhaust database connection limits without careful management.
 
@@ -1667,7 +2172,7 @@ if (process.env.NODE_ENV !== 'production') {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 58. How do you structure a large-scale Next.js project?
+## Q. How do you structure a large-scale Next.js project?
 
 A common scalable structure used in enterprise applications:
 
@@ -1713,7 +2218,7 @@ next.config.js
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 59. How do you implement URL-based search and filter state in Next.js?
+## Q. How do you implement URL-based search and filter state in Next.js?
 
 Store search/filter state in URL search params rather than `useState` — makes pages shareable and bookmarkable, and works with the browser Back button:
 
@@ -1769,7 +2274,7 @@ export default async function SearchPage({
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 60. How do you configure redirects and rewrites in Next.js?
+## Q. How do you configure redirects and rewrites in Next.js?
 
 Defined in `next.config.js` — processed at the Edge before rendering:
 
@@ -1816,7 +2321,7 @@ module.exports = {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 61. How do you analyze and reduce bundle size in Next.js?
+## Q. How do you analyze and reduce bundle size in Next.js?
 
 Use `@next/bundle-analyzer` to visualize what goes into each bundle:
 
@@ -1853,7 +2358,7 @@ Check the `next build` output — routes marked `○` are static, `ƒ` are dynam
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-### 62. What is the `next/headers` API and when do you use it?
+## Q. What is the `next/headers` API and when do you use it?
 
 `next/headers` provides access to **incoming request headers and cookies** in Server Components, Server Actions, and Route Handlers. Accessing it opts the route out of static rendering.
 
