@@ -12,9 +12,9 @@
 * *[React Coding Practice](react-coding-practice.md)*
 * *[React Multiple Choice Questions](react-mcq.md)*
 * *[React Quick Reference](react-quick-reference.md)*
-* *[React 19 Interview Questions](react-19-interview-questions.md)*
-* *[Next.js Interview Questions](next-interview-questions.md)*
-* *[Redux Interview Questions](redux-interview-questions.md)*
+* *[React 19 Basics](react-19-basics.md)*
+* *[Next.js Basics](next-basics.md)*
+* *[Redux Basics](redux-basics.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
 * *[React Best Practices](best-practices.md)*
@@ -27,45 +27,59 @@
 
 ## Table of Contents
 
-* **React**
-   * [Introduction](#-1-introduction)
-   * [React Setup](#-2-react-setup)
-   * [React JSX](#-3-react-jsx)
-   * [React Components](#-4-react-components)
-	  * [Functional Components](#-4.1-functional-components)
-      * [Class Components](#-4.2-class-components)
-      * [React Lifecycle](#-4.3-react-lifecycle)
-   * [React Props]((#-5-react-props))
-   * [React State](#-6-react-state)
-   * [React Hooks](#-7-react-hooks)
-   * [React Events](#-8-react-events)
-   * [React Lists](#-9-react-lists)
-   * [React Forms](#-10-react-forms)
-   * [React CSS Styling](#-11-react-css-styling)
-   * [React Router](#-12-react-router)
-   * [React RESTful API](#-13-react-restful-api)
-   * [React Context](#-14-react-context)
-* **Advanced Patterns**
-   * [React Composition](#-15-react-composition)
-   * [Pure Components](#-16-pure-components)
-   * [Higher Order Components](#-17-higher-order-components)
-   * [React Refs](#-18-react-refs)
-   * [React Error Boundaries](#-19-react-error-boundaries)
-   * [Lazy Loading](#-20-lazy-loading)
-* **Optimization & Internationalization**
-   * [React Internationalization](#-21-react-internationalization)
-   * [React Miscellaneous](#-22-react-miscellaneous)
-* **Enterprise & Advanced Topics**
-   * [React TypeScript](#-23-react-typescript)
-   * [React Accessibility](#-24-react-accessibility)
-   * [React Security & Authentication](#-25-react-security--authentication)
-   * [React Data Fetching Libraries](#-26-react-data-fetching-libraries)
-   * [React Concurrent Features](#-27-react-concurrent-features)
-   * [GraphQL with React](#-28-graphql-with-react)
-   * [Micro-frontend Architecture](#-29-micro-frontend-architecture)
-   * [Real-time Data with React](#-30-real-time-data-with-react)
-* **Technical Lead Role**
-   * [Technical Lead Role](#-31-technical-lead-role)
+## L1: Fundamental (Entry-Level / Junior)
+Focus: React basics, environment setup, JSX syntax, and core component concepts.
+
+* [Introduction](#-1-introduction): What is React, Virtual DOM, unidirectional data flow, and React vs other frameworks.
+* [React Setup](#-2-react-setup): Vite, Webpack, Babel, ReactDOM, PWA setup, and development environment configuration.
+* [React JSX](#-3-react-jsx): JSX syntax, transpilation, injection prevention, comments, and rendering patterns.
+
+## L2: Intermediate (Junior-Mid / Developer)
+Focus: Components, props, state, hooks, events, lists, and forms.
+
+* [React Components](#-4-react-components): Stateful vs stateless, conditional rendering, StrictMode, and component patterns.
+   * [Functional Components](#-41-functional-components): Hooks-based functional components and modern React patterns.
+   * [Class Components](#-42-class-components): ES6 class components, ordering, shouldComponentUpdate, and render().
+   * [React Lifecycle](#-421-react-lifecycle): Mounting, updating, and unmounting phases with lifecycle hooks.
+* [React Props](#-5-react-props): Passing data, prop types, default props, and prop drilling.
+* [React State](#-6-react-state): State management, setState, immutability, and state patterns.
+* [React Hooks](#-7-react-hooks): useState, useEffect, useRef, useCallback, useMemo, useReducer, and custom hooks.
+* [React Events](#-8-react-events): Synthetic events, event handlers, and event delegation.
+* [React Lists](#-9-react-lists): Rendering lists, keys, and dynamic rendering patterns.
+* [React Forms](#-10-react-forms): Controlled components, uncontrolled inputs, and form validation.
+
+## L3: Advanced (Mid-Senior / Lead)
+Focus: Styling, routing, API integration, context, and advanced component patterns.
+
+* [React CSS Styling](#-11-react-css-styling): CSS modules, styled-components, inline styles, and Tailwind CSS.
+* [React Router](#-12-react-router): Client-side routing, nested routes, dynamic routes, and navigation guards.
+* [React RESTful API](#-13-react-restful-api): Fetching data, async patterns, Axios, and error handling.
+* [React Context](#-14-react-context): Context API, useContext, and avoiding prop drilling.
+* [React Composition](#-15-react-composition): Composition patterns, compound components, and render props.
+* [Pure Components](#-16-pure-components): React.PureComponent, React.memo, and shallow comparison.
+* [Higher Order Components](#-17-higher-order-components): HOC pattern, wrapping components, and cross-cutting concerns.
+* [React Refs](#-18-react-refs): useRef, createRef, forwardRef, and direct DOM access.
+* [React Error Boundaries](#-19-react-error-boundaries): Catching render errors, fallback UIs, and error recovery.
+* [Lazy Loading](#-20-lazy-loading): React.lazy, Suspense, and code splitting strategies.
+
+## L4: Expert (Senior / Architect)
+Focus: Internationalization, TypeScript, accessibility, security, and data fetching libraries.
+
+* [React Internationalization](#-21-react-internationalization): i18n, react-intl, locale handling, and multi-language support.
+* [React Miscellaneous](#-22-react-miscellaneous): Portals, StrictMode, profiler, and miscellaneous advanced patterns.
+* [React TypeScript](#-23-react-typescript): Typing components, hooks, props, events, and generics with TypeScript.
+* [React Accessibility](#-24-react-accessibility): ARIA roles, keyboard navigation, focus management, and accessible components.
+* [React Security & Authentication](#-25-react-security--authentication): XSS prevention, authentication flows, JWT, and secure patterns.
+* [React Data Fetching Libraries](#-26-react-data-fetching-libraries): React Query, SWR, Apollo Client, and caching strategies.
+
+## L5: Framework & Ecosystem (Senior / Lead)
+Focus: Concurrent features, GraphQL, micro-frontend, real-time data, and technical leadership.
+
+* [React Concurrent Features](#-27-react-concurrent-features): Concurrent mode, useTransition, useDeferredValue, and Suspense boundaries.
+* [GraphQL with React](#-28-graphql-with-react): Apollo Client, queries, mutations, subscriptions, and GraphQL patterns.
+* [Micro-frontend Architecture](#-29-micro-frontend-architecture): Module federation, independent deployments, and micro-frontend composition.
+* [Real-time Data with React](#-30-real-time-data-with-react): WebSockets, SSE, polling, and real-time state synchronization.
+* [Technical Lead Role](#-31-technical-lead-role): Code reviews, architecture decisions, team mentoring, and best practices.
 
 <br/>
 
@@ -246,14 +260,14 @@ Lowercase with dot notation works: `<obj.component />` compiles to `React.create
 **Example:**
 
 ```js
-// ❌ Wrong - React treats this as HTML <mybutton> tag
+//  Wrong - React treats this as HTML <mybutton> tag
 function myButton() {
   return <button>Click me</button>;
 }
 
 // Using it: <myButton /> // Won\'t work as expected
 
-// ✅ Correct - React treats this as a component
+//  Correct - React treats this as a component
 function MyButton() {
   return <button>Click me</button>;
 }
@@ -1351,14 +1365,14 @@ In the output, this will render `true`, `false`, `undefined`, and `null` respect
 
 In React, you cannot use the standard HTML for attribute with `<label>` elements because for is a reserved keyword in JavaScript. Instead, React uses `htmlFor`.
 
-❌ Wrong - Using for (produces warning):
+ Wrong - Using for (produces warning):
 
 ```js
 <label for={'user'}>{'User'}</label>
 <input type={'text'} id={'user'} />
 ```
 
-✅ Correct - Using `htmlFor`:
+ Correct - Using `htmlFor`:
 
 ```js
 <label htmlFor={'user'}>{'User'}</label>
@@ -2414,7 +2428,7 @@ class Greeting extends React.Component {
 |Boilerplate|Minimal|More verbose|
 |Performance|Slightly lighter (no class instance)|Slight overhead per instance|
 |Error Boundaries|Not supported|Supported via `getDerivedStateFromError`|
-|Modern recommendation|✅ Preferred for all new code|Legacy (still valid for error boundaries)|
+|Modern recommendation| Preferred for all new code|Legacy (still valid for error boundaries)|
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5610,10 +5624,10 @@ const ChildButton = React.memo(({ onClick }) => {
 * Premature optimization is a code smell. Profile first with React DevTools Profiler, then optimize.
 
 ```jsx
-// ❌ Pointless — this is not an expensive operation
+//  Pointless — this is not an expensive operation
 const double = useMemo(() => count * 2, [count]);
 
-// ✅ Worthwhile — filtering a large array
+//  Worthwhile — filtering a large array
 const filtered = useMemo(() => largeDataset.filter(applyComplexFilters), [largeDataset, filters]);
 ```
 
@@ -5923,7 +5937,7 @@ export default function App() {
 |Controls|The state update call|A derived value|
 |Use when|You own the state setter|You receive the value as a prop|
 |API|`startTransition(() => setState(...))`|`const deferred = useDeferredValue(value)`|
-|`isPending` flag|✅ Yes|❌ No (use `deferred !== value` instead)|
+|`isPending` flag| Yes| No (use `deferred !== value` instead)|
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5938,14 +5952,14 @@ The Rules of Hooks are two fundamental constraints enforced by React (and the `e
 Never call Hooks inside loops, conditions, nested functions, or after early returns. Hooks must always be called in the same order on every render.
 
 ```jsx
-// ❌ WRONG — conditional Hook call
+//  WRONG — conditional Hook call
 function Component({ isLoggedIn }) {
   if (isLoggedIn) {
     const [name, setName] = useState('');  // Breaks rule — different call order each render
   }
 }
 
-// ✅ CORRECT — call at the top level, put condition inside
+//  CORRECT — call at the top level, put condition inside
 function Component({ isLoggedIn }) {
   const [name, setName] = useState('');  // Always called
   if (!isLoggedIn) return null;          // Guard after hooks
@@ -5957,17 +5971,17 @@ function Component({ isLoggedIn }) {
 Call Hooks only from React function components or custom Hooks — never from regular JavaScript functions, class components, or event handlers.
 
 ```jsx
-// ❌ WRONG — calling a Hook from a plain function
+//  WRONG — calling a Hook from a plain function
 function fetchUser() {
   const [user, setUser] = useState(null);  // Not a React function
 }
 
-// ✅ CORRECT — inside a React function component
+//  CORRECT — inside a React function component
 function UserProfile() {
   const [user, setUser] = useState(null);  // OK
 }
 
-// ✅ CORRECT — inside a custom Hook (starts with "use")
+//  CORRECT — inside a custom Hook (starts with "use")
 function useUser() {
   const [user, setUser] = useState(null);  // OK
 }
@@ -6010,7 +6024,7 @@ The dependency array is the most misunderstood part of `useEffect`. Missing or i
 **Pitfall 1: Missing dependencies (stale closure)**
 
 ```jsx
-// ❌ WRONG — 'count' is missing from deps; the effect closes over the initial value
+//  WRONG — 'count' is missing from deps; the effect closes over the initial value
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -6023,10 +6037,10 @@ function Counter() {
   }, []); // empty deps — runs once, never re-subscribes
 }
 
-// ✅ FIX — use functional update form to avoid needing 'count' in deps
+//  FIX — use functional update form to avoid needing 'count' in deps
 useEffect(() => {
   const interval = setInterval(() => {
-    setCount(prev => prev + 1); // ✅ No stale closure — uses latest value
+    setCount(prev => prev + 1); //  No stale closure — uses latest value
   }, 1000);
   return () => clearInterval(interval);
 }, []);
@@ -6035,7 +6049,7 @@ useEffect(() => {
 **Pitfall 2: Infinite loop from object/function deps**
 
 ```jsx
-// ❌ WRONG — new object created on every render → effect runs infinitely
+//  WRONG — new object created on every render → effect runs infinitely
 function Search({ query }) {
   const options = { url: '/api/search', params: { q: query } }; // new ref every render
 
@@ -6043,12 +6057,12 @@ function Search({ query }) {
     fetch(options.url); // re-runs forever
   }, [options]);
 
-// ✅ FIX 1 — use primitive values as deps
+//  FIX 1 — use primitive values as deps
   useEffect(() => {
     fetch(`/api/search?q=${query}`);
   }, [query]); // only runs when query changes
 
-// ✅ FIX 2 — useMemo to stabilize the object
+//  FIX 2 — useMemo to stabilize the object
   const options = useMemo(() => ({ url: '/api/search', params: { q: query } }), [query]);
 }
 ```
@@ -6056,7 +6070,7 @@ function Search({ query }) {
 **Pitfall 3: Unnecessary dependencies causing extra re-runs**
 
 ```jsx
-// ❌ Using a function defined in the component as a dep — it changes every render
+//  Using a function defined in the component as a dep — it changes every render
 function Component() {
   const fetchData = () => fetch('/api/data');  // new function every render
 
@@ -6064,7 +6078,7 @@ function Component() {
     fetchData();
   }, [fetchData]); // runs every render because fetchData is always new
 
-// ✅ FIX — wrap the function in useCallback or move it inside useEffect
+//  FIX — wrap the function in useCallback or move it inside useEffect
   const fetchData = useCallback(() => fetch('/api/data'), []);
 
   useEffect(() => {
@@ -6076,14 +6090,14 @@ function Component() {
 **Pitfall 4: Not cleaning up async effects (race condition)**
 
 ```jsx
-// ❌ If 'id' changes fast, an earlier fetch may resolve after a later one
+//  If 'id' changes fast, an earlier fetch may resolve after a later one
 useEffect(() => {
   fetch(`/api/user/${id}`)
     .then(res => res.json())
     .then(data => setUser(data)); // may set stale data
 }, [id]);
 
-// ✅ FIX — use AbortController or an "active" flag
+//  FIX — use AbortController or an "active" flag
 useEffect(() => {
   let active = true;
   fetch(`/api/user/${id}`)
@@ -6150,7 +6164,7 @@ function Counter() {
 
   const handleClick = () => {
     setTimeout(() => {
-      alert(`Count is: ${countRef.current}`);  // ✅ Always fresh
+      alert(`Count is: ${countRef.current}`);  //  Always fresh
     }, 3000);
   };
 }
@@ -6159,22 +6173,22 @@ function Counter() {
 **Fix 2: Use functional state updater (avoids capturing state)**
 
 ```jsx
-// ❌ Stale — captures 'count' at time of call
+//  Stale — captures 'count' at time of call
 setCount(count + 1);
 
-// ✅ Fresh — React passes the latest state as argument
+//  Fresh — React passes the latest state as argument
 setCount(prevCount => prevCount + 1);
 ```
 
 **Fix 3: Move the value into useEffect dependencies**
 
 ```jsx
-// ❌ Stale — handler is memoized with old 'count'
+//  Stale — handler is memoized with old 'count'
 const handleSave = useCallback(() => {
   saveData(count);  // stale if count changed
 }, []); // missing 'count' in deps
 
-// ✅ Add count to deps — new function created when count changes
+//  Add count to deps — new function created when count changes
 const handleSave = useCallback(() => {
   saveData(count);
 }, [count]);
@@ -7449,7 +7463,7 @@ const users = [
 
 **What makes a good key:**
 
-| Good ✅                          | Bad ❌                                  |
+| Good                           | Bad                                   |
 |----------------------------------|------------------------------------------|
 | Stable unique ID from data (`user.id`) | Array index when list can reorder   |
 | UUID or database primary key     | `Math.random()` (new key every render)  |
@@ -7475,8 +7489,8 @@ const users = [
 
 ```js
 function ListItem({ id, name }) {
-  // ✅ 'id' and 'name' are accessible
-  // ❌ 'key' is NOT — it is stripped by React before props reach the component
+  //  'id' and 'name' are accessible
+  //  'key' is NOT — it is stripped by React before props reach the component
   return <li>{name}</li>;
 }
 
@@ -7559,10 +7573,10 @@ const handleDelete = useCallback((id) => {
 Inline object or array literals inside JSX always produce a new reference, defeating `React.memo`.
 
 ```js
-// ❌ Bad — new object on every render
+//  Bad — new object on every render
 <UserCard key={user.id} style={{ color: 'red' }} user={user} />
 
-// ✅ Good — stable reference defined outside render
+//  Good — stable reference defined outside render
 const cardStyle = { color: 'red' };
 <UserCard key={user.id} style={cardStyle} user={user} />
 ```
@@ -7572,10 +7586,10 @@ const cardStyle = { color: 'red' };
 If a single item changes and the whole list array reference changes, all memoized children will re-render if they receive the full item object. Prefer normalized state (e.g., a map of `id → item`) so mutations only touch the relevant slice.
 
 ```js
-// ❌ Array — updating one item rebuilds the whole array
+//  Array — updating one item rebuilds the whole array
 const [users, setUsers] = useState([...]);
 
-// ✅ Map — updating one entry does not disturb others
+//  Map — updating one entry does not disturb others
 const [usersById, setUsersById] = useState({ u1: {...}, u2: {...} });
 ```
 
@@ -7604,7 +7618,7 @@ export default function FruitList() {
   const [fruits, setFruits] = useState(initialFruits);
 
   const sortAscending = () => {
-    // ✅ Spread creates a new array — original state is untouched
+    //  Spread creates a new array — original state is untouched
     setFruits([...fruits].sort((a, b) => a.localeCompare(b)));
   };
 
@@ -7921,11 +7935,11 @@ React 18+ (with frameworks like Next.js 13+) introduced **Server Components (RSC
 | | Server Component | Client Component |
 |---|---|---|
 | Runs on | Server (Node.js, Edge runtime) | Browser |
-| Can use hooks (`useState`, `useEffect`) | ❌ No | ✅ Yes |
-| Can fetch data directly (DB, filesystem) | ✅ Yes | ❌ No (needs API) |
-| Ships JS to the browser | ❌ No (HTML only) | ✅ Yes |
-| Supports interactivity (click, input) | ❌ No | ✅ Yes |
-| Default in Next.js App Router | ✅ Yes | Requires `"use client"` directive |
+| Can use hooks (`useState`, `useEffect`) |  No |  Yes |
+| Can fetch data directly (DB, filesystem) |  Yes |  No (needs API) |
+| Ships JS to the browser |  No (HTML only) |  Yes |
+| Supports interactivity (click, input) |  No |  Yes |
+| Default in Next.js App Router |  Yes | Requires `"use client"` directive |
 
 
 **1. Rendering a list in a Server Component**
@@ -9146,6 +9160,94 @@ const StatusBox = styled.div`
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to use Tailwind CSS in React?
+
+Tailwind CSS is a utility-first CSS framework that works seamlessly with React. Instead of writing custom CSS, you apply pre-built utility classes directly in your JSX.
+
+**Installation (Vite):**
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure in `vite.config.js`:
+
+```js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+```
+
+Add to `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+**Basic usage — utility classes in JSX:**
+
+```jsx
+function Card({ title, description }) {
+  return (
+    <div className="bg-white shadow-md rounded-lg p-6 max-w-sm">
+      <h2 className="text-xl font-bold text-gray-800 mb-2">{title}</h2>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+}
+```
+
+**Conditional classes with `clsx`:**
+
+```bash
+npm install clsx
+```
+
+```jsx
+import clsx from 'clsx';
+
+function Alert({ type, message }) {
+  return (
+    <div className={clsx(
+      'p-4 rounded border',
+      type === 'error'   && 'bg-red-50 border-red-400 text-red-800',
+      type === 'success' && 'bg-green-50 border-green-400 text-green-800',
+      type === 'info'    && 'bg-blue-50 border-blue-400 text-blue-800',
+    )}>
+      {message}
+    </div>
+  );
+}
+```
+
+**Responsive and dark mode:**
+
+```jsx
+// sm:, md:, lg:, xl: breakpoints; dark: variant
+<div className="p-4 md:p-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+  Responsive and dark-mode aware
+</div>
+```
+
+**Key Advantages in React:**
+
+* **No CSS context switching** — styles live alongside components in JSX.
+* **Tree-shaking** — only used classes are included in the production bundle.
+* **Responsive design** — prefix-based breakpoints: `sm:`, `md:`, `lg:`, `xl:`.
+* **Dark mode** — `dark:` variant applies styles when dark mode is active.
+
+**Reference:**
+
+* *[https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 12. REACT ROUTER
 
 <br/>
@@ -10126,6 +10228,67 @@ React is primarily used for SPAs, but can support MPA patterns via:
 
 * **SPA**: Dashboards, admin panels, web apps with rich interactivity (e.g., email clients, project management tools).
 * **MPA**: Content sites, e-commerce, blogs, SEO-critical pages, or apps where each page is largely independent.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to implement nested routes in React Router v7?
+
+Nested routes allow child components to render inside a parent layout component. The parent defines a shared structure (such as a navigation bar or sidebar) and uses `<Outlet />` to mark where matched child routes should render.
+
+**Example:**
+
+```jsx
+import { BrowserRouter, Routes, Route, Outlet, Link } from 'react-router-dom';
+
+// Parent layout component — shared across all /dashboard/* routes
+function DashboardLayout() {
+  return (
+    <div>
+      <nav>
+        <Link to="overview">Overview</Link> |{' '}
+        <Link to="settings">Settings</Link> |{' '}
+        <Link to="profile">Profile</Link>
+      </nav>
+      <main>
+        <Outlet /> {/* Matched child route renders here */}
+      </main>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route index element={<Overview />} />         {/* /dashboard */}
+          <Route path="settings" element={<Settings />} /> {/* /dashboard/settings */}
+          <Route path="profile" element={<Profile />} />   {/* /dashboard/profile */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+**Key Concepts:**
+
+* **`<Outlet />`** — placeholder in the parent layout where the active child route renders.
+* **`index` route** — the default child rendered when the parent path is matched exactly (`/dashboard`).
+* **Relative paths** — child `path` values are relative to the parent; no leading `/` needed.
+* **Multiple nesting levels** — routes can be nested as deeply as required.
+
+**Accessing URL params in nested routes:**
+
+```jsx
+<Route path="users/:userId" element={<UserLayout />}>
+  <Route index element={<UserProfile />} />        {/* /users/42 */}
+  <Route path="posts" element={<UserPosts />} />   {/* /users/42/posts */}
+</Route>
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11240,7 +11403,7 @@ function Counter() {
   );
 }
 
-// ✅ Can also use outside of React (in utilities, non-component code)
+//  Can also use outside of React (in utilities, non-component code)
 const currentCount = useCounterStore.getState().count;
 useCounterStore.setState({ count: 10 });
 ```
@@ -11268,7 +11431,7 @@ const useUserStore = create((set) => ({
 | Learning curve | Very easy | Medium |
 | DevTools | Via middleware | Excellent (Redux DevTools) |
 | Middleware | Simple (`persist`, `devtools`) | Extensive ecosystem |
-| Outside React | ✅ `getState()` / `setState()` | ✅ `store.getState()` |
+| Outside React |  `getState()` / `setState()` |  `store.getState()` |
 | TypeScript | Excellent | Excellent |
 | Use case | Small-medium apps, simple global state | Large apps needing strict patterns |
 
@@ -11543,7 +11706,7 @@ In React class components, use `PureComponent` over `Component` to optimize perf
 **Example:**
 
 ```js
-// ✅ Good use of PureComponent
+//  Good use of PureComponent
 class UserCard extends React.PureComponent {
   render() {
     const { name, age, email } = this.props; // Simple props
@@ -11551,7 +11714,7 @@ class UserCard extends React.PureComponent {
   }
 }
 
-// ❌ Bad use of PureComponent
+//  Bad use of PureComponent
 class UserProfile extends React.PureComponent {
   render() {
     const { user } = this.props; // Complex nested object
@@ -13129,10 +13292,10 @@ const sortedItems = useMemo(
 );
 
 // Fix D: Split state to minimize re-render scope
-// ❌ One big state object — any field update re-renders everything
+//  One big state object — any field update re-renders everything
 const [formState, setFormState] = useState({ name: '', email: '', bio: '' });
 
-// ✅ Separate state per field — each update only affects its own subtree
+//  Separate state per field — each update only affects its own subtree
 const [name, setName]   = useState('');
 const [email, setEmail] = useState('');
 ```
@@ -13273,13 +13436,13 @@ React `StrictMode` intentionally invokes certain functions **twice** in developm
 **Why this matters:**
 
 ```jsx
-// ❌ Bug exposed by StrictMode — this fires twice on mount
+//  Bug exposed by StrictMode — this fires twice on mount
 useEffect(() => {
   const subscription = eventBus.subscribe('event', handler);
   // Missing cleanup! Second invocation creates a duplicate subscription.
 }, []);
 
-// ✅ Correct — cleanup properly cancels the subscription
+//  Correct — cleanup properly cancels the subscription
 useEffect(() => {
   const subscription = eventBus.subscribe('event', handler);
   return () => subscription.unsubscribe();  // Cleanup runs between the two mounts
@@ -13299,25 +13462,25 @@ This simulates what happens in React\'s future Offscreen API (where components c
 **Common patterns that break under StrictMode:**
 
 ```jsx
-// ❌ Broken — counter is incremented twice on first render
+//  Broken — counter is incremented twice on first render
 useEffect(() => {
   analytics.trackPageView();  // Fires twice — duplicate analytics event!
 }, []);
 
-// ✅ Fixed with cleanup guard
+//  Fixed with cleanup guard
 useEffect(() => {
   let active = true;
   if (active) analytics.trackPageView();  // Still fires twice but idempotent pattern
   return () => { active = false; };
 }, []);
 
-// ❌ Broken — WebSocket connection created twice with no cleanup
+//  Broken — WebSocket connection created twice with no cleanup
 useEffect(() => {
   const ws = new WebSocket(url);
   ws.onmessage = handleMessage;
 }, [url]);
 
-// ✅ Fixed
+//  Fixed
 useEffect(() => {
   const ws = new WebSocket(url);
   ws.onmessage = handleMessage;
@@ -13782,7 +13945,7 @@ function UserProfile({ userPromise }) {
 // Can be called conditionally (unlike other hooks)
 function Component({ shouldRead }) {
   if (shouldRead) {
-    const value = use(MyContext);  // ✅ Conditional use() is allowed
+    const value = use(MyContext);  //  Conditional use() is allowed
   }
 }
 ```
@@ -15100,10 +15263,10 @@ npx react-codemod rename-unsafe-lifecycles . # Rename UNSAFE_ methods
 
 ```jsx
 // React 18: replace ReactDOM.render
-// ❌ Old
+//  Old
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// ✅ New
+//  New
 import { createRoot } from 'react-dom/client';
 createRoot(document.getElementById('root')).render(<App />);
 ```
@@ -15166,12 +15329,12 @@ expect(screen.getByText('Count: 1')).toBeInTheDocument(); // Tests visible outpu
 | Feature | Enzyme | RTL |
 |---------|--------|-----|
 | Philosophy | Implementation details | User behavior |
-| Shallow rendering | ✅ Yes | ❌ No (full render only) |
-| Access to state | ✅ Yes | ❌ No (by design) |
+| Shallow rendering |  Yes |  No (full render only) |
+| Access to state |  Yes |  No (by design) |
 | Query style | CSS selectors, class names | Role, text, label, placeholder |
-| React 18 support | Limited / unofficial | ✅ Official |
-| Active maintenance | Minimal | ✅ Actively maintained |
-| Recommended for new projects | ❌ No | ✅ Yes |
+| React 18 support | Limited / unofficial |  Official |
+| Active maintenance | Minimal |  Actively maintained |
+| Recommended for new projects |  No |  Yes |
 
 **Recommendation:**
 
@@ -15435,11 +15598,11 @@ Both `interface` and `type` can describe the shape of React props, but they diff
 
 | Feature | `interface` | `type` |
 |---------|------------|--------|
-| Declaration merging | ✅ Yes | ❌ No |
-| Union / intersection | ❌ Limited | ✅ Yes |
-| Extends keyword | ✅ Yes | ✅ (via `&`) |
-| Primitive aliases | ❌ No | ✅ Yes |
-| Mapped types | ❌ No | ✅ Yes |
+| Declaration merging |  Yes |  No |
+| Union / intersection |  Limited |  Yes |
+| Extends keyword |  Yes |  (via `&`) |
+| Primitive aliases |  No |  Yes |
+| Mapped types |  No |  Yes |
 
 **When to use `interface` (recommended for props):**
 
@@ -15723,24 +15886,24 @@ Accessibility (a11y) ensures web applications are usable by people with disabili
 **Basic Examples:**
 
 ```jsx
-// ✅ Provide alt text for images
+//  Provide alt text for images
 <img src="logo.png" alt="Company Logo" />
 
-// ✅ Use semantic HTML elements
+//  Use semantic HTML elements
 <nav aria-label="Main Navigation">
   <ul>
     <li><a href="/home">Home</a></li>
   </ul>
 </nav>
 
-// ✅ Associate labels with form controls
+//  Associate labels with form controls
 <label htmlFor="email">Email Address</label>
 <input id="email" type="email" aria-required="true" />
 
-// ✅ Use buttons for interactive actions, not divs
+//  Use buttons for interactive actions, not divs
 <button onClick={handleSubmit} type="button">Submit</button>
 
-// ❌ Avoid non-semantic interactive elements
+//  Avoid non-semantic interactive elements
 <div onClick={handleSubmit}>Submit</div>  // Not keyboard accessible
 ```
 
@@ -16007,6 +16170,105 @@ function RouteAnnouncer() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How to manage focus in React for better accessibility?
+
+Focus management ensures that keyboard and screen reader users can navigate dynamic UI changes (modals, dialogs, page transitions) predictably.
+
+**1. Moving focus when a modal opens:**
+
+```jsx
+import { useRef, useEffect } from 'react';
+
+function Modal({ isOpen, onClose }) {
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      closeButtonRef.current?.focus(); // Move focus to close button on open
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <h2 id="dialog-title">Confirm Action</h2>
+      <p>Are you sure you want to proceed?</p>
+      <button ref={closeButtonRef} onClick={onClose}>Close</button>
+    </div>
+  );
+}
+```
+
+**2. Returning focus after modal closes:**
+
+```jsx
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef(null);
+
+  const closeModal = () => {
+    setIsOpen(false);
+    triggerRef.current?.focus(); // Return focus to the trigger element
+  };
+
+  return (
+    <>
+      <button ref={triggerRef} onClick={() => setIsOpen(true)}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={closeModal} />
+    </>
+  );
+}
+```
+
+**3. Focus trapping with `focus-trap-react`:**
+
+```bash
+npm install focus-trap-react
+```
+
+```jsx
+import FocusTrap from 'focus-trap-react';
+
+function Dialog({ isOpen, onClose }) {
+  if (!isOpen) return null;
+  return (
+    <FocusTrap>
+      <div role="dialog" aria-modal="true">
+        <h2>Dialog Title</h2>
+        <button onClick={onClose}>Close</button>
+      </div>
+    </FocusTrap>
+  );
+}
+```
+
+**4. Focus on route change:**
+
+```jsx
+function RouteAnnouncer() {
+  const { pathname } = useLocation();
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    mainRef.current?.focus();
+  }, [pathname]);
+
+  return <main ref={mainRef} tabIndex={-1}>{/* page content */}</main>;
+}
+```
+
+**Best Practices:**
+
+* Always move focus to newly opened dialogs, drawers, and menus.
+* Return focus to the trigger element after closing a dialog.
+* Use `tabIndex={-1}` to make non-interactive elements focusable programmatically.
+* Never remove the visible focus outline without providing a clear alternative.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 25. REACT SECURITY & AUTHENTICATION
 
 <br/>
@@ -16168,19 +16430,19 @@ React automatically escapes all string values rendered in JSX. The following is 
 
 ```jsx
 const userInput = '<script>alert("xss")</script>';
-// React renders this as text, not HTML — safe ✅
+// React renders this as text, not HTML — safe 
 return <div>{userInput}</div>;
 ```
 
 **Dangerous: dangerouslySetInnerHTML:**
 
 ```jsx
-// ❌ NEVER render unsanitized user content as HTML
+//  NEVER render unsanitized user content as HTML
 function UserBio({ bio }) {
   return <div dangerouslySetInnerHTML={{ __html: bio }} />;
 }
 
-// ✅ Sanitize with DOMPurify before rendering as HTML
+//  Sanitize with DOMPurify before rendering as HTML
 import DOMPurify from 'dompurify';
 
 function UserBio({ bio }) {
@@ -16195,12 +16457,12 @@ function UserBio({ bio }) {
 **Avoid javascript: URLs:**
 
 ```jsx
-// ❌ Vulnerable to XSS via javascript: URL
+//  Vulnerable to XSS via javascript: URL
 function UserLink({ href, label }) {
   return <a href={href}>{label}</a>;
 }
 
-// ✅ Validate and allow only safe URL schemes
+//  Validate and allow only safe URL schemes
 function SafeLink({ href, label }) {
   const isSafe = href.startsWith('https://') || href.startsWith('http://') || href.startsWith('/');
   if (!isSafe) return <span>{label}</span>;
@@ -16223,7 +16485,7 @@ function SafeLink({ href, label }) {
 ## Q. How to handle sensitive data and environment variables securely in React?
 
 ```jsx
-// ✅ Use environment variables for API keys and configuration
+//  Use environment variables for API keys and configuration
 // .env file (never commit to version control)
 // REACT_APP_API_URL=https://api.example.com
 // VITE_API_KEY=your-public-api-key
@@ -16238,7 +16500,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 // are bundled into the client-side JavaScript — they are NOT secret.
 // Never store private keys, database passwords, or secrets this way.
 
-// ✅ Keep truly sensitive operations on the server
+//  Keep truly sensitive operations on the server
 async function getUserData(userId) {
   // The server handles the DB call and authentication
   const response = await fetch(`/api/users/${userId}`, {
@@ -16247,9 +16509,9 @@ async function getUserData(userId) {
   return response.json();
 }
 
-// ✅ Never log sensitive information
-// ❌ console.log('User password:', password);
-// ✅ console.log('Login attempt for user:', email);
+//  Never log sensitive information
+//  console.log('User password:', password);
+//  console.log('Login attempt for user:', email);
 ```
 
 **Token Security Best Practices:**
@@ -16442,16 +16704,16 @@ Cookies.remove('theme');
 **Best practices:**
 
 ```jsx
-// ✅ DO: Use httpOnly cookies for auth tokens (set server-side)
-// ✅ DO: Always use Secure flag in production
-// ✅ DO: Set SameSite to Strict or Lax to prevent CSRF
-// ✅ DO: Set short expiry times for sensitive tokens
-// ✅ DO: Use CSRF tokens for state-changing requests with cookies
+//  DO: Use httpOnly cookies for auth tokens (set server-side)
+//  DO: Always use Secure flag in production
+//  DO: Set SameSite to Strict or Lax to prevent CSRF
+//  DO: Set short expiry times for sensitive tokens
+//  DO: Use CSRF tokens for state-changing requests with cookies
 
-// ❌ DON\'t: Store JWT tokens or sensitive data in localStorage (XSS risk)
-// ❌ DON\'t: Set cookies without Secure flag in production
-// ❌ DON\'t: Use SameSite=None without also setting Secure
-// ❌ DON\'t: Store PII or passwords in cookies
+//  DON\'t: Store JWT tokens or sensitive data in localStorage (XSS risk)
+//  DON\'t: Set cookies without Secure flag in production
+//  DON\'t: Use SameSite=None without also setting Secure
+//  DON\'t: Store PII or passwords in cookies
 ```
 
 **CSRF Protection with cookies:**
@@ -16707,6 +16969,86 @@ function InfinitePostList() {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. How does React Query handle caching and background refetching?
+
+React Query provides automatic caching, stale-while-revalidate background synchronization, and cache invalidation out of the box.
+
+**1. `staleTime` vs `gcTime`:**
+
+```jsx
+const { data } = useQuery({
+  queryKey: ['users'],
+  queryFn: fetchUsers,
+  staleTime: 5 * 60 * 1000,  // Data is "fresh" for 5 min — no background refetch during this window
+  gcTime:   10 * 60 * 1000,  // Unused cache entry is garbage-collected after 10 min
+});
+```
+
+* **`staleTime`**: How long data is considered fresh. Zero by default — data is immediately considered stale after fetching.
+* **`gcTime`**: How long an inactive (unmounted) query\'s data stays in memory before being removed.
+
+**2. Automatic background refetch triggers:**
+
+```jsx
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: true,   // Refetch when the browser tab regains focus (default: true)
+      refetchOnReconnect: true,     // Refetch when internet reconnects (default: true)
+      refetchOnMount: true,         // Refetch when component remounts (default: true)
+      refetchInterval: 30_000,      // Poll every 30 seconds
+    },
+  },
+});
+```
+
+**3. Cache invalidation after mutation:**
+
+```jsx
+const queryClient = useQueryClient();
+
+const mutation = useMutation({
+  mutationFn: updateUser,
+  onSuccess: () => {
+    // Mark query stale — React Query immediately refetches in the background
+    queryClient.invalidateQueries({ queryKey: ['users'] });
+  },
+});
+```
+
+**4. Optimistic updates:**
+
+```jsx
+const optimisticMutation = useMutation({
+  mutationFn: updateUser,
+  onMutate: async (newUser) => {
+    await queryClient.cancelQueries({ queryKey: ['users', newUser.id] });
+    const previous = queryClient.getQueryData(['users', newUser.id]);
+    queryClient.setQueryData(['users', newUser.id], newUser); // Update cache immediately
+    return { previous };
+  },
+  onError: (_err, newUser, context) => {
+    queryClient.setQueryData(['users', newUser.id], context.previous); // Rollback on error
+  },
+});
+```
+
+**5. Dependent queries:**
+
+```jsx
+const { data: user } = useQuery({ queryKey: ['user', userId], queryFn: fetchUser });
+
+const { data: posts } = useQuery({
+  queryKey: ['posts', user?.id],
+  queryFn: () => fetchPosts(user.id),
+  enabled: !!user?.id, // Only runs after user data is available
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## # 27. REACT CONCURRENT FEATURES
 
 <br/>
@@ -16737,11 +17079,11 @@ Concurrent features are automatically available when using `createRoot`:
 ```jsx
 import { createRoot } from 'react-dom/client';
 
-// ✅ Enables Concurrent Features
+//  Enables Concurrent Features
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 
-// ❌ Legacy mode — no concurrent features
+//  Legacy mode — no concurrent features
 // ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
@@ -16992,7 +17334,7 @@ function LikeButton({ userId }) {
 
   return (
     <button onClick={() => setLiked(!liked)}>
-      {liked ? '❤️ Liked' : '🤍 Like'}
+      {liked ? ' Liked' : ' Like'}
     </button>
   );
 }
@@ -17002,11 +17344,11 @@ function LikeButton({ userId }) {
 
 ```
 Server Components CAN:                    Server Components CANNOT:
-✅ async/await directly                   ❌ useState, useReducer, useContext
-✅ Direct DB/filesystem access            ❌ useEffect, useLayoutEffect
-✅ Import server-only packages            ❌ Browser APIs (window, document)
-✅ Render Client Components               ❌ Event handlers (onClick, onChange)
-✅ Pass serializable props to clients     ❌ Pass non-serializable props (functions)
+ async/await directly                    useState, useReducer, useContext
+ Direct DB/filesystem access             useEffect, useLayoutEffect
+ Import server-only packages             Browser APIs (window, document)
+ Render Client Components                Event handlers (onClick, onChange)
+ Pass serializable props to clients      Pass non-serializable props (functions)
 ```
 
 **Benefits of React Server Components:**
@@ -17866,6 +18208,90 @@ function SearchBar() {
   );
 }
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to synchronize real-time data with React state?
+
+When working with WebSockets or SSE, you need patterns to safely merge incoming data into React state and avoid common pitfalls like stale closures and memory leaks.
+
+**1. Functional updates to avoid stale closures:**
+
+```jsx
+function useLiveMessages(channel) {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const socket = new WebSocket(`wss://api.example.com/${channel}`);
+
+    socket.onmessage = (event) => {
+      const newMsg = JSON.parse(event.data);
+      // Functional update always reads the latest state — avoids stale closure
+      setMessages(prev => [...prev, newMsg]);
+    };
+
+    return () => socket.close(); // Cleanup on unmount or channel change
+  }, [channel]);
+
+  return messages;
+}
+```
+
+**2. Optimistic updates with server confirmation:**
+
+```jsx
+function ChatRoom({ roomId }) {
+  const [messages, setMessages] = useState([]);
+
+  const sendMessage = (text) => {
+    const tempId = crypto.randomUUID();
+    // Add message immediately with 'pending' status
+    setMessages(prev => [...prev, { id: tempId, text, status: 'pending' }]);
+
+    socket.emit('message', { roomId, text }, (ack) => {
+      // Replace temp message with server-confirmed version
+      setMessages(prev =>
+        prev.map(m => m.id === tempId ? { ...m, id: ack.id, status: 'sent' } : m)
+      );
+    });
+  };
+}
+```
+
+**3. Throttling high-frequency updates:**
+
+```jsx
+function useLivePrice(ticker) {
+  const [price, setPrice] = useState(null);
+  const lastUpdateRef = useRef(0);
+  const THROTTLE_MS = 500;
+
+  useEffect(() => {
+    const socket = new WebSocket(`wss://prices.example.com/${ticker}`);
+
+    socket.onmessage = (event) => {
+      const now = Date.now();
+      if (now - lastUpdateRef.current >= THROTTLE_MS) {
+        lastUpdateRef.current = now;
+        setPrice(JSON.parse(event.data).price);
+      }
+    };
+
+    return () => socket.close();
+  }, [ticker]);
+
+  return price;
+}
+```
+
+**Key Principles:**
+
+* Always use **functional updates** (`setState(prev => ...)`) inside WebSocket/SSE handlers to avoid stale closures.
+* **Throttle** high-frequency updates (live prices, cursor positions) to prevent excessive re-renders.
+* Always **clean up** the connection in the `useEffect` return function to prevent memory leaks.
+* Prefer React Query\'s `refetchInterval` for simple polling rather than managing raw WebSocket state.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
