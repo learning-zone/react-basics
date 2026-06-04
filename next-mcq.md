@@ -1,6 +1,6 @@
 # Next.js Scenario-Based MCQ
 
-> Scenario-based multiple-choice questions covering Next.js App Router, data fetching, performance, security, and architectural patterns. Mapped across L1–L4 proficiency tiers.
+> Scenario-based multiple-choice questions covering Next.js App Router, data fetching, performance, security, and architectural patterns.
 
 <br/>
 
