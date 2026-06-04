@@ -1515,7 +1515,7 @@ export default function App() {
 export default function App() {
   return (
     <>
-      <input placeholder="It Won't focus" />
+      <input placeholder="It Won\'t focus" />
       <input autoFocus placeholder="It will focus" />
     </>
   );
@@ -3916,6 +3916,474 @@ export default function TodoApp() {
   );
 }
 ```
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What will be the output after clicking the "Increment" button once in the following component?
+
+```js
+function Problem() {
+  const [counter, setCounter] = useState(0);
+
+  const handleIncrement = () => {
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    alert(`Counter value: ${counter}`);
+  };
+
+  return (
+    <div>
+      <p>Current Counter: {counter}</p>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
+}
+```
+
+**Options:**
+
+- A) Counter: 3, Alert shows: 3  
+- B) Counter: 3, Alert shows: 0  
+- C) Counter: 1, Alert shows: 0  
+- D) Counter: 1, Alert shows: 1  
+
+**Bonus:** How would you modify this to make the counter increment by 3?
+
+<details><summary><b>Answer</b></summary>
+
+**Answer: C) Counter: 1, Alert shows: 0**
+
+**Explanation:**
+
+1. **State is a snapshot (closure):** When the event handler runs, `counter` is captured with its current value (0). All three `setCounter` calls use the same captured value: `counter + 1 = 0 + 1 = 1`. React batches these updates and only applies the last one, so the counter shows 1.
+2. **Alert timing:** The `alert` executes synchronously before React re-renders, so it shows the old value (0).
+3. **Batching:** React batches multiple `setState` calls in event handlers. Since all three calls set state to the same value (1), the result is just 1.
+
+**Correct approach — use functional updates:**
+
+```js
+import React, { useState } from 'react';
+
+function Solution() {
+  const [counter, setCounter] = useState(0);
+  const [correctCounter, setCorrectCounter] = useState(0);
+
+  // WRONG: Uses stale closure value — counter increments by only 1
+  const handleIncrementWrong = () => {
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    alert(`Wrong approach - Counter value in alert: ${counter}`);
+  };
+
+  // CORRECT: Uses functional updates — counter increments by 3
+  const handleIncrementCorrect = () => {
+    setCorrectCounter(prev => prev + 1);
+    setCorrectCounter(prev => prev + 1);
+    setCorrectCounter(prev => prev + 1);
+    // Note: Alert still shows old value because state updates are async
+    alert(`Correct approach - Counter value in alert: ${correctCounter} (old value)`);
+  };
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <h3>Wrong Approach (Closure Problem)</h3>
+      <p>Counter: {counter}</p>
+      <button onClick={handleIncrementWrong}>Increment (Wrong)</button>
+
+      <h3>Correct Approach (Functional Updates)</h3>
+      <p>Counter: {correctCounter}</p>
+      <button onClick={handleIncrementCorrect}>Increment (Correct)</button>
+    </div>
+  );
+}
+```
+
+**Key takeaways:**
+1. **State is a snapshot:** The state value doesn\'t change during a render.
+2. **Closures capture values:** Event handlers capture the state value from when they were created.
+3. **Use functional updates:** When new state depends on previous state, use the function form `setState(prev => prev + 1)`.
+4. **Async updates:** State updates are asynchronous — you can\'t read the new value immediately after calling `setState`.
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What will happen when this component renders?
+
+```js
+function Problem() {
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState({ value: 0 });
+
+  useEffect(() => {
+    console.log('Effect running...');
+    setCount(count + 1);
+    setData({ value: count });
+  }, [data]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Data Value: {data.value}</p>
+    </div>
+  );
+}
+```
+
+**Options:**
+
+- A) The count increments once to 1 and stops  
+- B) The count increments infinitely causing an infinite loop  
+- C) The component throws an error  
+- D) The count stays at 0  
+
+**Bonus:** How would you fix this to increment only once on mount?
+
+<details><summary><b>Answer</b></summary>
+
+**Answer: B) The count increments infinitely causing an infinite loop**
+
+**Explanation:**
+
+1. **Object reference problem:** `setData({ value: count })` creates a **new object** every time. React compares dependencies using `Object.is()` (similar to `===`), and `{ value: 0 } !== { value: 0 }` because they are different references.
+2. **The infinite loop:** Effect runs → creates new `data` object → triggers re-render → `data` dependency changed → effect runs again → repeats forever.
+3. **Root cause:** Objects and arrays are compared by reference, not by value. Each render creates a new object reference, so `useEffect` sees a "different" dependency every time.
+
+**Solutions:**
+
+```js
+import React, { useState, useEffect, useRef } from 'react';
+
+function Solution() {
+  // Solution 1: Empty dependency array — runs once on mount
+  const [count1, setCount1] = useState(0);
+  useEffect(() => {
+    setCount1(prev => prev + 1);
+  }, []); // Empty array = runs once on mount
+
+  // Solution 2: Depend on a primitive value instead of an object
+  const [count2, setCount2] = useState(0);
+  const [trigger, setTrigger] = useState(0);
+  useEffect(() => {
+    setCount2(prev => prev + 1);
+  }, [trigger]); // Primitive value — stable reference
+
+  // Solution 3: Use useRef for mutable data that shouldn\'t trigger re-renders
+  const [count3, setCount3] = useState(0);
+  const dataRef = useRef({ value: 0 });
+  useEffect(() => {
+    setCount3(prev => prev + 1);
+    dataRef.current = { value: count3 };
+  }, []); // Refs don\'t trigger re-renders
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <p>Solution 1 (empty deps): {count1}</p>
+      <p>Solution 2 (primitive dep): {count2}</p>
+      <button onClick={() => setTrigger(t => t + 1)}>Trigger Effect</button>
+      <p>Solution 3 (useRef): {count3}</p>
+    </div>
+  );
+}
+```
+
+**Key takeaways:**
+1. Always prefer **primitive values** in `useEffect` dependency arrays over objects/arrays.
+2. An **empty dependency array** (`[]`) means the effect runs only once on mount.
+3. Use **`useRef`** for mutable values that shouldn\'t cause re-renders.
+4. Use **`useMemo`** or **`useCallback`** to stabilize object/function references when they must be in the dependency array.
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. In the code below, what happens to `ChildComponent` when the parent\'s count changes?
+
+```js
+const ChildComponent = ({ onClick }) => {
+  console.log('ChildComponent rendered');
+  return (
+    <div>
+      <p>I'm a child component</p>
+      <button onClick={onClick}>Click me from child</button>
+    </div>
+  );
+};
+
+function Problem() {
+  const [count, setCount] = useState(0);
+  const [childClicks, setChildClicks] = useState(0);
+
+  // This function is recreated on every render
+  const handleClick = () => {
+    setChildClicks(prev => prev + 1);
+  };
+
+  return (
+    <div>
+      <p>Parent Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Parent Count</button>
+      <p>Child Clicks: {childClicks}</p>
+      <ChildComponent onClick={handleClick} />
+    </div>
+  );
+}
+```
+
+**Options:**
+
+- A) `ChildComponent` re-renders only when its button is clicked  
+- B) `ChildComponent` re-renders every time `count` changes  
+- C) `ChildComponent` never re-renders  
+- D) React throws an error about missing dependencies  
+
+**Bonus:** How would you prevent unnecessary re-renders of `ChildComponent`?
+
+<details><summary><b>Answer</b></summary>
+
+**Answer: B) `ChildComponent` re-renders every time `count` changes**
+
+**Explanation:**
+
+1. **Function reference problem:** Every time the parent re-renders, `handleClick` is recreated as a new function reference. Even though it does the same thing, it is a **new reference**.
+2. **Why it re-renders:** Parent count changes → parent re-renders → `handleClick` gets a new reference → child sees a "different" `onClick` prop → child re-renders unnecessarily.
+3. **The solution:** Combine `React.memo` (to skip re-renders when props haven\'t changed by reference) with `useCallback` (to memoize the function so its reference stays stable).
+
+```js
+import React, { useState, useCallback, memo } from 'react';
+
+// Problem: Regular child always re-renders when parent does
+const RegularChild = ({ onClick }) => {
+  console.log('RegularChild rendered');
+  return <button onClick={onClick}>Regular Child</button>;
+};
+
+// Partial fix: memo alone doesn\'t help if the function reference keeps changing
+const MemoOnly = memo(({ onClick }) => {
+  console.log('MemoOnly rendered');
+  return <button onClick={onClick}>Memo Only</button>;
+});
+
+// Full fix: memo + useCallback — re-renders only when necessary
+const OptimizedChild = memo(({ onClick }) => {
+  console.log('OptimizedChild rendered');
+  return <button onClick={onClick}>Optimized Child</button>;
+});
+
+function Solution() {
+  const [count, setCount] = useState(0);
+  const [clicks, setClicks] = useState(0);
+
+  // Recreated on every render
+  const handleClickWrong = () => setClicks(prev => prev + 1);
+
+  // Stable reference — only created once
+  const handleClickCorrect = useCallback(() => {
+    setClicks(prev => prev + 1);
+  }, []); // No dependencies — function never changes
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <p>Parent Count: {count}</p>
+      <button onClick={() => setCount(c => c + 1)}>
+        Increment Parent (watch console)
+      </button>
+      <p>Child Clicks: {clicks}</p>
+
+      <RegularChild onClick={handleClickWrong} />    {/* re-renders every time */}
+      <MemoOnly onClick={handleClickWrong} />        {/* still re-renders — function ref changes */}
+      <OptimizedChild onClick={handleClickCorrect} />{/* only re-renders when needed */}
+    </div>
+  );
+}
+```
+
+**Key takeaways:**
+1. **`React.memo`** prevents re-renders when props haven\'t changed — but it compares by reference.
+2. **`useCallback`** memoizes a function so its reference stays stable across renders.
+3. You need **both** `memo` + `useCallback` for the optimization to work.
+4. Only optimize when you have measured a performance problem — premature optimization adds complexity.
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. What\'s wrong with the following code and how would you fix it?
+
+```js
+// Component 1: Fetches user data
+function UserProfile() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      try {
+        setData({ name: 'John Doe', email: 'john@example.com' });
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    }, 1000);
+  }, []);
+
+  if (loading) return <div>Loading user...</div>;
+  if (error) return <div>Error: {error}</div>;
+  return <div><p>{data?.name}</p><p>{data?.email}</p></div>;
+}
+
+// Component 2: Fetches posts data (DUPLICATE LOGIC!)
+function PostsList() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      try {
+        setData([{ id: 1, title: 'First Post' }, { id: 2, title: 'Second Post' }]);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    }, 1000);
+  }, []);
+
+  if (loading) return <div>Loading posts...</div>;
+  if (error) return <div>Error: {error}</div>;
+  return <ul>{data?.map(post => <li key={post.id}>{post.title}</li>)}</ul>;
+}
+```
+
+**Options:**
+
+- A) Nothing is wrong, this is the correct way  
+- B) Code duplication — should extract into a custom hook  
+- C) Missing cleanup in `useEffect`  
+- D) Should use `fetch` instead of hardcoded data  
+
+**Bonus:** How would you create a reusable custom hook for this pattern?
+
+<details><summary><b>Answer</b></summary>
+
+**Answer: B) Code duplication — should extract into a custom hook**
+
+**Explanation:**
+
+1. **The problem:** Both components have identical `data`, `loading`, and `error` state management along with the same `useEffect` fetch pattern. Any change must be made in multiple places.
+2. **The solution:** Extract the common logic into a `useFetch` custom hook. Custom hooks start with the `use` prefix and can use other hooks (`useState`, `useEffect`, etc.) internally.
+3. **Benefits:** DRY (Don\'t Repeat Yourself), easier to test, easier to maintain, and reusable across any component.
+
+```js
+import React, { useState, useEffect } from 'react';
+
+// Custom Hook — encapsulates loading/error/data pattern
+function useFetch(fetchFunction, dependencies = []) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false; // Cleanup flag prevents state updates on unmounted components
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const result = await fetchFunction();
+        if (!cancelled) {
+          setData(result);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err.message);
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => { cancelled = true; }; // Cleanup on unmount
+  }, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return { data, loading, error };
+}
+
+// Simulated API functions
+const fetchUser = () =>
+  new Promise(resolve =>
+    setTimeout(() => resolve({ name: 'John Doe', email: 'john@example.com', role: 'Developer' }), 1000)
+  );
+
+const fetchPosts = () =>
+  new Promise(resolve =>
+    setTimeout(() => resolve([
+      { id: 1, title: 'Understanding React Hooks' },
+      { id: 2, title: 'Custom Hooks Best Practices' },
+    ]), 1200)
+  );
+
+// Component 1 — clean, no duplicated logic
+function UserProfile() {
+  const { data, loading, error } = useFetch(fetchUser, []);
+  if (loading) return <div>Loading user...</div>;
+  if (error) return <div>Error: {error}</div>;
+  return (
+    <div>
+      <p><strong>Name:</strong> {data?.name}</p>
+      <p><strong>Email:</strong> {data?.email}</p>
+      <p><strong>Role:</strong> {data?.role}</p>
+    </div>
+  );
+}
+
+// Component 2 — reuses the same hook
+function PostsList() {
+  const { data, loading, error } = useFetch(fetchPosts, []);
+  if (loading) return <div>Loading posts...</div>;
+  if (error) return <div>Error: {error}</div>;
+  return (
+    <ul>
+      {data?.map(post => <li key={post.id}>{post.title}</li>)}
+    </ul>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ padding: '20px' }}>
+      <h2>Custom Hook Demo</h2>
+      <UserProfile />
+      <PostsList />
+    </div>
+  );
+}
+```
+
+**Key takeaways:**
+1. **Custom hooks** let you extract and reuse stateful logic across components.
+2. Custom hook names **must start with `use`** so React can enforce the rules of hooks.
+3. A custom hook can use any built-in hooks (`useState`, `useEffect`, `useCallback`, etc.).
+4. Always add a **cleanup function** in `useEffect` to prevent state updates on unmounted components.
+5. Custom hooks make code easier to **test in isolation** and to **maintain**.
 
 </details>
 
