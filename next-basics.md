@@ -3955,11 +3955,9 @@ export default async function TenantLayout({
   if (!config) notFound();
 
   return (
-    <html>
-      <body style={{ '--brand-color': config.brandColor } as React.CSSProperties}>
-        {children}
-      </body>
-    </html>
+    <div>
+      {children}
+    </div>
   );
 }
 ```
