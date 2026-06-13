@@ -56,7 +56,7 @@ Next.js is a React framework built on top of React that provides:
 
 - **API routes** to build backend endpoints in the same project — Files inside `app/api/` export HTTP handler functions (`GET`, `POST`, etc.), allowing you to write backend logic without a separate server. Ideal for form submissions, webhooks, and database queries.
 
-- **Automatic code splitting** per page — Next.js only sends the JavaScript needed for the current page. Users don't download code for routes they haven't visited, resulting in faster initial load times.
+- **Automatic code splitting** per page — Next.js only sends the JavaScript needed for the current page. Users don\'t download code for routes they haven\'t visited, resulting in faster initial load times.
 
 - **Built-in image optimization** via `next/image` — The `<Image>` component automatically resizes, compresses, converts to modern formats (WebP/AVIF), and lazy-loads images. This eliminates the manual work of optimizing assets for different screen sizes.
 
@@ -748,7 +748,7 @@ These hooks are Client Component hooks ("`use client`") imported from `next/navi
 
 **1. usePathname**
 
-Reads the current URL's path name (the string after the domain name, excluding query parameters).
+Reads the current URL\'s path name (the string after the domain name, excluding query parameters).
 
 * **URL Example**: `https://example.com`
 * **Returned Value**: `"/dashboard/settings"` (as a string)
@@ -2608,7 +2608,7 @@ export function RoleBadge() {
 
 ## Q. How do you implement geolocation-based routing in Next.js Middleware?
 
-Next.js Middleware on Vercel automatically populates `request.geo` with the visitor's country, region, and city, derived from the request IP — no extra library needed.
+Next.js Middleware on Vercel automatically populates `request.geo` with the visitor\'s country, region, and city, derived from the request IP — no extra library needed.
 
 ```ts
 // middleware.ts
@@ -2873,7 +2873,7 @@ export const runtime = 'edge';
 
 ## Q. How do you containerize a Next.js app with Docker?
 
-To containerize a Next.js app with Docker, the best practice is to utilize multi-stage builds and Next.js's built-in **standalone output**. This approach creates a self-contained, minimal Node.js server rather than copying your entire `node_modules` folder, shrinking the final image size from over 1GB to roughly 170MB
+To containerize a Next.js app with Docker, the best practice is to utilize multi-stage builds and Next.js\'s built-in **standalone output**. This approach creates a self-contained, minimal Node.js server rather than copying your entire `node_modules` folder, shrinking the final image size from over 1GB to roughly 170MB
 
 **Step 1: Configure Next.js for Standalone Output**
 
@@ -3158,7 +3158,7 @@ import { cacheLife } from 'next/cache';
 import { db } from '@/lib/db';
 
 export async function getProductDetails(productId: string) {
-  'use cache';                  // Caches just this function's output
+  'use cache';                  // Caches just this function\'s output
   cacheLife('minutes');         // Automatically revalidates every few minutes
   
   return await db.product.findUnique({ where: { id: productId } });
